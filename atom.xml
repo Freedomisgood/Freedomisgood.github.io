@@ -34,4 +34,29 @@
     
   </entry>
   
+  <entry>
+    <title>hello hexo</title>
+    <link href="//www.nymrli.top/2018/08/30/Python%E5%AD%97%E5%85%B8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E4%BB%8B%E7%BB%8D/"/>
+    <id>//www.nymrli.top/2018/08/30/Python字典基本操作介绍/</id>
+    <published>2018-08-30T13:14:27.000Z</published>
+    <updated>2018-08-31T10:18:45.322Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="�����ֵ�"><a href="#�����ֵ�" class="headerlink" title="�����ֵ�"></a>�����ֵ�</h4><ul><li><code>info={}</code></li><li><code>info=dict()</code></li></ul><hr><h4 id="��ʼ���ֵ�"><a href="#��ʼ���ֵ�" class="headerlink" title="��ʼ���ֵ�"></a>��ʼ���ֵ�</h4><h5 id="��һ"><a href="#��һ" class="headerlink" title="��һ"></a>��һ</h5><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">key</span> = <span class="string">'name'</span></span><br><span class="line">info = &#123; <span class="built_in">key</span> <span class="string">'cold'</span>&#125;</span><br><span class="line">==&#123;<span class="string">'name'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="����"><a href="#����" class="headerlink" title="����"></a>����</h5><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">info</span> = <span class="keyword">dict</span>(key = <span class="string">'cold'</span>)</span><br><span class="line">==&#123;<span class="string">'key'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="����-1"><a href="#����-1" class="headerlink" title="����"></a>����</h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#���п���ʹ��dict(zip(a,b))����a,b�����б�,��������A��Ԫ��Ϊ��,B��Ԫ��Ϊֵ���ֵ�</span></span><br></pre></td></tr></table></figure><hr><h4 id="�����µl�ֵ��-����"><a href="#�����µl�ֵ��-����" class="headerlink" title="�����µļ�ֵ��(����)"></a>�����µļ�ֵ��(����)</h4><ul><li>info.update(name=’cold’, blog=’<a href="http://www.linuxzen.com&#39;" target="_blank" rel="noopener">www.linuxzen.com&#39;</a>)</li><li>���ֵ���û��k�����ʱ����ʹ��dict.setdefault(key,value)</li><li>������ʹ��dict(var = value)����var�����Ǳ���,Ҳ���Բ���,ע�ⲻ�ü�</li><li>����_dict[‘xxx’]=’yyy’</li></ul><hr><h4 id="��u�ֵ"><a href="#��u�ֵ" class="headerlink" title="��ü�ֵ"></a>��ü�ֵ</h4><ul><li>ȷ�����ڵ������-<ul><li>info.get(‘xxx’)</li><li>info[‘xxx’]</li></ul></li><li>��ȷ���Ƿ����<ul><li>info.get(‘xxx’)</li></ul></li></ul><hr><p>####�����ֵ�</p><ul><li><p>���key,��ͨ��key�����valuefor key in dicprint(%d,%d%(key,_dict[key]))</p></li><li><p>ʹ��dict.items()for key,value in dic.items()print ‘key is %s,value is %s’%(key,value)</p></li></ul><hr><h4 id="�ֵ�ɾ��"><a href="#�ֵ�ɾ��" class="headerlink" title="�ֵ�ɾ��"></a>�ֵ�ɾ��</h4><p><code>del info[&#39;xxx&#39;]</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;�����ֵ�&quot;&gt;&lt;a href=&quot;#�����ֵ�&quot; class=&quot;headerlink&quot; title=&quot;�����ֵ�&quot;&gt;&lt;/a&gt;�����ֵ�&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;info={}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;info=dic
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="//www.nymrli.top/tags/Python/"/>
+    
+  </entry>
+  
 </feed>

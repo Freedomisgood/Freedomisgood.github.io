@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>果粒橙的博客</title>
+  
+  <subtitle>别装作很努力， 因为结局不会陪你演戏。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://nymrli.top/"/>
+  <updated>2018-08-31T07:17:24.324Z</updated>
+  <id>http://nymrli.top/</id>
+  
+  <author>
+    <name>果粒橙</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hello hexo</title>
+    <link href="http://nymrli.top/2018/08/30/hello-hexo/"/>
+    <id>http://nymrli.top/2018/08/30/hello-hexo/</id>
+    <published>2018-08-30T13:14:27.000Z</published>
+    <updated>2018-08-31T07:17:24.324Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is my first attempt to build a blog</p><a id="more"></a><p>Welcome</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is my first attempt to build a blog&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

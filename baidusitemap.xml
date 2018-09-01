@@ -5,12 +5,14 @@
     
   <url>
     <loc>https://nymrli.top/2018/08/30/hello-hexo/</loc>
-    <lastmod>2018-09-01T10:08:52.077Z</lastmod>
+    <lastmod>2018-09-01T10:33:39.636Z</lastmod>
     <data>
         <display>
-        <title>Hello Hexo</title>
+        <title>Hello 搭建Hexo博客</title>
         <pubTime>2018-08-30T13:14:27.000Z</pubTime>
         
+        <tag>环境配置</tag>
+         
         <tag>hexo</tag>
          
          

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nymrli.top/"/>
-  <updated>2018-08-31T11:56:56.677Z</updated>
+  <updated>2018-09-01T06:05:23.225Z</updated>
   <id>https://nymrli.top/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu下Sublime配置Python环境使用指导:</title>
+    <link href="https://nymrli.top/2018/09/01/Ubuntu%E4%B8%8BSublime%E9%85%8D%E7%BD%AEPython%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/"/>
+    <id>https://nymrli.top/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/</id>
+    <published>2018-09-01T06:04:47.000Z</published>
+    <updated>2018-09-01T06:05:23.225Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/E:/hexo\source\_posts\Ubuntu下Sublime配置Python环境使用指导\v2-e120837a2c6bb4df19299c085c8c7cf1_r.jpg" alt="v2-e120837a2c6bb4df19299c085c8c7cf1_r"></p><a id="more"></a><h2 id="Sublime配置python编译环境及搭建虚拟环境-windows下大致相同"><a href="#Sublime配置python编译环境及搭建虚拟环境-windows下大致相同" class="headerlink" title="Sublime配置python编译环境及搭建虚拟环境:(windows下大致相同)"></a>Sublime配置python编译环境及搭建虚拟环境:(windows下大致相同)</h2><h2 id="1-编译环境配置"><a href="#1-编译环境配置" class="headerlink" title="1.编译环境配置"></a>1.编译环境配置</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = <span class="string">'6f4c264a24d933ce70df5dedcf1dcaee'</span> + <span class="string">'ebe013ee18cced0ef93d5f746d80ef60'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="keyword">by</span> = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(<span class="keyword">by</span>).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="built_in">open</span>(os.path.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(<span class="keyword">by</span>)</span><br></pre></td></tr></table></figure><p>1.点击 <a href="https://packagecontrol.io/installation" target="_blank" rel="noopener">官方网址</a> 从 Sublime Text 3 官方获取用于安装的代码。从菜单栏View –&gt;Show Console或者使用Ctrl+`(esc键下面的按键)，调出sublime的控制台，将官网中的python代码粘贴进去并按Enter执行，最终可以安装完成。在控制台中粘贴刚才的代码，然后点击回车。最后重启ST3。 2.现在你可以通过快捷键 cmd+shift+P 打开 Package Control 来安装其他的插件了。输入 install 然后你就能看见屏幕上出现了 Package Control: Install Package，点击回车,然后搜索sublimeREPL</p><p><img src="https://pic3.zhimg.com/v2-2d3d09607e573acd80a4f6229f3394cc_b.jpg" alt="img"></p><p>安装成功后，可以在菜单栏的’TOOL’中找到SublimeREPL，如图所示</p><p><img src="https://pic3.zhimg.com/v2-e4b801e2bcc987e5e28196020de9221a_b.jpg" alt="img"></p><h2 id="2-将菜单栏改为中文"><a href="#2-将菜单栏改为中文" class="headerlink" title="2.将菜单栏改为中文"></a>2.将菜单栏改为中文</h2><p>若需要将菜单栏改成中文可如上操作下载插件“ConvertToUTF8”或是安装插件“ChineseLocalizations”(本人使用的是这个，没试ConvertToUTF8的效果)</p><p><img src="https://pic3.zhimg.com/v2-76bf62cdf099b08b240db97abe40ae24_b.jpg" alt="img"></p><p>(参考博客:<a href="http://blog.51cto.com/11970781/2087971" target="_blank" rel="noopener">http://blog.51cto.com/11970781/2087971</a>)</p><h2 id="3-安装Anaconda插件"><a href="#3-安装Anaconda插件" class="headerlink" title="3.安装Anaconda插件"></a>3.安装Anaconda插件</h2><blockquote><p>1.点击刚刚生成的Package Control -&gt;输入install 2.进入安装界面，安装好后再在新窗口命令行中输入Anaconda并点击第一个备选项进行安装。 安装完成后会显示messages文档。</p></blockquote><p>安装Anaconda插件完成之后，会看到如下选项栏，说明Anaconda安装成功。 - Goto Definitions 能够在你的整个工程中查找并且显示任意一个变量，函数或者类的定义。 - Find Usage 能够快速的查找某个变量，函数或者类在某个特定文件中的什么地方被使用了。 - Show Documentation： 能够显示一个函数或者类的说明性字符串(当然，是在定义了字符串的情况下)</p><p>Anaconda会自动补全代码，之前用惯了pycharm发现突然没了代码补全后很不习惯，Anaconda的补全功能虽然没有pycharm那么好用，但还是不错的 还有需要注意的是，安装Anaconda插件后，如果python代码没有遵循PEP8规范，会出现白色的框框，或是可以使用快捷键Ctrl+Alt+R进行规范代码(这个可以去除，步骤如下)</p><p><img src="https://pic4.zhimg.com/v2-de4ef9695d2206a9be7fe1b44a0c4dea_b.jpg" alt="img"></p><p>在Settings-User选项中添加配置:{“anaconda_linting”:false}</p><h2 id="4-安装虚拟环境"><a href="#4-安装虚拟环境" class="headerlink" title="4.安装虚拟环境"></a>4.安装虚拟环境</h2><blockquote><p>1.首先使用终端安装virtualenv，pip3 install virtualenv2.在需要创建的地方进行虚拟环境的搭建，代码如下：</p></blockquote><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> pytest(文件夹名)</span><br><span class="line"><span class="built_in">cd</span> pytest</span><br><span class="line">virtualenv venv</span><br></pre></td></tr></table></figure><p><img src="https://pic2.zhimg.com/v2-ad5fc970663d250a39227203a0ebe72a_b.jpg" alt="img"></p><p>在终端进入虚拟环境的话是在pytest文件夹下输入命令source /bin/activate而要在sublime中进入虚拟环境的话就得按照如下操作： １．首先在sublime中安装virtualenv插件，Ctrl + Shift + P，然后输入install,回车，然后搜索virtualenv。 2. 安装完成后，直接按Ctrl + Shift + P，再输入Activate，若没有该选项则virtualenv安装中出现问题，需要重新安装。如果有的会选择Activate就能发现刚刚创建的虚拟环境，选中后回车即可进入虚拟环境 3. 如果Activate选中后没有出现我们刚刚创建的虚拟环境，则需要我们手动添加路径.Ctrl + Shift + P，然后输入Add directory，回车，屏幕下面会出现输入行（Directory path）:再将刚创建的虚拟环境路径填入即可</p><p><img src="https://pic4.zhimg.com/v2-38e50b714f4a324bc70f7038c641c78b_b.jpg" alt="img"></p><p>另外，我曾碰到过Add directory后仍然没用的情况。那时，可选择“”Project”=&gt;”Add folder to project”选择文件后=&gt;”Save Project as”==&gt;保存好即可</p><p>工程配置文件为：</p><p>.sublime-workspace、.sublime-project</p><p>其中sublime-project为:</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"build_systems"</span>:</span><br><span class="line">    [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"file_regex"</span>: <span class="string">"^[ ]File "</span>(...?)<span class="string">", line ([0-9]*)"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Anaconda Python Builder"</span>,</span><br><span class="line">            <span class="attr">"selector"</span>: <span class="string">"source.python"</span>,</span><br><span class="line">            <span class="attr">"shell_cmd"</span>: <span class="string">""</span>python<span class="string">" -u "</span>$file<span class="string">""</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"folders"</span>:</span><br><span class="line">    [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"path"</span>: <span class="string">"爬虫"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"virtualenv"</span>: <span class="string">"G:\pachong\venv"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样环境就配置好了。按Ctrl+B编译时，观察”Tools”-&gt;”Build System”-&gt;是否为”Python+ Virtualenv”，如果不是，则选用这个再Ctrl+B就是在虚拟环境中编译了!</p><p>ubuntu下sublime默认情况下好像不能输入中文，需要用下面命令就可以完美支持中文输入：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="keyword">update</span> &amp;&amp; sudo apt-<span class="keyword">get</span> <span class="keyword">upgrade</span></span><br><span class="line">git <span class="keyword">clone</span> https://github.com/lyfeyaj/sublime-<span class="built_in">text</span>-imfix.git</span><br><span class="line">cd sublime-<span class="built_in">text</span>-imfix</span><br><span class="line">./sublime-imfix</span><br></pre></td></tr></table></figure><p>转自<a href="https://blog.csdn.net/cv_you" target="_blank" rel="noopener">CV_YOU的博客</a></p><p><a href="https://blog.csdn.net/CV_YOU/article/details/77702383" target="_blank" rel="noopener">完美解决Sublime无法输入中文问题</a></p><p>截图好像有点问题，菜单栏都没有截到，用到的三个分别为“项目(Project)”，“首选项(Preferences)”，“帮助(Help)”</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/E:/hexo\source\_posts\Ubuntu下Sublime配置Python环境使用指导\v2-e120837a2c6bb4df19299c085c8c7cf1_r.jpg&quot; alt=&quot;v2-e120837a2c6bb4df19299c085c8c7cf1_r&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>python pywin32 PyUserInput实现自动化脚本</title>
@@ -42,6 +60,31 @@
   </entry>
   
   <entry>
+    <title>Python字典基本操作介绍</title>
+    <link href="https://nymrli.top/2018/08/30/Python%E5%AD%97%E5%85%B8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://nymrli.top/2018/08/30/Python字典基本操作介绍/</id>
+    <published>2018-08-30T13:14:27.000Z</published>
+    <updated>2018-09-01T06:03:37.532Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h4><ul><li><code>info={}</code></li><li><code>info=dict()</code></li></ul><hr><h4 id="初始化字典"><a href="#初始化字典" class="headerlink" title="初始化字典"></a>初始化字典</h4><h5 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h5><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">key</span> = <span class="string">'name'</span></span><br><span class="line">info = &#123; <span class="built_in">key</span> <span class="string">'cold'</span>&#125;</span><br><span class="line">==&#123;<span class="string">'name'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h5><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">info</span> = <span class="keyword">dict</span>(key = <span class="string">'cold'</span>)</span><br><span class="line">==&#123;<span class="string">'key'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="法三"><a href="#法三" class="headerlink" title="法三"></a>法三</h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#还有可以使用dict(zip(a,b))其中a,b都是列表,会生成以A中元素为键,B中元素为值的字典</span></span><br></pre></td></tr></table></figure><hr><h4 id="插入新的键值对-更新"><a href="#插入新的键值对-更新" class="headerlink" title="插入新的键值对(更新)"></a>插入新的键值对(更新)</h4><ul><li>info.update(name=’cold’, blog=’<a href="http://www.linuxzen.com&#39;" target="_blank" rel="noopener">www.linuxzen.com&#39;</a>)</li><li>在字典有没有k这个键时可以使用dict.setdefault(key,value)</li><li>还可以使用dict(var = value)其中var可以是变量,也可以不是,注意不用加</li><li>或是_dict[‘xxx’]=’yyy’</li></ul><hr><h4 id="获得键值"><a href="#获得键值" class="headerlink" title="获得键值"></a>获得键值</h4><ul><li>确定存在的情况下-<ul><li>info.get(‘xxx’)</li><li>info[‘xxx’]</li></ul></li><li>不确定是否存在<ul><li>info.get(‘xxx’)</li></ul></li></ul><hr><h4 id="遍历字典"><a href="#遍历字典" class="headerlink" title="遍历字典"></a>遍历字典</h4><ul><li>获得key,再通过key来获得valuefor key in dicprint(%d,%d%(key,_dict[key]))</li><li>使用dict.items()for key,value in dic.items()print ‘key is %s,value is %s’%(key,value)</li></ul><hr><h4 id="字典删除"><a href="#字典删除" class="headerlink" title="字典删除"></a>字典删除</h4><p><code>del info[&#39;xxx&#39;]</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;创建字典&quot;&gt;&lt;a href=&quot;#创建字典&quot; class=&quot;headerlink&quot; title=&quot;创建字典&quot;&gt;&lt;/a&gt;创建字典&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;info={}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;info=dict()&lt;/code&gt;&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://nymrli.top/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello Hexo</title>
     <link href="https://nymrli.top/2018/08/30/hello-hexo/"/>
     <id>https://nymrli.top/2018/08/30/hello-hexo/</id>
@@ -65,33 +108,6 @@
     
     
       <category term="hexo" scheme="https://nymrli.top/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python字典基本操作介绍</title>
-    <link href="https://nymrli.top/2018/08/30/Python%E5%AD%97%E5%85%B8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E4%BB%8B%E7%BB%8D/"/>
-    <id>https://nymrli.top/2018/08/30/Python字典基本操作介绍/</id>
-    <published>2018-08-30T13:14:27.000Z</published>
-    <updated>2018-09-01T05:11:37.264Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h4><ul><li><code>info={}</code></li><li><code>info=dict()</code></li></ul><hr><h4 id="初始化字典"><a href="#初始化字典" class="headerlink" title="初始化字典"></a>初始化字典</h4><h5 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h5><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">key</span> = <span class="string">'name'</span></span><br><span class="line">info = &#123; <span class="built_in">key</span> <span class="string">'cold'</span>&#125;</span><br><span class="line">==&#123;<span class="string">'name'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h5><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">info</span> = <span class="keyword">dict</span>(key = <span class="string">'cold'</span>)</span><br><span class="line">==&#123;<span class="string">'key'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="法三"><a href="#法三" class="headerlink" title="法三"></a>法三</h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#还有可以使用dict(zip(a,b))其中a,b都是列表,会生成以A中元素为键,B中元素为值的字典</span></span><br></pre></td></tr></table></figure><hr><h4 id="插入新的键值对-更新"><a href="#插入新的键值对-更新" class="headerlink" title="插入新的键值对(更新)"></a>插入新的键值对(更新)</h4><ul><li>info.update(name=’cold’, blog=’<a href="http://www.linuxzen.com&#39;" target="_blank" rel="noopener">www.linuxzen.com&#39;</a>)</li><li>在字典有没有k这个键时可以使用dict.setdefault(key,value)</li><li>还可以使用dict(var = value)其中var可以是变量,也可以不是,注意不用加</li><li>或是_dict[‘xxx’]=’yyy’</li></ul><hr><h4 id="获得键值"><a href="#获得键值" class="headerlink" title="获得键值"></a>获得键值</h4><ul><li>确定存在的情况下-<ul><li>info.get(‘xxx’)</li><li>info[‘xxx’]</li></ul></li><li>不确定是否存在<ul><li>info.get(‘xxx’)</li></ul></li></ul><hr><h4 id="遍历字典"><a href="#遍历字典" class="headerlink" title="遍历字典"></a>遍历字典</h4><ul><li>获得key,再通过key来获得valuefor key in dicprint(%d,%d%(key,_dict[key]))</li><li>使用dict.items()for key,value in dic.items()print ‘key is %s,value is %s’%(key,value)</li></ul><hr><h4 id="字典删除"><a href="#字典删除" class="headerlink" title="字典删除"></a>字典删除</h4><p><code>del info[&#39;xxx&#39;]</code></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;创建字典&quot;&gt;&lt;a href=&quot;#创建字典&quot; class=&quot;headerlink&quot; title=&quot;创建字典&quot;&gt;&lt;/a&gt;创建字典&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;info={}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;info=dict()&lt;/code&gt;&lt;/
-      
-    
-    </summary>
-    
-      <category term="Python" scheme="https://nymrli.top/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="https://nymrli.top/tags/Python/"/>
     
   </entry>
   

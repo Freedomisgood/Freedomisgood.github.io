@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nymrli.top/"/>
-  <updated>2018-09-02T11:33:55.065Z</updated>
+  <updated>2018-09-02T11:40:26.032Z</updated>
   <id>https://nymrli.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spy++使用介绍</title>
+    <link href="https://nymrli.top/2018/09/02/Spy-%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://nymrli.top/2018/09/02/Spy-使用介绍/</id>
+    <published>2018-09-02T11:39:45.000Z</published>
+    <updated>2018-09-02T11:40:26.032Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Spy++ (SPYXX.EXE) 是一个基于 Win32 的实用工具，它提供系统的进程、线程、窗口和窗口消息的图形视图。使用 Spy++ 可以执行下列操作： 显示系统对象（包括进程、线程和窗口）之间关系的图形树。 搜索指定的窗口、线程、进程或消息。 查看选定的窗口、线程、进程或消息的属性。</p></blockquote><p>我们可以使用微软的Spy++来查看窗口类名等信息，然后再结合pywin32实现。</p><h4 id="加载初始界面"><a href="#加载初始界面" class="headerlink" title="加载初始界面:"></a>加载初始界面:</h4><p><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202226101-432781308.jpg" alt=""></p><h5 id="然后点击工具栏的望远镜。如图所示"><a href="#然后点击工具栏的望远镜。如图所示" class="headerlink" title="然后点击工具栏的望远镜。如图所示:"></a>然后点击工具栏的望远镜。如图所示:</h5><p><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202408509-1040679679.jpg" alt=""></p><p>出现搜索窗口，然后通过移动靶心到想要查找句柄的窗口后单击就行了。==&gt;它的句柄、标题、类都会显示</p><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202438546-172174720.jpg" alt=""></h2><p>再点击确定。</p><p>此时会有两种情况。</p><ul><li>成功搜索到</li><li>搜索不到<blockquote><p>原因是你查找的窗口是在打开spy++后打开的，解决的办法就是按F5进行刷新，然后就行了</p></blockquote></li></ul><p><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202623152-1227390007.jpg" alt=""></p><p>成功后都会出现如下：<br><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202746383-481316317.jpg" alt=""></p><hr><p>右键，点击“属性”能看到更多详细内容。<br><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829203653870-1326129222.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;Spy++ (SPYXX.EXE) 是一个基于 Win32 的实用工具，它提供系统的进程、线程、窗口和窗口消息的图形视图。使用 Spy++ 可以执行下列操作： 显示系统对象（包括进程、线程和窗口）之间关系的图形树。 搜索指定的窗口、线程、进程或消息
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://nymrli.top/tags/Python/"/>
+    
+      <category term="自动化运维" scheme="https://nymrli.top/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>解决安装PyUserInput、pyHook遇到的问题——AttributeError: &#39;HookManager&#39; object has no attribute &#39;keyboard_hook</title>
@@ -40,20 +66,6 @@
       <category term="Python" scheme="https://nymrli.top/tags/Python/"/>
     
       <category term="自动化运维" scheme="https://nymrli.top/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>#### 创建字典:</title>
-    <link href="https://nymrli.top/2018/09/02/%E5%88%9B%E5%BB%BA%E5%AD%97%E5%85%B8/"/>
-    <id>https://nymrli.top/2018/09/02/创建字典/</id>
-    <published>2018-09-02T11:33:06.000Z</published>
-    <updated>2018-09-02T11:33:06.272Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
     
   </entry>
   
@@ -142,9 +154,9 @@
     </summary>
     
     
-      <category term="环境配置" scheme="https://nymrli.top/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    
       <category term="Sublime Text" scheme="https://nymrli.top/tags/Sublime-Text/"/>
+    
+      <category term="环境配置" scheme="https://nymrli.top/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nymrli.top/"/>
-  <updated>2018-09-01T12:38:41.000Z</updated>
+  <updated>2018-09-02T11:20:01.643Z</updated>
   <id>https://nymrli.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开学小蓝车180天免费卡</title>
+    <link href="https://nymrli.top/2018/09/02/%E5%BC%80%E5%AD%A6%E5%B0%8F%E8%93%9D%E8%BD%A6180%E5%A4%A9%E5%85%8D%E8%B4%B9%E5%8D%A1/"/>
+    <id>https://nymrli.top/2018/09/02/开学小蓝车180天免费卡/</id>
+    <published>2018-09-02T08:44:54.000Z</published>
+    <updated>2018-09-02T11:20:01.643Z</updated>
+    
+    <content type="html"><![CDATA[<p>各位看客老爷,可以加下我的公众号哦!虽然没啥东东….</p><p><img src="/2018/09/02/开学小蓝车180天免费卡/公众号二维码.jpg" alt="公众号二维码"></p><a id="more"></a><p><img src="/2018/09/02/开学小蓝车180天免费卡/9.2.jpg" alt="图片上显示60天,但领取后会变成180天"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;各位看客老爷,可以加下我的公众号哦!虽然没啥东东….&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2018/09/02/开学小蓝车180天免费卡/公众号二维码.jpg&quot; alt=&quot;公众号二维码&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="生活福利" scheme="https://nymrli.top/tags/%E7%94%9F%E6%B4%BB%E7%A6%8F%E5%88%A9/"/>
+    
+  </entry>
   
   <entry>
     <title>例题4:1-3 古老的密码、刽子手的游戏，救济金发放</title>
@@ -113,31 +134,6 @@
   </entry>
   
   <entry>
-    <title>Python字典基本操作介绍</title>
-    <link href="https://nymrli.top/2018/08/30/Python%E5%AD%97%E5%85%B8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E4%BB%8B%E7%BB%8D/"/>
-    <id>https://nymrli.top/2018/08/30/Python字典基本操作介绍/</id>
-    <published>2018-08-30T13:14:27.000Z</published>
-    <updated>2018-09-01T06:03:37.532Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h4><ul><li><code>info={}</code></li><li><code>info=dict()</code></li></ul><hr><h4 id="初始化字典"><a href="#初始化字典" class="headerlink" title="初始化字典"></a>初始化字典</h4><h5 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h5><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">key</span> = <span class="string">'name'</span></span><br><span class="line">info = &#123; <span class="built_in">key</span> <span class="string">'cold'</span>&#125;</span><br><span class="line">==&#123;<span class="string">'name'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h5><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">info</span> = <span class="keyword">dict</span>(key = <span class="string">'cold'</span>)</span><br><span class="line">==&#123;<span class="string">'key'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="法三"><a href="#法三" class="headerlink" title="法三"></a>法三</h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#还有可以使用dict(zip(a,b))其中a,b都是列表,会生成以A中元素为键,B中元素为值的字典</span></span><br></pre></td></tr></table></figure><hr><h4 id="插入新的键值对-更新"><a href="#插入新的键值对-更新" class="headerlink" title="插入新的键值对(更新)"></a>插入新的键值对(更新)</h4><ul><li>info.update(name=’cold’, blog=’<a href="http://www.linuxzen.com&#39;" target="_blank" rel="noopener">www.linuxzen.com&#39;</a>)</li><li>在字典有没有k这个键时可以使用dict.setdefault(key,value)</li><li>还可以使用dict(var = value)其中var可以是变量,也可以不是,注意不用加</li><li>或是_dict[‘xxx’]=’yyy’</li></ul><hr><h4 id="获得键值"><a href="#获得键值" class="headerlink" title="获得键值"></a>获得键值</h4><ul><li>确定存在的情况下-<ul><li>info.get(‘xxx’)</li><li>info[‘xxx’]</li></ul></li><li>不确定是否存在<ul><li>info.get(‘xxx’)</li></ul></li></ul><hr><h4 id="遍历字典"><a href="#遍历字典" class="headerlink" title="遍历字典"></a>遍历字典</h4><ul><li>获得key,再通过key来获得valuefor key in dicprint(%d,%d%(key,_dict[key]))</li><li>使用dict.items()for key,value in dic.items()print ‘key is %s,value is %s’%(key,value)</li></ul><hr><h4 id="字典删除"><a href="#字典删除" class="headerlink" title="字典删除"></a>字典删除</h4><p><code>del info[&#39;xxx&#39;]</code></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;创建字典&quot;&gt;&lt;a href=&quot;#创建字典&quot; class=&quot;headerlink&quot; title=&quot;创建字典&quot;&gt;&lt;/a&gt;创建字典&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;info={}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;info=dict()&lt;/code&gt;&lt;/
-      
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="https://nymrli.top/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hello 搭建Hexo博客</title>
     <link href="https://nymrli.top/2018/08/30/hello-hexo/"/>
     <id>https://nymrli.top/2018/08/30/hello-hexo/</id>
@@ -160,6 +156,31 @@
       <category term="环境配置" scheme="https://nymrli.top/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     
       <category term="hexo" scheme="https://nymrli.top/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python字典基本操作介绍</title>
+    <link href="https://nymrli.top/2018/08/30/Python%E5%AD%97%E5%85%B8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://nymrli.top/2018/08/30/Python字典基本操作介绍/</id>
+    <published>2018-08-30T13:14:27.000Z</published>
+    <updated>2018-09-01T06:03:37.532Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h4><ul><li><code>info={}</code></li><li><code>info=dict()</code></li></ul><hr><h4 id="初始化字典"><a href="#初始化字典" class="headerlink" title="初始化字典"></a>初始化字典</h4><h5 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h5><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">key</span> = <span class="string">'name'</span></span><br><span class="line">info = &#123; <span class="built_in">key</span> <span class="string">'cold'</span>&#125;</span><br><span class="line">==&#123;<span class="string">'name'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h5><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">info</span> = <span class="keyword">dict</span>(key = <span class="string">'cold'</span>)</span><br><span class="line">==&#123;<span class="string">'key'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="法三"><a href="#法三" class="headerlink" title="法三"></a>法三</h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#还有可以使用dict(zip(a,b))其中a,b都是列表,会生成以A中元素为键,B中元素为值的字典</span></span><br></pre></td></tr></table></figure><hr><h4 id="插入新的键值对-更新"><a href="#插入新的键值对-更新" class="headerlink" title="插入新的键值对(更新)"></a>插入新的键值对(更新)</h4><ul><li>info.update(name=’cold’, blog=’<a href="http://www.linuxzen.com&#39;" target="_blank" rel="noopener">www.linuxzen.com&#39;</a>)</li><li>在字典有没有k这个键时可以使用dict.setdefault(key,value)</li><li>还可以使用dict(var = value)其中var可以是变量,也可以不是,注意不用加</li><li>或是_dict[‘xxx’]=’yyy’</li></ul><hr><h4 id="获得键值"><a href="#获得键值" class="headerlink" title="获得键值"></a>获得键值</h4><ul><li>确定存在的情况下-<ul><li>info.get(‘xxx’)</li><li>info[‘xxx’]</li></ul></li><li>不确定是否存在<ul><li>info.get(‘xxx’)</li></ul></li></ul><hr><h4 id="遍历字典"><a href="#遍历字典" class="headerlink" title="遍历字典"></a>遍历字典</h4><ul><li>获得key,再通过key来获得valuefor key in dicprint(%d,%d%(key,_dict[key]))</li><li>使用dict.items()for key,value in dic.items()print ‘key is %s,value is %s’%(key,value)</li></ul><hr><h4 id="字典删除"><a href="#字典删除" class="headerlink" title="字典删除"></a>字典删除</h4><p><code>del info[&#39;xxx&#39;]</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;创建字典&quot;&gt;&lt;a href=&quot;#创建字典&quot; class=&quot;headerlink&quot; title=&quot;创建字典&quot;&gt;&lt;/a&gt;创建字典&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;info={}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;info=dict()&lt;/code&gt;&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://nymrli.top/tags/Python/"/>
     
   </entry>
   

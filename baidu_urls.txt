@@ -1,3 +1,5 @@
+https://nymrli.top/2018/09/20/电信路由器上网/
+https://nymrli.top/2018/09/20/小程序入门学习/
 https://nymrli.top/2018/09/02/Spy-使用介绍/
 https://nymrli.top/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/
 https://nymrli.top/2018/09/02/开学小蓝车180天免费卡/
@@ -5,5 +7,5 @@ https://nymrli.top/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏�
 https://nymrli.top/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/
 https://nymrli.top/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/
 https://nymrli.top/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/
-https://nymrli.top/2018/08/30/Python字典基本操作介绍/
 https://nymrli.top/2018/08/30/hello-hexo/
+https://nymrli.top/2018/08/30/Python字典基本操作介绍/

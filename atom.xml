@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nymrli.top/"/>
-  <updated>2018-09-02T11:40:26.032Z</updated>
+  <updated>2018-09-20T02:03:43.566Z</updated>
   <id>https://nymrli.top/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>电信路由器上网</title>
+    <link href="https://nymrli.top/2018/09/20/%E7%94%B5%E4%BF%A1%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8A%E7%BD%91/"/>
+    <id>https://nymrli.top/2018/09/20/电信路由器上网/</id>
+    <published>2018-09-20T02:01:16.000Z</published>
+    <updated>2018-09-20T02:03:43.566Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><p>链接：<a href="https://pan.baidu.com/s/1b8kwjArpcAcHuU3kD-Gabw" target="_blank" rel="noopener">https://pan.baidu.com/s/1b8kwjArpcAcHuU3kD-Gabw</a> </p><p>密码：联系QQ1063052964,或是在下方评论处留言QQ</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;链接：&lt;a href=&quot;https://pan.baidu.com/s/1b8kwjArpcAcHuU3kD-Gabw&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://pan.baidu.com/s/1b8
+      
+    
+    </summary>
+    
+    
+      <category term="生活福利" scheme="https://nymrli.top/tags/%E7%94%9F%E6%B4%BB%E7%A6%8F%E5%88%A9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小程序入门学习</title>
+    <link href="https://nymrli.top/2018/09/20/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://nymrli.top/2018/09/20/小程序入门学习/</id>
+    <published>2018-09-20T01:57:01.000Z</published>
+    <updated>2018-09-20T02:00:41.168Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="IDE搭建"><a href="#IDE搭建" class="headerlink" title="IDE搭建:"></a>IDE搭建:</h4><p>下载:<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html" target="_blank" rel="noopener">微信公众平台官网</a></p><h4 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识:"></a>预备知识:</h4><blockquote><p>个人认为入门小程序相对比较简单,需要了解HTML+CSS 大概知道是干啥的就行,JavaScrip还是要看看的，推荐教程 <a href="https://link.jianshu.com/?t=http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000" target="_blank" rel="noopener">廖雪峰的博客</a>以及<a href="http://www.w3school.com.cn/js/index.asp" target="_blank" rel="noopener">W3Cschool的JS教程</a></p></blockquote><h4 id="项目目录结构介绍"><a href="#项目目录结构介绍" class="headerlink" title="项目目录结构介绍:"></a>项目目录结构介绍:</h4><p><img src="/2018/09/20/小程序入门学习/目录.jpg" alt="目录"></p><blockquote><p>小程序中一共有<strong>四种类型</strong>的文件:</p><ul><li>js ———- JavaScrip文件</li><li>json ——– 项目配置文件，负责窗口颜色等等</li><li>wxml ——- 类似HTML文件</li><li>wxss ——- 类似CSS文件</li></ul></blockquote><h5 id="重要文件-APP讲解"><a href="#重要文件-APP讲解" class="headerlink" title="重要文件-APP讲解:"></a>重要文件-APP讲解:</h5><ul><li>app.json(必需) :<code>监听并处理小程序的生命周期函数、声明全局变量。</code></li><li>app.js(建议保存) : <code>*作为配置整个APP的入口,可以什么都不写只输入{}.对整个小程序的全局配置。记录了页面组成(定义了每个页面)，配置小程序的窗口 背景色，配置导航条样式，配置默认标题。*</code>==&gt;没有最简单的小程序也能运行.</li><li>app.wxml</li><li>app.wxss</li></ul><p>===&gt; 所以只有<code>app.js和app.json</code>的项目是最简单的小程序</p><h5 id="具体页面下的"><a href="#具体页面下的" class="headerlink" title="具体页面下的"></a>具体页面下的</h5><blockquote><ul><li>js文件配置页面入口</li><li>wxml配置布局</li></ul><p>一起完成对页面的渲染</p></blockquote><blockquote><ul><li>wxss样式文件</li><li>json配置文件</li></ul><p>会覆盖app.json和app.wxss全局设置的内容,实现单个网页的个性化</p></blockquote><hr><p><strong>app.js</strong></p><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">   <span class="comment">//* 页面的初始数据</span></span><br><span class="line">  data: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// * 生命周期函数--监听页面加载</span></span><br><span class="line">  onLoad: <span class="function"><span class="keyword">function</span> <span class="params">(options)</span> </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">   <span class="comment">//* 生命周期函数--监听页面初次渲染完成</span></span><br><span class="line">  onReady: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">   <span class="comment">//* 生命周期函数--监听页面显示</span></span><br><span class="line">  onShow: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">   <span class="comment">//* 生命周期函数--监听页面隐藏</span></span><br><span class="line">  onHide: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">   <span class="comment">//* 生命周期函数--监听页面卸载</span></span><br><span class="line">  onUnload: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">   <span class="comment">//* 页面相关事件处理函数--监听用户下拉动作</span></span><br><span class="line">  onPullDownRefresh: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">   <span class="comment">//* 页面上拉触底事件的处理函数</span></span><br><span class="line">  onReachBottom: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">   <span class="comment">//* 用户点击右上角分享</span></span><br><span class="line">  onShareAppMessage: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p><img src="/2018/09/20/小程序入门学习/Api介绍.png" alt="Api介绍"></p><hr><p><strong>app.json</strong></p><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"pages"</span>:[</span><br><span class="line">  <span class="string">"pages/index/index"</span></span><br><span class="line">  <span class="comment">//pages 里面的路径其实是指向js文件的,其中第一个就是登陆首页</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure><blockquote><p>实现路由配置,及全局的某些设置</p></blockquote><p><img src="/2018/09/20/小程序入门学习/api2.png" alt="api2"></p><p><img src="/2018/09/20/小程序入门学习/小程序.jpg" alt="小程序"></p><hr><p>app.js**</p><p>定义了每个页面,每个页面的.js又调用了Page()方法实现该页面的配置信息</p><h4 id="小程序事件"><a href="#小程序事件" class="headerlink" title="小程序事件"></a>小程序事件</h4><blockquote><p>事件 == 事件类型+具体事件</p></blockquote><h5 id="具体事件"><a href="#具体事件" class="headerlink" title="具体事件"></a>具体事件</h5><ul><li>tap</li><li>longtap</li><li>toustart、touchend、touchmove、touchcancel(电话中断)</li><li>submint、input……</li></ul><h5 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h5><ul><li>bind    冒泡事件</li><li>catch      非冒泡事件</li></ul><ul><li>currentTarget 被绑定的组件<ul><li>dataset 控件相应的属性</li></ul></li><li>target 发生事件的组件</li></ul><h4 id="页面跳转"><a href="#页面跳转" class="headerlink" title="页面跳转"></a>页面跳转</h4><ul><li><code>navigateTo({ url :&#39;xxx&#39; })</code></li><li><code>&lt;navigator url=&quot;../logs/logs?id=1&amp;title=&#39;as&#39;&quot; &gt; &lt;/navigator&gt;</code></li></ul><h4 id="Flex容器和元素"><a href="#Flex容器和元素" class="headerlink" title="Flex容器和元素"></a>Flex容器和元素</h4><h5 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h5><ul><li>flex-direction :         决定主轴方向</li><li>flex-wrap :                处理如何换行</li><li>flex-flow :                 flex-dirction和flex-wrap合并简写</li><li>justify-content:        元素在主轴的对齐方式<ul><li>space-bewteen 两端对齐</li><li>center 居中对齐</li><li>flex-start 左侧对齐</li><li>flex-end 右侧对齐</li></ul></li><li>align-items :              元素在交叉轴的对齐方式<ul><li>stretch  拉伸,当没设置item高度时,占满整个容器</li><li>baseline :以文字为底线对齐</li></ul></li></ul><h5 id="元素属性"><a href="#元素属性" class="headerlink" title="元素属性"></a>元素属性</h5><ul><li>flex-grow (默认0): 当有多余空间时,元素的放大比例</li><li>flex-shrink(默认1) : 当空间不足时,元素的放大比例</li><li>flex-basis: 元素在主轴上占据的空间</li><li>flex : flex-grow、flex-shrink、flex-basis的合并简写</li><li>order : 定义元素的排列顺序</li><li>align-self : 定义元素自身的对齐方式</li></ul><h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><blockquote><p><strong>相对定位:  相对定位的元素是相对自身进行定位,参照物是自己</strong></p><p><strong>绝对定位 : 绝对定位的元素是相对离它最近的一个已定位的父级元素进行定位</strong>,如果没有,则以整个页面进行定位</p></blockquote><h4 id="margin和padding的区别"><a href="#margin和padding的区别" class="headerlink" title="margin和padding的区别"></a>margin和padding的区别</h4><blockquote><p>margin是指从 <em>自身<u>边框</u></em> 到 <em>另一个<u>容器边框</u></em>  之间的距离，就是容器外距离。（外边距）</p><p>padding是指 <u><em>自身边框</em></u> 到 <u><em>自身内部另一个容器边框</em></u> 之间的距离，就是容器内距离。（内边距）</p></blockquote><p>rpx 动态单位</p><h4 id="css布局实例"><a href="#css布局实例" class="headerlink" title="css布局实例"></a>css布局实例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wxml:  </span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'list-item'</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;listItem&#125;&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'list-item-images'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">image</span> <span class="attr">src</span>=<span class="string">'../../images/img2.png'</span> <span class="attr">class</span>=<span class="string">'list-item-images-img'</span> /&gt;</span> </span><br><span class="line">        <span class="comment">&lt;!-- &lt;image class='avatar' src='../../images/avatar.png'/&gt;  --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"list-item-text"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">text</span>&gt;</span>这是一个标题<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">wxss</span>:</span><br><span class="line"><span class="selector-class">.list-item</span>&#123;</span><br><span class="line">  height:500rpx;//整个 图片+文字 一共高为500rpx</span><br><span class="line">  <span class="selector-tag">width</span>: 100%;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="selector-class">.list-item-images</span>&#123;</span><br><span class="line">  height: 300rpx;// 其中图片的高度为300rpx</span><br><span class="line">  <span class="selector-tag">width</span>: 100%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.list-item-images image&#123;//图片高、宽全部伸展</span><br><span class="line">  <span class="selector-tag">height</span>: 100%;</span><br><span class="line">  <span class="selector-tag">width</span>: 100%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="/2018/09/20/小程序入门学习/Users\10630\Desktop\Txt\小程序开发\CSS效果图.jpg" alt="CSS效果图"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;IDE搭建&quot;&gt;&lt;a href=&quot;#IDE搭建&quot; class=&quot;headerlink&quot; title=&quot;IDE搭建:&quot;&gt;&lt;/a&gt;IDE搭建:&lt;/h4&gt;&lt;p&gt;下载:&lt;a href=&quot;https://developers.weixin.qq.com/miniprogram
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://nymrli.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="微信小程序" scheme="https://nymrli.top/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>Spy++使用介绍</title>
@@ -74,7 +123,7 @@
     <link href="https://nymrli.top/2018/09/02/%E5%BC%80%E5%AD%A6%E5%B0%8F%E8%93%9D%E8%BD%A6180%E5%A4%A9%E5%85%8D%E8%B4%B9%E5%8D%A1/"/>
     <id>https://nymrli.top/2018/09/02/开学小蓝车180天免费卡/</id>
     <published>2018-09-02T08:44:54.000Z</published>
-    <updated>2018-09-02T11:44:13.110Z</updated>
+    <updated>2018-09-03T14:22:40.572Z</updated>
     
     <content type="html"><![CDATA[<p>各位看客老爷,可以加下我的公众号哦!虽然没啥东东….微信搜索公众号”我只要瓶果粒橙就好”</p><a id="more"></a><p><img src="/2018/09/02/开学小蓝车180天免费卡/9.2.jpg" alt="图片上显示60天,但领取后会变成180天"></p>]]></content>
     
@@ -154,9 +203,9 @@
     </summary>
     
     
-      <category term="Sublime Text" scheme="https://nymrli.top/tags/Sublime-Text/"/>
-    
       <category term="环境配置" scheme="https://nymrli.top/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="Sublime Text" scheme="https://nymrli.top/tags/Sublime-Text/"/>
     
   </entry>
   
@@ -186,31 +235,6 @@
   </entry>
   
   <entry>
-    <title>Python字典基本操作介绍</title>
-    <link href="https://nymrli.top/2018/08/30/Python%E5%AD%97%E5%85%B8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E4%BB%8B%E7%BB%8D/"/>
-    <id>https://nymrli.top/2018/08/30/Python字典基本操作介绍/</id>
-    <published>2018-08-30T13:14:27.000Z</published>
-    <updated>2018-09-01T06:03:37.532Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h4><ul><li><code>info={}</code></li><li><code>info=dict()</code></li></ul><hr><h4 id="初始化字典"><a href="#初始化字典" class="headerlink" title="初始化字典"></a>初始化字典</h4><h5 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h5><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">key</span> = <span class="string">'name'</span></span><br><span class="line">info = &#123; <span class="built_in">key</span> <span class="string">'cold'</span>&#125;</span><br><span class="line">==&#123;<span class="string">'name'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h5><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">info</span> = <span class="keyword">dict</span>(key = <span class="string">'cold'</span>)</span><br><span class="line">==&#123;<span class="string">'key'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="法三"><a href="#法三" class="headerlink" title="法三"></a>法三</h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#还有可以使用dict(zip(a,b))其中a,b都是列表,会生成以A中元素为键,B中元素为值的字典</span></span><br></pre></td></tr></table></figure><hr><h4 id="插入新的键值对-更新"><a href="#插入新的键值对-更新" class="headerlink" title="插入新的键值对(更新)"></a>插入新的键值对(更新)</h4><ul><li>info.update(name=’cold’, blog=’<a href="http://www.linuxzen.com&#39;" target="_blank" rel="noopener">www.linuxzen.com&#39;</a>)</li><li>在字典有没有k这个键时可以使用dict.setdefault(key,value)</li><li>还可以使用dict(var = value)其中var可以是变量,也可以不是,注意不用加</li><li>或是_dict[‘xxx’]=’yyy’</li></ul><hr><h4 id="获得键值"><a href="#获得键值" class="headerlink" title="获得键值"></a>获得键值</h4><ul><li>确定存在的情况下-<ul><li>info.get(‘xxx’)</li><li>info[‘xxx’]</li></ul></li><li>不确定是否存在<ul><li>info.get(‘xxx’)</li></ul></li></ul><hr><h4 id="遍历字典"><a href="#遍历字典" class="headerlink" title="遍历字典"></a>遍历字典</h4><ul><li>获得key,再通过key来获得valuefor key in dicprint(%d,%d%(key,_dict[key]))</li><li>使用dict.items()for key,value in dic.items()print ‘key is %s,value is %s’%(key,value)</li></ul><hr><h4 id="字典删除"><a href="#字典删除" class="headerlink" title="字典删除"></a>字典删除</h4><p><code>del info[&#39;xxx&#39;]</code></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;创建字典&quot;&gt;&lt;a href=&quot;#创建字典&quot; class=&quot;headerlink&quot; title=&quot;创建字典&quot;&gt;&lt;/a&gt;创建字典&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;info={}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;info=dict()&lt;/code&gt;&lt;/
-      
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="https://nymrli.top/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hello 搭建Hexo博客</title>
     <link href="https://nymrli.top/2018/08/30/hello-hexo/"/>
     <id>https://nymrli.top/2018/08/30/hello-hexo/</id>
@@ -233,6 +257,31 @@
       <category term="环境配置" scheme="https://nymrli.top/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     
       <category term="hexo" scheme="https://nymrli.top/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python字典基本操作介绍</title>
+    <link href="https://nymrli.top/2018/08/30/Python%E5%AD%97%E5%85%B8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://nymrli.top/2018/08/30/Python字典基本操作介绍/</id>
+    <published>2018-08-30T13:14:27.000Z</published>
+    <updated>2018-09-01T06:03:37.532Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h4><ul><li><code>info={}</code></li><li><code>info=dict()</code></li></ul><hr><h4 id="初始化字典"><a href="#初始化字典" class="headerlink" title="初始化字典"></a>初始化字典</h4><h5 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h5><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">key</span> = <span class="string">'name'</span></span><br><span class="line">info = &#123; <span class="built_in">key</span> <span class="string">'cold'</span>&#125;</span><br><span class="line">==&#123;<span class="string">'name'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h5><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">info</span> = <span class="keyword">dict</span>(key = <span class="string">'cold'</span>)</span><br><span class="line">==&#123;<span class="string">'key'</span><span class="string">'cold'</span>&#125;</span><br></pre></td></tr></table></figure><h5 id="法三"><a href="#法三" class="headerlink" title="法三"></a>法三</h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#还有可以使用dict(zip(a,b))其中a,b都是列表,会生成以A中元素为键,B中元素为值的字典</span></span><br></pre></td></tr></table></figure><hr><h4 id="插入新的键值对-更新"><a href="#插入新的键值对-更新" class="headerlink" title="插入新的键值对(更新)"></a>插入新的键值对(更新)</h4><ul><li>info.update(name=’cold’, blog=’<a href="http://www.linuxzen.com&#39;" target="_blank" rel="noopener">www.linuxzen.com&#39;</a>)</li><li>在字典有没有k这个键时可以使用dict.setdefault(key,value)</li><li>还可以使用dict(var = value)其中var可以是变量,也可以不是,注意不用加</li><li>或是_dict[‘xxx’]=’yyy’</li></ul><hr><h4 id="获得键值"><a href="#获得键值" class="headerlink" title="获得键值"></a>获得键值</h4><ul><li>确定存在的情况下-<ul><li>info.get(‘xxx’)</li><li>info[‘xxx’]</li></ul></li><li>不确定是否存在<ul><li>info.get(‘xxx’)</li></ul></li></ul><hr><h4 id="遍历字典"><a href="#遍历字典" class="headerlink" title="遍历字典"></a>遍历字典</h4><ul><li>获得key,再通过key来获得valuefor key in dicprint(%d,%d%(key,_dict[key]))</li><li>使用dict.items()for key,value in dic.items()print ‘key is %s,value is %s’%(key,value)</li></ul><hr><h4 id="字典删除"><a href="#字典删除" class="headerlink" title="字典删除"></a>字典删除</h4><p><code>del info[&#39;xxx&#39;]</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;创建字典&quot;&gt;&lt;a href=&quot;#创建字典&quot; class=&quot;headerlink&quot; title=&quot;创建字典&quot;&gt;&lt;/a&gt;创建字典&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;info={}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;info=dict()&lt;/code&gt;&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://nymrli.top/tags/Python/"/>
     
   </entry>
   

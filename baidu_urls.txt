@@ -1,4 +1,3 @@
-https://nymrli.top/2018/10/12/nginx-uwsi搭建django环境服务器/
 https://nymrli.top/2018/10/12/nginx+uwsi搭建django环境服务器/
 https://nymrli.top/2018/10/04/小程序开发遇到的坑/
 https://nymrli.top/2018/09/27/带表头的单链表的基本操作/

@@ -1,3 +1,5 @@
+https://nymrli.top/2018/10/12/nginx-uwsi搭建django环境服务器/
+https://nymrli.top/2018/10/12/nginx+uwsi搭建django环境服务器/
 https://nymrli.top/2018/10/04/小程序开发遇到的坑/
 https://nymrli.top/2018/09/27/带表头的单链表的基本操作/
 https://nymrli.top/2018/09/27/带表头的单链表应用——多项式/
@@ -11,5 +13,5 @@ https://nymrli.top/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏�
 https://nymrli.top/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/
 https://nymrli.top/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/
 https://nymrli.top/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/
-https://nymrli.top/2018/08/30/Python字典基本操作介绍/
 https://nymrli.top/2018/08/30/hello-hexo/
+https://nymrli.top/2018/08/30/Python字典基本操作介绍/

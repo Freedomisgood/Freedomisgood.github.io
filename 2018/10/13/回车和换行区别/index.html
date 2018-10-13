@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>\r - \n - \r\n的区别 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">\r - \n - \r\n的区别</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2018/10/13</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="编程"> 编程</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,646</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h4 id="r-n-r-n-的区别"><a href="#r-n-r-n-的区别" class="headerlink" title="\r  -  \n - \r\n  的区别"></a>\r  -  \n - \r\n  的区别</h4><h5 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示:"></a>代码演示:</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>:              string s1 = <span class="string">"已经习惯了回车和换行一次搞定\n，敲一个回车键，即是回"</span>;</span><br><span class="line"><span class="number">2</span>:   </span><br><span class="line"><span class="number">3</span>:              Console.WriteLine(s1);</span><br><span class="line"><span class="number">4</span>:              s1 = <span class="string">"已经习惯了回车和换行一次搞定\r，敲一个回车键，即是回"</span>;</span><br><span class="line"><span class="number">5</span>:              Console.WriteLine(s1);</span><br><span class="line"><span class="number">6</span>:              s1 = <span class="string">"已经习惯了回车和换行一次搞定\r\n，敲一个回车键，即是回"</span>;</span><br><span class="line"><span class="number">7</span>:              Console.WriteLine(s1);</span><br><span class="line"><span class="number">8</span>:              Console.ReadLine();</span><br></pre></td></tr></table></figure>
+<p>Result:==&gt;</p>
+<p><img src="https://images0.cnblogs.com/blog/535270/201401/08141919-a381bad2fd714daea5e652c4bd18f41e.png" alt=""></p>
+<h5 id="回车、换行的区别"><a href="#回车、换行的区别" class="headerlink" title="回车、换行的区别:"></a>回车、换行的区别:</h5><blockquote>
+<p>\r , \n, \r\n的区别其实是回车与换行的区别 </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>ASCII码</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\n</td>
+<td>10</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>13</td>
+<td>回车CR</td>
+</tr>
+</tbody>
+</table>
+<p><strong>先来段历史</strong></p>
+<blockquote>
+<p>回车”（Carriage Return）和“换行”（Line Feed）这两个概念的来历和区别。</p>
+<p>在计算机还没有出现之前，有一种叫做电传打字机（Teletype Model 33，Linux/Unix下的tty概念也来自于此）的玩意，每秒钟可以打10个字符。但是它有一个问题，就是打完一行换行的时候，要用去0.2秒，正好可以打两个字符。要是在这0.2秒里面，又有新的字符传过来，那么这个字符将丢失。</p>
+<p>于是，研制人员想了个办法解决这个问题，就是在每行后面加两个表示结束的字符。一个叫做“回车”，告诉打字机把打印头定位在左边界；另一个叫做“换行”，告诉打字机把纸向下移一行。这就是“换行”和“回车”的来历，从它们的英语名字上也可以看出一二。</p>
+<p>后来，计算机发明了，这两个概念也就被般到了计算机上。那时，存储器很贵，一些科学家认为在每行结尾加两个字符太浪费了，加一个就可以。于是，就出现了分歧。</p>
+</blockquote>
+<p>在Windows中：</p>
+<p>‘\r’ 回车，回到当前行的行首，而不会换到下一行，如果接着输出的话，本行以前的内容会被逐一覆盖；</p>
+<p>‘\n’ 换行，换到当前位置的下一行，而不会回到行首；</p>
+<p>Unix系统里，每行结尾只有“&lt;换行&gt;”，即”\n”；Windows系统里面，每行结尾是“&lt;回车&gt;&lt;换行&gt;”，即“\r\n”；Mac系统里，每行结尾是“&lt;回车&gt;”，即”\r”；。一个直接后果是，Unix/Mac系统下的文件在Windows里打开的话，所有文字会变成一行；而Windows里的文件在Unix/Mac下打开的话，在每行的结尾可能会多出一个^M符号。</p>
+<p><code>例 $ echo -en &#39;12\n34\r56\n\r78\r\n&#39; &gt; tmp.txt</code></p>
+<p><img src="http://img.my.csdn.net/uploads/201301/02/1357098340_3393.jpg" alt=""></p>
+<p><img src="http://img.my.csdn.net/uploads/201301/02/1357098349_7560.jpg" alt=""></p>
+<p>==&gt;Linux中遇到换行符(“\n”)会进行回车+换行的操作，回车符反而只会作为控制字符(“^M”)显示，不发生回车的操作。而windows中要回车符+换行符(“\r\n”)才会回车+换行，缺少一个控制符或者顺序不对都不能正确的另起一行。</p>
+<hr>
+<p>▲注意点：</p>
+<p>在解析文本或其他格式的文件内容时，常常要碰到判定回车换行的地方，这个时候就要注意既要判定”**r**\n”又要判定”\n”。</p>
+<p>写程序时可能得到一行,将其进行trim掉’**r**’,这样能得到你所需要的string了。</p>
+<hr>
+<h5 id="拓展程序测试"><a href="#拓展程序测试" class="headerlink" title="拓展程序测试"></a>拓展程序测试</h5><hr>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*==========================程序二===============================*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        FILE *fp;</span><br><span class="line">        <span class="keyword">if</span>((fp=fopen(<span class="string">"test.txt"</span>,<span class="string">"w"</span>)) == <span class="literal">NULL</span>)    &#123;</span><br><span class="line">                <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"open file error\n"</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)</span><br><span class="line">                <span class="built_in">fprintf</span>(fp,<span class="string">"test\n"</span>);</span><br><span class="line">        fclose(fp);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*==========================程序二===============================*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        FILE *fp;</span><br><span class="line">        <span class="keyword">if</span>((fp=fopen(<span class="string">"test.bin"</span>,<span class="string">"wb"</span>)) == <span class="literal">NULL</span>)    &#123;</span><br><span class="line">                <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"open file error\n"</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)</span><br><span class="line">                <span class="built_in">fprintf</span>(fp,<span class="string">"test\n"</span>);</span><br><span class="line">        fclose(fp);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>​    程序一输出文件大小是600字节，程序二输出文件大小是500字节，用记事本打开程序一的输出没有什么问题，每行一个test，打开程序二的输出发现所有的test连成一行，test之间是一个黑色方框符号分隔。用UltraEdit-32以16进制编辑模式打开test.bin可以查看到黑色方框符号就是0A也就是\n，打开test.txt则会发现换行是\r\n，这就是两个文件大小相差100字节的原因。Unix类系统用户打开windows中的文件就会遇到这种苦恼。<br>为什么会有这种区别呢？<br>     毕竟是源自Unix系统，C语言中使用\n表示换行，而在实际的文件中换行符号需要同操作系统一致，所以当我们在<strong>C中使用fopen打开一个文本文件时流实现了实际换行符与C中\n之间的转换</strong>。在windows中当我们用fopen打开文本文件，然后从中读到\r\n时流会转换为\n，而当我们往文件中写入\n时流会转换为\r\n。<strong>程序一是打开文本文件，程序二打开的是二进制文件，因为流只对文本文件进行换行表示的转换，以二进制模式打开流不会做任何处理</strong>。所以当你以二进制模式打开一个文本文件时将产生错乱，你必须亲自将\r\n解释为\n,同样的问题也会出现在以文本模式打开二进制文件的情况.这也解释了为什么Unix类系统中的文件不区分文本文件和二进制文件的原因。</p>
+</blockquote>
+<p>当我们使用标准输入输出函数时有这种情况吗？<br>再回到我们熟悉的标准输入输出stdin,stdout<br>​    C的控制台程序在加载进内存成为进程运行前C运行时库自动打开三个设备并关联到三个流：标准输入流stdin，标准输出流stdout，标准出错流stderr</p>
+<p>​    通常在通用计算机中，没有重定向前这三个流对应的设备是：键盘，显示器，显示器。<strong>这三个都是字符设备，所以是以文本文件的模式打开的</strong>，在windows下当我们在键盘上敲入回车键时产生字符\r\n，但是在OS内核把键盘驱动中读到的字符发送给流的缓冲区时流会将之转换为\n，当我们向控制台输出\n时流将之转换为\r\n再传递至内核，当我们绕过标准输入输出直接调用windows中coredll.lib进行控制台输入输出时就必须面对这一现实，程序员负责实现这一转换。</p>
+<p>摘自:<a href="https://www.cnblogs.com/xiaotiannet/p/3510586.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaotiannet/p/3510586.html</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2018/10/13/回车和换行区别/">https://nymrli.top/2018/10/13/回车和换行区别/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2018/10/12/云服务器Ubuntu更改默认python版本/" title="云服务器Ubuntu更改默认python版本"><span>NextPost ></span><br><span class="nextTitle">云服务器Ubuntu更改默认python版本</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '\r - \n - \r\n的区别',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#r-n-r-n-的区别"><span class="toc-number">1.</span> <span class="toc-text">\r  -  \n - \r\n  的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#代码演示"><span class="toc-number">1.1.</span> <span class="toc-text">代码演示:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#回车、换行的区别"><span class="toc-number">1.2.</span> <span class="toc-text">回车、换行的区别:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#拓展程序测试"><span class="toc-number">1.3.</span> <span class="toc-text">拓展程序测试</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

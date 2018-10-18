@@ -1,3 +1,6 @@
+https://nymrli.top/2018/10/18/python中关于round函数的注意事项/
+https://nymrli.top/2018/10/18/HDOJ-Problem-1002-A-B-Problem-II/
+https://nymrli.top/2018/10/18/LeetCode-26-删除排序数组中的重复项/
 https://nymrli.top/2018/10/15/素数判别/
 https://nymrli.top/2018/10/13/回车和换行区别/
 https://nymrli.top/2018/10/12/云服务器Ubuntu更改默认python版本/
@@ -15,5 +18,5 @@ https://nymrli.top/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏�
 https://nymrli.top/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/
 https://nymrli.top/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/
 https://nymrli.top/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/
-https://nymrli.top/2018/08/30/hello-hexo/
 https://nymrli.top/2018/08/30/Python字典基本操作介绍/
+https://nymrli.top/2018/08/30/hello-hexo/

@@ -1,3 +1,12 @@
+https://nymrli.top/2018/10/24/Sublime-Text3-Python虚拟环境（补充）——解决控制台中文乱码情况/
+https://nymrli.top/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/
+https://nymrli.top/2018/10/24/Python爬虫知识点——Session与Cookie/
+https://nymrli.top/2018/10/24/Python爬虫知识点——代理/
+https://nymrli.top/2018/10/24/Python爬虫知识点——请求/
+https://nymrli.top/2018/10/24/Python爬虫知识点——响应/
+https://nymrli.top/2018/10/24/Python爬虫知识点——爬虫的基本原理/
+https://nymrli.top/2018/10/24/Python爬虫知识点——URL与URI/
+https://nymrli.top/2018/10/24/Python爬虫知识点——Chrome开发者工具Network/
 https://nymrli.top/2018/10/24/XShell通过SSH远程连接云服务器/
 https://nymrli.top/2018/10/24/Django邮箱/
 https://nymrli.top/2018/10/24/复制Django项目时需要注意、修改的地方/

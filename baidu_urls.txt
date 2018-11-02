@@ -1,3 +1,7 @@
+https://nymrli.top/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/
+https://nymrli.top/2018/11/02/apt-get-update无法连接/
+https://nymrli.top/2018/10/28/Windows-控制台Cmd乱码（及永久修改编码）解决方法/
+https://nymrli.top/2018/10/25/JS正则及常用方法函数总结/
 https://nymrli.top/2018/10/24/Sublime-Text3-Python虚拟环境（补充）——解决控制台中文乱码情况/
 https://nymrli.top/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/
 https://nymrli.top/2018/10/24/Python爬虫知识点——Session与Cookie/
@@ -27,6 +31,7 @@ https://nymrli.top/2018/09/20/电信路由器上网/
 https://nymrli.top/2018/09/20/小程序入门学习/
 https://nymrli.top/2018/09/02/Spy-使用介绍/
 https://nymrli.top/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/
+https://nymrli.top/2018/09/02/开学小蓝车180天免费卡/
 https://nymrli.top/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏，救济金发放/
 https://nymrli.top/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/
 https://nymrli.top/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/

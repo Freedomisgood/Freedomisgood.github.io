@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>写爬虫过程中碰到的编码问题 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">写爬虫过程中碰到的编码问题</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2018/11/08</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,632</span> | Reading time: <span class="post-count">7</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="写爬虫过程中碰到的编码问题"><a href="#写爬虫过程中碰到的编码问题" class="headerlink" title="写爬虫过程中碰到的编码问题"></a>写爬虫过程中碰到的编码问题</h2><h4 id="遇到-‘-uxxxx-‘-的16进制字符串编解码问题，使用-unicode-escape-解决之。"><a href="#遇到-‘-uxxxx-‘-的16进制字符串编解码问题，使用-unicode-escape-解决之。" class="headerlink" title="遇到 ‘ \uxxxx ‘ 的16进制字符串编解码问题，使用 unicode-escape 解决之。"></a>遇到 ‘ \uxxxx ‘ 的16进制字符串编解码问题，使用 unicode-escape 解决之。</h4><p>实际上，在将unicode存储到文本的过程中，还有一种存储方式，不需要将unicode转换为实际的文本存储字符集，而是将unicode的内存编码值进行存储，读取文件的时候再反向转换回来，是采用：unicode-escape的转换方式。 </p>
+<blockquote>
+<p><strong>将unicode的内存编码值进行存储，读取文件时在反向转换回来。这里就采用了unicode-escape的方式</strong>  </p>
+</blockquote>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print(u'中文测试'.encode('utf-8'))</span><br><span class="line">print('中文测试'.encode('utf-8'))</span><br><span class="line">print(u'中文测试'.encode('unicode-escape'))</span><br><span class="line">print('中文测试'.encode('unicode-escape'))</span><br><span class="line">==&gt;	b'<span class="symbol">\x</span>e4<span class="symbol">\x</span>b8<span class="symbol">\x</span>ad<span class="symbol">\x</span>e6<span class="symbol">\x</span>96<span class="symbol">\x</span>87<span class="symbol">\x</span>e6<span class="symbol">\x</span>b5<span class="symbol">\x</span>8b<span class="symbol">\x</span>e8<span class="symbol">\x</span>af<span class="symbol">\x</span>95'</span><br><span class="line">==&gt;	b'<span class="symbol">\x</span>e4<span class="symbol">\x</span>b8<span class="symbol">\x</span>ad<span class="symbol">\x</span>e6<span class="symbol">\x</span>96<span class="symbol">\x</span>87<span class="symbol">\x</span>e6<span class="symbol">\x</span>b5<span class="symbol">\x</span>8b<span class="symbol">\x</span>e8<span class="symbol">\x</span>af<span class="symbol">\x</span>95'</span><br><span class="line">==&gt;	b'<span class="symbol">\\</span>u4e2d<span class="symbol">\\</span>u6587<span class="symbol">\\</span>u6d4b<span class="symbol">\\</span>u8bd5'</span><br><span class="line">==&gt;	b'<span class="symbol">\\</span>u4e2d<span class="symbol">\\</span>u6587<span class="symbol">\\</span>u6d4b<span class="symbol">\\</span>u8bd5'</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>ASCII码只有128个字符，符合英文，一个英文字符只用1个字节</p>
+</blockquote>
+<blockquote>
+<p>ANSI：面向中文编码的GBK、GB2312是ANSI码的一种，ANSI码是对ASCII的拓展，所以一个英文只用一个字节，而中文需要拓展ASCII，所以用到两个字节。  0x80~0xFFFF =&gt;2**16</p>
+</blockquote>
+<blockquote>
+<p>Unicode编码:为了解决不同国家ANSI编码的冲突问题，最常用的是用<strong>两个字节</strong>表示一个字符 。但是这样的话，原本可以用一个字节存储的英文字母在Unicode里面必须存两个字节，这就产生了浪费。那么有没有一种既能消除乱码，又能避免浪费的编码方式呢？===&gt;答案就是UTF-8 。000000 -10FFFF </p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; UNICODE 的范围是 <span class="number">0x0000</span> - <span class="number">0xFFFF</span> 共<span class="number">6</span>万多个字符，其中光汉字就占用了<span class="number">4</span>万多个</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>UTF-8编码：当字符在ASCII码的范围时，就用一个字节表示 ，所以英文字符也只用一个字节，▲值得注意的是unicode编码中一个中文字符占2个字节，而UTF-8一个中文字符占3个字节。从unicode到uft-8并不是直接的对应，而是要过一些算法和规则来转换。utf-8长度是1-6个字节 （可变的）</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><strong>Unicode编码(十六进制)</strong></th>
+<th><strong>UTF-8 字节流(二进制)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000000-00007F</td>
+<td>0xxxxxxx</td>
+</tr>
+<tr>
+<td>000080-0007FF</td>
+<td>110xxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>000800-00FFFF</td>
+<td>1110xxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>010000-10FFFF</td>
+<td>11110xxx 10xxxxxx 10xxxxxx10xxxxxx</td>
+</tr>
+</tbody>
+</table>
+<p>超出10FFFF后，UTF-8与Unicode不再对应</p>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><blockquote>
+<p>UTF-8 vs GBK：</p>
+<p>UTF-8版本虽然具有良好的国际兼容性，但中文需要比GBK/BIG5版本多占用50%的数据库存储空间，因此并非推荐使用，仅供对国际兼容性有特殊要求的用户使用。简单地说：对于中文较多的网站，适宜用GBK编码节省数据库空间。对于英文较多的网站，适宜用UTF-8节省数据库空间。</p>
+</blockquote>
+<p><strong><a href="https://blog.csdn.net/xiangxianghehe/article/details/77574965" target="_blank" rel="noopener"> 字符编码ANSI和ASCII区别、Unicode和UTF-8区别 </a></strong></p>
+<h3 id="Python中编码问题"><a href="#Python中编码问题" class="headerlink" title="Python中编码问题"></a>Python中编码问题</h3><hr>
+<p>在python中，unicode是内存编码集，一般我们将数据存储到文件时，需要将数据先编码为其他编码集，比如utf-8、gbk等。</p>
+<p>读取数据的时候再通过同样的编码集进行解码即可。</p>
+<p>但是其实还有一种unicode-escape编码集，他是将unicode内存编码值直接存储： </p>
+<blockquote>
+<p>在使用python3的requests模块时，发现获取响应有两种方式</p>
+<ul>
+<li>其一，为文本响应内容, r.text是Unicode的响应内容 </li>
+<li>其二，为二进制响应内容，r.content是二进制的响应内容 </li>
+</ul>
+</blockquote>
+<hr>
+<p>Python2 的编码问题一直非常让人恼火，不过你的问题稍微简单一些。<br>在交互式命令模式(Interactive shell)下，可以这样来明白你遇到的问题的根源： </p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import sys </span><br><span class="line">sys<span class="selector-class">.stdout</span><span class="selector-class">.encoding</span> </span><br><span class="line">在 Windows 下，如果你的系统是简体中文，一般输出会是 cp936 </span><br><span class="line"></span><br><span class="line">import codecs </span><br><span class="line">codecs.lookup(<span class="string">'cp936'</span>)<span class="selector-class">.name</span> </span><br><span class="line"><span class="string">'gbk'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这就是在 Windows 终端里面使用的编码。在 print 的时候，无论字符串源采取什么样的编码，最终输出的字符串的编码必须跟 shell 的编码一致，也就是说:<br>print some_string<br>Python 会做这样一个动作：<br>codecs.encode(some_string, coding, errors=’strict’)<br>在你遇到的情况下，some_string 是一个 unicode 字符串，coding 是 gbk。由于你的 unicode 字符串里面包含 gbk 字符集里面没有的字符，Python 就会抛出一个 UnicodeEncodeError. </p>
+</blockquote>
+<p>对于输出到文件中情况是类似的，Python2 的 open() 函数不会传入 encoding，以 ‘w’ 方式打开文件，如果写入 unicode 字符串，Python 会获取当前默认的编码，然后以此种编码把字符串写入文件。可惜的是，“默认编码”只是 Python 自己默认的，在 Objects/unicodeobject.c 中，用一个全局变量 unicode_default_encoding 来表示默认的编码： </p>
+<blockquote>
+<p>/* Default encoding to use and assume when NULL is passed as encoding<br>    parameter; it is initialized by _PyUnicode_Init(). </p>
+<p>​    Always use the PyUnicode_SetDefaultEncoding() and<br>​    PyUnicode_GetDefaultEncoding() APIs to access this global. </p>
+</blockquote>
+<p><code>static char unicode_default_encoding[100 + 1] = &quot;ascii&quot;;</code><br>这个值在 Python 中有C接口（PyUnicode_SetDefaultEncoding）去改变，但可惜的是没有 Python 层的接口。<br>所以在调用到类似 file.write(some_string) 的时候，首先会有这样的编码过程:<br>codecs.encode(some_string, coding, errors=’restrict’)<br>当你的 some_string 是一个 unicode 字符串，并且包含 ascii 字符串不存在的字符时，就会抛出一个 UnicodeEncodeError。 </p>
+<blockquote>
+<p>所以，为了解决这个问题，可以这么处理： </p>
+<p>(1) 在 Windows shell 下面:<br>     &gt;&gt;&gt; print some_string.encode(‘gbk’, errors=’ignore’) # replace 也可，只要不是 restrict<br>(2) 在写入文件时，两种方法：<br>    a. 忽略不存在的字符，同(1)<br>    &gt;&gt;&gt; f = open(filename, ‘w’)<br>    &gt;&gt;&gt; f.write(some_string.encode(‘gbk’, errors=’ignore’)<br>    b. byte 方式写入：<br>    &gt;&gt;&gt; f = open(filename, ‘wb’)<br>    &gt;&gt;&gt; f.write(some_string.encode(‘utf-8’))<br>​    a 会损失字符，b 不会。 </p>
+</blockquote>
+<p>来自<a href="http://www.newsmth.net/nForum/#!article/Python/124657" target="_blank" rel="noopener">http://www.newsmth.net/nForum/#!article/Python/124657</a></p>
+<hr>
+<h3 id="如果CMD命令行是gbk编码的，则输出的utf-8字符有些也显示不了"><a href="#如果CMD命令行是gbk编码的，则输出的utf-8字符有些也显示不了" class="headerlink" title="如果CMD命令行是gbk编码的，则输出的utf-8字符有些也显示不了"></a>如果CMD命令行是gbk编码的，则输出的utf-8字符有些也显示不了</h3><hr>
+<h4 id="Win10-临时修改cmd命令行窗口UTF-8编码"><a href="#Win10-临时修改cmd命令行窗口UTF-8编码" class="headerlink" title="Win10 临时修改cmd命令行窗口UTF-8编码"></a>Win10 临时修改cmd命令行窗口UTF-8编码</h4><blockquote>
+<p>只作用于当前打开的窗口</p>
+<p>进入cmd窗口后，直接执行“chcp 65001”，执行完后，cmd的编码格式就是UTF-8</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/tfs411082561/article/details/78416569" target="_blank" rel="noopener">永远修改</a></p>
+<h4 id="Windows-控制台使用注册表永久修改编码问题"><a href="#Windows-控制台使用注册表永久修改编码问题" class="headerlink" title="Windows 控制台使用注册表永久修改编码问题"></a>Windows 控制台使用注册表永久修改编码问题</h4><h5 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h5><p>1.在cmd中输入<code>regedit</code>进入注册表</p>
+<p>2.找到<code>HKEY_CURRENT_USER\Console\%SystemRoot%_system32_cmd.exe</code></p>
+<p>3.新建一个 DWORD（32位值）,命名为CodePage，值设为65001 </p>
+<p>4.已有CodePage的话，修改它，改为十进制，65001</p>
+<h5 id="方法二：-亲测有效"><a href="#方法二：-亲测有效" class="headerlink" title="方法二：(亲测有效)"></a>方法二：(亲测有效)</h5><p>1.新建一个cmd.reg注册表文件:</p>
+<p>2.内容输入如下：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5.00</span></span><br><span class="line"></span><br><span class="line">[HKEY_CURRENT_USER\Console\%SystemRoot%_system32_cmd.exe]</span><br><span class="line"><span class="string">"CodePage"</span>=<span class="string">dword:</span><span class="number">0000</span>fde9</span><br><span class="line"><span class="string">"FontFamily"</span>=<span class="string">dword:</span><span class="number">00000036</span></span><br><span class="line"><span class="string">"FontWeight"</span>=<span class="string">dword:</span><span class="number">00000190</span></span><br><span class="line"><span class="string">"FaceName"</span>=<span class="string">"Consolas"</span></span><br><span class="line"><span class="string">"ScreenBufferSize"</span>=<span class="string">dword:</span><span class="number">232900</span>d2</span><br><span class="line"><span class="string">"WindowSize"</span>=<span class="string">dword:</span><span class="number">002</span>b00d2</span><br></pre></td></tr></table></figure>
+<p>3.双击运行</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2018/11/08/写爬虫过程中碰到的编码问题/">https://nymrli.top/2018/11/08/写爬虫过程中碰到的编码问题/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2018/11/08/Shell脚本基础/" title="Shell脚本基础"><span>NextPost ></span><br><span class="nextTitle">Shell脚本基础</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '写爬虫过程中碰到的编码问题',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写爬虫过程中碰到的编码问题"><span class="toc-number">1.</span> <span class="toc-text">写爬虫过程中碰到的编码问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#遇到-‘-uxxxx-‘-的16进制字符串编解码问题，使用-unicode-escape-解决之。"><span class="toc-number">1.0.1.</span> <span class="toc-text">遇到 ‘ \uxxxx ‘ 的16进制字符串编解码问题，使用 unicode-escape 解决之。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结："><span class="toc-number">1.0.2.</span> <span class="toc-text">总结：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python中编码问题"><span class="toc-number">1.1.</span> <span class="toc-text">Python中编码问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果CMD命令行是gbk编码的，则输出的utf-8字符有些也显示不了"><span class="toc-number">1.2.</span> <span class="toc-text">如果CMD命令行是gbk编码的，则输出的utf-8字符有些也显示不了</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Win10-临时修改cmd命令行窗口UTF-8编码"><span class="toc-number">1.2.1.</span> <span class="toc-text">Win10 临时修改cmd命令行窗口UTF-8编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows-控制台使用注册表永久修改编码问题"><span class="toc-number">1.2.2.</span> <span class="toc-text">Windows 控制台使用注册表永久修改编码问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#方法一："><span class="toc-number">1.2.2.1.</span> <span class="toc-text">方法一：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#方法二：-亲测有效"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">方法二：(亲测有效)</span></a></li></ol></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

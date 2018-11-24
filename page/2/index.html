@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/linux下apt-get介绍/">linux下apt-get介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T08:42:20.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T08:42:20.000Z">2018-11-01</time></div><div class="recent-post-content">apt-get
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/linux下apt-get介绍/">linux下apt-get介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T08:42:20.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T08:42:20.000Z">2018-11-21</time></div><div class="recent-post-content">apt-get
 Advanced Package Tool又名apt-get，是一条linux命令，适用于deb包管理式的操作系统如Unix和Linux系统的应用程序管理器，主要用于自动从互联网的软件仓库中搜索、安装、升级、卸载软件或操作系统。
 
 rpm包和deb包是两种Linux系统下最常见的安装包格式，在安装一些软件或服务的时候免不了要和它们打交道。rpm包主要应用在RedHat系列包括 Fedora等发行版的Linux系统上，deb包主要应用于Debian系列包括现在比较流行的Ubuntu等发行版上。
@@ -107,7 +107,17 @@ vim ~/.bashrc
 增加一行alias python=python3和修改pip版本alias pip=pip3
 source ~/.bashrc再输入python --version,就能发现显示的是Python 3.x啦
 
-2、 在系统级修改 Python 版本(建议)12# update-alter ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="服务器"> 服务器</a></div><div class="read-more"><a class="more" href="/2018/10/12/云服务器Ubuntu更改默认python版本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/">Python爬虫知识点——爬虫的基本原理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:10.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:10.000Z">2018-10-24</time></div><div class="recent-post-content">爬虫的基本原理
+2、 在系统级修改 Python 版本(建议)12# update-alter ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="服务器"> 服务器</a></div><div class="read-more"><a class="more" href="/2018/10/12/云服务器Ubuntu更改默认python版本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Sublime-Text3-Python虚拟环境（补充）——解决控制台中文乱码情况/">Sublime Text3 Python虚拟环境（补充）——解决控制台中文乱码情况</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:52:35.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:52:35.000Z">2018-10-24</time></div><div class="recent-post-content">转自：edwardgui的博客
+
+正常的用python编译控制台是不会出现乱码的，但是在使用虚拟环境的情况下中文总是乱码，一开始以为是windows控制台编码的问题。找了挺久后发现是python+virtualenv编译系统的问题，现在我就带领大家解决这个问题。
+
+▲注：Windows环境下
+首先看下是否已经安装了Virtualenv package插件，如果没有，则Ctrl+Shift+P，install Package,输入Virtualenv安装。
+找到插件安装的地方：C:\Users{Username}\AppData\Roaming\Sublime Text 3\Installed  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2018/10/24/Sublime-Text3-Python虚拟环境（补充）——解决控制台中文乱码情况/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/">Python爬虫知识点——将Cookie保存到本地的多种方法介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:43:34.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:43:34.000Z">2018-10-24</time></div><div class="recent-post-content">方法一：urllib2
+结合cookielib及urllib2，Python2时期比较常用的方法，年代比较久远了。个人觉得太麻烦，改用requests.
+▲需要注意的是cookielib在python3中已经改成了http.cookiejar
+
+1234567891011121314151617181920212223242526272829303132333435#该方法本人未测试import urllib2import cookielib#将cookie保存在文件中def saveCookie():    #设置保存cookie的文件    filename = 'cookie.txt'  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/">Python爬虫知识点——爬虫的基本原理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:10.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:10.000Z">2018-10-24</time></div><div class="recent-post-content">爬虫的基本原理
 爬虫就是获取网页并提取和保存信息的自动化程序
 
 获取网页：获取网页就是获取网页的源码，只要把源码获取下来，就可以从中提取想要的消息
@@ -116,14 +126,90 @@ source ~/.bashrc再输入python --version,就能发现显示的是Python 3.x啦
 ​    ==&gt;1,构造请求发送给服务器===&gt;2.接受响应并解析
 
 提取信息：通过分析网页结构，提取网页信息。通常使用的解析库有:BeautifulSoup、lxml、pyquery，也可以使用正则，但是构造正则表达式比较复杂且易错
-保存数据：将提取的数据保存到某处以便后续利用。保存形式有：TXT、Json、数据库：MySQL、MongoDB、或远程服务器SFT ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——URL与URI/">Python爬虫知识点——URL与URI</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:35:53.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:35:53.000Z">2018-10-24</time></div><div class="recent-post-content">URL与URI
+保存数据：将提取的数据保存到某处以便后续利用。保存形式有：TXT、Json、数据库：MySQL、MongoDB、或远程服务器SFT ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——响应/">Python爬虫知识点——响应</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:17.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:17.000Z">2018-10-24</time></div><div class="recent-post-content">响应：响应状态码、响应头、响应体
+响应状态码：表2-3常见的错误代码及错误原因
+
+
+
+状态码
+说明
+详情
+
+
+
+
+100
+继续
+请求者应当继续提出请求。服务器返回此代码表示已收到请求的第一部分，正在等待其余部分。
+
+
+101
+切换协议
+请求者已要求服务器切换协议，服务器已确认并准备切换。
+
+
+200
+成功
+服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。
+
+
+201
+已创建
+请求成功并且服务器创建了新的资源。
+
+
+202
+已接受
+服务器已接受请求，但尚未处理。
+
+
+203
+非授权信息
+服务器已成功处理了请求，但返回的信息可能来自另一来源。
+
+
+204
+无内容
+服务器成功处理了请求， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——响应/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——Session与Cookie/">Python爬虫知识点——Session与Cookie</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:56.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:56.000Z">2018-10-24</time></div><div class="recent-post-content">Session和Cookie：
+Cookie：保持登录后的认证状态而保存在本地的数据
+session:用cookie来标记用户，cookie携带了会话ID消息，通过检查cookie就能找到会话(session)
+
+cookie与session相互配合，一个处于客户端，一个处于服务端，两者相互协作。
+会话cookie和持久cookie
+会话Cookie：把cookie放在浏览器内存里，浏览器关闭后失效。
+持久Cookie：保存cookie到客户端的硬盘中，下次继续使用。
+
+由Cookie的Max Age和Expires决定了过期的时间。
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——Session与Cookie/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——代理/">Python爬虫知识点——代理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:28.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:28.000Z">2018-10-24</time></div><div class="recent-post-content">代理基本原理代理实际上指代理服务器。功能是代理 网络用户去取得网络信息，是网络信息的中转站。
+正常的请求过程为：发送请求给服务器===&gt;web服务器吧响应传回
+设置代理服务器后：==&gt;向代理服务器发送请求==&gt;请求发送给代理服务器==&gt;再由代理服务器发送web服务器==&gt;由代理服务器把web服务器返回的响应转发给本机
+作用突破自身IP访问限制，访问些平时不能访问的站点。
+访问一些单位或团体内部资源:比如使用教育网内地址段免费代理服务器，就可以用于对教育网开放的各类FTP下载上传，以及各类资料查询共享等服务。
+提高访问速度:通常代理服务器都设置-一个较大的硬盘缓冲区 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——代理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——URL与URI/">Python爬虫知识点——URL与URI</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:35:53.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:35:53.000Z">2018-10-24</time></div><div class="recent-post-content">URL与URI
 URL全称：Uniform Resource Locator(统一资源定位符)
 
 URI全称：Uniform Resource Identifier(统一资源标识符)
 如https://github.com/favicon.ico为例，它既是一个URL又是一个URI。我们通过URL/URI唯一指定了它的访问方式。其中包括访问协议https、访问路径、资源名称favicon.ico。通过这个链接提供的消息，我们就可以直接访问到此资源所在的位置。这便是URL、URI的作用。
 
 URL是URI的子集。===&gt;每个URL都是URI，但不是每个URI都是URL。
-URI包括两个子类 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——URL与URI/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——Chrome开发者工具Network/">Python爬虫知识点——Chrome开发者工具Network</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:35:31.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:35:31.000Z">2018-10-24</time></div><div class="recent-post-content">Chrome开发者工具中Network功能介绍
+URI包括两个子类 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——URL与URI/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——请求/">Python爬虫知识点——请求</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:21.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:21.000Z">2018-10-24</time></div><div class="recent-post-content">请求
+:请求方法、请求网址、请求头、请求体
+
+请求方法：
+常见的为:GET、POST
+GET与POST主要区别：
+
+GET请求参数包含在URL，可从URL中看出。POST请求的URL不包含参数，都是通过表单的形式传输的，包含在请求体中
+GET请求提交的数据最多只有1024字节，POST无限制
+
+
+其他还有HEAD、PUT、DELETE、CONNECT、OPTIONS、TRACE
+请求的网址：
+即URL，我们想要请求的资源
+
+请求头：用来说明服务器要使用的附加信息，比较总要的有Cookie、Referer、User-Agent等。
+
+Accept:请求报头域，用于指定客户端可接受哪些类型的信息。 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——请求/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——Chrome开发者工具Network/">Python爬虫知识点——Chrome开发者工具Network</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:35:31.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:35:31.000Z">2018-10-24</time></div><div class="recent-post-content">Chrome开发者工具中Network功能介绍
 第一列Name:请求的名称，一般会将URL的最后一 部分内容当作名称。  
 第二列Status: 响应的状态码，这里显示为200，代表响应是正常的。通过状态码，我们可   以判断发送了请求之后是否得到了正常的响应。   
 第三列Type: 请求的文档类型。这里为document, 代表我们这次请求的是一个HTML文档,内容就是一些HTML代码。  
@@ -170,38 +256,4 @@ The first line of the input contains an integer T(1&lt;=T&lt;=20) which means th
 方法二(筛选法)123456789101112131415161718192021222324 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM竞赛入门"> ACM竞赛入门</a></div><div class="read-more"><a class="more" href="/2018/10/15/素数判别/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/13/回车和换行区别/">\r - \n - \r\n的区别</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-13T12:33:33.000Z">2018-10-13</time><i class="fa fa-edit"></i><time datetime="2018-10-13T12:33:33.000Z">2018-10-13</time></div><div class="recent-post-content">\r  -  \n - \r\n  的区别代码演示:123456781:              string s1 = "已经习惯了回车和换行一次搞定\n，敲一个回车键，即是回";2:   3:              Console.WriteLine(s1);4:              s1 = "已经习惯了回车和换行一次搞定\r，敲一个回车键，即是回";5:              Console.WriteLine(s1);6:              s1 = "已经习惯了回车和换行一次搞定\r\n，敲一个回车键，即是回";7:              Console ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程"> 编程</a></div><div class="read-more"><a class="more" href="/2018/10/13/回车和换行区别/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/12/nginx+uwsi搭建django环境服务器/">nginx+uwsi搭建django环境服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-12T04:44:09.000Z">2018-10-12</time><i class="fa fa-edit"></i><time datetime="2018-10-12T04:44:09.000Z">2018-10-12</time></div><div class="recent-post-content">阿里云搭建服务器更新源12sudo apt-get updatesudo apt-get upgrade
 安装nginx1234sudo apt-get install nginxsudo /etc/init.d/nginx start (start可以改成restart/stop)#或是sudo service nginx start然后浏览器输入服务器IP,观察是否有welcom to nginx!
 安装py3和virtualenv12sudo apt-get install git python3 python3-pipsudo pip3 install virtualenv
-修改pyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="服务器"> 服务器</a></div><div class="read-more"><a class="more" href="/2018/10/12/nginx+uwsi搭建django环境服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/04/小程序开发遇到的坑/">小程序开发遇到的坑</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-04T12:26:58.000Z">2018-10-04</time><i class="fa fa-edit"></i><time datetime="2018-10-04T12:26:58.000Z">2018-10-04</time></div><div class="recent-post-content">
-小程序开发遇到的坑function 与 =&gt; 的区别
-在JS中，箭头函数并不是简单的function(){}匿名函数的简写语法糖，实际上，箭头函数和匿名函数有个明显的区别：箭头函数内部的this是词法作用域，在编写函数时就已经确定了。而匿名函数的this指向运行时实际调用该方法的对象，无法在编写函数时确定。
-
-箭头函数和普通函数的区别
-不可以当做构造函数，也就是说，不可以使用 new 命令，否则会抛出错误。
-this、arguments、caller等对象在函数体内都不存在。
-不可以使用 yield 命令，因此箭头函数不能用作 Generator 函数。
-
-
-==&gt;箭头函数除了传 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="微信小程序"> 微信小程序</a></div><div class="read-more"><a class="more" href="/2018/10/04/小程序开发遇到的坑/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/20/小程序蓝牙API/">小程序蓝牙</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-20T02:57:01.000Z">2018-09-20</time><i class="fa fa-edit"></i><time datetime="2018-09-20T02:57:01.000Z">2018-10-04</time></div><div class="recent-post-content">提供蓝牙模块APIwx.openBluetoothAdapter(OBJECT)​    初始化小程序蓝牙模块
-wx.closeBluetoothAdapter(OBJECT)​    关闭蓝牙模块，使其进入未初始化状态。
-wx.getBluetoothAdapterState(OBJECT)​    获取本机蓝牙适配器状态
-wx.onBluetoothAdapterStateChange(CALLBACK)​    监听蓝牙适配器状态变化事件
-wx.startBluetoothDevicesDiscovery(OBJECT)​    开始搜寻附近的蓝牙外围设备。注意，该操作比较耗费系统资源， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="微信小程序"> 微信小程序</a></div><div class="read-more"><a class="more" href="/2018/09/20/小程序蓝牙API/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/20/电信路由器上网/">电信路由器上网</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-20T02:01:16.000Z">2018-09-20</time><i class="fa fa-edit"></i><time datetime="2018-09-20T02:01:16.000Z">2018-10-04</time></div><div class="recent-post-content">
-链接: https://pan.baidu.com/s/1QaW7DMhjb2YHd0ZVWterSw
-密码：联系QQ1063052964,或是在下方评论处留言QQ
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2018/09/20/电信路由器上网/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/27/带表头的单链表应用——多项式/">带表头的单链表应用——多项式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-27T14:04:31.000Z">2018-09-27</time><i class="fa fa-edit"></i><time datetime="2018-09-27T14:04:31.000Z">2018-09-27</time></div><div class="recent-post-content">123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/09/27/带表头的单链表应用——多项式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/27/带表头的单链表的基本操作/">带表头的单链表的基本操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-27T14:12:17.000Z">2018-09-27</time><i class="fa fa-edit"></i><time datetime="2018-09-27T14:12:17.000Z">2018-09-27</time></div><div class="recent-post-content">123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/09/27/带表头的单链表的基本操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/20/小程序入门学习/">小程序入门学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-20T01:57:01.000Z">2018-09-20</time><i class="fa fa-edit"></i><time datetime="2018-09-20T01:57:01.000Z">2018-09-20</time></div><div class="recent-post-content">IDE搭建:下载:微信公众平台官网
-预备知识:
-个人认为入门小程序相对比较简单,需要了解HTML+CSS 大概知道是干啥的就行,JavaScrip还是要看看的，推荐教程 廖雪峰的博客以及W3Cschool的JS教程
-
-项目目录结构介绍:
-
-小程序中一共有四种类型的文件:
-
-js ———- JavaScrip文件
-json ——– 项目配置文件，负责窗口颜色等等
-wxml ——- 类似HTML文件
-wxss ——- 类似CSS文件
-
-
-重要文件-APP讲解:
-app.json(必需) :监听并处理小程序的生命周期函数、声明全局变量。
-
-app.js(建议保存) : *作为配置整个APP的入口,可 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="微信小程序"> 微信小程序</a></div><div class="read-more"><a class="more" href="/2018/09/20/小程序入门学习/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+修改pyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="服务器"> 服务器</a></div><div class="read-more"><a class="more" href="/2018/10/12/nginx+uwsi搭建django环境服务器/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

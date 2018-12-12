@@ -1,0 +1,312 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>小程序——高德地图API调用 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">小程序——高德地图API调用</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2018/12/06</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="小程序"> 小程序</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,009</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="小程序——高德地图API调用"><a href="#小程序——高德地图API调用" class="headerlink" title="小程序——高德地图API调用"></a>小程序——高德地图API调用</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>将压缩包解压至使用的小程序目录下，创建libs文件夹，包含<code>amap-wx.js</code></p>
+<p><img src="/2018/12/06/小程序——高德地图API调用/hexo\source\_posts\小程序——高德地图API调用\1.jpg" alt="1"></p>
+<h3 id="导入使用"><a href="#导入使用" class="headerlink" title="导入使用"></a>导入使用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> amapFile = <span class="built_in">require</span>(<span class="string">'..­/../../../libs/amap-wx.js'</span>);</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    src: <span class="string">''</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  onLoad: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> myAmapFun = <span class="keyword">new</span> amapFile.AMapWX(&#123; <span class="attr">key</span>: <span class="string">"	dbb8be907441c2650218bdfd78848cf6"</span> &#125;);</span><br><span class="line">    wx.getSystemInfo(&#123;</span><br><span class="line">      success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;			<span class="comment">//获得手机屏幕的高度宽度</span></span><br><span class="line">        <span class="keyword">var</span> height = data.windowHeight;</span><br><span class="line">        <span class="keyword">var</span> width = data.windowWidth;</span><br><span class="line">        <span class="keyword">var</span> size = width + <span class="string">"*"</span> + height;</span><br><span class="line">        myAmapFun.getStaticmap(&#123;</span><br><span class="line">          location: <span class="string">"118.9301,32.109"</span>,		<span class="comment">//地图中心</span></span><br><span class="line">          zoom: <span class="number">15</span>,							<span class="comment">//缩放比例</span></span><br><span class="line">          size: size,						<span class="comment">//尺寸大小</span></span><br><span class="line">          scale: <span class="number">2</span>,							<span class="comment">//像素,普通图、高清图</span></span><br><span class="line">          markers: 							<span class="comment">//标记	</span></span><br><span class="line"> <span class="string">"large,0xFF0000,A:118.9301,32.109|mid,0xFF0000,B:118.9301,32.110"</span>,</span><br><span class="line">          success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            that.setData(&#123;</span><br><span class="line">              src: data.url</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;,</span><br><span class="line">          fail: <span class="function"><span class="keyword">function</span> (<span class="params">info</span>) </span>&#123;</span><br><span class="line">            wx.showModal(&#123; <span class="attr">title</span>: info.errMsg &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  onReady: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  onShow: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  onHide: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  onUnload: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  onPullDownRefresh: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  onReachBottom: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  onShareAppMessage: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="API使用说明"><a href="#API使用说明" class="headerlink" title="API使用说明"></a>API使用说明</h3><table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>含义</th>
+<th>规则说明</th>
+<th>是否必填</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>用户唯一标识</td>
+<td>用户在高德地图官网申请</td>
+<td>必填</td>
+<td>无</td>
+</tr>
+<tr>
+<td>location</td>
+<td>地图中心点</td>
+<td>中心点坐标。规则：经度和纬度用”,”分隔 经纬度小数点后不得超过6位。</td>
+<td>部分条件必填</td>
+<td>无</td>
+</tr>
+<tr>
+<td>zoom</td>
+<td>地图级别</td>
+<td>地图缩放级别:[1,17]</td>
+<td>可选</td>
+<td>无</td>
+</tr>
+<tr>
+<td>size</td>
+<td>地图大小</td>
+<td>图片宽度<em>图片高度。最大值为1024</em>1024</td>
+<td>可选</td>
+<td>400*400</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>普通/高清</td>
+<td>1:返回普通图；2:调用高清图，图片高度和宽度都增加一倍，zoom也增加一倍（当zoom为最大值时，zoom不再改变）。</td>
+<td>可选</td>
+<td>1</td>
+</tr>
+<tr>
+<td>markers</td>
+<td>标注</td>
+<td>使用规则见markers详细说明，标注最大数10个</td>
+<td>可选</td>
+<td>无</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>标签</td>
+<td>使用规则见labels详细说明，标签最大数10个</td>
+<td>可选</td>
+<td>无</td>
+</tr>
+<tr>
+<td>paths</td>
+<td>折线</td>
+<td>使用规则见paths详细说明，折线和多边形最大数4个</td>
+<td>可选</td>
+<td>无</td>
+</tr>
+<tr>
+<td>traffic</td>
+<td>交通路况标识</td>
+<td>底图是否展现实时路况。 可选值： 0，不展现；1，展现。</td>
+<td>可选</td>
+<td>0</td>
+</tr>
+<tr>
+<td>sig</td>
+<td>数字签名</td>
+<td>数字签名认证用户必填</td>
+<td>可选</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<h4 id="markers"><a href="#markers" class="headerlink" title="markers:"></a>markers:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">markers:<span class="string">"large,0xFF0000,A:118.9301,32.109|mid,0xFF0000,B:118.9301,32.110"</span>,</span><br><span class="line"><span class="comment">//or</span></span><br><span class="line">markers:<span class="string">"large,0xFF0000,A:118.9301,32.109;B:118.9301,32.110"</span>,</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>说明</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size</td>
+<td>可选值： small,mid,large</td>
+<td>small</td>
+</tr>
+<tr>
+<td>color</td>
+<td>选值范围：[0x000000, 0xffffff]例如：0x000000 black,0x008000 green,0x800080 purple,0xFFFF00 yellow,0x0000FF blue,0x808080 gray,0xffa500 orange,0xFF0000 red,0xFFFFFF white</td>
+<td>0xFC6054</td>
+</tr>
+<tr>
+<td>label</td>
+<td>[0-9]、[A-Z]、[单个中文字] 当size为small时，图片不展现标注名。</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<p><code>label，font ,bold, fontSize，fontColor，background</code></p>
+<h5 id="自定义markersStyle-1，url，0。"><a href="#自定义markersStyle-1，url，0。" class="headerlink" title="自定义markersStyle:  -1，url，0。"></a>自定义markersStyle:  -1，url，0。</h5><p>-1表示为自定义图片，URL为图片的网址。自定义图片只支持<strong>PNG</strong>格式。</p>
+<p><code>https://restapi.amap.com/v3/staticmap?markers=-1,http://ico.ooopic.com/ajax/iconpng/?id=158688.png,0:116.37359,39.92437&amp;key=您的key</code></p>
+<h4 id="labels"><a href="#labels" class="headerlink" title="labels"></a>labels</h4><p><code>labels=labelsStyle1:location1;location2|labelsStyle2:location3;location4..|labelsStyleN:locationN;locationM</code></p>
+<p><em>labelsStyle</em>：<code>label, font, bold, fontSize, fontColor, backgroun</code>d。 各参数使用”,”分隔，如有默认值则可为空。</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>说明</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td>标签内容，字符最大数目为15</td>
+<td>无</td>
+</tr>
+<tr>
+<td>font</td>
+<td>0：微软雅黑；1：宋体；2：Times New Roman;3：Helvetica</td>
+<td>0</td>
+</tr>
+<tr>
+<td>bold</td>
+<td>0：非粗体；1：粗体</td>
+<td>0</td>
+</tr>
+<tr>
+<td>fontSize</td>
+<td>字体大小，可选值[1,72]</td>
+<td>10</td>
+</tr>
+<tr>
+<td>fontColor</td>
+<td>字体颜色，取值范围：[0x000000, 0xffffff]</td>
+<td>0xFFFFFF</td>
+</tr>
+<tr>
+<td>background</td>
+<td>背景色，取值范围：[0x000000, 0xffffff]</td>
+<td>0x5288d8</td>
+</tr>
+</tbody>
+</table>
+<h4 id="paths"><a href="#paths" class="headerlink" title="paths"></a>paths</h4><p><code>paths=pathsStyle1:location1;location2..|pathsStyle2:location3;location4..|pathsStyleN:locationN;locationM..</code></p>
+<blockquote>
+<p> ▲.LocationN :  <code>118.9301,32.109</code>先经度后维度</p>
+</blockquote>
+<p><em>pathsStyle</em>：<code>weight, color, transparency, fillcolor, fillTransparency</code></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>说明</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>weight</td>
+<td>线条粗细。可选值： [2,15]</td>
+<td>5</td>
+</tr>
+<tr>
+<td>color</td>
+<td>折线颜色。 选值范围：[0x000000, 0xffffff]例如：0x000000 black,0x008000 green,0x800080 purple,0xFFFF00 yellow,0x0000FF blue,0x808080 gray,0xffa500 orange,0xFF0000 red,0xFFFFFF white</td>
+<td>0x0000FF</td>
+</tr>
+<tr>
+<td>transparency</td>
+<td>透明度。可选值[0,1]，小数后最多2位，0表示完全透明，1表示完全不透明。</td>
+<td>1</td>
+</tr>
+<tr>
+<td>fillcolor</td>
+<td>多边形的填充颜色，<strong>此值不为空时折线封闭成多边形</strong>。取值规则同color</td>
+<td>无</td>
+</tr>
+<tr>
+<td>fillTransparency</td>
+<td>填充面透明度。可选值[0,1]，小数后最多2位，0表示完全透明，1表示完全不透明。</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+<p>折线示例:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paths: '10,0x<span class="number">0000</span>ff,1,,:116.<span class="number">3160</span>4,39.<span class="number">9649</span>1;116.<span class="number">320816</span>,39.<span class="number">966606</span>;116.<span class="number">321785</span>,39.<span class="number">966827</span>;116.<span class="number">3236</span>1,39.<span class="number">966957</span>',</span><br></pre></td></tr></table></figure>
+<p>区域示例:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">paths</span>: "10,0<span class="selector-tag">x0000ff</span>,0<span class="selector-class">.1</span>,0<span class="selector-tag">x0000ff</span>,0<span class="selector-class">.7</span><span class="selector-pseudo">:116.31604</span>,39<span class="selector-class">.96491</span>;116<span class="selector-class">.320816</span>,39<span class="selector-class">.966606</span>;116<span class="selector-class">.321785</span>,39<span class="selector-class">.966827</span>;116<span class="selector-class">.32361</span>,39<span class="selector-class">.966957</span>;116<span class="selector-class">.39361</span>,39<span class="selector-class">.966957</span>;116<span class="selector-class">.39361</span>,39<span class="selector-class">.936957</span>",</span><br></pre></td></tr></table></figure></article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2018/12/06/小程序——高德地图API调用/">https://nymrli.top/2018/12/06/小程序——高德地图API调用/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2018/12/08/ifdef、-ifndef、-endif/" title="#ifdef、#ifndef、#endif"><span>< PreviousPost</span><br><span class="prevTitle">#ifdef、#ifndef、#endif</span></a><a class="nextSlogan" href="/2018/12/06/HTML和CSS学习/" title="HTML和CSS学习"><span>NextPost ></span><br><span class="nextTitle">HTML和CSS学习</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '小程序——高德地图API调用',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#小程序——高德地图API调用"><span class="toc-number">1.</span> <span class="toc-text">小程序——高德地图API调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-number">1.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#导入使用"><span class="toc-number">1.2.</span> <span class="toc-text">导入使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API使用说明"><span class="toc-number">1.3.</span> <span class="toc-text">API使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#markers"><span class="toc-number">1.3.1.</span> <span class="toc-text">markers:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#自定义markersStyle-1，url，0。"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">自定义markersStyle:  -1，url，0。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#labels"><span class="toc-number">1.3.2.</span> <span class="toc-text">labels</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#paths"><span class="toc-number">1.3.3.</span> <span class="toc-text">paths</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

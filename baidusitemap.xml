@@ -4,18 +4,35 @@
 
     
   <url>
-    <loc>https://nymrli.top/2018/12/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E2%80%94%E2%80%94%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E5%8F%8A%E8%81%8C%E8%83%BD%E4%BA%A4%E9%80%9A%E4%B8%AD%E7%9A%84%E6%9C%80%E4%BD%B3%E8%B7%AF%E5%BE%84%E9%80%89%E6%8B%A9%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2018-12-16T10:00:19.716Z</lastmod>
+    <loc>https://nymrli.top/2018/12/20/Postman%E6%A8%A1%E6%8B%9F%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/</loc>
+    <lastmod>2018-12-20T11:14:30.676Z</lastmod>
     <data>
         <display>
-        <title>数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题</title>
-        <pubTime>2018-12-16T09:50:05.000Z</pubTime>
+        <title>Postman模拟上传文件</title>
+        <pubTime>2018-12-20T10:57:35.000Z</pubTime>
         
-        <tag>数据结构</tag>
+        <tag>后端</tag>
          
-        <tag>图论</tag>
+        <tag>Postman</tag>
          
-        <tag>实验作业</tag>
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://nymrli.top/2018/12/19/flask-sqlalchemy%E8%B8%A9%E5%9D%91/</loc>
+    <lastmod>2018-12-19T11:56:43.863Z</lastmod>
+    <data>
+        <display>
+        <title>flask-sqlalchemy踩坑——外键</title>
+        <pubTime>2018-12-19T11:47:54.000Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>flask</tag>
          
          
            
@@ -26,7 +43,7 @@
     
   <url>
     <loc>https://nymrli.top/2018/12/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E5%9B%BE/</loc>
-    <lastmod>2018-12-16T03:42:22.991Z</lastmod>
+    <lastmod>2018-12-18T15:13:46.235Z</lastmod>
     <data>
         <display>
         <title>数据结构——图</title>
@@ -44,14 +61,71 @@
 
     
   <url>
+    <loc>https://nymrli.top/2018/10/12/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8Ubuntu%E6%9B%B4%E6%94%B9%E9%BB%98%E8%AE%A4python%E7%89%88%E6%9C%AC/</loc>
+    <lastmod>2018-12-18T15:12:06.142Z</lastmod>
+    <data>
+        <display>
+        <title>云服务器Ubuntu更改默认python版本</title>
+        <pubTime>2018-10-12T05:07:48.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>服务器</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://nymrli.top/2018/12/15/2018-12-15%E5%B0%8F%E8%AE%B0/</loc>
-    <lastmod>2018-12-16T03:07:48.956Z</lastmod>
+    <lastmod>2018-12-18T12:13:57.125Z</lastmod>
     <data>
         <display>
         <title>2018-12-15小记</title>
         <pubTime>2018-12-15T14:22:25.000Z</pubTime>
         
         <tag>生活小记</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://nymrli.top/2018/11/04/%E9%AB%98%E7%A7%91GSWIFI%E6%B1%9F%E8%8B%8F%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2018-12-18T11:28:14.325Z</lastmod>
+    <data>
+        <display>
+        <title>高科GSWIFI江苏破解教程</title>
+        <pubTime>2018-11-04T02:06:34.000Z</pubTime>
+        
+        <tag>生活福利</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://nymrli.top/2018/12/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E2%80%94%E2%80%94%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E5%8F%8A%E8%81%8C%E8%83%BD%E4%BA%A4%E9%80%9A%E4%B8%AD%E7%9A%84%E6%9C%80%E4%BD%B3%E8%B7%AF%E5%BE%84%E9%80%89%E6%8B%A9%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2018-12-16T10:30:17.535Z</lastmod>
+    <data>
+        <display>
+        <title>数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题</title>
+        <pubTime>2018-12-16T09:50:05.000Z</pubTime>
+        
+        <tag>数据结构</tag>
+         
+        <tag>图论</tag>
+         
+        <tag>实验作业</tag>
          
          
            
@@ -552,23 +626,6 @@
 
     
   <url>
-    <loc>https://nymrli.top/2018/11/04/%E9%AB%98%E7%A7%91GSWIFI%E6%B1%9F%E8%8B%8F%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2018-11-04T04:01:07.235Z</lastmod>
-    <data>
-        <display>
-        <title>高科GSWIFI江苏破解教程</title>
-        <pubTime>2018-11-04T02:06:34.000Z</pubTime>
-        
-        <tag>生活福利</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://nymrli.top/2018/11/02/WSGI-uWSGI-uwsgi%E5%8F%8Anginx%E8%AF%B4%E6%98%8E/</loc>
     <lastmod>2018-11-02T08:16:15.520Z</lastmod>
     <data>
@@ -615,25 +672,6 @@
         <pubTime>2018-10-28T08:42:20.000Z</pubTime>
         
         <tag>计算机基础知识</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://nymrli.top/2018/10/12/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8Ubuntu%E6%9B%B4%E6%94%B9%E9%BB%98%E8%AE%A4python%E7%89%88%E6%9C%AC/</loc>
-    <lastmod>2018-10-27T03:14:19.554Z</lastmod>
-    <data>
-        <display>
-        <title>云服务器Ubuntu更改默认python版本</title>
-        <pubTime>2018-10-12T05:07:48.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>服务器</tag>
          
          
            

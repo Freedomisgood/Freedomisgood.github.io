@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>WampSever配置本地环境，解决打开打开本地网站问题 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">WampSever配置本地环境，解决打开打开本地网站问题</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2018/09/01</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="WAMP"> WAMP</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">660</span> | Reading time: <span class="post-count">2</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><p><img src="/v2-1d83ff5569ea18de71d329033fb91131_r.jpg" alt="What&#39;s WAMP"></p>
+<a id="more"></a>
+<blockquote>
+<p>WampServer是一款由法国人开发的Apache Web服务器、PHP解释器以及MySQL数据库的整合软件包。免去了开发人员将时间花费在繁琐的配置环境过程，从而腾出更多精力去做开发。 </p>
+</blockquote>
+<p>直接点击本地的.html是静态加载的，需要动态加载的文件是无法被加载的。会出现如下情况。</p>
+<p><img src="https://pic1.zhimg.com/v2-b270887c1a810a4209f04783cc85a4c6_b.jpg" alt="img"></p>
+<p>于是选用了Wamp搭本地服务器浏览网站，这样就能成功加载动态文件了。</p>
+<hr>
+<p>在此分享下配置WampSever时碰到的问题和解决的方法：</p>
+<h2 id="服务器是否已正常运行"><a href="#服务器是否已正常运行" class="headerlink" title="服务器是否已正常运行"></a>服务器是否已正常运行</h2><p>如果能登上则表示服务器能够正常运行。(在地址栏中输入localhost:端口(或是127.0.0.1:端口) 或是左键图标选择’localhost’)</p>
+<p><img src="https://pic2.zhimg.com/v2-8ec52c0b806ddee374b1cc8d83d3783c_b.jpg" alt="img"></p>
+<blockquote>
+<p>localhost 指你所在的计算机本身。 在windows系统它成了127.0.0.1的别名 ，在Unix系统下，查看网卡配置会发现作为本地回环的方式，一定程度上使用localhost比127.0.0.1要快一些。 在Hosts文件中，localhost指向的IP是127.0.0.1这个关系是可以修改的。 </p>
+</blockquote>
+<hr>
+<h2 id="查看、修改端口"><a href="#查看、修改端口" class="headerlink" title="查看、修改端口"></a>查看、修改端口</h2><p><img src="https://pic3.zhimg.com/v2-c07b053bd933cb51af4b8a4dd7564be5_b.jpg" alt="img"></p>
+<hr>
+<h2 id="配置本地环境、添加项目、打开本地网站"><a href="#配置本地环境、添加项目、打开本地网站" class="headerlink" title="配置本地环境、添加项目、打开本地网站"></a>配置本地环境、添加项目、打开本地网站</h2><p><img src="https://pic4.zhimg.com/v2-2f30ae78528547838cdd4b722b1d5633_b.jpg" alt="img"></p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">项目中是空的,需要手动将要打开的网站放到'www'目录中</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic3.zhimg.com/v2-ada47a62bcf8b7e72c647bc9d10680a2_b.jpg" alt="img"></p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以选择输入路径，也可以直接左键选择'www目录'打开</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic3.zhimg.com/v2-c497a4056dd6067e37c6997099388ef5_b.jpg" alt="img"></p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将要打开网站的文件夹复制到'www目录下'，会发现刚添加的文件夹出现在了项目中。</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic2.zhimg.com/v2-0328f2435494b1f8e6373858fe485309_b.jpg" alt="img"></p>
+<hr>
+<h2 id="勾选’Add-localhost-in-url’"><a href="#勾选’Add-localhost-in-url’" class="headerlink" title="勾选’Add localhost in url’"></a>勾选’Add localhost in url’</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">看似到此已经大功告成，然而再点击进去这些文件夹时会出现如下情况：</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic3.zhimg.com/v2-78dbeb073cdef02d3e2cd1f01699f6c9_b.jpg" alt="img"></p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以看到的是<span class="built_in">URL</span>并不对，我们是想要实现通过web服务器的方式访问这些网站，然而这个明显没达到我们想要的效果，根据提示，我找到了原因。</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic3.zhimg.com/v2-351e9cc2e38d8afa45572fa200e708c3_b.jpg" alt="img"></p>
+<figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">右键选择<span class="symbol">'Wamp</span> <span class="type">Settings'</span>中将<span class="symbol">'Add</span> localhost <span class="keyword">in</span> url'选项勾上后再次如上打开项目即可。（记得重新打开一次localhost页面或是刷新一下）</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic2.zhimg.com/v2-ff266d60eaa59b23c8e36d97df1e6967_b.jpg" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以看到网站成功地通过web服务器打开了，那些之前提示需要动态加载的文件也成功加载了。</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="https://pic2.zhimg.com/v2-ff266d60eaa59b23c8e36d97df1e6967_b.jpg" alt="img"></p>
+<p>撒花完结！~200成功！</p>
+<p>▲.看到这，我相信你也明白了为什么必须要有’Add localhost in url’这步了。同时也猜到了，其实直接在网址里面输入正确的网址也是可以的，如<a href="http://localhost:8080/data-visualize-chain-master/,结果也是能打开的。" target="_blank" rel="noopener">http://localhost:8080/data-visualize-chain-master/,结果也是能打开的。</a></p>
+<p>希望能对你们有所帮助。</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/WampSever配置本地环境，解决打开打开本地网站问题.html">https://nymrli.top/WampSever配置本地环境，解决打开打开本地网站问题.html</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/例题4-1-3-古老的密码、刽子手的游戏，救济金发放.html" title="例题4:1-3 古老的密码、刽子手的游戏，救济金发放"><span>< PreviousPost</span><br><span class="prevTitle">例题4:1-3 古老的密码、刽子手的游戏，救济金发放</span></a><a class="nextSlogan" href="/Ubuntu下Sublime配置Python环境使用指导.html" title="Ubuntu下Sublime配置Python环境使用指导:"><span>NextPost ></span><br><span class="nextTitle">Ubuntu下Sublime配置Python环境使用指导:</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'WampSever配置本地环境，解决打开打开本地网站问题',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务器是否已正常运行"><span class="toc-number">1.</span> <span class="toc-text">服务器是否已正常运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看、修改端口"><span class="toc-number">2.</span> <span class="toc-text">查看、修改端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置本地环境、添加项目、打开本地网站"><span class="toc-number">3.</span> <span class="toc-text">配置本地环境、添加项目、打开本地网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#勾选’Add-localhost-in-url’"><span class="toc-number">4.</span> <span class="toc-text">勾选’Add localhost in url’</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

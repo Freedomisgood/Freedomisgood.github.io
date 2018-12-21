@@ -1,3 +1,6 @@
+https://nymrli.top/PythonWeb-flask部署内网电脑.html
+https://nymrli.top/Pandas速成.html
+https://nymrli.top/BaiduMap-API.html
 https://nymrli.top/Postman模拟上传文件.html
 https://nymrli.top/flask-sqlalchemy踩坑.html
 https://nymrli.top/数据结构实验——图的基本运算及职能交通中的最佳路径选择问题.html

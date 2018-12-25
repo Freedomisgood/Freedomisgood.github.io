@@ -1,4 +1,3 @@
-https://nymrli.top/PythonWeb-flask部署内网电脑.html
 https://nymrli.top/Pandas速成.html
 https://nymrli.top/BaiduMap-API.html
 https://nymrli.top/Postman模拟上传文件.html

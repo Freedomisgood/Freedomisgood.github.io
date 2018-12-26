@@ -113,7 +113,29 @@ P.S.如果第二步,手机和电脑无法直接通过IP地址进入管理界面�
 
 将unicode的内存编码值进行存储，读取文件时在反向转换回来。这里就采用了unicode-escape的方式  
 
-12345678print(u'中文测试'.encode('utf-8'))print('中文测试'.encode('u ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/写爬虫过程中碰到的编码问题.html#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/Pycharm里无法查看Sqlite数据表.html">Pycharm里无法查看Sqlite数据表</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-23T07:27:38.000Z">2018-11-23</time><i class="fa fa-edit"></i><time datetime="2018-11-23T07:27:38.000Z">2018-11-23</time></div><div class="recent-post-content">Pycharm里无法查看Sqlite数据表听说Pycharm可以直接看数据库,于是试了试,发现无法读取sqlite数据库的内容…于是发现下载相应的驱动.如图
+12345678print(u'中文测试'.encode('utf-8'))print('中文测试'.encode('u ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/写爬虫过程中碰到的编码问题.html#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/机器学习——Python实践-笔记.html">机器学习——python实践.笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-23T13:20:18.000Z">2018-11-23</time><i class="fa fa-edit"></i><time datetime="2018-11-23T13:20:18.000Z">2018-11-24</time></div><div class="recent-post-content">机器学习——Python实践
+Numpy: 
+python开源数值计算拓展,用来存储和处理大型矩阵,提供了许多高级的数值编程工具,如 矩阵数据类型、矢量处理、精密的运算库
+利用Numpy数组来准备机器学习算法的数据
+
+
+
+
+matplotlib:
+python中最著名的2D绘图库,适合交互式的进行制图;也可作为绘图空间,嵌入GUI应用程序中
+创建图表,展示数据
+
+
+
+
+Pandas:
+基于Numpy的工具,为了解决数据分析任务而创建的.~纳入了大量库和标准的数据模型,提供了操作大型数据集的工具,和快速便捷处理数据的函数和方法
+导入、展示数据，以便挣钱对数据的理解和数据清洗、转换等工作
+
+
+
+
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/机器学习——Python实践-笔记.html#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/Pycharm里无法查看Sqlite数据表.html">Pycharm里无法查看Sqlite数据表</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-23T07:27:38.000Z">2018-11-23</time><i class="fa fa-edit"></i><time datetime="2018-11-23T07:27:38.000Z">2018-11-23</time></div><div class="recent-post-content">Pycharm里无法查看Sqlite数据表听说Pycharm可以直接看数据库,于是试了试,发现无法读取sqlite数据库的内容…于是发现下载相应的驱动.如图
 
 解决方法:一.打开右侧的Database选项卡,选择Data Source的Sqlite
 二.点击黄色三角Download下载相应的驱动软件
@@ -199,8 +221,4 @@ Windows 控制台Cmd乱码的解决办法(永久性)方法一：1.在cmd中输�
 
 ▲注：Windows环境下
 首先看下是否已经安装了Virtualenv package插件，如果没有，则Ctrl+Shift+P，install Package,输入Virtualenv安装。
-找到插件安装的地方：C:\Users{Username}\AppData\Roaming\Sublime Text 3\Installed  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/Sublime-Text3-Python虚拟环境（补充）——解决控制台中文乱码情况.html#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/Python爬虫知识点——将Cookie保存到本地的多种方法介绍.html">Python爬虫知识点——将Cookie保存到本地的多种方法介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:43:34.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:43:34.000Z">2018-10-24</time></div><div class="recent-post-content">方法一：urllib2
-结合cookielib及urllib2，Python2时期比较常用的方法，年代比较久远了。个人觉得太麻烦，改用requests.
-▲需要注意的是cookielib在python3中已经改成了http.cookiejar
-
-1234567891011121314151617181920212223242526272829303132333435#该方法本人未测试import urllib2import cookielib#将cookie保存在文件中def saveCookie():    #设置保存cookie的文件    filename = 'cookie.txt'  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/Python爬虫知识点——将Cookie保存到本地的多种方法介绍.html#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+找到插件安装的地方：C:\Users{Username}\AppData\Roaming\Sublime Text 3\Installed  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/Sublime-Text3-Python虚拟环境（补充）——解决控制台中文乱码情况.html#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Ubuntu下Sublime配置python编译环境及新手使用指导 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Ubuntu下Sublime配置python编译环境及新手使用指导</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2018/12/26</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,156</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><p>####Sublime下配置python编译环境及搭建虚拟环境:(windows下大致相同)</p>
+<h4 id="1-编译环境配置"><a href="#1-编译环境配置" class="headerlink" title="1.编译环境配置"></a>1.编译环境配置</h4><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = <span class="string">'6f4c264a24d933ce70df5dedcf1dcaee'</span> + <span class="string">'ebe013ee18cced0ef93d5f746d80ef60'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="keyword">by</span> = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(<span class="keyword">by</span>).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="built_in">open</span>(os.path.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(<span class="keyword">by</span>)</span><br></pre></td></tr></table></figure>
+<p>1.点击 <a href="https://packagecontrol.io/installation" target="_blank" rel="noopener">官方网址</a> 从 Sublime Text 3 官方获取用于安装的代码。从菜单栏View –&gt;Show Console或者使用Ctrl+`(esc键下面的按键)，调出sublime的控制台，将官网中的python代码粘贴进去并按Enter执行，最终可以安装完成。在控制台中粘贴刚才的代码，然后点击回车。最后重启ST3。<br>2.现在你可以通过快捷键 cmd+shift+P 打开 Package Control 来安装其他的插件了。输入 install 然后你就能看见屏幕上出现了 Package Control: Install Package，点击回车,然后搜索sublimeREPL</p>
+<p><img src="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/1.png" alt="1"></p>
+<p>安装成功后，可以在菜单栏的’TOOL’中找到SublimeREPL，如图所示</p>
+<p><img src="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/2.png" alt=""></p>
+<h4 id="2-将菜单栏改为中文"><a href="#2-将菜单栏改为中文" class="headerlink" title="2.将菜单栏改为中文"></a>2.将菜单栏改为中文</h4><hr>
+<p>若需要将菜单栏改成中文可如上操作下载插件“ConvertToUTF8”或是安装插件“ChineseLocalizations”(本人使用的是这个，没试ConvertToUTF8的效果)</p>
+<p><img src="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/3.png" alt=""></p>
+<p>(参考博客:<a href="http://blog.51cto.com/11970781/2087971" target="_blank" rel="noopener">http://blog.51cto.com/11970781/2087971</a>)</p>
+<h4 id="3-安装Anaconda插件"><a href="#3-安装Anaconda插件" class="headerlink" title="3.安装Anaconda插件"></a>3.安装Anaconda插件</h4><hr>
+<blockquote>
+<p>1.点击刚刚生成的Package Control -&gt;输入install<br>2.进入安装界面，安装好后再在新窗口命令行中输入Anaconda并点击第一个备选项进行安装。 安装完成后会显示messages文档。</p>
+</blockquote>
+<p>安装Anaconda插件完成之后，会看到如下选项栏，说明Anaconda安装成功。</p>
+<ul>
+<li>Goto Definitions 能够在你的整个工程中查找并且显示任意一个变量，函数或者类的定义。</li>
+<li>Find Usage 能够快速的查找某个变量，函数或者类在某个特定文件中的什么地方被使用了。</li>
+<li>Show Documentation： 能够显示一个函数或者类的说明性字符串(当然，是在定义了字符串的情况下)</li>
+</ul>
+<p>Anaconda会自动补全代码，之前用惯了pycharm发现突然没了代码补全后很不习惯，Anaconda的补全功能虽然没有pycharm那么好用，但还是不错的<br>还有需要注意的是，安装Anaconda插件后，如果python代码没有遵循PEP8规范，会出现白色的框框，或是可以使用快捷键Ctrl+Alt+R进行规范代码(这个可以去除，步骤如下)</p>
+<p><img src="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/4.png" alt=""></p>
+<p>在Settings-User选项中添加配置:<code>{&quot;anaconda_linting&quot;:false}</code></p>
+<h4 id="4-安装虚拟环境"><a href="#4-安装虚拟环境" class="headerlink" title="4.安装虚拟环境"></a>4.安装虚拟环境</h4><blockquote>
+<p>1.首先使用终端安装virtualenv，<code>pip3 install virtualenv</code><br>2.在需要创建的地方进行虚拟环境的搭建，代码如下：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> pytest(文件夹名)</span><br><span class="line"><span class="built_in">cd</span> pytest</span><br><span class="line">virtualenv venv</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><img src="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/5.png" alt=""></p>
+<p>在终端进入虚拟环境的话是在pytest文件夹下输入命令<code>source /bin/activate</code><br>而要在sublime中进入虚拟环境的话就得按照如下操作：<br>１．首先在sublime中安装virtualenv插件，Ctrl + Shift + P，然后输入install,回车，然后搜索virtualenv。</p>
+<ol start="2">
+<li>安装完成后，直接按Ctrl + Shift + P，再输入Activate，若没有该选项则virtualenv安装中出现问题，需要重新安装。如果有的会选择Activate就能发现刚刚创建的虚拟环境，选中后回车即可进入虚拟环境</li>
+<li>如果Activate选中后没有出现我们刚刚创建的虚拟环境，则需要我们手动添加路径.Ctrl + Shift + P，然后输入<code>Add directory</code>，回车，屏幕下面会出现输入行（Directory path）:再将刚创建的虚拟环境路径填入即可</li>
+</ol>
+<p><img src="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/6.png" alt=""></p>
+<hr>
+<p>另外，我曾碰到过Add directory后仍然没用的情况。那时，可选择“”Project”=&gt;”Add folder to project”选择文件后=&gt;”Save Project as”==&gt;保存好即可<br>工程配置文件为：<br><code>.sublime-workspace</code>、<code>.sublime-project</code><br>其中sublime-project为:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	"build_systems":</span><br><span class="line">	[</span><br><span class="line">		&#123;</span><br><span class="line">			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",</span><br><span class="line">			"name": "Anaconda Python Builder",</span><br><span class="line">			"selector": "source.python",</span><br><span class="line">			"shell_cmd": "\"python\" -u \"$file\""</span><br><span class="line">		&#125;</span><br><span class="line">	],</span><br><span class="line">	"folders":</span><br><span class="line">	[</span><br><span class="line">		&#123;</span><br><span class="line">			"path": "爬虫"</span><br><span class="line">		&#125;</span><br><span class="line">	],</span><br><span class="line">	"virtualenv": "G:\\pachong\\venv"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样环境就配置好了。按Ctrl+B编译时，观察”Tools”-&gt;”Build System”-&gt;是否为”Python+ Virtualenv”，如果不是，则选用这个再Ctrl+B就是在虚拟环境中编译了!</p>
+<hr>
+<p>ubuntu下sublime默认情况下好像不能输入中文，需要用下面命令就可以完美支持中文输入：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get update &amp;&amp; sudo apt-get upgrade</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/lyfeyaj/sublime-text-imfix.git</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> sublime-text-imfix</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./sublime-imfix</span></span><br></pre></td></tr></table></figure></p>
+<p>转自<a href="https://blog.csdn.net/CV_YOU/article/details/77702383" target="_blank" rel="noopener">博客</a><br>截图好像有点问题，菜单栏都没有截到，用到的三个分别为“项目(Project)”，“首选项(Preferences)”，“帮助(Help)”</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/">https://nymrli.top/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2018/12/26/不蒜子统计阅读次数失效/" title="不蒜子统计阅读次数失效——Cxo主题"><span>< PreviousPost</span><br><span class="prevTitle">不蒜子统计阅读次数失效——Cxo主题</span></a><a class="nextSlogan" href="/2018/12/21/PythonWeb-flask部署内网电脑/" title="PythonWeb--flask部署内网电脑"><span>NextPost ></span><br><span class="nextTitle">PythonWeb--flask部署内网电脑</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Ubuntu下Sublime配置python编译环境及新手使用指导',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-编译环境配置"><span class="toc-number">1.</span> <span class="toc-text">1.编译环境配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-将菜单栏改为中文"><span class="toc-number">2.</span> <span class="toc-text">2.将菜单栏改为中文</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-安装Anaconda插件"><span class="toc-number">3.</span> <span class="toc-text">3.安装Anaconda插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-安装虚拟环境"><span class="toc-number">4.</span> <span class="toc-text">4.安装虚拟环境</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

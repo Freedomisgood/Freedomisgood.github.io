@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nymrli.top/"/>
-  <updated>2019-01-19T12:51:45.364Z</updated>
+  <updated>2019-01-19T12:53:26.486Z</updated>
   <id>https://nymrli.top/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DFS专项练习</title>
+    <link href="https://nymrli.top/2019/01/19/DFS%E4%B8%93%E9%A1%B9%E7%BB%83%E4%B9%A0/"/>
+    <id>https://nymrli.top/2019/01/19/DFS专项练习/</id>
+    <published>2019-01-19T12:53:03.000Z</published>
+    <updated>2019-01-19T12:53:26.486Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="DFS专题"><a href="#DFS专题" class="headerlink" title="DFS专题"></a>DFS专题</h1><h3 id="leetcode-104-二叉树的最大深度"><a href="#leetcode-104-二叉树的最大深度" class="headerlink" title="leetcode 104. 二叉树的最大深度"></a>leetcode 104. 二叉树的最大深度</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">NULL</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> l1=maxDepth(root-&gt;left);</span><br><span class="line">        <span class="keyword">int</span> l2=maxDepth(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> max(l1,l2)+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h2 id="DFS模板总结"><a href="#DFS模板总结" class="headerlink" title="DFS模板总结"></a>DFS模板总结</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">()</span><span class="comment">//参数用来表示状态  &#123;  </span></span></span><br><span class="line"><span class="function">    <span class="title">if</span><span class="params">(到达终点状态)</span>  </span>&#123;  </span><br><span class="line">        ...<span class="comment">//根据题意添加  </span></span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span>(越界或者是不合法状态)  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    <span class="keyword">if</span>(特殊状态)<span class="comment">//剪枝</span></span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    <span class="keyword">for</span>(扩展方式)  &#123;  </span><br><span class="line">        <span class="keyword">if</span>(扩展方式所达到状态合法)  </span><br><span class="line">        &#123;  </span><br><span class="line">            修改操作;<span class="comment">//根据题意来添加  </span></span><br><span class="line">            标记；  </span><br><span class="line">            dfs（）；  </span><br><span class="line">            (还原标记)；  <span class="comment">// visited[i] = 1;</span></span><br><span class="line">            <span class="comment">//是否还原标记根据题意  </span></span><br><span class="line">            <span class="comment">//如果加上（还原标记）就是 回溯法  </span></span><br><span class="line">            <span class="comment">// visited[i] = 0</span></span><br><span class="line">        &#125;  </span><br><span class="line"> </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="全排列问题"><a href="#全排列问题" class="headerlink" title="全排列问题"></a>全排列问题</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> p[<span class="number">10</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">bool</span> vis[<span class="number">10</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span> (x==n+<span class="number">1</span>)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;p[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line"><span class="keyword">if</span> (vis[i]==<span class="literal">false</span>  )</span><br><span class="line">&#123;</span><br><span class="line">p[x] = i;</span><br><span class="line">vis[i] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">dfs(x+<span class="number">1</span>);</span><br><span class="line">vis[i] = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">n=<span class="number">4</span>;</span><br><span class="line">dfs(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;DFS专题&quot;&gt;&lt;a href=&quot;#DFS专题&quot; class=&quot;headerlink&quot; title=&quot;DFS专题&quot;&gt;&lt;/a&gt;DFS专题&lt;/h1&gt;&lt;h3 id=&quot;leetcode-104-二叉树的最大深度&quot;&gt;&lt;a href=&quot;#leetcode-104-二叉树的最大深
+      
+    
+    </summary>
+    
+    
+      <category term="Algorithm" scheme="https://nymrli.top/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Typora可选选项</title>
+    <link href="https://nymrli.top/2019/01/19/Typora%E5%8F%AF%E9%80%89%E9%80%89%E9%A1%B9/"/>
+    <id>https://nymrli.top/2019/01/19/Typora可选选项/</id>
+    <published>2019-01-19T12:51:11.000Z</published>
+    <updated>2019-01-19T12:52:14.319Z</updated>
+    
+    <content type="html"><![CDATA[<p>用了这么久<em>markdown</em>才发现原来支持Latex的符号公式，但是在Typera中需要自行设置出来，<code>文件--&gt;偏好设置--&gt;markdown拓展语法（内联公式）、代码块（显示行号）</code></p><ul><li>Latex 公式：$\frac{3}{2}​$</li><li>带有行号的代码块</li></ul><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello world"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>其他功能自行发现吧！^_^</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;用了这么久&lt;em&gt;markdown&lt;/em&gt;才发现原来支持Latex的符号公式，但是在Typera中需要自行设置出来，&lt;code&gt;文件--&amp;gt;偏好设置--&amp;gt;markdown拓展语法（内联公式）、代码块（显示行号）&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Latex
+      
+    
+    </summary>
+    
+    
+      <category term="计算机基础知识" scheme="https://nymrli.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Latex学习</title>
@@ -466,58 +514,6 @@
       <category term="数据结构" scheme="https://nymrli.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="图论" scheme="https://nymrli.top/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>win自带邮件使用</title>
-    <link href="https://nymrli.top/2018/12/16/win%E8%87%AA%E5%B8%A6%E9%82%AE%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
-    <id>https://nymrli.top/2018/12/16/win自带邮件使用/</id>
-    <published>2018-12-16T02:48:27.000Z</published>
-    <updated>2018-12-16T03:07:15.385Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>创意大赛忘记提交附件的经历，让我决定这几天把邮箱的问题彻底解决了。</p></blockquote><h3 id="一-打开Windows自带的邮件"><a href="#一-打开Windows自带的邮件" class="headerlink" title="一.打开Windows自带的邮件"></a>一.打开Windows自带的邮件</h3><h4 id="1-附件栏里"><a href="#1-附件栏里" class="headerlink" title="1.附件栏里"></a>1.附件栏里</h4><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\1.jpg" alt="1"></p><h4 id="2-直接搜索”邮件”"><a href="#2-直接搜索”邮件”" class="headerlink" title="2.直接搜索”邮件”"></a>2.直接搜索”邮件”</h4><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\2.jpg" alt="2"></p><h3 id="二-添加账号"><a href="#二-添加账号" class="headerlink" title="二.添加账号"></a>二.添加账号</h3><h5 id="打开后界面是这样的-左边是我已经添加好的账号"><a href="#打开后界面是这样的-左边是我已经添加好的账号" class="headerlink" title="打开后界面是这样的,左边是我已经添加好的账号"></a>打开后界面是这样的,左边是我已经添加好的账号</h5><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\3.jpg" alt="3"></p><h4 id="1-点击下面的”齿轮”"><a href="#1-点击下面的”齿轮”" class="headerlink" title="1.点击下面的”齿轮”"></a>1.点击下面的”齿轮”</h4><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\4.jpg" alt="4"></p><h4 id="2-点击”管理账号”"><a href="#2-点击”管理账号”" class="headerlink" title="2.点击”管理账号”"></a>2.点击”管理账号”</h4><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\5.jpg" alt="5"></p><h4 id="3-点击”添加账户”"><a href="#3-点击”添加账户”" class="headerlink" title="3.点击”添加账户”"></a>3.点击”添加账户”</h4><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\6.jpg" alt="6"></p><h5 id="将信息按规则填好后-需要注意的是▲-在按登录之前需要翻墙-否则会出现如图”我们无法找到你的设置“"><a href="#将信息按规则填好后-需要注意的是▲-在按登录之前需要翻墙-否则会出现如图”我们无法找到你的设置“" class="headerlink" title="将信息按规则填好后.需要注意的是▲.在按登录之前需要翻墙,否则会出现如图”我们无法找到你的设置“."></a>将信息按规则填好后.需要注意的是▲.在按登录之前需要<strong>翻墙</strong>,否则会出现如图”<u>我们无法找到你的设置</u>“.</h5><h5 id="其次要注意的是-密码为IMAP或者POP、SMTP的密码，授权码查询如下"><a href="#其次要注意的是-密码为IMAP或者POP、SMTP的密码，授权码查询如下" class="headerlink" title="其次要注意的是,密码为IMAP或者POP、SMTP的密码，授权码查询如下"></a>其次要注意的是,密码为IMAP或者POP、SMTP的密码，授权码查询如下</h5><h6 id="网易："><a href="#网易：" class="headerlink" title="网易："></a>网易：</h6><p>图一</p><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\7.jpg" alt="7"></p><p>图二：</p><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\8.jpg" alt="8"></p><p>图三：</p><p>此步他会要求你设置自己的<u>授权码</u></p><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\9.jpg" alt="9"></p><h6 id="QQ邮箱："><a href="#QQ邮箱：" class="headerlink" title="QQ邮箱："></a>QQ邮箱：</h6><p>图一：</p><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\10.jpg" alt="10"></p><p>图二：</p><p>此步他会要求你发送“配置邮箱客户端”到某个号码上，然后会生成授权码。<strong>这个不是自己设置的</strong></p><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\11.jpg" alt="11"></p><hr><p>翻墙成功，在确保密码也正确的情况下就可以按“登录”了。</p><h4 id="附录："><a href="#附录：" class="headerlink" title="附录："></a>附录：</h4><h5 id="添加账号："><a href="#添加账号：" class="headerlink" title="添加账号："></a>添加账号：</h5><h6 id="从“开始“中打开"><a href="#从“开始“中打开" class="headerlink" title="从“开始“中打开"></a>从“开始“中打开</h6><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\12.jpg" alt="12"></p><p><img src="/2018/12/16/win自带邮件使用/hexo\source\_posts\win自带邮件使用\13.jpg" alt="13"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;创意大赛忘记提交附件的经历，让我决定这几天把邮箱的问题彻底解决了。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;一-打开Windows自带的邮件&quot;&gt;&lt;a href=&quot;#一-打开Windows自带的邮件&quot; class=&quot;headerlink&quot;
-      
-    
-    </summary>
-    
-    
-      <category term="邮件" scheme="https://nymrli.top/tags/%E9%82%AE%E4%BB%B6/"/>
-    
-      <category term="Window10" scheme="https://nymrli.top/tags/Window10/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2018-12-15小记</title>
-    <link href="https://nymrli.top/2018/12/15/2018-12-15%E5%B0%8F%E8%AE%B0/"/>
-    <id>https://nymrli.top/2018/12/15/2018-12-15小记/</id>
-    <published>2018-12-15T14:22:25.000Z</published>
-    <updated>2018-12-18T12:13:57.125Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><pre><code>数据结构上机,由于最近烦心事也比较多,没有任何准备,在机房想要自己把代码敲出来也是不现实的。于是，就搜吧。无意中搜到了[学长的博客](https://me.csdn.net/Wonz5130),大二转计科，看了他努力的点滴，也颇有感触，于是下笔，略述己见。</code></pre></blockquote><blockquote><p>   之前一直在博客里都是发的技术性的文章，有时想说点话，也找不到合适的人。发条说说，不懂的人不知所措，懂的人也无从安慰，于是也只好作罢。也曾想过在博客里写，太又感觉未免太过矫情，今日所感，还是决定记录些情感、回忆。</p></blockquote><pre><code>大一上报了院科协与校科协，入大学前已经略有琢磨过C语言学习的我自然没有再接着学C，于是趁着Python的大热，也正是听说了Python的简洁、可以做爬虫、网站、人工智能等有趣的时就决定学了这门语言。于是加入了Python组，碰到了李林伟与王宇学长，李林伟学长很负责，大一的课几乎都是由他授的，当初还有事嫌他讲的不够好，现在自己当了讲师后才发现根本无暇准备。大一的时光很多都泡在了图书馆，一个学期下来已经借了20+本书了，整个学年下来一共借了40+本书，虽然没有全部看完，都明显的感觉到自己的努力。大二一般都是在看视频，图书馆很少去了，书也借的少了。大一还学了单片机，说来也可惜，第一次院级比赛优之杰做了个所有授课内容如 蜂鸣器、LCD1602、跑马灯、矩阵按键 的作品已经很了不起了，就没有再深入学些什么，不知那些更优秀的人已经开始准备电赛、飞思卡尔了。很遗憾吧，最终在下学期的4月份“海善达杯”结束后就再也没碰过单片机，所有学过的单片机代码也逐渐忘却。大二，一直呆在学科楼220，但没有怎么忙Apollo的项目，说来也比较惭愧。这半个学期也已经过了，感觉自己一直在忙些奇奇怪怪的事，学了前端HTML、CSS、JS；还学了微信小程序，为的就是想参加一些比赛，但到如今却都凉了。为了天翼杯做了个物联网的猫粮，但是天翼杯初赛就被刷；参加创意大赛，结果自己忘记提交附件了；同时，学长的不看好，让我也对完成点子的作品产生了怀疑：这种没技术含量的作品真的能获奖吗？无论如何，最近也得不到答案了。这让我对开发产生了一种厌恶与疲倦，下学期想好好弄弄算法或是机器学习了，静下心来弄点真技术。有的时候真的会比较迷茫吧？考研还是工作的问题，每隔一段时间都会思考。昨天的分光计无疑让我又一次受挫。准备了3天的物理实验，结果最后誊错数据，同时也是最后几个离开实验室的。确实，分光计真的很简单，但有模糊的地方、以及平时没解决放过的地方在你最薄弱的时候就可能一下子要了你的命。无法确定是否要修正、无法确定是否要算θ0……导致没有一开始就画表，导致了最后的誊错，感觉像是命中注定，就如同创意大赛的没有提交。最近过的很背，期望能够有个水逆退散、柳暗花明。</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;pre&gt;&lt;code&gt;数据结构上机,由于最近烦心事也比较多,没有任何准备,在机房想要自己把代码敲出来也是不现实的。于是，就搜吧。无意中搜到了[学长的博客](https://me.csdn.net/Wonz5130),大二转计科，看了他努力的点滴，也颇有感
-      
-    
-    </summary>
-    
-    
-      <category term="生活小记" scheme="https://nymrli.top/tags/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/"/>
     
   </entry>
   

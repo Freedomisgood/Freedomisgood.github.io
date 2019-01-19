@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>12-27 Team Leader · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">12-27 Team Leader</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/01/19</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="English Speaking"> English Speaking</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="生活小记"> 生活小记</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,376</span> | Reading time: <span class="post-count">9</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><p><strong>How Is An Excellent Team Leader</strong></p>
+<ul>
+<li><p>A couple of days ago, my friend and I took part in a science and technology competition which was completed by a team of four. Usually, The person who can come up with the best idea is the caption, leading or so-called principal. For the reason, I was the principal of the team which consists of the same teammates last time. And this time, someone came up with a better idea, so the principal changed and not me. I’m not saying that changing is bad, or that I’m unsatisfied with it that I didn’t continue to play such an important role. At the beginning, everything is ok and everyone is full of fighting spirit. We have more than 30 days to finish this work, but actually the workload is only about 6 days at most. As a team that has completed several works together, we still keep the excellent habit of meeting and discussing regularly. Maybe it isn’t as important as the last one, or maybe the division is so clear that nothing has to be discussed always. Everyone has his work, and takes responsibility to his own job, so it seems very easy to solve the project. In fact, we spent lots of time laughing and talking together and fussing around trifles, instead of really discussing the problem. There was nothing wrong at that time.</p>
+</li>
+<li><p>The problem occurred three days before the start of the evaluation. Everyone had finished his own work and waited to consolidate the modules and summarize all the work. This is a good proposal, but if fact, two people are debugging the code, while the other two people are working at their own job, can this be called discussion or teamwork? It’s natural to do with their own things if they have finished what they should do. However, what makes me angry is that we are both up to my ears in work while the others who are free feel nothing to do with himself. We hoped they could come to our aid, but they even didn’t understand what was wrong and not to mention what to do. To sum up, there was a communication problem which reflected in the form of failing to cope with work’s distribution. I have said just now that the division is very clear and easy. There were four people in the competition team, but the work was divided into three modules: SCM, machine learning, and Web services. So it’s enough for three people to do this and we felt easy and relaxed also. Nobody complained about there was somebody doing nothing. But maybe when it comes to the principal, the condition is different. First of all, as a team leader, he may be criticized if he doesn’t do anything. This is still a small matter. The most important thing is efficiency. What really pissed me off that night was that the summary didn’t end from 8:30 p.m. to 11:00 p.m., and the biggest reason was that no one knew exactly how to tackle it. And that lies about the principal.</p>
+</li>
+<li><p>Although, he did a good job in the report which needs the structural diagram of the whole work and even designed the flow chart. The project needed supervision and urging, and he had completed it well. Every weekend, he tries to organize the gather everyone. Also, he gets on well with teammates and so on. It can be said he is basically qualified. However, I must pointed out that he is not a good leader by no means. First of all, he only did the things required by the competition, such as the system block diagram, but he did not manage the division of labor and summary of each of us in length. What’s more, he only organized and attended each discussion symbolically. He neither discussed the project with any purpose nor proposed any better suggestion. He organized the discussion formally for several times and seemed quite responsible. But that’s a waste of time, in my view, the biggest difference between a responsible person and no responsible person is reflected in the organization. A good organization can improve the efficiency, while a poor organization is just dispensable or even wasteful. It wasn’t as easy as I thought it would be that day. Eventually, it took us three more meetings before we actually assembled the work. During this period, I couldn’t bear to give suggestions to principal that You can do nothing, but you have to know our progress and what we are doing. ‘Of course,’ he replied. ‘that’s why I come to every discussion, just to get a sense of where you’re going,or I don’t have to come.’ I was speechless, for there seemed to be nothing wrong with it. The biggest conflict occurred the night before the game, when a module that had been available suddenly broke down. After several previous quarrels, it was difficult for me and principal to discuss together. But this is a very serious question, how to make decisions now. Do it the same as before? Or abandon all the previous modules to implement the worst solution? After I put forward the proposal of starting again as soon as possible, he finally led the people to carry out the worst plan. And this is without my knowledge.</p>
+</li>
+<li><p>They followed worked on worst plan all afternoon, and all looked very frustrated. I realized that they didn’t follow my plan until they said they had a problem that was a little difficult to solve. I was so angry that I called them and asked them why they didn’t do what I said. They were vague, and I called them names because I thought they could do it if they did what I told them. So, I immediately met with them, it was raining, the atmosphere was very depressed, the leader did not speak, the other two players looked very depressed. At that time, I tried not to shout at the wrong leader. and first I stressed that we could definitely make it if we continued to do it. After inspiring for a while, everyone seemed quite motivated, so I immediately lead them to try in this direction. Fortunately, we solved the problem again in less than two hours.</p>
+</li>
+<li><p>What I want to say is that all teams will confront with difficulties, and then there must be a strong and confident person to lead the team to a good direction, rather than thinking about how not to lose his face and take a not smart solution. Later, the principal reflected it was tight at that time, and we had some conflicts before, so he did not want to prove that he could not solve the problem. </p>
+</li>
+<li><p>That’s the whole story, a very verbose story. I’m not talking about how good I am at what I do. I want to emphasize that as a good leader, one must think for the team and improve the efficiency of the team fundamentally, instead of wasting everyone’s time by being formalistic. And As a leader of a team it’s important that the first thing that comes to mind is how to solve the problem better, instead of escaping from the trouble. I just want to save my face and make a bad but not wrong decision. Last but not least, full of confidence and fighting spirit, can actively lead the team to success. If you do not believe in yourself, how can you let others believe in yourself. Further, the ideal leader, in addition to giving a good direction of effort, but also can help members solve the actual problems encountered, of course, this is difficult and just the ideal situation. Because it is difficult for anyone to understand all aspects, I dare to make such a decision this time, and I am confident that I can succeed in doing so, largely because I known about the modules which everyone should be responsible for.</p>
+</li>
+<li><p>This is what I learned from this competition, what I understand the responsible leader should behave like.Thanks.</p>
+</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/01/19/12-27-Team-Leader/">https://nymrli.top/2019/01/19/12-27-Team-Leader/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/01/19/Latex学习/" title="Latex学习"><span>< PreviousPost</span><br><span class="prevTitle">Latex学习</span></a><a class="nextSlogan" href="/2019/01/17/阿里云nginx-wsgi部署flask/" title="阿里云nginx+wsgi部署flask"><span>NextPost ></span><br><span class="nextTitle">阿里云nginx+wsgi部署flask</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '12-27 Team Leader',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

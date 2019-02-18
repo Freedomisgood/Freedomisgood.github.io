@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Cmake 入门 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Cmake 入门</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/02/18</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,074</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="Cmake-入门"><a href="#Cmake-入门" class="headerlink" title="Cmake 入门"></a>Cmake 入门</h1><h3 id="入门案例：单个源文件"><a href="#入门案例：单个源文件" class="headerlink" title="入门案例：单个源文件"></a>入门案例：单个源文件</h3><p>例如，假设现在我们的项目中只有一个源文件 <a href="http://main.cc/" target="_blank" rel="noopener">main.cc</a> ，该程序的用途是计算一个数的指数幂。</p>
+<h4 id="1-首先编写-CMakeLists-txt-文件，并保存在与-main-cc-源文件同个目录下"><a href="#1-首先编写-CMakeLists-txt-文件，并保存在与-main-cc-源文件同个目录下" class="headerlink" title="1.首先编写 CMakeLists.txt 文件，并保存在与 main.cc 源文件同个目录下"></a>1.首先编写 CMakeLists.txt 文件，并保存在与 <a href="http://main.cc/" target="_blank" rel="noopener">main.cc</a> 源文件同个目录下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># CMake 最低版本号要求</span><br><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"># 项目信息</span><br><span class="line">project (Demo1)</span><br><span class="line"># 指定生成目标</span><br><span class="line">add_executable(Demo main.cc)</span><br></pre></td></tr></table></figure>
+<p>语法:</p>
+<p>由<strong>命令</strong>、<strong>注释</strong>和<strong>空格</strong>组成，其中命令是不区分大小写的。</p>
+<ul>
+<li><p>符号 <code>#</code> 后面的内容被认为是注释</p>
+</li>
+<li><p>命令由命令名称、小括号和参数组成</p>
+</li>
+<li><p>参数之间使用空格进行间隔</p>
+</li>
+</ul>
+<h4 id="2-编译项目"><a href="#2-编译项目" class="headerlink" title="2.编译项目"></a>2.编译项目</h4><p>之后，在当前目录执行 <code>cmake .</code> ，得到 Makefile 后再使用 <code>make</code> 命令编译得到 Demo1 可执行文件。</p>
+<h3 id="同一目录，多个源文件"><a href="#同一目录，多个源文件" class="headerlink" title="同一目录，多个源文件"></a>同一目录，多个源文件</h3><p>如果多文件，结构变成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./Demo2</span><br><span class="line">    |</span><br><span class="line">    +--- main.cc</span><br><span class="line">    |</span><br><span class="line">    +--- MathFunctions.cc</span><br><span class="line">    |</span><br><span class="line">    +--- MathFunctions.h</span><br></pre></td></tr></table></figure>
+<p><code>cmakelist.txt</code>需要改成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># CMake 最低版本号要求</span><br><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"># 项目信息</span><br><span class="line">project (Demo2)</span><br><span class="line"># 指定生成目标</span><br><span class="line">add_executable(Demo main.cc MathFunctions.cc)</span><br></pre></td></tr></table></figure>
+<p>区别: <strong>即在 <code>add_executable</code> 命令中增加了一个 <code>MathFunctions.cc</code> 源文件</strong></p>
+<p>省事的方法是使用 <code>aux_source_directory</code> 命令，该命令会查找指定目录下的所有源文件，然后将结果存进指定变量名。语法为<code>aux_source_directory(&lt;dir&gt; &lt;variable&gt;)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># CMake 最低版本号要求</span><br><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"># 项目信息</span><br><span class="line">project (Demo2)</span><br><span class="line"># 查找当前目录下的所有源文件</span><br><span class="line"># 并将名称保存到 DIR_SRCS 变量</span><br><span class="line">aux_source_directory(. DIR_SRCS)</span><br><span class="line"># 指定生成目标</span><br><span class="line">add_executable(Demo $&#123;DIR_SRCS&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="多个目录，多个源文件"><a href="#多个目录，多个源文件" class="headerlink" title="多个目录，多个源文件"></a>多个目录，多个源文件</h3><p>文件结构:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">./Demo3</span><br><span class="line">    |</span><br><span class="line">    +--- main.cc</span><br><span class="line">    |</span><br><span class="line">    +--- math/</span><br><span class="line">          |</span><br><span class="line">          +--- MathFunctions.cc</span><br><span class="line">          |</span><br><span class="line">          +--- MathFunctions.h</span><br></pre></td></tr></table></figure>
+<p>对于这种情况，需要分别在项目根目录 Demo3 和 math 目录里各编写一个 CMakeLists.txt 文件。为了方便，我们可以先将 math 目录里的文件编译成<strong>静态库</strong>再由 main 函数调用。</p>
+<h4 id="根目录中的-CMakeLists-txt-："><a href="#根目录中的-CMakeLists-txt-：" class="headerlink" title="根目录中的 CMakeLists.txt ："></a>根目录中的 CMakeLists.txt ：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># CMake 最低版本号要求</span><br><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"># 项目信息</span><br><span class="line">project (Demo3)</span><br><span class="line"># 查找当前目录下的所有源文件</span><br><span class="line"># 并将名称保存到 DIR_SRCS 变量</span><br><span class="line">aux_source_directory(. DIR_SRCS)</span><br><span class="line"></span><br><span class="line"># ▲添加 math 子目录</span><br><span class="line">add_subdirectory(math)</span><br><span class="line"></span><br><span class="line"># 指定生成目标 </span><br><span class="line">add_executable(Demo main.cc)</span><br><span class="line"># 添加链接库</span><br><span class="line">target_link_libraries(Demo MathFunctions)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用命令 <code>add_subdirectory</code> 指明本项目包含一个子目录 math，这样 math 目录下的 CMakeLists.txt 文件和源代码也会被处理.</li>
+<li>使用命令 <code>target_link_libraries</code> 指明可执行文件 main 需要连接一个名为 MathFunctions 的链接库 </li>
+</ul>
+<h4 id="子目录中的-CMakeLists-txt："><a href="#子目录中的-CMakeLists-txt：" class="headerlink" title="子目录中的 CMakeLists.txt："></a>子目录中的 CMakeLists.txt：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 查找当前目录下的所有源文件</span><br><span class="line"># 并将名称保存到 DIR_LIB_SRCS 变量</span><br><span class="line">aux_source_directory(. DIR_LIB_SRCS)</span><br><span class="line"># 生成链接库</span><br><span class="line">add_library (MathFunctions $&#123;DIR_LIB_SRCS&#125;)</span><br></pre></td></tr></table></figure>
+<p>在该文件中使用命令 <code>add_library</code> 将 src 目录中的源文件编译为静态链接库</p>
+<p>摘自<a href="https://www.hahack.com/codes/cmake/" target="_blank" rel="noopener">CMake 入门实战</a></p>
+<hr>
+<h3 id="set指令详解"><a href="#set指令详解" class="headerlink" title="set指令详解"></a>set指令详解</h3><p><strong>语法：</strong> SET(VAR [VALUE] [CACHE TYPE DOCSTRING [FORCE]])<br><strong>指令功能:</strong> 用来显式的定义变量<br><strong>例子:</strong> SET (SRC_LST main.c other.c)<br><strong>说明:</strong> 用变量代替值，例子中定义SRC_LST代替后面的字符串。</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子:"></a>例子:</h4><h5 id="一-CMAKE-SOURCE-DIR-–-gt-CMakeLists-txt所在的目录"><a href="#一-CMAKE-SOURCE-DIR-–-gt-CMakeLists-txt所在的目录" class="headerlink" title="一. CMAKE_SOURCE_DIR  –&gt;CMakeLists.txt所在的目录"></a>一. CMAKE_SOURCE_DIR  –&gt;CMakeLists.txt所在的目录</h5><p><code>set(libs &quot;${CMAKE_SOURCE_DIR}/src/main/jnilibs&quot;)</code>定义了一个变量libs，并且变量的值为${CMAKE_SOURCE_DIR}/src/main/jnilibs，其中CMAKE_SOURCE_DIR 是一个cmake内置变量，指定了CMakeLists.txt所在的目录</p>
+<h5 id="二-CMAKE-LIBRARY-OUTPUT-DIRECTORY–-gt-cmake编译输出的东西应该放在什么地方"><a href="#二-CMAKE-LIBRARY-OUTPUT-DIRECTORY–-gt-cmake编译输出的东西应该放在什么地方" class="headerlink" title="二.CMAKE_LIBRARY_OUTPUT_DIRECTORY–&gt;cmake编译输出的东西应该放在什么地方"></a>二.CMAKE_LIBRARY_OUTPUT_DIRECTORY–&gt;cmake编译输出的东西应该放在什么地方</h5><p><code>set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/src/main/jnilibs/${ANDROID_ABI})</code>这个命令用于给CMAKE_LIBRARY_OUTPUT_DIRECTORY宏赋值，该宏指定了cmake编译输出的东西应该放在什么地方。</p>
+<p>这个例子中的地方是<code>${PROJECT_SOURCE_DIR}/src/main/jnilibs/${ANDROID_ABI}</code>其中PROJECT_SOURCE_DIR 是cmake内置宏，指向构建工程的全路径。</p>
+<h3 id="include包含库、头文件"><a href="#include包含库、头文件" class="headerlink" title="include包含库、头文件"></a>include包含库、头文件</h3><h5 id="添加头文件路径，对应的函数叫include-directories"><a href="#添加头文件路径，对应的函数叫include-directories" class="headerlink" title="添加头文件路径，对应的函数叫include_directories"></a>添加头文件路径，对应的函数叫<code>include_directories</code></h5><h5 id="添加库路径，对应的函数叫LINK-DIRECTORIES"><a href="#添加库路径，对应的函数叫LINK-DIRECTORIES" class="headerlink" title="添加库路径，对应的函数叫LINK_DIRECTORIES"></a>添加库路径，对应的函数叫LINK_DIRECTORIES</h5><h5 id="添加库，对应的函数叫LINK-LIBRARIES，把所有的库加进去即可"><a href="#添加库，对应的函数叫LINK-LIBRARIES，把所有的库加进去即可" class="headerlink" title="添加库，对应的函数叫LINK_LIBRARIES，把所有的库加进去即可"></a>添加库，对应的函数叫LINK_LIBRARIES，把所有的库加进去即可</h5><h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>使用<code>$ENV{NAME}</code>指令就可以调用系统的环境变量了。比如<code>MESSAGE(STATUS “HOME dir: $ENV{HOME}”)</code><br>设置环境变量的方式是:<code>SET(ENV{变量名} 值)</code></p>
+<h3 id="dl、rt"><a href="#dl、rt" class="headerlink" title="dl、rt"></a>dl、rt</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">target_link_libraries(agentspark</span><br><span class="line">$&#123;RCSSNET3D_LIBRARY&#125;</span><br><span class="line">$&#123;Boost_SYSTEM_LIBRARY&#125;</span><br><span class="line">dl</span><br><span class="line">$&#123;CMAKE_THREAD_LIBS_INIT&#125;</span><br><span class="line">rt </span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><strong>dl</strong>是<code>libdl.so</code>,<strong>rt</strong>是<code>librt.so</code>的缩写···其实是静态加载了这两个动态链接库！！！</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/02/18/Cmake-入门/">https://nymrli.top/2019/02/18/Cmake-入门/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2019/02/06/Python-adb操作手机/" title="Python+adb操作手机"><span>NextPost ></span><br><span class="nextTitle">Python+adb操作手机</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Cmake 入门',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Cmake-入门"><span class="toc-number">1.</span> <span class="toc-text">Cmake 入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#入门案例：单个源文件"><span class="toc-number">1.0.1.</span> <span class="toc-text">入门案例：单个源文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-首先编写-CMakeLists-txt-文件，并保存在与-main-cc-源文件同个目录下"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">1.首先编写 CMakeLists.txt 文件，并保存在与 main.cc 源文件同个目录下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-编译项目"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">2.编译项目</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同一目录，多个源文件"><span class="toc-number">1.0.2.</span> <span class="toc-text">同一目录，多个源文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个目录，多个源文件"><span class="toc-number">1.0.3.</span> <span class="toc-text">多个目录，多个源文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#根目录中的-CMakeLists-txt-："><span class="toc-number">1.0.3.1.</span> <span class="toc-text">根目录中的 CMakeLists.txt ：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#子目录中的-CMakeLists-txt："><span class="toc-number">1.0.3.2.</span> <span class="toc-text">子目录中的 CMakeLists.txt：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set指令详解"><span class="toc-number">1.0.4.</span> <span class="toc-text">set指令详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#例子"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">例子:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#一-CMAKE-SOURCE-DIR-–-gt-CMakeLists-txt所在的目录"><span class="toc-number">1.0.4.1.1.</span> <span class="toc-text">一. CMAKE_SOURCE_DIR  –&gt;CMakeLists.txt所在的目录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#二-CMAKE-LIBRARY-OUTPUT-DIRECTORY–-gt-cmake编译输出的东西应该放在什么地方"><span class="toc-number">1.0.4.1.2.</span> <span class="toc-text">二.CMAKE_LIBRARY_OUTPUT_DIRECTORY–&gt;cmake编译输出的东西应该放在什么地方</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#include包含库、头文件"><span class="toc-number">1.0.5.</span> <span class="toc-text">include包含库、头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#添加头文件路径，对应的函数叫include-directories"><span class="toc-number">1.0.5.0.1.</span> <span class="toc-text">添加头文件路径，对应的函数叫include_directories</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加库路径，对应的函数叫LINK-DIRECTORIES"><span class="toc-number">1.0.5.0.2.</span> <span class="toc-text">添加库路径，对应的函数叫LINK_DIRECTORIES</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加库，对应的函数叫LINK-LIBRARIES，把所有的库加进去即可"><span class="toc-number">1.0.5.0.3.</span> <span class="toc-text">添加库，对应的函数叫LINK_LIBRARIES，把所有的库加进去即可</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#环境变量"><span class="toc-number">1.0.6.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dl、rt"><span class="toc-number">1.0.7.</span> <span class="toc-text">dl、rt</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

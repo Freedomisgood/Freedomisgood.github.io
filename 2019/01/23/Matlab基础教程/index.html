@@ -1,0 +1,422 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Matlab基础教程 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Matlab基础教程</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/02/23</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Matlab"> Matlab</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,492</span> | Reading time: <span class="post-count">10</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="Matlab学习"><a href="#Matlab学习" class="headerlink" title="Matlab学习"></a>Matlab学习</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A = [1 3 5];</span><br><span class="line">max(A)</span><br><span class="line">ans =</span><br><span class="line">     5</span><br></pre></td></tr></table></figure>
+<p>如果存在多个输入参数，请使用逗号加以分隔：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">B = [10 6 4];</span><br><span class="line">max(A,B)</span><br><span class="line">ans =</span><br><span class="line">    10     6     5</span><br><span class="line">%A中列元素与B中列元素一一比较.</span><br></pre></td></tr></table></figure>
+<p><strong>clc 函数清除命令行窗口。</strong></p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">disp(&apos;hello world&apos;)</span><br><span class="line">hello world</span><br><span class="line">要调用不需要任何输入且不会返回任何输出的函数，请只键入函数名称：</span><br></pre></td></tr></table></figure>
+<h4 id="二维绘图"><a href="#二维绘图" class="headerlink" title="二维绘图"></a>二维绘图</h4><blockquote>
+<p><code>r--&#39;</code> 字符串为<strong>线条设定</strong>。每个设定可包含表示线条颜色、样式和标记的字符。标记是在绘制的每个数据点上显示的符号，例如，<code>+</code>、<code>o</code> 或 <code>*</code>。例如，<code>&#39;g:*&#39;</code> 请求绘制使用 <code>*</code> 标记的绿色点线。</p>
+<p>请注意，为第一幅绘图定义的标题和标签不再被用于当前的<strong>图</strong>窗口中。默认情况下，每次调用绘图函数、重置坐标轴及其他元素以准备新绘图时，MATLAB® 都会清除图形。</p>
+<p>要将绘图添加到现有图形中，请使用 <code>hold</code>。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = 0:pi/100:2*pi;</span><br><span class="line">y = sin(x);</span><br><span class="line">plot(x,y)</span><br><span class="line">hold on</span><br><span class="line">y2 = cos(x);</span><br><span class="line">plot(x,y2,&apos;:&apos;)</span><br><span class="line">legend(&apos;sin&apos;,&apos;cos&apos;)</span><br></pre></td></tr></table></figure>
+<h4 id="三维绘图"><a href="#三维绘图" class="headerlink" title="三维绘图"></a>三维绘图</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[X,Y] = meshgrid(-2:.2:2);</span><br><span class="line">Z = X .* exp(-X.^2 - Y.^2);</span><br><span class="line">surf(X,Y,Z)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>surf</code> 函数及其伴随函数 <code>mesh</code> 以三维形式显示曲面图。<code>surf</code> 使用颜色显示曲面图的连接线和面。<code>mesh</code> 生成仅以颜色标记连接定义点的线条的线框曲面图。（surf填充-sruface）</p>
+</blockquote>
+<h4 id="M文件"><a href="#M文件" class="headerlink" title="M文件"></a>M文件</h4><blockquote>
+<p>脚本文件</p>
+<p>函数文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">脚本文件 </span><br><span class="line">1.多条命令的综合体 </span><br><span class="line">2.没有输入、输出变量 </span><br><span class="line">3.使用MATLAB基本工作空间 </span><br><span class="line">4.没有函数声明行 </span><br><span class="line"></span><br><span class="line">函数文件</span><br><span class="line">1.常用于扩充MATLAB函数库</span><br><span class="line">2.可以包含输入、输出变量</span><br><span class="line">3.运算中生成的所有变量都存放在函数工作空间</span><br><span class="line">4.包含函数声明行</span><br></pre></td></tr></table></figure>
+<p>函数名为mymax，文件名为mymax.m（必须相同）。它需要五个数字作为参数并返回最大的数字。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">创建函数文件，名为mymax.m 并输入下面的代码：  </span><br><span class="line">function max = mymax(n1, n2, n3, n4, n5)  </span><br><span class="line">%This function calculates the maximum of the  </span><br><span class="line">% five numbers given as input  </span><br><span class="line">max =  n1;  </span><br><span class="line">if(n2 &gt; max)  </span><br><span class="line">    max = n2;  </span><br><span class="line">end  </span><br><span class="line">if(n3 &gt; max)  </span><br><span class="line">   max = n3;  </span><br><span class="line">end  </span><br><span class="line">if(n4 &gt; max)  </span><br><span class="line">    max = n4;  </span><br><span class="line">end  </span><br><span class="line">if(n5 &gt; max)  </span><br><span class="line">    max = n5;  </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h4 id="符号变量与符号表达式"><a href="#符号变量与符号表达式" class="headerlink" title="符号变量与符号表达式"></a>符号变量与符号表达式</h4><figure class="highlight plain"><figcaption><span>x y;            %定义x,y为符号变量>>z</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">需要用syms或sym定义，例如</span><br><span class="line">&gt;&gt;syms  x y;            %定义x,y为符号变量</span><br><span class="line">&gt;&gt;z=x^2+y^2       ％定义z为含有x与y的符号表达式</span><br><span class="line"></span><br><span class="line">也可以这样定义z，  </span><br><span class="line">&gt;&gt;z=sym(‘x^2+y^2’)     %与上面等价</span><br></pre></td></tr></table></figure>
+<hr>
+<h5 id="关于符号表达式的基本命令"><a href="#关于符号表达式的基本命令" class="headerlink" title="关于符号表达式的基本命令"></a>关于符号表达式的基本命令</h5><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pretty(s)</td>
+<td>将s显示为数学书写形式</td>
+</tr>
+<tr>
+<td>symsum(s,x,a,b)</td>
+<td>对s中的x从a到b求和</td>
+</tr>
+<tr>
+<td>findsym(s)</td>
+<td>给出s中所有的符号变量</td>
+</tr>
+<tr>
+<td>findsym(s,n)</td>
+<td>给出s中离x最近的n个符号变量，n大于s中符号变量个数时则按字母表顺序返回符号变量</td>
+</tr>
+<tr>
+<td>subs(s,a,b)</td>
+<td>将s中的a置换成b</td>
+</tr>
+<tr>
+<td>double(s)</td>
+<td>将s转换成数值形式</td>
+</tr>
+<tr>
+<td>str2num(s)</td>
+<td>字符变量转换为数值变量</td>
+</tr>
+<tr>
+<td>num2str(s)</td>
+<td>数值变量转换为字符变量</td>
+</tr>
+<tr>
+<td>sym(a)</td>
+<td>将a转换为符号变量</td>
+</tr>
+<tr>
+<td>digits(d)</td>
+<td>给出有效数字个数为d的近似值</td>
+</tr>
+<tr>
+<td>vpa(s,d)</td>
+<td>计算s在精度为d位有效数字的解</td>
+</tr>
+<tr>
+<td>eval(s)</td>
+<td>执行符号表达式s</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>命 令</th>
+<th>含  义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>collect(s)</td>
+<td>合并s中的同类项</td>
+</tr>
+<tr>
+<td>compose(f,g,x,y)</td>
+<td>计算复合函数f(g(y)),x,y分别为f,g的自变量</td>
+</tr>
+<tr>
+<td>g＝finverse(f)</td>
+<td>计算f(x)的反函数，g的自变量仍为x</td>
+</tr>
+<tr>
+<td>expand(s)</td>
+<td>展开表达式s</td>
+</tr>
+<tr>
+<td>factor(s)</td>
+<td>因式分解s</td>
+</tr>
+<tr>
+<td>[N,D]=numden(s)</td>
+<td>通分s中各式，其和的分子为N，分母为D</td>
+</tr>
+<tr>
+<td>simplify(s)</td>
+<td>对s进行综合化简</td>
+</tr>
+<tr>
+<td>simple(s)</td>
+<td>给出s的所有最简式</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6 id="微积分"><a href="#微积分" class="headerlink" title="微积分"></a>微积分</h6><table>
+<thead>
+<tr>
+<th>命 令</th>
+<th>含  义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>limit(f,x,a)</td>
+<td>计算函数f(x)当x-&gt;a时的极限</td>
+</tr>
+<tr>
+<td>limit(f,x,a,’right’)</td>
+<td>计算函数f(x)当x-&gt;a+时的右极限</td>
+</tr>
+<tr>
+<td>limit(f,x,a,’left’)</td>
+<td>计算函数f(x)当x-&gt;a-时的左极限</td>
+</tr>
+<tr>
+<td>x=fminbnd(f,a,b)</td>
+<td>计算函数f(x)在区间[a,b]上的最小值点</td>
+</tr>
+<tr>
+<td>[x,fmin]=fminbnd(f,a,b)</td>
+<td>计算函数f(x)在区间[a,b]上的最小值点及最小值fmin</td>
+</tr>
+<tr>
+<td>diff(f,’x’,n)</td>
+<td>计算函数f(x)对变量x的n阶导数，’x’可省</td>
+</tr>
+<tr>
+<td>int(f,x)</td>
+<td>计算函数f(x)的不定积分，积分变量为x</td>
+</tr>
+<tr>
+<td>int(f,x,a,b)</td>
+<td>计算函数f(x)在[a,b]上的定积分(符号)</td>
+</tr>
+<tr>
+<td>quad(f,a,b)</td>
+<td>计算函数f(x)在[a,b]上的定积分值</td>
+</tr>
+<tr>
+<td>taylor(f)</td>
+<td>计算函数f(x)在x=0处的5阶泰勒展开式</td>
+</tr>
+<tr>
+<td>taylor(f,n,x,a)</td>
+<td>计算函数f(x)在x=a处的n-1阶泰勒展开式</td>
+</tr>
+</tbody>
+</table>
+<p>▲需要注意的是，在进行这些计算前必须申明是符号计算，即要加上syms x y;等语句</p>
+<hr>
+<p>基本的绘图步骤 </p>
+<table>
+<thead>
+<tr>
+<th>步    骤</th>
+<th>典 型 代 码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 准备绘图数据</td>
+<td>x = 0:0.2:12; y1 = bessel(1,x);</td>
+</tr>
+<tr>
+<td>2. 选择一个窗口并在窗口中给图形定位</td>
+<td>figure(1) ，subplot(2,2,1)</td>
+</tr>
+<tr>
+<td>3. 调用基本的绘图函数</td>
+<td>h = plot(x,y1,x,y2,x,y3);</td>
+</tr>
+<tr>
+<td>4. 选择线型和标记特性</td>
+<td>set(h,’LineWidth’,2,{‘LineStyle’},{‘–’;’:’;’-.’})</td>
+</tr>
+<tr>
+<td>5. 设置坐标轴的极限值、标记符号和网格线</td>
+<td>axis([0 12 -0.5 1])</td>
+</tr>
+<tr>
+<td>6. 使用坐标轴标签、图例和文本对图形进行注释</td>
+<td>xlabel(‘Time’)ylabel(‘Amplitude’)</td>
+</tr>
+<tr>
+<td>7. 输出图形</td>
+<td>print -depsc -tiff -r200 myplot</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6 id="二维曲线图"><a href="#二维曲线图" class="headerlink" title="# 二维曲线图"></a># 二维曲线图</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line">&gt;&gt; x= 0:0.01:10;</span><br><span class="line">&gt;&gt; y=sin(x);</span><br><span class="line">&gt;&gt; plot(x,y)</span><br></pre></td></tr></table></figure>
+<h6 id="函数绘图"><a href="#函数绘图" class="headerlink" title="# 函数绘图"></a># 函数绘图</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fplot(‘function’,范围)，例如</span><br><span class="line">    fplot(&apos;sin(x)&apos;,[0,2*pi],&apos;r&apos;)</span><br><span class="line">后面选项与plot一致。再如</span><br><span class="line">   fplot(‘[sin(x),cos(x)]’,[0,2*pi])同时画出两个函数图形</span><br></pre></td></tr></table></figure>
+<h6 id="符号函数绘图"><a href="#符号函数绘图" class="headerlink" title="#符号函数绘图"></a>#符号函数绘图</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式ezplot(f,[a,b])  画出符号函数f在[a,b]上的图形</span><br></pre></td></tr></table></figure>
+<h6 id="极坐标图形"><a href="#极坐标图形" class="headerlink" title="# 极坐标图形"></a># 极坐标图形</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MATLAB提供了polar函数来在极坐标下绘制图形 ：</span><br><span class="line">&gt;&gt; x= 0:0.01:10;</span><br><span class="line">&gt;&gt; y=1+cos(x);</span><br><span class="line">&gt;&gt; polar(x,y,&apos;rs&apos;)</span><br></pre></td></tr></table></figure>
+<p>图形控制与修饰</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>axis auto</td>
+<td>坐标轴缺省设置</td>
+</tr>
+<tr>
+<td>axis equal</td>
+<td>纵、横轴采用相等单位长度</td>
+</tr>
+<tr>
+<td>axis image</td>
+<td>纵、横轴采用相等单位长度，且坐标框紧贴数据范围</td>
+</tr>
+<tr>
+<td>axis([x1 x2 y1 y2])</td>
+<td>设定坐标范围</td>
+</tr>
+<tr>
+<td>grid on</td>
+<td>画出网格线</td>
+</tr>
+<tr>
+<td>grid off</td>
+<td>不画网格线</td>
+</tr>
+<tr>
+<td>hold on</td>
+<td>使以后图形画在当前图形上</td>
+</tr>
+<tr>
+<td>hold off</td>
+<td>使以后图形不画在当前图形上</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title(x,y,‘name’)</td>
+<td>在(x,y)处标示图名</td>
+</tr>
+<tr>
+<td>xlabel(‘xtext’)</td>
+<td>横坐标轴名</td>
+</tr>
+<tr>
+<td>ylabel(‘ytext’)</td>
+<td>纵坐标轴名</td>
+</tr>
+<tr>
+<td>legend(‘first’,’second’,n)</td>
+<td>对一个坐标系中的两幅图作出图例注解</td>
+</tr>
+<tr>
+<td>figure</td>
+<td>另开图形窗口</td>
+</tr>
+<tr>
+<td>subplot(m,n,k)</td>
+<td>m×n幅子图的第k幅称为当前图</td>
+</tr>
+</tbody>
+</table>
+<h6 id="多个图形的绘制方法"><a href="#多个图形的绘制方法" class="headerlink" title="多个图形的绘制方法"></a>多个图形的绘制方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">subplot函数 可以实现多个图形的绘制：</span><br><span class="line">&gt;&gt; x = 0:.1:20;</span><br><span class="line">&gt;&gt; subplot(2,2,1)</span><br><span class="line">&gt;&gt; plot(x,sin(x));</span><br></pre></td></tr></table></figure>
+<h6 id="三维网线图"><a href="#三维网线图" class="headerlink" title="# 三维网线图"></a># 三维网线图</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.mesh(X,Y,Z)  ，例</span><br><span class="line">    x=-5:0.2:5;y=x;</span><br><span class="line">  [X Y]=meshgrid(x,y);	%生成格点矩阵</span><br><span class="line">   Z=sin(sqrt(X.^2+Y.^2));</span><br><span class="line">   mesh(X,Y,Z) </span><br><span class="line">2. ezmesh(‘f’,‘g’,‘h’,[u1,u2,v1,v2] )，例</span><br><span class="line">   ezmesh(&apos;cos(u)*cos(v)&apos;,&apos;sin(u)*cos(v)&apos;,&apos;sin(v)&apos;,[0,2*pi,-pi,pi]); axis equal</span><br></pre></td></tr></table></figure>
+<h5 id="数值变量与符号变量"><a href="#数值变量与符号变量" class="headerlink" title="数值变量与符号变量"></a>数值变量与符号变量</h5><p>数值变量的常用函数，一般都可以直接用在符号变量上，比如三角函数，这些都是可以通用的，而且函数的含义也完全一样。     但偏偏有些函数非常蛋疼，对符号变量与数值变量都可以进行操作，但操作的含义完全不同，比如diff，diff对于一个数值变量的运算结果是差分，而对于一个符号变量的运算结果则是求导 。</p>
+<blockquote>
+<p>  另外也存在很多函数只能对数值变量操作，比如离散傅里叶变换fft。还有很多函数只能对符号变量操作，比如泰勒展开taylor。因此在matlab使用中，一定要区分变量的类型，其实真的用起来也好区分，因为完成特定的计算任务，要么全部用数值，要么全部用符号，这也符合一般处理问题的原则。 </p>
+</blockquote>
+<p><strong>4.字符串的常用函数</strong>    </p>
+<p> matlab中字符串的常用算符就更少了，但都非常有用，这里介绍几个： 1）num2str和str2num：可以实现数值变量和字符串变量的转换，比如 a=1 b=num2str(1)<em>复制代码</em>运算结果显示a是一个数值变量，b是一个字符串变量，函数名中的2就是英文中to的意思，也就是把num数值类型转化成str字符类型。str2num就是这个函数的反函数，这两个命令结合，可以实现特定的功能，比如提取一个数字的最高位： a=123456 b=num2str(a) c=b(1) d=str2num(c) </p>
+<p><strong>2.3for循环</strong></p>
+<p>​    for循环的语法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">for 数值变量=向量</span><br><span class="line">    执行语句</span><br><span class="line">end</span><br><span class="line">---</span><br><span class="line">其含义是，数值变量会取向量中的每一个值，然后执行语句，在执行语句中，数值变量是一个1*1的矩阵。比如for a=[0 1 3]</span><br><span class="line">---</span><br><span class="line">则会让a=0，执行语句，然后a=1，执行语句，最后a=3，执行语句。这里容易和赋值语句混淆，因为a=[0 1 3]是一个数值变量赋值，赋值后a是个向量，但加上了for后，a是1*1矩阵。另外，在数值变量赋值那段，我们说过有一种常用的赋值方法是&quot;a=初始值:步长:终值&quot;，其结果是把a赋值成一个向量，因此这也广泛用于for语句中</span><br><span class="line"> for a=初始值:步长:终值</span><br><span class="line"> ---</span><br><span class="line">则在执行语句中，a是一个遍历初值到终值的1*1矩阵。</span><br></pre></td></tr></table></figure>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/01/23/Matlab基础教程/">https://nymrli.top/2019/01/23/Matlab基础教程/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/01/23/Shell代码编写记录/" title="Shell代码编写记录"><span>< PreviousPost</span><br><span class="prevTitle">Shell代码编写记录</span></a><a class="nextSlogan" href="/2019/01/23/中文Bois模式界面/" title="中文Bois模式界面"><span>NextPost ></span><br><span class="nextTitle">中文Bois模式界面</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Matlab基础教程',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Matlab学习"><span class="toc-number">1.</span> <span class="toc-text">Matlab学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数"><span class="toc-number">1.0.1.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二维绘图"><span class="toc-number">1.0.2.</span> <span class="toc-text">二维绘图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三维绘图"><span class="toc-number">1.0.3.</span> <span class="toc-text">三维绘图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#M文件"><span class="toc-number">1.0.4.</span> <span class="toc-text">M文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#符号变量与符号表达式"><span class="toc-number">1.0.5.</span> <span class="toc-text">符号变量与符号表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#关于符号表达式的基本命令"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">关于符号表达式的基本命令</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#微积分"><span class="toc-number">1.0.5.1.1.</span> <span class="toc-text">微积分</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#二维曲线图"><span class="toc-number">1.0.5.1.2.</span> <span class="toc-text"># 二维曲线图</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#函数绘图"><span class="toc-number">1.0.5.1.3.</span> <span class="toc-text"># 函数绘图</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#符号函数绘图"><span class="toc-number">1.0.5.1.4.</span> <span class="toc-text">#符号函数绘图</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#极坐标图形"><span class="toc-number">1.0.5.1.5.</span> <span class="toc-text"># 极坐标图形</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#多个图形的绘制方法"><span class="toc-number">1.0.5.1.6.</span> <span class="toc-text">多个图形的绘制方法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#三维网线图"><span class="toc-number">1.0.5.1.7.</span> <span class="toc-text"># 三维网线图</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数值变量与符号变量"><span class="toc-number">1.0.5.2.</span> <span class="toc-text">数值变量与符号变量</span></a></li></ol></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

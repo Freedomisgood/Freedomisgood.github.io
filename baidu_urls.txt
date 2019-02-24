@@ -1,3 +1,5 @@
+https://nymrli.top/2019/02/24/Python任务调度模块APScheduler/
+https://nymrli.top/2019/02/24/搭建frp服务-阿里云服务器/
 https://nymrli.top/2019/02/18/Cmake-入门/
 https://nymrli.top/2019/02/06/Python-adb操作手机/
 https://nymrli.top/2019/02/03/ACM-动态规划/
@@ -5,7 +7,7 @@ https://nymrli.top/2019/02/01/ACM-贪心专题/
 https://nymrli.top/2019/01/24/学习nginx配置/
 https://nymrli.top/2019/01/24/C++日期操作/
 https://nymrli.top/2019/01/23/Shell代码编写记录/
-https://nymrli.top/2019/01/23/Matlib基础教程/
+https://nymrli.top/2019/01/23/Matlab基础教程/
 https://nymrli.top/2019/01/23/中文Bois模式界面/
 https://nymrli.top/2019/01/23/Chrome开发者工具Network/
 https://nymrli.top/2019/01/23/AU使用/
@@ -96,5 +98,3 @@ https://nymrli.top/2018/09/02/Spy-使用介绍/
 https://nymrli.top/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/
 https://nymrli.top/2018/09/02/开学小蓝车180天免费卡/
 https://nymrli.top/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏，救济金发放/
-https://nymrli.top/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/
-https://nymrli.top/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/

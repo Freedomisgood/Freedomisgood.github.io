@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Python任务调度模块APScheduler · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Python任务调度模块APScheduler</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/02/24</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,352</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="Python任务调度模块APScheduler"><a href="#Python任务调度模块APScheduler" class="headerlink" title="Python任务调度模块APScheduler"></a>Python任务调度模块APScheduler</h1><blockquote>
+<p><code>APScheduler</code>是一个python的第三方库，用来提供python的后台程序。包含四个组件，分别是：</p>
+</blockquote>
+<ul>
+<li>triggers： 任务触发器组件，提供任务触发方式<ul>
+<li><em>triggers</em>（触发器）中包含调度逻辑，每个作业都由自己的触发器来决定下次运行时间。除了他们自己初始配置意外，触发器完全是无状态的。</li>
+</ul>
+</li>
+<li>job stores： 任务商店组件，提供任务保存方式<ul>
+<li><em>job stores</em>（作业存储器）存储被调度的作业，默认的作业存储器只是简单地把作业保存在内存中，其他的作业存储器则是将作业保存在数据库中。当作业被保存到一个持久化的作业存储器中的时候，该作业的数据会被序列化，并在加载时被反序列化。作业存储器不能共享调度器。</li>
+</ul>
+</li>
+<li>executors： 任务调度组件，提供任务调度方式<ul>
+<li><em>executors</em>（执行器）处理作业的运行，他们通常通过在作业中提交指定的可调用对象到一个线程或者进城池来进行。当作业完成时，执行器将会通知调度器。</li>
+</ul>
+</li>
+<li>schedulers： 任务调度组件，提供任务工作方式<ul>
+<li>schedulers（调度器）配置作业存储器和执行器可以在调度器中完成，例如添加、修改和移除作业。根据不同的应用场景可以选用不同的调度器，可选的有BlockingScheduler,BackgroundScheduler,AsyncIOScheduler,GeventScheduler,TornadoScheduler,TwistedScheduler,QtScheduler 7种。<ul>
+<li>其中<code>BlockingScheduler</code>与<code>BackgroundScheduler</code>是其中最常用的两种调度器。那他们之间有什么区别呢？</li>
+<li><code>BlockingScheduler</code>: 调用start函数后会阻塞当前线程。当调度器是你应用中唯一要运行的东西时</li>
+<li><code>BackgroundScheduler</code>: 调用start后主线程不会阻塞。当你不运行任何其他框架时使用，并希望调度器在你应用的后台执行。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用的一个简单实例"><a href="#使用的一个简单实例" class="headerlink" title="使用的一个简单实例"></a>使用的一个简单实例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> apscheduler.schedulers.blocking <span class="keyword">import</span> BlockingScheduler  <span class="comment"># 阻塞</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化一个调度器</span></span><br><span class="line">scheduler = BlockingScheduler()</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">job1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"%s: 执行任务"</span>  % time.asctime()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加任务并设置触发方式为3s一次</span></span><br><span class="line">scheduler.add_job(job1, <span class="string">'interval'</span>, seconds=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开始运行调度器</span></span><br><span class="line">scheduler.start()</span><br></pre></td></tr></table></figure>
+<h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><ul>
+<li><strong>date</strong> 一次性指定日期</li>
+<li><strong>interval</strong> 在某个时间范围内间隔多长时间执行一次</li>
+<li><strong>cron</strong> 和Linux crontab格式兼容，最为强大</li>
+</ul>
+<h3 id="date-最基本的一种调度，作业只会执行一次。它的参数如下："><a href="#date-最基本的一种调度，作业只会执行一次。它的参数如下：" class="headerlink" title="date 最基本的一种调度，作业只会执行一次。它的参数如下："></a><strong><em>date</em></strong> 最基本的一种调度，作业只会执行一次。它的参数如下：</h3><ol>
+<li><em>run_date</em> (datetime|str) – 作业的运行日期或时间</li>
+<li><em>timezone</em> (datetime.tzinfo|str) – 指定时区</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2016-12-12运行一次job_function</span></span><br><span class="line">sched.add_job(job_function, <span class="string">'date'</span>, run_date=date(<span class="number">2016</span>, <span class="number">12</span>, <span class="number">12</span>), args=[<span class="string">'text'</span>])</span><br><span class="line"><span class="comment"># 2016-12-12 12:00:00运行一次job_function</span></span><br><span class="line">sched.add_job(job_function, <span class="string">'date'</span>, run_date=datetime(<span class="number">2016</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">0</span>, <span class="number">0</span>), args=[<span class="string">'text'</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="interval-间隔调度，参数如下："><a href="#interval-间隔调度，参数如下：" class="headerlink" title="interval 间隔调度，参数如下："></a><strong>interval</strong> 间隔调度，参数如下：</h3><p>weeks (int) – 间隔几周<br>days (int) – 间隔几天<br>hours (int) – 间隔几小时<br>minutes (int) – 间隔几分钟<br>seconds (int) – 间隔多少秒<br>start_date (datetime|str) – 开始日期<br>end_date (datetime|str) – 结束日期</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每两个小时调一下job_function</span></span><br><span class="line">sched.add_job(job_function, <span class="string">'interval'</span>, hours=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="cron参数如下："><a href="#cron参数如下：" class="headerlink" title="cron参数如下："></a>cron参数如下：</h3><p>year (int|str) – 年，4位数字<br>month (int|str) – 月 (范围1-12)<br>day (int|str) – 日 (范围1-31)<br>week (int|str) – 周 (范围1-53)<br>day_of_week (int|str) – 周内第几天或者星期几 (范围0-6 或者 mon,tue,wed,thu,fri,sat,sun)<br>hour (int|str) – 时 (范围0-23)<br>minute (int|str) – 分 (范围0-59)<br>second (int|str) – 秒 (范围0-59)<br>start_date (datetime|str) – 最早开始日期(包含)<br>end_date (datetime|str) – 最晚结束时间(包含)<br>timezone (datetime.tzinfo|str) – 指定时区</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># job_function将会在6,7,8,11,12月的第3个周五的1,2,3点运行</span></span><br><span class="line">sched.add_job(job_function, <span class="string">'cron'</span>, month=<span class="string">'6-8,11-12'</span>, day=<span class="string">'3rd fri'</span>, hour=<span class="string">'0-3'</span>)</span><br><span class="line"><span class="comment"># 截止到2016-12-30 00:00:00，每周一到周五早上五点半运行job_function</span></span><br><span class="line">sched.add_job(job_function, <span class="string">'cron'</span>, day_of_week=<span class="string">'mon-fri'</span>, hour=<span class="number">5</span>, minute=<span class="number">30</span>, end_date=<span class="string">'2016-12-31'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="添加任务"><a href="#添加任务" class="headerlink" title="添加任务"></a>添加任务</h2><blockquote>
+<p>有两种方法，一种是使用add_job()函数，还有一种方式是通过scheduled_job()装饰器。</p>
+</blockquote>
+<h4 id="add-job-函数方式"><a href="#add-job-函数方式" class="headerlink" title="add_job()函数方式"></a>add_job()函数方式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> apscheduler.schedulers.blocking <span class="keyword">import</span> BlockingScheduler</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_job1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'my_job1 is running, Now is %s'</span> % datetime.datetime.now().strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_job2</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'my_job2 is running, Now is %s'</span> % datetime.datetime.now().strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>)</span><br><span class="line"> </span><br><span class="line">sched = BlockingScheduler()</span><br><span class="line"><span class="comment"># 每隔5秒运行一次my_job1</span></span><br><span class="line">sched.add_job(my_job1, <span class="string">'interval'</span>, seconds=<span class="number">5</span>,id=<span class="string">'my_job1'</span>)</span><br><span class="line"><span class="comment"># 每隔5秒运行一次my_job2</span></span><br><span class="line">sched.add_job(my_job2,<span class="string">'cron'</span>,second=<span class="string">'*/5'</span>,id=<span class="string">'my_job2'</span>)</span><br><span class="line">sched.start()</span><br></pre></td></tr></table></figure>
+<h4 id="scheduled-job-装饰器方式"><a href="#scheduled-job-装饰器方式" class="headerlink" title="scheduled_job()装饰器方式"></a>scheduled_job()装饰器方式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> apscheduler.schedulers.blocking <span class="keyword">import</span> BlockingScheduler</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"> </span><br><span class="line">sched = BlockingScheduler()</span><br><span class="line"><span class="comment">#每隔5秒运行一次my_job1</span></span><br><span class="line"><span class="meta">@sched.scheduled_job('interval',seconds=5,id='my_job1')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_job1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'my_job1 is running, Now is %s'</span> % datetime.datetime.now().strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment">#每隔5秒运行一次my_job2</span></span><br><span class="line"><span class="meta">@sched.scheduled_job('cron',second='*/5',id='my_job2')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_job2</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'my_job2 is running, Now is %s'</span> % datetime.datetime.now().strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>)</span><br><span class="line">sched.start()</span><br></pre></td></tr></table></figure>
+<h4 id="使用SQLAlchemy作业存储器存放作业"><a href="#使用SQLAlchemy作业存储器存放作业" class="headerlink" title="使用SQLAlchemy作业存储器存放作业"></a>使用SQLAlchemy作业存储器存放作业</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> apscheduler.schedulers.blocking <span class="keyword">import</span> BlockingScheduler</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime,timedelta</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"> </span><br><span class="line">sched = BlockingScheduler()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_job</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'my_job is running, Now is %s'</span> % datetime.now().strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>)</span><br><span class="line"><span class="comment">#使用sqlalchemy作业存储器</span></span><br><span class="line">url=<span class="string">'mysql+mysqldb://root:123456@localhost:3306/scrapy?charset=utf8'</span></span><br><span class="line">sched.add_jobstore(<span class="string">'sqlalchemy'</span>,url=url)</span><br><span class="line"><span class="comment">#添加作业</span></span><br><span class="line">sched.add_job(my_job,<span class="string">'interval'</span>,id=<span class="string">'myjob'</span>,seconds=<span class="number">5</span>)</span><br><span class="line"> </span><br><span class="line">log = logging.getLogger(<span class="string">'apscheduler.executors.default'</span>)</span><br><span class="line">log.setLevel(logging.INFO)  <span class="comment"># DEBUG</span></span><br><span class="line"><span class="comment">#设定日志格式</span></span><br><span class="line">fmt = logging.Formatter(<span class="string">'%(levelname)s:%(name)s:%(message)s'</span>)</span><br><span class="line">h = logging.StreamHandler()</span><br><span class="line">h.setFormatter(fmt)</span><br><span class="line">log.addHandler(h)</span><br><span class="line"> </span><br><span class="line">sched.start()</span><br></pre></td></tr></table></figure>
+<p>部分摘自:<a href="https://blog.csdn.net/weiwangchao_/article/details/79138013" target="_blank" rel="noopener">APScheduler浅析</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/02/24/Python任务调度模块APScheduler/">https://nymrli.top/2019/02/24/Python任务调度模块APScheduler/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2019/02/24/搭建frp服务-阿里云服务器/" title="搭建frp服务--阿里云服务器"><span>NextPost ></span><br><span class="nextTitle">搭建frp服务--阿里云服务器</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Python任务调度模块APScheduler',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python任务调度模块APScheduler"><span class="toc-number">1.</span> <span class="toc-text">Python任务调度模块APScheduler</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用的一个简单实例"><span class="toc-number">1.1.</span> <span class="toc-text">使用的一个简单实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#触发器"><span class="toc-number">1.2.</span> <span class="toc-text">触发器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#date-最基本的一种调度，作业只会执行一次。它的参数如下："><span class="toc-number">1.2.1.</span> <span class="toc-text">date 最基本的一种调度，作业只会执行一次。它的参数如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#interval-间隔调度，参数如下："><span class="toc-number">1.2.2.</span> <span class="toc-text">interval 间隔调度，参数如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cron参数如下："><span class="toc-number">1.2.3.</span> <span class="toc-text">cron参数如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加任务"><span class="toc-number">1.3.</span> <span class="toc-text">添加任务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#add-job-函数方式"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">add_job()函数方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#scheduled-job-装饰器方式"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">scheduled_job()装饰器方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用SQLAlchemy作业存储器存放作业"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">使用SQLAlchemy作业存储器存放作业</span></a></li></ol></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

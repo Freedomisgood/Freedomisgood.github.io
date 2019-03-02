@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nymrli.top/"/>
-  <updated>2019-03-02T11:41:56.520Z</updated>
+  <updated>2019-03-02T13:00:42.787Z</updated>
   <id>https://nymrli.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>flask+nginx如何获得真实IP</title>
+    <link href="https://nymrli.top/2019/03/02/flask-nginx%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E7%9C%9F%E5%AE%9EIP/"/>
+    <id>https://nymrli.top/2019/03/02/flask-nginx如何获得真实IP/</id>
+    <published>2019-03-02T12:53:58.000Z</published>
+    <updated>2019-03-02T13:00:42.787Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>如果是通过 flask 的 <code>request.remote_addr</code>获取的 ip 都是 <code>127.0.0.1</code></p></blockquote><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案:"></a>解决方案:</h2><h3 id="nginx-conf中添加"><a href="#nginx-conf中添加" class="headerlink" title="nginx.conf中添加"></a><strong>nginx.conf</strong>中添加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># proxy_set_header Host $host:80; </span><br><span class="line"># proxy_set_header X-Real-IP $remote_addr; </span><br><span class="line">proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br></pre></td></tr></table></figure><p>全文</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 8888;</span><br><span class="line">    server_name 0.0.0.0;</span><br><span class="line">    charset utf-8;</span><br><span class="line">    client_max_body_size 75M;</span><br><span class="line">    location /static&#123;</span><br><span class="line">    alias /home/apollo3d/Documents/Cl/webenv/.../static;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">    include uwsgi_params;</span><br><span class="line">    uwsgi_pass 127.0.0.1:8889;</span><br><span class="line">    uwsgi_param UWSGI_SCRIPT app:app;   # 启动flask的文件:Flask的实例</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Python代码"><a href="#Python代码" class="headerlink" title="Python代码"></a>Python代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if request.headers.getlist(&quot;X-Forwarded-For&quot;):</span><br><span class="line">    ip = request.headers.getlist(&quot;X-Forwarded-For&quot;)[0]</span><br><span class="line">else:</span><br><span class="line">    ip = request.remote_addr</span><br></pre></td></tr></table></figure><p>查自:<a href="http://neue.v2ex.com/t/294472" target="_blank" rel="noopener">V2EX</a></p><h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展:"></a>拓展:</h2><p><strong>X-Forwarded-For</strong> 可能会有多个 IP ，如果浏览器使用了代理的话<br>正确的做法应该是抓 <code>X-Real-IP</code>，或者分隔 <code>X-Forwarded-For</code>取第 1 个值</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;如果是通过 flask 的 &lt;code&gt;request.remote_addr&lt;/code&gt;获取的 ip 都是 &lt;code&gt;127.0.0.1&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;解决方案&quot;&gt;&lt;a href=&quot;#解决方
+      
+    
+    </summary>
+    
+    
+      <category term="flask" scheme="https://nymrli.top/tags/flask/"/>
+    
+      <category term="nginx" scheme="https://nymrli.top/tags/nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>frp结合nginx实现内网web服务和tcp的转发</title>
@@ -485,32 +513,6 @@
       <category term="爬虫" scheme="https://nymrli.top/tags/%E7%88%AC%E8%99%AB/"/>
     
       <category term="计算机基础知识" scheme="https://nymrli.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AU使用</title>
-    <link href="https://nymrli.top/2019/01/23/AU%E4%BD%BF%E7%94%A8/"/>
-    <id>https://nymrli.top/2019/01/23/AU使用/</id>
-    <published>2019-01-23T05:36:05.000Z</published>
-    <updated>2019-01-23T05:36:39.080Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="AU学习使用"><a href="#AU学习使用" class="headerlink" title="AU学习使用"></a>AU学习使用</h4><blockquote><p>留人声、去伴奏</p></blockquote><h4 id="First"><a href="#First" class="headerlink" title="First."></a>First.</h4><p><img src="/2019/01/23/AU使用/立体声-中置声道提取.jpg" alt="立体声-中置声道提取"></p><p>▲侧边声道电平控制微弱，中置声道电平控制效果强。</p><p><img src="/2019/01/23/AU使用/立体声-中置声道提取2.jpg" alt="立体声-中置声道提取2"></p><p>▲交叉渗透，越大伴奏声音越不明显</p><h4 id="Second"><a href="#Second" class="headerlink" title="Second."></a>Second.</h4><p><img src="/2019/01/23/AU使用/图示均衡器.jpg" alt="图示均衡器"></p><p>前面几排调低到满意。（童声高音频率范围为260-880Hz,低音频率范围为196-700Hz,女声高音频率范围为220-1.1KHz,低音频率范围为200-700KHz,男声高音频率范围为160-523KHz低音频率范围为80-358Hz. 国际通信标准制定为300Hz-3400Hz! ）</p><hr><blockquote><p>留伴奏、去人声</p></blockquote><p>···选中所有，菜单栏-收藏夹-移除人声</p><p><img src="/2019/01/23/AU使用/移除人声.jpg" alt="移除人声"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;AU学习使用&quot;&gt;&lt;a href=&quot;#AU学习使用&quot; class=&quot;headerlink&quot; title=&quot;AU学习使用&quot;&gt;&lt;/a&gt;AU学习使用&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;留人声、去伴奏&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;First&quot;&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="多媒体" scheme="https://nymrli.top/tags/%E5%A4%9A%E5%AA%92%E4%BD%93/"/>
     
   </entry>
   

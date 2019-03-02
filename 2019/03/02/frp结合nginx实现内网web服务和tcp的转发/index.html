@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>frp结合nginx实现内网web服务和tcp的转发 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">frp结合nginx实现内网web服务和tcp的转发</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/03/02</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">796</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
+<p>服务端 - 阿里云服务器: Ubuntu 16.04</p>
+<p>客户端 - 活动室电脑 : Ubuntu 16.04</p>
+</blockquote>
+<h2 id="配置server端"><a href="#配置server端" class="headerlink" title="配置server端"></a>配置server端</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo vim frps.ini</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[common]                 #必须有的配置段，在frpc.ini和frps.ini中都必须要有</span><br><span class="line">bind_port = 7000         #服务端服务的监听端口</span><br><span class="line">vhost_http_port = 16666  #自己设定的http访问端口</span><br><span class="line">vhost_https_port = 17777 #自己设定的https访问端口</span><br></pre></td></tr></table></figure>
+<p>保存并且退出，使用如下服务命令启动frps服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> nohup ./frps -c ./frps.ini &amp;</span><br></pre></td></tr></table></figure>
+<h2 id="client端"><a href="#client端" class="headerlink" title="client端:"></a>client端:</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo vim frpc.ini</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[common]                #必须有的配置段，在frpc.ini和frps.ini中都必须要有</span><br><span class="line">server_addr = x.x.x.x   #服务端的公网IP（外网IP）</span><br><span class="line">server_port = 7000      #服务端服务的监听端口</span><br><span class="line"></span><br><span class="line">[web]                   #自己定义的服务转发标签（自定义，非严格）</span><br><span class="line">type = http             #定义转发类型为http（严格）</span><br><span class="line">local_port = 8800       #定义所需要转发的本地web服务的端口为8800,跟nginx设置的一致</span><br><span class="line">custom_domains = node1.xxx.com #定义访问转发服务的域名（确保使用该域名访问可以解析到有公网IP的服务端）</span><br><span class="line"></span><br><span class="line">[ssh]                   #自己定义的服务转发标签（自定义，严格）</span><br><span class="line">type = tcp              #定义转发类型为tcp（严格）</span><br><span class="line">local_ip = 127.0.0.1    #由于转发代理的ssh服务在本地，因此填写本地地址</span><br><span class="line">local_port = 22         #ssh服务本地的监听端口</span><br><span class="line">remote_port = 6000      #实际开启ssh时连接时访问的端口</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> nohup ./frps -c ./frps.ini &amp;</span><br></pre></td></tr></table></figure>
+<h2 id="解释说明"><a href="#解释说明" class="headerlink" title="解释说明"></a>解释说明</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[common]中的server_addr填frp服务端的ip（也就是外网主机的IP），server_port填frp服务端的bind_prot(s和c必须一致)。</span><br><span class="line">[web]中，type转发类型为http，local_port填转发的web端口，custom_domains 填 能够使用的域名.</span><br><span class="line">说到这里，域名解析，服务端建议使用阿里云，直接填写A记录，三级子域名专门申请几个，备用.</span><br><span class="line">类似：node1.xxx.com、node2.xxx.com、node3.xxx.com</span><br></pre></td></tr></table></figure>
+<p>阿里云设置A记录:</p>
+<p>一开始以为一个IP不能写多个A记录，后来发现是可以的。如下</p>
+<p><img src="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/1.jpg" alt="1"></p>
+<p>这里还要注意几点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[web]上下文中，凡是type类型为http或者同一个类型，custom_domains中填写的域名必须为不同的域名，相同域名会报错</span><br><span class="line">不同类型的type，例如[test]中的type类型为tcp，则可以使用相同域名</span><br><span class="line">简单来说type类型相同，不能使用同一个域名</span><br><span class="line">type类型不同，可以使用相同的域名。</span><br></pre></td></tr></table></figure>
+<h2 id="测试和访问"><a href="#测试和访问" class="headerlink" title="测试和访问"></a>测试和访问</h2><h3 id="web服务访问格式为：域名-端口-具体如下"><a href="#web服务访问格式为：域名-端口-具体如下" class="headerlink" title="web服务访问格式为：域名+端口,具体如下:"></a>web服务访问格式为：域名+端口,具体如下:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://node1.xxx.com:16666 页面转到内网客户端使用nginx反向代理的web服务8800</span><br><span class="line">http://node2.xxx.com:16666 页面转到内网客户端使用nginx反向代理的web服务8801</span><br><span class="line">http://node3.xxx.com:16666 页面转到内网客户端本地的web服务端口8088</span><br></pre></td></tr></table></figure>
+<p>▲当然要记得去阿里云的防火墙将16666端口打开才行， 然后我测试了一下，通过IP访问好像是不行的，<strong>域名:port</strong>是可以的</p>
+<p><img src="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/3.jpg" alt="3"></p>
+<h3 id="ssh服务远程和连接"><a href="#ssh服务远程和连接" class="headerlink" title="ssh服务远程和连接"></a>ssh服务远程和连接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -oPort=6000 username@x.x.x.x</span><br><span class="line">注：x.x.x.x为服务端的公网IP</span><br></pre></td></tr></table></figure>
+<p>摘自：<a href="https://www.jianshu.com/p/0c49556e8e15" target="_blank" rel="noopener">https://www.jianshu.com/p/0c49556e8e15</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/">https://nymrli.top/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2019/03/01/构造一个能发数据的POST请求头/" title="构造一个能发数据的POST请求头"><span>NextPost ></span><br><span class="nextTitle">构造一个能发数据的POST请求头</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'frp结合nginx实现内网web服务和tcp的转发',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置server端"><span class="toc-number">1.</span> <span class="toc-text">配置server端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#client端"><span class="toc-number">2.</span> <span class="toc-text">client端:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解释说明"><span class="toc-number">3.</span> <span class="toc-text">解释说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试和访问"><span class="toc-number">4.</span> <span class="toc-text">测试和访问</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web服务访问格式为：域名-端口-具体如下"><span class="toc-number">4.1.</span> <span class="toc-text">web服务访问格式为：域名+端口,具体如下:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh服务远程和连接"><span class="toc-number">4.2.</span> <span class="toc-text">ssh服务远程和连接</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

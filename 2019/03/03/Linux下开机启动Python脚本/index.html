@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Linux下开机启动Python脚本 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux下开机启动Python脚本</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/03/03</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">801</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="rc-local"><a href="#rc-local" class="headerlink" title="rc.local"></a>rc.local</h1><p>将脚本写在<code>/etc/rc.local</code>文件<br>输入命令：<code>sudo vi /etc/rc.local</code><br>在<code>exit 0</code>上一行输入：<code>python /usr/bin/python /home/pi/test.py</code><br>重启就可以看效果<code>sudo reboot</code></p>
+<blockquote>
+<p>当然，rc.local 文件需要有执行权限（默认没有）<br><code>$ sudo chmod +x /etc/rc.local</code><br>对于命令，最好是先which python查出命令路径，写命令时写绝对路径</p>
+</blockquote>
+<h1 id="etc-init-d"><a href="#etc-init-d" class="headerlink" title="/etc/init.d"></a>/etc/init.d</h1><p>写一个服务放到linux的<code>/etc/init.d</code>目录中</p>
+<p>并且授权bash脚本<code>chmod 755 /etc/init.d/mypython</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># chkconfig: 2345 66 36</span></span><br><span class="line"><span class="comment"># /etc/rc.d/init.d/opt/python</span></span><br><span class="line"><span class="comment"># description: spython</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line">  start)</span><br><span class="line">        <span class="built_in">echo</span> -n <span class="string">"Starting python: "</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"---------------------------------------------------------------------------------"</span> &gt;&gt;/var/<span class="built_in">log</span>/python</span><br><span class="line">        date +<span class="string">"! %T %a %D : Starting python ."</span> &gt;&gt;/var/<span class="built_in">log</span>/python</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"---------------------------------------------------------------------------------"</span> &gt;&gt;/var/<span class="built_in">log</span>/python</span><br><span class="line">	<span class="built_in">echo</span> start</span><br><span class="line">        <span class="built_in">cd</span>  /root/finmonAgent/bin</span><br><span class="line">	./finmonAgent.py &amp;</span><br><span class="line">	<span class="comment">#sh /root/finmonAgent/startpy</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Done."</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">""</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"---------------------------------------------------------------------------------"</span> &gt;&gt;/var/<span class="built_in">log</span>/python</span><br><span class="line">        date +<span class="string">"! %T %a %D : Finished."</span> &gt;&gt;/var/<span class="built_in">log</span>/python</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"---------------------------------------------------------------------------------"</span> &gt;&gt;/var/<span class="built_in">log</span>/python</span><br><span class="line">        touch /var/lock/subsys/python</span><br><span class="line">        ;;</span><br><span class="line">  stop)</span><br><span class="line">        <span class="built_in">echo</span> -n <span class="string">"Shutting Down python Listeners: "</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"---------------------------------------------------------------------------------"</span> &gt;&gt;/var/<span class="built_in">log</span>/python</span><br><span class="line">        date +<span class="string">"! %T %a %D : Shutting Down python."</span> &gt;&gt;/var/<span class="built_in">log</span>/python</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"---------------------------------------------------------------------------------"</span> &gt;&gt;/var/<span class="built_in">log</span>/python</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"python"</span></span><br><span class="line">        killall -9 finmonAgent.py</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Done."</span></span><br><span class="line">        rm -f /var/lock/subsys/python      </span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Done."</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"---------------------------------------------------------------------------------"</span> &gt;&gt;/var/<span class="built_in">log</span>/python</span><br><span class="line">        date +<span class="string">"! %T %a %D : Finished."</span> &gt;&gt;/var/<span class="built_in">log</span>/python</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"---------------------------------------------------------------------------------"</span> &gt;&gt;/var/<span class="built_in">log</span>/python</span><br><span class="line">        ;;</span><br><span class="line">  *)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Usage: python &#123; start | stop | restart &#125;"</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+<h1 id="ect-profile"><a href="#ect-profile" class="headerlink" title="/ect/profile"></a>/ect/profile</h1><blockquote>
+<p> /ect/profile 文件是系统默认的主启动文件，系统上每个用户登录时都会执行；</p>
+</blockquote>
+<h2 id="linux-配置文件（启动文件、环境文件）启动顺序"><a href="#linux-配置文件（启动文件、环境文件）启动顺序" class="headerlink" title="linux 配置文件（启动文件、环境文件）启动顺序"></a><a href="https://www.cnblogs.com/GO-NO-1/p/9084713.html" target="_blank" rel="noopener">linux 配置文件（启动文件、环境文件）启动顺序</a></h2><h3 id="1、登录shell"><a href="#1、登录shell" class="headerlink" title="1、登录shell"></a>1、登录shell</h3><p>登录shell时，linux会按一定规则读取启动几个配置文件：</p>
+<blockquote>
+<p>/ect/profile</p>
+<p>$HOME/.bash_profile</p>
+<p>$HOME/.bashrc</p>
+<p>$HOME/.bash_login</p>
+<p>$HOME/.profile</p>
+</blockquote>
+<p>其中 /ect/profile 文件是系统默认的主启动文件，系统上每个用户登录时都会执行；</p>
+<ul>
+<li>a、命令行登录和ssh登录，shell会按照以下顺序，运行第一个被找到的文件，余下的会被忽略：</li>
+</ul>
+<blockquote>
+<p>$HOME/.bash_profile</p>
+<p>$HOME/.bash_login</p>
+<p>$HOME/.profile</p>
+</blockquote>
+<p>上面没有 $HOME/.bashrc ，因为该文件一般通过其他文件运行。</p>
+<ul>
+<li>b、图形界面登录，只加载 <code>/ect/profile</code>和<code>$HOME/.profile</code>，其他的会被忽略。</li>
+</ul>
+<p>对于 no-login shell，即图形界面打开的shell，只会读入 $HOME/.bashrc 文件，不会检查 /etc/.profile 等其他登录shell文件。</p>
+<hr>
+<h3 id="2、交互式shell"><a href="#2、交互式shell" class="headerlink" title="2、交互式shell"></a>2、交互式shell</h3><p>不是登录系统时启动，提供命令行提示符来输入命令。（不会访问 /etc/profile 文件，会检查 $HOME/.bashrc 文件）</p>
+<hr>
+<h3 id="3、非交互式shell"><a href="#3、非交互式shell" class="headerlink" title="3、非交互式shell"></a>3、非交互式shell</h3><p>系统执行脚本时所用，没有命令行提示符。</p>
+<h2 id="linux将指令加入开机启动或加入环境变量"><a href="#linux将指令加入开机启动或加入环境变量" class="headerlink" title="linux将指令加入开机启动或加入环境变量"></a><a href="https://www.cnblogs.com/usa007lhy/p/5517036.html" target="_blank" rel="noopener">linux将指令加入开机启动或加入环境变量</a></h2><p>（2）在profile中添加PATH，这种方法对所有用户都是永久生效。</p>
+<p>a）打开profile文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`vim /etc/profile`</span><br></pre></td></tr></table></figure>
+<p>b）在profile文件的PATH中添加mongo指令。在PATH后面添加“:/usr/local/webserver/mongo/bin”，＝ 等号两边不能有任何空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`PATH=``$PATH``:/usr/local/webserver/mongo/bin`</span><br></pre></td></tr></table></figure>
+<p>c）执行指令，使profile修改立即生效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`source profile`</span><br></pre></td></tr></table></figure>
+<p>（3）在当前profile中添加PATH，这种方法对当前用户永久生效。与第二步类似，将profile替换为bash_profile。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`vim ~/.bash_profile`</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`PATH=``$PATH``:/usr/local/webserver/mongo/bin`</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`source ~/.bash_profile`</span><br></pre></td></tr></table></figure>
+<p>2，linux将指令加入开机启动</p>
+<p>在/etc/rc.local中添加指令即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`/usr/local/webserver/mongodb/bin/mongod --dbpath=/data0/mongodb/data --logpath=/data0/mongodb/logs --logappend  --port=27017`</span><br></pre></td></tr></table></figure></article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/03/03/Linux下开机启动Python脚本/">https://nymrli.top/2019/03/03/Linux下开机启动Python脚本/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2019/03/03/codeblocks中boost库安装/" title="codeblocks中boost库安装"><span>NextPost ></span><br><span class="nextTitle">codeblocks中boost库安装</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Linux下开机启动Python脚本',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#rc-local"><span class="toc-number">1.</span> <span class="toc-text">rc.local</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#etc-init-d"><span class="toc-number">2.</span> <span class="toc-text">/etc/init.d</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ect-profile"><span class="toc-number">3.</span> <span class="toc-text">/ect/profile</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux-配置文件（启动文件、环境文件）启动顺序"><span class="toc-number">3.1.</span> <span class="toc-text">linux 配置文件（启动文件、环境文件）启动顺序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、登录shell"><span class="toc-number">3.1.1.</span> <span class="toc-text">1、登录shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、交互式shell"><span class="toc-number">3.1.2.</span> <span class="toc-text">2、交互式shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、非交互式shell"><span class="toc-number">3.1.3.</span> <span class="toc-text">3、非交互式shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux将指令加入开机启动或加入环境变量"><span class="toc-number">3.2.</span> <span class="toc-text">linux将指令加入开机启动或加入环境变量</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

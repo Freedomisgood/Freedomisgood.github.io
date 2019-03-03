@@ -1,3 +1,6 @@
+https://nymrli.top/2019/03/03/Linux下开机启动Python脚本/
+https://nymrli.top/2019/03/03/codeblocks中boost库安装/
+https://nymrli.top/2019/03/03/ACM-线性筛/
 https://nymrli.top/2019/03/02/flask-nginx如何获得真实IP/
 https://nymrli.top/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/
 https://nymrli.top/2019/03/01/构造一个能发数据的POST请求头/
@@ -95,6 +98,3 @@ https://nymrli.top/2018/10/18/LeetCode-26-删除排序数组中的重复项/
 https://nymrli.top/2018/10/15/素数判别/
 https://nymrli.top/2018/10/13/回车和换行区别/
 https://nymrli.top/2018/10/12/云服务器Ubuntu更改默认python版本/
-https://nymrli.top/2018/10/12/nginx+uwsi搭建django环境服务器/
-https://nymrli.top/2018/10/04/小程序开发遇到的坑/
-https://nymrli.top/2018/09/27/带表头的单链表的基本操作/

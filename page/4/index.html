@@ -139,7 +139,21 @@ P.S.如果第二步,手机和电脑无法直接通过IP地址进入管理界面�
 
 将unicode的内存编码值进行存储，读取文件时在反向转换回来。这里就采用了unicode-escape的方式  
 
-12345678print(u&apos;中文测试&apos;.encode(&apos;utf-8&apos;))pr ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/08/写爬虫过程中碰到的编码问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/26/pyqt与QT5/">pyqt5与QT5</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-26T04:11:52.000Z">2018-11-26</time><i class="fa fa-edit"></i><time datetime="2018-11-26T04:11:52.000Z">2018-11-26</time></div><div class="recent-post-content">添加QT Designer、PyUIc、Pyrcc
+12345678print(u&apos;中文测试&apos;.encode(&apos;utf-8&apos;))pr ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/08/写爬虫过程中碰到的编码问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/03/Pyinstaller使用/">Pyinstaller使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-03T03:54:22.000Z">2018-12-03</time><i class="fa fa-edit"></i><time datetime="2018-12-03T03:54:22.000Z">2018-12-03</time></div><div class="recent-post-content">pyinstaller使用安装1、安装pywin32==&gt;pyinstaller依赖于
+下载安装文件：查找到跟自己适用的python版本及window系统版本匹配的pywin32，下载后安装 
+
+使用pip命令安装：pip install pywin32
+
+
+2、安装Pyinstaller
+下载安装文件安装：官网
+
+使用pip命令安装：pip install PyInstaller
+
+
+使用Pycharm直接搜索pyinstaller会自动安装依赖库pywin32
+
+使用1、使用下载安装的方式安装的Pyinstaller打包方式将需要打包的文件放在解压得到的Pyinstaller文件夹中 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/03/Pyinstaller使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/26/pyqt与QT5/">pyqt5与QT5</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-26T04:11:52.000Z">2018-11-26</time><i class="fa fa-edit"></i><time datetime="2018-11-26T04:11:52.000Z">2018-11-26</time></div><div class="recent-post-content">添加QT Designer、PyUIc、Pyrcc
 1.添加外部工具(Extenal Tools)QT Designer
 File–&gt;Settings–&gt;Tools–&gt;Extenal Tools –&gt; ‘’+’’ &gt; 添加具体细节,如图一图二
 
@@ -205,22 +219,4 @@ Second.
 
 apt代理的设置：临时方法export http_proxy=http://10.3.0.1:80
 长久方法(1) 需要在/etc/apt/apt.conf中添加以下代码： (如果您希望apt-get(而不是其他应用程序)一直使用http代理,您可以使用这种方式。)
-Acquire::http::proxy &quot;http: ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/02/apt-get-update无法连接/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/28/Windows-控制台Cmd乱码（及永久修改编码）解决方法/">Windows控制台Cmd乱码（及永久修改编码）解决方法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-28T08:42:20.000Z">2018-10-28</time><i class="fa fa-edit"></i><time datetime="2018-10-28T08:42:20.000Z">2018-10-28</time></div><div class="recent-post-content">我本机的系统环境：`OS Name: Microsoft Windows 10 家庭中文版
-Windows 控制台Cmd乱码的解决办法(一次性)在cmd中输入 CHCP 65001
-
- 注：CHCP是一个计算机指令，能够显示或设置活动代码页编号。
-代码页  描述
-
-65001   UTF-8代码页
-
-950 繁体中文
-
-936 简体中文默认的GBK
-
-437 MS-DOS 美国英语
-
-
-
-但是通过CHCP设置编码是治标不治本的,想永久的更改cmd编码值需要修改注册表
-Windows 控制台Cmd乱码的解决办法(永久性)方法一：1.在cmd中输入regedit进入注册表
-2.找到HKEY_CUR ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2018/10/28/Windows-控制台Cmd乱码（及永久修改编码）解决方法/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/3/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+Acquire::http::proxy &quot;http: ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/02/apt-get-update无法连接/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/3/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

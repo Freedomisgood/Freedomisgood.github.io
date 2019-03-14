@@ -1,3 +1,4 @@
+https://nymrli.top/2019/03/14/搭建Gitlab服务器/
 https://nymrli.top/2019/03/07/程序设计周cpp学习笔记/
 https://nymrli.top/2019/03/07/ACM-DFS、BFS/
 https://nymrli.top/2019/03/07/ACM-快速幂/
@@ -97,4 +98,3 @@ https://nymrli.top/2018/10/24/复制Django项目时需要注意、修改的地�
 https://nymrli.top/2018/10/24/Python Web——Django笔记(一)/
 https://nymrli.top/2018/10/24/网络宽带和网络延迟/
 https://nymrli.top/2018/10/24/linux下apt-get介绍/
-https://nymrli.top/2018/10/18/python中关于round函数的注意事项/

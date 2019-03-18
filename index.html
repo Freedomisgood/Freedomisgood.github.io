@@ -97,7 +97,60 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/03/15/Linux命令手册/">Linux命令手册</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-15T14:33:26.000Z">2019-03-15</time><i class="fa fa-edit"></i><time datetime="2019-03-15T14:33:26.000Z">2019-03-16</time></div><div class="recent-post-content">scp1、从服务器上下载文件
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/">frp结合nginx实现内网web服务和tcp的转发</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-02T10:48:23.000Z">2019-03-02</time><i class="fa fa-edit"></i><time datetime="2019-03-02T10:48:23.000Z">2019-03-18</time></div><div class="recent-post-content">
+服务端 - 阿里云服务器: Ubuntu 16.04
+客户端 - 活动室电脑 : Ubuntu 16.04
+
+配置server端1$ sudo vim frps.ini
+1234[common]                 #必须有的配置段，在frpc.ini和frps.ini中都必须要有bind_port = 7000         #服务端服务的监听端口vhost_http_port = 16666  #自己设定的http访问端口vhost_https_port = 17777 #自己设定的https访问端口
+保存并且退出，使用如下服务命令启动frps服务
+1$ nohup ./f ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/17/南京邮电大学java程序设计作业在线编程第六次作业/">南京邮电大学java程序设计作业在线编程第六次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-17T05:29:36.000Z">2019-03-17</time><i class="fa fa-edit"></i><time datetime="2019-03-17T05:29:36.000Z">2019-03-17</time></div><div class="recent-post-content">总分：100选择题得分：40
+1.下列方法定义中，正确的是（）
+
+A.double me（int a，int b）{int r; r = ab}
+B.double me（a，b）{return b;}
+C.int me（int a，int b）{return（a-b）;}
+D.int me（inta，b）{return（a-b）;}
+正确答案是：C
+
+2.下列方法定义中，不正确的是（）
+
+A.float x（int a，int b）{return（ab）;}
+B.int x（int a，int b）{return ab;}
+C.int x（int a，int b）{return a * b;} ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/17/南京邮电大学java程序设计作业在线编程第六次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/">南京邮电大学java程序设计作业在线编程第五次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-17T03:44:36.000Z">2019-03-17</time><i class="fa fa-edit"></i><time datetime="2019-03-17T03:44:36.000Z">2019-03-17</time></div><div class="recent-post-content">总分：100选择题得分：50
+
+以下哪一个工具是Java的编译器？( )
+
+
+
+A.javac.exe
+B.java.exe
+C.javap.exe
+D.javadoc.exe
+正确答案是: A
+
+
+以下哪一个数据类型不属于Java的基本数据类型？( )
+
+
+
+A.boolean
+B.char
+C.int
+D.String
+正确答案是: D
+
+
+假设有如下类的定义： public class test{ public static void main(String[] args){ int a= 3, b = 4; swap(a,b); System.out.println(“a=”+a +  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/南京邮电大学java程序设计作业在线编程第三次作业/">南京邮电大学java程序设计作业在线编程第三次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:12:47.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:12:47.000Z">2019-03-17</time></div><div class="recent-post-content">选择题得分：60 \1. 设有如下定义语句： String s1=”My cat”; int m=s1.compareTo(“My a cat”); 语句被执行后m的值为（ ）
+A.2
+B.1
+C.0
+D.-2
+正确答案是: A
+ \2. 语句 String s1=new String(“Hello”); String s2=new String(“Hello”); System.out.println(s1==s2); System.out.printlv(s1.equals(s2)); 执行后的输出结果是（ ）
+A.Hello false
+B.Hello true
+C.Hello Hell ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/07/南京邮电大学java程序设计作业在线编程第三次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/15/Linux命令手册/">Linux命令手册</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-15T14:33:26.000Z">2019-03-15</time><i class="fa fa-edit"></i><time datetime="2019-03-15T14:33:26.000Z">2019-03-16</time></div><div class="recent-post-content">scp1、从服务器上下载文件
 1scp username@servername:/path/filename /var/www/local_dir（本地目录）
  例如scp root@192.168.0.101:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）
 2、上传本地文件到服务器
@@ -122,16 +175,7 @@ Linux其他版本或者不是Ubuntu 16.04 见官网修改方式
 假设我们要求a^b，那么其实b是可以拆成二进制的，该二进制数第i位的权为2^(i-1)，例如当b==11时，a^11=a^(2^0+2^1+2^3)
 
 123456789int poww(int a,int b)&#123;    int ans=1,base=a;    while(b!)&#123;        if(b&amp;1) ans*=base;        base*=base;        b&gt;&gt;=1;　 &#125;    return ans;&#125;
-11的二进制是1011，11 = 2³×1 + 2²×0 + 2¹×1 + 2º ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-快速幂/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/南京邮电大学java程序设计作业在线编程第三次作业/">南京邮电大学java程序设计作业在线编程第三次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:12:47.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:12:47.000Z">2019-03-07</time></div><div class="recent-post-content">选择题得分：60 \1. 设有如下定义语句： String s1=”My cat”; int m=s1.compareTo(“My a cat”); 语句被执行后m的值为（ ）
-A.2
-B.1
-C.0
-D.-2
-正确答案是: A
- \2. 语句 String s1=new String(“Hello”); String s2=new String(“Hello”); System.out.println(s1==s2); System.out.printlv(s1.equals(s2)); 执行后的输出结果是（ ）
-A.Hello false
-B.Hello true
-C.Hello Hell ...</div><div class="read-more"><a class="more" href="/2019/03/07/南京邮电大学java程序设计作业在线编程第三次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/为了不跑操而Excel——Orz/">为了不跑操而Excel——Orz</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T07:45:07.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T07:45:07.000Z">2019-03-07</time></div><div class="recent-post-content">3月1日Excel
+11的二进制是1011，11 = 2³×1 + 2²×0 + 2¹×1 + 2º ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-快速幂/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/为了不跑操而Excel——Orz/">为了不跑操而Excel——Orz</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T07:45:07.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T07:45:07.000Z">2019-03-07</time></div><div class="recent-post-content">3月1日Excel
 15、16、17、18级分类——筛选、开头是（?15通配符）、制不同表
 
 获得50m、800-1000m、身高、肺活量……各年级数据和总的平均值
@@ -178,19 +222,7 @@ job stores（作业存储器）存储被调度的作业，默认的作业存储�
 
 解决方案:nginx.conf中添加123# proxy_set_header Host $host:80; # proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 全文
-12345678910111213141516server &#123;    listen 8888;    server_name 0.0.0.0;    cha ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="nginx"> nginx</a></div><div class="read-more"><a class="more" href="/2019/03/02/flask-nginx如何获得真实IP/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/">frp结合nginx实现内网web服务和tcp的转发</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-02T10:48:23.000Z">2019-03-02</time><i class="fa fa-edit"></i><time datetime="2019-03-02T10:48:23.000Z">2019-03-02</time></div><div class="recent-post-content">
-服务端 - 阿里云服务器: Ubuntu 16.04
-客户端 - 活动室电脑 : Ubuntu 16.04
-
-配置server端1$ sudo vim frps.ini
-1234[common]                 #必须有的配置段，在frpc.ini和frps.ini中都必须要有bind_port = 7000         #服务端服务的监听端口vhost_http_port = 16666  #自己设定的http访问端口vhost_https_port = 17777 #自己设定的https访问端口
-保存并且退出，使用如下服务命令启动frps服务
-1$ nohup ./f ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/24/搭建frp服务-阿里云服务器/">搭建frp服务--阿里云服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-24T06:56:27.000Z">2019-02-24</time><i class="fa fa-edit"></i><time datetime="2019-02-24T06:56:27.000Z">2019-03-02</time></div><div class="recent-post-content">搭建frp服务–阿里云服务器为了可以远程访问活动室的电脑，需要进行内网穿透。之前9块钱买了花生壳的服务，勉强用用还行，带宽很有限。听说了frp后,打算在阿里云上安个frp服务，充当中转服务器。
-什么是frp
-frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。
-
-开始搭建外网主机SSH连接上外网主机后，使用wget指令下载frp。
-wget https://github.com/fatedier/frp/releases/download/v0.20.0/frp_0.2 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/02/24/搭建frp服务-阿里云服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/构造一个能发数据的POST请求头/">构造一个能发数据的POST请求头</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T14:23:52.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T14:23:52.000Z">2019-03-02</time></div><div class="recent-post-content">之前学请求、响应的时候只是过了一边，大致知道有这些东西。但这次真正要用的时候却又忘了到底该如何写，错误的请求头、请求体的格式导致esp8266一直发送不了数据到服务器上，又重新看了遍请求request的知识，才终于搞明白
+12345678910111213141516server &#123;    listen 8888;    server_name 0.0.0.0;    cha ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="nginx"> nginx</a></div><div class="read-more"><a class="more" href="/2019/03/02/flask-nginx如何获得真实IP/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/构造一个能发数据的POST请求头/">构造一个能发数据的POST请求头</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T14:23:52.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T14:23:52.000Z">2019-03-02</time></div><div class="recent-post-content">之前学请求、响应的时候只是过了一边，大致知道有这些东西。但这次真正要用的时候却又忘了到底该如何写，错误的请求头、请求体的格式导致esp8266一直发送不了数据到服务器上，又重新看了遍请求request的知识，才终于搞明白
 请求最初的写法:由于在esp8266上已经选择、连接好了了httpbin.org的穿透，就以为Host可以不用加了，于是产生了 最初的写法：
 1POST /post?= HTTP/1.1
 ▲根据玩单片机的小伙伴说必须多出一行\r\n，所以这边是有一行空行的
@@ -201,7 +233,7 @@ wget https://github.com/fatedier/frp/releases/download/v0.20.0/frp_0.2 ...</div>
 3.运行run（Ctrl+shift+F10）即可注:如果没有这样设定   pycharm启动 是不会有作用的（就像这样）地址依旧会是127.0.0.1
 - 查看自己的IP地址1.命令行方式cmd-&gt;ipconfig-&gt;IPv4
 2.查网络与共享中心打开端口如果还不行的话就可能是  端口没有打开
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a></div><div class="read-more"><a class="more" href="/2019/02/28/Flask-本地局域网连接/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/eclipse使用/">eclipse使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T05:18:25.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T05:18:25.000Z">2019-02-26</time></div><div class="recent-post-content">Eclipse选择工作路径
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/02/28/Flask-本地局域网连接/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/eclipse使用/">eclipse使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T05:18:25.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T05:18:25.000Z">2019-02-26</time></div><div class="recent-post-content">Eclipse选择工作路径
 新建工程一.选择File-&gt;New-&gt;Project
 二.Java-&gt;Java Project
 三.工程配置
@@ -261,13 +293,4 @@ D.JDK
 A.private static int main(String args[ ]){ }
 B.public static void main(String args[ ]){ }
 C.public static int main(char args[ ]){ }
-D.private s ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/02/26/南京邮电大学java程序设计作业在线编程第一次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/18/Cmake-入门/">Cmake 入门</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-18T08:42:36.000Z">2019-02-18</time><i class="fa fa-edit"></i><time datetime="2019-02-18T08:42:36.000Z">2019-02-18</time></div><div class="recent-post-content">Cmake 入门入门案例：单个源文件例如，假设现在我们的项目中只有一个源文件 main.cc ，该程序的用途是计算一个数的指数幂。
-1.首先编写 CMakeLists.txt 文件，并保存在与 main.cc 源文件同个目录下123456# CMake 最低版本号要求cmake_minimum_required (VERSION 2.8)# 项目信息project (Demo1)# 指定生成目标add_executable(Demo main.cc)
-语法:
-由命令、注释和空格组成，其中命令是不区分大小写的。
-
-符号 # 后面的内容被认为是注释
-
-命令由命令名称、小括号和参数组成
-
-参数之间使 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/02/18/Cmake-入门/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+D.private s ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/02/26/南京邮电大学java程序设计作业在线编程第一次作业/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,3 +1,5 @@
+https://nymrli.top/2019/03/28/蓝桥杯突击训练/
+https://nymrli.top/2019/03/25/C++机器学习库MLPack/
 https://nymrli.top/2019/03/17/南京邮电大学java程序设计作业在线编程第六次作业/
 https://nymrli.top/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/
 https://nymrli.top/2019/03/15/Linux命令手册/
@@ -96,5 +98,3 @@ https://nymrli.top/2018/10/24/Python爬虫知识点——响应/
 https://nymrli.top/2018/10/24/Python爬虫知识点——爬虫的基本原理/
 https://nymrli.top/2018/10/24/Python爬虫知识点——URL与URI/
 https://nymrli.top/2018/10/24/Python爬虫知识点——Chrome开发者工具Network/
-https://nymrli.top/2018/10/24/XShell通过SSH远程连接云服务器/
-https://nymrli.top/2018/10/24/复制Django项目时需要注意、修改的地方/

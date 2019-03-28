@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>C++机器学习库MLPack · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">C++机器学习库MLPack</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/03/25</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">824</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="C-机器学习库MLPack"><a href="#C-机器学习库MLPack" class="headerlink" title="C++机器学习库MLPack"></a>C++机器学习库MLPack</h1><blockquote>
+<p>mlpack: a scalable C++ machine learning library</p>
+</blockquote>
+<p>由于在网上查了一下发现安装这个库碰到了不少问题，所以还是记录一下安装过程。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
+<p>列出两种安装教程吧，第一种实测可以。第二种在测试Armadillo的时候没通过，还是缺库，有兴趣的人可以通过给的Armadillo官网链接下载安装Armadillo再试试</p>
+</blockquote>
+<h3 id="安装方法一："><a href="#安装方法一：" class="headerlink" title="安装方法一："></a>安装方法一：</h3><p><a href="http://www.mlpack.org/" target="_blank" rel="noopener">Mlpack 官网</a> 提供了下载的方法 ： <code>sudo apt-get install libmlpack-dev</code> ， 但貌似有博客指出目前国内源里是没有这个镜像的，所以采取的办法是直接从观望上下载<code>mlpack-3.0.0.tar.gz</code>（没敢使用最新的，怕出错） 来编译安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> tar -xvf mlpack-3.0.0.tar.gz </span><br><span class="line"><span class="meta">$</span> cd mlpack-1.0.12  </span><br><span class="line"><span class="meta">$</span> mkdir build  </span><br><span class="line"><span class="meta">$</span> sudo apt-get install libboost-math-dev libboost-program-options-dev libboost-random-dev libboost-test-dev libxml2-dev libarmadillo-dev  </span><br><span class="line"><span class="meta">$</span> cd build  </span><br><span class="line"><span class="meta">$</span> cmake </span><br><span class="line"><span class="meta">$</span> make  </span><br><span class="line"><span class="meta">$</span> sudo make install</span><br></pre></td></tr></table></figure>
+<p>注意根据报错信息：<strong>Maybe need administrative privileges.</strong>，所以 <code>make install</code> 前面要加上<code>sudo</code>权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[ 51%] Built target mlpack_sparse_coding</span><br><span class="line"><span class="meta">[100%</span>] Built target mlpack_test</span><br><span class="line">Install the project...</span><br><span class="line">-- Install configuration: ""</span><br><span class="line">CMake Error at cmake_install.cmake:36 (file):</span><br><span class="line">  file cannot create directory: /usr/local/lib/pkgconfig.  Maybe need</span><br><span class="line">  administrative privileges.</span><br></pre></td></tr></table></figure>
+<p>然后就是可选的编译条件，就是你只想安装其中一些包，也是可以的：  <code>$ make pca allknn allkfn  ,只安装pca allknn allkfn这几个算法包。</code></p>
+<p>摘自：<a href="http://www.linuxdiyf.com/linux/27052.html" target="_blank" rel="noopener">http://www.linuxdiyf.com/linux/27052.html</a></p>
+<h3 id="安装方式二：（不推荐）"><a href="#安装方式二：（不推荐）" class="headerlink" title="安装方式二：（不推荐）"></a>安装方式二：（不推荐）</h3><h4 id="安装依赖库"><a href="#安装依赖库" class="headerlink" title="安装依赖库"></a>安装依赖库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Armadillo     &gt;= 6.500.0</span><br><span class="line">Boost (program_options, math_c99, unit_test_framework, serialization,</span><br><span class="line">       spirit)</span><br><span class="line">CMake         &gt;= 2.8.5</span><br></pre></td></tr></table></figure>
+<h5 id="Aramdillo-安装-（Ubuntu为例子）"><a href="#Aramdillo-安装-（Ubuntu为例子）" class="headerlink" title="Aramdillo 安装  （Ubuntu为例子）"></a>Aramdillo 安装  （Ubuntu为例子）</h5><p> 首先安装Armadillo依赖的库：lapack, blas, boost</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get install liblapack-dev</span><br><span class="line"><span class="meta">$</span> sudo apt-get install libblas-dev</span><br><span class="line"><span class="meta">$</span> sudo apt-get install libboost-dev</span><br></pre></td></tr></table></figure>
+<p>接下来 安装Armadillo：<code>sudo apt-get libarmadillo-dev</code></p>
+<p>之后，安装完成，测试是否完成！以上步骤，都是应该可以直接完成的，需要Cmake和g++提前安装。</p>
+<p><code>g++ test.cpp -o test -larmadillo</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;armadillo&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> arma;</span><br><span class="line"><span class="comment">//test.cpp</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>** argv)</span> </span>&#123;</span><br><span class="line">    mat A=randu&lt;mat&gt;(<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line">    mat B=randu&lt;mat&gt;(<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line">    cout&lt;&lt;A*trans(B)&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>网上还有说<strong>Armadillo</strong>也无法找不到镜像， 于是还是到官网下载下来编译安装，[Armadillo C++ matrix library](</p>
+<h5 id="Boost库的安装"><a href="#Boost库的安装" class="headerlink" title="Boost库的安装"></a>Boost库的安装</h5><p><code>apt-get install libboost-math-dev libboost-program-options-dev libboost-random-dev libboost-test-dev libxml2-dev</code></p>
+<h5 id="mlpack安装"><a href="#mlpack安装" class="headerlink" title="mlpack安装"></a>mlpack安装</h5><p>也是去官网下载编译安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> tar -xzf mlpack-2.0.1.tar.gz   # tar解压</span><br><span class="line"><span class="meta">$</span> cd mlpack-2.0.1                # 进入解压后的目录</span><br><span class="line"><span class="meta">$</span> unzip mlpack-2.0.1.zip         # zip解压</span><br><span class="line"><span class="meta">$</span> cd mlpack-2.0.1                # 进入解压后的目录</span><br><span class="line"><span class="meta">#</span> 之后，建立build目录，cmake，make即可</span><br><span class="line"><span class="meta">$</span> mkdir build</span><br><span class="line"><span class="meta">$</span> cd build</span><br><span class="line"><span class="meta">$</span> cmake ../</span><br><span class="line"><span class="meta">$</span> make    </span><br><span class="line"><span class="meta">$</span> sudo make install</span><br></pre></td></tr></table></figure>
+<h2 id="使用mlpack"><a href="#使用mlpack" class="headerlink" title="使用mlpack"></a>使用mlpack</h2><p>源文件中有各种算法的例子，可以学习其使用方法，这里需要注意一点，在编译和链接时，都要加上<code>-lmlpack -larmadillo</code>，来包含所需库。</p>
+<p>如编写下列代码:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mlpack/core.hpp&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; mlpack::util::GetVersion() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>▲.注意.编译的命令为<code>g++ -std=c++11 testmlpack.cpp -o testlars -l mlpack -l armadillo</code>，其中要加上<strong>-std=c++11</strong>，不然无法编译通过。</p>
+<hr>
+<p>[Armadillo C++ ML library]<a href="http://arma.sourceforge.net/download.html" target="_blank" rel="noopener">http://arma.sourceforge.net/download.html</a>)</p>
+<p>如果<strong>Armadillo</strong>出错，可以去官网[Armadillo C++ ML library]<a href="http://arma.sourceforge.net/download.html)下载编译安装" target="_blank" rel="noopener">http://arma.sourceforge.net/download.html)下载编译安装</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/03/25/C++机器学习库MLPack/">https://nymrli.top/2019/03/25/C++机器学习库MLPack/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/03/28/蓝桥杯突击训练/" title="蓝桥杯突击训练"><span>< PreviousPost</span><br><span class="prevTitle">蓝桥杯突击训练</span></a><a class="nextSlogan" href="/2019/03/17/南京邮电大学java程序设计作业在线编程第六次作业/" title="南京邮电大学java程序设计作业在线编程第六次作业"><span>NextPost ></span><br><span class="nextTitle">南京邮电大学java程序设计作业在线编程第六次作业</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'C++机器学习库MLPack',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-机器学习库MLPack"><span class="toc-number">1.</span> <span class="toc-text">C++机器学习库MLPack</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装方法一："><span class="toc-number">1.1.1.</span> <span class="toc-text">安装方法一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装方式二：（不推荐）"><span class="toc-number">1.1.2.</span> <span class="toc-text">安装方式二：（不推荐）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装依赖库"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">安装依赖库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Aramdillo-安装-（Ubuntu为例子）"><span class="toc-number">1.1.2.1.1.</span> <span class="toc-text">Aramdillo 安装  （Ubuntu为例子）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Boost库的安装"><span class="toc-number">1.1.2.1.2.</span> <span class="toc-text">Boost库的安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mlpack安装"><span class="toc-number">1.1.2.1.3.</span> <span class="toc-text">mlpack安装</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用mlpack"><span class="toc-number">1.2.</span> <span class="toc-text">使用mlpack</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

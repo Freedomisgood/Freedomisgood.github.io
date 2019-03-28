@@ -34,7 +34,6 @@ https://nymrli.top/2019/01/23/Chrome开发者工具Network/
 https://nymrli.top/2019/01/23/AU使用/
 https://nymrli.top/2019/01/23/Charles配置/
 https://nymrli.top/2019/01/23/Python中对时间戳、时间的处理/
-https://nymrli.top/2019/01/22/Sublmie-没有输出结果问题解决/
 https://nymrli.top/2019/01/22/基础网络知识/
 https://nymrli.top/2019/01/21/Jupyter使用/
 https://nymrli.top/2019/01/19/河海大学AI-机器人冬令营/
@@ -98,3 +97,4 @@ https://nymrli.top/2018/10/24/Python爬虫知识点——响应/
 https://nymrli.top/2018/10/24/Python爬虫知识点——爬虫的基本原理/
 https://nymrli.top/2018/10/24/Python爬虫知识点——URL与URI/
 https://nymrli.top/2018/10/24/Python爬虫知识点——Chrome开发者工具Network/
+https://nymrli.top/2018/10/24/XShell通过SSH远程连接云服务器/

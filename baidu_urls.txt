@@ -1,3 +1,5 @@
+https://nymrli.top/2019/05/27/微信公众号Pyhton/
+https://nymrli.top/2019/05/27/DigitalOcean-VPS注册/
 https://nymrli.top/2019/05/27/PyWinAuto使用/
 https://nymrli.top/2019/05/27/Google-Colab使用/
 https://nymrli.top/2019/05/27/Keras使用——图像增强/
@@ -96,5 +98,3 @@ https://nymrli.top/2018/11/07/ServerChan-南邮教务处/
 https://nymrli.top/2018/11/04/高科GSWIFI江苏破解教程/
 https://nymrli.top/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/
 https://nymrli.top/2018/11/02/apt-get-update无法连接/
-https://nymrli.top/2018/10/28/Windows-控制台Cmd乱码（及永久修改编码）解决方法/
-https://nymrli.top/2018/10/25/JS正则及常用方法函数总结/

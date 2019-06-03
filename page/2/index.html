@@ -97,7 +97,12 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/为了不跑操而Excel——Orz/">为了不跑操而Excel——Orz</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T07:45:07.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T07:45:07.000Z">2019-05-27</time></div><div class="recent-post-content">为了不跑操而Excel——Orz3月1日Excel
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/Linux下开机启动Python脚本/">Linux下开机启动Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:48:46.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:48:46.000Z">2019-06-01</time></div><div class="recent-post-content">/etc/rc.local将脚本写在/etc/rc.local文件输入命令：sudo vi /etc/rc.local在exit 0上一行输入：python /usr/bin/python /home/pi/test.py重启就可以看效果sudo reboot
+
+当然，rc.local 文件需要有执行权限（默认没有）$ sudo chmod +x /etc/rc.local对于命令，最好是先which python查出命令路径，写命令时写绝对路径
+
+/etc/init.d写一个服务放到linux的/etc/init.d目录中
+并且授权bash脚本chmod 755 /etc/init.d/my ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/03/Linux下开机启动Python脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/为了不跑操而Excel——Orz/">为了不跑操而Excel——Orz</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T07:45:07.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T07:45:07.000Z">2019-05-27</time></div><div class="recent-post-content">为了不跑操而Excel——Orz3月1日Excel
 15、16、17、18级分类——筛选、开头是（?15通配符）、制不同表
 
 获得50m、800-1000m、身高、肺活量……各年级数据和总的平均值
@@ -119,17 +124,47 @@
 假设我们要求a^b，那么其实b是可以拆成二进制的，该二进制数第i位的权为2^(i-1)，例如当b==11时，a^11=a^(2^0+2^1+2^3)
 
 123456789int poww(int a,int b)&#123;    int ans=1,base=a;    while(b!)&#123;        if(b&amp;1) ans*=base;        base*=base;        b&gt;&gt;=1;　 &#125;    return ans;&#125;
-11的二进制是1011，11 = 2³×1 + 2²×0 + 2¹×1 + 2º ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-快速幂/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/">frp结合nginx实现内网web服务和tcp的转发</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-02T10:48:23.000Z">2019-03-02</time><i class="fa fa-edit"></i><time datetime="2019-03-02T10:48:23.000Z">2019-03-18</time></div><div class="recent-post-content">
+11的二进制是1011，11 = 2³×1 + 2²×0 + 2¹×1 + 2º ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-快速幂/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-DFS、BFS/">ACM-DFS、BFS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:55:03.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:55:03.000Z">2019-04-26</time></div><div class="recent-post-content">深度优先搜索(DFS)
+从某个状态,不断转移状态直到无法转移,然后回退到前一步的状态,继续转移到其他状态,如此不断重复,直到找到最终解. ====&gt; 递归函数  
+隐式的用到了栈(stack)
+
+123456789101112131415161718192021222324252627//[部分和问题]#include &lt;iostream&gt;#define MAXN 10000int n,k;int s[MAXN];using namespace std;bool dfs(int i,int sum)&#123;    if( i == n ) return sum == k; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-DFS、BFS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/15/Linux命令手册/">Linux命令手册</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-15T14:33:26.000Z">2019-03-15</time><i class="fa fa-edit"></i><time datetime="2019-03-15T14:33:26.000Z">2019-03-26</time></div><div class="recent-post-content">scp1、从服务器上下载文件
+1scp username@servername:/path/filename /var/www/local_dir（本地目录）
+ 例如scp root@192.168.0.101:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）
+2、上传本地文件到服务器
+1scp /path/filename username@servername:/path
+例如scp /var/www/test.php  root@192.168.0.101:/var/ww ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/15/Linux命令手册/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/">frp结合nginx实现内网web服务和tcp的转发</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-02T10:48:23.000Z">2019-03-02</time><i class="fa fa-edit"></i><time datetime="2019-03-02T10:48:23.000Z">2019-03-18</time></div><div class="recent-post-content">
 服务端 - 阿里云服务器: Ubuntu 16.04
 客户端 - 活动室电脑 : Ubuntu 16.04
 
 配置server端1$ sudo vim frps.ini
 1234[common]                 #必须有的配置段，在frpc.ini和frps.ini中都必须要有bind_port = 7000         #服务端服务的监听端口vhost_http_port = 16666  #自己设定的http访问端口vhost_https_port = 17777 #自己设定的https访问端口
 保存并且退出，使用如下服务命令启动frps服务
-1$ nohup ./f ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/06/Python-adb操作手机/">Python+adb操作手机</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-06T05:00:09.000Z">2019-02-06</time><i class="fa fa-edit"></i><time datetime="2019-02-06T05:00:09.000Z">2019-03-18</time></div><div class="recent-post-content">Adbwifi连接调试 adb connect {ip}如果你不想用usb连接调试，可以选择使用adb 连接调试，命令是 adb connect {ip} ，需要在同一个局域网内。这个功能也比较实用，但首次连接时，需要另外一些配置，建议可以网上搜索下adb wifi连接手机等关键字看看。
-屏幕截屏 screencap -p {图片存储地址}这个其实直接通过手机截屏再发送到电脑就可以了，但我开发的是TV应用，在盒子上没法截屏，所以这个命令对我来说还是较实用的。
-获取或推送文件 adb pull/push这个也挺实用的，获取手机指定位置的文件到电脑上，或者从电脑发送文件到手机上
-模拟按键事件//这 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="模拟操作"> 模拟操作</a></div><div class="read-more"><a class="more" href="/2019/02/06/Python-adb操作手机/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/南京邮电大学java程序设计作业在线编程第三次作业/">南京邮电大学java程序设计作业在线编程第三次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:12:47.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:12:47.000Z">2019-03-17</time></div><div class="recent-post-content">选择题得分：60 \1. 设有如下定义语句： String s1=”My cat”; int m=s1.compareTo(“My a cat”); 语句被执行后m的值为（ ）
+1$ nohup ./f ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/">南京邮电大学java程序设计作业在线编程第五次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-17T03:44:36.000Z">2019-03-17</time><i class="fa fa-edit"></i><time datetime="2019-03-17T03:44:36.000Z">2019-03-17</time></div><div class="recent-post-content">总分：100选择题得分：50
+
+以下哪一个工具是Java的编译器？( )
+
+
+
+A.javac.exe
+B.java.exe
+C.javap.exe
+D.javadoc.exe
+正确答案是: A
+
+
+以下哪一个数据类型不属于Java的基本数据类型？( )
+
+
+
+A.boolean
+B.char
+C.int
+D.String
+正确答案是: D
+
+
+假设有如下类的定义： public class test{ public static void main(String[] args){ int a= 3, b = 4; swap(a,b); System.out.println(“a=”+a +  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/南京邮电大学java程序设计作业在线编程第三次作业/">南京邮电大学java程序设计作业在线编程第三次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:12:47.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:12:47.000Z">2019-03-17</time></div><div class="recent-post-content">选择题得分：60 \1. 设有如下定义语句： String s1=”My cat”; int m=s1.compareTo(“My a cat”); 语句被执行后m的值为（ ）
 A.2
 B.1
 C.0
@@ -138,12 +173,19 @@ D.-2
  \2. 语句 String s1=new String(“Hello”); String s2=new String(“Hello”); System.out.println(s1==s2); System.out.printlv(s1.equals(s2)); 执行后的输出结果是（ ）
 A.Hello false
 B.Hello true
-C.Hello Hell ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/07/南京邮电大学java程序设计作业在线编程第三次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/Linux下开机启动Python脚本/">Linux下开机启动Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:48:46.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:48:46.000Z">2019-03-03</time></div><div class="recent-post-content">rc.local将脚本写在/etc/rc.local文件输入命令：sudo vi /etc/rc.local在exit 0上一行输入：python /usr/bin/python /home/pi/test.py重启就可以看效果sudo reboot
+C.Hello Hell ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/07/南京邮电大学java程序设计作业在线编程第三次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/14/搭建Gitlab服务器/">搭建Gitlab服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-14T10:32:26.000Z">2019-03-14</time><i class="fa fa-edit"></i><time datetime="2019-03-14T10:32:26.000Z">2019-03-16</time></div><div class="recent-post-content">搭建Gitlab服务器下载安装Gitlab由于直接下载Gitlab会很慢(被墙的缘故) ， 于是选择清华的镜像安装，清华源
+Ubuntu 16.04 用户
+Linux其他版本或者不是Ubuntu 16.04 见官网修改方式
 
-当然，rc.local 文件需要有执行权限（默认没有）$ sudo chmod +x /etc/rc.local对于命令，最好是先which python查出命令路径，写命令时写绝对路径
 
-/etc/init.d写一个服务放到linux的/etc/init.d目录中
-并且授权bash脚本chmod 755 /etc/init.d/mypytho ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/03/Linux下开机启动Python脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/codeblocks中boost库安装/">codeblocks中boost库安装</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:04:59.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:04:59.000Z">2019-03-03</time></div><div class="recent-post-content">
+首先信任 GitLab 的 GPG 公钥:
+
+1curl https://packages.gitlab.com/gpg.key 2&gt; /dev/null | sudo apt-key add - &amp;&gt;/dev/null
+▲如果这步不行，先进行下一步
+
+文本框中内容写进 /etc/apt/sources.list.d/gitlab-ce.list
+
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/14/搭建Gitlab服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/程序设计周cpp学习笔记/">程序设计周cpp学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:56:14.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:56:14.000Z">2019-03-07</time></div><div class="recent-post-content">文件名传参123456789101112131415using namespace std;#define FILENAME "data.csv"void readfile(string file)&#123;	ifstream inFile;	inFile.open(file.c_str(), ios::out); // 打开模式可省略	string lineStr;	while (getline(inFile, lineStr) )		// 打印整行字符串		cout &lt;&lt; lineStr  &lt;&lt; '-'&lt;&lt; endl; &#125;  int main ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="程序设计"> 程序设计</a></div><div class="read-more"><a class="more" href="/2019/03/07/程序设计周cpp学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/codeblocks中boost库安装/">codeblocks中boost库安装</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:04:59.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:04:59.000Z">2019-03-03</time></div><div class="recent-post-content">
 首先要提出的是，boost在VS中是可以直接导入的，但是在CB中是不行的，所以写了下这篇文章。
 
 安装boost1.首先先去boost官网下载boost的源码 ， 选择你要下载的版本。 
@@ -184,7 +226,7 @@ wget https://github.com/fatedier/frp/releases/download/v0.20.0/frp_0.2 ...</div>
 3.运行run（Ctrl+shift+F10）即可注:如果没有这样设定   pycharm启动 是不会有作用的（就像这样）地址依旧会是127.0.0.1
 - 查看自己的IP地址1.命令行方式cmd-&gt;ipconfig-&gt;IPv4
 2.查网络与共享中心打开端口如果还不行的话就可能是  端口没有打开
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/02/28/Flask-本地局域网连接/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/eclipse使用/">eclipse使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T05:18:25.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T05:18:25.000Z">2019-02-26</time></div><div class="recent-post-content">Eclipse选择工作路径
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a></div><div class="read-more"><a class="more" href="/2019/02/28/Flask-本地局域网连接/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/eclipse使用/">eclipse使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T05:18:25.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T05:18:25.000Z">2019-02-26</time></div><div class="recent-post-content">Eclipse选择工作路径
 新建工程一.选择File-&gt;New-&gt;Project
 二.Java-&gt;Java Project
 三.工程配置
@@ -244,38 +286,4 @@ D.JDK
 A.private static int main(String args[ ]){ }
 B.public static void main(String args[ ]){ }
 C.public static int main(char args[ ]){ }
-D.private s ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/02/26/南京邮电大学java程序设计作业在线编程第一次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/18/Cmake-入门/">Cmake 入门</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-18T08:42:36.000Z">2019-02-18</time><i class="fa fa-edit"></i><time datetime="2019-02-18T08:42:36.000Z">2019-02-18</time></div><div class="recent-post-content">Cmake 入门入门案例：单个源文件例如，假设现在我们的项目中只有一个源文件 main.cc ，该程序的用途是计算一个数的指数幂。
-1.首先编写 CMakeLists.txt 文件，并保存在与 main.cc 源文件同个目录下123456# CMake 最低版本号要求cmake_minimum_required (VERSION 2.8)# 项目信息project (Demo1)# 指定生成目标add_executable(Demo main.cc)
-语法:
-由命令、注释和空格组成，其中命令是不区分大小写的。
-
-符号 # 后面的内容被认为是注释
-
-命令由命令名称、小括号和参数组成
-
-参数之间使 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/02/18/Cmake-入门/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/03/ACM-动态规划/">ACM_动态规划</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-03T07:49:10.000Z">2019-02-03</time><i class="fa fa-edit"></i><time datetime="2019-02-03T07:49:10.000Z">2019-02-07</time></div><div class="recent-post-content">图解动态规划 : http://www.sohu.com/a/153858619_466939
-动态规划 :
-最优子结构
-边界
-状态转移方程式
-
-题目二： 国王和金矿有一个国家发现了5座金矿，每座金矿的黄金储量不同，需要参与挖掘的工人数也不同。参与挖矿工人的总数是10人。每座金矿要么全挖，要么不挖，不能派出一半人挖取一半金矿。要求用程序求解出，要想得到尽可能多的黄金，应该选择挖取哪几座金矿？
-
-解法一: 排列组合时间复杂度 : O(2^N)
-解法二 : DP1.找到最优子结构
-10人4金矿(有一个金矿没挖)
-10-3人4金矿(挖了一个金矿)
-
-2.最优选择5个金矿的最优选择，就是（前4座金矿1 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="DP"> DP</a></div><div class="read-more"><a class="more" href="/2019/02/03/ACM-动态规划/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/01/ACM-贪心专题/">ACM_贪心专题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-01T12:17:50.000Z">2019-02-01</time><i class="fa fa-edit"></i><time datetime="2019-02-01T12:17:50.000Z">2019-02-02</time></div><div class="recent-post-content">贪心专题1.活动安排有若干个活动，第i个开始时间和结束时间是[Si,fi)，只有一个教室，活动之间不能交叠，求最多安排多少个活动？
-Input
-123第一行一个正整数n (n &lt;= 10000)代表活动的个数。第二行到第(n + 1)行包含n个开始时间和结束时间。开始时间严格小于结束时间，并且时间都是非负整数，小于1000000000
-Output
-1一行包含一个整数表示活动个数。
-Input示例
-123431 23 42 9
-Output示例
-12
-博主提供:
-1234567891011121314151617181920212223242526272829303132#include ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="贪心"> 贪心</a></div><div class="read-more"><a class="more" href="/2019/02/01/ACM-贪心专题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/24/学习nginx配置/">学习nginx配置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-24T08:45:40.000Z">2019-01-24</time><i class="fa fa-edit"></i><time datetime="2019-01-24T08:45:40.000Z">2019-01-24</time></div><div class="recent-post-content">nginx配置多台虚拟主机:1.分配IP地址
-2.新建、编写usr/local/nginx的conf配置文件
-12345678910111213http&#123;    sever&#123;        listen 192.168.1.17:80;				//监听 (IP地址:) 端口        server_name 192.168.1.17;			// 域名或者ip        access_log logs/server1.access.log conbined;//指定位置+使用日志文件默认格式        location /        &#123;        ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/01/24/学习nginx配置/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+D.private s ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/02/26/南京邮电大学java程序设计作业在线编程第一次作业/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

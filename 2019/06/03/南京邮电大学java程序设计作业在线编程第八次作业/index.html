@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>南京邮电大学java程序设计作业在线编程第八次作业 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">南京邮电大学java程序设计作业在线编程第八次作业</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/06/03</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,077</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="总分：100"><a href="#总分：100" class="headerlink" title="总分：100"></a>总分：100</h2><h3 id="选择题得分：70"><a href="#选择题得分：70" class="headerlink" title="选择题得分：70"></a>选择题得分：70</h3><ul>
+<li><ol>
+<li><code>int[][] a=new int[2</code>][3]，则该数组包含（ ）个数组元素。<br>A.2<br>B.3<br>C.6<br>D.不确定<br>正确答案是: C</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>已知类person是类student的父类，以下数组定义和赋值正确的是( )。<br>A.person p[]=new person[3]; p[1]=new student();<br>B.student s[]=new person[3]; s[1]=new person();<br>C.person p[]= new student[3];p[1]= new person();<br>D.student s[]=new student[3];s[1]=new person;<br>正确答案是: A</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>下面关于java中类的说法不正确的是( )。<br>A.类体中包含了变量定义和成员方法的定义<br>B.构造函数是类中的特殊方法<br>C.类一定要声明为public的，才可以执行<br>D.一个java文件中可以有多个class定义<br>正确答案是: C</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>关于接口下列说法正确的( )。<br>A.实现一个接口必须实现接口的所有方法<br>B.接口间不能有继承关系<br>C.一个类只能实现一个接口<br>D.接口和抽象类是同一回事<br>正确答案是: A</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>以下有关构造方法的说法，正确的是( )。<br>A.一个类的构造方法可以有多个<br>B.构造方法不可以重载<br>C.构造方法可以有返回值<br>D.构造方法可以和类同名，也可以和类名不同<br>正确答案是: A</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>下列论述中，错误的是（ ）。<br>A.Java源代码的后缀名是.java。<br>B.Java源代码中的每个类经过编译后都会生成一个.class文件。<br>C.在一个名为A.java的文件中只能定义一个类。<br>D.Java源代码中可以定义类和接口。<br>正确答案是: C</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>下列论述中，正确的是（ ）。<br>A.抽象方法是没有方法体的方法。<br>B.抽象方法一定存在于抽象类中。<br>C.抽象类中一定要包含抽象方法。<br>D.抽象类可以创建对象。<br>正确答案是: A</li>
+</ol>
+</li>
+<li><ol start="8">
+<li>MyClass类定义如下： class MyClass{ public MyClass(int x){ } } 如下方式创建对象，（ ）是正确的<br>A.MyClass myobj=new Myclass;<br>B.MyClass myobj=new Myclass();<br>C.MyClass myobj=new Myclass(1);<br>D.MyClass myobj=new Myclass(1,2);<br>正确答案是: C</li>
+</ol>
+</li>
+<li><ol start="9">
+<li>关于方法void fjv(int x,int y){}，下面（ ）不能成为它的重载。<br>A.void fjv(int x,float y){}<br>B.void fjv(int x){}<br>C.void fjv(float x,int y){}<br>D.int fjv(int y,int x){}<br>正确答案是: D</li>
+</ol>
+</li>
+<li><ol start="10">
+<li>下述（ ）说法是不正确的<br>A.实例变量是用static关键字声明的；<br>B.实例变量是类的成员变量；<br>C.方法变量可在方法执行时创建；<br>D.方法变量在使用之前必须初始化；<br>正确答案是: A</li>
+</ol>
+</li>
+<li><ol start="11">
+<li>如果一个方法被修饰为<strong>____</strong>方法，则这个方法不能被重写。<br>A.final<br>B.static<br>C.void<br>D.protected<br>正确答案是: A</li>
+</ol>
+</li>
+<li><ol start="12">
+<li>在Java中，下面说法正确的是（ ）。<br>A.一个子类可以有多个父类，一个父类也可以有多个子类<br>B.一个子类可以有多个父类，但一个父类只可以有一个子类<br>C.一个子类可以有一个父类，但一个父类可以有多个子类<br>D.上述说法都不对<br>正确答案是: C</li>
+</ol>
+</li>
+<li><ol start="13">
+<li><strong><strong>___</strong></strong>变量在内存中只有一个拷贝，被该类的所有对象共享。<br>A.成员<br>B.局部<br>C.全局<br>D.类<br>正确答案是: D</li>
+</ol>
+</li>
+<li><ol start="14">
+<li>MAX_LENGTH是int型public成员变量, 变量值保持为常量100，下面哪句定义语句是正确的。<br>A.public int MAX_LENGTH=100;<br>B.final int MAX_LENGTH=100;<br>C.final public int MAX_LENGTH=100;<br>D.public final int MAX_LENGTH=100;<br>正确答案是: D</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 编写Main类，生成若干实例并验证程序的功能，请勿改动Main类的定义内容。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Pet pet=<span class="keyword">new</span> Dog(<span class="string">"WangCai"</span>);</span><br><span class="line">        System.out.println(pet.getName()+<span class="string">":"</span>+pet.shout());</span><br><span class="line">        pet=<span class="keyword">new</span> Cat(<span class="string">"XiaoHua"</span>);</span><br><span class="line">        System.out.println(pet.getName()+<span class="string">":"</span>+pet.shout());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 请在本行之后添加你的代码内容</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Pet</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> String <span class="title">shout</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Pet</span></span>&#123;</span><br><span class="line">    Dog(String name) &#123;</span><br><span class="line">        setName( name );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function">String <span class="title">shout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Wang Wang Wang"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Pet</span></span>&#123;</span><br><span class="line">    Cat(String name) &#123;</span><br><span class="line">        setName( name );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function">String <span class="title">shout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Miao Miao Miao"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/06/03/南京邮电大学java程序设计作业在线编程第八次作业/">https://nymrli.top/2019/06/03/南京邮电大学java程序设计作业在线编程第八次作业/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/06/03/Java课程第三次实验报告/" title="Java课程第三次实验报告"><span>< PreviousPost</span><br><span class="prevTitle">Java课程第三次实验报告</span></a><a class="nextSlogan" href="/2019/06/03/Windows下命令行神奇cmder/" title="Windows下命令行神器cmder"><span>NextPost ></span><br><span class="nextTitle">Windows下命令行神器cmder</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '南京邮电大学java程序设计作业在线编程第八次作业',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#总分：100"><span class="toc-number">1.</span> <span class="toc-text">总分：100</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择题得分：70"><span class="toc-number">1.1.</span> <span class="toc-text">选择题得分：70</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

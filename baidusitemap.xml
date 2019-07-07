@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://nymrli.top/2019/07/07/Python%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF-super-%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2019-07-07T02:05:43.842Z</lastmod>
+  </url>  <url>
+    <loc>https://nymrli.top/2019/07/07/yaml%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-spring-boot/</loc>
+    <lastmod>2019-07-07T02:05:09.903Z</lastmod>
+  </url>  <url>
+    <loc>https://nymrli.top/2018/11/08/%E5%A4%9A%E5%AA%92%E4%BD%93Au%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2019-07-06T02:29:12.348Z</lastmod>
+  </url>  <url>
     <loc>https://nymrli.top/2019/06/15/Base64%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8-%E8%BD%AC/</loc>
     <lastmod>2019-06-15T04:09:38.494Z</lastmod>
   </url>  <url>
@@ -190,9 +199,6 @@
     <loc>https://nymrli.top/2019/01/23/Chrome%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7Network/</loc>
     <lastmod>2019-01-23T05:39:27.448Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2019/01/23/AU%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2019-01-23T05:36:39.080Z</lastmod>
-  </url>  <url>
     <loc>https://nymrli.top/2019/01/23/Charles%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2019-01-23T05:33:19.644Z</lastmod>
   </url>  <url>
@@ -336,9 +342,6 @@
   </url>  <url>
     <loc>https://nymrli.top/2018/11/08/Shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2018-11-08T04:20:26.700Z</lastmod>
-  </url>  <url>
-    <loc>https://nymrli.top/2018/11/08/%E5%A4%9A%E5%AA%92%E4%BD%93Au%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2018-11-08T04:19:20.150Z</lastmod>
   </url>  <url>
     <loc>https://nymrli.top/2018/11/02/WSGI-uWSGI-uwsgi%E5%8F%8Anginx%E8%AF%B4%E6%98%8E/</loc>
     <lastmod>2018-11-02T08:16:15.520Z</lastmod>

@@ -1,0 +1,368 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Docker使用 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Docker使用</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/07/25</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,521</span> | Reading time: <span class="post-count">15</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="Docker学习"><a href="#Docker学习" class="headerlink" title="Docker学习"></a>Docker学习</h1><blockquote>
+<p>轻部署,省成本,易迁移</p>
+</blockquote>
+<h2 id="docker和虚拟机VM的区别"><a href="#docker和虚拟机VM的区别" class="headerlink" title="docker和虚拟机VM的区别"></a>docker和虚拟机VM的区别</h2><h3 id="一、本质上的区别："><a href="#一、本质上的区别：" class="headerlink" title="一、本质上的区别："></a>一、本质上的区别：</h3><p><img src="https://img-blog.csdn.net/20180711090727241?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppbmd6aHVuYmlhbmNoZW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
+<p>VM(VMware)在宿主机器、宿主机器操作系统的基础上创建虚拟层、虚拟化的操作系统、虚拟化的仓库，然后再安装应用；</p>
+<p>Container(Docker容器)，在宿主机器、宿主机器操作系统上创建Docker引擎，在引擎的基础上再安装应用。</p>
+<p>那么问题来了，没有操作系统，怎么运行程序？</p>
+<p>可以在Docker中创建一个ubuntu的镜像文件，这样就能将ubuntu系统集成到Docker中，运行的应用就都是ubuntu的应用。</p>
+<h3 id="二、使用上的区别："><a href="#二、使用上的区别：" class="headerlink" title="二、使用上的区别："></a>二、使用上的区别：</h3><p><img src="https://img-blog.csdn.net/20180711094611205?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppbmd6aHVuYmlhbmNoZW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
+<p>Size:</p>
+<ul>
+<li>虚拟机ubuntu大小为:24.1GB</li>
+<li>Docker中镜像文件占用内存: 81.2MB</li>
+</ul>
+<p>Startup：</p>
+<ul>
+<li>Docker在宿主机器的操作系统上创建Docker引擎，直接在宿主主机的操作系统上调用硬件资源，而不是虚拟化操作系统和硬件资源，所以操作速度快。</li>
+<li>这个其实安装一个ubuntu的虚拟机和拉取一个Docker的ubuntu镜像文件，运行一下就知道了，区别很明显，虚拟机开一下大概得2分多钟，而Docker只需要2秒钟。</li>
+</ul>
+<h2 id="宿主机、镜像与容器"><a href="#宿主机、镜像与容器" class="headerlink" title="宿主机、镜像与容器"></a>宿主机、镜像与容器</h2><p>宿主机器: 运行docker的机器</p>
+<p>镜像:不可以修改内容</p>
+<p>容器:可以修改能内容,相当于虚拟机,默认情况下彼此相互独立（容器之间可以通信）</p>
+<p>△.可以依据镜像来创建容器,也可以封装容器为一个镜像,即<strong>容器&lt;===&gt;镜像</strong></p>
+<h2 id="Docker命令"><a href="#Docker命令" class="headerlink" title="Docker命令"></a>Docker命令</h2><p>搜索镜像: <code>docker search python</code></p>
+<p>下载镜像: <code>docker pull NAME</code></p>
+<p>创新容器: <code>docker run -tid  (--name xxx)  IMAGE ID</code></p>
+<ul>
+<li><code>ti</code>表示以交互的形式创建容器，<code>d</code>表示不进入</li>
+</ul>
+<p>运行容器: <code>docker start CONTAINER_ID</code>  </p>
+<p>进入容器： <code>docker attach CONTAINER_ID</code></p>
+<ul>
+<li>进入容器前得前运行容器</li>
+</ul>
+<p>退出容器： <code>ctrl + p + q</code> , 以<code>ctrl + z</code> 、<code>exit</code>将会终止容器运行</p>
+<p>封装容器为镜像: <code>docker commit CONTAINER_ID IMAGE_ID:TAG</code></p>
+<p>容器通信-创建子节点链接中心节点: <code>docker run -tid  (--name xxx)  (--link CONTAINER_NAMES) IMAGE ID</code></p>
+<p>查看容器ip: <code>cat /ect/hosts</code> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@b68943564e76:/# cat /etc/hosts </span><br><span class="line">127.0.0.1	localhost</span><br><span class="line">::1	localhost ip6-localhost ip6-loopback</span><br><span class="line">fe00::0	ip6-localnet</span><br><span class="line">ff00::0	ip6-mcastprefix</span><br><span class="line">ff02::1	ip6-allnodes</span><br><span class="line">ff02::2	ip6-allrouters</span><br><span class="line">172.17.0.2	test 4e02c004539e</span><br><span class="line">172.17.0.3	b68943564e76</span><br></pre></td></tr></table></figure>
+<p>▲初次使用,  <code>ifconfig</code>使用无效,<code>ping</code>也无效,原因如下</p>
+<blockquote>
+<p>我创建的容器是拉取的Base镜像，而因为用Docker拉取的<strong>Base镜像</strong>如Centos和Ubuntu的话都是<strong>最简版本</strong>，不包含Ping工具，而对Docker进行Docker network和Docker链接操作时往往要用到Ping工具测试两个容器间的网络，此时就要用到Ping工具了，下面是Ubuntu下安装Ping工具的命令：<code>apt-get update &amp;&amp; apt-get install iputils-ping</code>、安装ifconfig工具:<code>apt install net-tools</code></p>
+</blockquote>
+<h2 id="Dockerfile指令"><a href="#Dockerfile指令" class="headerlink" title="Dockerfile指令"></a>Dockerfile指令</h2><blockquote>
+<p>Dockerfile文件D一定要大写</p>
+<p><code>$ docker build -t=&quot;dormanctpress/df_test2&quot; .</code></p>
+<ul>
+<li>.为Dockerfile的路径</li>
+</ul>
+</blockquote>
+<p>1.<code>FROM &lt;image&gt;:&lt;tag&gt;</code></p>
+<p>2.MAINTAINER</p>
+<p>3.RUN</p>
+<ul>
+<li>镜像构建中运行的命令</li>
+</ul>
+<p>4.EXPOSE</p>
+<ul>
+<li>如果是端口的话，只是声明会使用xx端口,但是实际使用时还是需要run -p xx    <code>$ docker build -t=&quot;dormanctpress/df_test2&quot; .</code></li>
+<li>设置环境变量</li>
+</ul>
+<p>CMD</p>
+<ul>
+<li>在容器运行时运行的默认命令(命令行中添加的命令可以代替掉Dokcerfile中写的CMD指令)</li>
+<li>每个Dockerfile只能够包含一个CMD，多个CMD 只有最后一个能有效</li>
+<li>定义的三种方式<ul>
+<li>CMD<cmd>这个会当做/bin/sh-c“cmd”来执行</cmd></li>
+<li>CMD[“executable”，”arg1”，”arg2”]<ul>
+<li>一定要双引号</li>
+</ul>
+</li>
+<li>CMD[“arg1”，”arg2”]，这个时候CMD作为ENTRYPOINT的参数</li>
+</ul>
+</li>
+</ul>
+<p>ENTRYPOINT</p>
+<ul>
+<li><p>每个Dockerfile只能够包含一个ENTRYPOINI，多个ENTRYPOINT只有最后一个能有效</p>
+</li>
+<li><p>不会像CMD命令一样被覆盖,除非使用<code></code></p>
+</li>
+<li>当定义了ENTRYPOINT后,CMD将被作为参数使用。如果定义了CMD，那么<code>docker run -t test/osf2 xxxx</code>后面即xxxx的内容全会被当做参数传递ENTRYPOINT</li>
+</ul>
+<p>组合使用ENTRYPOINT和CMD: ENTRYPOINT指定命令,CMD指定默认参数</p>
+<p>ADD&amp;COPY</p>
+<p>共同点</p>
+<ul>
+<li><p>ADD&amp;COPY的源必须在context路径下</p>
+</li>
+<li><p>当在源代码构建的方式下，可以通过ADD和COPY的方式，把Host上的文件或者目录复制到Image</p>
+<p>ADD</p>
+</li>
+<li><p>包含类似tar解压的功能</p>
+</li>
+<li><p>当src为网络URL的情况下，ADD指令可以把它下载到Dest的指定位置，这个在任何build的方式下都可以Work</p>
+</li>
+</ul>
+<p>COPY</p>
+<ul>
+<li>如果单纯复制文件,Docker推荐COPY</li>
+<li>ADD&amp;COPY的源必须在context路径下</li>
+<li>当在源代码构建的方式下，可以通过ADD和COPY的方式，把Host上的文件或者目录复制到Image</li>
+</ul>
+<p>VOLUME[‘/data’]</p>
+<ul>
+<li>设置数据卷</li>
+</ul>
+<p>WORKDIR /path/to/workdir</p>
+<ul>
+<li>一般使用绝对路径</li>
+</ul>
+<p>ENV <key> <value></value></key></p>
+<ul>
+<li>用来设置环境变量，后续的RUN可以使用它所创建的环境变量。</li>
+<li>当创建基于该镜像的Container的时候，会自动拥有设置的环境变量</li>
+</ul>
+<p>USER daemon</p>
+<ul>
+<li><p>指定UID或者username，来决定运行RUN指令的用户</p>
+</li>
+<li><p>如果不指定,则默认root</p>
+</li>
+</ul>
+<p>ONBUILD</p>
+<ul>
+<li>触发器</li>
+</ul>
+<h3 id="dockerfile构建过程"><a href="#dockerfile构建过程" class="headerlink" title="dockerfile构建过程"></a>dockerfile构建过程</h3><ol>
+<li>从基础镜像运行一个容器</li>
+<li>执行一条指令，对容器做出修改</li>
+<li>执行类似docker commit的操作，提交一个新的镜像层</li>
+<li>再基于刚提交的镜像运行一个新容器</li>
+<li>执行Dockerfile中的下一条指令，直至所有指令执行完毕</li>
+</ol>
+<h3 id="使用中间层镜像进行调试"><a href="#使用中间层镜像进行调试" class="headerlink" title="使用中间层镜像进行调试"></a>使用中间层镜像进行调试</h3><p>查找错误</p>
+<h3 id="Dockerfile-镜像缓存"><a href="#Dockerfile-镜像缓存" class="headerlink" title="Dockerfile 镜像缓存"></a>Dockerfile 镜像缓存</h3><p>构建缓存：将之前的镜像缓存</p>
+<p>不使用缓存<code>docker build --no-cache</code></p>
+<h3 id="查看镜像构建的过程"><a href="#查看镜像构建的过程" class="headerlink" title="查看镜像构建的过程"></a>查看镜像构建的过程</h3><p>查看构建过程:<code>docker history xxx/yyy</code></p>
+<h2 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h2><p><code>sudo docker run -v ~/container_data:/data -it ubuntu/bin/bash</code></p>
+<p>参数说明:使用-v选项,第一个参数为宿主机目录,:后的目录为在容器中使用的目录(挂载)</p>
+<h3 id="查看容器是否挂载了数据卷"><a href="#查看容器是否挂载了数据卷" class="headerlink" title="查看容器是否挂载了数据卷"></a>查看容器是否挂载了数据卷</h3><p><code>docker inspect CONTAINER_ID</code>可以查看容器是否挂载了数据卷</p>
+<h3 id="给数据卷增加权限"><a href="#给数据卷增加权限" class="headerlink" title="给数据卷增加权限"></a>给数据卷增加权限</h3><p><code>sudo docker run -v ~/datavolume:/data:ro -it ubuntu/bin/bash</code></p>
+<p>ro是read-only</p>
+<h2 id="数据卷容器"><a href="#数据卷容器" class="headerlink" title="数据卷容器"></a>数据卷容器</h2><blockquote>
+<p>命名的容器挂载数据卷，其他容器通过挂载这个容器实现数据共享，挂载数据卷的容器，就叫做数据卷容器</p>
+</blockquote>
+<p>挂载数据卷容器的方法</p>
+<p><code>docker run--volumes-from [CONTAINER NAME]</code></p>
+<h2 id="MySQL通信"><a href="#MySQL通信" class="headerlink" title="MySQL通信"></a>MySQL通信</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; can<span class="string">'t connect to MySQL server on '</span>172.17.0.8<span class="string">'(111)</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vim /etc/mvsal/my.cnf </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将<span class="built_in">bind</span>-address=127.0.0.1注释掉</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; Host <span class="string">'2eaf92ef2ff6'</span>is not allowed to connect to this MySQL server</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> create user <span class="string">"weiwei"</span>@<span class="string">"%"</span>identified by<span class="string">"weijc7789"</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建用户</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> grant create, select, update, delete, insert on *.* to weiwei;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 增添权限</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mysq1-h 172.17.0.8-u weiwei-p</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 链接</span></span><br></pre></td></tr></table></figure>
+<h2 id="redis通信"><a href="#redis通信" class="headerlink" title="redis通信"></a>redis通信</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> redis-cli -h 172.17.0.8</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; Could not connect to Redis at 172.17.0.8:6379:Connection refused</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vim /etc/redis /redis.conf</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将<span class="built_in">bind</span>-address=127.0.0.1注释掉</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果修改后/ect/init.d/redis-server restart后还是链接不了,重启进入容器</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> redis-cli-h 172.17.0.8-p 6379</span></span><br></pre></td></tr></table></figure>
+<p>一条命令实现停用并删除容器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps -q) &amp; docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure>
+<p>一条命令删除所有镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi `docker images -q`</span><br></pre></td></tr></table></figure>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="Dockerfile-RUN，CMD，ENTRYPOINT命令区别"><a href="#Dockerfile-RUN，CMD，ENTRYPOINT命令区别" class="headerlink" title="Dockerfile RUN，CMD，ENTRYPOINT命令区别"></a>Dockerfile RUN，CMD，ENTRYPOINT命令区别</h3><blockquote>
+<p>RUN命令执行命令并创建新的镜像层，通常用于安装软件包</p>
+<p>CMD命令设置容器启动后默认执行的命令及其参数，但CMD设置的命令能够被<code>docker run</code>命令后面的命令行参数替换</p>
+<p>ENTRYPOINT配置容器启动时的执行命令（不会被忽略，一定会被执行，即使运行 <code>docker run</code>时指定了其他命令）</p>
+</blockquote>
+<p>Shell格式和Exec格式运行命令</p>
+<p>我们可用两种方式指定 RUN、CMD 和 ENTRYPOINT 要运行的命令：Shell 格式和 Exec 格式：</p>
+<ul>
+<li>Shell格式：<instruction> <command>。例如：apt-get install python3</instruction></li>
+<li>Exec格式：<instruction> [“executable”, “param1”, “param2”, …]。例如： [“apt-get”, “install”, “python3”]</instruction></li>
+</ul>
+<p><strong>CMD 和 ENTRYPOINT 推荐使用 Exec 格式，因为指令可读性更强，更容易理解。RUN 则两种格式都可以。</strong></p>
+<p>### </p>
+<p><strong>总结</strong></p>
+<ul>
+<li>使用 RUN 指令安装应用和软件包，构建镜像。</li>
+<li>如果 Docker 镜像的用途是运行应用程序或服务，比如运行一个 MySQL，应该优先使用 Exec 格式的 ENTRYPOINT 指令。CMD 可为 ENTRYPOINT 提供额外的默认参数，同时可利用 docker run 命令行替换默认参数。</li>
+<li>如果想为容器设置默认的启动命令，可使用 CMD 指令。用户可在 docker run 命令行中替换此默认命令。</li>
+</ul>
+<hr>
+<h3 id="Docker-运行python-flask的web程序"><a href="#Docker-运行python-flask的web程序" class="headerlink" title="Docker 运行python flask的web程序"></a>Docker 运行python flask的web程序</h3><p>1.将Web程序打包成一个镜像,如(training/webapp)</p>
+<p>2.<code>docker run -d -P training/webapp python app.py</code></p>
+<ul>
+<li>使用dokcer运行在后台(-d)</li>
+<li>将容器的端口完全映射到宿主机上</li>
+<li>在容器中执行的命令是<code>python app.py</code></li>
+<li>在容器中运行镜像为<code>training/webapp</code>(应用程序) </li>
+</ul>
+<p>如果没有镜像,会自动安装打包好的镜像(上传到docker hub)</p>
+<ol start="3">
+<li>查看容器启动状况<code>docker ps</code></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>CONTAINER ID</th>
+<th>IMAGE</th>
+<th>COMMAND</th>
+<th>CREATE</th>
+<th>STATUS</th>
+<th>PORTS</th>
+<th>NAMES</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fef5547a8d4a</td>
+<td>training/webapp</td>
+<td>“python app.py”</td>
+<td>9 seconds ago</td>
+<td>Up 8 seconds</td>
+<td>0.0.0.0:32768 -&gt; 5000/tcp</td>
+<td>boring_bez</td>
+</tr>
+</tbody>
+</table>
+<p>4.此时就可以通过<code>IP地址:端口</code>访问这个应用程序</p>
+<p>查看日志:<code>docker logs 应用名(NAMES)</code>如<code>docker logs boring_bez</code></p>
+<h4 id="1创建镜像"><a href="#1创建镜像" class="headerlink" title="1创建镜像"></a>1创建镜像</h4><h5 id="1-1-ubuntu-python3-6"><a href="#1-1-ubuntu-python3-6" class="headerlink" title="1.1 ubuntu+python3.6"></a>1.1 ubuntu+python3.6</h5><p>为了使用国内源，先编辑一个sources.list，放在dokcerfile同目录下，作为docker创建镜像时的上下文。</p>
+<p>这个目录不要再有其他文件，否则还要加到.dockerignore，用阿里云</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe #Added by software-properties</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe #Added by software-properties</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse #Added by software-properties</span><br><span class="line">deb http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line">deb-src http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe #Added by software-properties</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse</span><br></pre></td></tr></table></figure>
+<p>dockerfile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">FROM ubuntu</span><br><span class="line">LABEL author=&quot;lazyman&quot;</span><br><span class="line">#用ubuntu国内源替换默认源</span><br><span class="line">RUN rm /etc/apt/sources.list</span><br><span class="line">COPY sources.list /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">#安装python3.6必要的包。源镜像太精简了，ip ifconfig之类的都没有。后续安装python pip也需要一些。但是build_essential似乎不必须，先去了。如果后面安装numpy之类需要gcc了，再加上</span><br><span class="line">RUN apt update</span><br><span class="line">RUN apt upgrade</span><br><span class="line">#RUN apt install -y apt-transport-https vim iproute2 net-tools build-essential ca-certificates curl wget software-properties-common</span><br><span class="line">RUN apt install -y vim iproute2 net-tools ca-certificates curl wget python-software-properties software-properties-common</span><br><span class="line"></span><br><span class="line">#安装python3.6 来自第三方</span><br><span class="line">RUN add-apt-repository ppa:jonathonf/python-3.6</span><br><span class="line">RUN apt update</span><br><span class="line">RUN apt install -y python3.6</span><br><span class="line">RUN apt install -y python3.6-dev</span><br><span class="line">RUN apt install -y python3.6-venv</span><br><span class="line"></span><br><span class="line">#为3.6安装pip</span><br><span class="line">RUN wget https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">RUN python3.6 get-pip.py</span><br><span class="line"></span><br><span class="line">#和自带的3.5共存</span><br><span class="line">RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1</span><br><span class="line">RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2</span><br><span class="line">RUN update-alternatives --config python3</span><br><span class="line">#print()时在控制台正常显示中文</span><br><span class="line">ENV PYTHONIOENCODING=utf-8</span><br></pre></td></tr></table></figure>
+<p>在dockerfile所在路径下执行，建立image</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t ubuntu-with-python .</span><br></pre></td></tr></table></figure>
+<p>因为开头几步用了国内源，所以非常快。</p>
+<h5 id="1-2-开发环境"><a href="#1-2-开发环境" class="headerlink" title="1.2 开发环境"></a>1.2 开发环境</h5><p>再建一个dockerfile，开头使用刚才建立的镜像ubuntu-with-python</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">FROM ubuntu-with-python</span><br><span class="line">LABEL author=&quot;lazyman&quot;</span><br><span class="line"></span><br><span class="line">#代码复制过来后的路径</span><br><span class="line">RUN mkdir /app</span><br><span class="line"># 指定容器启动时执行的命令都在app目录下执行</span><br><span class="line">WORKDIR /app</span><br><span class="line"></span><br><span class="line"># 将本地app目录下的内容拷贝到容器的app目录下</span><br><span class="line">COPY ./app/ /app/</span><br><span class="line"># 替换nginx的配置</span><br><span class="line">COPY nginx.conf /etc/nginx/nginx.conf</span><br><span class="line"> </span><br><span class="line">RUN apt-get install nginx</span><br><span class="line">RUN /etc/init.d/nginx start</span><br><span class="line"></span><br><span class="line">RUN pip3 install uwsgi</span><br><span class="line">RUN apt install mysql-server mysql-client</span><br><span class="line"></span><br><span class="line">#安装需要的python库</span><br><span class="line">#COPY requirements.txt /code</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [&quot;pip install -r requirements.txt  -i  https://pypi.tuna.tsinghua.edu.cn/simple some-package --no-cache-dir&quot;]</span><br><span class="line"></span><br><span class="line"># 启动nginx和uwsgi</span><br><span class="line">ENTRYPOINT nginx -g &quot;daemon on;&quot; &amp;&amp; uwsgi --ini /app/uwsgi.ini</span><br></pre></td></tr></table></figure>
+<h4 id="2启动容器"><a href="#2启动容器" class="headerlink" title="2启动容器"></a>2启动容器</h4><ul>
+<li><p>Docker</p>
+<p>一种开源容器应用，供开发者打包自己的开发环境，可以任意移植</p>
+</li>
+</ul>
+<ul>
+<li>docker-compose<br>一种管理多个Docker容器的工具，可以简化我们启动容器的各种命令</li>
+</ul>
+<h5 id="2-1手动敲docker命令"><a href="#2-1手动敲docker命令" class="headerlink" title="2.1手动敲docker命令"></a>2.1手动敲docker命令</h5><p>先试试用docker命令行启动容器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name quotation_api -itd -p 5000:5000 -v /home/quotation:/code quotation_dev:latest</span><br></pre></td></tr></table></figure>
+<p>用到的参数分别是</p>
+<blockquote>
+<p>–name为容器命名；</p>
+<p>-itd  输入输出终端，后台运行</p>
+<p>-p   host端口:容器端口</p>
+<ul>
+<li>将宿主机5000端口的请求转发到容器5000端口,用5000是flask默认</li>
+</ul>
+<p>-v  host路径:容器内路径</p>
+<p>最后是使用的镜像名（前面刚用dockerfile build出来的）</p>
+</blockquote>
+<p>然后进入容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach quotation_api</span><br></pre></td></tr></table></figure>
+<p>用python3 main.py启动flask，OK。</p>
+<p>这样flask运行在docker里了。</p>
+<p>在host改代码，可以看见docker的控制台在更新，和在host一样了。</p>
+<h5 id="2-2使用dock-compose"><a href="#2-2使用dock-compose" class="headerlink" title="2.2使用dock-compose"></a>2.2使用dock-compose</h5><p>dock-compose用来管理多个container的运行，特别适合1个host上跑多个container的情况。</p>
+<p>得天独厚，<a href="https://docs.docker.com/compose/gettingstarted/" target="_blank" rel="noopener">docker官网上dock-compose的gettingstarted文档</a>就是flask的(说明flask+docker代表了先进生产力的前进方向O Yeah！),看完了基本就能用了。</p>
+<p>dock-compose采用yaml作为配置文件。查了一下，yaml参考了xml和json，以及python的语法，采用了python之缩进，无XML之标记，无json之括号，无字符串之引号。特别适合作为配置文件用。</p>
+<p>建立docker-compose.yaml文件：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  quotation_api:</span><br><span class="line">    image: quotation_dev:latest</span><br><span class="line">    volumes:</span><br><span class="line">      - /home/quotation:/code</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;5000:5000&quot;</span><br><span class="line">    command: python3 main.py</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>基本对应手动敲的docker命令，最后还省了敲python3 main.py。</p>
+<p>当然如果是部署，这句可以用CMD 写进Dockfile。但是开发过程，文件名之类的会改变，比如最终部署运行用可能是gunicorn+wsgi.py，所以还是写在dockerfile外面比较方便</p>
+<p>运行，在控制台执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up</span><br></pre></td></tr></table></figure></article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/07/25/Docker使用/">https://nymrli.top/2019/07/25/Docker使用/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2019/07/25/Python中的正则匹配/" title="Python中的正则匹配"><span>NextPost ></span><br><span class="nextTitle">Python中的正则匹配</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Docker使用',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker学习"><span class="toc-number">1.</span> <span class="toc-text">Docker学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#docker和虚拟机VM的区别"><span class="toc-number">1.1.</span> <span class="toc-text">docker和虚拟机VM的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、本质上的区别："><span class="toc-number">1.1.1.</span> <span class="toc-text">一、本质上的区别：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、使用上的区别："><span class="toc-number">1.1.2.</span> <span class="toc-text">二、使用上的区别：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#宿主机、镜像与容器"><span class="toc-number">1.2.</span> <span class="toc-text">宿主机、镜像与容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker命令"><span class="toc-number">1.3.</span> <span class="toc-text">Docker命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dockerfile指令"><span class="toc-number">1.4.</span> <span class="toc-text">Dockerfile指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dockerfile构建过程"><span class="toc-number">1.4.1.</span> <span class="toc-text">dockerfile构建过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用中间层镜像进行调试"><span class="toc-number">1.4.2.</span> <span class="toc-text">使用中间层镜像进行调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile-镜像缓存"><span class="toc-number">1.4.3.</span> <span class="toc-text">Dockerfile 镜像缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看镜像构建的过程"><span class="toc-number">1.4.4.</span> <span class="toc-text">查看镜像构建的过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据卷"><span class="toc-number">1.5.</span> <span class="toc-text">数据卷</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看容器是否挂载了数据卷"><span class="toc-number">1.5.1.</span> <span class="toc-text">查看容器是否挂载了数据卷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给数据卷增加权限"><span class="toc-number">1.5.2.</span> <span class="toc-text">给数据卷增加权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据卷容器"><span class="toc-number">1.6.</span> <span class="toc-text">数据卷容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL通信"><span class="toc-number">1.7.</span> <span class="toc-text">MySQL通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis通信"><span class="toc-number">1.8.</span> <span class="toc-text">redis通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">1.9.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile-RUN，CMD，ENTRYPOINT命令区别"><span class="toc-number">1.9.1.</span> <span class="toc-text">Dockerfile RUN，CMD，ENTRYPOINT命令区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-运行python-flask的web程序"><span class="toc-number">1.9.2.</span> <span class="toc-text">Docker 运行python flask的web程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1创建镜像"><span class="toc-number">1.9.2.1.</span> <span class="toc-text">1创建镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-ubuntu-python3-6"><span class="toc-number">1.9.2.1.1.</span> <span class="toc-text">1.1 ubuntu+python3.6</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-开发环境"><span class="toc-number">1.9.2.1.2.</span> <span class="toc-text">1.2 开发环境</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2启动容器"><span class="toc-number">1.9.2.2.</span> <span class="toc-text">2启动容器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1手动敲docker命令"><span class="toc-number">1.9.2.2.1.</span> <span class="toc-text">2.1手动敲docker命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2使用dock-compose"><span class="toc-number">1.9.2.2.2.</span> <span class="toc-text">2.2使用dock-compose</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

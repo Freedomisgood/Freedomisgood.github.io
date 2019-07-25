@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>利用wireshark抓取TCP的整个过程分析[转] · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">利用wireshark抓取TCP的整个过程分析[转]</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/07/25</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">978</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><p>原文地址：<a href="https://www.cnblogs.com/NickQ/p/9226579.html" target="_blank" rel="noopener">https://www.cnblogs.com/NickQ/p/9226579.html</a> </p>
+<p>最近，已经很久都没有更新博客了。看看时间，想想自己做了哪些事情，突然发现自己真的是太贪心，到头来却一个都没搞好。手头的嵌入式都还没学出名堂，竟然还想着学FPGA,物联网，机器学习。然而，遇到新奇的事物，就会控制不住的去想，去找资料，实际上只是逃避遇到的问题，不想去解决而已。。最后的结果就是手头的活堆起来了，然后花大把整块的时间解决。真的是讨厌现在的自己。</p>
+<p>以后还是慢慢记录吧，不管做了什么，都慢慢尝试积累。。其他的东西，像FPGA，机器学习什么的，让他随风去吧，用到啥学啥。其他的当看客，了解了解就好。</p>
+<p>这是计算机网络的一次作业，学习抓取TCP/IP建立连接和断开连接的过程，以下是正文：</p>
+<p><strong>步骤：</strong></p>
+<p>首先尝试抓百度，腾讯等网络连接，发现会有许多问题需要考虑，断开连接操作不好操作，且数据冗杂不利于学习。</p>
+<p><img src="https://images2018.cnblogs.com/blog/1249999/201806/1249999-20180625223300726-249267524.png" alt="img"></p>
+<p>所以借助手机和电脑完成此次过程，操作如下：</p>
+<p>1、在手机端，安装TCP测试工具，开启TCP监听，端口8088；</p>
+<p><img src="https://images2018.cnblogs.com/blog/1249999/201806/1249999-20180625221400357-2132003606.jpg" alt="img"></p>
+<p>2、打开wireshark监听WIFI网卡。</p>
+<p>3、打开电脑端TCP测试客户端，连接TCP服务器。</p>
+<p>此处，我的手机IP为192.168.255.5，端口8088；电脑的IP地址为192.168.255.6。</p>
+<p>4、通过电脑客户端，发送两次信息到手机。</p>
+<p>5、通过手机客户端，发送两次信息到电脑。</p>
+<p>6、断开连接。</p>
+<p>7、通过ip.addr eq 192.168.255.5 and ip.addr eq 192.168.255.6 and tcp过滤掉其他报文。</p>
+<p>至于wireshark过滤的语法，可以参考其他的一些博文：<a href="https://blog.csdn.net/wojiaopanpan/article/details/69944970" target="_blank" rel="noopener">https://blog.csdn.net/wojiaopanpan/article/details/69944970</a></p>
+<p><strong>协议及过程分析：</strong></p>
+<p>TCP三次握手：如下图中蓝色方框所示。</p>
+<p>TCP握手协议在TCP/IP协议中，TCP协议提供可靠的连接服务，采用三次握手建立一个连接。</p>
+<p>第一次握手：建立连接时，客户端发送syn包(syn=j)到服务器，并进入SYN_SEND状态，等待服务器确认；如下图中报文No.7</p>
+<p>第二次握手：服务器收到syn包，必须确认客户的SYN（ack=j+1），同时自己也发送一个SYN包（syn=k），即SYN+ACK包，此时服务器进入SYN_RECV状态；如下图中报文No.8</p>
+<p>第三次握手：客户端收到服务器的SYN＋ACK包，向服务器发送确认包ACK(ack=k+1)，此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手。完成三次握手，客户端与服务器开始传送数据。如下图中报文No.9</p>
+<p><img src="https://images2018.cnblogs.com/blog/1249999/201806/1249999-20180625221206712-792100790.png" alt="img"></p>
+<p>TCP四次挥手：如上图中红色方框所示。</p>
+<p>注：此处，由于先断开的服务器，所以手机服务器是客户端A。</p>
+<p>第一次挥手：客户端A发送一个FIN，用来关闭客户A到服务器B的数据传送。</p>
+<p>如图中报文No.255</p>
+<p>第二次挥手：服务器B收到这个FIN，它发回一个ACK，确认序号为收到的序号加1。和SYN一样，一个FIN将占用一个序号。如图中报文No.256</p>
+<p>第三次挥手：服务器B关闭与客户端A的连接，发送一个FIN给客户端A。如图中报文No.257</p>
+<p>第四次挥手：客户端A发回ACK报文确认，并将确认序号设置为收到序号加1。如图中报文No.258</p>
+<p><strong>其他:</strong></p>
+<p>下图是其中一帧数据解析，可以看到数据是由192.168.255.6:62643(电脑客户端)发送给192.168.255.5:8088(手机服务端）。</p>
+<p>消息内容为：201521111083</p>
+<p><img src="https://images2018.cnblogs.com/blog/1249999/201806/1249999-20180625223511076-53478793.png" alt="img"></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/07/24/利用wireshark抓取TCP的整个过程分析/">https://nymrli.top/2019/07/24/利用wireshark抓取TCP的整个过程分析/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/07/25/Python中的正则匹配/" title="Python中的正则匹配"><span>< PreviousPost</span><br><span class="prevTitle">Python中的正则匹配</span></a><a class="nextSlogan" href="/2019/07/13/C-学习笔记/" title="C++学习笔记"><span>NextPost ></span><br><span class="nextTitle">C++学习笔记</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '利用wireshark抓取TCP的整个过程分析[转]',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

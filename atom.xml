@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nymrli.top/"/>
-  <updated>2019-07-07T02:05:09.903Z</updated>
+  <updated>2019-07-13T00:57:31.910Z</updated>
   <id>https://nymrli.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>通过XDRP实现Windows远程访问ubuntu桌面</title>
+    <link href="https://nymrli.top/2019/07/13/%E9%80%9A%E8%BF%87XDRP%E5%AE%9E%E7%8E%B0Windows%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEubuntu%E6%A1%8C%E9%9D%A2/"/>
+    <id>https://nymrli.top/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/</id>
+    <published>2019-07-13T00:57:05.000Z</published>
+    <updated>2019-07-13T00:57:31.910Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="通过XDRP实现Windows远程访问"><a href="#通过XDRP实现Windows远程访问" class="headerlink" title="通过XDRP实现Windows远程访问"></a>通过XDRP实现Windows远程访问</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">安装xrdp </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install xrdp </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">安装vnc4server </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install vnc4server tightvncserver</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">安装xubuntu-desktop </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install xubuntu-desktop </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">向xsession中写入xfce4-session </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> “xfce4-session” &gt;~/.xsession </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">开启xrdp服务 </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo service xrdp restart</span></span><br></pre></td></tr></table></figure><p>上面是网上大多数示例所展示的，都是依靠第三方桌面系统实现远程访问，下面讲解的是如何直接访问原生系统。</p><h3 id="步骤一、下载TigerVNC-Server软件包"><a href="#步骤一、下载TigerVNC-Server软件包" class="headerlink" title="步骤一、下载TigerVNC Server软件包"></a>步骤一、下载TigerVNC Server软件包</h3><p>　　下载地址：<a href="http://www.c-nergy.be/downloads/tigervncserver_1.6.80-4_amd64.zip" target="_blank" rel="noopener">Tigervnc Deb软件包（适用于Ubuntu 16.04.1 - 64位）</a></p><h3 id="步骤二、-安装TigerVNC-Server软件包"><a href="#步骤二、-安装TigerVNC-Server软件包" class="headerlink" title="步骤二、 安装TigerVNC Server软件包"></a>步骤二、 安装TigerVNC Server软件包</h3><p>1、打开终端，进入到刚刚你你下载TigerVNC Server的存放目录，我是直接下载到默认的DownLoads下的，因为下载的是zip文件，记得解压出来，得到deb安装文件。</p><p>2、再输入一下安装命令进行安装（需要su密码）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install -f</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo dpkg -i tigervncserver_1.6.80-4_amd64.deb</span></span><br></pre></td></tr></table></figure><h3 id="步骤三、安装xrdp"><a href="#步骤三、安装xrdp" class="headerlink" title="步骤三、安装xrdp"></a>步骤三、安装xrdp</h3><p>　　打开终端，输入一下命令（需要su密码）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xrdp -y</span><br></pre></td></tr></table></figure><h3 id="步骤四、配置xrdp设置"><a href="#步骤四、配置xrdp设置" class="headerlink" title="步骤四、配置xrdp设置"></a>步骤四、配置xrdp设置</h3><p>　　需要通过xrdp连接到桌面，需要正确配置相关信息并填充到.xsession文件（针对每个用户）或/etc/startwm.sh（针对所有用户），输入如下命令</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> unity&gt;~/.xsession</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo sed -i.bak <span class="string">'/fi/a #xrdp multi-users \n unity \n'</span> /etc/xrdp/startwm.sh</span></span><br></pre></td></tr></table></figure><h3 id="步骤五、重启xrdp"><a href="#步骤五、重启xrdp" class="headerlink" title="步骤五、重启xrdp"></a><strong>步骤五、重启xrdp</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service xrdp restart</span><br></pre></td></tr></table></figure><h3 id="步骤六、开启桌面共享功能"><a href="#步骤六、开启桌面共享功能" class="headerlink" title="步骤六、开启桌面共享功能"></a>步骤六、开启桌面共享功能</h3><p>　　进入系统-》首选项-》桌面共享，或者直接搜索桌面共享，如图所示</p><p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192507153-638048489.png" alt="img"></p><p>　　将【允许其他人查看您的桌面】这一项勾上，如图所示：</p><p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192521575-517061538.png" alt="img"></p><p>到这一步基本上已经完成了，接下来就是来测试是否能正常连接到Ubuntu了</p><h1 id="三、xrdp测试连接到Ubuntu"><a href="#三、xrdp测试连接到Ubuntu" class="headerlink" title="三、xrdp测试连接到Ubuntu"></a>三、xrdp测试连接到Ubuntu</h1><p>　1、查看Ubuntu服务器的IP地址，如图所示：</p><p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192537450-1272034628.png" alt="img"></p><p>　　2、启动Windows远程桌面工具(mstc)，输入Ubuntu的IP地址（192.168.226.131），如图所示：</p><p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192554731-609673171.png" alt="img"></p><p>　　3、点击连接之后，正常情况会自动跳出xrdp的登录界面，需要我们输入用户名和密码即可，模式选择默认就行，如图所示：</p><p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192718465-137150594.png" alt="img"></p><p> 　　4、我们可以看到xrdp的实时日志，如图所示：</p><p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192751606-1594868562.png" alt="img"></p><p>　　5、最终我们连接到上了Ubuntu，是不是很熟悉的界面~~（ヾ(๑╹◡╹)ﾉ”）</p><p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192821809-1569937933.png" alt="img"></p><p>　　至此，xrdp连接Ubuntu 16.04的所有步骤已完成</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;通过XDRP实现Windows远程访问&quot;&gt;&lt;a href=&quot;#通过XDRP实现Windows远程访问&quot; class=&quot;headerlink&quot; title=&quot;通过XDRP实现Windows远程访问&quot;&gt;&lt;/a&gt;通过XDRP实现Windows远程访问&lt;/h1&gt;&lt;figu
+      
+    
+    </summary>
+    
+    
+      <category term="环境配置" scheme="https://nymrli.top/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="Ubuntu" scheme="https://nymrli.top/tags/Ubuntu/"/>
+    
+  </entry>
   
   <entry>
     <title>yaml基础语法_spring_boot</title>
@@ -381,9 +406,9 @@
     </summary>
     
     
-      <category term="机器学习" scheme="https://nymrli.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="Python" scheme="https://nymrli.top/tags/Python/"/>
+    
+      <category term="机器学习" scheme="https://nymrli.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -484,29 +509,6 @@
       <category term="C++" scheme="https://nymrli.top/tags/C/"/>
     
       <category term="java" scheme="https://nymrli.top/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用git将项目上传到github（最简单方法）</title>
-    <link href="https://nymrli.top/2019/03/28/%E4%BD%BF%E7%94%A8git%E5%B0%86%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E5%88%B0github%EF%BC%88%E6%9C%80%E7%AE%80%E5%8D%95%E6%96%B9%E6%B3%95%EF%BC%89/"/>
-    <id>https://nymrli.top/2019/03/28/使用git将项目上传到github（最简单方法）/</id>
-    <published>2019-03-28T11:39:36.000Z</published>
-    <updated>2019-03-28T11:45:09.997Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="使用git将项目上传到github（最简单方法）"><a href="#使用git将项目上传到github（最简单方法）" class="headerlink" title="使用git将项目上传到github（最简单方法）"></a>使用git将项目上传到github（最简单方法）</h1><p><strong>首先你需要一个github账号，所有还没有的话先去注册吧！</strong> <strong><a href="https://github.com/" target="_blank" rel="noopener">Github</a></strong></p><p><strong>我们使用git需要先安装git工具，这里给出下载地址，下载后一路直接安装即可：**</strong><a href="https://git-for-windows.github.io/*" target="_blank" rel="noopener">https://git-for-windows.github.io/*</a>*</p><h3 id="1-进入Github首页，点击New-repository新建一个项目"><a href="#1-进入Github首页，点击New-repository新建一个项目" class="headerlink" title="1.进入Github首页，点击New repository新建一个项目"></a><strong>1.进入Github首页，点击New repository新建一个项目</strong></h3><p><img src="https://images2015.cnblogs.com/blog/913913/201608/913913-20160823164154526-418441991.png" alt="img"></p><h3 id="2-填写相应信息后点击create即可"><a href="#2-填写相应信息后点击create即可" class="headerlink" title="2.填写相应信息后点击create即可"></a><strong>2.填写相应信息后点击create即可</strong></h3><blockquote><p><strong>Repository name: 仓库名称</strong></p><p><strong>Description(可选): 仓库描述介绍</strong></p><p><strong>Public, Private : 仓库权限（公开共享，私有或指定合作者）</strong></p><p><strong>Initialize this repository with a README: 添加一个README.md</strong></p><p><strong>gitignore: 不需要进行版本管理的仓库类型，对应生成文件.gitignore</strong></p><p><strong>license: 证书类型，对应生成文件LICENSE</strong></p></blockquote><p><img src="https://images2015.cnblogs.com/blog/913913/201608/913913-20160823165025370-49444506.png" alt="img"></p><p>创建完成后会变成（添加了README.md或者有license)</p><p><img src="https://images2015.cnblogs.com/blog/913913/201608/913913-20160823165107308-439926006.png" alt="img"></p><h3 id="3-点击Clone-or-dowload会出现一个地址，copy这个地址备用。"><a href="#3-点击Clone-or-dowload会出现一个地址，copy这个地址备用。" class="headerlink" title="3.点击Clone or dowload会出现一个地址，copy这个地址备用。"></a><strong>3.点击Clone or dowload会出现一个地址，copy这个地址备用。</strong></h3><p><img src="https://images2015.cnblogs.com/blog/913913/201608/913913-20160823165450636-1167722003.png" alt="img"></p><h3 id="4-接下来就到本地操作了"><a href="#4-接下来就到本地操作了" class="headerlink" title="4.接下来就到本地操作了"></a><strong>4.接下来就到本地操作了</strong></h3><p><strong>首先右键你的项目，如果你之前安装git成功的话，右键会出现两个新选项，分别为Git Gui Here,Git Bash Here,这里我们选择Git Bash Here，进入如下界面，Test_Bluetooth即为我的项目名。</strong></p><p><img src="https://images2015.cnblogs.com/blog/913913/201608/913913-20160823171048308-194895299.png" alt="img"></p><h3 id="5-接下来输入如下代码（关键步骤），把github上面的仓库克隆到本地"><a href="#5-接下来输入如下代码（关键步骤），把github上面的仓库克隆到本地" class="headerlink" title="5.接下来输入如下代码（关键步骤），把github上面的仓库克隆到本地"></a><strong>5.接下来输入如下代码（关键步骤），把github上面的仓库克隆到本地</strong></h3><p><code>git clone https://github.com/CKTim/BlueTooth.git（https://github.com/CKTim/BlueTooth.git替换成你之前复制的地址）</code></p><p><img src="https://images2015.cnblogs.com/blog/913913/201608/913913-20160823171143980-741152042.png" alt="img"></p><h3 id="6-复制文件到刚出来的文件夹中"><a href="#6-复制文件到刚出来的文件夹中" class="headerlink" title="6.复制文件到刚出来的文件夹中"></a><strong>6.复制文件到刚出来的文件夹中</strong></h3><p><strong>这个步骤以后你的本地项目文件夹下面就会多出个文件夹，该文件夹名即为你github上面的项目名，如图我多出了个Test文件夹，我们把本地项目文件夹下的所有文件（除了新多出的那个文件夹不用），其余都复制到那个新多出的文件夹下，</strong></p><p><img src="https://images2015.cnblogs.com/blog/913913/201608/913913-20160823171209730-2089496483.png" alt="img"></p><h3 id="7-接着继续输入命令-cd-Test，进入Test文件夹"><a href="#7-接着继续输入命令-cd-Test，进入Test文件夹" class="headerlink" title="7.接着继续输入命令 cd Test，进入Test文件夹"></a><strong>7.接着继续输入命令 cd Test，进入Test文件夹</strong></h3><p><img src="https://images2015.cnblogs.com/blog/913913/201608/913913-20160823171454261-10363777.png" alt="img"></p><h3 id="8-接下来依次输入以下代码即可完成其他剩余操作："><a href="#8-接下来依次输入以下代码即可完成其他剩余操作：" class="headerlink" title="8.接下来依次输入以下代码即可完成其他剩余操作："></a><strong>8.接下来依次输入以下代码即可完成其他剩余操作：</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .        （注：别忘记后面的.，此操作是把Test文件夹下面的文件都添加进来）</span><br><span class="line">git commit  -m  "提交信息"  （注：“提交信息”里面换成你需要，如“first commit”）</span><br><span class="line">git push -u origin master   （注：此操作目的是把本地仓库push到github上面，此步骤需要你输入帐号和密码）</span><br></pre></td></tr></table></figure><p> <img src="https://images2015.cnblogs.com/blog/913913/201608/913913-20160823171557823-3863512.png" alt="img"></p><p><img src="https://images2015.cnblogs.com/blog/913913/201608/913913-20160823171651808-1225335136.png" alt="img"></p><p><img src="https://images2015.cnblogs.com/blog/913913/201608/913913-20160823171818933-1506815566.png" alt="img"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;使用git将项目上传到github（最简单方法）&quot;&gt;&lt;a href=&quot;#使用git将项目上传到github（最简单方法）&quot; class=&quot;headerlink&quot; title=&quot;使用git将项目上传到github（最简单方法）&quot;&gt;&lt;/a&gt;使用git将项目上传到git
-      
-    
-    </summary>
-    
-    
-      <category term="git" scheme="https://nymrli.top/tags/git/"/>
     
   </entry>
   

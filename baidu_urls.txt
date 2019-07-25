@@ -1,3 +1,4 @@
+https://nymrli.top/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/
 https://nymrli.top/2019/07/07/yaml基础语法-spring-boot/
 https://nymrli.top/2019/07/07/Python类的继承-super-使用/
 https://nymrli.top/2019/06/15/Base64编码原理与应用-转/
@@ -23,7 +24,6 @@ https://nymrli.top/2019/03/28/蓝桥杯突击训练/
 https://nymrli.top/2019/03/25/C++机器学习库MLPack/
 https://nymrli.top/2019/03/17/南京邮电大学java程序设计作业在线编程第六次作业/
 https://nymrli.top/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/
-https://nymrli.top/2019/03/15/Linux命令手册/
 https://nymrli.top/2019/03/14/搭建Gitlab服务器/
 https://nymrli.top/2019/03/07/程序设计周cpp学习笔记/
 https://nymrli.top/2019/03/07/ACM-DFS、BFS/
@@ -55,14 +55,12 @@ https://nymrli.top/2019/01/23/Chrome开发者工具Network/
 https://nymrli.top/2019/01/23/Charles配置/
 https://nymrli.top/2019/01/23/Python中对时间戳、时间的处理/
 https://nymrli.top/2019/01/22/基础网络知识/
-https://nymrli.top/2019/01/21/Jupyter使用/
 https://nymrli.top/2019/01/19/河海大学AI-机器人冬令营/
 https://nymrli.top/2019/01/19/DFS专项练习/
 https://nymrli.top/2019/01/19/Typora可选选项/
 https://nymrli.top/2019/01/19/Latex学习/
 https://nymrli.top/2019/01/19/每日codewars/
 https://nymrli.top/2019/01/19/12-27-Team-Leader/
-https://nymrli.top/2019/01/17/阿里云nginx-wsgi部署flask/
 https://nymrli.top/2019/01/17/前端Vue框架学习/
 https://nymrli.top/2019/01/17/git使用/
 https://nymrli.top/2018/12/28/数据结构实验1——线性表及多项式的运算/
@@ -98,3 +96,5 @@ https://nymrli.top/2018/11/10/matplotlib-pyplot使用/
 https://nymrli.top/2018/11/10/apt代理的设置/
 https://nymrli.top/2018/11/10/Ubuntu更改nginx默认端口/
 https://nymrli.top/2018/11/10/Pythonanywhere解决链接Mysql问题-部署flask/
+https://nymrli.top/2018/11/08/写爬虫过程中碰到的编码问题/
+https://nymrli.top/2018/11/08/Shell脚本基础/

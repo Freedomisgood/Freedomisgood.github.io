@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>通过XDRP实现Windows远程访问ubuntu桌面 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">通过XDRP实现Windows远程访问ubuntu桌面</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/07/13</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">597</span> | Reading time: <span class="post-count">2</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="通过XDRP实现Windows远程访问"><a href="#通过XDRP实现Windows远程访问" class="headerlink" title="通过XDRP实现Windows远程访问"></a>通过XDRP实现Windows远程访问</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">安装xrdp </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install xrdp </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">安装vnc4server </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install vnc4server tightvncserver</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">安装xubuntu-desktop </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install xubuntu-desktop </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">向xsession中写入xfce4-session </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> “xfce4-session” &gt;~/.xsession </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">开启xrdp服务 </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo service xrdp restart</span></span><br></pre></td></tr></table></figure>
+<p>上面是网上大多数示例所展示的，都是依靠第三方桌面系统实现远程访问，下面讲解的是如何直接访问原生系统。</p>
+<h3 id="步骤一、下载TigerVNC-Server软件包"><a href="#步骤一、下载TigerVNC-Server软件包" class="headerlink" title="步骤一、下载TigerVNC Server软件包"></a>步骤一、下载TigerVNC Server软件包</h3><p>　　下载地址：<a href="http://www.c-nergy.be/downloads/tigervncserver_1.6.80-4_amd64.zip" target="_blank" rel="noopener">Tigervnc Deb软件包（适用于Ubuntu 16.04.1 - 64位）</a></p>
+<h3 id="步骤二、-安装TigerVNC-Server软件包"><a href="#步骤二、-安装TigerVNC-Server软件包" class="headerlink" title="步骤二、 安装TigerVNC Server软件包"></a>步骤二、 安装TigerVNC Server软件包</h3><p>1、打开终端，进入到刚刚你你下载TigerVNC Server的存放目录，我是直接下载到默认的DownLoads下的，因为下载的是zip文件，记得解压出来，得到deb安装文件。</p>
+<p>2、再输入一下安装命令进行安装（需要su密码）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install -f</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo dpkg -i tigervncserver_1.6.80-4_amd64.deb</span></span><br></pre></td></tr></table></figure>
+<h3 id="步骤三、安装xrdp"><a href="#步骤三、安装xrdp" class="headerlink" title="步骤三、安装xrdp"></a>步骤三、安装xrdp</h3><p>　　打开终端，输入一下命令（需要su密码）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xrdp -y</span><br></pre></td></tr></table></figure>
+<h3 id="步骤四、配置xrdp设置"><a href="#步骤四、配置xrdp设置" class="headerlink" title="步骤四、配置xrdp设置"></a>步骤四、配置xrdp设置</h3><p>　　需要通过xrdp连接到桌面，需要正确配置相关信息并填充到.xsession文件（针对每个用户）或/etc/startwm.sh（针对所有用户），输入如下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> unity&gt;~/.xsession</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo sed -i.bak <span class="string">'/fi/a #xrdp multi-users \n unity \n'</span> /etc/xrdp/startwm.sh</span></span><br></pre></td></tr></table></figure>
+<h3 id="步骤五、重启xrdp"><a href="#步骤五、重启xrdp" class="headerlink" title="步骤五、重启xrdp"></a><strong>步骤五、重启xrdp</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service xrdp restart</span><br></pre></td></tr></table></figure>
+<h3 id="步骤六、开启桌面共享功能"><a href="#步骤六、开启桌面共享功能" class="headerlink" title="步骤六、开启桌面共享功能"></a>步骤六、开启桌面共享功能</h3><p>　　进入系统-》首选项-》桌面共享，或者直接搜索桌面共享，如图所示</p>
+<p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192507153-638048489.png" alt="img"></p>
+<p>　　将【允许其他人查看您的桌面】这一项勾上，如图所示：</p>
+<p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192521575-517061538.png" alt="img"></p>
+<p>到这一步基本上已经完成了，接下来就是来测试是否能正常连接到Ubuntu了</p>
+<h1 id="三、xrdp测试连接到Ubuntu"><a href="#三、xrdp测试连接到Ubuntu" class="headerlink" title="三、xrdp测试连接到Ubuntu"></a>三、xrdp测试连接到Ubuntu</h1><p>　1、查看Ubuntu服务器的IP地址，如图所示：</p>
+<p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192537450-1272034628.png" alt="img"></p>
+<p>　　2、启动Windows远程桌面工具(mstc)，输入Ubuntu的IP地址（192.168.226.131），如图所示：</p>
+<p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192554731-609673171.png" alt="img"></p>
+<p>　　3、点击连接之后，正常情况会自动跳出xrdp的登录界面，需要我们输入用户名和密码即可，模式选择默认就行，如图所示：</p>
+<p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192718465-137150594.png" alt="img"></p>
+<p> 　　4、我们可以看到xrdp的实时日志，如图所示：</p>
+<p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192751606-1594868562.png" alt="img"></p>
+<p>　　5、最终我们连接到上了Ubuntu，是不是很熟悉的界面~~（ヾ(๑╹◡╹)ﾉ”）</p>
+<p><img src="https://images2017.cnblogs.com/blog/506829/201709/506829-20170927192821809-1569937933.png" alt="img"></p>
+<p>　　至此，xrdp连接Ubuntu 16.04的所有步骤已完成</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/">https://nymrli.top/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2019/07/07/yaml基础语法-spring-boot/" title="yaml基础语法_spring_boot"><span>NextPost ></span><br><span class="nextTitle">yaml基础语法_spring_boot</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '通过XDRP实现Windows远程访问ubuntu桌面',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#通过XDRP实现Windows远程访问"><span class="toc-number">1.</span> <span class="toc-text">通过XDRP实现Windows远程访问</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤一、下载TigerVNC-Server软件包"><span class="toc-number">1.0.1.</span> <span class="toc-text">步骤一、下载TigerVNC Server软件包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤二、-安装TigerVNC-Server软件包"><span class="toc-number">1.0.2.</span> <span class="toc-text">步骤二、 安装TigerVNC Server软件包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤三、安装xrdp"><span class="toc-number">1.0.3.</span> <span class="toc-text">步骤三、安装xrdp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤四、配置xrdp设置"><span class="toc-number">1.0.4.</span> <span class="toc-text">步骤四、配置xrdp设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤五、重启xrdp"><span class="toc-number">1.0.5.</span> <span class="toc-text">步骤五、重启xrdp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤六、开启桌面共享功能"><span class="toc-number">1.0.6.</span> <span class="toc-text">步骤六、开启桌面共享功能</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、xrdp测试连接到Ubuntu"><span class="toc-number">2.</span> <span class="toc-text">三、xrdp测试连接到Ubuntu</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

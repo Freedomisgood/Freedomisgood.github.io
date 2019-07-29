@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Docker使用</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/07/25</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,521</span> | Reading time: <span class="post-count">15</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="Docker学习"><a href="#Docker学习" class="headerlink" title="Docker学习"></a>Docker学习</h1><blockquote>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Docker使用</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/07/26</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">5,614</span> | Reading time: <span class="post-count">24</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="Docker学习"><a href="#Docker学习" class="headerlink" title="Docker学习"></a>Docker学习</h1><blockquote>
 <p>轻部署,省成本,易迁移</p>
 </blockquote>
 <h2 id="docker和虚拟机VM的区别"><a href="#docker和虚拟机VM的区别" class="headerlink" title="docker和虚拟机VM的区别"></a>docker和虚拟机VM的区别</h2><h3 id="一、本质上的区别："><a href="#一、本质上的区别：" class="headerlink" title="一、本质上的区别："></a>一、本质上的区别：</h3><p><img src="https://img-blog.csdn.net/20180711090727241?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppbmd6aHVuYmlhbmNoZW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
@@ -124,7 +124,12 @@
 <p>下载镜像: <code>docker pull NAME</code></p>
 <p>创新容器: <code>docker run -tid  (--name xxx)  IMAGE ID</code></p>
 <ul>
-<li><code>ti</code>表示以交互的形式创建容器，<code>d</code>表示不进入</li>
+<li><code>ti</code>表示以交互的形式创建容器，<code>d</code>表示不进入<ul>
+<li><code>-d, --detach=false</code>， 指定容器运行于前台还是后台，默认为false</li>
+<li><code>-i, --interactive=false</code>， 打开STDIN，用于控制台交互</li>
+<li><code>-t, --tty=false</code>， 分配tty设备，该可以支持终端登录，默认为false</li>
+</ul>
+</li>
 </ul>
 <p>运行容器: <code>docker start CONTAINER_ID</code>  </p>
 <p>进入容器： <code>docker attach CONTAINER_ID</code></p>
@@ -132,7 +137,8 @@
 <li>进入容器前得前运行容器</li>
 </ul>
 <p>退出容器： <code>ctrl + p + q</code> , 以<code>ctrl + z</code> 、<code>exit</code>将会终止容器运行</p>
-<p>封装容器为镜像: <code>docker commit CONTAINER_ID IMAGE_ID:TAG</code></p>
+<p>封装容器为镜像: <code>docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-a :提交的镜像作者；</span><br><span class="line">-c :使用Dockerfile指令来创建镜像；</span><br><span class="line">-m :提交时的说明文字；</span><br><span class="line">-p :在commit时，将容器暂停。</span><br></pre></td></tr></table></figure>
 <p>容器通信-创建子节点链接中心节点: <code>docker run -tid  (--name xxx)  (--link CONTAINER_NAMES) IMAGE ID</code></p>
 <p>查看容器ip: <code>cat /ect/hosts</code> </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@b68943564e76:/# cat /etc/hosts </span><br><span class="line">127.0.0.1	localhost</span><br><span class="line">::1	localhost ip6-localhost ip6-loopback</span><br><span class="line">fe00::0	ip6-localnet</span><br><span class="line">ff00::0	ip6-mcastprefix</span><br><span class="line">ff02::1	ip6-allnodes</span><br><span class="line">ff02::2	ip6-allrouters</span><br><span class="line">172.17.0.2	test 4e02c004539e</span><br><span class="line">172.17.0.3	b68943564e76</span><br></pre></td></tr></table></figure>
@@ -140,6 +146,13 @@
 <blockquote>
 <p>我创建的容器是拉取的Base镜像，而因为用Docker拉取的<strong>Base镜像</strong>如Centos和Ubuntu的话都是<strong>最简版本</strong>，不包含Ping工具，而对Docker进行Docker network和Docker链接操作时往往要用到Ping工具测试两个容器间的网络，此时就要用到Ping工具了，下面是Ubuntu下安装Ping工具的命令：<code>apt-get update &amp;&amp; apt-get install iputils-ping</code>、安装ifconfig工具:<code>apt install net-tools</code></p>
 </blockquote>
+<p><strong>从容器里面拷文件到宿主机</strong></p>
+<p> docker cp 容器名：要拷贝的文件在容器里面的路径       要拷贝到宿主机的相应路径 </p>
+<p>宿主机上执行:<code>$ docker cp testtomcat：/usr/local/tomcat/webapps/test/js/test.js /opt</code></p>
+<p><strong>从宿主机拷文件到docker容器里面</strong></p>
+<p> docker cp 要拷贝的文件路径 容器名：要拷贝到容器里面对应的路径</p>
+<p>宿主机上执行<code>$ docker cp requirements.txt apptest:/app</code></p>
+<p>▲注:容器NAME可以通过<code>docker ps</code>命令查看</p>
 <h2 id="Dockerfile指令"><a href="#Dockerfile指令" class="headerlink" title="Dockerfile指令"></a>Dockerfile指令</h2><blockquote>
 <p>Dockerfile文件D一定要大写</p>
 <p><code>$ docker build -t=&quot;dormanctpress/df_test2&quot; .</code></p>
@@ -235,8 +248,8 @@
 <h3 id="Dockerfile-镜像缓存"><a href="#Dockerfile-镜像缓存" class="headerlink" title="Dockerfile 镜像缓存"></a>Dockerfile 镜像缓存</h3><p>构建缓存：将之前的镜像缓存</p>
 <p>不使用缓存<code>docker build --no-cache</code></p>
 <h3 id="查看镜像构建的过程"><a href="#查看镜像构建的过程" class="headerlink" title="查看镜像构建的过程"></a>查看镜像构建的过程</h3><p>查看构建过程:<code>docker history xxx/yyy</code></p>
-<h2 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h2><p><code>sudo docker run -v ~/container_data:/data -it ubuntu/bin/bash</code></p>
-<p>参数说明:使用-v选项,第一个参数为宿主机目录,:后的目录为在容器中使用的目录(挂载)</p>
+<h2 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h2><p><code>sudo docker run -v ~/container_data:/data -it ubuntu /bin/bash</code></p>
+<p>参数说明:使用-v选项,第一个参数为宿主机目录,:后的目录为在容器中使用的目录(挂载);ubuntu为镜像</p>
 <h3 id="查看容器是否挂载了数据卷"><a href="#查看容器是否挂载了数据卷" class="headerlink" title="查看容器是否挂载了数据卷"></a>查看容器是否挂载了数据卷</h3><p><code>docker inspect CONTAINER_ID</code>可以查看容器是否挂载了数据卷</p>
 <h3 id="给数据卷增加权限"><a href="#给数据卷增加权限" class="headerlink" title="给数据卷增加权限"></a>给数据卷增加权限</h3><p><code>sudo docker run -v ~/datavolume:/data:ro -it ubuntu/bin/bash</code></p>
 <p>ro是read-only</p>
@@ -251,6 +264,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps -q) &amp; docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure>
 <p>一条命令删除所有镜像：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi `docker images -q`</span><br></pre></td></tr></table></figure>
+<p>一条命令删除创建失败的镜像:</p>
+<p><code>docker images | sed -n &#39;2p&#39; | awk &#39;{print$3}&#39; | xargs docker rmi</code></p>
 <h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="Dockerfile-RUN，CMD，ENTRYPOINT命令区别"><a href="#Dockerfile-RUN，CMD，ENTRYPOINT命令区别" class="headerlink" title="Dockerfile RUN，CMD，ENTRYPOINT命令区别"></a>Dockerfile RUN，CMD，ENTRYPOINT命令区别</h3><blockquote>
 <p>RUN命令执行命令并创建新的镜像层，通常用于安装软件包</p>
 <p>CMD命令设置容器启动后默认执行的命令及其参数，但CMD设置的命令能够被<code>docker run</code>命令后面的命令行参数替换</p>
@@ -259,7 +274,10 @@
 <p>Shell格式和Exec格式运行命令</p>
 <p>我们可用两种方式指定 RUN、CMD 和 ENTRYPOINT 要运行的命令：Shell 格式和 Exec 格式：</p>
 <ul>
-<li>Shell格式：<instruction> <command>。例如：apt-get install python3</instruction></li>
+<li>Shell格式：<instruction> <command>。例如：apt-get install python3<ul>
+<li>多条命令用&amp;&amp;链接</li>
+</ul>
+</instruction></li>
 <li>Exec格式：<instruction> [“executable”, “param1”, “param2”, …]。例如： [“apt-get”, “install”, “python3”]</instruction></li>
 </ul>
 <p><strong>CMD 和 ENTRYPOINT 推荐使用 Exec 格式，因为指令可读性更强，更容易理解。RUN 则两种格式都可以。</strong></p>
@@ -271,56 +289,34 @@
 <li>如果想为容器设置默认的启动命令，可使用 CMD 指令。用户可在 docker run 命令行中替换此默认命令。</li>
 </ul>
 <hr>
-<h3 id="Docker-运行python-flask的web程序"><a href="#Docker-运行python-flask的web程序" class="headerlink" title="Docker 运行python flask的web程序"></a>Docker 运行python flask的web程序</h3><p>1.将Web程序打包成一个镜像,如(training/webapp)</p>
-<p>2.<code>docker run -d -P training/webapp python app.py</code></p>
-<ul>
-<li>使用dokcer运行在后台(-d)</li>
-<li>将容器的端口完全映射到宿主机上</li>
-<li>在容器中执行的命令是<code>python app.py</code></li>
-<li>在容器中运行镜像为<code>training/webapp</code>(应用程序) </li>
-</ul>
-<p>如果没有镜像,会自动安装打包好的镜像(上传到docker hub)</p>
-<ol start="3">
-<li>查看容器启动状况<code>docker ps</code></li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>CONTAINER ID</th>
-<th>IMAGE</th>
-<th>COMMAND</th>
-<th>CREATE</th>
-<th>STATUS</th>
-<th>PORTS</th>
-<th>NAMES</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>fef5547a8d4a</td>
-<td>training/webapp</td>
-<td>“python app.py”</td>
-<td>9 seconds ago</td>
-<td>Up 8 seconds</td>
-<td>0.0.0.0:32768 -&gt; 5000/tcp</td>
-<td>boring_bez</td>
-</tr>
-</tbody>
-</table>
-<p>4.此时就可以通过<code>IP地址:端口</code>访问这个应用程序</p>
-<p>查看日志:<code>docker logs 应用名(NAMES)</code>如<code>docker logs boring_bez</code></p>
-<h4 id="1创建镜像"><a href="#1创建镜像" class="headerlink" title="1创建镜像"></a>1创建镜像</h4><h5 id="1-1-ubuntu-python3-6"><a href="#1-1-ubuntu-python3-6" class="headerlink" title="1.1 ubuntu+python3.6"></a>1.1 ubuntu+python3.6</h5><p>为了使用国内源，先编辑一个sources.list，放在dokcerfile同目录下，作为docker创建镜像时的上下文。</p>
-<p>这个目录不要再有其他文件，否则还要加到.dockerignore，用阿里云</p>
+<h3 id="Docker-运行python-flask的web程序"><a href="#Docker-运行python-flask的web程序" class="headerlink" title="Docker 运行python flask的web程序"></a>Docker 运行python flask的web程序</h3><h4 id="1创建镜像"><a href="#1创建镜像" class="headerlink" title="1创建镜像"></a>1创建镜像</h4><h5 id="1-1-ubuntu16-04-python3-6"><a href="#1-1-ubuntu16-04-python3-6" class="headerlink" title="1.1 ubuntu16.04+python3.6"></a>1.1 ubuntu16.04+python3.6</h5><blockquote>
+<p>18.04卡在了PPA环节,并且git安装也没安装上,后来使用了<a href="https://hub.docker.com/_/ubuntu" target="_blank" rel="noopener">dockerHub</a>上搜素到的github仓库中的<a href="https://github.com/tianon/docker-brew-ubuntu-core/tree/105329f5da5f205e3d2bcb1f96ce32a472e56239/xenial" target="_blank" rel="noopener">16.04 Xenial</a>就解决了。</p>
+<p>注：<strong>镜像TAG版本需要到dockerHub上才能查看，最初下载成18.04就是因为这个原因被坑了</strong></p>
+<p>18.04PPA问题:</p>
+<p><code>aptsources.distro.NoDistroTemplateException: Error: could not find a distribution template for Ubuntu/bionic</code>意思是18.04该PPA没有资源.bionic是<a href="#附Uuntu版本代号:">版本代号</a>,如16.04的  Xenial</p>
+</blockquote>
+<p>⑴使用下载好的Xenial的Dockerfile进行创建镜像<code>docker run 1604ubuntu .</code></p>
+<p>为了使用国内源用阿里云，先编辑一个sources.list，放在dokcerfile同目录下，作为docker创建镜像时的上下文。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe #Added by software-properties</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe #Added by software-properties</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse #Added by software-properties</span><br><span class="line">deb http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line">deb-src http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe #Added by software-properties</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse</span><br></pre></td></tr></table></figure>
-<p>dockerfile</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">FROM ubuntu</span><br><span class="line">LABEL author=&quot;lazyman&quot;</span><br><span class="line">#用ubuntu国内源替换默认源</span><br><span class="line">RUN rm /etc/apt/sources.list</span><br><span class="line">COPY sources.list /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">#安装python3.6必要的包。源镜像太精简了，ip ifconfig之类的都没有。后续安装python pip也需要一些。但是build_essential似乎不必须，先去了。如果后面安装numpy之类需要gcc了，再加上</span><br><span class="line">RUN apt update</span><br><span class="line">RUN apt upgrade</span><br><span class="line">#RUN apt install -y apt-transport-https vim iproute2 net-tools build-essential ca-certificates curl wget software-properties-common</span><br><span class="line">RUN apt install -y vim iproute2 net-tools ca-certificates curl wget python-software-properties software-properties-common</span><br><span class="line"></span><br><span class="line">#安装python3.6 来自第三方</span><br><span class="line">RUN add-apt-repository ppa:jonathonf/python-3.6</span><br><span class="line">RUN apt update</span><br><span class="line">RUN apt install -y python3.6</span><br><span class="line">RUN apt install -y python3.6-dev</span><br><span class="line">RUN apt install -y python3.6-venv</span><br><span class="line"></span><br><span class="line">#为3.6安装pip</span><br><span class="line">RUN wget https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">RUN python3.6 get-pip.py</span><br><span class="line"></span><br><span class="line">#和自带的3.5共存</span><br><span class="line">RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1</span><br><span class="line">RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2</span><br><span class="line">RUN update-alternatives --config python3</span><br><span class="line">#print()时在控制台正常显示中文</span><br><span class="line">ENV PYTHONIOENCODING=utf-8</span><br></pre></td></tr></table></figure>
+<p>⑵根据官方的镜像来编写自己的Dockerfile创建具有工具的Ubuntu1604</p>
+<blockquote>
+<p>涉及交互式选择项（如下），docker build的时候会报错。设置 DEBIAN_FRONTEND=noninteractive</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">FROM 1604ubuntu</span><br><span class="line">MAINTAINER mrli</span><br><span class="line">#用ubuntu国内源替换默认源</span><br><span class="line">RUN rm /etc/apt/sources.list</span><br><span class="line">COPY sources.list /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">#安装python3.6必要的包。源镜像太精简了，ip ifconfig之类的都没有。后续安装python pip也需要一些。但是build_essential似乎不必须，先去了。如果后面安装numpy之类需要gcc了，再加上</span><br><span class="line">RUN apt update</span><br><span class="line">#RUN apt upgrade</span><br><span class="line"></span><br><span class="line">RUN apt install -y apt-utils apt-transport-https  vim iproute2 net-tools ca-certificates curl build-essential wget python-software-properties software-properties-common psmisc</span><br><span class="line"></span><br><span class="line">#安装python3.6 来自第三方</span><br><span class="line">RUN add-apt-repository ppa:jonathonf/python-3.6</span><br><span class="line">RUN apt update</span><br><span class="line">RUN apt install -y python3.6</span><br><span class="line">RUN apt install -y python3.6-dev</span><br><span class="line">RUN apt install -y python3.6-venv</span><br><span class="line"></span><br><span class="line">#为3.6安装pip</span><br><span class="line">RUN wget https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">RUN python3.6 get-pip.py</span><br><span class="line"></span><br><span class="line">#设置默认python为python3</span><br><span class="line">RUN update-alternatives --install /usr/bin/python python /usr/bin/python2 100</span><br><span class="line">RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 150</span><br><span class="line"></span><br><span class="line">#和自带的3.5共存,设置python3默认为3.6</span><br><span class="line">#RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1</span><br><span class="line">RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2</span><br><span class="line"></span><br><span class="line"># 更新配置</span><br><span class="line">RUN update-alternatives --config python3</span><br><span class="line">#print()时在控制台正常显示中文</span><br><span class="line">ENV PYTHONIOENCODING=utf-8</span><br></pre></td></tr></table></figure>
 <p>在dockerfile所在路径下执行，建立image</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t ubuntu-with-python .</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t uos:1604 .</span><br></pre></td></tr></table></figure>
 <p>因为开头几步用了国内源，所以非常快。</p>
-<h5 id="1-2-开发环境"><a href="#1-2-开发环境" class="headerlink" title="1.2 开发环境"></a>1.2 开发环境</h5><p>再建一个dockerfile，开头使用刚才建立的镜像ubuntu-with-python</p>
-<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">FROM ubuntu-with-python</span><br><span class="line">LABEL author=&quot;lazyman&quot;</span><br><span class="line"></span><br><span class="line">#代码复制过来后的路径</span><br><span class="line">RUN mkdir /app</span><br><span class="line"># 指定容器启动时执行的命令都在app目录下执行</span><br><span class="line">WORKDIR /app</span><br><span class="line"></span><br><span class="line"># 将本地app目录下的内容拷贝到容器的app目录下</span><br><span class="line">COPY ./app/ /app/</span><br><span class="line"># 替换nginx的配置</span><br><span class="line">COPY nginx.conf /etc/nginx/nginx.conf</span><br><span class="line"> </span><br><span class="line">RUN apt-get install nginx</span><br><span class="line">RUN /etc/init.d/nginx start</span><br><span class="line"></span><br><span class="line">RUN pip3 install uwsgi</span><br><span class="line">RUN apt install mysql-server mysql-client</span><br><span class="line"></span><br><span class="line">#安装需要的python库</span><br><span class="line">#COPY requirements.txt /code</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [&quot;pip install -r requirements.txt  -i  https://pypi.tuna.tsinghua.edu.cn/simple some-package --no-cache-dir&quot;]</span><br><span class="line"></span><br><span class="line"># 启动nginx和uwsgi</span><br><span class="line">ENTRYPOINT nginx -g &quot;daemon on;&quot; &amp;&amp; uwsgi --ini /app/uwsgi.ini</span><br></pre></td></tr></table></figure>
-<h4 id="2启动容器"><a href="#2启动容器" class="headerlink" title="2启动容器"></a>2启动容器</h4><ul>
+<h5 id="1-2-开发环境"><a href="#1-2-开发环境" class="headerlink" title="1.2 开发环境"></a>1.2 开发环境</h5><p>再建一个dockerfile，开头使用刚才建立的镜像uos1604</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">FROM uos:1604</span><br><span class="line">MAINTAINER mrli</span><br><span class="line"></span><br><span class="line">#代码复制过来后的路径</span><br><span class="line">RUN mkdir /app</span><br><span class="line"># 指定容器启动时执行的命令都在app目录下执行</span><br><span class="line">WORKDIR /app</span><br><span class="line"></span><br><span class="line"># 将本地app目录下的内容拷贝到容器的app目录下</span><br><span class="line">COPY ./app/ /app/</span><br><span class="line"></span><br><span class="line"># 安装nginx</span><br><span class="line">RUN apt -y install nginx mysql-server </span><br><span class="line"></span><br><span class="line">RUN /etc/init.d/nginx start</span><br><span class="line"># 替换nginx的配置</span><br><span class="line">RUN rm  /etc/nginx/sites-enabled/default</span><br><span class="line">RUN cp nginx.conf /etc/nginx/sites-enabled/nginx.conf</span><br><span class="line"></span><br><span class="line">RUN pip3 install uwsgi</span><br><span class="line"></span><br><span class="line">#安装需要的python库</span><br><span class="line"># 启动nginx和uwsgi</span><br><span class="line">#ENTRYPOINT pip install -r requirements.txt  -i  https://pypi.tuna.tsinghua.edu.cn/simple some-package --no-cache-dir &amp;&amp; service nginx restart &amp;&amp; uwsgi --ini uwsgi.ini</span><br><span class="line"></span><br><span class="line"># 为了保证能之后进入所以最后一个命令为/bin/sh</span><br><span class="line">ENTRYPOINT pip install -r requirements.txt  -i  https://pypi.tuna.tsinghua.edu.cn/simple some-package --no-cache-dir &amp;&amp; service nginx restart &amp;&amp; uwsgi --ini uwsgi.ini &amp; &amp;&amp; /bin/sh</span><br></pre></td></tr></table></figure>
+<p>创建uflask镜像:<code>docker build -t uflask .</code></p>
+<p><a href="#2启动容器">根据镜像创建运行容器</a>:<code>docker run -tid -p 12345:80 flaskdemo IMAGE_ID</code></p>
+<p>此时就可以通过<code>VPS的IP地址:宿主机端口</code>访问这个应用程序</p>
+<p>查看日志:<code>docker logs 应用名(NAMES)</code>如<code>docker logs flaskdemo</code></p>
+<h5 id="关于mysql的建议"><a href="#关于mysql的建议" class="headerlink" title="关于mysql的建议"></a>关于mysql的建议</h5><blockquote>
+<p>mysql建议作为单独容器来跑数据库,然后远程连接数据库.或是使用数据卷</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># </span><br><span class="line"># 搜索</span><br><span class="line"># docker search mysql</span><br><span class="line"># 拉取</span><br><span class="line"># docker pull mysql:5.7</span><br><span class="line">#运行</span><br><span class="line"># docker run --name mysql5.7 -e MYSQL_ROOT_PASSWORD=123456 -p 3307:3306 -d mysql:5.7</span><br></pre></td></tr></table></figure>
+<h4 id="2启动容器-转"><a href="#2启动容器-转" class="headerlink" title="2启动容器(转)"></a>2启动容器(转)</h4><ul>
 <li><p>Docker</p>
 <p>一种开源容器应用，供开发者打包自己的开发环境，可以任意移植</p>
 </li>
@@ -338,25 +334,295 @@
 <ul>
 <li>将宿主机5000端口的请求转发到容器5000端口,用5000是flask默认</li>
 </ul>
-<p>-v  host路径:容器内路径</p>
-<p>最后是使用的镜像名（前面刚用dockerfile build出来的）</p>
+<p>-v  host路径:容器内路径(挂载数据卷)</p>
+<p>quotation_dev:latest 最后是使用的镜像名（前面刚用dockerfile build出来的）</p>
 </blockquote>
 <p>然后进入容器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach quotation_api</span><br></pre></td></tr></table></figure>
 <p>用python3 main.py启动flask，OK。</p>
 <p>这样flask运行在docker里了。</p>
-<p>在host改代码，可以看见docker的控制台在更新，和在host一样了。</p>
-<h5 id="2-2使用dock-compose"><a href="#2-2使用dock-compose" class="headerlink" title="2.2使用dock-compose"></a>2.2使用dock-compose</h5><p>dock-compose用来管理多个container的运行，特别适合1个host上跑多个container的情况。</p>
+<p>在host改代码，可以看见docker的控制台在更新，和在host一样了。(使用数据卷)</p>
+<h5 id="2-2使用dock-compose"><a href="#2-2使用dock-compose" class="headerlink" title="2.2使用dock-compose"></a>2.2使用dock-compose</h5><blockquote>
+<p>如果没有安装先进行安装<code>apt install docker-compose</code></p>
+</blockquote>
+<p>dock-compose用来管理多个container的运行，特别适合1个host上跑多个container的情况。</p>
 <p>得天独厚，<a href="https://docs.docker.com/compose/gettingstarted/" target="_blank" rel="noopener">docker官网上dock-compose的gettingstarted文档</a>就是flask的(说明flask+docker代表了先进生产力的前进方向O Yeah！),看完了基本就能用了。</p>
 <p>dock-compose采用yaml作为配置文件。查了一下，yaml参考了xml和json，以及python的语法，采用了python之缩进，无XML之标记，无json之括号，无字符串之引号。特别适合作为配置文件用。</p>
-<p>建立docker-compose.yaml文件：</p>
-<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  quotation_api:</span><br><span class="line">    image: quotation_dev:latest</span><br><span class="line">    volumes:</span><br><span class="line">      - /home/quotation:/code</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;5000:5000&quot;</span><br><span class="line">    command: python3 main.py</span><br></pre></td></tr></table></figure>
-<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>建立docker-compose.yaml文件(无镜像,但有dockerfile)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;2&apos; # 表示该 Docker-Compose 文件使用的是 Version 2 file</span><br><span class="line">services:</span><br><span class="line">  docker-demo:  # 指定服务名称</span><br><span class="line">    build: .  # 指定 Dockerfile 所在路径</span><br><span class="line">    ports:    # 指定端口映射</span><br><span class="line">      - &quot;9000:8761&quot;</span><br></pre></td></tr></table></figure>
+<p>建立docker-compose.yaml文件(已有镜像)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  quotation_api: 	# 指定服务名称</span><br><span class="line">    image: quotation_dev:latest  # 指定镜像</span><br><span class="line">    volumes:		# 选择数据卷</span><br><span class="line">      - /home/quotation:/code</span><br><span class="line">    ports:			# 端口映射</span><br><span class="line">      - &quot;5000:5000&quot;</span><br><span class="line">    command: python3 main.py	# 执行命令</span><br></pre></td></tr></table></figure>
 <p>基本对应手动敲的docker命令，最后还省了敲python3 main.py。</p>
 <p>当然如果是部署，这句可以用CMD 写进Dockfile。但是开发过程，文件名之类的会改变，比如最终部署运行用可能是gunicorn+wsgi.py，所以还是写在dockerfile外面比较方便</p>
-<p>运行，在控制台执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up</span><br></pre></td></tr></table></figure></article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/07/25/Docker使用/">https://nymrli.top/2019/07/25/Docker使用/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2019/07/25/Python中的正则匹配/" title="Python中的正则匹配"><span>NextPost ></span><br><span class="nextTitle">Python中的正则匹配</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+<p>运行，在控制台执行：<code>docker-compose up</code>、<code>docker-compose up -d  // 后台启动并运行容器</code></p>
+<p><a href="https://www.jianshu.com/p/658911a8cff3" target="_blank" rel="noopener">docker-compose更多介绍</a></p>
+<h3 id="坑点记录"><a href="#坑点记录" class="headerlink" title="坑点记录"></a>坑点记录</h3><h4 id="docker容器启动后马上退出解决方案"><a href="#docker容器启动后马上退出解决方案" class="headerlink" title="docker容器启动后马上退出解决方案"></a><strong>docker容器启动后马上退出解决方案</strong></h4><blockquote>
+<p>dokcerfile中的最后一个命令不能在后台执行,不然会启动后马上退出</p>
+</blockquote>
+<p><strong>原因</strong></p>
+<p>Docker容器同时只能管理一个进程，如果这个进程退出那么容器也就退出了，但这不表示容器只能运行一个进程(其他进程可在后台运行)，但是要使容器不退出必须有一个前台执行的进程。</p>
+<p><strong>解决方法</strong>：</p>
+<p>脚本中最后一个进程一定要用前台运行方式即在进程最后不加&amp;(&amp;表示后台运行)，否则容器会退出。</p>
+<h4 id="如何正确的使用docker-attach"><a href="#如何正确的使用docker-attach" class="headerlink" title="如何正确的使用docker attach"></a><a href="http://dockone.io/question/399" target="_blank" rel="noopener">如何正确的使用docker attach</a></h4><p>Q:由于执行着<code>uwsgi --ini uwsig.ini</code>命令,用户就无法直接进入到容器中去，<code>docker attach CONTAINER_id</code> 就会一直卡着。</p>
+<p>A: attach早已过时了，可用: <code>docker exec -it containerID /bin/bash</code>，一开始使用的是<code>/bin/sh</code>然后还是一直卡住.但是/bin/bash是可以的</p>
+<h3 id="附Uuntu版本代号"><a href="#附Uuntu版本代号" class="headerlink" title="附Uuntu版本代号:"></a>附Uuntu版本代号:</h3><table>
+<thead>
+<tr>
+<th>版本号</th>
+<th>代号</th>
+<th>发布时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>18.04</td>
+<td>Bionic Beaver（仿生海狸）</td>
+<td>即将发布2018年4月(LTS)</td>
+</tr>
+<tr>
+<td>17.10</td>
+<td>Artful Aardvark(机灵的土豚)</td>
+<td>2017年10月</td>
+</tr>
+<tr>
+<td><strong>16.04 LTS</strong></td>
+<td>Xenial Xerus <code>好客的非洲地松鼠</code></td>
+<td>即将发布 2016/4</td>
+</tr>
+<tr>
+<td>15.10</td>
+<td>Wily Werewolf <code>狡诈的狼人</code></td>
+<td>2015/10/22</td>
+</tr>
+<tr>
+<td>15.04</td>
+<td>Vivid Vervet <code>活泼的小猴</code></td>
+<td>2015/04/23</td>
+</tr>
+<tr>
+<td>14.10</td>
+<td>Utopic Unicorn <code>乌托邦独角兽</code></td>
+<td>2014/10/23</td>
+</tr>
+<tr>
+<td><strong>14.04 LTS</strong></td>
+<td>Trusty Tahr <code>值得信赖的塔尔羊</code></td>
+<td>2014/04/18</td>
+</tr>
+<tr>
+<td>13.10</td>
+<td>Saucy Salamander <code>活泼的蝾螈</code></td>
+<td>2013/10/17</td>
+</tr>
+<tr>
+<td>13.04</td>
+<td>Raring Ringtail <code>铆劲浣熊</code></td>
+<td>2013/04/25</td>
+</tr>
+<tr>
+<td>12.10</td>
+<td>Quantal Quetzal <code>缤纷的绿咬鹃</code></td>
+<td>2012/10/18</td>
+</tr>
+<tr>
+<td><strong>12.04 LTS</strong></td>
+<td>Precise Pangolin <code>精准的穿山甲</code></td>
+<td>2012/04/26</td>
+</tr>
+<tr>
+<td>11.10</td>
+<td>Oneiric Ocelot <code>有梦的虎猫</code></td>
+<td>2011/10/13</td>
+</tr>
+<tr>
+<td>11.04 <code>Unity成为默认桌面环境</code></td>
+<td>Natty Narwhal <code>敏捷的独角鲸</code></td>
+<td>2011/04/28</td>
+</tr>
+<tr>
+<td>10.10</td>
+<td>Maverick Meerkat <code>标新立异的的狐獴</code></td>
+<td>2010/10/10</td>
+</tr>
+<tr>
+<td><strong>10.04 LTS</strong></td>
+<td>Lucid Lynx <code>清醒的猞猁</code></td>
+<td>2010/04/29</td>
+</tr>
+<tr>
+<td>9.10</td>
+<td>Karmic Koala <code>幸运的无尾熊</code></td>
+<td>2009/10/29</td>
+</tr>
+<tr>
+<td>9.04</td>
+<td>Jaunty Jackalope <code>活泼的兔子</code></td>
+<td>2009/04/23</td>
+</tr>
+<tr>
+<td>8.10</td>
+<td>Intrepid Ibex <code>无畏的高地山羊</code></td>
+<td>2008/10/30</td>
+</tr>
+<tr>
+<td>8.06 <code>官方查不到此版本发布信息</code></td>
+<td>Haughty Husky <code>骄傲的哈士奇</code></td>
+<td>2008/06/07</td>
+</tr>
+<tr>
+<td><strong>8.04 LTS</strong></td>
+<td>Hardy Heron <code>坚强的苍鹭</code></td>
+<td>2008/04/24</td>
+</tr>
+<tr>
+<td>7.10</td>
+<td>Gutsy Gibbon <code>勇敢的长臂猿</code></td>
+<td>2007/10/18</td>
+</tr>
+<tr>
+<td>7.04</td>
+<td>Feisty Fawn <code>烦躁不安的小鹿</code></td>
+<td>2007/04/19</td>
+</tr>
+<tr>
+<td>6.10</td>
+<td>Edgy Eft <code>尖利的小蜥蜴</code></td>
+<td>2006/10/26</td>
+</tr>
+<tr>
+<td><strong>6.06 LTS</strong></td>
+<td>Dapper Drake <code>整洁的公鸭</code></td>
+<td>2006/06/01</td>
+</tr>
+<tr>
+<td>5.10</td>
+<td>Breezy Badger <code>活泼的獾</code></td>
+<td>2005/10/13</td>
+</tr>
+<tr>
+<td>5.04</td>
+<td>Hoary Hedgehog <code>白发得刺猬</code></td>
+<td>2005/04/08</td>
+</tr>
+<tr>
+<td><strong>4.10 </strong><code>初始发布版本</code></td>
+<td>Warty Warthog <code>多疣的疣猪</code></td>
+<td>2004/10/20</td>
+</tr>
+</tbody>
+</table>
+<h3 id="docker-compose使用-转"><a href="#docker-compose使用-转" class="headerlink" title="docker-compose使用[转]"></a>docker-compose使用[转]</h3><h4 id="docker-compose常见命令"><a href="#docker-compose常见命令" class="headerlink" title="docker-compose常见命令"></a>docker-compose常见命令</h4><ul>
+<li><strong>ps</strong>：列出所有运行容器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose ps</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>logs</strong>：查看服务日志输出</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose logs</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>port</strong>：打印绑定的公共端口，下面命令可以输出 eureka 服务 8761 端口所绑定的公共端口</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose port eureka 8761</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>build</strong>：构建或者重新构建服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose build</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>start</strong>：启动指定服务已存在的容器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose start eureka</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>stop</strong>：停止已运行的服务的容器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose stop eureka</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>rm</strong>：删除指定服务的容器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose rm eureka</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>up</strong>：构建、启动容器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>kill</strong>：通过发送 SIGKILL 信号来停止指定服务的容器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose kill eureka</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>pull</strong>：下载服务镜像</li>
+<li><strong>scale</strong>：设置指定服务运气容器的个数，以 service=num 形式指定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose scale user=3 movie=3</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>run</strong>：在一个服务上执行一个命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose run web bash</span><br></pre></td></tr></table></figure>
+<p>### </p>
+<h4 id="docker-compose-yml-字段含义"><a href="#docker-compose-yml-字段含义" class="headerlink" title="docker-compose.yml 字段含义"></a>docker-compose.yml 字段含义</h4><ul>
+<li><strong>version</strong>：指定 docker-compose.yml 文件的写法格式</li>
+<li><strong>services</strong>：多个容器集合</li>
+<li><strong>build</strong>：配置构建时，Compose 会利用它自动构建镜像，该值可以是一个路径，也可以是一个对象，用于指定 Dockerfile 参数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">build: ./dir</span><br><span class="line">---------------</span><br><span class="line">build:</span><br><span class="line">    context: ./dir</span><br><span class="line">    dockerfile: Dockerfile</span><br><span class="line">    args:</span><br><span class="line">        buildno: 1</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>command</strong>：覆盖容器启动后默认执行的命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">command: bundle exec thin -p 3000</span><br><span class="line">----------------------------------</span><br><span class="line">command: [bundle,exec,thin,-p,3000]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>dns</strong>：配置 dns 服务器，可以是一个值或列表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dns: 8.8.8.8</span><br><span class="line">------------</span><br><span class="line">dns:</span><br><span class="line">    - 8.8.8.8</span><br><span class="line">    - 9.9.9.9</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>dns_search</strong>：配置 DNS 搜索域，可以是一个值或列表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dns_search: example.com</span><br><span class="line">------------------------</span><br><span class="line">dns_search:</span><br><span class="line">    - dc1.example.com</span><br><span class="line">    - dc2.example.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>environment</strong>：环境变量配置，可以用数组或字典两种方式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">    RACK_ENV: development</span><br><span class="line">    SHOW: &apos;ture&apos;</span><br><span class="line">-------------------------</span><br><span class="line">environment:</span><br><span class="line">    - RACK_ENV=development</span><br><span class="line">    - SHOW=ture</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>env_file</strong>：从文件中获取环境变量，可以指定一个文件路径或路径列表，其优先级低于 environment 指定的环境变量</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">env_file: .env</span><br><span class="line">---------------</span><br><span class="line">env_file:</span><br><span class="line">    - ./common.env</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>expose</strong>：暴露端口，只将端口暴露给连接的服务，而不暴露给主机</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">expose:</span><br><span class="line">    - &quot;3000&quot;</span><br><span class="line">    - &quot;8000&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>image</strong>：指定服务所使用的镜像</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image: java</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>network_mode</strong>：设置网络模式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">network_mode: &quot;bridge&quot;</span><br><span class="line">network_mode: &quot;host&quot;</span><br><span class="line">network_mode: &quot;none&quot;</span><br><span class="line">network_mode: &quot;service:[service name]&quot;</span><br><span class="line">network_mode: &quot;container:[container name/id]&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>ports</strong>：对外暴露的端口定义，和 expose 对应</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ports:   # 暴露端口信息  - &quot;宿主机端口:容器暴露端口&quot;</span><br><span class="line">- &quot;8763:8763&quot;</span><br><span class="line">- &quot;8763:8763&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>links</strong>：将指定容器连接到当前连接，可以设置别名，避免ip方式导致的容器重启动态改变的无法连接情况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">links:    # 指定服务名称:别名 </span><br><span class="line">    - docker-compose-eureka-server:compose-eureka</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>volumes</strong>：卷挂载路径</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">  - /lib</span><br><span class="line">  - /var</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>logs</strong>：日志输出信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--no-color          单色输出，不显示其他颜.</span><br><span class="line">-f, --follow        跟踪日志输出，就是可以实时查看日志</span><br><span class="line">-t, --timestamps    显示时间戳</span><br><span class="line">--tail              从日志的结尾显示，--tail=200</span><br></pre></td></tr></table></figure>
+<h4 id="更新容器"><a href="#更新容器" class="headerlink" title="更新容器"></a>更新容器</h4><ul>
+<li>当服务的配置发生更改时，可使用 docker-compose up 命令更新配置</li>
+<li>此时，Compose 会删除旧容器并创建新容器，新容器会以不同的 IP 地址加入网络，名称保持不变，任何指向旧容起的连接都会被关闭，重新找到新容器并连接上去</li>
+</ul>
+<h4 id="links"><a href="#links" class="headerlink" title="links"></a>links</h4><ul>
+<li>服务之间可以使用服务名称相互访问，links 允许定义一个别名，从而使用该别名访问其它服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;2&apos;</span><br><span class="line">services:</span><br><span class="line">    web:</span><br><span class="line">        build: .</span><br><span class="line">        links:</span><br><span class="line">            - &quot;db:database&quot;</span><br><span class="line">    db:</span><br><span class="line">        image: postgres</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这样 Web 服务就可以使用 db 或 database 作为 hostname 访问 db 服务了</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/07/25/Docker使用/">https://nymrli.top/2019/07/25/Docker使用/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/07/26/Vim记忆/" title="Vim记忆"><span>< PreviousPost</span><br><span class="prevTitle">Vim记忆</span></a><a class="nextSlogan" href="/2019/07/25/Python中的正则匹配/" title="Python中的正则匹配"><span>NextPost ></span><br><span class="nextTitle">Python中的正则匹配</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'Docker使用',
   owner: 'Freedomisgood',
   repo: 'Freedomisgood.github.io',
@@ -365,4 +631,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker学习"><span class="toc-number">1.</span> <span class="toc-text">Docker学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#docker和虚拟机VM的区别"><span class="toc-number">1.1.</span> <span class="toc-text">docker和虚拟机VM的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、本质上的区别："><span class="toc-number">1.1.1.</span> <span class="toc-text">一、本质上的区别：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、使用上的区别："><span class="toc-number">1.1.2.</span> <span class="toc-text">二、使用上的区别：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#宿主机、镜像与容器"><span class="toc-number">1.2.</span> <span class="toc-text">宿主机、镜像与容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker命令"><span class="toc-number">1.3.</span> <span class="toc-text">Docker命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dockerfile指令"><span class="toc-number">1.4.</span> <span class="toc-text">Dockerfile指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dockerfile构建过程"><span class="toc-number">1.4.1.</span> <span class="toc-text">dockerfile构建过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用中间层镜像进行调试"><span class="toc-number">1.4.2.</span> <span class="toc-text">使用中间层镜像进行调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile-镜像缓存"><span class="toc-number">1.4.3.</span> <span class="toc-text">Dockerfile 镜像缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看镜像构建的过程"><span class="toc-number">1.4.4.</span> <span class="toc-text">查看镜像构建的过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据卷"><span class="toc-number">1.5.</span> <span class="toc-text">数据卷</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看容器是否挂载了数据卷"><span class="toc-number">1.5.1.</span> <span class="toc-text">查看容器是否挂载了数据卷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给数据卷增加权限"><span class="toc-number">1.5.2.</span> <span class="toc-text">给数据卷增加权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据卷容器"><span class="toc-number">1.6.</span> <span class="toc-text">数据卷容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL通信"><span class="toc-number">1.7.</span> <span class="toc-text">MySQL通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis通信"><span class="toc-number">1.8.</span> <span class="toc-text">redis通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">1.9.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile-RUN，CMD，ENTRYPOINT命令区别"><span class="toc-number">1.9.1.</span> <span class="toc-text">Dockerfile RUN，CMD，ENTRYPOINT命令区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-运行python-flask的web程序"><span class="toc-number">1.9.2.</span> <span class="toc-text">Docker 运行python flask的web程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1创建镜像"><span class="toc-number">1.9.2.1.</span> <span class="toc-text">1创建镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-ubuntu-python3-6"><span class="toc-number">1.9.2.1.1.</span> <span class="toc-text">1.1 ubuntu+python3.6</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-开发环境"><span class="toc-number">1.9.2.1.2.</span> <span class="toc-text">1.2 开发环境</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2启动容器"><span class="toc-number">1.9.2.2.</span> <span class="toc-text">2启动容器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1手动敲docker命令"><span class="toc-number">1.9.2.2.1.</span> <span class="toc-text">2.1手动敲docker命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2使用dock-compose"><span class="toc-number">1.9.2.2.2.</span> <span class="toc-text">2.2使用dock-compose</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker学习"><span class="toc-number">1.</span> <span class="toc-text">Docker学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#docker和虚拟机VM的区别"><span class="toc-number">1.1.</span> <span class="toc-text">docker和虚拟机VM的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、本质上的区别："><span class="toc-number">1.1.1.</span> <span class="toc-text">一、本质上的区别：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、使用上的区别："><span class="toc-number">1.1.2.</span> <span class="toc-text">二、使用上的区别：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#宿主机、镜像与容器"><span class="toc-number">1.2.</span> <span class="toc-text">宿主机、镜像与容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker命令"><span class="toc-number">1.3.</span> <span class="toc-text">Docker命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dockerfile指令"><span class="toc-number">1.4.</span> <span class="toc-text">Dockerfile指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dockerfile构建过程"><span class="toc-number">1.4.1.</span> <span class="toc-text">dockerfile构建过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用中间层镜像进行调试"><span class="toc-number">1.4.2.</span> <span class="toc-text">使用中间层镜像进行调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile-镜像缓存"><span class="toc-number">1.4.3.</span> <span class="toc-text">Dockerfile 镜像缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看镜像构建的过程"><span class="toc-number">1.4.4.</span> <span class="toc-text">查看镜像构建的过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据卷"><span class="toc-number">1.5.</span> <span class="toc-text">数据卷</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看容器是否挂载了数据卷"><span class="toc-number">1.5.1.</span> <span class="toc-text">查看容器是否挂载了数据卷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给数据卷增加权限"><span class="toc-number">1.5.2.</span> <span class="toc-text">给数据卷增加权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据卷容器"><span class="toc-number">1.6.</span> <span class="toc-text">数据卷容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL通信"><span class="toc-number">1.7.</span> <span class="toc-text">MySQL通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis通信"><span class="toc-number">1.8.</span> <span class="toc-text">redis通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">1.9.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile-RUN，CMD，ENTRYPOINT命令区别"><span class="toc-number">1.9.1.</span> <span class="toc-text">Dockerfile RUN，CMD，ENTRYPOINT命令区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-运行python-flask的web程序"><span class="toc-number">1.9.2.</span> <span class="toc-text">Docker 运行python flask的web程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1创建镜像"><span class="toc-number">1.9.2.1.</span> <span class="toc-text">1创建镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-ubuntu16-04-python3-6"><span class="toc-number">1.9.2.1.1.</span> <span class="toc-text">1.1 ubuntu16.04+python3.6</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-开发环境"><span class="toc-number">1.9.2.1.2.</span> <span class="toc-text">1.2 开发环境</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#关于mysql的建议"><span class="toc-number">1.9.2.1.3.</span> <span class="toc-text">关于mysql的建议</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2启动容器-转"><span class="toc-number">1.9.2.2.</span> <span class="toc-text">2启动容器(转)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1手动敲docker命令"><span class="toc-number">1.9.2.2.1.</span> <span class="toc-text">2.1手动敲docker命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2使用dock-compose"><span class="toc-number">1.9.2.2.2.</span> <span class="toc-text">2.2使用dock-compose</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#坑点记录"><span class="toc-number">1.9.3.</span> <span class="toc-text">坑点记录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker容器启动后马上退出解决方案"><span class="toc-number">1.9.3.1.</span> <span class="toc-text">docker容器启动后马上退出解决方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何正确的使用docker-attach"><span class="toc-number">1.9.3.2.</span> <span class="toc-text">如何正确的使用docker attach</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#附Uuntu版本代号"><span class="toc-number">1.9.4.</span> <span class="toc-text">附Uuntu版本代号:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-compose使用-转"><span class="toc-number">1.9.5.</span> <span class="toc-text">docker-compose使用[转]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-compose常见命令"><span class="toc-number">1.9.5.1.</span> <span class="toc-text">docker-compose常见命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-compose-yml-字段含义"><span class="toc-number">1.9.5.2.</span> <span class="toc-text">docker-compose.yml 字段含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更新容器"><span class="toc-number">1.9.5.3.</span> <span class="toc-text">更新容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#links"><span class="toc-number">1.9.5.4.</span> <span class="toc-text">links</span></a></li></ol></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

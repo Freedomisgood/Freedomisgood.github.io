@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>时间序列概念及主要模型 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">时间序列概念及主要模型</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/07/30</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="数学建模"> 数学建模</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,480</span> | Reading time: <span class="post-count">11</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="时间序列概念及主要模型"><a href="#时间序列概念及主要模型" class="headerlink" title="时间序列概念及主要模型"></a>时间序列概念及主要模型</h1><p>Q:什么是时间序列分析?<br>A:时间序列是按照时间顺序，按照一定时间间隔取得的一系列观测值<br>Q:怎样做时间序列分析?<br>A:时间序列分析尝试找出序列值在过去呈现的特征模式，假定这种模式在未来能够持续，进而对未来进行预测</p>
+<h2 id="时间序列三大特征"><a href="#时间序列三大特征" class="headerlink" title="时间序列三大特征"></a>时间序列三大特征</h2><ul>
+<li>序列相关性：当期的序列值和前期某个或某些序列值线性相关<br>√  自相关系数（全相关系数）（ACF）：用来度量同一事件在不同时期之间的相关程度。$\rho_{h}=\frac{r(h)}{r(0)}$，其中r（h）为h期协方差函数，r（0）为方差<br>√  偏自相关系数（PACF）：度量去除中间变量影响后的相关程度。$X_{t}$和$X_{t-2}$通过$X_{t-1}$产生关联，PACF即为去除$X_{t- 1}$的关联后两者的相关程度</li>
+<li>趋势性：序列整体上呈现单调性，如平稳，上涨或下跌<ul>
+<li>ARMA模型是平稳的时间序列模型，在建模前必须去除趋势性</li>
+</ul>
+</li>
+<li>随机性：序列在一定程度上呈现不确定性<ul>
+<li>模型并不能够捕捉到现实世界中的所有特征，总有一些噪声的存在，这些噪声叫做白噪声</li>
+</ul>
+</li>
+</ul>
+<h2 id="时间序列模型预测方法："><a href="#时间序列模型预测方法：" class="headerlink" title="时间序列模型预测方法："></a>时间序列模型预测方法：</h2><p>算术平均法，移动平均法，加权移动平均法，指数平滑法，自回归法和移动平均法（ARIMA）</p>
+<p>算数平均法：对时间序列的过去数据进行简单平均来进行预测<br>移动平均法(ARIMA)：不考虑远期的数据，仅考虑近期数据产生的影响。<br>加权移动平均法：给予近期数据较大的权重，远期数据较小的权重<br>指数平滑法：给予近期数据较大的权重，远期数据较小的权重，但是权重以指<br>数的形式适减<br>自回归法和移动平均法（ARIMA）:先对数据做了差分，之后再使用自回归滑动平均模型[^ARMA]模型。优点信息浪费最少，集趋势性，相关性和随机性于一身</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><strong>T时刻的时间序列值</strong>表示为$X_t$,T-1时刻的序列值表述为$X_{t-1}$或者$X[t-1]$</p>
+<p><strong>一个时间序列</strong>可以表述为：$\left{X_{t} | t=1,2,3 \dots n\right}$</p>
+<p>滞后算子$B X,=X_{t-1}$</p>
+<p>时间序列的差分:$X_{t}-X_{t-1}$或者$X[t]-X[t-1]$<br>一阶差分：$X_{t}-X_{t-1}=X_{t}-B X_{t}=(1-B) X_{t}$<br>二阶差分：$\nabla\left(\nabla X_{t}\right)=\nabla X_{t}-\nabla X_{r-1}=\left(X_{t}-X_{t-1}\right)-\left(X_{t-1}-X_{t-2}\right)=X_{t}-2 X_{t-1}+X_{t-2}=(1-B)^{2} X_{t}$<br>k步差分：$X_{t}-X_{t-k}=X_{t}-B^{k} X_{t}=\left(1-B^{k}\right) X_{t}$</p>
+<p>思考：<br>1.三阶差分如何表达？3步差分如何表达？<br>2.为什么要进行一阶差分？二阶差分？<br>3.为什么要进行k步差分？<br>4.阶次差分与步长差分的区别？</p>
+<h2 id="时间序列分类"><a href="#时间序列分类" class="headerlink" title="时间序列分类"></a>时间序列分类</h2><blockquote>
+<p>Q:什么是序列平稳？</p>
+<p>A:</p>
+<p>1.$E\left(X_{t}\right)=\mu$，对于所有t而言，序列的期望为一常数，见图一</p>
+<p>2.$\operatorname{Var}\left(X_{t}\right)=\sigma$，对于所有t，序列方差为一常数，见图二</p>
+<p>3.$r(h)=\operatorname{Cov}\left(X_{t}, X_{t-l}\right)$对于所有t以及h〉0，序列的协方差为是由h唯一决定的函数，即h阶的相关性只与h有关，与时刻t无关，如：$\left{X_{n}, X_{n+1}, X_{n+2}, \ldots, X_{n}\right},\left{X_{1}, X_{2}, X_{3}, \ldots, X_{n+1}-n\right]$与$\left{X_{h+5}, X_{h+6}, X_{h+7}, \ldots, X_{n+5}\right},\left{X_{6}, X_{7}, X_{8}, \ldots, X_{n+6-h}\right}$的相关性一致</p>
+</blockquote>
+<p>根据序列是否平稳，时间序列可以分为：</p>
+<p>平稳序列：白噪声序列、AR（p）序列，MA（a）序列，ARWA（p.g）序列<br>非平稳序列：ARlMA（P.d.g）序列</p>
+<p>平稳条件:</p>
+<p>1.$E\left(x_{t}\right)=\mu$序列的均值应该是一个常数，而不是随时间变化的函数。下图中左图满足要求，而右图的均值是随时间而变化的。</p>
+<p><img src="/2019/07/29/时间序列概念及主要模型/1.jpg" alt="1"></p>
+<p>2.$\operatorname{Var}\left(X_{t}\right)=\sigma$,序列的方差为一个常数，而不随时间的变化</p>
+<p><img src="/2019/07/29/时间序列概念及主要模型/2.jpg" alt="2"></p>
+<p>3.$\operatorname{Cov}(y t, y t+k)=y 0$,k,序列协方差的值只与时间间隔k有关，与时间t无关</p>
+<p><img src="/2019/07/29/时间序列概念及主要模型/3.jpg" alt="3"></p>
+<h3 id="白噪声序列"><a href="#白噪声序列" class="headerlink" title="白噪声序列"></a>白噪声序列</h3><p>(高斯)白噪声模型:$X_{t}=\mathrm{e}<em>{\mathrm{t}} | \mathrm{e}</em>{\mathrm{t}} \sim \mathrm{WN}\left(0, \sigma^{2}\right)$<br>(高斯)白噪声就是一系列独立分布的正态序列：</p>
+<ul>
+<li>序列相关性：无</li>
+<li>趋势性：无</li>
+<li>随机性：是</li>
+</ul>
+<p>白噪声的每一个时序点都是服从正态分布的</p>
+<p><img src="/2019/07/29/时间序列概念及主要模型/B.jpg" alt="B"></p>
+<p><img src="/2019/07/29/时间序列概念及主要模型/高斯白噪声散点图.jpg" alt="高斯白噪声散点图"></p>
+<p>序列无规律可循，在均值处反复震荡<img src="/2019/07/29/时间序列概念及主要模型/高斯白噪声.jpg" alt="高斯白噪声"></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">clear,clc;</span><br><span class="line">N=<span class="number">0</span>:<span class="number">1000</span>;</span><br><span class="line">fs=<span class="number">1024</span>;</span><br><span class="line">t=N./fs;</span><br><span class="line">y=<span class="number">3</span>*<span class="built_in">sin</span>(<span class="number">2</span>*<span class="built_in">pi</span>*t);</span><br><span class="line">x=wgn(<span class="number">1</span>,<span class="number">1001</span>,<span class="number">2</span>);	<span class="comment">% wgn产生高斯白噪声</span></span><br><span class="line"><span class="built_in">i</span>=y+x;				<span class="comment">% 给原有信号y叠加高斯白噪声</span></span><br><span class="line"><span class="comment">%i=awgn(y,2); 		% awgn在信号y中加入高斯白噪声。</span></span><br><span class="line">subplot(<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>),plot(x);</span><br><span class="line">subplot(<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>),plot(y);</span><br><span class="line">subplot(<span class="number">3</span>,<span class="number">1</span>,<span class="number">3</span>),plot(<span class="built_in">i</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="自回归模型AR"><a href="#自回归模型AR" class="headerlink" title="自回归模型AR"></a>自回归模型AR</h3><h4 id="▲AR-p"><a href="#▲AR-p" class="headerlink" title="▲AR(p):"></a>▲AR(p):</h4><p> $X_{t} = \beta_{1}X_{t-1}+\beta_{2} X_{t-2}+\ldots+\beta_{p} X_{t-p}+\mathrm{e}<em>{t} \quad \mathrm{e}</em>{t} \sim \mathrm{WN}\left(0, \sigma^{2}\right)$</p>
+<p>当前时刻的时序值可由其过去值的线性组合加上一个白噪声</p>
+<p>建模的目的就是要搞清过去几期的历史值会影响当前值</p>
+<p>模型特征：</p>
+<ul>
+<li>趋势性：无</li>
+<li>相关性：有</li>
+<li>随机性：有</li>
+</ul>
+<h4 id="▲AR（1）模型"><a href="#▲AR（1）模型" class="headerlink" title="▲AR（1）模型:"></a>▲AR（1）模型:</h4><p>$X_{t}=\beta_{1} X_{t-1}+e_{t}$</p>
+<p>一阶自回归模型是最简单的自回归模型</p>
+<p>该模型在t+1时的情形:$X_{t+1}=\beta_{\perp} X_{t}+e_{t+1}$</p>
+<p>自相关系数：$\rho_{1}=\beta_{1}, \rho_{2}=\beta_{1}^{2}, \ldots, \rho_{k}=\beta_{1}^{k}, \mathrm{k} \geq 3$<br>偏自相关系数：$\varphi_{11}=\rho_{1}, \varphi_{k k}=0, k \geqslant 2$</p>
+<p>AR（1）的序列相关性：</p>
+<ul>
+<li>ACF星现指数下降趋势</li>
+<li>PACF在一阶处出现峰值，之后截断</li>
+</ul>
+<p><img src="/2019/07/29/时间序列概念及主要模型/B2.jpg" alt="B2"></p>
+<p>Q:如何识别自回归阶数</p>
+<p>A:</p>
+<ul>
+<li>PACF显示出剧烈地下降，并截断在P阶，而ACF呈指数下降趋势</li>
+<li>PACF截尾的阶数即为AR模型的阶数</li>
+</ul>
+<hr>
+<h3 id="移动平均模型MA"><a href="#移动平均模型MA" class="headerlink" title="移动平均模型MA"></a>移动平均模型MA</h3><h4 id="▲MA-a"><a href="#▲MA-a" class="headerlink" title="▲MA(a):"></a>▲MA(a):</h4><p>$X_{t}=e_{t}+\dot{\beta}<em>{1} e</em>{t-1}+\beta_{2} e_{t-2}+\ldots+\beta_{q} e_{t-q}$ , $e_{t} \sim W N\left(0, \sigma^{2}\right)$</p>
+<p>序列当前时刻的时序值是过去q阶白噪声的线性组合</p>
+<p>建模的目的在于：</p>
+<ul>
+<li>找出过去几期的白噪声影响了当前值</li>
+<li>找出过去a期冲击效应对当前值的影响</li>
+</ul>
+<p>模型特征：</p>
+<ul>
+<li>趋势性：无</li>
+<li>相关性：有</li>
+<li>随机性：有</li>
+</ul>
+<h4 id="▲MA（1）模型"><a href="#▲MA（1）模型" class="headerlink" title="▲MA（1）模型:"></a>▲MA（1）模型:</h4><p>$X_{t}=e_{t}+\beta_{1} e_{t-1}$</p>
+<p>一阶移动平均模型是最简单的移动平均模型</p>
+<p>该模型在t+1时的情形？$X_{t+1}=e_{t+1}+\beta_{1} e_{t}$</p>
+<p>​    MA（1）模型是利用t时刻的冲击变量值来预测将来</p>
+<p>自相关系数：$\rho_{k}=\frac{\gamma_{k}}{\gamma_{0}}=\left{\begin{array}{cc}{\frac{\beta_{1}}{1+\beta_{1}^{2}},} &amp; {k=1} \ {0} &amp; {k \geq 2}\end{array}\right.$<br>偏自相关系数：$\varphi_{k k}=\left{\begin{array}{cc}{\rho_{1},} &amp; {k=1} \ {\frac{-\rho_{1}^{2}}{1-\rho_{1}^{2}}} &amp; {k=2} \ {\frac{-\varphi_{k-1, k-1} \rho_{1}}{1-\varphi_{k-1,1} \rho_{1}}} &amp; {k \geq 3}\end{array}\right.$</p>
+<hr>
+<h3 id="自回归滑动平均模型ARMA"><a href="#自回归滑动平均模型ARMA" class="headerlink" title="自回归滑动平均模型ARMA"></a>自回归滑动平均模型ARMA</h3><h4 id="▲ARMA（p-q）-X-t-beta-1-X-t-1-ldots-beta-p-X-t-p-e-t-alpha-1-e-t-1-alpha-2-e-t-2-ldots-alpha-q-e-t-q"><a href="#▲ARMA（p-q）-X-t-beta-1-X-t-1-ldots-beta-p-X-t-p-e-t-alpha-1-e-t-1-alpha-2-e-t-2-ldots-alpha-q-e-t-q" class="headerlink" title="▲ARMA（p,q）:$X_{t}=\beta_{1} X_{t-1}+\ldots+\beta_{p} X_{t-p}+e_{t}+\alpha_{1} e_{t-1}+\alpha_{2} e_{t-2}+\ldots+\alpha_{q} e_{t-q}$"></a>▲ARMA（p,q）:$X_{t}=\beta_{1} X_{t-1}+\ldots+\beta_{p} X_{t-p}+e_{t}+\alpha_{1} e_{t-1}+\alpha_{2} e_{t-2}+\ldots+\alpha_{q} e_{t-q}$</h4><p>ARMA（p,q）模型就是AR（p）和MA（q）模型的组合</p>
+<p>ARMA模型是更普遍的一类模型</p>
+<p>模型特征：</p>
+<ul>
+<li>趋势性：无</li>
+<li>相关性：有</li>
+<li>随机性：有</li>
+</ul>
+<h4 id="▲ARMA-1-1-："><a href="#▲ARMA-1-1-：" class="headerlink" title="▲ARMA(1,1)："></a>▲ARMA(1,1)：</h4><p>通过查看自相关函数ACF和偏自相关函数PACF识别相关性<br>ACF呈指数下降趋势<br>PACF呈现指数下降趋势</p>
+<p><img src="/2019/07/29/时间序列概念及主要模型/B3.jpg" alt="B3"></p>
+<p>Q:如何识别一个ARMA的阶数p和q?</p>
+<p>A:<br>1.由于ACF与PACF均呈现指数下降，判断阶数需要靠不断尝试<br>2.在模型的不同尝试中，通过选择AIC较小的为最优模型<br>$A I C=2 k+n * \ln (\frac{R S S}{n})$k为参教数量，RSS为残差平方和</p>
+<h3 id="AR，MA，ARMA模型识别"><a href="#AR，MA，ARMA模型识别" class="headerlink" title="AR，MA，ARMA模型识别"></a>AR，MA，ARMA模型识别</h3><p><img src="/2019/07/29/时间序列概念及主要模型/analyse.jpg" alt="analyse"></p>
+<hr>
+<h3 id="ARIMA模型"><a href="#ARIMA模型" class="headerlink" title="ARIMA模型"></a>ARIMA模型</h3><p>ARIMA是在ARMA基础上发展而来的更加综合性的模型，体现为：<br>■ 趋势性<br>■ 序列相关性<br>■  随机性<br>ARIMA是不平稳的时间序列，不能直接用ARMA建模。ARIMA模型是在ARMA模型演变出来的，它实际上是先对数据做了差分，之后再使用ARMA模型；换句话说，ARIMA模型是先将非平稳数据变得平稳（用差分），之后再用ARMA模型处理平稳数据</p>
+<p>ARIMA（1，1，0）的时间序列：<br>序列有很强的趋势性</p>
+<p><img src="/2019/07/29/时间序列概念及主要模型/arima1.jpg" alt="arima1"></p>
+<ul>
+<li>ARIMA（1，1，0）的序列相关性：<br>ACF下降极其缓慢</li>
+</ul>
+<p><img src="/2019/07/29/时间序列概念及主要模型/arima2.jpg" alt="arima2"></p>
+<ul>
+<li>ARIMA（1，1，0）的序列图和ACF：</li>
+</ul>
+<p><img src="/2019/07/29/时间序列概念及主要模型/arima3.jpg" alt="arima3"></p>
+<p>ARIMA(p,d,q)</p>
+<ul>
+<li>$\nabla_{d} X_{t}=(1-B)^{d} X_{t}=Y_{t}$</li>
+<li>$Y_{t}=\beta_{1} Y_{t-1}+…+\beta_{p} Y_{t-p}+e_{t}+\alpha_{1} e_{t-1}+\alpha_{2} e_{t-2}+\ldots+\alpha_{q} e_{t-q}$</li>
+<li>差分后的序列符合ARMA（p，g）</li>
+</ul>
+<p>符号△为差分算子，$\nabla_{d} X_{t}$代表d阶差分序列</p>
+<p>一阶差分序列$\Delta X_{t}=(1-B)^{*} X_{t}=X_{t}-X_{t-1}$</p>
+<h2 id="预测的评价指标"><a href="#预测的评价指标" class="headerlink" title="预测的评价指标"></a>预测的评价指标</h2><p>ME（误差）：Mean（Actual-Predict）<br>MAE（绝对误差）：Mean（abs（Actual-Predict））<br>MAPE（百分比误差）：Mean（abs（Actual-Predict/Actual）<br>MSE（均方误差平方和）：Mean（（Actual-Predict）2）<br>RMSE（标准差）：Sqrt（Mean（（Actual-Predict）A2））</p>
+<p>在模型选择方法上，通常会结合客户的建议以及其他的时间序列模型方法，选择某个评价指标，进而选择使该评价指标最小的模型方法</p>
+<p>参考:<a href="https://blog.csdn.net/weixin_41636030/article/details/89115370" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41636030/article/details/89115370</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/07/29/时间序列概念及主要模型/">https://nymrli.top/2019/07/29/时间序列概念及主要模型/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/" title="Let's Encrypt安装配置nginx的SSL证书教程"><span>< PreviousPost</span><br><span class="prevTitle">Let's Encrypt安装配置nginx的SSL证书教程</span></a><a class="nextSlogan" href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/" title="基础知识补充——白噪声、高斯白噪声"><span>NextPost ></span><br><span class="nextTitle">基础知识补充——白噪声、高斯白噪声</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '时间序列概念及主要模型',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#时间序列概念及主要模型"><span class="toc-number">1.</span> <span class="toc-text">时间序列概念及主要模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#时间序列三大特征"><span class="toc-number">1.1.</span> <span class="toc-text">时间序列三大特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时间序列模型预测方法："><span class="toc-number">1.2.</span> <span class="toc-text">时间序列模型预测方法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.3.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时间序列分类"><span class="toc-number">1.4.</span> <span class="toc-text">时间序列分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#白噪声序列"><span class="toc-number">1.4.1.</span> <span class="toc-text">白噪声序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自回归模型AR"><span class="toc-number">1.4.2.</span> <span class="toc-text">自回归模型AR</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#▲AR-p"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">▲AR(p):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#▲AR（1）模型"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">▲AR（1）模型:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动平均模型MA"><span class="toc-number">1.4.3.</span> <span class="toc-text">移动平均模型MA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#▲MA-a"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">▲MA(a):</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#▲MA（1）模型"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">▲MA（1）模型:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自回归滑动平均模型ARMA"><span class="toc-number">1.4.4.</span> <span class="toc-text">自回归滑动平均模型ARMA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#▲ARMA（p-q）-X-t-beta-1-X-t-1-ldots-beta-p-X-t-p-e-t-alpha-1-e-t-1-alpha-2-e-t-2-ldots-alpha-q-e-t-q"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">▲ARMA（p,q）:$X_{t}=\beta_{1} X_{t-1}+\ldots+\beta_{p} X_{t-p}+e_{t}+\alpha_{1} e_{t-1}+\alpha_{2} e_{t-2}+\ldots+\alpha_{q} e_{t-q}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#▲ARMA-1-1-："><span class="toc-number">1.4.4.2.</span> <span class="toc-text">▲ARMA(1,1)：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AR，MA，ARMA模型识别"><span class="toc-number">1.4.5.</span> <span class="toc-text">AR，MA，ARMA模型识别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARIMA模型"><span class="toc-number">1.4.6.</span> <span class="toc-text">ARIMA模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预测的评价指标"><span class="toc-number">1.5.</span> <span class="toc-text">预测的评价指标</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,3 +1,8 @@
+https://nymrli.top/2019/08/22/算法设计与分析C-概念点区分/
+https://nymrli.top/2019/08/22/通信企业管理-线上考试/
+https://nymrli.top/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/
+https://nymrli.top/2019/07/29/时间序列概念及主要模型/
+https://nymrli.top/2019/07/29/基础知识补充——白噪声、高斯白噪声/
 https://nymrli.top/2019/07/29/傅里叶变换-小波变化/
 https://nymrli.top/2019/07/26/Vim记忆/
 https://nymrli.top/2019/07/25/Docker使用/
@@ -5,6 +10,7 @@ https://nymrli.top/2019/07/25/Python中的正则匹配/
 https://nymrli.top/2019/07/24/利用wireshark抓取TCP的整个过程分析/
 https://nymrli.top/2019/07/13/C-学习笔记/
 https://nymrli.top/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/
+https://nymrli.top/2019/07/08/自动化运维工具Ansible/
 https://nymrli.top/2019/07/07/staticmethod和classmethod区别/
 https://nymrli.top/2019/07/07/yaml基础语法-spring-boot/
 https://nymrli.top/2019/07/07/Python类的继承-super-使用/
@@ -92,9 +98,3 @@ https://nymrli.top/2018/12/12/Python中邮件的发送/
 https://nymrli.top/2018/12/08/使用Cerbot申请免费证书升级-http到https/
 https://nymrli.top/2018/12/08/pipenv-新款Python虚拟环境工具详解-转/
 https://nymrli.top/2018/12/08/ifdef、-ifndef、-endif/
-https://nymrli.top/2018/12/06/小程序——高德地图API调用/
-https://nymrli.top/2018/12/06/HTML和CSS学习/
-https://nymrli.top/2018/12/03/Pyinstaller使用/
-https://nymrli.top/2018/11/26/pyqt与QT5/
-https://nymrli.top/2018/11/24/机器学习——数学概念/
-https://nymrli.top/2018/11/23/机器学习——Python实践-笔记/

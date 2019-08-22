@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>基础知识补充——白噪声、高斯白噪声 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">基础知识补充——白噪声、高斯白噪声</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/07/30</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">759</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="白噪声、高斯白噪声"><a href="#白噪声、高斯白噪声" class="headerlink" title="白噪声、高斯白噪声"></a>白噪声、高斯白噪声</h1><h2 id="白噪声过程"><a href="#白噪声过程" class="headerlink" title="白噪声过程:"></a>白噪声过程:</h2><p>对于一个随机变量X(t)（t=1，2，3……），如果是由一个不相关的随机变量的序列构成的，即对于所有s不等于t，随机变量X(t)和X(s)的协方差为零，则称其为纯随机过程。对于一个纯随机过程来说，若其期望为0，方差为常数，则称之为白噪声过程。</p>
+<h2 id="白噪声"><a href="#白噪声" class="headerlink" title="白噪声:"></a>白噪声:</h2><p>白噪声序列，是指<u>白噪声过程的样本</u>实称，简称白噪声[^1]。白噪声是<strong>在较宽的频率范围内，各等带宽的频带所含的噪声能量相等的噪声</strong>[^2]，是一种功率频谱密度为常数的随机信号或随机过程，也就是说，此<u>信号在各个频段上的功率是一样的</u>。</p>
+<p>理想的白噪声具有无限的带宽，因而其能量无限大，但这是不可能实际存在的，所以，我们把有限带宽内的平整讯号视为白噪声[^3]，以便我们实际应用当中的分析。<br>近似计算:一般情况下，若一个噪声过程所具有的频谱宽度远远大于它所作用系统的带宽，并且在该带宽中其功率谱密度基本为一常数，那么就能够把其作为白噪声来对待。</p>
+<p>白噪声的功率密度函数恒定，为$P_{n}(t)=\frac{n_{0}}{2}(-\infty&lt;f&lt;+\infty)(\mathrm{W} / \mathrm{HZ})$<br>$P_{n}(t)=n_{0}(0&lt;f&lt;+\infty)(\mathrm{W} / \mathrm{Hz})$，其中$n_0$是常数。</p>
+<h2 id="高斯白噪声"><a href="#高斯白噪声" class="headerlink" title="高斯白噪声"></a>高斯白噪声</h2><p>高斯噪声指的是它的<strong>概率密度函数服从正态分布的噪声</strong>。</p>
+<p>高斯分布，记为N (μ,σ2)，其中μ为高斯分布的均值（数学期望），σ2为高斯分布的方差，当μ=0，σ2=1时，该分布称为标准正态分布。高斯分布的一维概率密度可表示为式：$P(x)=\frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{(x-\mu)^{2}}{2 \sigma^{2}}\right)$</p>
+<p>在通信信道中，一般噪声的均值μ=0。，那么可以得知当噪声的均值是零的时候，噪声的平均功率等于其方差。</p>
+<p>高斯白噪声的高斯指的是概率分布为正态分布，白噪声指的是其二阶矩不相关，一阶矩为常数的噪声。故把<strong>瞬时值概率分布服从高斯分布，功率谱密度服从均匀分布的噪声</strong>称为高斯白噪声[^1]。这两个条件是判断高斯白噪声性能的标准。</p>
+<p>由于高斯白噪声能够反映实际通信信道中的噪声情况，能够比较真实的反映信道噪声的一些特性，并且可以用具体的数学表达式表示，适合分析、计算系统的抗噪声性能，所以广泛应用于通信系统的理论分析。</p>
+<p>高斯白噪声模型:$X_{t}=\mathrm{e}<em>{\mathrm{t}} | \mathrm{e}</em>{\mathrm{t}} \sim \mathrm{WN}\left(0, \sigma^{2}\right)$</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/07/29/基础知识补充——白噪声、高斯白噪声/">https://nymrli.top/2019/07/29/基础知识补充——白噪声、高斯白噪声/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/07/29/时间序列概念及主要模型/" title="时间序列概念及主要模型"><span>< PreviousPost</span><br><span class="prevTitle">时间序列概念及主要模型</span></a><a class="nextSlogan" href="/2019/07/29/傅里叶变换-小波变化/" title="傅里叶变换-&gt;小波变化"><span>NextPost ></span><br><span class="nextTitle">傅里叶变换-&gt;小波变化</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '基础知识补充——白噪声、高斯白噪声',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#白噪声、高斯白噪声"><span class="toc-number">1.</span> <span class="toc-text">白噪声、高斯白噪声</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#白噪声过程"><span class="toc-number">1.1.</span> <span class="toc-text">白噪声过程:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#白噪声"><span class="toc-number">1.2.</span> <span class="toc-text">白噪声:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高斯白噪声"><span class="toc-number">1.3.</span> <span class="toc-text">高斯白噪声</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>通信企业管理_线上考试 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">通信企业管理_线上考试</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/08/22</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,369</span> | Reading time: <span class="post-count">9</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="通信企业管理"><a href="#通信企业管理" class="headerlink" title="通信企业管理"></a>通信企业管理</h1><blockquote>
+<p>看清题目和选项</p>
+</blockquote>
+<h3 id="单选题"><a href="#单选题" class="headerlink" title="单选题"></a>单选题</h3><p>1单选(2分)</p>
+<p>在总公司领导下设立多个分支，各分支有各自独立的产品和市场，实行独立核算，经营管理上拥有自主性和独立性。这是（ A   ）组织结构。</p>
+<ul>
+<li>A.事业部型</li>
+<li>B.矩阵型</li>
+<li>C.职能型</li>
+<li>D.直线型</li>
+</ul>
+<p>2单选(2分)</p>
+<p>按照最新版《中华人民共和国公司法》规定，股份有限公司的发起人最多不超过（    C ）。</p>
+<ul>
+<li>A.100人</li>
+<li>B.50人</li>
+<li>C.200人</li>
+<li>D.150人</li>
+</ul>
+<p>3单选(2分)</p>
+<p>工作或行动之前预先拟定具体的工作内容和步骤是管理的（  D  ）职能。</p>
+<ul>
+<li>A.组织职能</li>
+<li>B.控制职能</li>
+<li>C.领导职能</li>
+<li>D.计划职能</li>
+</ul>
+<p>4单选(2分)</p>
+<p>提出“14项管理原则”的是（C  ）。</p>
+<ul>
+<li>A.巴纳德</li>
+<li>B.梅奥</li>
+<li>C.法约尔</li>
+<li>D.泰勒</li>
+</ul>
+<p>5单选(2分)</p>
+<p>企业战略是关于企业在激烈的竞争中如何与竞争对手相抗衡、同时也是针对来自多方面的冲击、压力、威胁和困难迎击这些挑战的行动方案。这体现了企业战略的（  D  ）。</p>
+<ul>
+<li>A.长远性</li>
+<li>B.协同性</li>
+<li>C.全局性</li>
+<li>D.抗争性</li>
+</ul>
+<p>6单选(2分)</p>
+<p>在对企业总体环境分析中，人们生活方式的变化属于（ B   ）。</p>
+<ul>
+<li>A.经济环境</li>
+<li>B.社会环境</li>
+<li>C.政治环境</li>
+<li>D.技术环境</li>
+</ul>
+<p>7单选(2分)</p>
+<p>为了增强企业实力而与同行业企业进行联合的一种战略称为（ C   ）。</p>
+<ul>
+<li>A.复合多样化</li>
+<li>B.纵向一体化</li>
+<li>C.横向一体化</li>
+<li>D.同心多样化</li>
+</ul>
+<p>8单选(2分)</p>
+<p>在流程型生产过程中，物料是均匀、连续地按一定工艺顺序运动的。它的特点是工艺过程的（ A   ）。</p>
+<ul>
+<li>A.连续性</li>
+<li>B.稳定性</li>
+<li>C.离散性</li>
+<li>D.流动性</li>
+</ul>
+<p>9单选(2分)</p>
+<p>服务是一种活动，在消费之前通常无法为顾客感觉、体验和评价，这体现了服务的（  B   ）。</p>
+<ul>
+<li>A.劳动力密集性</li>
+<li>B.无形性</li>
+<li>C.异质性</li>
+<li>D.易逝性</li>
+</ul>
+<p>10单选(2分)</p>
+<p>尽管不同产品具有不同的外部质量特征，但可以用（ B ）来概括产品质量。</p>
+<ul>
+<li>A.安全性</li>
+<li>B.适用性</li>
+<li>C.经济性</li>
+<li>D.可靠性</li>
+</ul>
+<p>11单选(2分)</p>
+<p>质量管理经历的第四阶段是（  C   ）。</p>
+<ul>
+<li>A.统计质量控制阶段</li>
+<li>B.质量检验阶段 </li>
+<li>C. ISO9000质量管理体系认证阶段</li>
+<li>D.全面质量管理阶段</li>
+</ul>
+<p>12单选(2分)</p>
+<p>下面（ A   ）不是朱兰三部曲中所要求的内容。</p>
+<ul>
+<li>A.质量检验</li>
+<li>B.质量计划</li>
+<li>C.质量提高</li>
+<li>D.质量控制</li>
+</ul>
+<p>13单选(2分)</p>
+<p>职业生涯规划属于 人力资源管理的（ C  ）方面的内容。</p>
+<ul>
+<li>A.用人</li>
+<li>B.进人</li>
+<li>C.育人</li>
+<li>D.留人</li>
+</ul>
+<p>14单选(2分)</p>
+<p>一般来说，我们可以从工作业绩、工作能力和工作态度3个方面来评价员工的绩效体现了绩效的（  C   ）特征。</p>
+<ul>
+<li>A.动态性</li>
+<li>B.多因性</li>
+<li>C.多维性</li>
+<li>D.稳定性</li>
+</ul>
+<p>15单选(2分)</p>
+<p>薪酬中属于间接经济性报酬的是（ D  ）。</p>
+<ul>
+<li>A.津贴</li>
+<li>B.基本工资</li>
+<li>C.奖金</li>
+<li>D.基本社会保险</li>
+</ul>
+<p>16单选(2分)</p>
+<p>企业财务管理的基本内容包括：①资金筹集管理；②成本费用管理；③投资管理；④利润（收支差额）及其分配管理；⑤物资管理；中的（ A   ）。</p>
+<p>A.①②③④<br>B.①③④⑤<br>C.①②④⑤<br>D.①②③④⑤</p>
+<p>17单选(2分)</p>
+<p>以下不属于企业的筹资方式的是（ D   ）。</p>
+<ul>
+<li>A.买方信贷</li>
+<li>B.发行股票</li>
+<li>C.银行贷款</li>
+<li>D.来自个人的闲散资金</li>
+</ul>
+<p>18单选(2分)</p>
+<p>某大学生在4年学习期间，每年年初从银行贷款3000元用于支付学费，若按年利率5%计复利，第4年末需要一次性归还全部本息（  D  ）元。</p>
+<ul>
+<li>A.12000</li>
+<li>B.12930.4</li>
+<li>C.16576.9</li>
+<li>D.13576.9</li>
+</ul>
+<p>19单选(2分)</p>
+<p>为了保证产品达到规定的功能和技术要求所必需的材料消耗是（A   ）。</p>
+<ul>
+<li>A.有效性消耗</li>
+<li>B.工艺性消耗</li>
+<li>C.非工艺性消耗</li>
+<li>D.材料消耗</li>
+</ul>
+<p>20单选(2分)</p>
+<p>设备在使用或闲置过程中，由于新技术出现而引起的设备价值损失，称为（ A  ）。</p>
+<ul>
+<li>A.无形磨损</li>
+<li>B.价值磨损</li>
+<li>C.技术磨损</li>
+<li>D.使用磨损</li>
+</ul>
+<p>21单选(2分)</p>
+<p>企业在相邻两批物资进厂间隔期内，为保证生产正常进行所必需的、经济合理的储备数量是（ D  ）。</p>
+<ul>
+<li>A.保险储备定额</li>
+<li>B.物资储备定额</li>
+<li>C.季节性储备定额</li>
+<li>D.经常储备定额</li>
+</ul>
+<p>22单选(2分)</p>
+<p>快速渗透策略是推广处于生命周期（C   ）产品的企业，可以采用的市场营销策略。</p>
+<ul>
+<li>A.衰退期</li>
+<li>B.成长期</li>
+<li>C.引入期</li>
+<li>D.成熟期</li>
+</ul>
+<p>23单选(2分)</p>
+<p>以下不属于促销组合中的促销工具的是（ D ）。</p>
+<ul>
+<li>A.销售促进</li>
+<li>B.公关宣传</li>
+<li>C.广告</li>
+<li>D.尾数定价</li>
+</ul>
+<p>24单选(2分)</p>
+<p>营销人员可以通过接近和影响消费者群体中的意见领袖的方式来开展营销活动，这体现了影响消费者购买的主要因素中的（ D  ）的作用。</p>
+<ul>
+<li>A.经济因素</li>
+<li>B.个人因素</li>
+<li>C.社会文化因素</li>
+<li>D.心理因素</li>
+</ul>
+<p>25单选(2分)</p>
+<p>品种繁多，每种仅生产一件，生产重复程度低是以下哪种生产方式的特点（ B ）。</p>
+<ul>
+<li>A.批量生产</li>
+<li>B.单件生产</li>
+<li>C.大量生产</li>
+<li>D.备货型生产</li>
+</ul>
+<h3 id="判断题"><a href="#判断题" class="headerlink" title="判断题"></a>判断题</h3><p>26判断(2分)<br>个体企业是个人出资兴办的企业，具有法人资格。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>27判断(2分)<br>在管理过程中，只有把人的要素作为根本，才能协调好其他要素，实现高水平的管理。</p>
+<ul>
+<li>对</li>
+</ul>
+<p>28判断(2分)<br>企业不仅是经济性组织，也是社会性组织。</p>
+<ul>
+<li>对</li>
+</ul>
+<p>29判断(2分)<br>梅奥认为，影响人们积极性的因素除了物质方面外，还有社会与心理方面。</p>
+<ul>
+<li>对</li>
+</ul>
+<p>30判断(2分)<br>企业提供的产品服务标新立异，满足顾客特殊的需求，形成竞争优势的战略是差异化战略。</p>
+<ul>
+<li>对</li>
+</ul>
+<p>31判断(2分)<br>高质量的社会物流系统属于战略制定中企业的外部资源。</p>
+<ul>
+<li>对</li>
+</ul>
+<p>32判断(2分)<br>企业价值活动中，技术开发属于基本活动。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>33判断(2分)<br>企业生产系统是由输入、转化、输出、反馈四部分构成，其核心是输出。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>34判断(2分)<br>辅助生产部门主要是为基本生产和辅助生产服务的单位（如仓储、后勤）。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>35判断(2分)<br>对于顾客来说，服务是发生在服务设施环境中的经历，如果服务设施的设计符合消费者的需要，就可以提高服务质量。</p>
+<ul>
+<li>对</li>
+</ul>
+<p>36判断(2分)<br>ISO9000族标准是进行国际贸易时强制要求必须进行的标准认证。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>37判断(2分)<br>质量体系认证中使用的基本标准是产品技术标准。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>38判断(2分)<br>质量管理的目标就是提高产品质量，产品质量越高越好。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>39判断(2分)<br>广义的人力资源概念是指能够推动国民经济和社会发展的具有智力劳动和体力劳动能力的人的总和，包括数量和质量两个方面。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>40判断(2分)<br>工作说明书具体说明了工作的目的与任务、工作内容与特征、工作责任与权力、工作标准与要求、工作时间与地点等问题。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>41判断(2分)<br>设定绩效目标时，管理者一般根据组织总体目标或上级部门的目标，围绕本部门业务重点或职责，制定本部门的工作目标计划，保证部门工作目标与组织的总体目标相一致。</p>
+<ul>
+<li>对</li>
+</ul>
+<p>42判断(2分)<br>企业的运营能力反映了企业资金周转状况，可以用成本费用净利率来衡量。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>43判断(2分)<br>资本公积、盈余公积都属于企业权益资本的范畴。</p>
+<ul>
+<li>对</li>
+</ul>
+<p>44判断(2分)<br>盈亏平衡点是指技术方案的盈利和亏损在产量、单价、成本等方面的临界值。</p>
+<ul>
+<li>对</li>
+</ul>
+<p>45判断(2分)<br>在设备的自然寿命周期中，设备故障率随着使用的时间的延伸而越来越高。</p>
+<ul>
+<li>对</li>
+</ul>
+<p>46判断(2分)<br>设备更新改造时，不仅要考虑设备的自然寿命，还要考察技术寿命和经济寿命。</p>
+<ul>
+<li>对</li>
+</ul>
+<p>47判断(2分)<br>从价值形态上看，无论是有形磨损还是无形磨损都会引起设备价值的降低，因此我们要采取措施尽量减少各种类型的设备磨损。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>48判断(2分)<br>关系营销就是利用亲属关系以及朋友关系来开展营销活动。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>49判断(2分)<br>在目标市场中采用无差异的市场营销策略历来都不是一种明智的选择。</p>
+<ul>
+<li>错</li>
+</ul>
+<p>50判断(2分)<br>招徕定价是一种利用顾客心理因素来进行定价的策略。</p>
+<ul>
+<li>对</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/08/22/通信企业管理-线上考试/">https://nymrli.top/2019/08/22/通信企业管理-线上考试/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/08/22/算法设计与分析C-概念点区分/" title="算法设计与分析C_概念点区分"><span>< PreviousPost</span><br><span class="prevTitle">算法设计与分析C_概念点区分</span></a><a class="nextSlogan" href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/" title="Let's Encrypt安装配置nginx的SSL证书教程"><span>NextPost ></span><br><span class="nextTitle">Let's Encrypt安装配置nginx的SSL证书教程</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '通信企业管理_线上考试',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#通信企业管理"><span class="toc-number">1.</span> <span class="toc-text">通信企业管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单选题"><span class="toc-number">1.0.1.</span> <span class="toc-text">单选题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断题"><span class="toc-number">1.0.2.</span> <span class="toc-text">判断题</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

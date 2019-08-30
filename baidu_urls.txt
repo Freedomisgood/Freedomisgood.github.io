@@ -1,3 +1,10 @@
+https://nymrli.top/2019/08/30/机器学习——决策树/
+https://nymrli.top/2019/08/30/Sklearn——决策树/
+https://nymrli.top/2019/08/30/ACM-博弈论/
+https://nymrli.top/2019/08/30/Linux三剑客/
+https://nymrli.top/2019/08/30/2019-6月编程笔记/
+https://nymrli.top/2019/08/30/Python爬虫常规流程/
+https://nymrli.top/2019/08/30/Word2016配置使用MathType/
 https://nymrli.top/2019/08/22/算法设计与分析C-概念点区分/
 https://nymrli.top/2019/08/22/通信企业管理-线上考试/
 https://nymrli.top/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/
@@ -14,7 +21,7 @@ https://nymrli.top/2019/07/08/自动化运维工具Ansible/
 https://nymrli.top/2019/07/07/staticmethod和classmethod区别/
 https://nymrli.top/2019/07/07/yaml基础语法-spring-boot/
 https://nymrli.top/2019/07/07/Python类的继承-super-使用/
-https://nymrli.top/2019/06/15/Base64编码原理与应用-转/
+https://nymrli.top/2019/06/15/Base64编码原理与应用[转]/
 https://nymrli.top/2019/06/15/Python的构建工具setup-py/
 https://nymrli.top/2019/06/03/Oauth2原理、使用/
 https://nymrli.top/2019/06/03/lua学习/
@@ -91,10 +98,3 @@ https://nymrli.top/2018/12/21/BaiduMap-API/
 https://nymrli.top/2018/12/20/Postman模拟上传文件/
 https://nymrli.top/2018/12/19/flask-sqlalchemy踩坑/
 https://nymrli.top/2018/12/16/数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题/
-https://nymrli.top/2018/12/16/数据结构——图/
-https://nymrli.top/2018/12/16/win自带邮件使用/
-https://nymrli.top/2018/12/15/2018-12-15小记/
-https://nymrli.top/2018/12/12/Python中邮件的发送/
-https://nymrli.top/2018/12/08/使用Cerbot申请免费证书升级-http到https/
-https://nymrli.top/2018/12/08/pipenv-新款Python虚拟环境工具详解-转/
-https://nymrli.top/2018/12/08/ifdef、-ifndef、-endif/

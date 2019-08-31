@@ -1,134 +1,683 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
-  "use strict";
-  // rel=preload support test
-  if( !w.loadCSS ){
-    w.loadCSS = function(){};
-  }
-  // define on the loadCSS obj
-  var rp = loadCSS.relpreload = {};
-  // rel=preload feature support test
-  // runs once and returns a function for compat purposes
-  rp.support = (function(){
-    var ret;
-    try {
-      ret = w.document.createElement( "link" ).relList.supports( "preload" );
-    } catch (e) {
-      ret = false;
-    }
-    return function(){
-      return ret;
-    };
-  })();
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
-  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
-  // then change that media back to its intended value on load
-  rp.bindMediaToggle = function( link ){
-    // remember existing media attr for ultimate state, or default to 'all'
-    var finalMedia = link.media || "all";
+  
+  <title>果粒橙的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="想和你讲，说了会心动 ，缄默会心安。">
+<meta name="keywords" content="程序猿">
+<meta property="og:type" content="website">
+<meta property="og:title" content="果粒橙的博客">
+<meta property="og:url" content="https://nymrli.top/page/9/index.html">
+<meta property="og:site_name" content="果粒橙的博客">
+<meta property="og:description" content="想和你讲，说了会心动 ，缄默会心安。">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="果粒橙的博客">
+<meta name="twitter:description" content="想和你讲，说了会心动 ，缄默会心安。">
+  
+    <link rel="alternate" href="/atom.xml" title="果粒橙的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
 
-    function enableStylesheet(){
-      link.media = finalMedia;
-    }
+  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+</head>
 
-    // bind load handlers to enable media
-    if( link.addEventListener ){
-      link.addEventListener( "load", enableStylesheet );
-    } else if( link.attachEvent ){
-      link.attachEvent( "onload", enableStylesheet );
-    }
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">果粒橙的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">别装作很努力，结局不会陪你演戏。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nymrli.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/" class="article-date">
+  <time datetime="2018-09-02T11:33:32.000Z" itemprop="datePublished">2018-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/">解决安装PyUserInput、pyHook遇到的问题——AttributeError: &#39;HookManager&#39; object has no attribute &#39;keyboard_hook</a>
+    </h1>
+  
 
-    // Set rel and non-applicable media type to start an async request
-    // note: timeout allows this to happen async to let rendering continue in IE
-    setTimeout(function(){
-      link.rel = "stylesheet";
-      link.media = "only x";
-    });
-    // also enable media after 3 seconds,
-    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
-    setTimeout( enableStylesheet, 3000 );
-  };
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装PyUserInput失败。</p>
+<hr>
+<p>经查看发现是pyHook（pyHook是一个用来进行键盘、鼠标等层面事件监控的库。这个库的正常工作需要pythoncom等操作系统的API的支持。）无法安装，不知道是不是因为这个库可以被用于一些比较邪恶的目的。经搜索发现直接pip install pyHook是找不到相关包的，但可以下源码编译安装，可以在 <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyhook" target="_blank" rel="noopener">https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyhook</a> 这里可以直接下载到.whl文件，这个文件可以作为pip install 的参数来进行安装。</p>
+<blockquote>
+<p>直接输入<code>pip install pyHook-1.5.1-cp36-cp36m-win_amd64.whl</code>好像还是不行，经提示使用<code>G:\Py_opencv\venv\Scripts\python.exe -m pip install pyHook-1.5.1-cp36-cp36m-win_amd64.whl</code>第一个参数是python解释器，-m选项可以让python以脚本的方式运行一个模块，pip install后面就是要安装的包名。</p>
+</blockquote>
+<hr>
+<p><code>pyHook-1.5.1-cp36-cp36m-win_amd64.whl</code></p>
+<blockquote>
+<p>pyHook:库名<br>
+1.5.1：版本号<br>
+cp3.6m：Cpython3.6版本,编码是ucs2,UCS2认为每个字符占用2个字节，UCS4认为每个字节占用4个字符，都是UNICODE的编码形式。<br>
+win_amd64:windows64位环境<br>
+whl:压缩包，在其中包含了py文件，以及经过编译的pyd文件。可以使用pip安装</p>
+</blockquote>
+<p>电脑系统环境查看，可以右键“我的电脑”-&gt;“属性”查看<br>
+<img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829215445695-1950893699.jpg" alt=""></p>
+<p>然后再直接在命令行里输入pip install pyuserinput或是在pycharm下载安装都可以了。（需要先安装pywin32）</p>
+<hr>
+<p>上述下载的pyHook是基于Python2的,在python3下会报错:<br>
+<code>TypeError: MouseSwitch() missing 8 required positional arguments: 'msg', 'x', 'y', 'data', 'flags', 'time', 'hwnd', and 'window_name'</code><br>
+或者<code>AttributeError: 'HookManager' object has no attribute 'keyboard_hook'</code></p>
+<p>感谢:<a href="https://www.cnblogs.com/Alier/p/7978971.html" target="_blank" rel="noopener">python3.5安装pyHook,解决【TypeError: MouseSwitch() missing 8 required positional arguments: ‘msg’, ‘x’, ‘y’, ‘data’, ‘time’, ‘hwnd’, and ‘window_name’】这个错误！</a>、[使用Python 3.5/3.6监听本机任意窗口中的按键操作](使用Python 3.5/3.6监听本机任意窗口中的按键操作)提供的解决方法</p>
+<blockquote>
+<p>需要的模块：扩展库pyhook_py3k（注意，不要使用pyhook），pywin32。<br>
+第一步，安装pywin32，地址：<a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#pywin32" target="_blank" rel="noopener">http://www.lfd.uci.edu/~gohlke/pythonlibs/#pywin32</a><br>
+第二步，下载pyhook_py3k，地址：<a href="https://github.com/Answeror/pyhook_py3k" target="_blank" rel="noopener">https://github.com/Answeror/pyhook_py3k</a><br>
+第三步，下载swig.exe，地址：<a href="http://www.swig.org/download.html" target="_blank" rel="noopener">http://www.swig.org/download.html</a> ==&gt;.zip格式解压<br>
+第四步，解压缩pyhook_py3k，并进行编译，命令：python <a href="http://setup.py" target="_blank" rel="noopener">setup.py</a> build_ext --swig=…\swigwin-3.0.12\swig.exe，可以根据实际情况修改swig.exe的路径，另外本机最好已安装VC2008<br>
+第五步，安装编译好的pyhook_py3k，命令：pip install .</p>
+</blockquote>
+<p>然后就可以正常操作了!!~</p>
 
-  // loop through link elements in DOM
-  rp.poly = function(){
-    // double check this to prevent external calls from running
-    if( rp.support() ){
-      return;
-    }
-    var links = w.document.getElementsByTagName( "link" );
-    for( var i = 0; i < links.length; i++ ){
-      var link = links[ i ];
-      // qualify links to those with rel=preload and as=style attrs
-      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
-        // prevent rerunning on link
-        link.setAttribute( "data-loadcss", true );
-        // bind listeners to toggle media back
-        rp.bindMediaToggle( link );
-      }
-    }
-  };
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nymrli.top/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/" data-id="cjzyy2kh8008bk829x9euld20" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化运维/">自动化运维</a></li></ul>
 
-  // if unsupported, run the polyfill
-  if( !rp.support() ){
-    // run once at least
-    rp.poly();
-
-    // rerun poly on an interval until onload
-    var run = w.setInterval( rp.poly, 500 );
-    if( w.addEventListener ){
-      w.addEventListener( "load", function(){
-        rp.poly();
-        w.clearInterval( run );
-      } );
-    } else if( w.attachEvent ){
-      w.attachEvent( "onload", function(){
-        rp.poly();
-        w.clearInterval( run );
-      } );
-    }
-  }
-
-
-  // commonjs
-  if( typeof exports !== "undefined" ){
-    exports.loadCSS = loadCSS;
-  }
-  else {
-    w.loadCSS = loadCSS;
-  }
-}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css"></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
-  i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/">Ubuntu下Sublime配置Python环境使用指导:</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-01T06:04:47.000Z">2018-09-01</time><i class="fa fa-edit"></i><time datetime="2018-09-01T06:04:47.000Z">2019-03-06</time></div><div class="recent-post-content"><p><img src="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/Ubuntu%E4%B8%8BSublime%E9%85%8D%E7%BD%AEPython%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC%5Cv2-e120837a2c6bb4df19299c085c8c7cf1_r.jpg" alt="Sublime Text"></p></div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a></div><div class="read-more"><a class="more" href="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/02/开学小蓝车180天免费卡/">开学小蓝车180天免费卡</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-02T08:44:54.000Z">2018-09-02</time><i class="fa fa-edit"></i><time datetime="2018-09-02T08:44:54.000Z">2019-01-19</time></div><div class="recent-post-content"><p>各位看客老爷,可以加下我的公众号哦!虽然没啥东东…微信搜索公众号&quot;我只要瓶果粒橙就好&quot;</p>
-<p>原来是180天的,现在好像只有30还是60天了…</p></div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2018/09/02/开学小蓝车180天免费卡/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/08/30/Python字典基本操作介绍/">Python字典基本操作介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-08-30T13:14:27.000Z">2018-08-30</time><i class="fa fa-edit"></i><time datetime="2018-08-30T13:14:27.000Z">2018-10-27</time></div><div class="recent-post-content"> 创建字典
-
-info={}
-info=dict()
+    </footer>
+  </div>
+  
+</article>
 
 
- 初始化字典
- 法一
-123key = &apos;name&apos;info = &#123; key :&apos;cold&apos;&#125;==&#123;&apos;name&apos;:&apos;cold&apos;&#125;
- 法二
-12info = dict(key = &apos;cold&apos;)==&#123;&apos;key&apos;:&apos;cold&apos;&#125;
- 法三
-1#还有可以使用dict(zip(a,b))其中a,b都是列表,会生成以A中元素为键,B中元素为值的字典
+  
+    <article id="post-开学小蓝车180天免费卡" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/02/开学小蓝车180天免费卡/" class="article-date">
+  <time datetime="2018-09-02T08:44:54.000Z" itemprop="datePublished">2018-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/02/开学小蓝车180天免费卡/">开学小蓝车180天免费卡</a>
+    </h1>
+  
 
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/08/30/Python字典基本操作介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/">解决安装PyUserInput、pyHook遇到的问题——AttributeError: 'HookManager' object has no attribute 'keyboard_hook</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-02T11:33:32.000Z">2018-09-02</time><i class="fa fa-edit"></i><time datetime="2018-09-02T11:33:32.000Z">2018-09-02</time></div><div class="recent-post-content">安装PyUserInput失败。
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>各位看客老爷,可以加下我的公众号哦!虽然没啥东东…微信搜索公众号&quot;我只要瓶果粒橙就好&quot;</p>
+<p>原来是180天的,现在好像只有30还是60天了…</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/02/开学小蓝车180天免费卡/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nymrli.top/2018/09/02/开学小蓝车180天免费卡/" data-id="cjzyy2kgq007hk8293n5q3ms3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活福利/">生活福利</a></li></ul>
 
-经查看发现是pyHook（pyHook是一个用来进行键盘、鼠标等层面事件监控的库。这个库的正常工作需要pythoncom等操作系统的API的支持。）无法安装，不知道是不是因为这个库可以被用于一些比较邪恶的目的。经搜索发现直接pip install pyHook是找不到相关包的，但可以下源码编译安装，可以在 https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyhook 这里可以直接下载到.whl文件，这个文件可以作为pip install 的参数来进行安装。
-
-直接输入pip install pyHook-1.5.1-c ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏，救济金发放/">例题4:1-3 古老的密码、刽子手的游戏，救济金发放</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-01T10:46:59.000Z">2018-09-01</time><i class="fa fa-edit"></i><time datetime="2018-09-01T10:46:59.000Z">2018-09-01</time></div><div class="recent-post-content"> 例题4-1 古老的密码
-
-
-因为字母可以重排,所以顺序不重要,而又同时因为可以映射,所以字母具体是什么不重要==&gt;只要统计排序后的结果相同就行了
-RE(Runtime error)错法加一: 题号提交错误
+    </footer>
+  </div>
+  
+</article>
 
 
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include &lt;stdio.h&gt;#include &lt;string.h&gt;void Bubblesort(int *cnt)//冒泡排序,从大到小顺序&#123;    ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM竞赛入门"> ACM竞赛入门</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a></div><div class="read-more"><a class="more" href="/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏，救济金发放/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/08/30/hello-hexo/">Hello 搭建Hexo博客</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-08-30T13:14:27.000Z">2018-08-30</time><i class="fa fa-edit"></i><time datetime="2018-08-30T13:14:27.000Z">2018-09-01</time></div><div class="recent-post-content">电脑环境是Windows，安装好git后，所有搭建操作均在git bash内完成
- 1.需要安装git, node.js, npm
+  
+    <article id="post-例题4-1-3-古老的密码、刽子手的游戏，救济金发放" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏，救济金发放/" class="article-date">
+  <time datetime="2018-09-01T10:46:59.000Z" itemprop="datePublished">2018-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏，救济金发放/">例题4:1-3 古老的密码、刽子手的游戏，救济金发放</a>
+    </h1>
+  
 
-注:第一次安装Git会让配置user信息
-123&gt; $git config --global user.name &quot;yourname&quot;   #（yourname是git的用户名）&gt; $git config --global user.email &quot;youremail&quot;）&gt;
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="例题4-1-古老的密码"><a class="markdownIt-Anchor" href="#例题4-1-古老的密码"></a> 例题4-1 古老的密码</h4>
+<blockquote>
+<ul>
+<li>因为字母可以重排,所以顺序不重要,而又同时因为可以映射,所以字母具体是什么不重要==&gt;只要统计<strong>排序</strong>后的结果相同就行了</li>
+<li>RE(Runtime error)错法加一: 题号提交错误</li>
+</ul>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Bubblesort</span><span class="params">(<span class="keyword">int</span> *cnt)</span><span class="comment">//冒泡排序,从大到小顺序</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">int</span> min=cnt[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;<span class="number">26</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="keyword">for</span> ( j = i+<span class="number">1</span>; j &lt; <span class="number">26</span>; ++j)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span> (cnt[i] &lt; cnt[j])</span><br><span class="line">           &#123;</span><br><span class="line">               min = cnt[i];</span><br><span class="line">               cnt[i]=cnt[j];</span><br><span class="line">               cnt[j] = min;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> s[<span class="number">2</span>][<span class="number">105</span>];	<span class="comment">//存放猜测字符串的</span></span><br><span class="line">    <span class="keyword">int</span> cnt[<span class="number">2</span>][<span class="number">27</span>]; <span class="comment">//存放字母出现次数</span></span><br><span class="line">    <span class="keyword">int</span> nlen[<span class="number">2</span>];	<span class="comment">//字符串的长度</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,s[<span class="number">0</span>],s[<span class="number">1</span>])!= EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(cnt,<span class="number">0</span>,<span class="keyword">sizeof</span>(cnt));</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="number">2</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            nlen[i]= <span class="built_in">strlen</span>(s[i]);</span><br><span class="line">            <span class="keyword">int</span> j;</span><br><span class="line">            <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; nlen[i]; ++j)</span><br><span class="line">                cnt[i][s[i][j]-<span class="string">'A'</span>] ++;</span><br><span class="line">            Bubblesort(cnt[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> k;</span><br><span class="line">        <span class="keyword">for</span> ( k = <span class="number">0</span>; k &lt; <span class="number">26</span>; ++k)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (cnt[<span class="number">0</span>][k] != cnt[<span class="number">1</span>][k])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (k==<span class="number">26</span>) <span class="built_in">printf</span>(<span class="string">"YES\n"</span> );	<span class="comment">//如果26个字母出现次数比完全相等,则可以说相同.</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="例题4-2-刽子手的游戏"><a class="markdownIt-Anchor" href="#例题4-2-刽子手的游戏"></a> 例题4-2 刽子手的游戏</h4>
+<blockquote>
+<ul>
+<li>注意<strong>全局变量是否使用的问题</strong>,全局变量尽量少用…但维护内容较多的情况下,可以考虑</li>
+<li>采用&quot;自顶向下&quot;的顺序</li>
+</ul>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100</span></span><br><span class="line"><span class="keyword">char</span> ans[maxn],gue[maxn];</span><br><span class="line"><span class="keyword">int</span> left,chance;</span><br><span class="line"><span class="keyword">int</span> win,lose;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">guess</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> bad=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="built_in">strlen</span>(ans); ++i)		<span class="comment">//判断ch字母是否在字符串中</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (ans[i]==ch)</span><br><span class="line">		&#123;</span><br><span class="line">			ans[i] = <span class="string">' '</span>;</span><br><span class="line">			bad =<span class="number">0</span>;</span><br><span class="line">			left--;							<span class="comment">//如果在的话,还剩未猜中字母数-1,机会不变</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    	<span class="keyword">if</span> (bad) chance--;					<span class="comment">//如果不在的话机会-1</span></span><br><span class="line">		<span class="keyword">if</span>(!chance) lose=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(!left) win=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> rnd;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%s%s"</span>,&amp;rnd,ans,gue)==<span class="number">3</span> &amp;&amp; rnd !=<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Round %d\n"</span>,rnd);</span><br><span class="line">		win = lose =<span class="number">0</span>;</span><br><span class="line">		left= <span class="built_in">strlen</span>(ans);</span><br><span class="line">		chance = <span class="number">7</span>;</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">int</span> anslen=<span class="built_in">strlen</span>(gue);</span><br><span class="line">		<span class="keyword">for</span>( i=<span class="number">0</span>;i&lt; anslen;i++) &#123; guess(gue[i]); <span class="keyword">if</span>(win || lose) <span class="keyword">break</span>;&#125;</span><br><span class="line">			<span class="keyword">if</span>(win) <span class="built_in">printf</span>(<span class="string">"You win.\n"</span>);</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(lose) <span class="built_in">printf</span>(<span class="string">"You lose.\n"</span>);</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"You chickened out.\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> a[<span class="number">1000</span>],g[<span class="number">1000</span>];<span class="comment">//储存字符串 </span></span><br><span class="line"><span class="keyword">int</span> abook[<span class="number">26</span>],gbook[<span class="number">26</span>];<span class="comment">//标记26个字母出现频率 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k;</span><br><span class="line">    <span class="keyword">int</span> alen,glen;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">int</span> suc,fau;</span><br><span class="line">    <span class="keyword">int</span> acount;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;k)==<span class="number">1</span>&amp;&amp;k!=<span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,a,g);</span><br><span class="line">        <span class="built_in">memset</span>(abook,<span class="number">0</span>,<span class="keyword">sizeof</span>(abook));</span><br><span class="line">        <span class="built_in">memset</span>(gbook,<span class="number">0</span>,<span class="keyword">sizeof</span>(gbook));</span><br><span class="line">        alen=<span class="built_in">strlen</span>(a);</span><br><span class="line">        glen=<span class="built_in">strlen</span>(g);</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;alen;i++)<span class="comment">//统计答案字母频率 </span></span><br><span class="line">            abook[a[i]-<span class="string">'a'</span>]++;</span><br><span class="line">        </span><br><span class="line">        acount=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">            <span class="keyword">if</span>(abook[i])<span class="comment">//统计答案的字母组成个数（扣除雷同字母） </span></span><br><span class="line">                acount++;</span><br><span class="line">        </span><br><span class="line">        suc=<span class="number">0</span>;<span class="comment">//猜对次数</span></span><br><span class="line">        fau=<span class="number">0</span>;<span class="comment">//猜错次数</span></span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;glen;i++)&#123;<span class="comment">//以猜测字母为基准进行扫描 </span></span><br><span class="line">            j=g[i]-<span class="string">'a'</span>;</span><br><span class="line">            <span class="keyword">if</span>(abook[j]==<span class="number">0</span>)&#123;<span class="comment">//答案无此字母，猜测错误 </span></span><br><span class="line">                fau++;</span><br><span class="line">                <span class="keyword">if</span>(fau==<span class="number">7</span>)<span class="comment">//彻底失败 </span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(abook[j]!=<span class="number">0</span>)&#123;<span class="comment">//猜中字母 </span></span><br><span class="line">                suc++;</span><br><span class="line">                abook[j]=<span class="number">0</span>;<span class="comment">//将此字母从答案中剔除出去，此句比较关键!(再猜无效) </span></span><br><span class="line">                <span class="keyword">if</span>(suc==acount)<span class="comment">//成功 </span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Round %d\n"</span>,k);</span><br><span class="line">        <span class="keyword">if</span>(fau&gt;=<span class="number">7</span>)<span class="comment">//猜错7次及以上 </span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"You lose.\n"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(suc==acount)<span class="comment">//全部猜对 </span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"You win.\n"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"You chickened out.\n"</span>);   </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="例题4-3-救济金发放"><a class="markdownIt-Anchor" href="#例题4-3-救济金发放"></a> 例题4-3 救济金发放</h4>
+<blockquote>
+<ul>
+<li>圆圈如何轮回==&gt;本质上是要求,大于n变成1,小于1变成n…实现<code>1.越界后归正。2.(xxx)%n,</code></li>
+<li>领过设为1,没领过(初始)设为1</li>
+</ul>
+</blockquote>
+<h5 id="较为简洁-清晰的做法"><a class="markdownIt-Anchor" href="#较为简洁-清晰的做法"></a> 较为简洁、清晰的做法</h5>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> book[<span class="number">100</span>];<span class="comment">//领过的标记1，没领过的标记0 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,k,m;</span><br><span class="line">    <span class="keyword">int</span> kcount,mcount;</span><br><span class="line">    <span class="keyword">int</span> ki,mi;</span><br><span class="line">    <span class="keyword">int</span> kout,mout;</span><br><span class="line">    <span class="keyword">int</span> first;</span><br><span class="line">    <span class="keyword">int</span> ncount;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;k,&amp;m)==<span class="number">3</span>&amp;&amp;n&amp;&amp;k&amp;&amp;m)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(book,<span class="number">0</span>,<span class="keyword">sizeof</span>(book));</span><br><span class="line">        ncount=<span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        ki=<span class="number">0</span>;</span><br><span class="line">        mi=n+<span class="number">1</span>;</span><br><span class="line">        first=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(ncount!=n)&#123;<span class="comment">//n个人全被处理完毕//处理手法有些类似快速排序</span></span><br><span class="line">            kcount=<span class="number">0</span>;</span><br><span class="line">            mcount=<span class="number">0</span>;</span><br><span class="line">            <span class="comment">//每数一个人,都要判断是不是该越过他.只有0(未领过,才计数)</span></span><br><span class="line">            <span class="keyword">while</span>(kcount!=k)&#123;<span class="comment">//k系列处理 </span></span><br><span class="line">                ki++;</span><br><span class="line">                <span class="keyword">if</span>(ki&gt;n)<span class="comment">//ki越界处理 </span></span><br><span class="line">                    ki=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(book[ki]==<span class="number">0</span>)<span class="comment">//未被选中计数  ki为当前值 </span></span><br><span class="line">                    kcount++;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(mcount!=m)&#123;<span class="comment">//m系列处理 </span></span><br><span class="line">                mi--;</span><br><span class="line">                <span class="keyword">if</span>(mi&lt;<span class="number">1</span>)<span class="comment">//mi越界处理 </span></span><br><span class="line">                    mi=n; </span><br><span class="line">                <span class="keyword">if</span>(book[mi]==<span class="number">0</span>)<span class="comment">//未被选中计数 mi为当前值 </span></span><br><span class="line">                    mcount++;</span><br><span class="line">        &#125;</span><br><span class="line">            book[ki]=<span class="number">1</span>;<span class="comment">//不用担心ki==mi(重复设置为1不影响)</span></span><br><span class="line">            book[mi]=<span class="number">1</span>; </span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(first)&#123;<span class="comment">//打印处理</span></span><br><span class="line">                first=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">if</span>(ki!=mi)&#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"%3d%3d"</span>,ki,mi);</span><br><span class="line">                    ncount+=<span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"%3d"</span>,ki); </span><br><span class="line">                    ncount++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(ki!=mi)&#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">",%3d%3d"</span>,ki,mi);</span><br><span class="line">                    ncount+=<span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">",%3d"</span>,ki);</span><br><span class="line">                    ncount++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="书上做法"><a class="markdownIt-Anchor" href="#书上做法"></a> 书上做法</h5>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 25</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,k,m,a[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">go</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> d,<span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(t--)	<span class="comment">//每数一个人都要判断他是否已经领过</span></span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        p = (n+p+d)%n;</span><br><span class="line">    &#125;<span class="keyword">while</span>(!a[p]);	<span class="comment">//==0,领过</span></span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d,%d,%d"</span>,&amp;n,&amp;k,&amp;m)==<span class="number">3</span> &amp;&amp; n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) a[i]=i;</span><br><span class="line">        <span class="keyword">int</span> left =n;</span><br><span class="line">        <span class="keyword">int</span> p1 =n,p2=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left)</span><br><span class="line">        &#123;</span><br><span class="line">            p1= go(p1,<span class="number">-1</span>,k);</span><br><span class="line">            p2= go(p2,<span class="number">1</span>,m);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d"</span>,p1);left--;</span><br><span class="line">            <span class="keyword">if</span>(p1!=p2) <span class="built_in">printf</span>(<span class="string">" %d"</span>,p2);</span><br><span class="line">            a[p1]=a[p2]=<span class="number">0</span>;				<span class="comment">//领了设置为0</span></span><br><span class="line">            <span class="keyword">if</span>(left) <span class="built_in">printf</span>(<span class="string">","</span>);		<span class="comment">//注意输出格式</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nymrli.top/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏，救济金发放/" data-id="cjzyy2kfk005rk82994icbjw2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ACM竞赛入门/">ACM竞赛入门</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li></ul>
 
- 2.使用npm安装hexo： npm install -g hexo
- 3.创建hexo文件夹，并单击鼠标右键选择 Git bas ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="hexo"> hexo</a></div><div class="read-more"><a class="more" href="/2018/08/30/hello-hexo/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/">WampSever配置本地环境，解决打开打开本地网站问题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-01T06:19:39.000Z">2018-09-01</time><i class="fa fa-edit"></i><time datetime="2018-09-01T06:19:39.000Z">2018-09-01</time></div><div class="recent-post-content"><p><img src="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/WampSever%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%EF%BC%8C%E8%A7%A3%E5%86%B3%E6%89%93%E5%BC%80%E6%89%93%E5%BC%80%E6%9C%AC%E5%9C%B0%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98%5Cv2-1d83ff5569ea18de71d329033fb91131_r.jpg" alt="What's WAMP"></p></div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="WAMP"> WAMP</a></div><div class="read-more"><a class="more" href="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/">python pywin32 PyUserInput实现自动化脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-08-31T11:43:00.000Z">2018-08-31</time><i class="fa fa-edit"></i><time datetime="2018-08-31T11:43:00.000Z">2018-08-31</time></div><div class="recent-post-content">pywin32用spy++工具查找到句柄，再结合PyUserInput就能很好地实现自动化脚本。
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210310410510610710810911011111211311411511611711811912 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/8/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-WampSever配置本地环境，解决打开打开本地网站问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/" class="article-date">
+  <time datetime="2018-09-01T06:19:39.000Z" itemprop="datePublished">2018-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/">WampSever配置本地环境，解决打开打开本地网站问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/WampSever%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%EF%BC%8C%E8%A7%A3%E5%86%B3%E6%89%93%E5%BC%80%E6%89%93%E5%BC%80%E6%9C%AC%E5%9C%B0%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98%5Cv2-1d83ff5569ea18de71d329033fb91131_r.jpg" alt="What's WAMP"></p>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nymrli.top/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/" data-id="cjzyy2kdy003ok829lrmhgq5l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WAMP/">WAMP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境配置/">环境配置</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ubuntu下Sublime配置Python环境使用指导" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/" class="article-date">
+  <time datetime="2018-09-01T06:04:47.000Z" itemprop="datePublished">2018-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/">Ubuntu下Sublime配置Python环境使用指导:</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/Ubuntu%E4%B8%8BSublime%E9%85%8D%E7%BD%AEPython%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC%5Cv2-e120837a2c6bb4df19299c085c8c7cf1_r.jpg" alt="Sublime Text"></p>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nymrli.top/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/" data-id="cjzyy2kdq003dk829662x90yp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sublime-Text/">Sublime Text</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境配置/">环境配置</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-win32api-win32gui-win32con-PyUserInput实现自动化脚本" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/" class="article-date">
+  <time datetime="2018-08-31T11:43:00.000Z" itemprop="datePublished">2018-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/">python pywin32 PyUserInput实现自动化脚本</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>pywin32用<a href="https://www.cnblogs.com/nymrli/p/9556691.html" target="_blank" rel="noopener">spy++</a>工具查找到句柄，再结合<a href="https://www.cnblogs.com/nymrli/p/9557023.html" target="_blank" rel="noopener">PyUserInput</a>就能很好地实现自动化脚本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line">import win32gui</span><br><span class="line">import win32con</span><br><span class="line">import win32api</span><br><span class="line"></span><br><span class="line"># 从顶层窗口向下搜索主窗口，无法搜索子窗口</span><br><span class="line"># FindWindow(lpClassName=None, lpWindowName=None)  窗口类名 窗口标题名</span><br><span class="line">handle = win32gui.FindWindow(&quot;Notepad&quot;, None) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 获取窗口位置</span><br><span class="line">left, top, right, bottom = win32gui.GetWindowRect(handle)</span><br><span class="line"></span><br><span class="line">#获取某个句柄的类名和标题</span><br><span class="line">title = win32gui.GetWindowText(handle)     </span><br><span class="line">clsname = win32gui.GetClassName(handle)</span><br><span class="line"></span><br><span class="line"># 打印句柄</span><br><span class="line"># 十进制</span><br><span class="line">print(handle)</span><br><span class="line"># 十六进制</span><br><span class="line">print(&quot;%x&quot; %(handle) )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 搜索子窗口</span><br><span class="line"># 枚举子窗口</span><br><span class="line">hwndChildList = []     </span><br><span class="line">win32gui.EnumChildWindows(handle, lambda hwnd, param: param.append(hwnd),  hwndChildList)</span><br><span class="line"></span><br><span class="line"># FindWindowEx(hwndParent=0, hwndChildAfter=0, lpszClass=None, lpszWindow=None) </span><br><span class="line"># 父窗口句柄 若不为0，则按照z-index的顺序从hwndChildAfter向后开始搜索子窗体，否则从第一个子窗体开始搜索。 子窗口类名 子窗口标题</span><br><span class="line">subHandle = win32gui.FindWindowEx(handle, 0, &quot;EDIT&quot;, None)</span><br><span class="line"></span><br><span class="line"># 获得窗口的菜单句柄</span><br><span class="line">menuHandle = win32gui.GetMenu(subHandle)</span><br><span class="line"></span><br><span class="line"># 获得子菜单或下拉菜单句柄   </span><br><span class="line"># 参数：菜单句柄 子菜单索引号</span><br><span class="line">subMenuHandle = win32gui.GetSubMenu(menuHandle, 0)</span><br><span class="line"></span><br><span class="line"># 获得菜单项中的的标志符，注意，分隔符是被编入索引的  </span><br><span class="line"># 参数：子菜单句柄 项目索引号 </span><br><span class="line">menuItemHandle = win32gui.GetMenuItemID(subMenuHandle, 0)</span><br><span class="line"></span><br><span class="line"># 发送消息，加入消息队列，无返回 </span><br><span class="line"># 参数：句柄 消息类型 WParam IParam</span><br><span class="line">win32gui.postMessage(subHandle, win32con.WM_COMMAND, menuItemHandle, 0)</span><br><span class="line"></span><br><span class="line"># wParam的定义是32位整型，high word就是他的31至16位，low word是它的15至0位。</span><br><span class="line"># 当参数超过两个，wParam和lParam不够用时，可以将wParam就给拆成两个int16来使用。</span><br><span class="line"># 这种时候在python里记得用把HIWORD的常数向左移16位，再加LOWORD，即wParam = HIWORD&lt;&lt;16+LOWORD。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 下选框内容更改</span><br><span class="line"># 参数：下选框句柄； 消息内容； </span><br><span class="line">#参数下选框的哪一个item，以0起始的待选选项的索引；如果该值为-1，将从组合框列表中删除当前选项，并使当前选项为空；</span><br><span class="line"># 参数CB_Handle为下选框句柄，PCB_handle下选框父窗口句柄</span><br><span class="line">if win32api.SendMessage(CB_handle, win32con.CB_SETCURSEL, 1, 0) == 1:</span><br><span class="line"></span><br><span class="line"># 下选框的父窗口命令</span><br><span class="line"># 参数：父窗口句柄； 命令； </span><br><span class="line"># 参数：WParam：高位表示类型，低位表示内容；参数IParam，下选框句柄</span><br><span class="line"># CBN_SELENDOK当用户选择了有效的列表项时发送，提示父窗体处理用户的选择。 LOWORD为组合框的ID. HIWORD为CBN_SELENDOK的值。</span><br><span class="line">            win32api.SendMessage(PCB_handle, win32con.WM_COMMAND, 0x90000, CB_handle) </span><br><span class="line"># CBN_SELCHANGE当用户更改了列表项的选择时发送，不论用户是通过鼠标选择或是通过方向键选择都会发送此通知。LOWORD为组合框的ID. HIWORD为CBN_SELCHANGE的值。</span><br><span class="line">            win32api.SendMessage(PCB_handle, win32con.WM_COMMAND, 0x10000, CB_handle) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 设置文本框内容，等窗口处理完毕后返回true。中文需编码成gbk </span><br><span class="line"># 参数：句柄；消息类型；</span><br><span class="line"># 参数WParam，无需使用； </span><br><span class="line"># 参数IParam，要设置的内容，字符串</span><br><span class="line">win32api.SendMessage(handle, win32con.WM_SETTEXT, 0, os.path.abspath(fgFilePath).encode(&apos;gbk&apos;))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 控件点击确定,处理消息后返回0</span><br><span class="line"># 参数:窗口句柄; 消息类型; 参数WParam HIWORD为0（未使用），LOWORD为控件的ID; 参数IParam  0（未使用）,确定控件的句柄</span><br><span class="line">win32api.SendMessage(Mhandle, win32con.WM_COMMAND, 1, confirmBTN_handle)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 获取窗口文本不含截尾空字符的长度</span><br><span class="line"># 参数：窗口句柄； 消息类型； 参数WParam； 参数IParam</span><br><span class="line">bufSize = win32api.SendMessage(subHandle, win32con.WM_GETTEXTLENGTH, 0, 0) +1</span><br><span class="line"></span><br><span class="line"># 利用api生成Buffer</span><br><span class="line">strBuf = win32gui.PyMakeBuffer(bufSize)</span><br><span class="line">print(strBuf)</span><br><span class="line"></span><br><span class="line"># 发送消息获取文本内容</span><br><span class="line"># 参数：窗口句柄； 消息类型；文本大小； 存储位置</span><br><span class="line">length = win32gui.SendMessage(subHandle, win32con.WM_GETTEXT, bufSize, strBuf)</span><br><span class="line"></span><br><span class="line"># 反向内容，转为字符串</span><br><span class="line"># text = str(strBuf[:-1])</span><br><span class="line"></span><br><span class="line">address, length = win32gui.PyGetBufferAddressAndLen(strBuf) </span><br><span class="line">text = win32gui.PyGetString(address, length) </span><br><span class="line"># print(&apos;text: &apos;, text)</span><br><span class="line"></span><br><span class="line"># 鼠标单击事件</span><br><span class="line">#鼠标定位到(30,50)</span><br><span class="line">win32api.SetCursorPos([30,150])</span><br><span class="line"></span><br><span class="line">#执行左单键击，若需要双击则延时几毫秒再点击一次即可</span><br><span class="line">win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP | win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)</span><br><span class="line"></span><br><span class="line">#右键单击</span><br><span class="line">win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP | win32con.MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0)</span><br><span class="line"></span><br><span class="line">def click1(x,y):                #第一种</span><br><span class="line">    win32api.SetCursorPos((x,y))</span><br><span class="line">    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,x,y,0,0)</span><br><span class="line">    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,x,y,0,0)</span><br><span class="line"></span><br><span class="line">def click2(x,y):               #第二种</span><br><span class="line">    ctypes.windll.user32.SetCursorPos(x,y)</span><br><span class="line">    ctypes.windll.user32.mouse_event(2,0,0,0,0)</span><br><span class="line">    ctypes.windll.user32.mouse_event(4,0,0,0,0)</span><br><span class="line"></span><br><span class="line">def click_it(pos):          #第三种</span><br><span class="line">    handle= win32gui.WindowFromPoint(pos)</span><br><span class="line">    client_pos =win32gui.ScreenToClient(handle,pos)</span><br><span class="line">    tmp=win32api.MAKELONG(client_pos[0],client_pos[1])</span><br><span class="line">    win32gui.SendMessage(handle, win32con.WM_ACTIVATE,win32con.WA_ACTIVE,0)</span><br><span class="line">    win32gui.SendMessage(handle, win32con.WM_LBUTTONDOWN,win32con.MK_LBUTTON,tmp)</span><br><span class="line">    win32gui.SendMessage(handle, win32con.WM_LBUTTONUP,win32con.MK_LBUTTON,tmp)</span><br><span class="line"></span><br><span class="line"># 发送回车</span><br><span class="line">win32api.keybd_event(13,0,0,0)</span><br><span class="line">win32api.keybd_event(13,0,win32con.KEYEVENTF_KEYUP,0)</span><br><span class="line"></span><br><span class="line"># 关闭窗口</span><br><span class="line">win32gui.PostMessage(win32lib.findWindow(classname, titlename), win32con.WM_CLOSE, 0, 0)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 检查窗口是否最小化，如果是最大化</span><br><span class="line">if(win32gui.IsIconic(hwnd)):</span><br><span class="line">#     win32gui.ShowWindow(hwnd, win32con.SW_SHOWNORMAL)</span><br><span class="line">    win32gui.ShowWindow(hwnd, 8)</span><br><span class="line">    sleep(0.5)</span><br><span class="line"></span><br><span class="line"># SW_HIDE：隐藏窗口并激活其他窗口。nCmdShow=0。</span><br><span class="line"># SW_MAXIMIZE：最大化指定的窗口。nCmdShow=3。</span><br><span class="line"># SW_MINIMIZE：最小化指定的窗口并且激活在Z序中的下一个顶层窗口。nCmdShow=6。</span><br><span class="line"># SW_RESTORE：激活并显示窗口。如果窗口最小化或最大化，则系统将窗口恢复到原来的尺寸和位置。在恢复最小化窗口时，应用程序应该指定这个标志。nCmdShow=9。</span><br><span class="line"># SW_SHOW：在窗口原来的位置以原来的尺寸激活和显示窗口。nCmdShow=5。</span><br><span class="line"># SW_SHOWDEFAULT：依据在STARTUPINFO结构中指定的SW_FLAG标志设定显示状态，STARTUPINFO 结构是由启动应用程序的程序传递给CreateProcess函数的。nCmdShow=10。</span><br><span class="line"># SW_SHOWMAXIMIZED：激活窗口并将其最大化。nCmdShow=3。</span><br><span class="line"># SW_SHOWMINIMIZED：激活窗口并将其最小化。nCmdShow=2。</span><br><span class="line"># SW_SHOWMINNOACTIVE：窗口最小化，激活窗口仍然维持激活状态。nCmdShow=7。</span><br><span class="line"># SW_SHOWNA：以窗口原来的状态显示窗口。激活窗口仍然维持激活状态。nCmdShow=8。</span><br><span class="line"># SW_SHOWNOACTIVATE：以窗口最近一次的大小和状态显示窗口。激活窗口仍然维持激活状态。nCmdShow=4。</span><br><span class="line"># SW_SHOWNORMAL：激活并显示一个窗口。如果窗口被最小化或最大化，系统将其恢复到原来的尺寸和大小。应用程序在第一次显示窗口的时候应该指定此标志。nCmdShow=1。</span><br></pre></td></tr></table></figure>
+<p>感谢<a href="https://blog.csdn.net/qq_16234613/article/details/79155632" target="_blank" rel="noopener">python win32api win32gui win32con 窗口句柄 发送消息 常用方法 键盘输入</a>，代码主要来自于他</p>
+<h4 id="需要注意在windows和mac下接口参数可能有所不同"><a class="markdownIt-Anchor" href="#需要注意在windows和mac下接口参数可能有所不同"></a> ▲.需要注意在windows和mac下接口参数可能有所不同。</h4>
+<h4 id="win32虽然也可控制键盘但不如使用pyuserinput的方便-安装pyuserinput教程"><a class="markdownIt-Anchor" href="#win32虽然也可控制键盘但不如使用pyuserinput的方便-安装pyuserinput教程"></a> win32虽然也可控制键盘，但不如使用PyUserInput的方便。<a href="https://www.cnblogs.com/nymrli/p/9557023.html" target="_blank" rel="noopener">安装PyUserInput教程</a></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">from pymouse import PyMouse</span><br><span class="line">from pykeyboard import PyKeyboard</span><br><span class="line">#实例化</span><br><span class="line">m = PyMouse()		</span><br><span class="line">k = PyKeyboard()</span><br><span class="line"></span><br><span class="line">x_dim, y_dim = m.screen_size()</span><br><span class="line"># 鼠标点击 参数:x,y,button=1(左键)、2(右键)、3(中间),次数</span><br><span class="line">m.click(x_dim, y_dim, button=1,n=1)  </span><br><span class="line"># 键盘输入 参数:str,间隔</span><br><span class="line">k.type_string(&apos;Hello, World!&apos;,interval=0)</span><br><span class="line"></span><br><span class="line"># 按住一个键</span><br><span class="line">k.press_key(&apos;H&apos;)</span><br><span class="line"># 松开一个键</span><br><span class="line">k.release_key(&apos;H&apos;)</span><br><span class="line"></span><br><span class="line"># 相当于===&gt;按住并松开，tap一个键</span><br><span class="line">k.tap_key(&apos;e&apos;)</span><br><span class="line"># tap支持重复的间歇点击键,参数:str,次数,间隔</span><br><span class="line">k.tap_key(&apos;l&apos;,n=2,interval=5) </span><br><span class="line"></span><br><span class="line">#创建组合键===&gt;press_key和release_key结合使用</span><br><span class="line">k.press_key(k.alt_key)</span><br><span class="line">k.tap_key(k.tab_key)</span><br><span class="line">k.release_key(k.alt_key)</span><br><span class="line"></span><br><span class="line"># 特殊功能键</span><br><span class="line">k.tap_key(k.function_keys[5]) # Tap F5</span><br><span class="line">k.tap_key(k.numpad_keys[&apos;Home&apos;]) # Tap &apos;Home&apos; on the numpad</span><br><span class="line">k.tap_key(k.numpad_keys[5], n=3) # Tap 5 on the numpad, thrice</span><br><span class="line"></span><br><span class="line"># Mac系统按键</span><br><span class="line">k.press_keys([&apos;Command&apos;,&apos;shift&apos;,&apos;3&apos;])</span><br><span class="line"># Windows系统按键</span><br><span class="line">k.press_keys([k.windows_l_key,&apos;d&apos;])</span><br><span class="line"></span><br><span class="line">其中pymouse的PyMouseEvent和pykeyboard的PyKeyboardEvent还可用于监听鼠标和键盘事件的输入</span><br><span class="line">class Clickonacci(PyMouseEvent):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        PyMouseEvent.__init__(self)</span><br><span class="line">        self.fibo = fibo()</span><br><span class="line"></span><br><span class="line">    def click(self, x, y, button, press):</span><br><span class="line">        &apos;&apos;&apos;Print Fibonacci numbers when the left click is pressed.&apos;&apos;&apos;</span><br><span class="line">        if button == 1:</span><br><span class="line">            if press:</span><br><span class="line">                print(&apos;Press times:%d&apos;.format(press))</span><br><span class="line">        else: # Exit if any other mouse button used</span><br><span class="line">            self.stop()</span><br><span class="line"></span><br><span class="line">C = Clickonacci()</span><br><span class="line">C.run()</span><br><span class="line"></span><br><span class="line">class TapRecord(PyKeyboardEvent):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        PyKeyboardEvent.__init__(self)</span><br><span class="line"></span><br><span class="line">    def tap(self, keycode, character, press):</span><br><span class="line">        print(time.time(), keycode, character, press)</span><br><span class="line"></span><br><span class="line">t = TapRecord()</span><br><span class="line">t.run()</span><br><span class="line">#这些对象是一个架构用于监听鼠标和键盘的输入；他们除了监听之外不会做任何事，需要继承重构他们#PyKeyboardEvent为编写完成，所以这里是一个继承PyMouseEvent的例子：</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nymrli.top/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/" data-id="cjzyy2kmr00ffk829s6zzndc1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化运维/">自动化运维</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/30/hello-hexo/" class="article-date">
+  <time datetime="2018-08-30T13:14:27.000Z" itemprop="datePublished">2018-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/30/hello-hexo/">Hello 搭建Hexo博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>电脑环境是Windows，安装好git后，所有搭建操作均在git bash内完成</strong></p>
+<h4 id="1需要安装git-nodejs-npm"><a class="markdownIt-Anchor" href="#1需要安装git-nodejs-npm"></a> 1.需要安装git, node.js, npm</h4>
+<blockquote>
+<p>注:第一次安装Git会让配置user信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; $git config --global user.name &quot;yourname&quot;   #（yourname是git的用户名）</span><br><span class="line">&gt; $git config --global user.email &quot;youremail&quot;）</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="2使用npm安装hexo-npm-install-g-hexo"><a class="markdownIt-Anchor" href="#2使用npm安装hexo-npm-install-g-hexo"></a> 2.使用npm安装hexo： <code>npm install -g hexo</code></h4>
+<h4 id="3创建hexo文件夹并单击鼠标右键选择-git-bash我的创建路径是ehexo"><a class="markdownIt-Anchor" href="#3创建hexo文件夹并单击鼠标右键选择-git-bash我的创建路径是ehexo"></a> 3.创建hexo文件夹，并单击鼠标右键选择 Git bash：(我的创建路径是：E:\hexo）</h4>
+<h4 id="4在刚刚打开的git-bash命令框中操作"><a class="markdownIt-Anchor" href="#4在刚刚打开的git-bash命令框中操作"></a> 4.在刚刚打开的git bash命令框中操作：</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$hexo init 		#hexo 会自动创建网站所需要的文件</span><br><span class="line">$npm install 	#安装依赖包</span><br><span class="line">$hexo generate  # 等价于hexo g</span><br><span class="line">$hexo server 	#现在可以用127.0.0.1:4000访问hexo默认的hello world界面,等价于hexo s</span><br></pre></td></tr></table></figure>
+<h4 id="5部署到github-httpsgithubcom"><a class="markdownIt-Anchor" href="#5部署到github-httpsgithubcom"></a> 5.部署到github (<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>)，</h4>
+<ul>
+<li>首先注册登录,然后创建页面仓库，Repository name 命名必须是 <a href="http://youname.github.io" target="_blank" rel="noopener">youname.github.io</a> ，（youname 就是你注册时候用的name）</li>
+<li><code>ssh-keygen -t rsa -C &quot;email&quot; #生成ssh密钥</code>，按三次回车键，密码为空,这边会生成id_rsa和_rsa.pub文件，打开id_rsa.pub，复制全文添加到GitHub 的Add SSH key中。</li>
+<li>最后可以验证一下<code>ssh -T git@github.com</code>,看出现的是不是<code>Hi &quot;Yourname&quot;</code>如果出现了你的github用户名,则成功了</li>
+</ul>
+<h4 id="6下载hexo主题"><a class="markdownIt-Anchor" href="#6下载hexo主题"></a> 6.下载Hexo主题</h4>
+<ul>
+<li>
+<p><code>$git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia #下载hexo的yilia 模板到自己的文件目录下</code></p>
+</li>
+<li>
+<p>打开项目目录下的**_config.yml**文件，更改theme：yilia</p>
+<blockquote>
+<p>▲注意: <strong>_config.yml</strong>文件中配置时:后面都要加空格,与:隔开</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="7开启评论功能使用gitment"><a class="markdownIt-Anchor" href="#7开启评论功能使用gitment"></a> 7.开启评论功能：使用gitment</h4>
+<p><code>$npm install gitment --save #安装gitment</code></p>
+<p>然后在 <a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">https://github.com/settings/applications/new</a> 进行注册，获取Client ID和Client Secret</p>
+<blockquote>
+<p>▲注意:<strong>其中Authorization callback URL是个坑</strong>:</p>
+<p>这一项不能乱填,不让就不能&quot;初始化评论&quot;…</p>
+<hr>
+<p>应该怎么填呢?</p>
+<ul>
+<li>如果你绑定了自己的域名就直接写自己的域名: <code>https://nymrli.top/</code></li>
+<li>如果没有的话才填写<code>http://Freedomisgood.github.io</code>,否则会一直弹回博客首页,而不能&quot;初始化评论&quot;或者&quot;发表评论&quot;</li>
+</ul>
+<blockquote>
+<p>其中的原因就在于,既可以通过<code>www.nymrli.top</code>解析，也可通过<code>nymrli.top</code>解析,还可以通<code>http://Freedomisgood.github.io</code>解析,而Authorization callback URL只能写一个.(最终解析到的网站)…===&gt;就是<code>nymrli.top</code></p>
+<p>△.感谢<a href="https://github.com/imsun/gitment/issues/95" target="_blank" rel="noopener">IsResultXaL</a>提供的思路</p>
+</blockquote>
+</blockquote>
+<p>打开themes/yilia目录下的_config.yml文件进行修改并保存：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180831193448575-798041221.jpg" alt=""></p>
+<p>再次生成网站,提交网站:<code>hexo d -g</code>就可以输入网址:<a href="https://yourname.github.xn--io-e62cn7ap9lpnolwfrthi34c" target="_blank" rel="noopener">https://yourname.github.io打开你的博客了</a></p>
+<h4 id="8显示文章摘要图片"><a class="markdownIt-Anchor" href="#8显示文章摘要图片"></a> 8.显示文章摘要图片</h4>
+<ul>
+<li>
+<p>1 把主页配置文件<code>_config.yml</code> 里的<code>post_asset_folder:</code>这个选项设置为<code>true</code></p>
+</li>
+<li>
+<p>在hexo目录下打开git Bsh或者power Shell,<code>npm install hexo-asset-image --save</code>安装插件</p>
+</li>
+<li>
+<p>再运行<code>hexo n &quot;xxxx&quot;</code>来生成md博文时，<code>/source/_posts</code>文件夹内除了<code>xxxx.md</code>文件还有一个<strong>同名的文件夹</strong></p>
+</li>
+<li>
+<p>4 最后在<code>xxxx.md</code>中想引入图片时，先把图片复制到xxxx这个文件夹中，然后只需要在xxxx.md中按照markdown的格式引入图片：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![你想输入的替代文字](xxxx/图片名.jpg)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>▲ .之前一直失败,原因在于,我写图片链接的时候是直接拖动图片到编辑器中的,路径为<code>![v2-代替文字](E:\hexo\source\_posts\xxxx\图片名.jpg)</code>,后来一直错误,无法正常显示后，发现只需要写成<code>![代替文字](xxxx\图片名.jpg)</code>即可…</p>
+<h5 id="文章总体框架"><a class="markdownIt-Anchor" href="#文章总体框架"></a> 文章总体框架:</h5>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">layout: photo</span><br><span class="line">title: Hello Hexo</span><br><span class="line">date: 2018-08-30 21:14:27</span><br><span class="line">tags: </span><br><span class="line">- hexo</span><br><span class="line">---</span><br><span class="line">![代替文字](xxxx\图片名.jpg)</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">正文</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>→推一个不错的文章<a href="https://blog.csdn.net/u014732537/article/details/79862980" target="_blank" rel="noopener">Hexo+Coding+Github部署个人博客Error全集</a>,如果出现未能解决的问题,希望能从这篇文章略微得到启发.</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nymrli.top/2018/08/30/hello-hexo/" data-id="cjzyy2kes004jk829gy3p0x10" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境配置/">环境配置</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python字典基本操作介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/30/Python字典基本操作介绍/" class="article-date">
+  <time datetime="2018-08-30T13:14:27.000Z" itemprop="datePublished">2018-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/30/Python字典基本操作介绍/">Python字典基本操作介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="创建字典"><a class="markdownIt-Anchor" href="#创建字典"></a> 创建字典</h4>
+<ul>
+<li><code>info={}</code></li>
+<li><code>info=dict()</code></li>
+</ul>
+<hr>
+<h4 id="初始化字典"><a class="markdownIt-Anchor" href="#初始化字典"></a> 初始化字典</h4>
+<h5 id="法一"><a class="markdownIt-Anchor" href="#法一"></a> 法一</h5>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">key = &apos;name&apos;</span><br><span class="line">info = &#123; key :&apos;cold&apos;&#125;</span><br><span class="line">==&#123;&apos;name&apos;:&apos;cold&apos;&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="法二"><a class="markdownIt-Anchor" href="#法二"></a> 法二</h5>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">info = dict(key = &apos;cold&apos;)</span><br><span class="line">==&#123;&apos;key&apos;:&apos;cold&apos;&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="法三"><a class="markdownIt-Anchor" href="#法三"></a> 法三</h5>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#还有可以使用dict(zip(a,b))其中a,b都是列表,会生成以A中元素为键,B中元素为值的字典</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="插入新的键值对更新"><a class="markdownIt-Anchor" href="#插入新的键值对更新"></a> 插入新的键值对(更新)</h4>
+<ul>
+<li>info.update(name=‘cold’, blog=‘<a href="http://www.linuxzen.com" target="_blank" rel="noopener">www.linuxzen.com</a>’)</li>
+<li>在字典有没有k这个键时可以使用dict.setdefault(key,value)</li>
+<li>还可以使用dict(var = value)其中var可以是变量,也可以不是,注意不用加</li>
+<li>或是_dict[‘xxx’]=‘yyy’</li>
+</ul>
+<hr>
+<h4 id="获得键值"><a class="markdownIt-Anchor" href="#获得键值"></a> 获得键值</h4>
+<ul>
+<li>确定存在的情况下-
+<ul>
+<li>info.get(‘xxx’)</li>
+<li>info[‘xxx’]</li>
+</ul>
+</li>
+<li>不确定是否存在
+<ul>
+<li>info.get(‘xxx’)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="遍历字典"><a class="markdownIt-Anchor" href="#遍历字典"></a> 遍历字典</h4>
+<ul>
+<li>获得key,再通过key来获得valuefor key in dicprint(%d,%d%(key,_dict[key]))</li>
+<li>使用dict.items()for key,value in dic.items()print ‘key is %s,value is %s’%(key,value)</li>
+</ul>
+<hr>
+<h4 id="字典删除"><a class="markdownIt-Anchor" href="#字典删除"></a> 字典删除</h4>
+<p><code>del(info['xxx'])</code> or <code>del info['xxx']</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nymrli.top/2018/08/30/Python字典基本操作介绍/" data-id="cjzyy2kcx002dk8299gsbvnao" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM竞赛入门/">ACM竞赛入门</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Au/">Au</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Speaking/">English Speaking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/">IDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matlab/">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NJUPT/">NJUPT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postman/">Postman</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pythton/">Pythton</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime-Text/">Sublime Text</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAMP/">WAMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Window10/">Window10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/">lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信号处理/">信号处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多媒体/">多媒体</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学业/">学业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安利/">安利</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实验作业/">实验作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学建模/">数学建模</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学知识/">数学知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟操作/">模拟操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境部署/">环境部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境配置/">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活小记/">生活小记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活福利/">生活福利</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序开发经验/">程序开发经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序设计/">程序设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线性筛/">线性筛</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络知识/">网络知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动化运维/">自动化运维</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机基础知识/">计算机基础知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机知识/">计算机知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络知识/">计算机网络知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/运维/">运维</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/邮件/">邮件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/配置环境/">配置环境</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ACM/" style="font-size: 17.86px;">ACM</a> <a href="/tags/ACM竞赛入门/" style="font-size: 12.14px;">ACM竞赛入门</a> <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Algorithm/" style="font-size: 10.71px;">Algorithm</a> <a href="/tags/Au/" style="font-size: 10px;">Au</a> <a href="/tags/C/" style="font-size: 12.86px;">C</a> <a href="/tags/C/" style="font-size: 17.86px;">C++</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Django/" style="font-size: 11.43px;">Django</a> <a href="/tags/English-Speaking/" style="font-size: 10px;">English Speaking</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13.57px;">Linux</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NJUPT/" style="font-size: 17.14px;">NJUPT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Pythton/" style="font-size: 10px;">Pythton</a> <a href="/tags/Shell/" style="font-size: 10.71px;">Shell</a> <a href="/tags/Sublime-Text/" style="font-size: 11.43px;">Sublime Text</a> <a href="/tags/Ubuntu/" style="font-size: 11.43px;">Ubuntu</a> <a href="/tags/WAMP/" style="font-size: 10px;">WAMP</a> <a href="/tags/Web/" style="font-size: 10.71px;">Web</a> <a href="/tags/Window10/" style="font-size: 10px;">Window10</a> <a href="/tags/flask/" style="font-size: 14.29px;">flask</a> <a href="/tags/git/" style="font-size: 11.43px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 16.43px;">java</a> <a href="/tags/linux/" style="font-size: 12.86px;">linux</a> <a href="/tags/lua/" style="font-size: 10px;">lua</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/信号处理/" style="font-size: 10.71px;">信号处理</a> <a href="/tags/前端/" style="font-size: 14.29px;">前端</a> <a href="/tags/后端/" style="font-size: 15.71px;">后端</a> <a href="/tags/图像处理/" style="font-size: 10.71px;">图像处理</a> <a href="/tags/图论/" style="font-size: 10.71px;">图论</a> <a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a> <a href="/tags/学业/" style="font-size: 11.43px;">学业</a> <a href="/tags/安利/" style="font-size: 10px;">安利</a> <a href="/tags/实验作业/" style="font-size: 10px;">实验作业</a> <a href="/tags/微信小程序/" style="font-size: 12.14px;">微信小程序</a> <a href="/tags/数学建模/" style="font-size: 10px;">数学建模</a> <a href="/tags/数学知识/" style="font-size: 10px;">数学知识</a> <a href="/tags/数据库/" style="font-size: 11.43px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/服务器/" style="font-size: 11.43px;">服务器</a> <a href="/tags/机器学习/" style="font-size: 15px;">机器学习</a> <a href="/tags/模拟操作/" style="font-size: 10px;">模拟操作</a> <a href="/tags/深度学习/" style="font-size: 10px;">深度学习</a> <a href="/tags/爬虫/" style="font-size: 18.57px;">爬虫</a> <a href="/tags/环境部署/" style="font-size: 14.29px;">环境部署</a> <a href="/tags/环境配置/" style="font-size: 19.29px;">环境配置</a> <a href="/tags/生活小记/" style="font-size: 11.43px;">生活小记</a> <a href="/tags/生活福利/" style="font-size: 12.86px;">生活福利</a> <a href="/tags/程序开发经验/" style="font-size: 10px;">程序开发经验</a> <a href="/tags/程序设计/" style="font-size: 10px;">程序设计</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/线性筛/" style="font-size: 10px;">线性筛</a> <a href="/tags/网络知识/" style="font-size: 10px;">网络知识</a> <a href="/tags/自动化运维/" style="font-size: 12.86px;">自动化运维</a> <a href="/tags/计算机基础知识/" style="font-size: 17.14px;">计算机基础知识</a> <a href="/tags/计算机知识/" style="font-size: 10px;">计算机知识</a> <a href="/tags/计算机网络知识/" style="font-size: 16.43px;">计算机网络知识</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/运维/" style="font-size: 10.71px;">运维</a> <a href="/tags/邮件/" style="font-size: 10px;">邮件</a> <a href="/tags/配置环境/" style="font-size: 10px;">配置环境</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/30/机器学习——决策树/">机器学习——决策树</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/30/Sklearn——决策树/">Sklearn——决策树</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/30/ACM-博弈论/">ACM-博弈论</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/30/Linux三剑客/">Linux三剑客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/30/2019-6月编程笔记/">2019_6月编程笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 果粒橙<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

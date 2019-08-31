@@ -1,310 +1,103 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="果粒橙"><meta name="renderer" content="webkit"><meta name="copyright" content="果粒橙"><meta name="keywords" content="果粒橙的博客"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>傅里叶变换-&gt;小波变化 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
 
-  
-  <title>傅里叶变换-&gt;小波变化 | 果粒橙的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="傅里叶变换-&amp;gt;小波变化  声明:文中大多数内容来自(知乎1335)[https://www.zhihu.com/people/zhi-yuan-ya-77],matlab源代码:1368069096/From_FT_to_WT_examples-,部分为个人理解阐明   一.傅里叶变换FT  基础知识  （FOURIER TRANSFORM，简称FT）   为什么傅里叶变换可以把一个信号从">
-<meta name="keywords" content="信号处理">
-<meta property="og:type" content="article">
-<meta property="og:title" content="傅里叶变换-&gt;小波变化">
-<meta property="og:url" content="https://nymrli.top/2019/07/29/傅里叶变换-小波变化/index.html">
-<meta property="og:site_name" content="果粒橙的博客">
-<meta property="og:description" content="傅里叶变换-&amp;gt;小波变化  声明:文中大多数内容来自(知乎1335)[https://www.zhihu.com/people/zhi-yuan-ya-77],matlab源代码:1368069096/From_FT_to_WT_examples-,部分为个人理解阐明   一.傅里叶变换FT  基础知识  （FOURIER TRANSFORM，简称FT）   为什么傅里叶变换可以把一个信号从">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://pic2.zhimg.com/80/v2-0cd28b5014a967f161a3327a44793ba5_hd.jpg">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-5f0c8596fe05899d0cb5a1acaec70cfe_hd.jpg">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-5af405c36d2d0ef48ab9f91ac7fb1672_hd.jpg">
-<meta property="og:image" content="https://pic2.zhimg.com/80/v2-639fbf1ab8e20ee318da83b21c641da1_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=a%2Cb">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=a%5Ccdot+b">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=x_0+%3D+v%5Ccdot+a">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=x_0">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=y_0+%3D+v%5Ccdot+b">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=y_0">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-ffb3a17723fa1ef528dfc2350a36bd6f_hd.jpg">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-fb5df4498e5bd43450ec0476c56129f3_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=w+%5Cin+%28-%5Cinfty%2C%2B%5Cinfty%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=n+%3D+0%2C1%2C...N-1">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t_0%2Ct_1%2C...t_%7BN-1%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%28w%29+%3D+%5Csum_%7Bn%3D0%7D%5E%7BN-1%7Dx%28n%29+e%5E%7B-jwn%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%28w%2B2%5Cpi%29+%3D+%5Csum_%7Bn%3D0%7D%5E%7BN-1%7Dx%28n%29+e%5E%7B-j%28w%2B2%5Cpi%29n%7D+%3D++%5Csum_%7Bn%3D0%7D%5E%7BN-1%7Dx%28n%29+e%5E%7B-jwn%7De%5E%7B-j2%5Cpi+n%7D+%3D++%5Csum_%7Bn%3D0%7D%5E%7BN-1%7Dx%28n%29+e%5E%7B-jwn%7D+%3D+X%28w%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=n+%3D+0%2C1%2C...N-1">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%280%29+%3D+%5Csum_%7Bn%3D0%7D%5E%7BN-1%7Dx%28n%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%280%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%281%29+%3D+%5Csum_%7Bn%3D0%7D%5E%7BN-1%7Dx%28n%29+e%5E%7B-j+2%5Cpi%5Cfrac%7B1%7D%7BN%7D+n%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%28N-1%29+%3D+%5Csum_%7Bn%3D0%7D%5E%7BN-1%7Dx%28n%29+e%5E%7B-j+2%5Cpi%5Cfrac%7BN-1%7D%7BN%7D+n%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%281%29+%3D+%5Ctilde%7BX%28N-1%29%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%282%29+%3D+%5Ctilde%7BX%28N-2%29%7D">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-7779743b0ad81ce875fe42c0f69adbc2_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=k">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=k">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=w+%3D+%5Cfrac%7Bk-1%7D%7BN%7DFs">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=k%3D1%2C2...%5Cfrac%7BN%7D%7B2%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2C%5Cfrac%7BFs%7D%7B2%7D%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=Fs">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=Fs">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cfrac%7BFs%7D%7B2%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=k%3D1%2C2...%5Cfrac%7BN%7D%7B2%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=w+%3D+%5Cfrac%7Bk-1%7D%7BN%7DFs">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2C%5Cfrac%7BFs%7D%7B2%7D%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%28k%29+%3D+%5Csum_%7Bn%3D0%7D%5E%7BN-1%7Dx%28n%29+e%5E%7B-j%5Cfrac%7B2%5Cpi+k%7D%7BN%7Dn%7D%2C+k+%3D+0%2C1...N-1">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-023a9ca6d0985e9dc271a08a199269de_hd.jpg">
-<meta property="og:image" content="https://pic1.zhimg.com/80/v2-4ea09915e3f6f18391df410eab709da4_hd.jpg">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-8a1cd705a0354cb0cbeb067e1f7ce992_hd.jpg">
-<meta property="og:image" content="https://pic1.zhimg.com/80/v2-c95d1c9d11a72b51447425f5fbd0e0c8_hd.jpg">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-43e0b0a1d3e8758f32fc784a35b00183_hd.jpg">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-6ccbe7a93f390033d4444a949bcd356e_hd.jpg">
-<meta property="og:image" content="https://pic2.zhimg.com/80/v2-271124958efcef10cd9a370d3f5061b9_hd.jpg">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-417fda7319483f84086bc73b299c5b03_hd.jpg">
-<meta property="og:image" content="https://pic2.zhimg.com/80/v2-bd998377f53a5dffc8546cf019d119a1_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t+%3D+t_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=y_%7Bwindow%7D%28t+-+t_s%29++y%28t%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=y%28t%29%3Dsin%285t%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=y_%7Bwindow%7D%28t+-+25%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=y%28t%29%3Dsin%285t%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=e%5E%7B-jwt%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=e%5E%7B-jw%28t-t_s%29%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%28w%2Ct_s%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t+%3D+t_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t+%3D+t_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t+%3D+5s">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-9c184aa29068c665f5ead3439d42cd0b_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=w+%3D+20rad%2Fs">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-ec4cc9c93dc4d7b763ac5843fd02be8b_hd.jpg">
-<meta property="og:image" content="https://pic1.zhimg.com/80/v2-6df4bbf241bd086b20e7db05a31cf7d0_hd.jpg">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-3bd9b031d41ce1e3349d762e74b850fa_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=w+%3D+20rad%2Fs">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=w+%3D+1rad%2Fs">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28t_s-width%2F2%2C+t_s%2Bwidth%2F2%29">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-389958865460686e1d15a0b2f9ddb277_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=y3%3Dsin%2820t%29%2A%280%3Ct%3C25%29%2Bsin%28t%29%2A%2825%3Ct%3C50%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%28w%2Ct_s%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t+%3D+t_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t+%3D+t_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=+t_s">
-<meta property="og:image" content="https://pic2.zhimg.com/80/v2-dccf7c6b239c4777b934a1c871f86aed_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28t_s-width%2F2%2C+t_s%2Bwidth%2F2%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=t_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cphi+%28t%29+%3D+e%5E%7B-jwt%7D+y_%7Bwindow%7D%28t%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cphi+%28t+-+t_s%29+%3D+e%5E%7B-jw%28t-+t_s%29%7D+y_%7Bwindow%7D%28t-+t_s%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%28w%2Ct_s%29+%3D++%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Dy_%7Bwindow%7D%28t+-+t_s%29++y%28t%29e%5E%7B-jw%28t-+t_s%29%7Ddt">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=X%28w%2C+t_s%29++%3D++%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Dy%28t%29%5Cphi%28t+-+t_s%29+dt">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cphi%28t%29+%3D+e%5E%7B-jwt%7D+y_%7Bwindow%7D%28t%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=e%5E%7B-jwt%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cphi%28t%29+%3D+e%5E%7B-jwt%7D+y_%7Bwindow%7D%28t%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=e%5E%7B-jwt%7D">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-9fb003e0c1ca9b79cba81b58a6d06003_hd.jpg">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-02cb52f656bb597ba81ea90af534044b_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5CDelta+t%5CDelta+f+%3E+C">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5CDelta+t">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5CDelta+f">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5CDelta+t">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5CDelta+f+">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5CDelta+t">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5CDelta+f+">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-a6610ab6df91401343647ba4b27363db_hd.jpg">
-<meta property="og:image" content="https://pic1.zhimg.com/80/v2-36716e2b22423bae8d2ff5bcbf796324_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=sin%280.5t%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2C20%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=sin%285t%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2C5%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5CDelta+t">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5CDelta+f+">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5CDelta+t">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5CDelta+f+">
-<meta property="og:image" content="https://pic2.zhimg.com/80/v2-21c6a20541f75b7789039730c3ba9691_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=Time">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=Frequency">
-<meta property="og:image" content="https://pic2.zhimg.com/80/v2-5fcb8ea67c4dd7d0cd8af79cb5cdc561_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=Time">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=Frequency">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-dfa64287fea73b71b2fde5acf491b1be_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=Time">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=Frequency">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-65ff13878c7d01a12deb42e2f3fd0ce6_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=Time">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=Frequency">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-318f8c13aaeb3d6a2cd468ab8501f99f_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=width+%3D+0.02">
-<meta property="og:image" content="https://pic1.zhimg.com/80/v2-69b82763a3aee3f97d70b53c42737734_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=width+%3D+0.1">
-<meta property="og:image" content="https://pic1.zhimg.com/80/v2-8c698423bfab908971ca6604643ff4f8_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=width+%3D+0.3">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-acaf61759eb23c708094463a6060f667_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cpsi%28t%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cexists+a+%3E0+%2C+%5Cforall+%7Ct%7C%3Ea%2C+%5Cpsi%28t%29+%3D+0">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7D%5Cpsi%28t%29+dt+%3D+0">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=c_%5Cpsi+%3D+2%5Cpi+%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+%5Cfrac%7B%7C%5Ctilde%7B%5Cpsi%28f%29%7D%7C%5E2%7D%7B%7Cf%7C%7Ddf+%3C+%2B%5Cinfty">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Cpsi%28f%29+%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cpsi%28f%29%7C_%7Bf+%3D+0%7D+%3D+0">
-<meta property="og:image" content="https://pic1.zhimg.com/80/v2-6df078be94ca2129af2bba0298599c88_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=sin%2Ccos">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cpsi%5E%2A%28%5Ctau%2C%F0%9D%91%A0%29%3D++%5Cfrac%7B1%7D%7B%5Csqrt%7B%F0%9D%91%A0%7D%7D+%5Cpsi%28%5Cfrac%7B%F0%9D%91%A1%7D%7B%7B%F0%9D%91%A0%7D%7D%E2%88%92%5Ctau%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctau">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctau">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cpsi%28t%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cpsi%5E%2A%28%5Ctau%2C%F0%9D%91%A0%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B%5Csqrt+s%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=f">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s%2Cf">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=CWT_x%5E%5Cpsi+%28%5Ctau%2Cs%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7Bs%7D%7D+%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Dx%28t%29%5Cpsi%28%5Cfrac%7Bt%7D%7Bs%7D-%5Ctau%29+dt">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctau">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s%2C%5Ctau">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s%28scale%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s%2Cf">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=f">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s%28scale%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=s%2Cf">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=f">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28-%5Cinfty%2C%2B%5Cinfty%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=sin%2Ccos">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=sin%2Ccos">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=CWT_x%5E%5Cpsi+%28%5Ctau%2Cs%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7Bs%7D%7D+%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Dx%28t%29%5Cpsi%28%5Cfrac%7Bt-%5Ctau%7D%7Bs%7D%29+dt">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=x%28t%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=x%28t%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28-%5Cinfty%2C%2B%5Cinfty%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28a%2Cb%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=Fs">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28%5Cfrac%7BFs%7D%7B2%7D%2CFs%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2C%5Cfrac%7BFs%7D%7B2%7D%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=F_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=F_s">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28%5Cfrac%7BFs%7D%7B2%7D%2CFs%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2C%5Cfrac%7BFs%7D%7B2%7D%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2CFs%29%2CN">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28%5Cfrac%7BFs%7D%7B2%7D%2CFs%29%2C%5Cfrac%7BN%7D%7B2%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2C%5Cfrac%7BFs%7D%7B2%7D%29%2C%5Cfrac%7BN%7D%7B2%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28%5Cfrac%7BFs%7D%7B2%7D%2CFs%29%2C%5Cfrac%7BN%7D%7B2%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2C%5Cfrac%7BFs%7D%7B2%7D%29%2C%5Cfrac%7BN%7D%7B2%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28%5Cfrac%7BFs%7D%7B4%7D%2C%5Cfrac%7BFs%7D%7B2%7D%29%2C%5Cfrac%7BN%7D%7B4%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2C%5Cfrac%7BFs%7D%7B4%7D%29%2C%5Cfrac%7BN%7D%7B4%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=log_2N">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=log_2N">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28%5Cfrac%7BFs%7D%7B2%7D%2CFs%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28%5Cfrac%7BFs%7D%7B4%7D%2C%5Cfrac%7BFs%7D%7B2%7D%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28%5Cfrac%7BFs%7D%7B8%7D%2C%5Cfrac%7BFs%7D%7B4%7D%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28%5Cfrac%7BFs%7D%7B16%7D%2C%5Cfrac%7BFs%7D%7B8%7D%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2C%5Cfrac%7BFs%7D%7B16%7D%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28%5Cfrac%7BFs%7D%7B16%7D%2C%5Cfrac%7BFs%7D%7B8%7D%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2C%5Cfrac%7BFs%7D%7B16%7D%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%28%5Cfrac%7BFs%7D%7B2%7D%2CFs%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cpi">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=g%28n%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=h%28n%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=F_s+%3D+500HZ">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2CF_S%2F2%5E5%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%280%2C16%29HZ">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cphi%28x%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cphi%28x%29+%3D+1%2A+%280+%5Cleq+x%3C1%29+">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cphi%28x%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cpsi%28x%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cpsi%28x%29+%3D+%5Cphi%282x%29+-+%5Cphi%282x-1%29">
-<meta property="og:updated_time" content="2019-07-30T06:29:10.448Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="傅里叶变换-&gt;小波变化">
-<meta name="twitter:description" content="傅里叶变换-&amp;gt;小波变化  声明:文中大多数内容来自(知乎1335)[https://www.zhihu.com/people/zhi-yuan-ya-77],matlab源代码:1368069096/From_FT_to_WT_examples-,部分为个人理解阐明   一.傅里叶变换FT  基础知识  （FOURIER TRANSFORM，简称FT）   为什么傅里叶变换可以把一个信号从">
-<meta name="twitter:image" content="https://pic2.zhimg.com/80/v2-0cd28b5014a967f161a3327a44793ba5_hd.jpg">
-  
-    <link rel="alternate" href="/atom.xml" title="果粒橙的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
 
-  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
-</head>
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">果粒橙的博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">别装作很努力，结局不会陪你演戏。</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nymrli.top"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="p-傅里叶变换-小波变化" class="article article-type-p" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/29/傅里叶变换-小波变化/" class="article-date">
-  <time datetime="2019-07-29T01:51:32.000Z" itemprop="datePublished">2019-07-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      傅里叶变换-&gt;小波变化
-    </h1>
-  
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="傅里叶变换-小波变化"><a class="markdownIt-Anchor" href="#傅里叶变换-小波变化"></a> 傅里叶变换-&gt;小波变化</h1>
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">傅里叶变换-&gt;小波变化</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/07/30</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">13,830</span> | Reading time: <span class="post-count">52</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="傅里叶变换-小波变化"><a class="markdownIt-Anchor" href="#傅里叶变换-小波变化"></a> 傅里叶变换-&gt;小波变化</h1>
 <blockquote>
 <p>声明:文中大多数内容来自(<a href="https://www.zhihu.com/people/zhi-yuan-ya-77" target="_blank" rel="noopener">知乎1335</a>)[<a href="https://www.zhihu.com/people/zhi-yuan-ya-77" target="_blank" rel="noopener">https://www.zhihu.com/people/zhi-yuan-ya-77</a>],matlab源代码:<a href="https://link.zhihu.com/?target=https%3A//github.com/1368069096/From_FT_to_WT_examples-" target="_blank" rel="noopener">1368069096/From_FT_to_WT_examples-</a>,部分为个人理解阐明</p>
 </blockquote>
@@ -651,141 +444,13 @@
 <p><a href="https://zhuanlan.zhihu.com/p/28575472" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28575472</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/44217268" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/44217268</a></p>
 <p>最后，由于DWT分解得到的是高频系数和低频系数，也就是用尺度函数以及母小波表示原信号的时候的一些重构系数，所以通过重构系数可以重构该信号，这被称为**小波分解的重构。**这也说明了小波分解是可逆的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nymrli.top/2019/07/29/傅里叶变换-小波变化/" data-id="cjzyy2ku600h9k8290s9c39wo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信号处理/">信号处理</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          基础知识补充——白噪声、高斯白噪声
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/07/26/Vim记忆/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Vim记忆</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM竞赛入门/">ACM竞赛入门</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Au/">Au</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Speaking/">English Speaking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/">IDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matlab/">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NJUPT/">NJUPT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postman/">Postman</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pythton/">Pythton</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime-Text/">Sublime Text</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAMP/">WAMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Window10/">Window10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/">lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信号处理/">信号处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图像处理/">图像处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多媒体/">多媒体</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学业/">学业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安利/">安利</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实验作业/">实验作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学建模/">数学建模</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学知识/">数学知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟操作/">模拟操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境部署/">环境部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境配置/">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活小记/">生活小记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活福利/">生活福利</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序开发经验/">程序开发经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序设计/">程序设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线性筛/">线性筛</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络知识/">网络知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动化运维/">自动化运维</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机基础知识/">计算机基础知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机知识/">计算机知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络知识/">计算机网络知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/运维/">运维</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/邮件/">邮件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/配置环境/">配置环境</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/ACM/" style="font-size: 17.86px;">ACM</a> <a href="/tags/ACM竞赛入门/" style="font-size: 12.14px;">ACM竞赛入门</a> <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Algorithm/" style="font-size: 10.71px;">Algorithm</a> <a href="/tags/Au/" style="font-size: 10px;">Au</a> <a href="/tags/C/" style="font-size: 12.86px;">C</a> <a href="/tags/C/" style="font-size: 17.86px;">C++</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Django/" style="font-size: 11.43px;">Django</a> <a href="/tags/English-Speaking/" style="font-size: 10px;">English Speaking</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13.57px;">Linux</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NJUPT/" style="font-size: 17.14px;">NJUPT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Pythton/" style="font-size: 10px;">Pythton</a> <a href="/tags/Shell/" style="font-size: 10.71px;">Shell</a> <a href="/tags/Sublime-Text/" style="font-size: 11.43px;">Sublime Text</a> <a href="/tags/Ubuntu/" style="font-size: 11.43px;">Ubuntu</a> <a href="/tags/WAMP/" style="font-size: 10px;">WAMP</a> <a href="/tags/Web/" style="font-size: 10.71px;">Web</a> <a href="/tags/Window10/" style="font-size: 10px;">Window10</a> <a href="/tags/flask/" style="font-size: 14.29px;">flask</a> <a href="/tags/git/" style="font-size: 11.43px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 16.43px;">java</a> <a href="/tags/linux/" style="font-size: 12.86px;">linux</a> <a href="/tags/lua/" style="font-size: 10px;">lua</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/信号处理/" style="font-size: 10.71px;">信号处理</a> <a href="/tags/前端/" style="font-size: 14.29px;">前端</a> <a href="/tags/后端/" style="font-size: 15.71px;">后端</a> <a href="/tags/图像处理/" style="font-size: 10.71px;">图像处理</a> <a href="/tags/图论/" style="font-size: 10.71px;">图论</a> <a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a> <a href="/tags/学业/" style="font-size: 11.43px;">学业</a> <a href="/tags/安利/" style="font-size: 10px;">安利</a> <a href="/tags/实验作业/" style="font-size: 10px;">实验作业</a> <a href="/tags/微信小程序/" style="font-size: 12.14px;">微信小程序</a> <a href="/tags/数学建模/" style="font-size: 10px;">数学建模</a> <a href="/tags/数学知识/" style="font-size: 10px;">数学知识</a> <a href="/tags/数据库/" style="font-size: 11.43px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/服务器/" style="font-size: 11.43px;">服务器</a> <a href="/tags/机器学习/" style="font-size: 15px;">机器学习</a> <a href="/tags/模拟操作/" style="font-size: 10px;">模拟操作</a> <a href="/tags/深度学习/" style="font-size: 10px;">深度学习</a> <a href="/tags/爬虫/" style="font-size: 18.57px;">爬虫</a> <a href="/tags/环境部署/" style="font-size: 14.29px;">环境部署</a> <a href="/tags/环境配置/" style="font-size: 19.29px;">环境配置</a> <a href="/tags/生活小记/" style="font-size: 11.43px;">生活小记</a> <a href="/tags/生活福利/" style="font-size: 12.86px;">生活福利</a> <a href="/tags/程序开发经验/" style="font-size: 10px;">程序开发经验</a> <a href="/tags/程序设计/" style="font-size: 10px;">程序设计</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/线性筛/" style="font-size: 10px;">线性筛</a> <a href="/tags/网络知识/" style="font-size: 10px;">网络知识</a> <a href="/tags/自动化运维/" style="font-size: 12.86px;">自动化运维</a> <a href="/tags/计算机基础知识/" style="font-size: 17.14px;">计算机基础知识</a> <a href="/tags/计算机知识/" style="font-size: 10px;">计算机知识</a> <a href="/tags/计算机网络知识/" style="font-size: 16.43px;">计算机网络知识</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/运维/" style="font-size: 10.71px;">运维</a> <a href="/tags/邮件/" style="font-size: 10px;">邮件</a> <a href="/tags/配置环境/" style="font-size: 10px;">配置环境</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/08/30/机器学习——决策树/">机器学习——决策树</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/30/Sklearn——决策树/">Sklearn——决策树</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/30/ACM-博弈论/">ACM-博弈论</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/30/Linux三剑客/">Linux三剑客</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/30/2019-6月编程笔记/">2019_6月编程笔记</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 果粒橙<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
-</body>
-</html>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/07/29/傅里叶变换-小波变化/">https://nymrli.top/2019/07/29/傅里叶变换-小波变化/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/" title="基础知识补充——白噪声、高斯白噪声"><span>< PreviousPost</span><br><span class="prevTitle">基础知识补充——白噪声、高斯白噪声</span></a><a class="nextSlogan" href="/2019/07/26/Vim记忆/" title="Vim记忆"><span>NextPost ></span><br><span class="nextTitle">Vim记忆</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '傅里叶变换->小波变化',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#傅里叶变换-小波变化"><span class="toc-number">1.</span> <span class="toc-text"> 傅里叶变换-&gt;小波变化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一傅里叶变换ft"><span class="toc-number">1.1.</span> <span class="toc-text"> 一.傅里叶变换FT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基础知识"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么傅里叶变换可以把一个信号从时域变换到频域"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 为什么傅里叶变换可以把一个信号从时域变换到频域?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1理解变换公式"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 1.理解变换公式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ysin3t图"><span class="toc-number">1.1.3.1.</span> <span class="toc-text"> y=sin(3t)图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ysin4tsin3t图"><span class="toc-number">1.1.3.2.</span> <span class="toc-text"> y=sin(4t)sin(3t)图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ysin31tsin3t图"><span class="toc-number">1.1.3.3.</span> <span class="toc-text"> y=sin(3.1t)sin(3t)图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-傅里叶变换ft的正交性"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 2、傅里叶变换（FT）的正交性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是正交性"><span class="toc-number">1.1.4.1.</span> <span class="toc-text"> 什么是正交性?</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#向量正交"><span class="toc-number">1.1.4.1.1.</span> <span class="toc-text"> 向量正交:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#正交基"><span class="toc-number">1.1.4.1.2.</span> <span class="toc-text"> 正交基</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这里需要说明三点"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 这里需要说明三点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二傅里叶变换ft的缺点与短时傅里叶变换stft"><span class="toc-number">1.2.</span> <span class="toc-text"> 二.傅里叶变换（FT）的缺点与短时傅里叶变换（STFT）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#离散傅里叶变换dft"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 离散傅里叶变换（DFT）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#傅里叶变换ft的缺点"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 傅里叶变换（FT）的缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#短时傅里叶变换stft"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 短时傅里叶变换（STFT）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#本质变化"><span class="toc-number">1.2.3.1.</span> <span class="toc-text"> 本质变化:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#紧支撑性"><span class="toc-number">1.2.3.2.</span> <span class="toc-text"> 紧支撑性:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结-2"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 总结:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三短时傅里叶变换stft的缺点与连续小波变换cwt"><span class="toc-number">1.3.</span> <span class="toc-text"> 三.短时傅里叶变换（STFT）的缺点与连续小波变换（CWT）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#连续小波变换cwt的缺点与离散小波变换dwt"><span class="toc-number">1.4.</span> <span class="toc-text"> 连续小波变换（CWT）的缺点与离散小波变换（DWT）</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

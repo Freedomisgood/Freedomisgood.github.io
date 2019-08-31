@@ -97,24 +97,42 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">算法设计与分析C_概念点区分</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/08/22</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,070</span> | Reading time: <span class="post-count">10</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="算法设计与分析C"><a href="#算法设计与分析C" class="headerlink" title="算法设计与分析C"></a>算法设计与分析C</h1><h2 id="算法5-分治法"><a href="#算法5-分治法" class="headerlink" title="算法5_分治法"></a>算法5_分治法</h2><p>分治法——将一个复杂的问题分解成若干个规模较小、相互独立，但类型相同的子问题求解；然后再将各子问题的解组合成原始问题的一个完整答案，这样的问题求解策略就叫分治法。</p>
-<p> 分治法所能解决的问题一般具有以下几个特征：<br>该问题的规模缩小到一定的程度就可以容易地解决；<br>该问题可以分解为若干个规模较小的相同问题；<br>利用该问题分解出的子问题的解可以合并为该问题的解；<br>该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子问题。</p>
-<p>反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。<br>由分治法产生的子问题往往是原问题的较小模式。<br>直接或间接地调用自身的算法称为：递归算法。用函数自身给出定义的函数称为：递归函数。<br>分治与递归像一对孪生兄弟，经常同时应用在算法设计之中，并由此产生许多高效算法。</p>
-<h2 id="算法6-贪心法"><a href="#算法6-贪心法" class="headerlink" title="算法6_贪心法"></a>算法6_贪心法</h2><ul>
-<li>可行解<pre><code>——问题给定某些约束条件，满足约束条件的问题解，即称为可行解。
-</code></pre></li>
-<li>最优解<pre><code>——问题给出目标函数衡量可行解的好坏，使目标函数取最大（或最小）值的可行解称为最优解。
-</code></pre></li>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">算法设计与分析C_概念点区分</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/08/22</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,070</span> | Reading time: <span class="post-count">10</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="算法设计与分析c"><a class="markdownIt-Anchor" href="#算法设计与分析c"></a> 算法设计与分析C</h1>
+<h2 id="算法5_分治法"><a class="markdownIt-Anchor" href="#算法5_分治法"></a> 算法5_分治法</h2>
+<p>分治法——将一个复杂的问题分解成若干个规模较小、相互独立，但类型相同的子问题求解；然后再将各子问题的解组合成原始问题的一个完整答案，这样的问题求解策略就叫分治法。</p>
+<p>分治法所能解决的问题一般具有以下几个特征：<br>
+该问题的规模缩小到一定的程度就可以容易地解决；<br>
+该问题可以分解为若干个规模较小的相同问题；<br>
+利用该问题分解出的子问题的解可以合并为该问题的解；<br>
+该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子问题。</p>
+<p>反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。<br>
+由分治法产生的子问题往往是原问题的较小模式。<br>
+直接或间接地调用自身的算法称为：递归算法。用函数自身给出定义的函数称为：递归函数。<br>
+分治与递归像一对孪生兄弟，经常同时应用在算法设计之中，并由此产生许多高效算法。</p>
+<h2 id="算法6_贪心法"><a class="markdownIt-Anchor" href="#算法6_贪心法"></a> 算法6_贪心法</h2>
+<ul>
+<li>可行解<br>
+——问题给定某些约束条件，满足约束条件的问题解，即称为可行解。</li>
+<li>最优解<br>
+——问题给出目标函数衡量可行解的好坏，使目标函数取最大（或最小）值的可行解称为最优解。</li>
 </ul>
 <p><strong>1.最优子结构性质：</strong></p>
-<p>一个问题的最优解包含其子问题的最优解，则称此问题具有最优子结构性质。<br>问题的最优子结构性质是该问题可用动态规划算法或贪心算法求解的关键特征。 </p>
+<p>一个问题的最优解包含其子问题的最优解，则称此问题具有最优子结构性质。<br>
+问题的最优子结构性质是该问题可用动态规划算法或贪心算法求解的关键特征。</p>
 <p>2.<strong>贪心选择性质</strong></p>
-<p>所谓贪心选择性质是指所求问题的整体最优解可以通过一系列局部最优的选择，即贪心选择来达到。<br>这是贪心算法可行的第一个基本要素，也是贪心算法与动态规划算法的主要区别。</p>
-<h2 id="算法7-动态规划法"><a href="#算法7-动态规划法" class="headerlink" title="算法7_动态规划法"></a>算法7_动态规划法</h2><p>（1）<strong>子问题重叠性质</strong><br>    （递归算法求解问题时）每次产生的子问题并不总是新问题，有些子问题被反复计算多次，这种性质称为子问题重叠性质。</p>
-<p>动态规划算法对每一个子问题只解一次，而后将其解保存在一个表格（通常用二维数组）中，当再次需要解此子问题时，只是简单地用常数时间查看一下结果。<br>通常不同的子问题个数随问题的大小呈多项式增长。因此用动态规划算法只需要多项式级时间，从而获得较高的解题效率。</p>
-<p>（2）<strong>最优子结构性质</strong>——用动态规划法求解的前提。<br>    当一个问题的最优解包含了其子问题的最优解时，称该问题具有最优子结构性质。</p>
-<p>一个问题的活动过程可以分为若干个阶段，每个阶段可包含一个或多个状态，从初始阶段的初始状态出发做出每个阶段的决策，形成一个决策序列。<br>利用问题的最优子结构性质，以自底向上的方式递归地从子问题的最优解逐步构造出整个问题的最优解。</p>
-<h3 id="用动态规划算法求解问题的步骤："><a href="#用动态规划算法求解问题的步骤：" class="headerlink" title="用动态规划算法求解问题的步骤："></a>用动态规划算法求解问题的步骤：</h3><blockquote>
+<p>所谓贪心选择性质是指所求问题的整体最优解可以通过一系列局部最优的选择，即贪心选择来达到。<br>
+这是贪心算法可行的第一个基本要素，也是贪心算法与动态规划算法的主要区别。</p>
+<h2 id="算法7_动态规划法"><a class="markdownIt-Anchor" href="#算法7_动态规划法"></a> 算法7_动态规划法</h2>
+<p>（1）<strong>子问题重叠性质</strong><br>
+（递归算法求解问题时）每次产生的子问题并不总是新问题，有些子问题被反复计算多次，这种性质称为子问题重叠性质。</p>
+<p>动态规划算法对每一个子问题只解一次，而后将其解保存在一个表格（通常用二维数组）中，当再次需要解此子问题时，只是简单地用常数时间查看一下结果。<br>
+通常不同的子问题个数随问题的大小呈多项式增长。因此用动态规划算法只需要多项式级时间，从而获得较高的解题效率。</p>
+<p>（2）<strong>最优子结构性质</strong>——用动态规划法求解的前提。<br>
+当一个问题的最优解包含了其子问题的最优解时，称该问题具有最优子结构性质。</p>
+<p>一个问题的活动过程可以分为若干个阶段，每个阶段可包含一个或多个状态，从初始阶段的初始状态出发做出每个阶段的决策，形成一个决策序列。<br>
+利用问题的最优子结构性质，以自底向上的方式递归地从子问题的最优解逐步构造出整个问题的最优解。</p>
+<h3 id="用动态规划算法求解问题的步骤"><a class="markdownIt-Anchor" href="#用动态规划算法求解问题的步骤"></a> 用动态规划算法求解问题的步骤：</h3>
+<blockquote>
 <p>1、找出最优解的性质，并刻划其结构特征；</p>
 <p>2、递归地定义最优解值；</p>
 <p>3、自底向上求最优解值；</p>
@@ -123,41 +141,79 @@
 <p>动态规划法是一种求解最优化问题的重要算法策略。</p>
 <p>利用最优子结构性质及所获得的递推关系式（较小子问题最优解与较大子问题最优解之间存在的数值关系）去求取最优解，可以使计算量较之穷举法急剧减少。</p>
 <blockquote>
-<p>共同点：<br>将待求解的问题分解成若干子问题，先求解子问题，然后再从这些子问题的解得到原问题的解。<br>不同点：<br>1、适合于用动态规划法求解的问题，分解得到的各子问题往往不是相互独立的；而分治法中子问题相互独立。</p>
+<p>共同点：<br>
+将待求解的问题分解成若干子问题，先求解子问题，然后再从这些子问题的解得到原问题的解。<br>
+不同点：<br>
+1、适合于用动态规划法求解的问题，分解得到的各子问题往往不是相互独立的；而分治法中子问题相互独立。</p>
 <p>2、动态规划法用表保存已求解过的子问题的解，再次碰到同样的子问题时不必重新求解，而只需查询答案，故可获得多项式级时间复杂度，效率较高；而分治法中对于每次出现的子问题均求解，导致同样的子问题被反复求解，故产生指数增长的时间复杂度，效率较低。</p>
 </blockquote>
-<h3 id="备忘录方法与动态规划法比较"><a href="#备忘录方法与动态规划法比较" class="headerlink" title="备忘录方法与动态规划法比较"></a>备忘录方法与动态规划法比较</h3><blockquote>
+<h3 id="备忘录方法与动态规划法比较"><a class="markdownIt-Anchor" href="#备忘录方法与动态规划法比较"></a> 备忘录方法与动态规划法比较</h3>
+<blockquote>
 <p>1、与动态规划法的共同点：用一个表格来保存已求解的子问题的答案，使下次需要解此子问题时，只简单地查看答案，不重新计算。</p>
 <p>2、与动态规划法的区别：备忘录的递归方式是自顶向下，而动态规划法的递归方式是自底向上。</p>
 </blockquote>
-<h3 id="如何选择使用动态规划法或备忘录法？"><a href="#如何选择使用动态规划法或备忘录法？" class="headerlink" title="如何选择使用动态规划法或备忘录法？"></a><strong>如何选择使用动态规划法或备忘录法？</strong></h3><blockquote>
+<h3 id="如何选择使用动态规划法或备忘录法"><a class="markdownIt-Anchor" href="#如何选择使用动态规划法或备忘录法"></a> <strong>如何选择使用动态规划法或备忘录法？</strong></h3>
+<blockquote>
 <p>★当一个问题的所有子问题都至少要解一次时，选用动态规划法较好，此时没有任何多余的计算，还可利用规则的表格存取方式，减少时间和空间需求。</p>
 <p>★当一个问题只有部分子问题需要求解时，选用备忘录法较好，它只解那些确实需要求解的子问题。</p>
 </blockquote>
-<h3 id="备忘录方法与递归方法比较"><a href="#备忘录方法与递归方法比较" class="headerlink" title="备忘录方法与递归方法比较"></a>备忘录方法与递归方法比较</h3><blockquote>
+<h3 id="备忘录方法与递归方法比较"><a class="markdownIt-Anchor" href="#备忘录方法与递归方法比较"></a> 备忘录方法与递归方法比较</h3>
+<blockquote>
 <p>1、与递归方法的共同点：递归方式均为自顶向下</p>
 <p>2、与递归方法的区别：备忘录方法用一个表格来保存已求解的子问题的答案，使下次需要解此子问题时，只简单地查看答案，不重新计算；而递归方法在每次遇到子问题都要重新计算。</p>
 </blockquote>
 <blockquote>
-<p><strong>共同点：</strong><br> 都是求解最优化问题；都具有最优子结构性质。<br><strong>不同点：</strong><br>1、求解方式不同：<br> 动态规划法：自底向上；<br> 贪心法：自顶向下。以迭代的方式作出相继的贪心选择，每作一次贪心选择就将所求问题简化为一个规模更小的子问题。</p>
-<p>2、对子问题的依赖不同：<br> 动态规划法：依赖于各子问题的解。只有在解出相关子问题后,才能作出选择；应使各子问题最优，才能保证整体最优；<br> 贪心法：不依赖于子问题的解。仅在当前状态下作出最好选择，即局部最优选择。        </p>
+<p><strong>共同点：</strong><br>
+都是求解最优化问题；都具有最优子结构性质。<br>
+<strong>不同点：</strong><br>
+1、求解方式不同：<br>
+动态规划法：自底向上；<br>
+贪心法：自顶向下。以迭代的方式作出相继的贪心选择，每作一次贪心选择就将所求问题简化为一个规模更小的子问题。</p>
+<p>2、对子问题的依赖不同：<br>
+动态规划法：依赖于各子问题的解。只有在解出相关子问题后,才能作出选择；应使各子问题最优，才能保证整体最优；<br>
+贪心法：不依赖于子问题的解。仅在当前状态下作出最好选择，即局部最优选择。</p>
 </blockquote>
-<h2 id="算法8-回溯法"><a href="#算法8-回溯法" class="headerlink" title="算法8_回溯法"></a>算法8_回溯法</h2><p>回溯法是比贪心法和动态规划法更一般的方法。<br>解为n-元组(x0,x1,…,xn-1)形式。<br>通过搜索状态空间树来求问题的可行解（满足约束条件）或最优解（使目标函数取最大或最小值）。<br>使用约束函数和限界函数来压缩需要实际生成的状态空间树的结点数。<br>通常情况下，回溯法是为了找出满足约束条件的所有可行解。</p>
+<h2 id="算法8_回溯法"><a class="markdownIt-Anchor" href="#算法8_回溯法"></a> 算法8_回溯法</h2>
+<p>回溯法是比贪心法和动态规划法更一般的方法。<br>
+解为n-元组(x0,x1,…,xn-1)形式。<br>
+通过搜索状态空间树来求问题的可行解（满足约束条件）或最优解（使目标函数取最大或最小值）。<br>
+使用约束函数和限界函数来压缩需要实际生成的状态空间树的结点数。<br>
+通常情况下，回溯法是为了找出满足约束条件的所有可行解。</p>
 <ul>
-<li>显式约束：规定每个xi取值的约束条件。<br>（显式约束规定了问题的候选解集——解空间）</li>
+<li>显式约束：规定每个xi取值的约束条件。<br>
+（显式约束规定了问题的候选解集——解空间）</li>
 <li>隐式约束：给出了判定一个候选解是否为可行解的条件。为满足问题的解而对不同分量之间施加的约束。</li>
-<li>目标函数（代价函数）：衡量每个可行解的优劣，使目标函数取最大（或最小）值的可行解为问题的最优解。<br>状态空间树：描述问题解空间的树形结构。</li>
+<li>目标函数（代价函数）：衡量每个可行解的优劣，使目标函数取最大（或最小）值的可行解为问题的最优解。<br>
+状态空间树：描述问题解空间的树形结构。</li>
 </ul>
-<p>树中每个结点称为一个问题状态；<br>若从根到树中某个状态的路径代表一个候选解元组，则该状态为解状态；<br>若从根到某个解状态的路径代表一个可行解元组，则该解状态为答案状态；<br>如果求解的是最优化问题，还要用目标函数衡量每个答案结点，找出其中目标函数取最优值的最优答案结点。</p>
+<p>树中每个结点称为一个问题状态；<br>
+若从根到树中某个状态的路径代表一个候选解元组，则该状态为解状态；<br>
+若从根到某个解状态的路径代表一个可行解元组，则该解状态为答案状态；<br>
+如果求解的是最优化问题，还要用目标函数衡量每个答案结点，找出其中目标函数取最优值的最优答案结点。</p>
 <blockquote>
-<p>回溯法与穷举搜索不同：回溯法使用约束函数，剪去那些可以断定不含答案状态的子树，从而提高算法效率。回溯法适用于解一些组合数相当大的问题。<br>事实上，状态空间树并不需要事先生成，而只需在求解的过程中，随着搜索算法的进展，逐个生成状态空间树的问题状态结点。</p>
+<p>回溯法与穷举搜索不同：回溯法使用约束函数，剪去那些可以断定不含答案状态的子树，从而提高算法效率。回溯法适用于解一些组合数相当大的问题。<br>
+事实上，状态空间树并不需要事先生成，而只需在求解的过程中，随着搜索算法的进展，逐个生成状态空间树的问题状态结点。</p>
 </blockquote>
-<p>常用的剪枝函数：<br>用约束函数剪去已知不含答案状态（可行解）的子树；<br>用限界函数剪去得不到最优答案结点（最优解）的子树。</p>
-<h3 id="蒙特卡洛估计"><a href="#蒙特卡洛估计" class="headerlink" title="蒙特卡洛估计"></a>蒙特卡洛估计</h3><p>用蒙特卡罗（Monte Carlo）方法估计回溯法处理实例时，实际生成的结点数：</p>
-<p>在状态空间树中,从根开始随机选择一条路径(x0,x1,…,xn-1);<br>假定搜索树中这条随机选出的路径上，代表部分向量(x0,x1,…,xk-1)的结点X处不受限制的孩子数目,和其他路径上与X同层的的结点不受限制的孩子数目一样，都是mk;<br>则可以估计整个状态空间树上实际生成的结点数为: <code>m=1+m0+m0m1+m0m1m2+......</code></p>
-<h2 id="算法9-分枝限界法"><a href="#算法9-分枝限界法" class="headerlink" title="算法9_分枝限界法"></a>算法9_分枝限界法</h2><p>采用广度优先产生状态空间树的结点，并使用剪枝函数的方法称为——分枝限界法。<br>分枝限界法的基本做法是：<br>    以<strong>广度优先</strong>的方式搜索问题的状态空间树。每一个活结点只有一次机会成为扩展结点。<br>    按照广度优先的原则，活结点一旦成为扩展结点（E结点）R后，就依次生成它的所有孩子结点。在这些孩子结点中，导致不可行解或导致非最优解的孩子结点被舍弃，其余孩子结点被一一加入活结点表中。<br>    此后，R自身成为死结点，从活结点表中取下一结点成为当前扩展结点，并重复上述结点扩展过程。<br>    这个过程一直持续到找到所需的解或活结点表为空时为止。 </p>
+<p>常用的剪枝函数：<br>
+用约束函数剪去已知不含答案状态（可行解）的子树；<br>
+用限界函数剪去得不到最优答案结点（最优解）的子树。</p>
+<h3 id="蒙特卡洛估计"><a class="markdownIt-Anchor" href="#蒙特卡洛估计"></a> 蒙特卡洛估计</h3>
+<p>用蒙特卡罗（Monte Carlo）方法估计回溯法处理实例时，实际生成的结点数：</p>
+<p>在状态空间树中,从根开始随机选择一条路径(x0,x1,…,xn-1);<br>
+假定搜索树中这条随机选出的路径上，代表部分向量(x0,x1,…,xk-1)的结点X处不受限制的孩子数目,和其他路径上与X同层的的结点不受限制的孩子数目一样，都是mk;<br>
+则可以估计整个状态空间树上实际生成的结点数为: <code>m=1+m0+m0m1+m0m1m2+......</code></p>
+<h2 id="算法9_分枝限界法"><a class="markdownIt-Anchor" href="#算法9_分枝限界法"></a> 算法9_分枝限界法</h2>
+<p>采用广度优先产生状态空间树的结点，并使用剪枝函数的方法称为——分枝限界法。<br>
+分枝限界法的基本做法是：<br>
+以<strong>广度优先</strong>的方式搜索问题的状态空间树。每一个活结点只有一次机会成为扩展结点。<br>
+按照广度优先的原则，活结点一旦成为扩展结点（E结点）R后，就依次生成它的所有孩子结点。在这些孩子结点中，导致不可行解或导致非最优解的孩子结点被舍弃，其余孩子结点被一一加入活结点表中。<br>
+此后，R自身成为死结点，从活结点表中取下一结点成为当前扩展结点，并重复上述结点扩展过程。<br>
+这个过程一直持续到找到所需的解或活结点表为空时为止。</p>
 <blockquote>
-<p>一、<strong>分枝限界法与回溯法的共同点</strong><br> 都是在问题的状态空间树上搜索问题解的算法,都通过活结点表实现。都用约束函数剪去不含答案结点的分枝,用限界函数剪去不含最优解的分枝.<br>二、<strong>分枝限界法与回溯法的区别</strong><br>（1）求解目标不同：回溯法的求解目标是找出解空间树中满足约束条件的所有可行解；而分枝限界法的求解目标则是找出满足约束条件的一个可行解，或某种意义下的最优解。</p>
+<p>一、<strong>分枝限界法与回溯法的共同点</strong><br>
+都是在问题的状态空间树上搜索问题解的算法,都通过活结点表实现。都用约束函数剪去不含答案结点的分枝,用限界函数剪去不含最优解的分枝.<br>
+二、<strong>分枝限界法与回溯法的区别</strong><br>
+（1）求解目标不同：回溯法的求解目标是找出解空间树中满足约束条件的所有可行解；而分枝限界法的求解目标则是找出满足约束条件的一个可行解，或某种意义下的最优解。</p>
 <p>（2）搜索方式不同：回溯法以深度优先的方式搜索解空间树，而分枝限界法则以广度优先的方式搜索解空间树。</p>
 <p>（3）对当前扩展结点的扩展方式不同：回溯法中的每个活结点可能多次成为当前扩展结点，纵深方向扩展其一个儿子，然后再回溯后扩展其他儿子；而分枝限界法中每一个活结点只有一次机会成为扩展结点，一次产生所有孩子结点，自身成为死结点，之后无需再返回该结点处。</p>
 </blockquote>
@@ -170,4 +226,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法设计与分析C"><span class="toc-number">1.</span> <span class="toc-text">算法设计与分析C</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法5-分治法"><span class="toc-number">1.1.</span> <span class="toc-text">算法5_分治法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法6-贪心法"><span class="toc-number">1.2.</span> <span class="toc-text">算法6_贪心法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法7-动态规划法"><span class="toc-number">1.3.</span> <span class="toc-text">算法7_动态规划法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用动态规划算法求解问题的步骤："><span class="toc-number">1.3.1.</span> <span class="toc-text">用动态规划算法求解问题的步骤：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备忘录方法与动态规划法比较"><span class="toc-number">1.3.2.</span> <span class="toc-text">备忘录方法与动态规划法比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何选择使用动态规划法或备忘录法？"><span class="toc-number">1.3.3.</span> <span class="toc-text">如何选择使用动态规划法或备忘录法？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备忘录方法与递归方法比较"><span class="toc-number">1.3.4.</span> <span class="toc-text">备忘录方法与递归方法比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法8-回溯法"><span class="toc-number">1.4.</span> <span class="toc-text">算法8_回溯法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#蒙特卡洛估计"><span class="toc-number">1.4.1.</span> <span class="toc-text">蒙特卡洛估计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法9-分枝限界法"><span class="toc-number">1.5.</span> <span class="toc-text">算法9_分枝限界法</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法设计与分析c"><span class="toc-number">1.</span> <span class="toc-text"> 算法设计与分析C</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法5_分治法"><span class="toc-number">1.1.</span> <span class="toc-text"> 算法5_分治法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法6_贪心法"><span class="toc-number">1.2.</span> <span class="toc-text"> 算法6_贪心法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法7_动态规划法"><span class="toc-number">1.3.</span> <span class="toc-text"> 算法7_动态规划法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用动态规划算法求解问题的步骤"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 用动态规划算法求解问题的步骤：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备忘录方法与动态规划法比较"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 备忘录方法与动态规划法比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何选择使用动态规划法或备忘录法"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 如何选择使用动态规划法或备忘录法？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备忘录方法与递归方法比较"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 备忘录方法与递归方法比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法8_回溯法"><span class="toc-number">1.4.</span> <span class="toc-text"> 算法8_回溯法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#蒙特卡洛估计"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 蒙特卡洛估计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法9_分枝限界法"><span class="toc-number">1.5.</span> <span class="toc-text"> 算法9_分枝限界法</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

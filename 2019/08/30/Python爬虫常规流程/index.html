@@ -97,16 +97,19 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Python爬虫常规流程</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/08/30</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,452</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="Python爬虫常规流程"><a href="#Python爬虫常规流程" class="headerlink" title="Python爬虫常规流程"></a>Python爬虫常规流程</h1><p>以爬取<strong>有道翻译</strong>为例子。</p>
-<h2 id="挖取可自用的API"><a href="#挖取可自用的API" class="headerlink" title="挖取可自用的API"></a>挖取可自用的API</h2><blockquote>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Python爬虫常规流程</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/08/30</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,452</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="python爬虫常规流程"><a class="markdownIt-Anchor" href="#python爬虫常规流程"></a> Python爬虫常规流程</h1>
+<p>以爬取<strong>有道翻译</strong>为例子。</p>
+<h2 id="挖取可自用的api"><a class="markdownIt-Anchor" href="#挖取可自用的api"></a> 挖取可自用的API</h2>
+<blockquote>
 <p>web 端的有道翻译，在之前是直接可以爬的。也就是说只要获取到了他的接口，你就可以肆无忌惮的使用他的接口进行翻译而不需要支付任何费用。那么自从有道翻译推出他的API服务的时候，就对这个接口做一个反爬虫机制（如果大家都能免费使用到他的翻译接口，那他的APl服务怎么赚钱）。这个反爬虫机制在爬虫领域算是一个非常经典的技术手段。</p>
 </blockquote>
 <p>1.查看要爬取的内容是否是静态加载的。</p>
-<p>比如在翻译输入框中输入<code>apple</code>，翻译输出框中会出现<code>苹果</code>，然后在<code></code>页面中右键-&gt;查看网页源代码<code>，直接</code>Ctrl+F<code>搜索是否存在</code>apple<code>或者</code>苹果`，如果没有的话，证明不是静态加载的。</p>
+<p>比如在翻译输入框中输入<code>apple</code>，翻译输出框中会出现<code>苹果</code>，然后在``页面中右键-&gt;查看网页源代码<code>，直接</code>Ctrl+F<code>搜索是否存在</code>apple<code>或者</code>苹果`，如果没有的话，证明不是静态加载的。</p>
 <p>2.查看内容如何加载的</p>
 <ul>
 <li>页面初始化get、post请求</li>
-<li>局部刷新发送ajax请求<ul>
+<li>局部刷新发送ajax请求
+<ul>
 <li>如果存在局部更新内容产生变化的（Url没有发生变化，或者没有页面发生跳转、刷新的感觉），一般都是采用的AJAX更新技术，发送了POST、GET请求获得局部需要更新的数据，可以直接在Network项的XHR里面找到动态加载的文件 (可以看下Ajax技术实现了解下为什么可以在XHR中找到)</li>
 </ul>
 </li>
@@ -116,8 +119,11 @@
 </blockquote>
 <p>使用Chrome自带的抓包工具（<code>页面中右键-&gt;检查</code>或者按<code>F12</code>都可以打开，然后选择<code>-&gt;Network项</code>（网络监听窗口）就可以看到抓包的数据了）</p>
 <p>然后同样在翻译输入框中输入<code>apple</code>，然后可以观察到抓包工具中出现了很多内容。为了确定<code>apple</code>的翻译<code>苹果</code>是在哪个文件中返回的，可以直接<code>Ctrl+F</code>打开搜索框后直接搜索，如图所示。</p>
-<p><img src="/2019/08/30/Python爬虫常规流程/chrome抓包.png" alt="chrome抓包"></p>
-<h2 id="JS加密破解"><a href="#JS加密破解" class="headerlink" title="JS加密破解"></a>JS加密破解</h2><h3 id="1-使用Python进行模仿JS加密计算"><a href="#1-使用Python进行模仿JS加密计算" class="headerlink" title="1.使用Python进行模仿JS加密计算"></a>1.使用Python进行模仿JS加密计算</h3><h3 id="2-运行JS代码获得加密结果"><a href="#2-运行JS代码获得加密结果" class="headerlink" title="2.运行JS代码获得加密结果"></a>2.运行JS代码获得加密结果</h3><ul>
+<p><img src="/2019/08/30/Python爬虫常规流程/Python%E7%88%AC%E8%99%AB%E5%B8%B8%E8%A7%84%E6%B5%81%E7%A8%8B%5Cchrome%E6%8A%93%E5%8C%85.png" alt="chrome抓包"></p>
+<h2 id="js加密破解"><a class="markdownIt-Anchor" href="#js加密破解"></a> JS加密破解</h2>
+<h3 id="1使用python进行模仿js加密计算"><a class="markdownIt-Anchor" href="#1使用python进行模仿js加密计算"></a> 1.使用Python进行模仿JS加密计算</h3>
+<h3 id="2运行js代码获得加密结果"><a class="markdownIt-Anchor" href="#2运行js代码获得加密结果"></a> 2.运行JS代码获得加密结果</h3>
+<ul>
 <li>使用python-js2py模块</li>
 </ul>
 <p>如一个参数生成的结果是这样的<code>{&quot;LoginKey&quot;:&quot;46fd82c2-3108-b2a4-3056-0eaa426f975b&quot;,&quot;data&quot;:&quot;{\&quot;User_Oid\&quot;:\&quot;账号\&quot;,\&quot;User_Password\&quot;:\&quot;密码\&quot;}&quot;}</code></p>
@@ -135,17 +141,20 @@
 <p>逐步确定JS对密码的加密逻辑 ==&gt; 定位到加密函数</p>
 <p>两种思路</p>
 <ul>
-<li><p>全局搜索password字段</p>
+<li>
+<p>全局搜索password字段</p>
 </li>
-<li><p>全局搜加密算法的名字</p>
+<li>
+<p>全局搜加密算法的名字</p>
 <blockquote>
 <p>加密一般都是JS加密，加密算法一般比较出名的就那么几个，比如<code>MD5，base64,aes（对称密码），rsa（非对称加密算法）</code>都是可以用来加密的，你可以全局搜这些加密算法的名字</p>
 </blockquote>
 </li>
 </ul>
 <p><a href="https://www.jianshu.com/p/055e1ddf7bb2" target="_blank" rel="noopener">https://www.jianshu.com/p/055e1ddf7bb2</a></p>
-<h3 id="rsa加密"><a href="#rsa加密" class="headerlink" title="rsa加密"></a>rsa加密</h3><blockquote>
-<p>对极大整数做<a href="https://baike.baidu.com/item/因数分解/5827933" target="_blank" rel="noopener">因数分解</a>的难度决定了RSA算法的可靠性。换言之，对一极大整数做因数分解愈困难，RSA算法愈可靠。假如有人找到一种快速因数分解的算法的话，那么用RSA加密的信息的可靠性就肯定会极度下降。但找到这样的算法的可能性是非常小的。<strong>今天只有短的RSA钥匙才可能被强力方式解破</strong>==&gt;为什么密码要大于6位。到目前为止，世界上还没有任何可靠的攻击RSA算法的方式。只要其钥匙的长度足够长，用RSA加密的信息实际上是不能被解破的。</p>
+<h3 id="rsa加密"><a class="markdownIt-Anchor" href="#rsa加密"></a> rsa加密</h3>
+<blockquote>
+<p>对极大整数做<a href="https://baike.baidu.com/item/%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/5827933" target="_blank" rel="noopener">因数分解</a>的难度决定了RSA算法的可靠性。换言之，对一极大整数做因数分解愈困难，RSA算法愈可靠。假如有人找到一种快速因数分解的算法的话，那么用RSA加密的信息的可靠性就肯定会极度下降。但找到这样的算法的可能性是非常小的。<strong>今天只有短的RSA钥匙才可能被强力方式解破</strong>==&gt;为什么密码要大于6位。到目前为止，世界上还没有任何可靠的攻击RSA算法的方式。只要其钥匙的长度足够长，用RSA加密的信息实际上是不能被解破的。</p>
 </blockquote>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/08/30/Python爬虫常规流程/">https://nymrli.top/2019/08/30/Python爬虫常规流程/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/08/30/2019-6月编程笔记/" title="2019_6月编程笔记"><span>< PreviousPost</span><br><span class="prevTitle">2019_6月编程笔记</span></a><a class="nextSlogan" href="/2019/08/30/Word2016配置使用MathType/" title="Word2016配置使用MathType"><span>NextPost ></span><br><span class="nextTitle">Word2016配置使用MathType</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'Python爬虫常规流程',
@@ -156,4 +165,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python爬虫常规流程"><span class="toc-number">1.</span> <span class="toc-text">Python爬虫常规流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#挖取可自用的API"><span class="toc-number">1.1.</span> <span class="toc-text">挖取可自用的API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS加密破解"><span class="toc-number">1.2.</span> <span class="toc-text">JS加密破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用Python进行模仿JS加密计算"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.使用Python进行模仿JS加密计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-运行JS代码获得加密结果"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.运行JS代码获得加密结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rsa加密"><span class="toc-number">1.2.3.</span> <span class="toc-text">rsa加密</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python爬虫常规流程"><span class="toc-number">1.</span> <span class="toc-text"> Python爬虫常规流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#挖取可自用的api"><span class="toc-number">1.1.</span> <span class="toc-text"> 挖取可自用的API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js加密破解"><span class="toc-number">1.2.</span> <span class="toc-text"> JS加密破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1使用python进行模仿js加密计算"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1.使用Python进行模仿JS加密计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2运行js代码获得加密结果"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2.运行JS代码获得加密结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rsa加密"><span class="toc-number">1.2.3.</span> <span class="toc-text"> rsa加密</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

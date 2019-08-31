@@ -97,49 +97,71 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux命令手册</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/07/17</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,251</span> | Reading time: <span class="post-count">14</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h2><p><strong>1、从服务器上下载文件</strong></p>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux命令手册</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/07/17</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,251</span> | Reading time: <span class="post-count">14</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="scp"><a class="markdownIt-Anchor" href="#scp"></a> scp</h2>
+<p><strong>1、从服务器上下载文件</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp username@servername:/path/filename /var/www/local_dir（本地目录）</span><br></pre></td></tr></table></figure>
-<p> 例如scp <a href="mailto:root@192.168.0.101" target="_blank" rel="noopener">root@192.168.0.101</a>:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）</p>
+<p>例如scp <a href="mailto:root@192.168.0.101" target="_blank" rel="noopener">root@192.168.0.101</a>:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）</p>
 <p><strong>2、上传本地文件到服务器</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /path/filename username@servername:/path</span><br></pre></td></tr></table></figure>
 <p>例如scp /var/www/test.php  <a href="mailto:root@192.168.0.101" target="_blank" rel="noopener">root@192.168.0.101</a>:/var/www/  把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中</p>
 <p><strong>3、从服务器下载整个目录</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r username@servername:/var/www/remote_dir/（远程目录） /var/www/local_dir（本地目录）</span><br></pre></td></tr></table></figure>
-<p>例如:scp -r <a href="mailto:root@192.168.0.101" target="_blank" rel="noopener">root@192.168.0.101</a>:/var/www/test  /var/www/  </p>
+<p>例如:scp -r <a href="mailto:root@192.168.0.101" target="_blank" rel="noopener">root@192.168.0.101</a>:/var/www/test  /var/www/</p>
 <p><strong>4、上传目录到服务器</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp  -r local_dir username@servername:remote_dir例如：scp -r test  root@192.168.0.101:/var/www/   把当前目录下的test目录上传到服务器的/var/www/ 目录</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh root@47.98.233.15</span></span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @</span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!</span><br><span class="line">Someone could be eavesdropping on you right now (man-in-the-middle attack)!</span><br><span class="line">It is also possible that a host key has just been changed.</span><br><span class="line">The fingerprint for the ECDSA key sent by the remote host is</span><br><span class="line">SHA256:8hgJ8jpcBr1tm6HS72FpXwMrjba8MQqlqYJQLPB/Qf4.</span><br><span class="line">Please contact your system administrator.</span><br><span class="line">Add correct host key in /Users/wangdong/.ssh/known_hosts to get rid of this message.</span><br><span class="line">Offending ECDSA key in /Users/wangdong/.ssh/known_hosts:26</span><br><span class="line">ECDSA host key for 47.98.233.15 has changed and you have requested strict checking.</span><br><span class="line">Host key verification failed.</span><br><span class="line"><span class="meta">#</span><span class="bash"> 从网上截的,自己电脑报错没报错</span></span><br><span class="line">按报错的提示,需要将C:\Users\10630\.ssh中的known_hosts中的内容删掉,因为他默认先从这里边找相同IP的,删掉后就行了</span><br></pre></td></tr></table></figure>
-<h2 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h2><p>SSH分客户端<code>openssh-client</code>和服务器端<code>openssh-server</code>，如果你只是想登陆别的机器的SSH只需要安装<code>openssh-client</code>（ubuntu有默认安装，如果没有则<code>sudo 
-apt-get install openssh-client）</code>，如果要使本机开放SSH服务就需要安装<code>openssh-server</code></p>
-<h4 id="下面讲解openssh-server"><a href="#下面讲解openssh-server" class="headerlink" title="下面讲解openssh-server"></a>下面讲解openssh-server</h4><ol>
-<li><p>首先更新源　　</p>
+<h2 id="ssh"><a class="markdownIt-Anchor" href="#ssh"></a> ssh</h2>
+<p>SSH分客户端<code>openssh-client</code>和服务器端<code>openssh-server</code>，如果你只是想登陆别的机器的SSH只需要安装<code>openssh-client</code>（ubuntu有默认安装，如果没有则<code>sudo apt-get install openssh-client）</code>，如果要使本机开放SSH服务就需要安装<code>openssh-server</code></p>
+<h4 id="下面讲解openssh-server"><a class="markdownIt-Anchor" href="#下面讲解openssh-server"></a> 下面讲解openssh-server</h4>
+<ol>
+<li>
+<p>首先更新源</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>安装ssh服务</p>
+<li>
+<p>安装ssh服务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>检测是否已启动</p>
+<li>
+<p>检测是否已启动</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -e | grep ssh</span><br></pre></td></tr></table></figure>
 <p>看到有ssh字样，说明已启动，如果没有就手动启动</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ssh start</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>配置ssh-server，配置文件位于/etc/ssh/sshd_config，默认端口为22，为了安全，一般自定义为其他端口，然后重启</p>
+<li>
+<p>配置ssh-server，配置文件位于/etc/ssh/sshd_config，默认端口为22，为了安全，一般自定义为其他端口，然后重启</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/ssh resart</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="增加桌面快捷方式"><a href="#增加桌面快捷方式" class="headerlink" title="增加桌面快捷方式"></a>增加桌面快捷方式</h2><p>Launcher :<br>​    在/usr/share/applications/中写入Roboviz.desktop文件(sudo vim Roboviz.desktop)        </p>
+<h2 id="增加桌面快捷方式"><a class="markdownIt-Anchor" href="#增加桌面快捷方式"></a> 增加桌面快捷方式</h2>
+<p>Launcher :<br>
+​	在/usr/share/applications/中写入Roboviz.desktop文件(sudo vim Roboviz.desktop)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=Roboviz</span><br><span class="line">Comment=Roboviz</span><br><span class="line">Exec=/home/apollo3d/RoboViz-dev/bin/linux-amd64/roboviz.sh</span><br><span class="line">Icon=/home/apollo3d/RoboViz-dev/bin/linux-amd64/resources/images/icon.png</span><br><span class="line">Terminal=true</span><br><span class="line">StartupNotify=true</span><br><span class="line">Type=Application</span><br><span class="line">Categories=Development;IDE;</span><br></pre></td></tr></table></figure>
-<p><code>ps aux | grep</code>进程名<br><code>ps -A</code>        显示所有程序。<br><code>ps e</code>        列出程序时，显示每个程序所使用的环境变量。<br><code>kill －9 324</code><br><code>killall -9 NAME</code>　Linux下还提供了一个killall命令，可以直接使用进程的名字而不是进程标识号<br><code>chmod {u|g|o|a}{+|-|=}{r|w|x} filename</code> 修改权限<br><code>find pathname [option] expression</code>     寻找文件<br><code>grep [option] pattern filenames</code>     搜索文件中匹配符<br>​    grep -r 二进制 /home/apollo3d/Documents<br>./文件名                进入到进程的执行文件所在的路径下，执行文件</p>
+<p><code>ps aux | grep</code>进程名<br>
+<code>ps -A</code>		显示所有程序。<br>
+<code>ps e</code>		列出程序时，显示每个程序所使用的环境变量。<br>
+<code>kill －9 324</code><br>
+<code>killall -9 NAME</code>　Linux下还提供了一个killall命令，可以直接使用进程的名字而不是进程标识号<br>
+<code>chmod {u|g|o|a}{+|-|=}{r|w|x} filename</code> 修改权限<br>
+<code>find pathname [option] expression</code> 	寻找文件<br>
+<code>grep [option] pattern filenames</code> 	搜索文件中匹配符<br>
+​	grep -r 二进制 /home/apollo3d/Documents<br>
+./文件名				进入到进程的执行文件所在的路径下，执行文件</p>
 <p><a href="https://www.cnblogs.com/lcword/p/6046261.html" target="_blank" rel="noopener">https://www.cnblogs.com/lcword/p/6046261.html</a></p>
-<h2 id="端口操作"><a href="#端口操作" class="headerlink" title="端口操作"></a>端口操作</h2><blockquote>
-<p>端口监听信息 <code>netstat -plant</code><br>一、查看哪些端口被打开 <code>netstat -anp</code></p>
+<h2 id="端口操作"><a class="markdownIt-Anchor" href="#端口操作"></a> 端口操作</h2>
+<blockquote>
+<p>端口监听信息 <code>netstat -plant</code><br>
+一、查看哪些端口被打开 <code>netstat -anp</code></p>
 <p>二、关闭端口号:<code>iptables -A OUTPUT -p tcp --dport 端口号 -j DROP</code></p>
-<p>三、打开端口号：<code>iptables -A INPUT -ptcp --dport  端口号 -j ACCEPT</code></p>
+<p>三、打开端口号：<code>iptables -A INPUT -ptcp --dport 端口号 -j ACCEPT</code></p>
 <p>四、以下是linux打开端口命令的使用方法。</p>
-<p><code>nc -lp 23 &amp;(打开23端口，即telnet)</code><br>　　<br><code>netstat -an | grep 23 (查看是否打开23端口)</code> 或者 <code>lsof -i:80</code></p>
+<p><code>nc -lp 23 &amp;(打开23端口，即telnet)</code><br>
+　　<br>
+<code>netstat -an | grep 23 (查看是否打开23端口)</code> 或者 <code>lsof -i:80</code></p>
 <p>五、linux打开端口命令每一个打开的端口，都需要有相应的监听程序才可以</p>
 </blockquote>
-<h2 id="创建新用户"><a href="#创建新用户" class="headerlink" title="创建新用户"></a>创建新用户</h2><blockquote>
+<h2 id="创建新用户"><a class="markdownIt-Anchor" href="#创建新用户"></a> 创建新用户</h2>
+<blockquote>
 <p>在 root 用户下运行这条命令创建一个新用户，yangxg 是用户名</p>
 <p>因为我叫杨学光，所以我取的用户名是 yangxg</p>
 <p>选择一个你喜欢的用户名，不一定非得和我的相同</p>
@@ -154,21 +176,29 @@ apt-get install openssh-client）</code>，如果要使本机开放SSH服务就�
 <p>切换成功，@符号前面已经是新用户名而不是 root 了</p>
 <p><code>yangxg@localhost:~$</code></p>
 </blockquote>
-<h2 id="为root用户提供初始密码"><a href="#为root用户提供初始密码" class="headerlink" title="为root用户提供初始密码"></a>为root用户提供初始密码</h2><p><code>sudo passwd root</code></p>
-<h2 id="修改为阿里云-DNS"><a href="#修改为阿里云-DNS" class="headerlink" title="修改为阿里云 DNS"></a>修改为阿里云 DNS</h2><ol>
-<li><p>您必须是管理员root或者具有管理员权限</p>
+<h2 id="为root用户提供初始密码"><a class="markdownIt-Anchor" href="#为root用户提供初始密码"></a> 为root用户提供初始密码</h2>
+<p><code>sudo passwd root</code></p>
+<h2 id="修改为阿里云-dns"><a class="markdownIt-Anchor" href="#修改为阿里云-dns"></a> 修改为阿里云 DNS</h2>
+<ol>
+<li>
+<p>您必须是管理员root或者具有管理员权限</p>
 </li>
-<li><p><code>sudo vim /etc/resolv.conf</code></p>
+<li>
+<p><code>sudo vim /etc/resolv.conf</code></p>
 </li>
-<li><p>加入:</p>
+<li>
+<p>加入:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nameserver 223.5.5.5</span><br><span class="line">nameserver 223.6.6.6</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>保存退出，然后使用dig 验证:</p>
+<li>
+<p>保存退出，然后使用dig 验证:</p>
 </li>
-<li><p><code>dig www.taobao.com +short</code>若出现结果则表示正常。</p>
+<li>
+<p><code>dig www.taobao.com +short</code>若出现结果则表示正常。</p>
 </li>
 </ol>
-<h2 id="换源-更换数据源"><a href="#换源-更换数据源" class="headerlink" title="换源(更换数据源)"></a>换源(更换数据源)</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rootdubuntu:/home/lusifer# curl -sSL https://get. daocloud. io/docker | sh</span><br><span class="line"></span><br><span class="line">Executing docker install script, commit:1d31602</span><br><span class="line">+sh-c apt-get update-qq&gt;/dev/null E: Could not get Lock /var/lib/apt/lists/lock-open (11: Resource temporarily unavailable)</span><br><span class="line">E: Unable to lock directory /var/lib/apt/lists/</span><br></pre></td></tr></table></figure>
+<h2 id="换源更换数据源"><a class="markdownIt-Anchor" href="#换源更换数据源"></a> 换源(更换数据源)</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rootdubuntu:/home/lusifer# curl -sSL https://get. daocloud. io/docker | sh</span><br><span class="line"></span><br><span class="line">Executing docker install script, commit:1d31602</span><br><span class="line">+sh-c apt-get update-qq&gt;/dev/null E: Could not get Lock /var/lib/apt/lists/lock-open (11: Resource temporarily unavailable)</span><br><span class="line">E: Unable to lock directory /var/lib/apt/lists/</span><br></pre></td></tr></table></figure>
 <p>原因可能是没有<strong>更新数据源</strong></p>
 <blockquote>
 <p>1.备份默认的源<code>sudo cp /etc/apt/sources.list /etc/apt/sources_init.list</code></p>
@@ -176,7 +206,8 @@ apt-get install openssh-client）</code>，如果要使本机开放SSH服务就�
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial main</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br></pre></td></tr></table></figure>
 <p>最后输入<code>sudo apt-get update</code></p>
-<h2 id="Ubuntu无法找到add-apt-repository问题的解决方法"><a href="#Ubuntu无法找到add-apt-repository问题的解决方法" class="headerlink" title="Ubuntu无法找到add-apt-repository问题的解决方法"></a>Ubuntu无法找到add-apt-repository问题的解决方法</h2><blockquote>
+<h2 id="ubuntu无法找到add-apt-repository问题的解决方法"><a class="markdownIt-Anchor" href="#ubuntu无法找到add-apt-repository问题的解决方法"></a> Ubuntu无法找到add-apt-repository问题的解决方法</h2>
+<blockquote>
 <p>网上查了一下资料，原来是需要python-software-propertiduanjkes</p>
 <p>于是<code>apt-get install python-software-properties</code></p>
 <p>除此之外还要安装software-properties-common</p>
@@ -184,8 +215,11 @@ apt-get install openssh-client）</code>，如果要使本机开放SSH服务就�
 <p>然后就能用add-apt-repository了</p>
 </blockquote>
 <hr>
-<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><h3 id="搜索代理"><a href="#搜索代理" class="headerlink" title="搜索代理"></a>搜索代理</h3><p><code>env | grep proxy</code>、<code>sudo grep -r -i http_proxy=代理地址</code></p>
-<h3 id="配置代理"><a href="#配置代理" class="headerlink" title="配置代理"></a>配置代理</h3><blockquote>
+<h2 id="代理"><a class="markdownIt-Anchor" href="#代理"></a> 代理</h2>
+<h3 id="搜索代理"><a class="markdownIt-Anchor" href="#搜索代理"></a> 搜索代理</h3>
+<p><code>env | grep proxy</code>、<code>sudo grep -r -i http_proxy=代理地址</code></p>
+<h3 id="配置代理"><a class="markdownIt-Anchor" href="#配置代理"></a> 配置代理</h3>
+<blockquote>
 <p>临时:<code>export http_proxy=http://10.3.0.1:80</code></p>
 </blockquote>
 <blockquote>
@@ -199,26 +233,32 @@ apt-get install openssh-client）</code>，如果要使本机开放SSH服务就�
 <p><code>Acquire::http::proxy &quot;http://10.3.0.1:80&quot;;</code></p>
 <p><code>Acquire::ftp::proxy &quot;http://10.3.0.1:80&quot;;</code></p>
 <p><code>Acquire::https::proxy &quot;http://10.3.0.1:80&quot;;</code></p>
-<p>使用时<code>sudo apt-get install  xxx -c proxyfile</code></p>
+<p>使用时<code>sudo apt-get install xxx -c proxyfile</code></p>
 <p>(2)在主目录下的.bashrc文件中添加两行。(如果您希望apt-get和其他应用程序如wget等都使用http代理,您可以使用这种方式。 )</p>
-<p>在您的.bashrc文件末尾添加如下内容<br><code>export http_proxy=http://用户名:密码@地址:端口/</code><br><code>export https_proxy=http://用户名:密码@地址:端口/</code></p>
+<p>在您的.bashrc文件末尾添加如下内容<br>
+<code>export http_proxy=http://用户名:密码@地址:端口/</code><br>
+<code>export https_proxy=http://用户名:密码@地址:端口/</code></p>
 <p><code>export ftp_proxy=http://用户名:密码@地址:端口/</code></p>
 </blockquote>
 <p><a href="https://blog.csdn.net/qq3399013670/article/details/81300497" target="_blank" rel="noopener">ubuntu 代理配置</a></p>
 <hr>
-<h3 id="PPA"><a href="#PPA" class="headerlink" title="PPA"></a>PPA</h3><p>1.<code>vim /usr/lib/python3/dist-packages/softwareproperties/ppa.py</code></p>
+<h3 id="ppa"><a class="markdownIt-Anchor" href="#ppa"></a> PPA</h3>
+<p>1.<code>vim /usr/lib/python3/dist-packages/softwareproperties/ppa.py</code></p>
 <p>在函数def _get_https_content_py3（lp_url）的catch案例中添加了一个print（e）显示了错误的真正原因。</p>
 <p>2.系统时间是否正确</p>
-<p>3.除了配置代理之外，请告诉sudo使用<code>-E</code>该标志来考虑环境 </p>
+<p>3.除了配置代理之外，请告诉sudo使用<code>-E</code>该标志来考虑环境</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=http://&lt;proxy&gt;:&lt;port&gt;</span><br><span class="line">export https_proxy=http://&lt;proxy&gt;:&lt;port&gt;</span><br><span class="line">sudo -E apt-add-repository ppa:canonical-qt5-edgers/qt5-proper</span><br></pre></td></tr></table></figure>
 <p>with username and password:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export https_proxy=&lt;username&gt;:&lt;password&gt;@&lt;proxy&gt;:&lt;port&gt;</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="Ubuntu下让终端走SS代理的方法"><a href="#Ubuntu下让终端走SS代理的方法" class="headerlink" title="Ubuntu下让终端走SS代理的方法"></a>Ubuntu下让终端走SS代理的方法</h3><p>Ubuntu下让终端走SS代理需要第三方软件的帮助，即privoxy。<br>privoxy 是非快取式 (non-caching) 的网页代理伺服器，具有进阶的过滤能力，可强化隐私权，还可以修改网页资料、管理 HTTP cookies、去除广告等。</p>
+<h3 id="ubuntu下让终端走ss代理的方法"><a class="markdownIt-Anchor" href="#ubuntu下让终端走ss代理的方法"></a> Ubuntu下让终端走SS代理的方法</h3>
+<p>Ubuntu下让终端走SS代理需要第三方软件的帮助，即privoxy。<br>
+privoxy 是非快取式 (non-caching) 的网页代理伺服器，具有进阶的过滤能力，可强化隐私权，还可以修改网页资料、管理 HTTP cookies、去除广告等。</p>
 <p><strong>安装 privoxy</strong></p>
 <p><code>sudo apt-get install privoxy</code></p>
 <p>安装完成后在 /etc/privoxy 目录下可以找到配置文件 config。</p>
-<h4 id="配置-privoxy"><a href="#配置-privoxy" class="headerlink" title="配置 privoxy"></a><strong>配置 privoxy</strong></h4><p>一般地，改配置前应该备份配置。</p>
+<h4 id="配置-privoxy"><a class="markdownIt-Anchor" href="#配置-privoxy"></a> <strong>配置 privoxy</strong></h4>
+<p>一般地，改配置前应该备份配置。</p>
 <p><code>mv /etc/privoxy/config /etc/privoxy/config.back</code></p>
 <p>然后打开 config 文件，找到<code>listen-address</code>那一行，修改值为 privoxy 监听的地址，一般使用默认。</p>
 <p>然后再找到<code>forward-socks5</code>那一行，去掉注释，值为SS代理监听的地址。</p>
@@ -230,28 +270,37 @@ apt-get install openssh-client）</code>，如果要使本机开放SSH服务就�
 <p>然后就可以愉快的用终端翻墙了。</p>
 <p>原文：<a href="https://blog.csdn.net/tailgo/article/details/52075643" target="_blank" rel="noopener">https://blog.csdn.net/tailgo/article/details/52075643</a></p>
 <hr>
-<h2 id="Lets-Encrypt-配置SSL错误-DNS-problem-NXDOMAIN-looking-up-A-for-xxx"><a href="#Lets-Encrypt-配置SSL错误-DNS-problem-NXDOMAIN-looking-up-A-for-xxx" class="headerlink" title="Lets Encrypt 配置SSL错误 DNS problem: NXDOMAIN looking up A for xxx"></a>Lets Encrypt 配置SSL错误 DNS problem: NXDOMAIN looking up A for xxx</h2><ul>
+<h2 id="lets-encrypt-配置ssl错误-dns-problem-nxdomain-looking-up-a-for-xxx"><a class="markdownIt-Anchor" href="#lets-encrypt-配置ssl错误-dns-problem-nxdomain-looking-up-a-for-xxx"></a> Lets Encrypt 配置SSL错误 DNS problem: NXDOMAIN looking up A for xxx</h2>
+<ul>
 <li>刚刚解析了A记录，解析服务器还没有生效</li>
 <li>服务器本地 <strong>DNS缓存未更新</strong></li>
 </ul>
-<h4 id="1-首先确定A记录是否成效"><a href="#1-首先确定A记录是否成效" class="headerlink" title="1. 首先确定A记录是否成效"></a>1. 首先确定A记录是否成效</h4><p>确定的方式很简单，在浏览器输入自己的域名，查看能否访问成功。</p>
-<h4 id="2-确定DNS是否有问题"><a href="#2-确定DNS是否有问题" class="headerlink" title="2. 确定DNS是否有问题"></a>2. 确定DNS是否有问题</h4><h5 id="1-ping主机"><a href="#1-ping主机" class="headerlink" title="1) ping主机"></a>1) ping主机</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ping主机，如果无法发现host，则确定是dns问题</span></span><br><span class="line">$ ping demo.ptbird.cn</span><br></pre></td></tr></table></figure>
-<h5 id="2-更新DNS缓存"><a href="#2-更新DNS缓存" class="headerlink" title="2) 更新DNS缓存"></a>2) 更新DNS缓存</h5><p>不建议直接 network restart</p>
-<h5 id="使用nscd"><a href="#使用nscd" class="headerlink" title="使用nscd"></a>使用nscd</h5><p>如果系统没装可以装一下，nscd做DNS缓存加速很有用。</p>
+<h4 id="1-首先确定a记录是否成效"><a class="markdownIt-Anchor" href="#1-首先确定a记录是否成效"></a> 1. 首先确定A记录是否成效</h4>
+<p>确定的方式很简单，在浏览器输入自己的域名，查看能否访问成功。</p>
+<h4 id="2-确定dns是否有问题"><a class="markdownIt-Anchor" href="#2-确定dns是否有问题"></a> 2. 确定DNS是否有问题</h4>
+<h5 id="1-ping主机"><a class="markdownIt-Anchor" href="#1-ping主机"></a> 1) ping主机</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ping主机，如果无法发现host，则确定是dns问题</span></span><br><span class="line">$ ping demo.ptbird.cn</span><br></pre></td></tr></table></figure>
+<h5 id="2-更新dns缓存"><a class="markdownIt-Anchor" href="#2-更新dns缓存"></a> 2) 更新DNS缓存</h5>
+<p>不建议直接 network restart</p>
+<h5 id="使用nscd"><a class="markdownIt-Anchor" href="#使用nscd"></a> 使用nscd</h5>
+<p>如果系统没装可以装一下，nscd做DNS缓存加速很有用。</p>
 <p><code>centos : yum install nscd</code>、<code>ubuntu ：apt-get install nscd</code></p>
 <p>如果已经装了直接更新</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 主要是hosts</span></span><br><span class="line">$ nscd -i passwd</span><br><span class="line">$ nscd -i group</span><br><span class="line">$ nscd -i hosts</span><br></pre></td></tr></table></figure>
-<h2 id="grep指令参数说明"><a href="#grep指令参数说明" class="headerlink" title="grep指令参数说明"></a>grep指令参数说明</h2><p><a href="https://www.cnblogs.com/forestwolf/p/6413916.html" target="_blank" rel="noopener">https://www.cnblogs.com/forestwolf/p/6413916.html</a></p>
+<h2 id="grep指令参数说明"><a class="markdownIt-Anchor" href="#grep指令参数说明"></a> grep指令参数说明</h2>
+<p><a href="https://www.cnblogs.com/forestwolf/p/6413916.html" target="_blank" rel="noopener">https://www.cnblogs.com/forestwolf/p/6413916.html</a></p>
 <ul>
 <li>查看文件最后修改日期,返回值为时间戳<code>stat -c %Y filename</code></li>
-<li>查看系统(软件)时间<code>date</code>、硬件时间<code>clock</code><ul>
+<li>查看系统(软件)时间<code>date</code>、硬件时间<code>clock</code>
+<ul>
 <li>-s,用硬件时间覆盖软件时间</li>
 <li>-w,用软件时间覆盖硬件时间</li>
 </ul>
 </li>
 <li>与远程主机同步时间<code>ntpdate ip</code></li>
 </ul>
-<h2 id="内部、外部命令"><a href="#内部、外部命令" class="headerlink" title="内部、外部命令"></a>内部、外部命令</h2><p><code>enable</code>查看内部命令</p>
+<h2 id="内部-外部命令"><a class="markdownIt-Anchor" href="#内部-外部命令"></a> 内部、外部命令</h2>
+<p><code>enable</code>查看内部命令</p>
 <p>外部命令的搜索目录在<code>$PATH</code>中指定</p>
 <p>搜索时的优秀顺序根据hash缓存来决定,<code>hash -d name</code>清空name的缓存,<code>hash -r</code>清空所有缓存</p>
 <p>使用内部命令而不使用别名</p>
@@ -259,34 +308,39 @@ apt-get install openssh-client）</code>，如果要使本机开放SSH服务就�
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ls &lt;==&gt; /bin/ls --color=auto</span><br><span class="line"><span class="comment"># 如何不调用别名呢</span></span><br><span class="line">1. /bin/ls</span><br><span class="line">2. \ls</span><br><span class="line">3. <span class="string">'ls'</span></span><br><span class="line">4. <span class="string">"ls"</span></span><br><span class="line">5. <span class="built_in">command</span> ls</span><br></pre></td></tr></table></figure>
 <p>别名alias:</p>
 <blockquote>
-<p> 优先级:  alias &gt; 内部命令 &gt; 外部命令</p>
+<p>优先级:  alias &gt; 内部命令 &gt; 外部命令</p>
 </blockquote>
 <ul>
-<li><p>设置别名<code>alias xxx=yyy</code></p>
+<li>
+<p>设置别名<code>alias xxx=yyy</code></p>
 </li>
-<li><p>取消所有别名<code>unalias -a</code></p>
+<li>
+<p>取消所有别名<code>unalias -a</code></p>
 </li>
 </ul>
 <p>设置语言</p>
 <p>1.先修改配置文件<code>vim /etc/sysconfig/i18n</code>中将<code>en_US.UTF-8</code>改成<code>zh_CN.UTF-8</code>,</p>
 <p>2.然后<code>. /etc/sysconfig/i18n</code>立即生效</p>
-<p>3.测试<code>wall  &quot;Hello&quot;</code>给登录该服务器的用户发送信息</p>
-<h2 id="查看历史命令"><a href="#查看历史命令" class="headerlink" title="查看历史命令"></a>查看历史命令</h2><p><code>history</code>,查看到id后,可以<code>!id</code>进行再调用..<code>!!</code>执行前一个命令</p>
+<p>3.测试<code>wall &quot;Hello&quot;</code>给登录该服务器的用户发送信息</p>
+<h2 id="查看历史命令"><a class="markdownIt-Anchor" href="#查看历史命令"></a> 查看历史命令</h2>
+<p><code>history</code>,查看到id后,可以<code>!id</code>进行再调用…<code>!!</code>执行前一个命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">!string 重复前一个以“string"开头的命令</span><br><span class="line">!?string 重复前一个包含string的命令</span><br><span class="line">!string:p仅打印命令历史，而不执行</span><br><span class="line">!$：p打印输出！$（上一条命令的最后一个参数）的内容</span><br><span class="line">!*：p打印输出！*（上一条命令的所有参数）的内容Astring 删除上一条命令中的第一个string Astring1Astring2将上一条命令中的第一个string1替换为string2</span><br><span class="line">!:gs/string1/string2将上一条命令中所有的string1都替换为string2</span><br></pre></td></tr></table></figure>
 <p><code>$HISTSIZE</code>记录了最大记录数</p>
 <p>命令行历史保存在历史中,直到正常退出后会写入<code>~/.bash_history</code>里</p>
-<h2 id="VIM插件管理"><a href="#VIM插件管理" class="headerlink" title="VIM插件管理"></a>VIM插件管理</h2><p>1.安装<img src="https://github.com/junegunn/vim-plug" alt="vim-plug"></p>
+<h2 id="vim插件管理"><a class="markdownIt-Anchor" href="#vim插件管理"></a> VIM插件管理</h2>
+<p>1.安装<img src="https://github.com/junegunn/vim-plug" alt="vim-plug"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果没安装curl的话,先安装curl</span></span><br><span class="line">$ sudo apt install curl</span><br><span class="line">$ curl -fLo ~/.vim/<span class="built_in">autoload</span>/plug.vim --create-dirs \</span><br><span class="line">    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span><br></pre></td></tr></table></figure>
 <p>2.修改<code>~/.vimrc</code>文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">call plug<span class="comment">#begin()</span></span><br><span class="line">        Plug <span class="string">'flazz/vim-colorschemes'</span></span><br><span class="line">call plug<span class="comment">#end()</span></span><br></pre></td></tr></table></figure>
 <p>3.执行更新</p>
 <blockquote>
-<p> 这步要确保安装了git</p>
+<p>这步要确保安装了git</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:PlugStatus <span class="comment"># 查看插件类型</span></span><br><span class="line">:PlugInstall <span class="comment"># 安装插件</span></span><br></pre></td></tr></table></figure>
 <p>4.使用插件</p>
 <p>删除插件<code>:PlugClean</code></p>
-<h2 id="查询帮助"><a href="#查询帮助" class="headerlink" title="查询帮助"></a>查询帮助</h2><p>which: 查找文件： </p>
+<h2 id="查询帮助"><a class="markdownIt-Anchor" href="#查询帮助"></a> 查询帮助</h2>
+<p>which: 查找文件：</p>
 <ul>
 <li>会在环境变量$PATH设置的目录里查找符合条件的文件</li>
 </ul>
@@ -301,16 +355,17 @@ apt-get install openssh-client）</code>，如果要使本机开放SSH服务就�
 <li>只能用于查找二进制文件、源代码文件和<strong>man手册页</strong>，一般文件的定位需使用locate命令</li>
 </ul>
 <p>内部命令: help command ，如<code>help type</code></p>
-<p>外部命令: </p>
+<p>外部命令:</p>
 <ul>
-<li>command –help</li>
+<li>command --help</li>
 <li>man(manual),帮助手册放在/usr/share/man</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date -d <span class="string">"yesterday"</span> +%F</span><br><span class="line">date -d <span class="string">"-2 day"</span> +%F</span><br><span class="line">touch `date -d <span class="string">"yesterday"</span> +%F`.<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-<h2 id="Linux登陆欢迎提示信息的设置"><a href="#Linux登陆欢迎提示信息的设置" class="headerlink" title="Linux登陆欢迎提示信息的设置"></a><a href="https://www.cnblogs.com/qzqdy/p/8422283.html" target="_blank" rel="noopener">Linux登陆欢迎提示信息的设置</a></h2><p>Linux可以设置登录前后的欢迎信息，虽然没啥技术含量，但却是非常实用的一个小技巧。 实现登录消息的功能，可以修改3个文件。 </p>
+<h2 id="linux登陆欢迎提示信息的设置"><a class="markdownIt-Anchor" href="#linux登陆欢迎提示信息的设置"></a> <a href="https://www.cnblogs.com/qzqdy/p/8422283.html" target="_blank" rel="noopener">Linux登陆欢迎提示信息的设置</a></h2>
+<p>Linux可以设置登录前后的欢迎信息，虽然没啥技术含量，但却是非常实用的一个小技巧。 实现登录消息的功能，可以修改3个文件。</p>
 <p>1、<strong>/etc/issue</strong> 本地登陆显示的信息，<strong>本地登录前</strong></p>
 <p>2、<strong>/etc/issue.net</strong> 网络登陆显示的信息，<strong>登录后显示，需要由sshd配置</strong></p>
-<p>3、<strong>/etc/motd</strong> 常用于通告信息，如计划关机时间的警告等，<strong>登陆后的提示信息</strong>  </p>
+<p>3、<strong>/etc/motd</strong> 常用于通告信息，如计划关机时间的警告等，<strong>登陆后的提示信息</strong></p>
 <p><code>1lsblk</code>查看硬盘挂载</p>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/03/15/Linux命令手册/">https://nymrli.top/2019/03/15/Linux命令手册/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/" title="南京邮电大学java程序设计作业在线编程第五次作业"><span>< PreviousPost</span><br><span class="prevTitle">南京邮电大学java程序设计作业在线编程第五次作业</span></a><a class="nextSlogan" href="/2019/03/14/搭建Gitlab服务器/" title="搭建Gitlab服务器"><span>NextPost ></span><br><span class="nextTitle">搭建Gitlab服务器</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'Linux命令手册',
@@ -321,4 +376,4 @@ apt-get install openssh-client）</code>，如果要使本机开放SSH服务就�
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#scp"><span class="toc-number">1.</span> <span class="toc-text">scp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh"><span class="toc-number">2.</span> <span class="toc-text">ssh</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下面讲解openssh-server"><span class="toc-number">2.0.1.</span> <span class="toc-text">下面讲解openssh-server</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增加桌面快捷方式"><span class="toc-number">3.</span> <span class="toc-text">增加桌面快捷方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#端口操作"><span class="toc-number">4.</span> <span class="toc-text">端口操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建新用户"><span class="toc-number">5.</span> <span class="toc-text">创建新用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为root用户提供初始密码"><span class="toc-number">6.</span> <span class="toc-text">为root用户提供初始密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改为阿里云-DNS"><span class="toc-number">7.</span> <span class="toc-text">修改为阿里云 DNS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#换源-更换数据源"><span class="toc-number">8.</span> <span class="toc-text">换源(更换数据源)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu无法找到add-apt-repository问题的解决方法"><span class="toc-number">9.</span> <span class="toc-text">Ubuntu无法找到add-apt-repository问题的解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代理"><span class="toc-number">10.</span> <span class="toc-text">代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索代理"><span class="toc-number">10.1.</span> <span class="toc-text">搜索代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置代理"><span class="toc-number">10.2.</span> <span class="toc-text">配置代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PPA"><span class="toc-number">10.3.</span> <span class="toc-text">PPA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu下让终端走SS代理的方法"><span class="toc-number">10.4.</span> <span class="toc-text">Ubuntu下让终端走SS代理的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置-privoxy"><span class="toc-number">10.4.1.</span> <span class="toc-text">配置 privoxy</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lets-Encrypt-配置SSL错误-DNS-problem-NXDOMAIN-looking-up-A-for-xxx"><span class="toc-number">11.</span> <span class="toc-text">Lets Encrypt 配置SSL错误 DNS problem: NXDOMAIN looking up A for xxx</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-首先确定A记录是否成效"><span class="toc-number">11.0.1.</span> <span class="toc-text">1. 首先确定A记录是否成效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-确定DNS是否有问题"><span class="toc-number">11.0.2.</span> <span class="toc-text">2. 确定DNS是否有问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-ping主机"><span class="toc-number">11.0.2.1.</span> <span class="toc-text">1) ping主机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-更新DNS缓存"><span class="toc-number">11.0.2.2.</span> <span class="toc-text">2) 更新DNS缓存</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用nscd"><span class="toc-number">11.0.2.3.</span> <span class="toc-text">使用nscd</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep指令参数说明"><span class="toc-number">12.</span> <span class="toc-text">grep指令参数说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内部、外部命令"><span class="toc-number">13.</span> <span class="toc-text">内部、外部命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看历史命令"><span class="toc-number">14.</span> <span class="toc-text">查看历史命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VIM插件管理"><span class="toc-number">15.</span> <span class="toc-text">VIM插件管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询帮助"><span class="toc-number">16.</span> <span class="toc-text">查询帮助</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux登陆欢迎提示信息的设置"><span class="toc-number">17.</span> <span class="toc-text">Linux登陆欢迎提示信息的设置</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#scp"><span class="toc-number">1.</span> <span class="toc-text"> scp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh"><span class="toc-number">2.</span> <span class="toc-text"> ssh</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下面讲解openssh-server"><span class="toc-number">2.0.1.</span> <span class="toc-text"> 下面讲解openssh-server</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增加桌面快捷方式"><span class="toc-number">3.</span> <span class="toc-text"> 增加桌面快捷方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#端口操作"><span class="toc-number">4.</span> <span class="toc-text"> 端口操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建新用户"><span class="toc-number">5.</span> <span class="toc-text"> 创建新用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为root用户提供初始密码"><span class="toc-number">6.</span> <span class="toc-text"> 为root用户提供初始密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改为阿里云-dns"><span class="toc-number">7.</span> <span class="toc-text"> 修改为阿里云 DNS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#换源更换数据源"><span class="toc-number">8.</span> <span class="toc-text"> 换源(更换数据源)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu无法找到add-apt-repository问题的解决方法"><span class="toc-number">9.</span> <span class="toc-text"> Ubuntu无法找到add-apt-repository问题的解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代理"><span class="toc-number">10.</span> <span class="toc-text"> 代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索代理"><span class="toc-number">10.1.</span> <span class="toc-text"> 搜索代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置代理"><span class="toc-number">10.2.</span> <span class="toc-text"> 配置代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ppa"><span class="toc-number">10.3.</span> <span class="toc-text"> PPA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ubuntu下让终端走ss代理的方法"><span class="toc-number">10.4.</span> <span class="toc-text"> Ubuntu下让终端走SS代理的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置-privoxy"><span class="toc-number">10.4.1.</span> <span class="toc-text"> 配置 privoxy</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lets-encrypt-配置ssl错误-dns-problem-nxdomain-looking-up-a-for-xxx"><span class="toc-number">11.</span> <span class="toc-text"> Lets Encrypt 配置SSL错误 DNS problem: NXDOMAIN looking up A for xxx</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-首先确定a记录是否成效"><span class="toc-number">11.0.1.</span> <span class="toc-text"> 1. 首先确定A记录是否成效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-确定dns是否有问题"><span class="toc-number">11.0.2.</span> <span class="toc-text"> 2. 确定DNS是否有问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-ping主机"><span class="toc-number">11.0.2.1.</span> <span class="toc-text"> 1) ping主机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-更新dns缓存"><span class="toc-number">11.0.2.2.</span> <span class="toc-text"> 2) 更新DNS缓存</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用nscd"><span class="toc-number">11.0.2.3.</span> <span class="toc-text"> 使用nscd</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep指令参数说明"><span class="toc-number">12.</span> <span class="toc-text"> grep指令参数说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内部-外部命令"><span class="toc-number">13.</span> <span class="toc-text"> 内部、外部命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看历史命令"><span class="toc-number">14.</span> <span class="toc-text"> 查看历史命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vim插件管理"><span class="toc-number">15.</span> <span class="toc-text"> VIM插件管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询帮助"><span class="toc-number">16.</span> <span class="toc-text"> 查询帮助</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux登陆欢迎提示信息的设置"><span class="toc-number">17.</span> <span class="toc-text"> Linux登陆欢迎提示信息的设置</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -97,44 +97,59 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">WSGI uWSGI uwsgi及nginx说明</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2018/11/02</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,104</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h4 id="客户端发出请求-gt-服务器接受、处理请求与响应-的过程示意图"><a href="#客户端发出请求-gt-服务器接受、处理请求与响应-的过程示意图" class="headerlink" title="客户端发出请求==&gt;服务器接受、处理请求与响应 的过程示意图"></a>客户端发出请求==&gt;服务器接受、处理请求与响应 的过程示意图</h4><p><img src="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/过程.png" alt="过程"></p>
-<h4 id="1-WSGI："><a href="#1-WSGI：" class="headerlink" title="1. WSGI："></a>1. <strong>WSGI：</strong></h4><blockquote>
-<p>全称是<code>Web Server Gateway Interface(服务器网关接口)</code>。<code>WSGI</code>不是服务器，<code>python</code>模块，框架，<code>API</code>或者任何软件，只是一种规范( 是一个<strong>Web服务器（如nginx）</strong>与<strong>应用服务器（如uWSGI）</strong>通信的一种规范（协议）==&gt; 可以理解为服务器与应用程序通信的接口规范要求)，描述<code>web server</code>如何与<code>web application</code>通信的规范。<code>server</code>和<code>application</code>的规范在<a href="https://link.jianshu.com/?t=https://www.python.org/dev/peps/pep-3333/" target="_blank" rel="noopener">PEP 3333</a>中有具体描述。因为WSGI没有官方的实现, 所以WSGI更像一个协议，只要遵照这些协议，都可以在任何服务器(Server)上运行</p>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">WSGI uWSGI uwsgi及nginx说明</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2018/11/02</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,104</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h4 id="客户端发出请求服务器接受-处理请求与响应-的过程示意图"><a class="markdownIt-Anchor" href="#客户端发出请求服务器接受-处理请求与响应-的过程示意图"></a> 客户端发出请求==&gt;服务器接受、处理请求与响应 的过程示意图</h4>
+<p><img src="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/WSGI-uWSGI-uwsgi%E5%8F%8Anginx%E8%AF%B4%E6%98%8E%5C%E8%BF%87%E7%A8%8B.png" alt="过程"></p>
+<h4 id="1-wsgi"><a class="markdownIt-Anchor" href="#1-wsgi"></a> 1. <strong>WSGI：</strong></h4>
+<blockquote>
+<p>全称是<code>Web Server Gateway Interface(服务器网关接口)</code>。<code>WSGI</code>不是服务器，<code>python</code>模块，框架，<code>API</code>或者任何软件，只是一种规范( 是一个**Web服务器（如nginx）<strong>与</strong>应用服务器（如uWSGI）**通信的一种规范（协议）==&gt; 可以理解为服务器与应用程序通信的接口规范要求)，描述<code>web server</code>如何与<code>web application</code>通信的规范。<code>server</code>和<code>application</code>的规范在<a href="https://link.jianshu.com/?t=https://www.python.org/dev/peps/pep-3333/" target="_blank" rel="noopener">PEP 3333</a>中有具体描述。因为WSGI没有官方的实现, 所以WSGI更像一个协议，只要遵照这些协议，都可以在任何服务器(Server)上运行</p>
 </blockquote>
-<h4 id="2-uwsgi："><a href="#2-uwsgi：" class="headerlink" title="2.uwsgi："></a>2.<strong>uwsgi：</strong></h4><blockquote>
+<h4 id="2uwsgi"><a class="markdownIt-Anchor" href="#2uwsgi"></a> 2.<strong>uwsgi：</strong></h4>
+<blockquote>
 <p>与<code>WSGI</code>一样是一种通信协议，是<code>uWSGI</code>服务器的独占协议，用于定义传输信息的类型(<code>type of information</code>)，每一个<code>uwsgi packet</code>前<code>4byte</code>为传输信息类型的描述，与WSGI协议是两种不同的协议。该协议据说性能非常高，是<code>fcgi</code>协议的10倍快;而且内存占用率低，为<code>mod_wsgi</code>的一半左右，同时它还支持多应用的管理及应用的性能监控</p>
 </blockquote>
-<h4 id="3-uWSGI："><a href="#3-uWSGI：" class="headerlink" title="3.uWSGI："></a>3.<strong>uWSGI：</strong></h4><blockquote>
+<h4 id="3uwsgi"><a class="markdownIt-Anchor" href="#3uwsgi"></a> 3.<strong>uWSGI：</strong></h4>
+<blockquote>
 <p>是一个<code>web</code>服务器，而且也可以当做中间件。它实现了<code>WSGI</code>协议、<code>uwsgi</code>协议、<code>http</code>协议等。在生产环境中使用uWSGI作为python web的服务器,可以用来托管 Python WSGI应用。它具有应用服务器，代理，进程管理及应用监控等功能(但可以把看作是一个应用程序，帮助我们实现WSGI协议)，这样我们可以不再关注网络通信的底层实现，将精力更多放在处理HTTP请求数据，返回HTML。</p>
 </blockquote>
-<h4 id="4-uWSGI-nginx"><a href="#4-uWSGI-nginx" class="headerlink" title="4.uWSGI+nginx"></a>4.uWSGI+nginx</h4><blockquote>
-<p>综上所述可以看出uWSGI可以直接当做服务器，而为了<strong>进一步的并发提升</strong>就需要加上nginx(<strong>提高负载均衡</strong>) </p>
+<h4 id="4uwsginginx"><a class="markdownIt-Anchor" href="#4uwsginginx"></a> 4.uWSGI+nginx</h4>
+<blockquote>
+<p>综上所述可以看出uWSGI可以直接当做服务器，而为了<strong>进一步的并发提升</strong>就需要加上nginx(<strong>提高负载均衡</strong>)</p>
 <p>▲.当uWSGI+nginx使用时，nginx作为web服务器，而uWSGI作为中间件(这边不一定正确,个人理解)</p>
 </blockquote>
-<h5 id="uWSGI不足的地方"><a href="#uWSGI不足的地方" class="headerlink" title="uWSGI不足的地方:"></a>uWSGI不足的地方:</h5><ul>
-<li><p>uWIGS也可以返回静态文件(css,js,img…)，但是很笨拙，所以更好的做法是用反向代理服务器（比如Nginx）来处理此类请求，减轻应用服务器的负载，获得更好的性能。</p>
+<h5 id="uwsgi不足的地方"><a class="markdownIt-Anchor" href="#uwsgi不足的地方"></a> uWSGI不足的地方:</h5>
+<ul>
+<li>
+<p>uWIGS也可以返回静态文件(css,js,img…)，但是很笨拙，所以更好的做法是用反向代理服务器（比如Nginx）来处理此类请求，减轻应用服务器的负载，获得更好的性能。</p>
 <ul>
 <li>利用uWIGS可以是我们的web应用得到更强的并发能力，uWIGS也可以返回静态文件(css,js,img…)，但是很笨拙，一般静态文件都交由Nginx进行传输，所以配置中一般不配置static-map,如果直接由uWIGS接受HTTP请求则需要设置http:xxxx，如果只需要与反向代理服务器进行交互则只需要接受socket，uWIGS与Nginx交互相当于两个进程间交互，一般使用的是.sock文件或者指定端口接受socket。指定端口时再使用浏览器访问相应端口，uWIGS会提示skip，跳过该HTTP请求。</li>
 </ul>
 </li>
-<li><p>同时还有的是uWSGI本身的负载均衡没有nginx牛逼。所以阉割掉不用。</p>
+<li>
+<p>同时还有的是uWSGI本身的负载均衡没有nginx牛逼。所以阉割掉不用。</p>
 </li>
 </ul>
-<h4 id="5-Nginx是一个Http和反向代理服务器"><a href="#5-Nginx是一个Http和反向代理服务器" class="headerlink" title="5.Nginx是一个Http和反向代理服务器"></a>5.Nginx是一个Http和反向代理服务器</h4><blockquote>
+<h4 id="5nginx是一个http和反向代理服务器"><a class="markdownIt-Anchor" href="#5nginx是一个http和反向代理服务器"></a> 5.Nginx是一个Http和反向代理服务器</h4>
+<blockquote>
 <p>什么是反向代理服务器呢？</p>
 </blockquote>
-<p>▲正向的就是由浏览器主动的想代理服务器发出请求，经代理服务器做出处理后再转给目标服务器<br>▲反向的就是不管浏览器同不同意，请求都会经过代理服务器处理再发给目标服务器</p>
+<p>▲正向的就是由浏览器主动的想代理服务器发出请求，经代理服务器做出处理后再转给目标服务器<br>
+▲反向的就是不管浏览器同不同意，请求都会经过代理服务器处理再发给目标服务器</p>
 <p>这其中的区别就是必须经过Nginx反向代理服务器，这就有了使用Nginx的几个好处：</p>
 <ul>
-<li>安全：不管什么请求都要经过代理服务器，这样就避免了外部程序直接攻击web服务器</li>
-<li><p>负载均衡：根据请求情况和服务器负载情况，将请求分配给不同的web服务器，保证服务器性能</p>
+<li>
+<p>安全：不管什么请求都要经过代理服务器，这样就避免了外部程序直接攻击web服务器</p>
 </li>
-<li><p>提高web服务器的IO性能：这个我也没看懂，总结来说就是请求从客户端传到web服务器是需要时间的，传递多长时间就会让这个进程阻塞多长时间，而通过反向代理，就可以在反向代理这完整接受请求，然后再传给web服务器，从而保证服务器性能，而且有的一些简单的事情（比如静态文件）可以直接由反向代理处理，不经过web服务器</p>
+<li>
+<p>负载均衡：根据请求情况和服务器负载情况，将请求分配给不同的web服务器，保证服务器性能</p>
+</li>
+<li>
+<p>提高web服务器的IO性能：这个我也没看懂，总结来说就是请求从客户端传到web服务器是需要时间的，传递多长时间就会让这个进程阻塞多长时间，而通过反向代理，就可以在反向代理这完整接受请求，然后再传给web服务器，从而保证服务器性能，而且有的一些简单的事情（比如静态文件）可以直接由反向代理处理，不经过web服务器</p>
 </li>
 </ul>
-<p><img src="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/nginx.png" alt="nginx"></p>
+<p><img src="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/WSGI-uWSGI-uwsgi%E5%8F%8Anginx%E8%AF%B4%E6%98%8E%5Cnginx.png" alt="nginx"></p>
 <hr>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><img src="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/总结.jpg" alt="总结"></p>
+<h4 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h4>
+<p><img src="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/WSGI-uWSGI-uwsgi%E5%8F%8Anginx%E8%AF%B4%E6%98%8E%5C%E6%80%BB%E7%BB%93.jpg" alt="总结"></p>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/">https://nymrli.top/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2018/11/04/高科GSWIFI江苏破解教程/" title="高科GSWIFI江苏破解教程"><span>< PreviousPost</span><br><span class="prevTitle">高科GSWIFI江苏破解教程</span></a><a class="nextSlogan" href="/2018/11/02/apt-get-update无法连接/" title="apt-get update无法连接"><span>NextPost ></span><br><span class="nextTitle">apt-get update无法连接</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'WSGI uWSGI uwsgi及nginx说明',
   owner: 'Freedomisgood',
@@ -144,4 +159,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端发出请求-gt-服务器接受、处理请求与响应-的过程示意图"><span class="toc-number">1.</span> <span class="toc-text">客户端发出请求==&gt;服务器接受、处理请求与响应 的过程示意图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-WSGI："><span class="toc-number">2.</span> <span class="toc-text">1. WSGI：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-uwsgi："><span class="toc-number">3.</span> <span class="toc-text">2.uwsgi：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-uWSGI："><span class="toc-number">4.</span> <span class="toc-text">3.uWSGI：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-uWSGI-nginx"><span class="toc-number">5.</span> <span class="toc-text">4.uWSGI+nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#uWSGI不足的地方"><span class="toc-number">5.1.</span> <span class="toc-text">uWSGI不足的地方:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Nginx是一个Http和反向代理服务器"><span class="toc-number">6.</span> <span class="toc-text">5.Nginx是一个Http和反向代理服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端发出请求服务器接受-处理请求与响应-的过程示意图"><span class="toc-number">1.</span> <span class="toc-text"> 客户端发出请求==&gt;服务器接受、处理请求与响应 的过程示意图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-wsgi"><span class="toc-number">2.</span> <span class="toc-text"> 1. WSGI：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2uwsgi"><span class="toc-number">3.</span> <span class="toc-text"> 2.uwsgi：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3uwsgi"><span class="toc-number">4.</span> <span class="toc-text"> 3.uWSGI：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4uwsginginx"><span class="toc-number">5.</span> <span class="toc-text"> 4.uWSGI+nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#uwsgi不足的地方"><span class="toc-number">5.1.</span> <span class="toc-text"> uWSGI不足的地方:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5nginx是一个http和反向代理服务器"><span class="toc-number">6.</span> <span class="toc-text"> 5.Nginx是一个Http和反向代理服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">7.</span> <span class="toc-text"> 总结</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -97,10 +97,13 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">C++学习笔记</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/07/13</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,127</span> | Reading time: <span class="post-count">12</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="C-学习笔记"><a href="#C-学习笔记" class="headerlink" title="C++学习笔记"></a>C++学习笔记</h1><blockquote>
-<p>system（）就是调用（DOS）系统命令（和shell命令）。<br>pause ，即DOS命令集合中的暂停命令；</p>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">C++学习笔记</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/07/13</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,127</span> | Reading time: <span class="post-count">12</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="c学习笔记"><a class="markdownIt-Anchor" href="#c学习笔记"></a> C++学习笔记</h1>
+<blockquote>
+<p>system（）就是调用（DOS）系统命令（和shell命令）。<br>
+pause ，即DOS命令集合中的暂停命令；</p>
 </blockquote>
-<h2 id="sprintf"><a href="#sprintf" class="headerlink" title="sprintf"></a>sprintf</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main( void )</span><br><span class="line">&#123;</span><br><span class="line">  char  buffer[200], s[] = &quot;computer&quot;, c = &apos;l&apos;;</span><br><span class="line">  int   i = 35, j;</span><br><span class="line">  float fp = 1.7320534f;  // 格式化并打印各种数据到buffer</span><br><span class="line">  j  = sprintf( buffer,    &quot;   String:    %s\n&quot;, s ); // C4996</span><br><span class="line">  j += sprintf( buffer + j,&quot;   Character: %c\n&quot;, c );</span><br><span class="line">  j += sprintf( buffer + j,&quot;   Integer:   %d\n&quot;, i );</span><br><span class="line">  j += sprintf( buffer + j,&quot;   Real:      %f\n&quot;, fp );</span><br><span class="line">  printf( &quot;Output:\n%s\ncharacter count = %d\n&quot;, buffer, j );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="sprintf"><a class="markdownIt-Anchor" href="#sprintf"></a> sprintf</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main( void )</span><br><span class="line">&#123;</span><br><span class="line">  char  buffer[200], s[] = &quot;computer&quot;, c = &apos;l&apos;;</span><br><span class="line">  int   i = 35, j;</span><br><span class="line">  float fp = 1.7320534f;  // 格式化并打印各种数据到buffer</span><br><span class="line">  j  = sprintf( buffer,    &quot;   String:    %s\n&quot;, s ); // C4996</span><br><span class="line">  j += sprintf( buffer + j,&quot;   Character: %c\n&quot;, c );</span><br><span class="line">  j += sprintf( buffer + j,&quot;   Integer:   %d\n&quot;, i );</span><br><span class="line">  j += sprintf( buffer + j,&quot;   Real:      %f\n&quot;, fp );</span><br><span class="line">  printf( &quot;Output:\n%s\ncharacter count = %d\n&quot;, buffer, j );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <ul>
 <li>返回写入buffer 的字符数，出错则返回-1. 如果 buffer 或 format 是空指针，且不出错而继续，函数将返回-1</li>
@@ -108,65 +111,106 @@
 </ul>
 </blockquote>
 <hr>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><strong>声明引用：</strong></p>
+<h2 id="引用"><a class="markdownIt-Anchor" href="#引用"></a> 引用</h2>
+<p><strong>声明引用：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">int &amp;c=a;  //int &amp; c=a;   △.声明引用时必须初始化</span><br></pre></td></tr></table></figure>
 <p><strong>传引用参数</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void func(int&amp; a)&#123;&#125; //函数名(xxx)xxx其实是创建形参变量的过程</span><br><span class="line">func(b);</span><br></pre></td></tr></table></figure>
 <p><strong>传指针</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func2(int *a)&#123;&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>返回引用</strong></p>
-<p>返回值不能是局部变量（局部变量在生命期结束后会被销毁）<br>​    （c中生命周期结束后，立马销毁，而在python中垃圾回收机制会在判断之后不使用的情况下再销毁）<br>func2(&amp;b);</p>
-<h2 id="增强的for循环"><a href="#增强的for循环" class="headerlink" title="增强的for循环:"></a>增强的for循环:</h2><blockquote>
-<p>在vc6.0中 for(int i=4;i&gt;0;i–)  i的作用域为　整个外部作用域如<br>void main()<br>{<br>​    for(int i=4;i&gt;0;i–) //作用域为整个main函数<br>}<br>   而在vs中 for(int i=4;i&gt;0;i–)  i的作用域为　该个for循环内<br>void main()<br>{<br>​    for(int i=4;i&gt;0;i–) //作用域为该个for循环<br>}</p>
+<p>返回值不能是局部变量（局部变量在生命期结束后会被销毁）<br>
+​	（c中生命周期结束后，立马销毁，而在python中垃圾回收机制会在判断之后不使用的情况下再销毁）<br>
+func2(&amp;b);</p>
+<h2 id="增强的for循环"><a class="markdownIt-Anchor" href="#增强的for循环"></a> 增强的for循环:</h2>
+<blockquote>
+<p>在vc6.0中 for(int i=4;i&gt;0;i–)  i的作用域为　整个外部作用域如<br>
+void main()<br>
+{	<br>
+​	for(int i=4;i&gt;0;i–) //作用域为整个main函数<br>
+}<br>
+而在vs中 for(int i=4;i&gt;0;i–)  i的作用域为　该个for循环内<br>
+void main()<br>
+{	<br>
+​	for(int i=4;i&gt;0;i–) //作用域为该个for循环<br>
+}</p>
 </blockquote>
 <hr>
 <p>默认参数　从右往左连续</p>
 <p>返回值不是函数重载的条件</p>
 <hr>
 <blockquote>
-<p>malloc和free　不会触发构造函数或是析构函数<br>new和delete　可以</p>
+<p>malloc和free　不会触发构造函数或是析构函数<br>
+new和delete　可以</p>
 </blockquote>
-<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><blockquote>
+<h2 id="类"><a class="markdownIt-Anchor" href="#类"></a> 类</h2>
+<blockquote>
 <p>不做特别说明，类的数据成员和成员函数都被认为是private</p>
 </blockquote>
-<h2 id="this指针"><a href="#this指针" class="headerlink" title="this指针"></a>this指针</h2><ul>
+<h2 id="this指针"><a class="markdownIt-Anchor" href="#this指针"></a> this指针</h2>
+<ul>
 <li>this 是类成员函数的隐含参数，不是类的数据成员</li>
 <li>静态成员无this指针</li>
 </ul>
-<h2 id="常函数"><a href="#常函数" class="headerlink" title="常函数"></a>常函数</h2><ul>
-<li><p>常函数不能修改类中的数据成员的值</p>
+<h2 id="常函数"><a class="markdownIt-Anchor" href="#常函数"></a> 常函数</h2>
+<ul>
+<li>
+<p>常函数不能修改类中的数据成员的值</p>
 </li>
-<li><p>析构函数和构造函数不能是常函数</p>
+<li>
+<p>析构函数和构造函数不能是常函数</p>
 </li>
-<li>常变量只能调用常函数，不能调用普通函数</li>
-<li>常对象只能调用常函数，不能调用普通函数</li>
+<li>
+<p>常变量只能调用常函数，不能调用普通函数</p>
+</li>
+<li>
+<p>常对象只能调用常函数，不能调用普通函数</p>
+</li>
 </ul>
-<h2 id="静态成员"><a href="#静态成员" class="headerlink" title="静态成员"></a>静态成员</h2><ul>
+<h2 id="静态成员"><a class="markdownIt-Anchor" href="#静态成员"></a> 静态成员</h2>
+<ul>
 <li>是类本身的属性，无对象时也可以直接调用Cstu::sta</li>
-<li>静态成员函数只能调用静态数据成员<br>类外初始化　不需要static关键字 如： int Cstu::sta = 12;</li>
+<li>静态成员函数只能调用静态数据成员<br>
+类外初始化　不需要static关键字 如： int Cstu::sta = 12;</li>
 </ul>
-<h2 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = new int[2];</span><br><span class="line">delete[] a;</span><br></pre></td></tr></table></figure>
-<h2 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h2><ul>
+<h2 id="创建数组"><a class="markdownIt-Anchor" href="#创建数组"></a> 创建数组</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = new int[2];</span><br><span class="line">delete[] a;</span><br></pre></td></tr></table></figure>
+<h2 id="浅拷贝和深拷贝"><a class="markdownIt-Anchor" href="#浅拷贝和深拷贝"></a> 浅拷贝和深拷贝</h2>
+<ul>
 <li>系统默认的为浅拷贝</li>
 <li>有指针承运啊时得内存拷贝，所以使用深拷贝，</li>
 <li>为了避免拷贝构造，运算符重载应该传引用</li>
 </ul>
-<h2 id="拷贝构造"><a href="#拷贝构造" class="headerlink" title="拷贝构造"></a>拷贝构造</h2><p><strong>何时会调用</strong></p>
+<h2 id="拷贝构造"><a class="markdownIt-Anchor" href="#拷贝构造"></a> 拷贝构造</h2>
+<p><strong>何时会调用</strong></p>
 <blockquote>
 <p>1.新建一个对象，并将其初始化为同类现有对象</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Cstu a;</span><br><span class="line">- Cstu a1(a);</span><br><span class="line">- Cstu a2 = a;</span><br><span class="line">- Cstu a3 = Cstu(a);　//创建了临时对象</span><br><span class="line">- Cstu a4 = new Cstu(a);</span><br><span class="line">- △.赋值并不会发生拷贝构造</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>2.当程序生成对象副本时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 参数是本类的常引用Cstu(const Cstu&amp;)</span><br><span class="line"></span><br><span class="line">- 普通构造函数如果空的话是不执行内容的，拷贝构造空的话是执行内容的</span><br><span class="line">- 默认的复制构造函数，逐个复制非静态成员的值，</span><br><span class="line"></span><br><span class="line">## 内联函数inline</span><br><span class="line"></span><br><span class="line">- 函数代码少，流程直接，调用频繁，如循环</span><br><span class="line">- 类内定义的都是内联函数（隐式），写inline为显性</span><br><span class="line">- 内联函数的定义一般写在头文件内</span><br><span class="line"></span><br><span class="line">- 只在声明位置写inline不管用，定义与声明都要有inline关键字</span><br><span class="line">- 空间换时间，使用频率低时速度快，频率高时，比较占用内存，主要看性价比</span><br><span class="line">- 递归不能是内联函数</span><br><span class="line"></span><br><span class="line">## 操作符重载</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">- 为了避免拷贝构造，运算符重载应该传引用或是传地址</span><br><span class="line">- 操作符重载必须有一个类类型的参数</span><br><span class="line">- =、[]、()、-&gt;必须是诚邀</span><br><span class="line">- 复合赋值运算符通常是成员</span><br><span class="line">- 改变对象状态的运算符，递增、解引用，通常是成员</span><br><span class="line"></span><br><span class="line">### 输出运算符重载:</span><br><span class="line"></span><br><span class="line">- 参数1是ostream引用，参数2是对象的常引用</span><br><span class="line">- 必须是类外重载，原因为1</span><br><span class="line">- 输出私有成员时，要用友元</span><br></pre></td></tr></table></figure></p>
+<p>2.当程序生成对象副本时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 参数是本类的常引用Cstu(const Cstu&amp;)</span><br><span class="line"></span><br><span class="line">- 普通构造函数如果空的话是不执行内容的，拷贝构造空的话是执行内容的</span><br><span class="line">- 默认的复制构造函数，逐个复制非静态成员的值，</span><br><span class="line"></span><br><span class="line">## 内联函数inline</span><br><span class="line"></span><br><span class="line">- 函数代码少，流程直接，调用频繁，如循环</span><br><span class="line">- 类内定义的都是内联函数（隐式），写inline为显性</span><br><span class="line">- 内联函数的定义一般写在头文件内</span><br><span class="line"></span><br><span class="line">- 只在声明位置写inline不管用，定义与声明都要有inline关键字</span><br><span class="line">- 空间换时间，使用频率低时速度快，频率高时，比较占用内存，主要看性价比</span><br><span class="line">- 递归不能是内联函数</span><br><span class="line"></span><br><span class="line">## 操作符重载</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">- 为了避免拷贝构造，运算符重载应该传引用或是传地址</span><br><span class="line">- 操作符重载必须有一个类类型的参数</span><br><span class="line">- =、[]、()、-&gt;必须是诚邀</span><br><span class="line">- 复合赋值运算符通常是成员</span><br><span class="line">- 改变对象状态的运算符，递增、解引用，通常是成员</span><br><span class="line"></span><br><span class="line">### 输出运算符重载:</span><br><span class="line"></span><br><span class="line">- 参数1是ostream引用，参数2是对象的常引用</span><br><span class="line">- 必须是类外重载，原因为1</span><br><span class="line">- 输出私有成员时，要用友元</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p>void operator &lt;&lt; (ostream&amp; os,const &amp;Csty)，os &lt;&lt;st.nAge;<br>ostream&amp; operator &lt;&lt; (ostream&amp; os,const &amp;Csty)，os &lt;&lt;st.nAge;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 输入运算符重载:</span><br><span class="line"></span><br><span class="line">- 参数不匹配用ist.fail()检测</span><br><span class="line">- 输出=&gt;  ist&gt;&gt;st.nAge &gt;&gt; st.dbHeight;</span><br></pre></td></tr></table></figure></p>
-<p>istream&amp; operator &gt;&gt;(istream&amp; ist,CStu&amp; st)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">### 前置+ +与后置+ +重载</span><br></pre></td></tr></table></figure></p>
+<p>void operator &lt;&lt; (ostream&amp; os,const &amp;Csty)，os &lt;&lt;st.nAge;<br>
+ostream&amp; operator &lt;&lt; (ostream&amp; os,const &amp;Csty)，os &lt;&lt;st.nAge;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 输入运算符重载:</span><br><span class="line"></span><br><span class="line">- 参数不匹配用ist.fail()检测</span><br><span class="line">- 输出=&gt;  ist&gt;&gt;st.nAge &gt;&gt; st.dbHeight;</span><br></pre></td></tr></table></figure>
+<p>istream&amp; operator &gt;&gt;(istream&amp; ist,CStu&amp; st)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">### 前置+ +与后置+ +重载</span><br></pre></td></tr></table></figure>
 <p>int operator++(Cstu* st){} =&gt;前置++</p>
-<p>int operator++(Cstu* st,int n) =&gt;后置++<br>{<br>    int a =st.nage;<br>    st.nage +=1;<br>    return a;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">类型转换重载</span><br></pre></td></tr></table></figure></p>
-<p>operator int()const{}            //无返回值，但有return </p>
+<p>int operator++(Cstu* st,int n) =&gt;后置++<br>
+{<br>
+int a =st.nage;<br>
+st.nage +=1;<br>
+return a;<br>
+}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">类型转换重载</span><br></pre></td></tr></table></figure>
+<p>operator int()const{}			//无返回值，但有return</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">△.必须在类内。▲.const</span><br><span class="line"></span><br><span class="line">## 模板</span><br></pre></td></tr></table></figure>
-<p>template <typename y=""><br>void func(Y a) cout &lt;&lt; a　&lt;&lt; endl;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">模板的具体化:</span><br></pre></td></tr></table></figure></typename></p>
-<p>temlpate &lt;&gt; void func<node>(Node&amp; a){}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 模板具体化的执行优先级高于通用的优先级，</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">◇.注意，STL头文件没有扩展名.h</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line"># CPP</span><br><span class="line"></span><br><span class="line">```该类接受2个参数</span><br><span class="line">初始化列表</span><br><span class="line">class CStu</span><br><span class="line">&#123;</span><br><span class="line">    int a;</span><br><span class="line">    int arr[4];</span><br><span class="line">    float b;</span><br><span class="line">//构造函数： </span><br><span class="line">	CStu(*float c,int d*):a(2),b(2.2f),arr()    #成员初始化顺序只与声明顺序有关，与此处书写顺序无关</span><br><span class="line">    &#123;							#新增语法，arr数组全初始化为0</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></node></p>
+<p>template <typename y=""><br>
+void func(Y a) cout &lt;&lt; a　&lt;&lt; endl;</typename></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">模板的具体化:</span><br></pre></td></tr></table></figure>
+<p>temlpate &lt;&gt; void func<node>(Node&amp; a){}</node></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 模板具体化的执行优先级高于通用的优先级，</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">◇.注意，STL头文件没有扩展名.h</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line"># CPP</span><br><span class="line"></span><br><span class="line">```该类接受2个参数</span><br><span class="line">初始化列表</span><br><span class="line">class CStu</span><br><span class="line">&#123;</span><br><span class="line">    int a;</span><br><span class="line">    int arr[4];</span><br><span class="line">    float b;</span><br><span class="line">//构造函数： </span><br><span class="line">	CStu(*float c,int d*):a(2),b(2.2f),arr()    #成员初始化顺序只与声明顺序有关，与此处书写顺序无关</span><br><span class="line">    &#123;							#新增语法，arr数组全初始化为0</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>▲.类必须先初始化成员变量。</p>
 <p>​    。float c和int d 两个变量的作用域仅限于构造函数内.所以要想在整个类中使用该变量，就得将传入的参数初始化赋值给类中的变量。</p>
 <p>​    若有多个构造函数，会执行初始化列表绑定所在的构造函数（构造函数的重载）</p>
@@ -183,22 +227,26 @@
 <p>△.析构函数没有重载，且不接受参数。对象声明调用周期结束时自动调用。</p>
 <p>▲构造函数和析构函数都必须写在public访问控制符下</p>
 <hr>
-<h2 id="malloc和new、free和delete区别"><a href="#malloc和new、free和delete区别" class="headerlink" title="malloc和new、free和delete区别"></a>malloc和new、free和delete区别</h2><ul>
+<h2 id="malloc和new-free和delete区别"><a class="markdownIt-Anchor" href="#malloc和new-free和delete区别"></a> malloc和new、free和delete区别</h2>
+<ul>
 <li>malloc不会触发构造函数，new可以</li>
 <li>free不会触发析构函数，delete可以</li>
 </ul>
 <hr>
-<h2 id="This指针"><a href="#This指针" class="headerlink" title="This指针"></a>This指针</h2><p>指针类型为类的类型。</p>
+<h2 id="this指针-2"><a class="markdownIt-Anchor" href="#this指针-2"></a> This指针</h2>
+<p>指针类型为类的类型。</p>
 <p>this不是类的成员。</p>
-<p>this指针为成员函数的隐含参数，相当于python类中的self…..(所以this指针的作用域为类内部)</p>
+<p>this指针为成员函数的隐含参数，相当于python类中的self…(所以this指针的作用域为类内部)</p>
 <hr>
-<h2 id="常函数-1"><a href="#常函数-1" class="headerlink" title="常函数"></a>常函数</h2><figure class="highlight plain"><figcaption><span>CStu&#123;&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class CStu</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">    void show() const  #在括号之后</span><br><span class="line">    &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="常函数-2"><a class="markdownIt-Anchor" href="#常函数-2"></a> 常函数</h2>
+<figure class="highlight plain"><figcaption><span>CStu&#123;&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class CStu</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">    void show() const  #在括号之后</span><br><span class="line">    &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>◆.析构函数、构造函数不能是常函数</p>
 <p>◆.常函数不能修改数据成员（是类的），但可以修改常函数内的变量。</p>
 <p>▲常函数的this指针的类型为const CStu*</p>
 <p>★常对象(const CStu st)只能调用常函数，不能调用普通函数</p>
 <hr>
-<h2 id="静态成员-1"><a href="#静态成员-1" class="headerlink" title="静态成员"></a>静态成员</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class CStu</span><br><span class="line">&#123;</span><br><span class="line">	static int b;</span><br><span class="line">    public:</span><br><span class="line">    void show() const  #在括号之后</span><br><span class="line">    &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="静态成员-2"><a class="markdownIt-Anchor" href="#静态成员-2"></a> 静态成员</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class CStu</span><br><span class="line">&#123;</span><br><span class="line">	static int b;</span><br><span class="line">    public:</span><br><span class="line">    void show() const  #在括号之后</span><br><span class="line">    &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>∷不能在构造函数的初始化列表中初始化，但可以类外初始化</p>
 <p>∷类外初始化不用加static，而是int CStu::b = 12;</p>
 <p>▲static受访问控制符约束。</p>
@@ -206,15 +254,17 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">类名作用域：cout&lt;&lt; CStu::b &lt;&lt; endl;</span><br><span class="line">对象：</span><br></pre></td></tr></table></figure>
 <p>○只有静态常量整型数据才能直接在类中初始化，其他得在初始化列表或者构造函数中赋值（静态数据成员可以类外赋值），普通数据成员不能类外初始化。</p>
 <p>●静态成员是跟类一一对应的，跟对象无关。</p>
-<h2 id="静态成员函数"><a href="#静态成员函数" class="headerlink" title="静态成员函数"></a>静态成员函数</h2><blockquote>
+<h2 id="静态成员函数"><a class="markdownIt-Anchor" href="#静态成员函数"></a> 静态成员函数</h2>
+<blockquote>
 <p>他是属于类的属性，不是对象的，即同一个类的所有对象共有一个（可以作为指挥类所有对象的方法）</p>
 <p>无this指针</p>
 <p>不能调用普通成员，只能调用静态成员</p>
 </blockquote>
 <hr>
-<h2 id="拷贝构造-1"><a href="#拷贝构造-1" class="headerlink" title="拷贝构造"></a>拷贝构造</h2><blockquote>
+<h2 id="拷贝构造-2"><a class="markdownIt-Anchor" href="#拷贝构造-2"></a> 拷贝构造</h2>
+<blockquote>
 <p>public:</p>
-<p>​    Cstu(const Cstu &amp;a){} 形式。参数是本类的常引用</p>
+<p>​	Cstu(const Cstu &amp;a){} 形式。参数是本类的常引用</p>
 </blockquote>
 <p>何时调用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.新建一个对象，并将其初始化为同类时：</span><br><span class="line">- Cstu a1(a);	#a为一个Cstu对象</span><br><span class="line">- Cstu a2 = a;  将不会再触发构造函数。</span><br><span class="line">- Cstu a3 = Cstu(a);   用a来拷贝构造一个临时对象，再用这个临时对象给a3</span><br><span class="line">- Cstu* a4 = new Cstu(a);</span><br><span class="line">2.当程序生成对象副本时：</span><br><span class="line">		函数参数传递对象的值void fun(Cstu a)&#123;&#125;   （∵当调用这个函数的时候会为这个形参生成空间）</span><br><span class="line">		▲有时为了效率要避免这种拷贝构造的产生，解决：传引用</span><br><span class="line">		函数返回值 Cstu fun()&#123; Cstu a; return a;&#125; 返回值为创建了临时对象承接，然后再把临时变量返回。</span><br></pre></td></tr></table></figure>
@@ -224,11 +274,13 @@
 <p>Cstu s2;</p>
 <p>s2 = s1;</p>
 </blockquote>
-<h3 id="默认拷贝构造（浅拷贝）"><a href="#默认拷贝构造（浅拷贝）" class="headerlink" title="默认拷贝构造（浅拷贝）"></a>默认拷贝构造（浅拷贝）</h3><blockquote>
+<h3 id="默认拷贝构造浅拷贝"><a class="markdownIt-Anchor" href="#默认拷贝构造浅拷贝"></a> 默认拷贝构造（浅拷贝）</h3>
+<blockquote>
 <p>逐个赋值非静态成员，（即默认拷贝构造中是有内容的，默认的构造函数是没有内容的）</p>
 <p>内存排布一样，地址不同</p>
 </blockquote>
-<h3 id="深拷贝-涉及类中有指针"><a href="#深拷贝-涉及类中有指针" class="headerlink" title="深拷贝(涉及类中有指针)"></a>深拷贝(涉及类中有指针)</h3><p>如果是浅拷贝，则两个对象的指针都会指向同一个空间，如果第一个对象被消除后，这个空间就会被delete（free掉），所以第二个对象被删除时再操作（free）这个被释放掉的空间（已经还给系统），就相当于控制野指针，所以会报错。</p>
+<h3 id="深拷贝涉及类中有指针"><a class="markdownIt-Anchor" href="#深拷贝涉及类中有指针"></a> 深拷贝(涉及类中有指针)</h3>
+<p>如果是浅拷贝，则两个对象的指针都会指向同一个空间，如果第一个对象被消除后，这个空间就会被delete（free掉），所以第二个对象被删除时再操作（free）这个被释放掉的空间（已经还给系统），就相当于控制野指针，所以会报错。</p>
 <p>解决方法1深拷贝：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this-&gt;a = new int[2];</span><br><span class="line">memcpy(this-&gt;a,b.a,8);</span><br><span class="line">strcpy(...)</span><br></pre></td></tr></table></figure>
 <p>解决方法2传引用（不经过拷贝构造）：</p>
@@ -236,7 +288,8 @@
 <p>解决方法3传地址：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Cstu* fun(CStu* a)</span><br><span class="line">&#123;	return a;	&#125;</span><br><span class="line">fun(&amp;a);</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="inline内联函数"><a href="#inline内联函数" class="headerlink" title="inline内联函数"></a>inline内联函数</h2><p>常规函数的调用过程：调用时，根据函数地址，跳到函数代码空间，执行指令，执行完再跳转到调用的位置。</p>
+<h2 id="inline内联函数"><a class="markdownIt-Anchor" href="#inline内联函数"></a> inline内联函数</h2>
+<p>常规函数的调用过程：调用时，根据函数地址，跳到函数代码空间，执行指令，执行完再跳转到调用的位置。</p>
 <p>内联函数：将函数代码直接复制到执行部分，不跳转。</p>
 <blockquote>
 <p>比常规函数稍快</p>
@@ -248,16 +301,20 @@
 <p>▲.类内定义的函数都是内联函数，但如果定义在类外的话加inline为内联函数，不加就不是内联函数。</p>
 <p>△.内联函数通常定义在头文件里。</p>
 <hr>
-<h2 id="操作符重载"><a href="#操作符重载" class="headerlink" title="操作符重载"></a>操作符重载</h2><p>operator为关键字</p>
+<h2 id="操作符重载"><a class="markdownIt-Anchor" href="#操作符重载"></a> 操作符重载</h2>
+<p>operator为关键字</p>
 <p>“operator+”必须有一个类类型的形参；</p>
 <hr>
-<h2 id="继承："><a href="#继承：" class="headerlink" title="继承："></a>继承：</h2><blockquote>
+<h2 id="继承"><a class="markdownIt-Anchor" href="#继承"></a> 继承：</h2>
+<blockquote>
 <p>继承控制符：</p>
 <p>public 父类：父类为什么访问控制符，子类就继承什么样的。</p>
 <p>protected 父类:继承之后，父类的public降级为protected，低级或者同级的访问控制符不变（即protectedh和private)</p>
 <p>private 父类：继承之后，父类全变为私有。</p>
 </blockquote>
-<h2 id="多态和虚函数"><a href="#多态和虚函数" class="headerlink" title="多态和虚函数"></a>多态和虚函数</h2><h3 id="多态：同样的调用有多种结果"><a href="#多态：同样的调用有多种结果" class="headerlink" title="多态：同样的调用有多种结果"></a>多态：同样的调用有多种结果</h3><p>通过虚函数调用子类的成员函数，形式为virtual void Show(){}  (函数名与子类相同)</p>
+<h2 id="多态和虚函数"><a class="markdownIt-Anchor" href="#多态和虚函数"></a> 多态和虚函数</h2>
+<h3 id="多态同样的调用有多种结果"><a class="markdownIt-Anchor" href="#多态同样的调用有多种结果"></a> 多态：同样的调用有多种结果</h3>
+<p>通过虚函数调用子类的成员函数，形式为virtual void Show(){}  (函数名与子类相同)</p>
 <blockquote>
 <p>具体执行那个子类的函数由父类所指向的子类所决定. CFather* fa = new CSon1;</p>
 </blockquote>
@@ -265,40 +322,47 @@
 <p>C++中声明结构体变量不需要‘struct’，struct默认为public,class 默认为private</p>
 <p>c静态变量在预处理时声明。</p>
 <p>cpp静态成员在类声明时声明。</p>
-<h2 id="STL初始化"><a href="#STL初始化" class="headerlink" title="STL初始化"></a>STL初始化</h2><hr>
+<h2 id="stl初始化"><a class="markdownIt-Anchor" href="#stl初始化"></a> STL初始化</h2>
+<hr>
 <ul>
-<li><p>(1): vector<int> v;</int></p>
+<li>
+<p>(1): vector<int> v;</int></p>
 <blockquote>
 <p>默认初始化，vector为空， size为0，表明容器中没有元素，而且 capacity 也返回 0，意味着还没有分配内存空间。</p>
 </blockquote>
 </li>
-<li><p>(2): vector<int> v2(v);</int></p>
-<p>vector<int> v2= v; </int></p>
+<li>
+<p>(2): vector<int> v2(v);</int></p>
+<p>vector<int> v2= v;</int></p>
 <blockquote>
 <p>两种方式等价 ，ilist2 初始化为ilist 的拷贝，ilist必须与ilist2 类型相同，也就是同为int的vector类型，ilist2将具有和ilist相同的容量和元素</p>
 </blockquote>
 </li>
-<li><p>(3): vector<int> ilist = {1,2,3.0,4,5,6,7};</int></p>
+<li>
+<p>(3): vector<int> ilist = {1,2,3.0,4,5,6,7};</int></p>
 <p>vector<int> ilist {1,2,3.0,4,5,6,7};</int></p>
 </li>
 </ul>
 <blockquote>
-<p>初始化为列表中元素的拷贝，列表中元素必须与ilist的元素类型相容 </p>
+<p>初始化为列表中元素的拷贝，列表中元素必须与ilist的元素类型相容</p>
 </blockquote>
 <ul>
-<li><p>(4): vector<int> ilist3(ilist.begin()+2,ilist.end()-1); </int></p>
+<li>
+<p>(4): vector<int> ilist3(ilist.begin()+2,ilist.end()-1);</int></p>
 <blockquote>
-<p>初始化为两个迭代器指定范围中元素的拷贝，范围中的元素类型必须与ilist3 的元素类型相容 </p>
+<p>初始化为两个迭代器指定范围中元素的拷贝，范围中的元素类型必须与ilist3 的元素类型相容</p>
 </blockquote>
 </li>
-<li><p>(5): vector<int> ilist4(7); </int></p>
+<li>
+<p>(5): vector<int> ilist4(7);</int></p>
 <blockquote>
-<p>默认值初始化，ilist4中将包含7个元素，每个元素进行缺省的值初始化，对于int，也就是被赋值为0， </p>
+<p>默认值初始化，ilist4中将包含7个元素，每个元素进行缺省的值初始化，对于int，也就是被赋值为0，</p>
 </blockquote>
 </li>
-<li><p>(6):vector<int> ilist5(7,3); </int></p>
+<li>
+<p>(6):vector<int> ilist5(7,3);</int></p>
 <blockquote>
-<p>指定值初始化，ilist5被初始化为包含7个值为3的int </p>
+<p>指定值初始化，ilist5被初始化为包含7个值为3的int</p>
 </blockquote>
 </li>
 </ul>
@@ -313,4 +377,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-学习笔记"><span class="toc-number">1.</span> <span class="toc-text">C++学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sprintf"><span class="toc-number">1.1.</span> <span class="toc-text">sprintf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用"><span class="toc-number">1.2.</span> <span class="toc-text">引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增强的for循环"><span class="toc-number">1.3.</span> <span class="toc-text">增强的for循环:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类"><span class="toc-number">1.4.</span> <span class="toc-text">类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this指针"><span class="toc-number">1.5.</span> <span class="toc-text">this指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常函数"><span class="toc-number">1.6.</span> <span class="toc-text">常函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态成员"><span class="toc-number">1.7.</span> <span class="toc-text">静态成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数组"><span class="toc-number">1.8.</span> <span class="toc-text">创建数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浅拷贝和深拷贝"><span class="toc-number">1.9.</span> <span class="toc-text">浅拷贝和深拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拷贝构造"><span class="toc-number">1.10.</span> <span class="toc-text">拷贝构造</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#malloc和new、free和delete区别"><span class="toc-number">1.11.</span> <span class="toc-text">malloc和new、free和delete区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#This指针"><span class="toc-number">1.12.</span> <span class="toc-text">This指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常函数-1"><span class="toc-number">1.13.</span> <span class="toc-text">常函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态成员-1"><span class="toc-number">1.14.</span> <span class="toc-text">静态成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态成员函数"><span class="toc-number">1.15.</span> <span class="toc-text">静态成员函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拷贝构造-1"><span class="toc-number">1.16.</span> <span class="toc-text">拷贝构造</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#默认拷贝构造（浅拷贝）"><span class="toc-number">1.16.1.</span> <span class="toc-text">默认拷贝构造（浅拷贝）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深拷贝-涉及类中有指针"><span class="toc-number">1.16.2.</span> <span class="toc-text">深拷贝(涉及类中有指针)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inline内联函数"><span class="toc-number">1.17.</span> <span class="toc-text">inline内联函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作符重载"><span class="toc-number">1.18.</span> <span class="toc-text">操作符重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继承："><span class="toc-number">1.19.</span> <span class="toc-text">继承：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态和虚函数"><span class="toc-number">1.20.</span> <span class="toc-text">多态和虚函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#多态：同样的调用有多种结果"><span class="toc-number">1.20.1.</span> <span class="toc-text">多态：同样的调用有多种结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STL初始化"><span class="toc-number">1.21.</span> <span class="toc-text">STL初始化</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c学习笔记"><span class="toc-number">1.</span> <span class="toc-text"> C++学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sprintf"><span class="toc-number">1.1.</span> <span class="toc-text"> sprintf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用"><span class="toc-number">1.2.</span> <span class="toc-text"> 引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增强的for循环"><span class="toc-number">1.3.</span> <span class="toc-text"> 增强的for循环:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类"><span class="toc-number">1.4.</span> <span class="toc-text"> 类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this指针"><span class="toc-number">1.5.</span> <span class="toc-text"> this指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常函数"><span class="toc-number">1.6.</span> <span class="toc-text"> 常函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态成员"><span class="toc-number">1.7.</span> <span class="toc-text"> 静态成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数组"><span class="toc-number">1.8.</span> <span class="toc-text"> 创建数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浅拷贝和深拷贝"><span class="toc-number">1.9.</span> <span class="toc-text"> 浅拷贝和深拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拷贝构造"><span class="toc-number">1.10.</span> <span class="toc-text"> 拷贝构造</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#malloc和new-free和delete区别"><span class="toc-number">1.11.</span> <span class="toc-text"> malloc和new、free和delete区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this指针-2"><span class="toc-number">1.12.</span> <span class="toc-text"> This指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常函数-2"><span class="toc-number">1.13.</span> <span class="toc-text"> 常函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态成员-2"><span class="toc-number">1.14.</span> <span class="toc-text"> 静态成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态成员函数"><span class="toc-number">1.15.</span> <span class="toc-text"> 静态成员函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拷贝构造-2"><span class="toc-number">1.16.</span> <span class="toc-text"> 拷贝构造</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#默认拷贝构造浅拷贝"><span class="toc-number">1.16.1.</span> <span class="toc-text"> 默认拷贝构造（浅拷贝）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深拷贝涉及类中有指针"><span class="toc-number">1.16.2.</span> <span class="toc-text"> 深拷贝(涉及类中有指针)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inline内联函数"><span class="toc-number">1.17.</span> <span class="toc-text"> inline内联函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作符重载"><span class="toc-number">1.18.</span> <span class="toc-text"> 操作符重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继承"><span class="toc-number">1.19.</span> <span class="toc-text"> 继承：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态和虚函数"><span class="toc-number">1.20.</span> <span class="toc-text"> 多态和虚函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#多态同样的调用有多种结果"><span class="toc-number">1.20.1.</span> <span class="toc-text"> 多态：同样的调用有多种结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stl初始化"><span class="toc-number">1.21.</span> <span class="toc-text"> STL初始化</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

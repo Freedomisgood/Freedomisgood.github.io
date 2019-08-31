@@ -97,47 +97,56 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Latex学习</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/01/20</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Latex"> Latex</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">686</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="基本概念和使用"><a href="#基本概念和使用" class="headerlink" title="基本概念和使用"></a>基本概念和使用</h1><h4 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello, world!"></a>Hello, world!</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">%这里是导言区</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">Hello, world!</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="请注意，TeX-对控制序列的大小写是敏感的"><a href="#请注意，TeX-对控制序列的大小写是敏感的" class="headerlink" title="请注意，TeX 对控制序列的大小写是敏感的"></a><strong>请注意，TeX 对控制序列的大小写是敏感的</strong></h5><h5 id="部分控制序列还有被方括号-包括的可选参数。"><a href="#部分控制序列还有被方括号-包括的可选参数。" class="headerlink" title="部分控制序列还有被方括号[]包括的可选参数。"></a>部分控制序列还有被方括号<code>[]</code>包括的可选参数。</h5><p>出现了控制序列 <code>begin</code>，这个控制序列总是与 <code>end</code> 成对出现。这两个控制序列以及他们中间的内容被称为「环境」；他们之后的第一个必要参数总是<strong>一致的</strong>，被称为环境名。</p>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Latex学习</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/01/20</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Latex"> Latex</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">686</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="基本概念和使用"><a class="markdownIt-Anchor" href="#基本概念和使用"></a> 基本概念和使用</h1>
+<h4 id="hello-world"><a class="markdownIt-Anchor" href="#hello-world"></a> Hello, world!</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">%这里是导言区</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">Hello, world!</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="请注意tex-对控制序列的大小写是敏感的"><a class="markdownIt-Anchor" href="#请注意tex-对控制序列的大小写是敏感的"></a> <strong>请注意，TeX 对控制序列的大小写是敏感的</strong></h5>
+<h5 id="部分控制序列还有被方括号包括的可选参数"><a class="markdownIt-Anchor" href="#部分控制序列还有被方括号包括的可选参数"></a> 部分控制序列还有被方括号<code>[]</code>包括的可选参数。</h5>
+<p>出现了控制序列 <code>begin</code>，这个控制序列总是与 <code>end</code> 成对出现。这两个控制序列以及他们中间的内容被称为「环境」；他们之后的第一个必要参数总是<strong>一致的</strong>，被称为环境名。</p>
 <p>只有在 “document” 环境中的内容，才会被正常输出到文档中去或是作为控制序列对文档产生影响。也就是说，在 <code>\end{document}</code> 之后插入任何内容都是无效的。</p>
 <p><code>\begin{document}</code> 与 <code>\documentclass{article}</code> 之间的部分被称为导言区。导言区中的控制序列，通常会影响到整个输出文档。</p>
-<h4 id="输出中文"><a href="#输出中文" class="headerlink" title="输出中文"></a>输出中文</h4><p>使用命令行输入<code>texworks</code>打开tex编辑器</p>
+<h4 id="输出中文"><a class="markdownIt-Anchor" href="#输出中文"></a> 输出中文</h4>
+<p>使用命令行输入<code>texworks</code>打开tex编辑器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[UTF8]&#123;ctexart&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">你好，world!</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
 <ol>
 <li>文档类从 <code>article</code> 变为 <code>ctexart</code>；</li>
 <li>增加了文档类选项 <code>UTF8</code>。</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[UTF8]&#123;ctexart&#125;</span><br><span class="line">\title&#123;你好，world!&#125;</span><br><span class="line">\author&#123;Liam&#125;</span><br><span class="line">\date&#123;\today&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">\maketitle</span><br><span class="line">你好，world!</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h1><h3 id="中文问题"><a href="#中文问题" class="headerlink" title="中文问题"></a>中文问题</h3><p>面对中文编码问题，CJK被淘汰，<strong>使用ctexart编译中文</strong></p>
+<h1 id="笔记"><a class="markdownIt-Anchor" href="#笔记"></a> 笔记</h1>
+<h3 id="中文问题"><a class="markdownIt-Anchor" href="#中文问题"></a> 中文问题</h3>
+<p>面对中文编码问题，CJK被淘汰，<strong>使用ctexart编译中文</strong></p>
 <p>▲注意，编译方式必须改为<strong>xeLaTex</strong>，只有部分环境下 pdfLaTex 也可以编译成功</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[UTF8]&#123;ctexart&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">您可以看到，说明你编译成功了！</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="标准文类"><a href="#标准文类" class="headerlink" title="标准文类"></a>标准文类</h3><ul>
+<h3 id="标准文类"><a class="markdownIt-Anchor" href="#标准文类"></a> 标准文类</h3>
+<ul>
 <li>article：短文，评论，学术论文；无左右页区分，无章设置。对应中文类ctexart。</li>
 <li>book：著作，学位论文；默认有左右页区分，章起右页。对应中文类ctexbook。</li>
 <li>report：商业，科技，试验报告，默认无左右页区分，章起新页。对应中文类：ctexrep。</li>
 <li>beamer：论文陈述幻灯片；提供多种主题式样，可方便更改幻灯片的整体风格。</li>
 </ul>
-<h3 id="常用宏包"><a href="#常用宏包" class="headerlink" title="常用宏包"></a>常用宏包</h3><p>不是必须记住，需要用哪个现查即可，列出这些是为了浏览别人的源文件时知道人家调用了哪个宏包。 </p>
+<h3 id="常用宏包"><a class="markdownIt-Anchor" href="#常用宏包"></a> 常用宏包</h3>
+<p>不是必须记住，需要用哪个现查即可，列出这些是为了浏览别人的源文件时知道人家调用了哪个宏包。</p>
 <ul>
-<li>amsmath 公式环境和数学命令 </li>
-<li>amssymb 数学符号生成命令 </li>
-<li>array 数组和表格制作 </li>
-<li>calc 四则运算 </li>
-<li>caption 插图和表格标题格式设置 </li>
-<li>fancyhdr 页眉页脚设置 </li>
-<li>fancyvrb 抄录格式设置 </li>
-<li>fontspec 字体选择 </li>
-<li>geometry 版面尺寸设置 </li>
-<li>graphicx 插图处理 </li>
-<li>hyperref 创建超文本链接和PDF书签 </li>
-<li>longtable 制作跨页表格 </li>
-<li>multicol 多栏排版 </li>
-<li>ntheorem 定理设置 </li>
-<li>paralist 多种列表环境 </li>
-<li>tabularx 自动设置表格列宽 </li>
-<li>titlesec 章节标题格式设置 </li>
-<li>titletoc 目录格式设置 </li>
-<li>xcolor 颜色处理 </li>
+<li>amsmath 公式环境和数学命令</li>
+<li>amssymb 数学符号生成命令</li>
+<li>array 数组和表格制作</li>
+<li>calc 四则运算</li>
+<li>caption 插图和表格标题格式设置</li>
+<li>fancyhdr 页眉页脚设置</li>
+<li>fancyvrb 抄录格式设置</li>
+<li>fontspec 字体选择</li>
+<li>geometry 版面尺寸设置</li>
+<li>graphicx 插图处理</li>
+<li>hyperref 创建超文本链接和PDF书签</li>
+<li>longtable 制作跨页表格</li>
+<li>multicol 多栏排版</li>
+<li>ntheorem 定理设置</li>
+<li>paralist 多种列表环境</li>
+<li>tabularx 自动设置表格列宽</li>
+<li>titlesec 章节标题格式设置</li>
+<li>titletoc 目录格式设置</li>
+<li>xcolor 颜色处理</li>
 <li>xeCJK 中日朝文字处理和字体选择</li>
 </ul>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/01/19/Latex学习/">https://nymrli.top/2019/01/19/Latex学习/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/01/19/Typora可选选项/" title="Typora可选选项"><span>< PreviousPost</span><br><span class="prevTitle">Typora可选选项</span></a><a class="nextSlogan" href="/2019/01/19/每日codewars/" title="每日codewars"><span>NextPost ></span><br><span class="nextTitle">每日codewars</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
@@ -149,4 +158,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基本概念和使用"><span class="toc-number">1.</span> <span class="toc-text">基本概念和使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hello-world"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">Hello, world!</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#请注意，TeX-对控制序列的大小写是敏感的"><span class="toc-number">1.0.0.1.1.</span> <span class="toc-text">请注意，TeX 对控制序列的大小写是敏感的</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#部分控制序列还有被方括号-包括的可选参数。"><span class="toc-number">1.0.0.1.2.</span> <span class="toc-text">部分控制序列还有被方括号[]包括的可选参数。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出中文"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">输出中文</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#笔记"><span class="toc-number">2.</span> <span class="toc-text">笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#中文问题"><span class="toc-number">2.0.1.</span> <span class="toc-text">中文问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标准文类"><span class="toc-number">2.0.2.</span> <span class="toc-text">标准文类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用宏包"><span class="toc-number">2.0.3.</span> <span class="toc-text">常用宏包</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基本概念和使用"><span class="toc-number">1.</span> <span class="toc-text"> 基本概念和使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hello-world"><span class="toc-number">1.0.0.1.</span> <span class="toc-text"> Hello, world!</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#请注意tex-对控制序列的大小写是敏感的"><span class="toc-number">1.0.0.1.1.</span> <span class="toc-text"> 请注意，TeX 对控制序列的大小写是敏感的</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#部分控制序列还有被方括号包括的可选参数"><span class="toc-number">1.0.0.1.2.</span> <span class="toc-text"> 部分控制序列还有被方括号[]包括的可选参数。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出中文"><span class="toc-number">1.0.0.2.</span> <span class="toc-text"> 输出中文</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#笔记"><span class="toc-number">2.</span> <span class="toc-text"> 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#中文问题"><span class="toc-number">2.0.1.</span> <span class="toc-text"> 中文问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标准文类"><span class="toc-number">2.0.2.</span> <span class="toc-text"> 标准文类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用宏包"><span class="toc-number">2.0.3.</span> <span class="toc-text"> 常用宏包</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

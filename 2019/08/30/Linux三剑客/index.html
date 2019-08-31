@@ -97,12 +97,14 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux三剑客</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/08/30</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,340</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="Linux三剑客"><a href="#Linux三剑客" class="headerlink" title="Linux三剑客"></a>Linux三剑客</h1><h2 id="bash命令执行顺序"><a href="#bash命令执行顺序" class="headerlink" title="bash命令执行顺序"></a>bash命令执行顺序</h2><ol>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux三剑客</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/08/30</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,340</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="linux三剑客"><a class="markdownIt-Anchor" href="#linux三剑客"></a> Linux三剑客</h1>
+<h2 id="bash命令执行顺序"><a class="markdownIt-Anchor" href="#bash命令执行顺序"></a> bash命令执行顺序</h2>
+<ol>
 <li>把命令行分成单个命令词</li>
 <li>展开别名</li>
 <li>展开大括号的声明（{}）</li>
 <li>展开波浪符声明（~）</li>
-<li>命令替换$0和”)</li>
+<li>命令替换$0和&quot;)</li>
 <li>再次把命令行分成命令词</li>
 <li>展开文件通配（*、？、[abc]等等）</li>
 <li>准备I/0重导向（&lt;、&gt;）</li>
@@ -122,26 +124,31 @@
 <p>精确查找</p>
 <p>只能搜索用户具备读取和执行权限的目录</p>
 </blockquote>
-<h2 id="sed-Stream-EDitor"><a href="#sed-Stream-EDitor" class="headerlink" title="sed(Stream EDitor):"></a>sed(Stream EDitor):</h2><blockquote>
+<h2 id="sedstream-editor"><a class="markdownIt-Anchor" href="#sedstream-editor"></a> sed(Stream EDitor):</h2>
+<blockquote>
 <p>sed使用单引号</p>
 </blockquote>
-<p><code>sed -n &#39;22,$p&#39; test</code></p>
-<p>指令解释:常用选项[-n]，’地址定界[22,$],编辑命令[p]’</p>
+<p><code>sed -n '22,$p' test</code></p>
+<p>指令解释:常用选项[-n]，‘地址定界[22,$],编辑命令[p]’</p>
 <p>地址定界:</p>
 <ul>
-<li><p>不给地址: 全文处理</p>
+<li>
+<p>不给地址: 全文处理</p>
 </li>
-<li><p>单地址</p>
+<li>
+<p>单地址</p>
 <ul>
 <li><code>#:</code> 指定行</li>
 <li><code>$:</code> 最后一行</li>
 <li><code>/pattern:</code> 正则匹配</li>
 </ul>
 </li>
-<li><p>地址范围</p>
+<li>
+<p>地址范围</p>
 <ul>
-<li><code>#,#</code>,如<code>1,20</code>即1-20行<ul>
-<li>e.g.<code>sed -n &#39;22,$p&#39; test</code></li>
+<li><code>#,#</code>,如<code>1,20</code>即1-20行
+<ul>
+<li>e.g.<code>sed -n '22,$p' test</code></li>
 </ul>
 </li>
 <li><code>#,+#</code>,如<code>2,+20</code>即2-2+20 行</li>
@@ -150,43 +157,53 @@
 <li><code>#,/pat1/</code></li>
 </ul>
 </li>
-<li><p>步进~</p>
+<li>
+<p>步进~</p>
 <ul>
-<li>1~2 奇数行<ul>
+<li>1~2 奇数行
+<ul>
 <li><code>sed -n &quot;1~2p&quot; f1</code></li>
 </ul>
 </li>
 <li>2~2 偶数行</li>
 </ul>
 </li>
-<li><p>正则</p>
+<li>
+<p>正则</p>
 <ul>
-<li><blockquote>
+<li>
+<blockquote>
 <p>sed ‘/regex expression/[option] text’ filename</p>
 </blockquote>
 </li>
-<li><p>^匹配每一行的开头</p>
+<li>
+<p>^匹配每一行的开头</p>
 </li>
-<li><p>$匹配行的结尾</p>
+<li>
+<p>$匹配行的结尾</p>
 </li>
-<li><p>匹配包含2、3、或者4的行</p>
+<li>
+<p>匹配包含2、3、或者4的行</p>
 <ul>
-<li><code>sed -n &#39;/[234]/p&#39; employee.txt</code></li>
+<li><code>sed -n '/[234]/p' employee.txt</code></li>
 </ul>
 </li>
-<li><p>删除所有以#开头的行</p>
+<li>
+<p>删除所有以#开头的行</p>
 <ul>
-<li><code>**sed -e &#39;s/^#.\*// ; /^$/d&#39; employee.txt**</code></li>
+<li><code>**sed -e 's/^#.\*// ; /^$/d' employee.txt**</code></li>
 </ul>
 </li>
-<li><p>删除所有注释和空行</p>
+<li>
+<p>删除所有注释和空行</p>
 <ul>
-<li><code>sed -e &#39;s/#.*//;/^$/ d&#39; /etc/profile</code></li>
+<li><code>sed -e 's/#.*//;/^$/ d' /etc/profile</code></li>
 </ul>
 </li>
-<li><p>只删除注释行不删除空行</p>
+<li>
+<p>只删除注释行不删除空行</p>
 <ul>
-<li><code>sed &#39;/^#.*/d&#39; /etc/profile</code></li>
+<li><code>sed '/^#.*/d' /etc/profile</code></li>
 <li></li>
 </ul>
 </li>
@@ -195,94 +212,118 @@
 </ul>
 <p>常用选项</p>
 <ul>
-<li><p><code>-n</code>不自动打印</p>
+<li>
+<p><code>-n</code>不自动打印</p>
 </li>
-<li><p><code>-f</code> 指定文件中读取编辑脚本</p>
+<li>
+<p><code>-f</code> 指定文件中读取编辑脚本</p>
 <ul>
-<li><p>script.txt</p>
+<li>
+<p>script.txt</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2~2p</span><br></pre></td></tr></table></figure>
 <p><code>sed -n -f script.txt f1</code></p>
 </li>
 </ul>
 </li>
-<li><p><code>-r</code>支持使用拓展正则表达式</p>
+<li>
+<p><code>-r</code>支持使用拓展正则表达式</p>
 <ul>
-<li><code>sed -r &#39;s/(GRUB_CMDLINE_LINUX.*)&quot;$/\1 xyz&quot;/&#39;/etc/default/grub</code></li>
-<li><code>echo&quot;/etc/sysconfig/network/&quot; | sed -r &#39;s/(.*\/)([^/]\/?$)/\1/&#39;</code></li>
+<li><code>sed -r 's/(GRUB_CMDLINE_LINUX.*)&quot;$/\1 xyz&quot;/'/etc/default/grub</code></li>
+<li><code>echo&quot;/etc/sysconfig/network/&quot; | sed -r 's/(.*\/)([^/]\/?$)/\1/'</code></li>
 </ul>
 </li>
-<li><p><code>-i.bak</code>生成备份文件bak并原处编辑</p>
+<li>
+<p><code>-i.bak</code>生成备份文件bak并原处编辑</p>
 <ul>
 <li>如果没有-i表示只是预览,不会真正执行</li>
 </ul>
 </li>
-<li><p><code>-e</code>多点编辑,即多次处理文件</p>
+<li>
+<p><code>-e</code>多点编辑,即多次处理文件</p>
 </li>
 </ul>
 <p>编辑命令</p>
 <ul>
-<li><p>d删除末世空间匹配的行,并启用下一轮循环</p>
+<li>
+<p>d删除末世空间匹配的行,并启用下一轮循环</p>
 <ul>
-<li><code>sed -n &#39;d&#39; test</code>全删</li>
-<li><code>sed -n &#39;1d&#39; test</code>只删第一行</li>
+<li><code>sed -n 'd' test</code>全删</li>
+<li><code>sed -n '1d' test</code>只删第一行</li>
 </ul>
 </li>
-<li><p>p打印当前模式空间内容,追加到默认输出后</p>
+<li>
+<p>p打印当前模式空间内容,追加到默认输出后</p>
 </li>
-<li><p><code>a[\]test</code> 指定行追加</p>
+<li>
+<p><code>a[\]test</code> 指定行追加</p>
 </li>
-<li><p><code>i[\]test</code> 行前插入</p>
+<li>
+<p><code>i[\]test</code> 行前插入</p>
 </li>
-<li><p><code>c[\]test</code> 替换行为单行或多行</p>
+<li>
+<p><code>c[\]test</code> 替换行为单行或多行</p>
 </li>
-<li><p>= 为模式空间中的行打印行号</p>
+<li>
+<p>= 为模式空间中的行打印行号</p>
 <ul>
 <li>sed -n ‘3,5{=;p}’ test</li>
 </ul>
 </li>
-<li><p>! 模式空间中匹配行取反</p>
+<li>
+<p>! 模式空间中匹配行取反</p>
 </li>
-<li><p>w/path/somefile：保存模式匹配的行至指定文件<br>r/path/somefile：读取指定文件的文本至模式空间中匹配到的行后</p>
+<li>
+<p>w/path/somefile：保存模式匹配的行至指定文件<br>
+r/path/somefile：读取指定文件的文本至模式空间中匹配到的行后</p>
 <ul>
-<li><code>sed&#39;/User/r sed.txt&#39; .bashrc</code></li>
+<li><code>sed'/User/r sed.txt' .bashrc</code></li>
 </ul>
 </li>
-<li><p>搜索代替</p>
+<li>
+<p>搜索代替</p>
 <ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed &apos;s/xxx/xxx/&apos; filename</span><br><span class="line"># sed &apos;s@xxx@xxx&apos; filename</span><br><span class="line"># sed &apos;s#xxx#xxx&apos; filename</span><br></pre></td></tr></table></figure>
+<li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed &apos;s/xxx/xxx/&apos; filename</span><br><span class="line"># sed &apos;s@xxx@xxx&apos; filename</span><br><span class="line"># sed &apos;s#xxx#xxx&apos; filename</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>替换标记：<br>g：行内全局替换<br>p：显示替换成功的行<br>W/PATH/TO/SOMEFILE：将替换成功的行保存至文件中</p>
+<li>
+<p>替换标记：<br>
+g：行内全局替换<br>
+p：显示替换成功的行<br>
+W/PATH/TO/SOMEFILE：将替换成功的行保存至文件中</p>
 </li>
 </ul>
 </li>
 </ul>
 <p>以下命令如果需要在文本中更改 需要加 -i 或者  -ri参数</p>
-<p><strong>用sed在aaa前加#注释</strong> </p>
+<p><strong>用sed在aaa前加#注释</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/^aaa/#&amp;/'</span> zimu.txt      <span class="comment"># &amp;的意思是匹配任意字符（就是说未知数，啥都行）  这条命令是 替换以aaa开头的</span></span><br></pre></td></tr></table></figure>
 <p><strong>用sed取消bbb前面的注释</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/^#(bbb)/\1/'</span> zimu.txt    <span class="comment">#\1的意思 就类似于   前面的 (bbb\） \1就是复制这个位置的内容  如果有 第二个 那么久\2就是复制第二个位置的内容</span></span><br><span class="line">sed <span class="string">'s/^#bbb/bbb/'</span> zimu.txt</span><br></pre></td></tr></table></figure>
 <p>上面那条命令等同于</p>
-<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><blockquote>
+<h2 id="awk"><a class="markdownIt-Anchor" href="#awk"></a> awk</h2>
+<blockquote>
 <p>优良的文本处理工具，Linux及Unix环境中现有的功能最强大的数据处理引擎之一</p>
 </blockquote>
 <p>ifconfig获得ip_addr的命令</p>
-<p>1.<code>ifconfig | grep inet | awk &#39;{print $2}&#39; | awk -F &#39;addr:&#39; &#39;{print $2}&#39;</code></p>
-<p>2.<code>ifconfig | grep addr:192.168.* | awk &#39;{print$2}&#39; | awk &#39;{split($0,a,\&quot;:\&quot;);print(a[2])}&#39;</code></p>
-<p>▲.尽量使用单引号<code>&#39;&#39;</code>,而不是<code>&quot;&quot;</code></p>
+<p>1.<code>ifconfig | grep inet | awk '{print $2}' | awk -F 'addr:' '{print $2}'</code></p>
+<p>2.<code>ifconfig | grep addr:192.168.* | awk '{print$2}' | awk '{split($0,a,\&quot;:\&quot;);print(a[2])}'</code></p>
+<p>▲.尽量使用单引号<code>''</code>,而不是<code>&quot;&quot;</code></p>
 <p>-F分隔符</p>
-<p>e.g.<code>echo &quot;A|B|C|D&quot; | awk -F &quot;|&quot; &#39;{print($1)}&#39;</code></p>
+<p>e.g.<code>echo &quot;A|B|C|D&quot; | awk -F &quot;|&quot; '{print($1)}'</code></p>
 <p>NF列的个数</p>
-<p><code>awk -F: &#39;$3&lt;10{print $1 &lt;====&gt; $NF}&#39; /etc/passwd</code></p>
+<p><code>awk -F: '$3&lt;10{print $1 &lt;====&gt; $NF}' /etc/passwd</code></p>
 <p>{}中的内容为要要执行的内容</p>
 <p>NR当前行号</p>
-<h3 id="linux单双引号区别"><a href="#linux单双引号区别" class="headerlink" title="linux单双引号区别"></a>linux单双引号区别</h3><p>双引号：把双引号的内容输出出来；如果内容中有命令，变量等，会先把命令，变量解析出结果，然后再输出最终内容来。双引号内命令或变量的写法为命令或变量或$（命令或变量）</p>
+<h3 id="linux单双引号区别"><a class="markdownIt-Anchor" href="#linux单双引号区别"></a> linux单双引号区别</h3>
+<p>双引号：把双引号的内容输出出来；如果内容中有命令，变量等，会先把命令，变量解析出结果，然后再输出最终内容来。双引号内命令或变量的写法为命令或变量或$（命令或变量）</p>
 <p>单引号：所见即所得，将单引号内的内容原样输出，阻止所有字符的转义</p>
 <p>不加引号：不会将含有空格的字符串视为一个整体输出，如果内容中有命令，变量等，会先把命令，变量解析出结果，然后再输出最终内容来，如果字符串含有空格等特殊字符，则不能完整输出，则需改加双引号。</p>
 <p>倒引号（反引号Esc键下方）：进行命令的替换，在倒引号内部的shell命令将会被执行，其结果输出代替用倒引号括起来的文本。</p>
 <p><code>echo &quot;1111\n222&quot;</code>不会转移\n</p>
 <p><code>echo -e &quot;11111\n222&quot;</code>会转义\n</p>
 <p><code>xargs -n1</code>每行1个元素;xargs -n2 每行2个元素;</p>
-<h2 id="grep-Globally-search-a-Regular-Expression-and-Print"><a href="#grep-Globally-search-a-Regular-Expression-and-Print" class="headerlink" title="grep(Globally search a Regular Expression and Print)"></a>grep(Globally search a Regular Expression and Print)</h2><blockquote>
+<h2 id="grepglobally-search-a-regular-expression-and-print"><a class="markdownIt-Anchor" href="#grepglobally-search-a-regular-expression-and-print"></a> grep(Globally search a Regular Expression and Print)</h2>
+<blockquote>
 <p>一种强大的文本搜索工具，它能使用特定模式匹配（包括<strong>正则表达式</strong>）搜索文本，并默认输出匹配行</p>
 </blockquote>
 <p>常见命令<code>ps -aux | grep xxxx</code></p>
@@ -292,7 +333,7 @@
 <p>-i ：忽略大小写的不同，所以大小写视为相同</p>
 <p>-n ：顺便输出行号</p>
 <p>-v ：反向选择，亦即显示出没有 ‘搜寻字符串’ 内容的那一行！</p>
-<p>-x –line-regexp : 只显示全列符合的列。</p>
+<p>-x --line-regexp : 只显示全列符合的列。</p>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/08/30/Linux三剑客/">https://nymrli.top/2019/08/30/Linux三剑客/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/08/30/ACM-博弈论/" title="ACM-博弈论"><span>< PreviousPost</span><br><span class="prevTitle">ACM-博弈论</span></a><a class="nextSlogan" href="/2019/08/30/2019-6月编程笔记/" title="2019_6月编程笔记"><span>NextPost ></span><br><span class="nextTitle">2019_6月编程笔记</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'Linux三剑客',
   owner: 'Freedomisgood',
@@ -302,4 +343,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux三剑客"><span class="toc-number">1.</span> <span class="toc-text">Linux三剑客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#bash命令执行顺序"><span class="toc-number">1.1.</span> <span class="toc-text">bash命令执行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed-Stream-EDitor"><span class="toc-number">1.2.</span> <span class="toc-text">sed(Stream EDitor):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk"><span class="toc-number">1.3.</span> <span class="toc-text">awk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux单双引号区别"><span class="toc-number">1.3.1.</span> <span class="toc-text">linux单双引号区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep-Globally-search-a-Regular-Expression-and-Print"><span class="toc-number">1.4.</span> <span class="toc-text">grep(Globally search a Regular Expression and Print)</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#linux三剑客"><span class="toc-number">1.</span> <span class="toc-text"> Linux三剑客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#bash命令执行顺序"><span class="toc-number">1.1.</span> <span class="toc-text"> bash命令执行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sedstream-editor"><span class="toc-number">1.2.</span> <span class="toc-text"> sed(Stream EDitor):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk"><span class="toc-number">1.3.</span> <span class="toc-text"> awk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux单双引号区别"><span class="toc-number">1.3.1.</span> <span class="toc-text"> linux单双引号区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grepglobally-search-a-regular-expression-and-print"><span class="toc-number">1.4.</span> <span class="toc-text"> grep(Globally search a Regular Expression and Print)</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

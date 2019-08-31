@@ -97,10 +97,12 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Python爬虫知识点——请求</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2018/10/24</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">828</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h4 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h4><blockquote>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Python爬虫知识点——请求</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2018/10/24</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">828</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h4 id="请求"><a class="markdownIt-Anchor" href="#请求"></a> 请求</h4>
+<blockquote>
 <p>:请求方法、请求网址、请求头、请求体</p>
 </blockquote>
-<h5 id="请求方法："><a href="#请求方法：" class="headerlink" title="请求方法："></a>请求方法：</h5><blockquote>
+<h5 id="请求方法"><a class="markdownIt-Anchor" href="#请求方法"></a> 请求方法：</h5>
+<blockquote>
 <p>常见的为:GET、POST</p>
 <p>GET与POST主要区别：</p>
 <ul>
@@ -109,18 +111,20 @@
 </ul>
 </blockquote>
 <p>其他还有HEAD、PUT、DELETE、CONNECT、OPTIONS、TRACE</p>
-<h5 id="请求的网址："><a href="#请求的网址：" class="headerlink" title="请求的网址："></a>请求的网址：</h5><blockquote>
+<h5 id="请求的网址"><a class="markdownIt-Anchor" href="#请求的网址"></a> 请求的网址：</h5>
+<blockquote>
 <p>即URL，我们想要请求的资源</p>
 </blockquote>
-<h5 id="请求头："><a href="#请求头：" class="headerlink" title="请求头："></a>请求头：</h5><p>用来说明服务器要使用的附加信息，比较总要的有Cookie、Referer、User-Agent等。</p>
+<h5 id="请求头"><a class="markdownIt-Anchor" href="#请求头"></a> 请求头：</h5>
+<p>用来说明服务器要使用的附加信息，比较总要的有Cookie、Referer、User-Agent等。</p>
 <blockquote>
-<p>Accept:请求报头域，用于指定客户端可接受哪些类型的信息。   </p>
+<p>Accept:请求报头域，用于指定客户端可接受哪些类型的信息。</p>
 <p>Accept-Language:指定客户端可接受的语言类型。</p>
-<p>Accept-Encoding:指定客户端可接受的内容编码。   </p>
-<p> Host:用于指定请求资源的主机IP和端口号，其内容为请求URL的原始服务器或网关的位   置。从HTTP1.1版本开始，请求必须包含此内容。  </p>
-<p>Cookie:也常用复数形式Cookies, 是网站为了<u>辨别用户进行会话跟踪</u>而存储在用户<strong>本地</strong>的数据。它的主要功能是维持当前访问会话。例如，我们输人用户名和密码成功登录某个网站后，服务器会用会话保存登录状态信息，后面我们每次刷新或请求该站点的其他页面时，会发现都是登录状态，这就是Cookies的功劳。Cookies里有信息标识了我们所对应的服务器的会话，每次浏览器在请求该站点的页面时，都会在请求头中加上Cookies 并将其发送给服务器，服务器通过Cookies识别出是我们自己，并且查出当前状态是登录状态，所以返回结果就是登录之后才能看到的网页内容。   </p>
-<p>Referer:此内容用来标识这个请求是从哪个页面发过来的，服务器可以拿到这一信息并做相应的处理，如做来源统计、<u>防盗链处理</u>等。   </p>
-<p>User-Agent: 简称UA，它是一个特殊的字符串头，可以使服务器识别客户使用的操作系统及版本、浏览器及版本等消息。在做爬虫时加上此信息，可以伪装成浏览器；如果不加，很可能被识别出为爬虫</p>
+<p>Accept-Encoding:指定客户端可接受的内容编码。</p>
+<p>Host:用于指定请求资源的主机IP和端口号，其内容为请求URL的原始服务器或网关的位   置。从HTTP1.1版本开始，请求必须包含此内容。</p>
+<p>Cookie:也常用复数形式Cookies, 是网站为了<u>辨别用户进行会话跟踪</u>而存储在用户<strong>本地</strong>的数据。它的主要功能是维持当前访问会话。例如，我们输人用户名和密码成功登录某个网站后，服务器会用会话保存登录状态信息，后面我们每次刷新或请求该站点的其他页面时，会发现都是登录状态，这就是Cookies的功劳。Cookies里有信息标识了我们所对应的服务器的会话，每次浏览器在请求该站点的页面时，都会在请求头中加上Cookies 并将其发送给服务器，服务器通过Cookies识别出是我们自己，并且查出当前状态是登录状态，所以返回结果就是登录之后才能看到的网页内容。</p>
+<p>Referer:此内容用来标识这个请求是从哪个页面发过来的，服务器可以拿到这一信息并做相应的处理，如做来源统计、<u>防盗链处理</u>等。</p>
+<p>User-Agent: 简称UA，它是一个特殊的字符串头，可以使服务器识别客户使用的操作系统及版本、浏览器及版本等消息。在做爬虫时加上此信息，可以伪装成浏览器；如果不加，很可能被识别出为爬虫</p>
 <p>Content-Type:也叫互联网媒体类型( Intermet Media Type)或者MIME类型，在HTTP协议消息头中，它用来表示具体请求中的媒体类型信息。更多对应关系可以查看此对表:<a href="http://tool.oschina.net/commons" target="_blank" rel="noopener">http://tool.oschina.net/commons</a></p>
 </blockquote>
 <table>
@@ -145,7 +149,7 @@
 </tr>
 </tbody>
 </table>
-<p>​                    <strong>Content-Type与POST提交数据方式的关系</strong></p>
+<p>​					<strong>Content-Type与POST提交数据方式的关系</strong></p>
 <table>
 <thead>
 <tr>
@@ -176,7 +180,8 @@
 <p>如果构造POST请求，需要使用正确的Content-Type，不然可能导致POST提交后无法正常响应</p>
 </blockquote>
 <p>==&gt;因此，请求头是请求的重要组成部分，在写爬虫时，大部分情况下都需要设定请求头。</p>
-<h5 id="请求体："><a href="#请求体：" class="headerlink" title="请求体："></a>请求体：</h5><blockquote>
+<h5 id="请求体"><a class="markdownIt-Anchor" href="#请求体"></a> 请求体：</h5>
+<blockquote>
 <p>请求体一般承载的内容是POST请求中的表单数据，而对GET请求，请求体则为空。</p>
 </blockquote>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">果粒橙</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2018/10/24/Python爬虫知识点——请求/">https://nymrli.top/2018/10/24/Python爬虫知识点——请求/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2018/10/24/Python爬虫知识点——代理/" title="Python爬虫知识点——代理"><span>< PreviousPost</span><br><span class="prevTitle">Python爬虫知识点——代理</span></a><a class="nextSlogan" href="/2018/10/24/Python爬虫知识点——响应/" title="Python爬虫知识点——响应"><span>NextPost ></span><br><span class="nextTitle">Python爬虫知识点——响应</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
@@ -188,4 +193,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求"><span class="toc-number">1.</span> <span class="toc-text">请求</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#请求方法："><span class="toc-number">1.1.</span> <span class="toc-text">请求方法：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#请求的网址："><span class="toc-number">1.2.</span> <span class="toc-text">请求的网址：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#请求头："><span class="toc-number">1.3.</span> <span class="toc-text">请求头：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#请求体："><span class="toc-number">1.4.</span> <span class="toc-text">请求体：</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求"><span class="toc-number">1.</span> <span class="toc-text"> 请求</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#请求方法"><span class="toc-number">1.1.</span> <span class="toc-text"> 请求方法：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#请求的网址"><span class="toc-number">1.2.</span> <span class="toc-text"> 请求的网址：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#请求头"><span class="toc-number">1.3.</span> <span class="toc-text"> 请求头：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#请求体"><span class="toc-number">1.4.</span> <span class="toc-text"> 请求体：</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

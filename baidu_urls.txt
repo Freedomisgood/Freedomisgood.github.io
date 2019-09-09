@@ -1,3 +1,7 @@
+https://nymrli.top/2019/09/09/新加坡游玩经验/
+https://nymrli.top/2019/09/09/CDN加速个人博客——又拍云/
+https://nymrli.top/2019/09/09/RL强化学习概念/
+https://nymrli.top/2019/09/09/强化学习——QLearning/
 https://nymrli.top/2019/08/30/机器学习——决策树/
 https://nymrli.top/2019/08/30/Sklearn——决策树/
 https://nymrli.top/2019/08/30/ACM-博弈论/
@@ -44,7 +48,3 @@ https://nymrli.top/2019/03/28/蓝桥杯突击训练/
 https://nymrli.top/2019/03/25/C++机器学习库MLPack/
 https://nymrli.top/2019/03/17/南京邮电大学java程序设计作业在线编程第六次作业/
 https://nymrli.top/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/
-https://nymrli.top/2019/03/15/Linux命令手册/
-https://nymrli.top/2019/03/14/搭建Gitlab服务器/
-https://nymrli.top/2019/03/07/程序设计周cpp学习笔记/
-https://nymrli.top/2019/03/07/ACM-DFS、BFS/

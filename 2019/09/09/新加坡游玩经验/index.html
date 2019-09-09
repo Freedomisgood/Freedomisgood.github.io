@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>新加坡游玩经验 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">新加坡游玩经验</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/09</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,540</span> | Reading time: <span class="post-count">9</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="新加坡南洋理工大学访学"><a class="markdownIt-Anchor" href="#新加坡南洋理工大学访学"></a> 新加坡南洋理工大学访学</h1>
+<p>此次访学长达14天，不少安排都是学校安排，在此仅列出个人安排、经验心得。</p>
+<hr>
+<h2 id="门票购买"><a class="markdownIt-Anchor" href="#门票购买"></a> 门票购买：</h2>
+<p>番薯游：这是老师推荐我们的，但下载以后感觉界面还是比较丑的，而且价格也不是非常便宜。这家是唯一一家促进扫码买门票的公司。</p>
+<p>KLOOK客路：界面比番薯游好多了，还是非常精致的。最大的优势在于可以找到经典的位置及景点介绍、门票时间等信息。</p>
+<p>淘宝：跟好几个平台对比之后，价格应该是最低的，并且时间限制比较小，其他的可能要预约，而TB当天购买就行（强调：动物园门票）</p>
+<p>▲特别说明下，动物园的门票水很深。当面购买$50,我当时去时没有预约，结果在KLOOK上看当天的票已经没有库存了，于是问了下换票机旁边的黄牛，他看我一个人，给我的报价也是50，不知道他咋想的。最后这个预约问题是通过淘宝解决的，￥156一张夜间动物园门票，5分钟就出票了。购买后会有一张带有二维码的PDF发到邮箱中，用机子扫出后即可。</p>
+<hr>
+<h2 id="地铁卡购买"><a class="markdownIt-Anchor" href="#地铁卡购买"></a> 地铁卡购买：</h2>
+<p>网上的说法都推荐购买<strong>EZ-LINK</strong>，但我们在NTU里的711便利店买时最后一张正好卖掉了，于是我们买的是这样的卡，后来发现这卡比EZ-LINK强多了。</p>
+<p>由于它支持多家银行支付（由于种种原因，扫码支付在新加坡很难推行），因此其实这张卡十分的方便。既能在学校食堂消费，又能在外消费，同时地铁公交也都支持。</p>
+<h2 id="地铁公交价格明细"><a class="markdownIt-Anchor" href="#地铁公交价格明细"></a> 地铁公交价格明细：</h2>
+<p>如果有卡和没卡，价格区别是很大的，因此如果出行需要坐公交、地铁的话，强烈建议直接办地铁卡。</p>
+<p>虽然每次充钱最低10$，但几乎每次坐车都在0.83$以上，所以开销还是非常大的。2.坐地铁低于2$就无法进站，公交低于1$（不知道是不是所有）</p>
+<hr>
+<h2 id="行为规范"><a class="markdownIt-Anchor" href="#行为规范"></a> 行为规范：</h2>
+<p>新加坡的治安、素质是相当高的。其中比较明显的现象有：不乱丢垃圾；在地铁上不能饮食；地铁、公交先下后上；</p>
+<p>▲1.如果有残疾人士，会有人帮忙放下挡板，帮残疾人士下车。我看到的那次是车上只有司机，坐轮椅的老奶奶要下公交，司机特地跑来放挡板，帮老人下车。</p>
+<p>2.问司机路，他甚至会下车下来给你指往哪个方向怎么走</p>
+<p>3.公交车到站需要按<strong>BUS STOPPING</strong>按钮，不然司机是真的不会停的！地铁的话几乎每站都会停。还有个非常重要的是，BUS每一站是不会报的，因此在新加坡坐公交很容易坐过头，这就需要看清楚地图定位和留意每一站名字。</p>
+<hr>
+<h2 id="地图推荐"><a class="markdownIt-Anchor" href="#地图推荐"></a> 地图推荐</h2>
+<p>高德不支持国外，因此我主要使用的是两个：Google Maps、百度地图。</p>
+<p>其实百度地图挺好用的，我同学都用的百度，没必要特地去下载Google Maps。而在此我说一下我用Google Maps碰到的问题。1.坐地铁、公交时不会提醒花费。2.没有Google Player服务，周围推荐功能无法使用。3.我用的是MI6，但总感觉有时定位效果特别差，不知道是我手机GPS功能问题，还是Google Maps的问题</p>
+<hr>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>新加坡是非常适合国人旅游的，首先是新加坡双语教学，很多人都会说中文，遇上麻烦，看看周围的人总能碰到说中文的；其次是商城里也大多有中文介绍，买东西时几乎每个店都会有说中文的店员来做国人生意，也几乎不太会碰上麻烦。</p>
+<p>新加坡有70%的人是中国人或是华裔，10%是印度人，10%是马来人，还有10%是来自欧洲和日本、韩国等地。总的来说中国人比例还是非常大的，而且85%左右的旅客都来自中国，所以其实路上看到很多说中文的说不定也是跟你一样的游客。我交流比较多的都是中国人，特别是彭年纪大的老奶奶或是老爷爷，你如果向他问路，他们都会非常热心地帮助，恨不得亲自带你去了。</p>
+<hr>
+<h2 id="外文缩写"><a class="markdownIt-Anchor" href="#外文缩写"></a> 外文缩写</h2>
+<p>新加坡，几乎都有双语标注，因此英语不好的问题也不大。这边就列出几个常见的缩写</p>
+<p>st --&gt; street</p>
+<p>rd --&gt; road</p>
+<p>sch --&gt; school</p>
+<hr>
+<h2 id="景点推荐"><a class="markdownIt-Anchor" href="#景点推荐"></a> 景点推荐：</h2>
+<h3 id="乌节路-orchard-road"><a class="markdownIt-Anchor" href="#乌节路-orchard-road"></a> 乌节路 Orchard road</h3>
+<ul>
+<li>购物一条街，ION商城，义乌城……里面全是品牌。</li>
+</ul>
+<h3 id="圣淘沙-sentosa"><a class="markdownIt-Anchor" href="#圣淘沙-sentosa"></a> 圣淘沙 Sentosa</h3>
+<ul>
+<li>环球影城就在这岛上，门票350+，我没去，同学去了，感觉很不错，类似迪士尼的游乐园，有多种的主题</li>
+</ul>
+<h3 id="滨海湾-marina-bay"><a class="markdownIt-Anchor" href="#滨海湾-marina-bay"></a> 滨海湾 Marina Bay</h3>
+<ul>
+<li>superTree Grove是免费的，晚上有表演，大约在8：45左右开始，非常的好看。此处景点有两个收费的地方，我也没去。</li>
+<li>靠近湖边，有两个博物馆，一个是<strong>红点设计博物馆</strong>（这个我去了，门票大约￥70，地方很小，出来的商店卖的东西很贵）；另一个是<strong>金沙艺术科学博物馆</strong>（主题是“超越未来”，看介绍有点像是失恋博物馆里的光影效果）</li>
+</ul>
+<h3 id="鱼尾狮公园-merlion-park"><a class="markdownIt-Anchor" href="#鱼尾狮公园-merlion-park"></a> 鱼尾狮公园 Merlion  Park</h3>
+<ul>
+<li>其实没啥好看的，有鱼尾狮，打个卡、拍个照差不多了。</li>
+</ul>
+<h3 id="植物园-botanic-garden"><a class="markdownIt-Anchor" href="#植物园-botanic-garden"></a> 植物园 Botanic garden</h3>
+<ul>
+<li>免费，徒步走还挺大的，大约半小时。里面植物很多，一般都是国内看不到的，喜欢看植物的人可以去看一下。同时那也有不少动物，都可以当个小型动物园了。</li>
+</ul>
+<h3 id="小印度-little-indian"><a class="markdownIt-Anchor" href="#小印度-little-indian"></a> 小印度 Little Indian</h3>
+<ul>
+<li>印度人很多，印度氛围很重。其他的话个人感觉没什么意思，在那边比较有名的印度餐馆里吃了咖喱鱼头，味道还不错，只不过两个人吃点中份的有点太多了。</li>
+<li>Mustafa百货商城，真的很大，有两栋楼互相连通，深不见底，一共有四层。那边的东西也是比较便宜的，比如在NTU超市里买的饮料$2.5，这边只要$1.8左右；还有oldTown咖啡，在fairprice超市卖$7.2，在Mustafa只要$5.4。这边非常值得去，可以在这捎点带给朋友的东西</li>
+</ul>
+<h3 id="夜间动物园"><a class="markdownIt-Anchor" href="#夜间动物园"></a> 夜间动物园</h3>
+<ul>
+<li>比较偏，去和回都很麻烦，坐地铁转公交啥的回NTU要1个半钟头，打车回只要15分钟。门票现场买时$50，淘宝上￥150。买了门票进去后现有游览车观光，但是如果不加钱是英文讲解的（几乎听不懂w_w）。由于夜色较暗（灯光考虑到对动物的效果也不是很亮），且大多动物都已睡眠，所以游览车观光没什么意思。比较有意思的是<strong>动物表演</strong>，去的人几乎都会推荐，但需要注意的是，要提前等，因为先来先得位置，位置满后就不能进了，超时10分钟也不会让进了（表演一共15-20分钟左右）。游览车观光后的自由行也是比较有意思的，氛围就像是在丛林中，隔一段距离就是一个品种的动物。有很多平时没见过的大动物与小动物，小动物一般都有玻璃格挡，大动物的站台与马路就一道坎的隔离，管理员似乎很放心他们不会跑出来（老虎除外）</li>
+</ul>
+<h3 id="城市规划馆ura"><a class="markdownIt-Anchor" href="#城市规划馆ura"></a> 城市规划馆URA</h3>
+<ul>
+<li>很有意思，由60岁的Steven给我们讲解了新加坡建设的历史以及未雨绸缪地规划，其中3D立体模型图非常精致地还原了各地地细节，在游玩之前看一下这个对出游有极大的帮助</li>
+</ul>
+<h3 id="国家博物馆"><a class="markdownIt-Anchor" href="#国家博物馆"></a> 国家博物馆</h3>
+<ul>
+<li>真的很有意思，比国内的博物馆真实多了。在里面能看到新加坡的发展史、侵略史，能看到英军的身影，也能看到中国和日本的身影。当然其中比较有意思的是有真的坦克在里面展览。</li>
+<li>比较遗憾的是我们是上午10点开门的时候去的，而讲解在11：30才开始，因此我们全参观完后讲解正刚开始，侥幸还听到了一点，真的很有意思，建议要去的话凑着这个时间点去，因为虽然有手册介绍，但是自己看真的可能看不明白</li>
+</ul>
+<h3 id="国家美术馆"><a class="markdownIt-Anchor" href="#国家美术馆"></a> 国家美术馆</h3>
+<ul>
+<li>由于8月上旬新加坡国庆在美术馆附近举行，因此8月9日之前都关闭着，因此没几乎进去看看。</li>
+</ul>
+<h2 id="美食推荐"><a class="markdownIt-Anchor" href="#美食推荐"></a> 美食推荐</h2>
+<p>叻沙</p>
+<p>沙爹</p>
+<p>福建炒面</p>
+<p>印度飞饼</p>
+<p>辣椒螃蟹(Big Eater seafood)</p>
+<p>肉骨茶</p>
+<hr>
+<h2 id="附录2019年8月9日新加坡国庆节节目安排"><a class="markdownIt-Anchor" href="#附录2019年8月9日新加坡国庆节节目安排"></a> <strong><a href="https://mp.weixin.qq.com/s/UCpV10WZm8lcKNH08YNoTA" target="_blank" rel="noopener">附录：2019年8月9日新加坡国庆节节目安排</a></strong></h2>
+<blockquote>
+<p>（万事通根据预演推测独家整理）</p>
+</blockquote>
+<p>下午6点3分-6点10分 红狮跳伞队表演（随天气变化时间）</p>
+<p>下午6点27分-下午6点30分 特遣队入场</p>
+<p>下午6:35-6:38 国家色彩和荣誉护卫队入场</p>
+<p>下午6:39 总理抵达</p>
+<p>下午6:44 总统抵达</p>
+<p>下午6:45-6:46 国旗飞扬</p>
+<p>下午6:47 新加坡空军空中表演（F15战斗机）</p>
+<p>下午6:49-6:52  鸣礼炮21响致敬</p>
+<p>下午6:56-6:57 欢乐之火（大型篝火）</p>
+<p>下午6:57 飞行表演</p>
+<p>晚上7:00-7:01 新加坡空军多架F15战斗机飞行表演</p>
+<p>晚上7:01-7:12 阅兵仪式</p>
+<p>晚上7:14-7:39 机动部队出动</p>
+<p>晚上8:00-8:05 新加坡河烟花表演（亚洲文明博物馆附近）</p>
+<p>晚上8:10-8:18 烟花表演</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/09/09/新加坡游玩经验/">https://nymrli.top/2019/09/09/新加坡游玩经验/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2019/09/09/CDN加速个人博客——又拍云/" title="CDN加速个人博客——又拍云"><span>NextPost ></span><br><span class="nextTitle">CDN加速个人博客——又拍云</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '新加坡游玩经验',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#新加坡南洋理工大学访学"><span class="toc-number">1.</span> <span class="toc-text"> 新加坡南洋理工大学访学</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#门票购买"><span class="toc-number">1.1.</span> <span class="toc-text"> 门票购买：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#地铁卡购买"><span class="toc-number">1.2.</span> <span class="toc-text"> 地铁卡购买：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#地铁公交价格明细"><span class="toc-number">1.3.</span> <span class="toc-text"> 地铁公交价格明细：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行为规范"><span class="toc-number">1.4.</span> <span class="toc-text"> 行为规范：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#地图推荐"><span class="toc-number">1.5.</span> <span class="toc-text"> 地图推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.6.</span> <span class="toc-text"> 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外文缩写"><span class="toc-number">1.7.</span> <span class="toc-text"> 外文缩写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#景点推荐"><span class="toc-number">1.8.</span> <span class="toc-text"> 景点推荐：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#乌节路-orchard-road"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 乌节路 Orchard road</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#圣淘沙-sentosa"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 圣淘沙 Sentosa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#滨海湾-marina-bay"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 滨海湾 Marina Bay</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#鱼尾狮公园-merlion-park"><span class="toc-number">1.8.4.</span> <span class="toc-text"> 鱼尾狮公园 Merlion  Park</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#植物园-botanic-garden"><span class="toc-number">1.8.5.</span> <span class="toc-text"> 植物园 Botanic garden</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小印度-little-indian"><span class="toc-number">1.8.6.</span> <span class="toc-text"> 小印度 Little Indian</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#夜间动物园"><span class="toc-number">1.8.7.</span> <span class="toc-text"> 夜间动物园</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#城市规划馆ura"><span class="toc-number">1.8.8.</span> <span class="toc-text"> 城市规划馆URA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#国家博物馆"><span class="toc-number">1.8.9.</span> <span class="toc-text"> 国家博物馆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#国家美术馆"><span class="toc-number">1.8.10.</span> <span class="toc-text"> 国家美术馆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#美食推荐"><span class="toc-number">1.9.</span> <span class="toc-text"> 美食推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录2019年8月9日新加坡国庆节节目安排"><span class="toc-number">1.10.</span> <span class="toc-text"> 附录：2019年8月9日新加坡国庆节节目安排</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

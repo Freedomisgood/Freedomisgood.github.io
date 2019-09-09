@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>CDN加速个人博客——又拍云 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">CDN加速个人博客——又拍云</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/09</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,286</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="cdn加速个人博客又拍云"><a class="markdownIt-Anchor" href="#cdn加速个人博客又拍云"></a> CDN加速个人博客——又拍云</h1>
+<blockquote>
+<p>CDN(Content Delivery Network)内容发布网络，基本思路就是将你网站放置在各地节点服务器，用户访问时找最近的节点服务器获取数据，达到加速的目的。</p>
+</blockquote>
+<h2 id="几大厂商的cdn方案"><a class="markdownIt-Anchor" href="#几大厂商的cdn方案"></a> 几大厂商的CDN方案</h2>
+<table>
+<thead>
+<tr>
+<th>资费介绍页面</th>
+<th>免费额度</th>
+<th>是否支持HTTPS</th>
+<th>额外限制</th>
+<th>注册邀请链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.qiniu.com/prices?source=fusion" target="_blank" rel="noopener">七牛云</a></td>
+<td>10GB/月</td>
+<td>按量付费支持</td>
+<td>/</td>
+<td><a href="https://portal.qiniu.com/signup?code=3liwfwr7z4eoi" target="_blank" rel="noopener">&gt;&gt;&gt; 点击注册</a></td>
+</tr>
+<tr>
+<td><a href="https://buy.cloud.tencent.com/price/cdn/overview" target="_blank" rel="noopener">腾讯云</a></td>
+<td>10GB/月</td>
+<td>免费支持</td>
+<td>加了腾讯云CDN没有感觉多大加速</td>
+<td>/</td>
+</tr>
+<tr>
+<td><a href="https://su.baidu.com/plan.html#compare" target="_blank" rel="noopener">百度云</a></td>
+<td>10GB/天</td>
+<td>年费付费支持</td>
+<td>巨贵…</td>
+<td>/</td>
+</tr>
+<tr>
+<td><a href="https://www.upyun.com/league" target="_blank" rel="noopener">又拍云</a></td>
+<td>15GB/月</td>
+<td>免费支持</td>
+<td>加入又拍云联盟，并在网站底部放置logo</td>
+<td><a href="https://console.upyun.com/register/?invite=r1A6SzenN" target="_blank" rel="noopener">&gt;&gt;&gt; 点击注册</a></td>
+</tr>
+</tbody>
+</table>
+<p>因此，选择尝试了下“又拍云”。</p>
+<h2 id="一创建cdn服务"><a class="markdownIt-Anchor" href="#一创建cdn服务"></a> 一.创建CDN服务</h2>
+<p>1.服务名称为唯一的ID</p>
+<p>2.加速域名就是自己的网站域名</p>
+<p>3.选择一个应用场景，在这，我选的是“网页图片”</p>
+<p>4.源站设置，目前有什么协议就选择什么协议。</p>
+<p>当然最省事的是选择“<strong>协议跟随</strong>”</p>
+<p>5.选择“创建”，则服务创建完成</p>
+<p>6.需要完成“实名认证”，否则服务将处于“关闭”状态</p>
+<p>有“支付宝认证”和“身份认证”，“<strong>支付宝认证</strong>”是直接拍照采取你的个人照片，拍完即认证完毕比较迅速，但可能会泄露更多的个人信息， 毕竟支付宝上已经收集了很多个人信息了。&quot;身份认证&quot;通过提交手持身份证正反面的照片来认证，提交后会有一天的审核期，相对于“支付宝认证”来说可能慢一点。</p>
+<h2 id="二配置ssl证书非必须"><a class="markdownIt-Anchor" href="#二配置ssl证书非必须"></a> 二.配置SSL证书（非必须）</h2>
+<p>7.如果博客没有配置HTTPS，可以在这申请免费的SSL证书配置</p>
+<blockquote>
+<p>又拍云提供了两款证书的免费申请方案，用户可通过 <a href="https://console.upyun.com/toolbox/createCertificate/" target="_blank" rel="noopener">SSL 证书申购</a>平台，免费申请 Symantec-TrustAsia、Let’s Encrypt 的 DV（域名型） SSL 证书，帮助用户零成本实现全站部署 HTTPS。并且还实现了 Let’s Encrypt 证书到期自动续签，用户无需担心证书过期时间，降低维护成本。</p>
+</blockquote>
+<p>服务中的&quot;HTTPS&quot;-&gt;“HTTPS配置”–&gt;“无证书，可前往 SSL <a href="https://console.upyun.com/toolbox/ssl/" target="_blank" rel="noopener">证书管理</a> 添加自有证书或申购新证书”</p>
+<p><img src="/2019/09/09/CDN加速个人博客——又拍云/CDN%E5%8A%A0%E9%80%9F%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%94%E2%80%94%E5%8F%88%E6%8B%8D%E4%BA%91%5CSSL%E8%AF%81%E4%B9%A6.png" alt="SSL证书"></p>
+<p>短信验证，付款完成后，需要“<strong>请前往证书申购界面补全后续信息</strong>&quot;，在”SSL证书服务“中能看到证书，但还需要执行”补全“步骤。</p>
+<p><img src="/2019/09/09/CDN加速个人博客——又拍云/CDN%E5%8A%A0%E9%80%9F%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%94%E2%80%94%E5%8F%88%E6%8B%8D%E4%BA%91%5C%E8%A1%A5%E5%85%A8.png" alt="补全"></p>
+<p>之后，如果当前域名为第一次配置证书，那么需要”域名所有权验证“。可以查看又拍云提供的<a href="https://help.upyun.com/knowledge-base/ssl-product/#dv-ssle8af81e4b9a6e9aa8ce8af81" target="_blank" rel="noopener">帮助文档</a>，分为<strong>OV 或 EV SSL 证书</strong>和<strong>DV SSL证书验证</strong>，其中DV SSL证书验证又分为”文件检验“和&quot;DNS 验证&quot;.</p>
+<p>DNS验证，需要修改域名的 DNS，添加 <code>TXT 记录</code>，然后 CA 机构通过解析域名的 <code>TXT 记录</code>来验证域名所有权。其中如果是阿里云解析，在设置过CNAME记录的同时再添加新的TXT记录会报错，说有冲突。此时可查看<a href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%BB%91%E5%AE%9A%E5%8A%A0%E9%80%9F%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%97%B6%EF%BC%8C%E6%8F%90%E7%A4%BATXT%E4%B8%8E@%E8%AE%B0%E5%BD%95%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95">解决方案</a></p>
+<p><img src="/2019/09/09/CDN加速个人博客——又拍云/CDN%E5%8A%A0%E9%80%9F%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%94%E2%80%94%E5%8F%88%E6%8B%8D%E4%BA%91%5CCNAME%E8%AE%A4%E8%AF%81.png" alt="CNAME认证"></p>
+<p>只不过此时状态仍为“审核中”，即CA 机构信息审核验证状态，一般需要 1 个工作日。</p>
+<p><img src="/2019/09/09/CDN加速个人博客——又拍云/CDN%E5%8A%A0%E9%80%9F%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%94%E2%80%94%E5%8F%88%E6%8B%8D%E4%BA%91%5C%E5%AE%A1%E6%A0%B8.png" alt="审核"></p>
+<p>▲我测试了两个免费的证书，发现“Let’s Encrypt DV SSL 单域名证书”审核比&quot;TrustAsia DV SSL 单域名证书&quot;快多了，几乎5分钟就自动审核通过了。</p>
+<p>e.g.由于我的博客是搭建在Github pages的，所以配置了HTTPS，因此，这个我就不需要再弄了。</p>
+<h2 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h2>
+<h3 id="阿里云绑定加速域名解析时提示txt与记录冲突解决办法"><a class="markdownIt-Anchor" href="#阿里云绑定加速域名解析时提示txt与记录冲突解决办法"></a> 阿里云绑定加速域名解析时，提示TXT与@记录冲突解决办法</h3>
+<h3 id="方法一"><a class="markdownIt-Anchor" href="#方法一"></a> 方法一：</h3>
+<p>实际上，TXT记录的作用只是做域名所有权验证。也就是说，一旦域名被验证，就可以删除它。</p>
+<p>知道了这个原理，我们可以在解析时先删除其他@主机记录的解析，然后添加百度云加速TXT记录。</p>
+<p>通过百度云加速后台显示验证后，我们删除TXT并解析其他@主机记录就可以了。</p>
+<h3 id="方法二"><a class="markdownIt-Anchor" href="#方法二"></a> 方法二：</h3>
+<p>如果你是使用免费智能 DNS 解析服务——CloudXNS 来解析域名应该是不会遇到这些问题，但是如果使用阿里云解析的话，应该或多或少都会遇到解析记录冲突的问题。所以可以采取更换解析商，即把<strong>阿里云解析更换为 CloudXNS 解析</strong></p>
+<h3 id="方法三"><a class="markdownIt-Anchor" href="#方法三"></a> 方法三：</h3>
+<p>**解析到不同的线路来解决。**默认情况下，我们 CNAME 解析时，只填写主机记录和记录值，其他都是默认，这个时候“解析线路”就是默认线路。如果后续你添加 TXT 记录或 MX 记录时，解析线路也是默认线路，那么就会出现解析记录冲突从而无法成功解析。此时，需要做的就是在解析 TXT 或 MX 记录时，把“解析线路”选择到其他线路，如选择“中国电信”或其他线路，然后保存就不会与 CNANE 的默认线路冲突了。</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/09/09/CDN加速个人博客——又拍云/">https://nymrli.top/2019/09/09/CDN加速个人博客——又拍云/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/09/09/新加坡游玩经验/" title="新加坡游玩经验"><span>< PreviousPost</span><br><span class="prevTitle">新加坡游玩经验</span></a><a class="nextSlogan" href="/2019/09/09/RL强化学习概念/" title="RL强化学习概念"><span>NextPost ></span><br><span class="nextTitle">RL强化学习概念</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'CDN加速个人博客——又拍云',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#cdn加速个人博客又拍云"><span class="toc-number">1.</span> <span class="toc-text"> CDN加速个人博客——又拍云</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#几大厂商的cdn方案"><span class="toc-number">1.1.</span> <span class="toc-text"> 几大厂商的CDN方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一创建cdn服务"><span class="toc-number">1.2.</span> <span class="toc-text"> 一.创建CDN服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二配置ssl证书非必须"><span class="toc-number">1.3.</span> <span class="toc-text"> 二.配置SSL证书（非必须）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">1.4.</span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#阿里云绑定加速域名解析时提示txt与记录冲突解决办法"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 阿里云绑定加速域名解析时，提示TXT与@记录冲突解决办法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 方法一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 方法二：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法三"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 方法三：</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

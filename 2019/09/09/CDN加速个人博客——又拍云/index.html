@@ -162,14 +162,14 @@
 <p>又拍云提供了两款证书的免费申请方案，用户可通过 <a href="https://console.upyun.com/toolbox/createCertificate/" target="_blank" rel="noopener">SSL 证书申购</a>平台，免费申请 Symantec-TrustAsia、Let’s Encrypt 的 DV（域名型） SSL 证书，帮助用户零成本实现全站部署 HTTPS。并且还实现了 Let’s Encrypt 证书到期自动续签，用户无需担心证书过期时间，降低维护成本。</p>
 </blockquote>
 <p>服务中的&quot;HTTPS&quot;-&gt;“HTTPS配置”–&gt;“无证书，可前往 SSL <a href="https://console.upyun.com/toolbox/ssl/" target="_blank" rel="noopener">证书管理</a> 添加自有证书或申购新证书”</p>
-<p><img src="/2019/09/09/CDN加速个人博客——又拍云/CDN%E5%8A%A0%E9%80%9F%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%94%E2%80%94%E5%8F%88%E6%8B%8D%E4%BA%91%5CSSL%E8%AF%81%E4%B9%A6.png" alt="SSL证书"></p>
+<p><img src="/2019/09/09/CDN加速个人博客——又拍云/SSL%E8%AF%81%E4%B9%A6.png" alt="SSL证书"></p>
 <p>短信验证，付款完成后，需要“<strong>请前往证书申购界面补全后续信息</strong>&quot;，在”SSL证书服务“中能看到证书，但还需要执行”补全“步骤。</p>
-<p><img src="/2019/09/09/CDN加速个人博客——又拍云/CDN%E5%8A%A0%E9%80%9F%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%94%E2%80%94%E5%8F%88%E6%8B%8D%E4%BA%91%5C%E8%A1%A5%E5%85%A8.png" alt="补全"></p>
+<p><img src="/2019/09/09/CDN加速个人博客——又拍云/%E8%A1%A5%E5%85%A8.png" alt="补全"></p>
 <p>之后，如果当前域名为第一次配置证书，那么需要”域名所有权验证“。可以查看又拍云提供的<a href="https://help.upyun.com/knowledge-base/ssl-product/#dv-ssle8af81e4b9a6e9aa8ce8af81" target="_blank" rel="noopener">帮助文档</a>，分为<strong>OV 或 EV SSL 证书</strong>和<strong>DV SSL证书验证</strong>，其中DV SSL证书验证又分为”文件检验“和&quot;DNS 验证&quot;.</p>
 <p>DNS验证，需要修改域名的 DNS，添加 <code>TXT 记录</code>，然后 CA 机构通过解析域名的 <code>TXT 记录</code>来验证域名所有权。其中如果是阿里云解析，在设置过CNAME记录的同时再添加新的TXT记录会报错，说有冲突。此时可查看<a href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%BB%91%E5%AE%9A%E5%8A%A0%E9%80%9F%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%97%B6%EF%BC%8C%E6%8F%90%E7%A4%BATXT%E4%B8%8E@%E8%AE%B0%E5%BD%95%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95">解决方案</a></p>
-<p><img src="/2019/09/09/CDN加速个人博客——又拍云/CDN%E5%8A%A0%E9%80%9F%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%94%E2%80%94%E5%8F%88%E6%8B%8D%E4%BA%91%5CCNAME%E8%AE%A4%E8%AF%81.png" alt="CNAME认证"></p>
+<p><img src="/2019/09/09/CDN加速个人博客——又拍云/CNAME%E8%AE%A4%E8%AF%81.png" alt="CNAME认证"></p>
 <p>只不过此时状态仍为“审核中”，即CA 机构信息审核验证状态，一般需要 1 个工作日。</p>
-<p><img src="/2019/09/09/CDN加速个人博客——又拍云/CDN%E5%8A%A0%E9%80%9F%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%94%E2%80%94%E5%8F%88%E6%8B%8D%E4%BA%91%5C%E5%AE%A1%E6%A0%B8.png" alt="审核"></p>
+<p><img src="/2019/09/09/CDN加速个人博客——又拍云/%E5%AE%A1%E6%A0%B8.png" alt="审核"></p>
 <p>▲我测试了两个免费的证书，发现“Let’s Encrypt DV SSL 单域名证书”审核比&quot;TrustAsia DV SSL 单域名证书&quot;快多了，几乎5分钟就自动审核通过了。</p>
 <p>e.g.由于我的博客是搭建在Github pages的，所以配置了HTTPS，因此，这个我就不需要再弄了。</p>
 <h2 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h2>

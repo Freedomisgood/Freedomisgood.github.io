@@ -1,3 +1,8 @@
+https://nymrli.top/2019/09/14/如何成为一位老司机——考驾照经历/
+https://nymrli.top/2019/09/13/Java系列环境变量配置/
+https://nymrli.top/2019/09/13/Java自动化构建工具——Maven/
+https://nymrli.top/2019/09/13/打jar包和使用jar包/
+https://nymrli.top/2019/09/09/验证码识别程序设计流程/
 https://nymrli.top/2019/09/09/新加坡游玩经验/
 https://nymrli.top/2019/09/09/CDN加速个人博客——又拍云/
 https://nymrli.top/2019/09/09/RL强化学习概念/
@@ -43,8 +48,3 @@ https://nymrli.top/2019/04/25/ACM-并查集/
 https://nymrli.top/2019/04/25/Java课程第二次实验报告/
 https://nymrli.top/2019/04/25/ACM-大数定理（高精度）/
 https://nymrli.top/2019/03/28/使用git将项目上传到github（最简单方法）/
-https://nymrli.top/2019/03/28/学会Pull-request/
-https://nymrli.top/2019/03/28/蓝桥杯突击训练/
-https://nymrli.top/2019/03/25/C++机器学习库MLPack/
-https://nymrli.top/2019/03/17/南京邮电大学java程序设计作业在线编程第六次作业/
-https://nymrli.top/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/

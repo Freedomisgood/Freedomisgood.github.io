@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">ACM_动态规划</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/02/07</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="DP"> DP</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,198</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><p>图解动态规划 : <a href="http://www.sohu.com/a/153858619_466939" target="_blank" rel="noopener">http://www.sohu.com/a/153858619_466939</a></p>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">ACM_动态规划</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/15</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="DP"> DP</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,198</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><p>图解动态规划 : <a href="http://www.sohu.com/a/153858619_466939" target="_blank" rel="noopener">http://www.sohu.com/a/153858619_466939</a></p>
 <h1 id="动态规划"><a class="markdownIt-Anchor" href="#动态规划"></a> 动态规划 :</h1>
 <ul>
 <li>最优子结构</li>
@@ -106,7 +106,7 @@
 </ul>
 <h2 id="题目二-国王和金矿"><a class="markdownIt-Anchor" href="#题目二-国王和金矿"></a> <strong>题目二： 国王和金矿</strong></h2>
 <p>有一个国家发现了5座金矿，每座金矿的黄金储量不同，需要参与挖掘的工人数也不同。参与挖矿工人的总数是10人。每座金矿要么全挖，要么不挖，不能派出一半人挖取一半金矿。要求用程序求解出，要想得到尽可能多的黄金，应该选择挖取哪几座金矿？</p>
-<p><img src="/2019/02/03/ACM-动态规划/ACM-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%5C2.png" alt="2"></p>
+<p><img src="/2019/02/03/ACM-动态规划/2.png" alt="2"></p>
 <h3 id="解法一-排列组合"><a class="markdownIt-Anchor" href="#解法一-排列组合"></a> 解法一: 排列组合</h3>
 <p>时间复杂度 : O(2^N)</p>
 <h3 id="解法二-dp"><a class="markdownIt-Anchor" href="#解法二-dp"></a> 解法二 : DP</h3>
@@ -117,9 +117,9 @@
 </ul>
 <h4 id="2最优选择"><a class="markdownIt-Anchor" href="#2最优选择"></a> 2.最优选择</h4>
 <p>5个金矿的最优选择，就是*（前4座金矿10工人的挖金数量）和（前4座金矿7工人的挖金数量+第5座金矿的挖金数量）*的<strong>最大值</strong>！</p>
-<p><img src="/2019/02/03/ACM-动态规划/ACM-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%5C%E6%9C%80%E4%BC%98.jpg" alt="最优"></p>
+<p><img src="/2019/02/03/ACM-动态规划/%E6%9C%80%E4%BC%98.jpg" alt="最优"></p>
 <h4 id="3边界"><a class="markdownIt-Anchor" href="#3边界"></a> 3.边界</h4>
-<p><img src="/2019/02/03/ACM-动态规划/ACM-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%5C%E8%BE%B9%E7%95%8C.jpg" alt="边界"></p>
+<p><img src="/2019/02/03/ACM-动态规划/%E8%BE%B9%E7%95%8C.jpg" alt="边界"></p>
 <hr>
 <p>经过整理可得 <strong>状态转移方程式</strong>:</p>
 <ul>
@@ -136,7 +136,7 @@
 <h5 id="简单递归"><a class="markdownIt-Anchor" href="#简单递归"></a> 简单递归</h5>
 <h5 id="记忆搜索法"><a class="markdownIt-Anchor" href="#记忆搜索法"></a> 记忆搜索法</h5>
 <h5 id="动态规划递推式"><a class="markdownIt-Anchor" href="#动态规划递推式"></a> 动态规划(递推式)</h5>
-<p><img src="/2019/02/03/ACM-动态规划/ACM-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%5CDP%E5%86%99%E6%B3%95.png" alt="DP写法"></p>
+<p><img src="/2019/02/03/ACM-动态规划/DP%E5%86%99%E6%B3%95.png" alt="DP写法"></p>
 <hr>
 <h2 id="01背包问题"><a class="markdownIt-Anchor" href="#01背包问题"></a> 01背包问题</h2>
 <h3 id="简单递归-2"><a class="markdownIt-Anchor" href="#简单递归-2"></a> 简单递归</h3>

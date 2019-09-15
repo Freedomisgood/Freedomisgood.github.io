@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux三剑客</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/08/30</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,340</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="linux三剑客"><a class="markdownIt-Anchor" href="#linux三剑客"></a> Linux三剑客</h1>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux三剑客</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/15</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,340</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="linux三剑客"><a class="markdownIt-Anchor" href="#linux三剑客"></a> Linux三剑客</h1>
 <h2 id="bash命令执行顺序"><a class="markdownIt-Anchor" href="#bash命令执行顺序"></a> bash命令执行顺序</h2>
 <ol>
 <li>把命令行分成单个命令词</li>
@@ -191,7 +191,7 @@
 <li>
 <p>删除所有以#开头的行</p>
 <ul>
-<li><code>**sed -e 's/^#.\*// ; /^$/d' employee.txt**</code></li>
+<li><code>**sed -e 's/^#./*// ; /^$/d' employee.txt**</code></li>
 </ul>
 </li>
 <li>
@@ -228,8 +228,8 @@
 <li>
 <p><code>-r</code>支持使用拓展正则表达式</p>
 <ul>
-<li><code>sed -r 's/(GRUB_CMDLINE_LINUX.*)&quot;$/\1 xyz&quot;/'/etc/default/grub</code></li>
-<li><code>echo&quot;/etc/sysconfig/network/&quot; | sed -r 's/(.*\/)([^/]\/?$)/\1/'</code></li>
+<li><code>sed -r 's/(GRUB_CMDLINE_LINUX.*)&quot;$//1 xyz&quot;/'/etc/default/grub</code></li>
+<li><code>echo&quot;/etc/sysconfig/network/&quot; | sed -r 's/(.*//)([^/]//?$)//1/'</code></li>
 </ul>
 </li>
 <li>
@@ -255,13 +255,13 @@
 <p>p打印当前模式空间内容,追加到默认输出后</p>
 </li>
 <li>
-<p><code>a[\]test</code> 指定行追加</p>
+<p><code>a[/]test</code> 指定行追加</p>
 </li>
 <li>
-<p><code>i[\]test</code> 行前插入</p>
+<p><code>i[/]test</code> 行前插入</p>
 </li>
 <li>
-<p><code>c[\]test</code> 替换行为单行或多行</p>
+<p><code>c[/]test</code> 替换行为单行或多行</p>
 </li>
 <li>
 <p>= 为模式空间中的行打印行号</p>
@@ -298,7 +298,7 @@ W/PATH/TO/SOMEFILE：将替换成功的行保存至文件中</p>
 <p><strong>用sed在aaa前加#注释</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/^aaa/#&amp;/'</span> zimu.txt      <span class="comment"># &amp;的意思是匹配任意字符（就是说未知数，啥都行）  这条命令是 替换以aaa开头的</span></span><br></pre></td></tr></table></figure>
 <p><strong>用sed取消bbb前面的注释</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/^#(bbb)/\1/'</span> zimu.txt    <span class="comment">#\1的意思 就类似于   前面的 (bbb\） \1就是复制这个位置的内容  如果有 第二个 那么久\2就是复制第二个位置的内容</span></span><br><span class="line">sed <span class="string">'s/^#bbb/bbb/'</span> zimu.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/^#(bbb)//1/'</span> zimu.txt    <span class="comment">#/1的意思 就类似于   前面的 (bbb/） /1就是复制这个位置的内容  如果有 第二个 那么久/2就是复制第二个位置的内容</span></span><br><span class="line">sed <span class="string">'s/^#bbb/bbb/'</span> zimu.txt</span><br></pre></td></tr></table></figure>
 <p>上面那条命令等同于</p>
 <h2 id="awk"><a class="markdownIt-Anchor" href="#awk"></a> awk</h2>
 <blockquote>
@@ -306,7 +306,7 @@ W/PATH/TO/SOMEFILE：将替换成功的行保存至文件中</p>
 </blockquote>
 <p>ifconfig获得ip_addr的命令</p>
 <p>1.<code>ifconfig | grep inet | awk '{print $2}' | awk -F 'addr:' '{print $2}'</code></p>
-<p>2.<code>ifconfig | grep addr:192.168.* | awk '{print$2}' | awk '{split($0,a,\&quot;:\&quot;);print(a[2])}'</code></p>
+<p>2.<code>ifconfig | grep addr:192.168.* | awk '{print$2}' | awk '{split($0,a,/&quot;:/&quot;);print(a[2])}'</code></p>
 <p>▲.尽量使用单引号<code>''</code>,而不是<code>&quot;&quot;</code></p>
 <p>-F分隔符</p>
 <p>e.g.<code>echo &quot;A|B|C|D&quot; | awk -F &quot;|&quot; '{print($1)}'</code></p>
@@ -319,8 +319,8 @@ W/PATH/TO/SOMEFILE：将替换成功的行保存至文件中</p>
 <p>单引号：所见即所得，将单引号内的内容原样输出，阻止所有字符的转义</p>
 <p>不加引号：不会将含有空格的字符串视为一个整体输出，如果内容中有命令，变量等，会先把命令，变量解析出结果，然后再输出最终内容来，如果字符串含有空格等特殊字符，则不能完整输出，则需改加双引号。</p>
 <p>倒引号（反引号Esc键下方）：进行命令的替换，在倒引号内部的shell命令将会被执行，其结果输出代替用倒引号括起来的文本。</p>
-<p><code>echo &quot;1111\n222&quot;</code>不会转移\n</p>
-<p><code>echo -e &quot;11111\n222&quot;</code>会转义\n</p>
+<p><code>echo &quot;1111/n222&quot;</code>不会转移/n</p>
+<p><code>echo -e &quot;11111/n222&quot;</code>会转义/n</p>
 <p><code>xargs -n1</code>每行1个元素;xargs -n2 每行2个元素;</p>
 <h2 id="grepglobally-search-a-regular-expression-and-print"><a class="markdownIt-Anchor" href="#grepglobally-search-a-regular-expression-and-print"></a> grep(Globally search a Regular Expression and Print)</h2>
 <blockquote>

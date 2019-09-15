@@ -102,9 +102,82 @@
  最初的写法:
 由于在esp8266上已经选择、连接好了了httpbin.org的穿透，就以为Host可以不用加了，于是产生了 最初的写法：
 1POST /post?= HTTP/1.1
-▲根据玩单片机的小伙伴说必须多出一行/r/n，所以这边是有一行空行的
+▲根据玩单片机的小伙伴说必须多出一行\r\n，所以这边是有一行空行的
  结果： 400 BAD_REQUEST
-搜索过后得知 : 如果使用http 1.1协议的话主机名HOST字段是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/03/01/构造一个能发数据的POST请求头/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/24/搭建frp服务-阿里云服务器/">搭建frp服务--阿里云服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-24T06:56:27.000Z">2019-02-24</time><i class="fa fa-edit"></i><time datetime="2019-02-24T06:56:27.000Z">2019-09-15</time></div><div class="recent-post-content"> 搭建frp服务–阿里云服务器
+搜索过后得知 : 如果使用http 1.1协议的话主机名HOST字段是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/03/01/构造一个能发数据的POST请求头/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/24/学习nginx配置/">学习nginx配置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-24T08:45:40.000Z">2019-01-24</time><i class="fa fa-edit"></i><time datetime="2019-01-24T08:45:40.000Z">2019-09-15</time></div><div class="recent-post-content"> nginx配置
+ 多台虚拟主机:
+1.分配IP地址
+2.新建、编写usr/local/nginx的conf配置文件
+12345678910111213http&#123;    sever&#123;        listen 192.168.1.17:80;				//监听 (IP地址:) 端口        server_name 192.168.1.17;			// 域名或者ip        access_log logs/server1.access.log conbined;//指定位置+使用日志文件默认格式        location /        &#123;    ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/01/24/学习nginx配置/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/南京邮电大学java程序设计作业在线编程第二次作业/">南京邮电大学java程序设计作业在线编程第二次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T04:52:41.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T04:52:41.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
+ 选择题得分：60
+\1. 表达式9==8&amp;&amp;3&lt;7的运算结果是（ ）
+A.1
+B.0
+C.true
+D.false
+正确答案是: D
+\2. 表达式(3&gt;2)?8:9的运算结果是（ ）
+A.3
+B.2
+C.8
+D.9
+正确答案是: C
+\3. 表达式9-7&lt;0||11&gt;8的运算结果（ ）
+A.true
+B.false
+C.1
+D.0
+正确答案是: A
+\4. 表达式48%9+5*5-4的运算结果（ ）
+A.24
+B.26
+C.-30
+D.46
+正确答案是: A
+\5. 表达式2&gt;=5的运算结果是（ ）
+A.2
+B.5
+C.true ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/02/26/南京邮电大学java程序设计作业在线编程第二次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/南京邮电大学java程序设计作业在线编程第一次作业/">南京邮电大学java程序设计作业在线编程第一次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T04:50:14.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T04:50:14.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
+ 选择题得分：40
+\1. Java语言中，基本数据类型一共有（ ）种。
+A.16
+B.2
+C.4
+D.8
+正确答案是: D
+\2. Java虚拟机的英文缩写是（ ）
+A.JRE
+B.ECLIPSE
+C.JVM
+D.JDK
+正确答案是: C
+\3. Java程序中，最常见的对主方法的定义是（ ）。
+A.private static int main(String args[ ]){ }
+B.public static void main(String args[ ]){ }
+C.public static int main(char args[ ]){ }
+D.private  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/02/26/南京邮电大学java程序设计作业在线编程第一次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/Shell代码编写记录/">Shell代码编写记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T05:48:59.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T05:48:59.000Z">2019-09-15</time></div><div class="recent-post-content"> 随机选取端口
+12345# 随机设置代理和监控端口，允许每台机器有多个代理# 注意:$RANDOM返回一个从0到32767的值，端口&lt;= 1024保留给root用户# TODO:不是随机选择端口，而是绑定到可用端口export SPARK_SERVERPORT=$[$RANDOM + 1025]export SPARK_AGENTPORT=$[$RANDOM + 1025]
+ 后台执行,获取其PID
+12345678rcssserver3d --agent-port $SPARK_AGENTPORT --server-port $SPARK_SERVERPORT &amp;# 将rcs ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Shell"> Shell</a></div><div class="read-more"><a class="more" href="/2019/01/23/Shell代码编写记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/06/Python-adb操作手机/">Python+adb操作手机</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-06T05:00:09.000Z">2019-02-06</time><i class="fa fa-edit"></i><time datetime="2019-02-06T05:00:09.000Z">2019-09-15</time></div><div class="recent-post-content"> Adb
+ wifi连接调试 adb connect {ip}
+如果你不想用usb连接调试，可以选择使用adb 连接调试，命令是 adb connect {ip} ，需要在同一个局域网内。这个功能也比较实用，但首次连接时，需要另外一些配置，建议可以网上搜索下adb wifi连接手机等关键字看看。
+ 屏幕截屏 screencap -p {图片存储地址}
+这个其实直接通过手机截屏再发送到电脑就可以了，但我开发的是TV应用，在盒子上没法截屏，所以这个命令对我来说还是较实用的。
+ 获取或推送文件 adb pull/push
+这个也挺实用的，获取手机指定位置的文件到电脑上，或者从电脑发送文件到手机上
+  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="模拟操作"> 模拟操作</a></div><div class="read-more"><a class="more" href="/2019/02/06/Python-adb操作手机/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/01/ACM-贪心专题/">ACM_贪心专题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-01T12:17:50.000Z">2019-02-01</time><i class="fa fa-edit"></i><time datetime="2019-02-01T12:17:50.000Z">2019-09-15</time></div><div class="recent-post-content"> 贪心专题
+ 1.活动安排
+有若干个活动，第i个开始时间和结束时间是[Si,fi)，只有一个教室，活动之间不能交叠，求最多安排多少个活动？
+Input
+123第一行一个正整数n (n &lt;= 10000)代表活动的个数。第二行到第(n + 1)行包含n个开始时间和结束时间。开始时间严格小于结束时间，并且时间都是非负整数，小于1000000000
+Output
+1一行包含一个整数表示活动个数。
+Input示例
+123431 23 42 9
+Output示例
+12
+博主提供:
+1234567891011121314151617181920212223242526272829303132#inc ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="贪心"> 贪心</a></div><div class="read-more"><a class="more" href="/2019/02/01/ACM-贪心专题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/24/搭建frp服务-阿里云服务器/">搭建frp服务--阿里云服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-24T06:56:27.000Z">2019-02-24</time><i class="fa fa-edit"></i><time datetime="2019-02-24T06:56:27.000Z">2019-09-15</time></div><div class="recent-post-content"> 搭建frp服务–阿里云服务器
 为了可以远程访问活动室的电脑，需要进行内网穿透。之前9块钱买了花生壳的服务，勉强用用还行，带宽很有限。听说了frp后,打算在阿里云上安个frp服务，充当中转服务器。
  什么是frp
 
@@ -113,58 +186,7 @@ frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内�
  开始搭建
  外网主机
 SSH连接上外网主机后，使用wget指令下载frp。
-wget https://github.com/fatedier/frp/releases/download/v0.20.0 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/02/24/搭建frp服务-阿里云服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/24/学习nginx配置/">学习nginx配置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-24T08:45:40.000Z">2019-01-24</time><i class="fa fa-edit"></i><time datetime="2019-01-24T08:45:40.000Z">2019-09-15</time></div><div class="recent-post-content"> nginx配置
- 多台虚拟主机:
-1.分配IP地址
-2.新建、编写usr/local/nginx的conf配置文件
-12345678910111213http&#123;    sever&#123;        listen 192.168.1.17:80;				//监听 (IP地址:) 端口        server_name 192.168.1.17;			// 域名或者ip        access_log logs/server1.access.log conbined;//指定位置+使用日志文件默认格式        location /        &#123;    ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/01/24/学习nginx配置/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/南京邮电大学java程序设计作业在线编程第二次作业/">南京邮电大学java程序设计作业在线编程第二次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T04:52:41.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T04:52:41.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
- 选择题得分：60
-/1. 表达式9==8&amp;&amp;3&lt;7的运算结果是（ ）
-A.1
-B.0
-C.true
-D.false
-正确答案是: D
-/2. 表达式(3&gt;2)?8:9的运算结果是（ ）
-A.3
-B.2
-C.8
-D.9
-正确答案是: C
-/3. 表达式9-7&lt;0||11&gt;8的运算结果（ ）
-A.true
-B.false
-C.1
-D.0
-正确答案是: A
-/4. 表达式48%9+5*5-4的运算结果（ ）
-A.24
-B.26
-C.-30
-D.46
-正确答案是: A
-/5. 表达式2&gt;=5的运算结果是（ ）
-A.2
-B.5
-C.true ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/02/26/南京邮电大学java程序设计作业在线编程第二次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/南京邮电大学java程序设计作业在线编程第一次作业/">南京邮电大学java程序设计作业在线编程第一次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T04:50:14.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T04:50:14.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
- 选择题得分：40
-/1. Java语言中，基本数据类型一共有（ ）种。
-A.16
-B.2
-C.4
-D.8
-正确答案是: D
-/2. Java虚拟机的英文缩写是（ ）
-A.JRE
-B.ECLIPSE
-C.JVM
-D.JDK
-正确答案是: C
-/3. Java程序中，最常见的对主方法的定义是（ ）。
-A.private static int main(String args[ ]){ }
-B.public static void main(String args[ ]){ }
-C.public static int main(char args[ ]){ }
-D.private  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/02/26/南京邮电大学java程序设计作业在线编程第一次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/为了不跑操而Excel——Orz/">为了不跑操而Excel——Orz</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T07:45:07.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T07:45:07.000Z">2019-09-15</time></div><div class="recent-post-content"> 为了不跑操而Excel——Orz
+wget https://github.com/fatedier/frp/releases/download/v0.20.0 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/02/24/搭建frp服务-阿里云服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/为了不跑操而Excel——Orz/">为了不跑操而Excel——Orz</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T07:45:07.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T07:45:07.000Z">2019-09-15</time></div><div class="recent-post-content"> 为了不跑操而Excel——Orz
  3月1日
  Excel
 
@@ -185,10 +207,7 @@ D.private  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" 
 
  4月28日
 图片排版,体育部的网站支持源代码修改,因此可以修改html代码.
-12345678910111213141516171 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/01/为了不跑操而Excel——Orz/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/Shell代码编写记录/">Shell代码编写记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T05:48:59.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T05:48:59.000Z">2019-09-15</time></div><div class="recent-post-content"> 随机选取端口
-12345# 随机设置代理和监控端口，允许每台机器有多个代理# 注意:$RANDOM返回一个从0到32767的值，端口&lt;= 1024保留给root用户# TODO:不是随机选择端口，而是绑定到可用端口export SPARK_SERVERPORT=$[$RANDOM + 1025]export SPARK_AGENTPORT=$[$RANDOM + 1025]
- 后台执行,获取其PID
-12345678rcssserver3d --agent-port $SPARK_AGENTPORT --server-port $SPARK_SERVERPORT &amp;# 将rcs ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Shell"> Shell</a></div><div class="read-more"><a class="more" href="/2019/01/23/Shell代码编写记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/24/Python任务调度模块APScheduler/">Python任务调度模块APScheduler</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-24T11:30:06.000Z">2019-02-24</time><i class="fa fa-edit"></i><time datetime="2019-02-24T11:30:06.000Z">2019-09-15</time></div><div class="recent-post-content"> Python任务调度模块APScheduler
+12345678910111213141516171 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/01/为了不跑操而Excel——Orz/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/24/Python任务调度模块APScheduler/">Python任务调度模块APScheduler</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-24T11:30:06.000Z">2019-02-24</time><i class="fa fa-edit"></i><time datetime="2019-02-24T11:30:06.000Z">2019-09-15</time></div><div class="recent-post-content"> Python任务调度模块APScheduler
 
 APScheduler是一个python的第三方库，用来提供python的后台程序。包含四个组件，分别是：
 
@@ -200,14 +219,7 @@ triggers（触发器）中包含调度逻辑，每个作业都由自己的触发
 
 job stores： 任务商店组件，提供任务保存方式
 
-job stores（作业存储器）存储被调度的作业，默认的作业存储器只是简单地把作业保存在内存中，其他的作业存储器则是将作业保存在数据库中。当作业被保存到一个持久化的作业存储器中的时 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/02/24/Python任务调度模块APScheduler/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/06/Python-adb操作手机/">Python+adb操作手机</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-06T05:00:09.000Z">2019-02-06</time><i class="fa fa-edit"></i><time datetime="2019-02-06T05:00:09.000Z">2019-09-15</time></div><div class="recent-post-content"> Adb
- wifi连接调试 adb connect {ip}
-如果你不想用usb连接调试，可以选择使用adb 连接调试，命令是 adb connect {ip} ，需要在同一个局域网内。这个功能也比较实用，但首次连接时，需要另外一些配置，建议可以网上搜索下adb wifi连接手机等关键字看看。
- 屏幕截屏 screencap -p {图片存储地址}
-这个其实直接通过手机截屏再发送到电脑就可以了，但我开发的是TV应用，在盒子上没法截屏，所以这个命令对我来说还是较实用的。
- 获取或推送文件 adb pull/push
-这个也挺实用的，获取手机指定位置的文件到电脑上，或者从电脑发送文件到手机上
-  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="模拟操作"> 模拟操作</a></div><div class="read-more"><a class="more" href="/2019/02/06/Python-adb操作手机/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/Linux下开机启动Python脚本/">Linux下开机启动Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:48:46.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:48:46.000Z">2019-09-15</time></div><div class="recent-post-content"> /etc/rc.local
+job stores（作业存储器）存储被调度的作业，默认的作业存储器只是简单地把作业保存在内存中，其他的作业存储器则是将作业保存在数据库中。当作业被保存到一个持久化的作业存储器中的时 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/02/24/Python任务调度模块APScheduler/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/Linux下开机启动Python脚本/">Linux下开机启动Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:48:46.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:48:46.000Z">2019-09-15</time></div><div class="recent-post-content"> /etc/rc.local
 将脚本写在/etc/rc.local文件
 输入命令：sudo vi /etc/rc.local
 在exit 0上一行输入：python /usr/bin/python /home/pi/test.py
@@ -297,19 +309,7 @@ cmd-&gt;ipconfig-&gt;IPv4
 
 
 命令由命令名称、小括号和参数组 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/02/18/Cmake-入门/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/24/C++日期操作/">C++日期操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-24T07:00:56.000Z">2019-01-24</time><i class="fa fa-edit"></i><time datetime="2019-01-24T07:00:56.000Z">2019-09-15</time></div><div class="recent-post-content"> C++日期操作
-12345678910111213int main( )&#123;      time_t now = time(0);	// 基于当前系统的当前日期/时间 的时间戳   cout &lt;&lt; "1970 到目前经过秒数:" &lt;&lt; now &lt;&lt; endl;   tm *ltm = localtime(&amp;now);// 将时间戳转换为结构体,再输出 tm 结构的各个组成部分   cout &lt;&lt; "年: "&lt;&lt; 1900 + ltm-&gt;tm_year &lt;&lt; endl;   cout &lt;&lt; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="程序开发经验"> 程序开发经验</a></div><div class="read-more"><a class="more" href="/2019/01/24/C++日期操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/01/ACM-贪心专题/">ACM_贪心专题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-01T12:17:50.000Z">2019-02-01</time><i class="fa fa-edit"></i><time datetime="2019-02-01T12:17:50.000Z">2019-09-15</time></div><div class="recent-post-content"> 贪心专题
- 1.活动安排
-有若干个活动，第i个开始时间和结束时间是[Si,fi)，只有一个教室，活动之间不能交叠，求最多安排多少个活动？
-Input
-123第一行一个正整数n (n &lt;= 10000)代表活动的个数。第二行到第(n + 1)行包含n个开始时间和结束时间。开始时间严格小于结束时间，并且时间都是非负整数，小于1000000000
-Output
-1一行包含一个整数表示活动个数。
-Input示例
-123431 23 42 9
-Output示例
-12
-博主提供:
-1234567891011121314151617181920212223242526272829303132#inc ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="贪心"> 贪心</a></div><div class="read-more"><a class="more" href="/2019/02/01/ACM-贪心专题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/ACM-线性筛/">ACM_线性筛</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T08:57:36.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T08:57:36.000Z">2019-09-15</time></div><div class="recent-post-content"> 什么是线性筛?
+12345678910111213int main( )&#123;      time_t now = time(0);	// 基于当前系统的当前日期/时间 的时间戳   cout &lt;&lt; "1970 到目前经过秒数:" &lt;&lt; now &lt;&lt; endl;   tm *ltm = localtime(&amp;now);// 将时间戳转换为结构体,再输出 tm 结构的各个组成部分   cout &lt;&lt; "年: "&lt;&lt; 1900 + ltm-&gt;tm_year &lt;&lt; endl;   cout &lt;&lt; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="程序开发经验"> 程序开发经验</a></div><div class="read-more"><a class="more" href="/2019/01/24/C++日期操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/ACM-线性筛/">ACM_线性筛</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T08:57:36.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T08:57:36.000Z">2019-09-15</time></div><div class="recent-post-content"> 什么是线性筛?
 
 筛素数是为了求得一个区间内的所有素数，而把不是素数的筛去。
 

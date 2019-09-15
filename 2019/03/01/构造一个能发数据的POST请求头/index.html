@@ -102,7 +102,7 @@
 <h3 id="最初的写法"><a class="markdownIt-Anchor" href="#最初的写法"></a> 最初的写法:</h3>
 <p>由于在<strong>esp8266</strong>上已经选择、连接好了了<strong><a href="http://httpbin.org" target="_blank" rel="noopener">httpbin.org</a></strong>的穿透，就以为Host可以不用加了，于是产生了 <em>最初的写法</em>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /post?= HTTP/1.1</span><br></pre></td></tr></table></figure>
-<p>▲根据玩单片机的小伙伴说必须多出一行<code>/r/n</code>，所以这边是有一行空行的</p>
+<p>▲根据玩单片机的小伙伴说必须多出一行<code>\r\n</code>，所以这边是有一行空行的</p>
 <h4 id="结果-400-bad_request"><a class="markdownIt-Anchor" href="#结果-400-bad_request"></a> 结果： <code>400 BAD_REQUEST</code></h4>
 <p>搜索过后得知 : <u>如果使用<strong>http 1.1</strong>协议的话主机名HOST字段是必须的</u></p>
 <h3 id="第二次写法"><a class="markdownIt-Anchor" href="#第二次写法"></a> 第二次写法:</h3>
@@ -150,7 +150,7 @@
 </ul>
 <p>但是虽然能接受到返回的结果，但是响应数据中发现<code>form</code>一直是空的，那就是参数没传过去，于是想到是不是格式的错误</p>
 <h3 id="第四次写法"><a class="markdownIt-Anchor" href="#第四次写法"></a> 第四次写法</h3>
-<p>后来上网找寻了一下结果发现我遗漏了模板中的<code>/r/n/r/n</code>这行，即<em>请求头</em> 和 <em>请求体</em> 之间<strong>至少有一行换行！！！</strong></p>
+<p>后来上网找寻了一下结果发现我遗漏了模板中的<code>\r\n\r\n</code>这行，即<em>请求头</em> 和 <em>请求体</em> 之间<strong>至少有一行换行！！！</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">POST /get HTTP/1.1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Connection:close</span><br><span class="line"></span><br><span class="line">a=23&amp;b=34</span><br></pre></td></tr></table></figure>
 <p>中间的空行不能省略 ， 这样httpbin.org那边才不返回 <code>ERROR</code>或是<code>BAD_REQUEST</code></p>
 <p>但是数据还是发送不出</p>

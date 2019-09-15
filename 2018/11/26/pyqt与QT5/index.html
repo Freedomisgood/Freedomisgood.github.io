@@ -107,7 +107,7 @@
 <p>​												图一</p>
 <p><img src="/2018/11/26/pyqt与QT5/hexo/source/_posts/pyqt%E4%B8%8EQT5/1.jpg" alt="1"></p>
 <p>​													图二</p>
-<p>修改<code>Name</code>为<code>QT Designer</code>,<code>Program</code>为<code>QT</code>目录下<code>designer.exe</code>文件,不需要参数,<code>Work directory</code>为<code>D:/QT/{QT version}/msvc2015_64/bin</code></p>
+<p>修改<code>Name</code>为<code>QT Designer</code>,<code>Program</code>为<code>QT</code>目录下<code>designer.exe</code>文件,不需要参数,<code>Work directory</code>为<code>D:\QT\{QT version}\msvc2015_64\bin</code></p>
 <p><img src="/2018/11/26/pyqt与QT5/hexo/source/_posts/pyqt%E4%B8%8EQT5/designer_pro.jpg" alt="designer_pro"></p>
 <p>添加后就可以在菜单栏的<code>Tools</code>中找到…点击后,就可以直接打开<code>QT Designer</code>设计窗口</p>
 <p><img src="/2018/11/26/pyqt与QT5/hexo/source/_posts/pyqt%E4%B8%8EQT5/QTdesigner_finish.jpg" alt="QTdesigner_finish"></p>
@@ -125,7 +125,7 @@
 <p><img src="/2018/11/26/pyqt与QT5/hexo/source/_posts/pyqt%E4%B8%8EQT5/ui.jpg" alt="ui"></p>
 <p>将光标选择<code>window.ui</code>文件,然后选择<code>Tools</code>里面的<code>PyUIC</code>就可以自动生成一个<code>window.py</code>文件直接使用了.</p>
 <p><strong>控制台输出内容:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">G:/PyGui/venv/Scripts/python.exe -m PyQt5.uic.pyuic window.ui -o window.py</span><br><span class="line"><span class="comment">#点击PyUIC就相当于输出了在setting里面写好的代码,$FileName$为我们光标选择的文件名,输出的名字为$FileNameWithoutExtension$.py,输出的路径为当前文件目录$FileDir$</span></span><br><span class="line">Process finished <span class="keyword">with</span> exit code <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">G:\PyGui\venv\Scripts\python.exe -m PyQt5.uic.pyuic window.ui -o window.py</span><br><span class="line"><span class="comment">#点击PyUIC就相当于输出了在setting里面写好的代码,$FileName$为我们光标选择的文件名,输出的名字为$FileNameWithoutExtension$.py,输出的路径为当前文件目录$FileDir$</span></span><br><span class="line">Process finished <span class="keyword">with</span> exit code <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2018/11/26/pyqt与QT5/hexo/source/_posts/pyqt%E4%B8%8EQT5/ui1.jpg" alt="ui1"></p>
 <h4 id="qt-rcc"><a class="markdownIt-Anchor" href="#qt-rcc"></a> QT Rcc</h4>
 <h5 id="1将program设置为qt目录下的rccexe文件"><a class="markdownIt-Anchor" href="#1将program设置为qt目录下的rccexe文件"></a> 1.将<code>program</code>设置为<code>QT</code>目录下的<code>rcc.exe</code>文件</h5>

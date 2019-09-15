@@ -109,29 +109,29 @@
 <blockquote>
 <p>需要将安装好的mathtype目录下提取两个文件MathPage.wll和MathType Commands 6 For Word 2016.dotm复制到指定目录</p>
 </blockquote>
-<p>如果使用的Office是32位的话。在Mathtype安装后，安装路径（假设装在C盘的话）C:/Program Files (x86)/MathType/MathPage/32中有文件<strong>MathPage.wll</strong>；</p>
-<p>安装路径C:/Program Files (x86)/MathType/Office Support/32中有文件 <strong>MathType Commands 6 For Word.dotm</strong>；将这两个文件复制到桌面。</p>
+<p>如果使用的Office是32位的话。在Mathtype安装后，安装路径（假设装在C盘的话）C:\Program Files (x86)\MathType\MathPage\32中有文件<strong>MathPage.wll</strong>；</p>
+<p>安装路径C:\Program Files (x86)\MathType\Office Support\32中有文件 <strong>MathType Commands 6 For Word.dotm</strong>；将这两个文件复制到桌面。</p>
 <p><strong>（当然，这里都是针对Windows 64位系统而言的，注windows10是64位操作系统。如果是Windows 32位系统，路径中就不会包含有（x86）了，请注意。）</strong></p>
-<p>如果使用的Office是64位的话。在Mathtype安装后，安装路径（假设装在C盘的话）C:/Program Files (x86)/MathType/MathPage/64中有文件<strong>MathPage.wll</strong>；</p>
-<p>安装路径C:/Program Files (x86)/MathType/Office Support/64中有文件 <strong>MathType Commands 6 For Word 2016.dotm</strong>；将这两个文件复制到桌面。</p>
+<p>如果使用的Office是64位的话。在Mathtype安装后，安装路径（假设装在C盘的话）C:\Program Files (x86)\MathType\MathPage\64中有文件<strong>MathPage.wll</strong>；</p>
+<p>安装路径C:\Program Files (x86)\MathType\Office Support\64中有文件 <strong>MathType Commands 6 For Word 2016.dotm</strong>；将这两个文件复制到桌面。</p>
 <p>**如果不清楚自己的Office是32位还是64位，就按照32位的来，一般来说，向下兼容，实在不行就都试一试。▲.===&gt;我就是以为自己的是64位结果是32位被坑了很久都用不成。</p>
 <p>或者像如下查看自己的word版本，打开word点击“账号”</p>
 <p><img src="/2019/08/30/Word2016配置使用MathType/word%E7%89%88%E6%9C%AC.png" alt="word版本"></p>
 <p>选择“关于word”</p>
 <p><img src="/2019/08/30/Word2016配置使用MathType/bit.png" alt="bit"></p>
-<p>对于自己安装Office 2016的用户，需要找到Office 2016的安装文件夹（假设装在C盘的话）C:/Program Files/Microsoft Office/Office16/STARTUP（<strong>对于****64位的Office用户</strong>）；或C:/Program Files (x86)/Microsoft Office/Office16/STARTUP（<strong>对于****32位的Office用户</strong>）。然后，直接将桌面上的那两个文件剪切放进去即可，重新启动Word后就会出现Mathtype插件栏。</p>
+<p>对于自己安装Office 2016的用户，需要找到Office 2016的安装文件夹（假设装在C盘的话）C:\Program Files\Microsoft Office\Office16\STARTUP（<strong>对于****64位的Office用户</strong>）；或C:\Program Files (x86)\Microsoft Office\Office16\STARTUP（<strong>对于****32位的Office用户</strong>）。然后，直接将桌面上的那两个文件剪切放进去即可，重新启动Word后就会出现Mathtype插件栏。</p>
 <p>对于Office预装的用户，想找到Office的安装路径就不那么容易了，这个时候就只能发挥一下Windows自身的搜索功能（安利Everythisng搜索）了，从前面提到的可以看出Mathtype安装文件中有两个文件需要手动移植到Office安装路劲下的一个STARTUP文件夹中，因此需要找到这个STARTUP文件夹。</p>
 <p>在搜索框中输入STARTUP。</p>
-<p>找到最后为**~Microsoft/Word/STARTUP**的文件夹子目录，可能会有多个。逐次添加桌面上的两个文件【如下图】到这些文件夹中，并重新启动Word进行查证。</p>
+<p>找到最后为**~Microsoft\Word\STARTUP**的文件夹子目录，可能会有多个。逐次添加桌面上的两个文件【如下图】到这些文件夹中，并重新启动Word进行查证。</p>
 <p><strong>需要复制的文件</strong></p>
 <p><img src="/2019/08/30/Word2016配置使用MathType/4.png" alt="4"></p>
 <p><img src="/2019/08/30/Word2016配置使用MathType/3.png" alt="3"></p>
 <p><strong>复制到的位置</strong></p>
-<p>1.STARTUP目录，如果没有的话自己新建<code>C:/Users/10630/AppData/Local/Packages/Microsoft.LanguageExperiencePackzh-cn_8wekyb3d8bbwe/LocalCache/Roaming/Microsoft/Word/STARTUP</code></p>
+<p>1.STARTUP目录，如果没有的话自己新建<code>C:\Users\10630\AppData\Local\Packages\Microsoft.LanguageExperiencePackzh-cn_8wekyb3d8bbwe\LocalCache\Roaming\Microsoft\Word\STARTUP</code></p>
 <p><img src="/2019/08/30/Word2016配置使用MathType/mathpage.png" alt="mathpage"></p>
-<p>2.这个路径我忘记了，但是搜索的时候发现自己复制了<code>C:/Users/10630/AppData/Roaming/Microsoft/AddIns</code></p>
+<p>2.这个路径我忘记了，但是搜索的时候发现自己复制了<code>C:\Users\10630\AppData\Roaming\Microsoft\AddIns</code></p>
 <p><img src="/2019/08/30/Word2016配置使用MathType/2.png" alt="2"></p>
-<p><strong>注意事项</strong>：如果在<strong>C:/Program Files/Microsoft Office/Office16/STARTUP中，含有MathType Commands 6 For Word.dot，那么就会出现无法粘贴的现象</strong>。（复制的话，word会关闭）</p>
+<p><strong>注意事项</strong>：如果在<strong>C:\Program Files\Microsoft Office\Office16\STARTUP中，含有MathType Commands 6 For Word.dot，那么就会出现无法粘贴的现象</strong>。（复制的话，word会关闭）</p>
 <p>😄总算安好了把，配合Mathpix，感觉应该挺香的.</p>
 <hr>
 <h2 id="兼容模式问题"><a class="markdownIt-Anchor" href="#兼容模式问题"></a> 兼容模式问题</h2>

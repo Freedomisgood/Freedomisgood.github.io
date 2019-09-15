@@ -118,7 +118,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install ansible</span></span><br></pre></td></tr></table></figure>
 <p>法2:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install software-properties-common</span><br><span class="line">sudo apt-add-repository ppa:ansible/ansible</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install ansible</span><br></pre></td></tr></table></figure>
-<p>如果安装失败请换源<code>sudo sed -i -re 's//w+/.archive/.ubuntu/.com/archive.ubuntu.com/g' /etc/apt/sources.list</code>,更新安装库<code>sudo apt-get update</code></p>
+<p>如果安装失败请换源<code>sudo sed -i -re 's/\w+\.archive\.ubuntu\.com/archive.ubuntu.com/g' /etc/apt/sources.list</code>,更新安装库<code>sudo apt-get update</code></p>
 <h2 id="ansible-架构图"><a class="markdownIt-Anchor" href="#ansible-架构图"></a> ansible 架构图</h2>
 <p><img src="https://images2017.cnblogs.com/blog/1204916/201712/1204916-20171205163000628-69838828.png" alt="img"><br>
 　　上图中我们看到的主要模块如下：</p>
@@ -194,7 +194,7 @@
 <code>ansible‘websrvs:dbsrvs:&amp;appsrvs:lftpsrvs'-m ping</code></p>
 <p>正则表达式<br>
 <code>ansible&quot;websrvs:&amp;dbsrvs&quot;-m ping</code></p>
-<p><code>ansible&quot;~（webldb）.*/.magedu/.com&quot;-m ping</code></p>
+<p><code>ansible&quot;~（webldb）.*\.magedu\.com&quot;-m ping</code></p>
 <h2 id="ansible-command"><a class="markdownIt-Anchor" href="#ansible-command"></a> ansible command</h2>
 <ul>
 <li>creates=
@@ -359,9 +359,9 @@ meta/不常用</p>
 <p>该操作是在控制主机中进行。</p>
 </blockquote>
 <p>SSH认证文件创建成功之后，将控制主机的公钥文件 id_rsa.pub 添加到被控制主机的~/.ssh/authorized_keys。</p>
-<p><code>/# ~</code>指的是控制主机和被控制主机通信的用户家目录。</p>
-<p><code>/# id_rsa</code> 是控制主机的私钥文件，要严格保管。</p>
-<p><code>/# id_rsa.pub</code>是控制主机的公钥文件，可随意分发。</p>
+<p><code>\# ~</code>指的是控制主机和被控制主机通信的用户家目录。</p>
+<p><code>\# id_rsa</code> 是控制主机的私钥文件，要严格保管。</p>
+<p><code>\# id_rsa.pub</code>是控制主机的公钥文件，可随意分发。</p>
 <p>法一:<code>ansible all -m shell -a &quot;cat /tmp/authorized_keys &gt;&gt; /root/.ssh/authorized_keys&quot; -k</code></p>
 <p>▲注意</p>
 <blockquote>

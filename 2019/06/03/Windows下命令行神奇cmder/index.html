@@ -117,7 +117,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cmder.exe /REGISTER ALL</span><br></pre></td></tr></table></figure>
 <h2 id="修改命令提示符号"><a class="markdownIt-Anchor" href="#修改命令提示符号"></a> 修改命令提示符号</h2>
 <h3 id="13-之后版本"><a class="markdownIt-Anchor" href="#13-之后版本"></a> 1.3 之后版本</h3>
-<p>修改文件 <code>${CMDER_HOME}/vendor/clink.lua</code></p>
+<p>修改文件 <code>${CMDER_HOME}\vendor\clink.lua</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if env == nil then</span><br><span class="line">    lambda = &quot;λ&quot;</span><br><span class="line">else</span><br><span class="line">    lambda = &quot;(&quot;..env..&quot;) λ&quot;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 <p>改成</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if env == nil then</span><br><span class="line">    lambda = &quot;$&quot;</span><br><span class="line">else</span><br><span class="line">    lambda = &quot;(&quot;..env..&quot;) $&quot;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
@@ -125,7 +125,7 @@
 <p>其他符号也行，看你自己的喜好</p>
 </blockquote>
 <h3 id="13-以前版本"><a class="markdownIt-Anchor" href="#13-以前版本"></a> 1.3 以前版本</h3>
-<p>编辑Cmder安装目录下的 <code>vendor/init.bat</code> 批处理文件</p>
+<p>编辑Cmder安装目录下的 <code>vendor\init.bat</code> 批处理文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@prompt $E[1;32;40m$P$S&#123;git&#125;&#123;hg&#125;$S$_$E[1;30;40m &#123;lamb&#125; $S$E[0m</span><br></pre></td></tr></table></figure>
 <p>修改为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@prompt $E[1;32;40m$P$S&#123;git&#125;&#123;hg&#125;$S$_$E[1;30;40m $$ $S$E[0m</span><br></pre></td></tr></table></figure>
@@ -141,12 +141,12 @@
 <h2 id="中文和命令ll支持"><a class="markdownIt-Anchor" href="#中文和命令ll支持"></a> 中文和命令ll支持</h2>
 <ul>
 <li>Cmder 是不支持中文，这需要你在 <code>Startup</code> 下的 <code>Environment</code> 中设置一下。将 <code>set LANG=zh_CN.UTF-8</code></li>
-<li>cmder原生没有 <strong>ll</strong> 命令，但可以通过设置别名来实现：打开cmder安装目录下的<code>/config/user-aliases.cmd</code>文件，添加以下别名设置：</li>
+<li>cmder原生没有 <strong>ll</strong> 命令，但可以通过设置别名来实现：打开cmder安装目录下的<code>\config\user-aliases.cmd</code>文件，添加以下别名设置：</li>
 </ul>
 <h2 id="chocolatey"><a class="markdownIt-Anchor" href="#chocolatey"></a> <a href="https://chocolatey.org/" target="_blank" rel="noopener">Chocolatey</a>软件包管理系统</h2>
 <p>chocolatey 是windows 下面的 yum brew 这种包管理器<br>
 运行如下命令(需要管理员权限)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@powershell -NoProfile -ExecutionPolicy unrestricted -Command &quot;iex ((new-object net.webclient).DownloadString(&apos;https://chocolatey.org/install.ps1&apos;))&quot; &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%/chocolatey/bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@powershell -NoProfile -ExecutionPolicy unrestricted -Command &quot;iex ((new-object net.webclient).DownloadString(&apos;https://chocolatey.org/install.ps1&apos;))&quot; &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</span><br></pre></td></tr></table></figure>
 <p>安装软件命令 <code>choco install softwareName</code>,</p>
 <ul>
 <li>短写是 <code>cinst softwareName</code></li>

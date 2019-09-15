@@ -101,7 +101,7 @@
 <hr>
 <p>经查看发现是pyHook（pyHook是一个用来进行键盘、鼠标等层面事件监控的库。这个库的正常工作需要pythoncom等操作系统的API的支持。）无法安装，不知道是不是因为这个库可以被用于一些比较邪恶的目的。经搜索发现直接pip install pyHook是找不到相关包的，但可以下源码编译安装，可以在 <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyhook" target="_blank" rel="noopener">https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyhook</a> 这里可以直接下载到.whl文件，这个文件可以作为pip install 的参数来进行安装。</p>
 <blockquote>
-<p>直接输入<code>pip install pyHook-1.5.1-cp36-cp36m-win_amd64.whl</code>好像还是不行，经提示使用<code>G:/Py_opencv/venv/Scripts/python.exe -m pip install pyHook-1.5.1-cp36-cp36m-win_amd64.whl</code>第一个参数是python解释器，-m选项可以让python以脚本的方式运行一个模块，pip install后面就是要安装的包名。</p>
+<p>直接输入<code>pip install pyHook-1.5.1-cp36-cp36m-win_amd64.whl</code>好像还是不行，经提示使用<code>G:\Py_opencv\venv\Scripts\python.exe -m pip install pyHook-1.5.1-cp36-cp36m-win_amd64.whl</code>第一个参数是python解释器，-m选项可以让python以脚本的方式运行一个模块，pip install后面就是要安装的包名。</p>
 </blockquote>
 <hr>
 <p><code>pyHook-1.5.1-cp36-cp36m-win_amd64.whl</code></p>
@@ -125,7 +125,7 @@ whl:压缩包，在其中包含了py文件，以及经过编译的pyd文件。�
 第一步，安装pywin32，地址：<a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#pywin32" target="_blank" rel="noopener">http://www.lfd.uci.edu/~gohlke/pythonlibs/#pywin32</a><br>
 第二步，下载pyhook_py3k，地址：<a href="https://github.com/Answeror/pyhook_py3k" target="_blank" rel="noopener">https://github.com/Answeror/pyhook_py3k</a><br>
 第三步，下载swig.exe，地址：<a href="http://www.swig.org/download.html" target="_blank" rel="noopener">http://www.swig.org/download.html</a> ==&gt;.zip格式解压<br>
-第四步，解压缩pyhook_py3k，并进行编译，命令：python <a href="http://setup.py" target="_blank" rel="noopener">setup.py</a> build_ext --swig=…/swigwin-3.0.12/swig.exe，可以根据实际情况修改swig.exe的路径，另外本机最好已安装VC2008<br>
+第四步，解压缩pyhook_py3k，并进行编译，命令：python <a href="http://setup.py" target="_blank" rel="noopener">setup.py</a> build_ext --swig=…\swigwin-3.0.12\swig.exe，可以根据实际情况修改swig.exe的路径，另外本机最好已安装VC2008<br>
 第五步，安装编译好的pyhook_py3k，命令：pip install .</p>
 </blockquote>
 <p>然后就可以正常操作了!!~</p>

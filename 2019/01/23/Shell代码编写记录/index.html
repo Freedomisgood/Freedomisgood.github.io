@@ -162,7 +162,7 @@
 <p>写法二: <code>ps -ef | grep Roboviz.jar | grep -v grep | awk '{print $2}' | xargs kill -9</code></p>
 <h2 id="shell脚本中的冒号作用"><a class="markdownIt-Anchor" href="#shell脚本中的冒号作用"></a> shell脚本中的冒号作用</h2>
 <h3 id="作用一-占位符pass"><a class="markdownIt-Anchor" href="#作用一-占位符pass"></a> 作用一: 占位符&lt;==&gt;pass</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if egrep '.*vmlinuz-2.6.32-220.23.1.lvs.el6.*nohz=off' /boot/grub/grub.conf ;then </span><br><span class="line">    :</span><br><span class="line">else </span><br><span class="line">    sed -i -r 's/(.*vmlinuz-2.6.32-220.23.1.lvs.el6.*)//1 nohz=off/' /boot/grub/grub.conf</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if egrep '.*vmlinuz-2.6.32-220.23.1.lvs.el6.*nohz=off' /boot/grub/grub.conf ;then </span><br><span class="line">    :</span><br><span class="line">else </span><br><span class="line">    sed -i -r 's/(.*vmlinuz-2.6.32-220.23.1.lvs.el6.*)/\1 nohz=off/' /boot/grub/grub.conf</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 <h3 id="作用二-分隔符"><a class="markdownIt-Anchor" href="#作用二-分隔符"></a> 作用二: 分隔符</h3>
 <blockquote>
 <p>冒号(:)常用来做路径的分隔符（PATH），数据字段的分隔符（/etc/passwd）</p>

@@ -104,14 +104,14 @@
 <h5 id="注windows环境下"><a class="markdownIt-Anchor" href="#注windows环境下"></a> ▲注：Windows环境下</h5>
 <ul>
 <li>首先看下是否已经安装了Virtualenv package插件，如果没有，则Ctrl+Shift+P，install Package,输入Virtualenv安装。</li>
-<li>找到插件安装的地方：C:/Users/{Username}/AppData/Roaming/Sublime Text 3/Installed Packages ==&gt;注意改变一下Username</li>
+<li>找到插件安装的地方：C:\Users{Username}\AppData\Roaming\Sublime Text 3\Installed Packages ==&gt;注意改变一下Username</li>
 <li>解压Virtualenv.sublime-package文件，可以通过先添加后缀.zip变为Virtualenv.sublime-package.zip再解压</li>
 </ul>
 <p>包含文件如下：<br>
 <img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180827155724022-2032122286.jpg" alt=""><br>
 修改Python + Virtualenv.sublime-build文件， 增加一行：<code>&quot;env&quot;: {&quot;PYTHONIOENCODING&quot;: &quot;utf8&quot;},</code><br>
 使其变成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;env&quot;: &#123;&quot;PYTHONIOENCODING&quot;: &quot;utf8&quot;&#125;,</span><br><span class="line">&quot;target&quot;: &quot;virtualenv_exec&quot;,</span><br><span class="line">&quot;shell_cmd&quot;: &quot;python -u /&quot;$file/&quot;&quot;,</span><br><span class="line">&quot;file_regex&quot;: &quot;^[ ]*File /&quot;(...*?)/&quot;, line ([0-9]*)&quot;,</span><br><span class="line">&quot;selector&quot;: &quot;source.python&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;env&quot;: &#123;&quot;PYTHONIOENCODING&quot;: &quot;utf8&quot;&#125;,</span><br><span class="line">&quot;target&quot;: &quot;virtualenv_exec&quot;,</span><br><span class="line">&quot;shell_cmd&quot;: &quot;python -u \&quot;$file\&quot;&quot;,</span><br><span class="line">&quot;file_regex&quot;: &quot;^[ ]*File \&quot;(...*?)\&quot;, line ([0-9]*)&quot;,</span><br><span class="line">&quot;selector&quot;: &quot;source.python&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后保存，再把该文件打包为Virtualenv.sublime-package.zip再去掉后缀，就大功告成了。</p>
 <hr>
 <p>最后打开Sublime Text3使用Python + Virtualenv 编译，就能看到中文正常输出啦！</p>

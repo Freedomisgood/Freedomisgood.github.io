@@ -1,5 +1,4 @@
 https://nymrli.top/2019/09/14/如何成为一位老司机——考驾照经历/
-https://nymrli.top/2019/09/13/Java系列环境变量配置/
 https://nymrli.top/2019/09/13/Java自动化构建工具——Maven/
 https://nymrli.top/2019/09/13/打jar包和使用jar包/
 https://nymrli.top/2019/09/09/验证码识别程序设计流程/
@@ -48,3 +47,4 @@ https://nymrli.top/2019/04/25/ACM-并查集/
 https://nymrli.top/2019/04/25/Java课程第二次实验报告/
 https://nymrli.top/2019/04/25/ACM-大数定理（高精度）/
 https://nymrli.top/2019/03/28/使用git将项目上传到github（最简单方法）/
+https://nymrli.top/2019/03/28/学会Pull-request/

@@ -1,4 +1,13 @@
+https://nymrli.top/2019/09/24/Linux安装selenium执行Python程序/
+https://nymrli.top/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/
+https://nymrli.top/2019/09/23/Github下载、访问慢解决方法-转/
+https://nymrli.top/2019/09/21/同性交友网站Github的骚操作/
+https://nymrli.top/2019/09/21/搭建Jupyter服务器/
+https://nymrli.top/2019/09/19/深度学习/
+https://nymrli.top/2019/09/17/常用域名记录解释/
+https://nymrli.top/2019/09/17/Spring-Boot学习笔记/
 https://nymrli.top/2019/09/14/如何成为一位老司机——考驾照经历/
+https://nymrli.top/2019/09/14/软件测试大赛/
 https://nymrli.top/2019/09/13/Java自动化构建工具——Maven/
 https://nymrli.top/2019/09/13/打jar包和使用jar包/
 https://nymrli.top/2019/09/09/验证码识别程序设计流程/
@@ -39,12 +48,3 @@ https://nymrli.top/2019/06/03/Windows下命令行神奇cmder/
 https://nymrli.top/2019/05/27/微信公众号Pyhton/
 https://nymrli.top/2019/05/27/DigitalOcean-VPS注册/
 https://nymrli.top/2019/05/27/PyWinAuto使用/
-https://nymrli.top/2019/05/27/Google-Colab使用/
-https://nymrli.top/2019/05/27/Keras使用——图像增强/
-https://nymrli.top/2019/05/27/Python机器学习及实践——从零开始通往Kaggle竞赛之路/
-https://nymrli.top/2019/04/25/ACM-强连通分量/
-https://nymrli.top/2019/04/25/ACM-并查集/
-https://nymrli.top/2019/04/25/Java课程第二次实验报告/
-https://nymrli.top/2019/04/25/ACM-大数定理（高精度）/
-https://nymrli.top/2019/03/28/使用git将项目上传到github（最简单方法）/
-https://nymrli.top/2019/03/28/学会Pull-request/

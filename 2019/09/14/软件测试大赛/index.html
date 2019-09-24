@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>软件测试大赛 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">软件测试大赛</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/16</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,838</span> | Reading time: <span class="post-count">12</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="软件测试大赛"><a class="markdownIt-Anchor" href="#软件测试大赛"></a> 软件测试大赛</h1>
+<h2 id="初学流程"><a class="markdownIt-Anchor" href="#初学流程"></a> 初学流程</h2>
+<ol>
+<li>首先了解比赛,查看帮助文档<a href="http://www.mooctest.net/summer-faq" target="_blank" rel="noopener">平台帮助</a></li>
+<li>然后在<a href="http://www.mooctest.net/download" target="_blank" rel="noopener">工具下载</a>中下载工具、eclipse插件</li>
+<li>最后根据教程中将插件安装好即可</li>
+</ol>
+<h2 id="移动应用测试开发"><a class="markdownIt-Anchor" href="#移动应用测试开发"></a> 移动应用测试开发</h2>
+<h3 id="环境配置"><a class="markdownIt-Anchor" href="#环境配置"></a> 环境配置</h3>
+<h4 id="配置java环境"><a class="markdownIt-Anchor" href="#配置java环境"></a> 配置Java环境</h4>
+<p>略,见<a href="https://www.runoob.com/java/java-environment-setup.html" target="_blank" rel="noopener">Java 开发环境配置_菜鸟教程</a></p>
+<h4 id="安装adb"><a class="markdownIt-Anchor" href="#安装adb"></a> 安装ADB</h4>
+<p>1.菜单——&gt;Tools——&gt;Settings，将Server地址为 <a href="http://mirrors.neusoft.edu.cn" target="_blank" rel="noopener">mirrors.neusoft.edu.cn</a>， 端口 80 ，并且在Others里勾选 Force	https://…,最后一定要选择菜单——&gt;Packages菜单——&gt;Reload</p>
+<p>注:其他<a href="http://ask.android-studio.org/?/article/34" target="_blank" rel="noopener">可用的镜像</a></p>
+<p>2.把 Android	SDK	路径下的tools	和 platform-tools	两个目录路径加入到系统环境变量 Path</p>
+<ul>
+<li></li>
+</ul>
+<p>3.在终端(cmd)输入命令 adb ，回车，输出 adb 版本和帮助信息说明环境配置成功</p>
+<h4 id="安装nodejs"><a class="markdownIt-Anchor" href="#安装nodejs"></a> 安装Node.js</h4>
+<p>略</p>
+<h4 id="安装appium"><a class="markdownIt-Anchor" href="#安装appium"></a> 安装Appium</h4>
+<p>1)下载安装文件： <a href="http://pan.baidu.com/s/1jGvAISu" target="_blank" rel="noopener">http://pan.baidu.com/s/1jGvAISu</a> Windows	下载zip文件，MAC请下载dmg<br>
+2)直接双击appium-installer.exe文件安装就好(务必记住安装路径)，桌面会生成一个Appium的图标<br>
+此时已经可以通过Appium在桌面快捷方式启动Appium桌面应用程序，并点击应用程序右上侧启动状按钮启动Appium，若成功启动会输出数行[info]级别的日志，打印出Appium server启动成功后占用的端口。</p>
+<p>如果无法显示<code>appium-doctor</code>,可以<code>npm install -g appium</code>安装</p>
+<h3 id="uiautomatorviewer使用"><a class="markdownIt-Anchor" href="#uiautomatorviewer使用"></a> UIautomatorviewer使用</h3>
+<blockquote>
+<p>Android 4.1发布的，uiautomator是用来做UI测试的。也就是普通的手工测试，点击每个控件元素 看看输出的结果是否符合预期。比如 登陆界面 分别输入正确和错误的用户名密码然后点击登陆按钮看看是否能否登陆以及是否有错误提示等。</p>
+</blockquote>
+<p>找到Andriod sdk安装目录下的uiautomatorviewer.bat,E:\android-sdk-windows\tools\uiautomatorviewer.bat,双击打开</p>
+<p>由于自动获得手机信息失败,因此我只能通过手工进行获取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Error obtaining UI hierarchy</span><br><span class="line">Reason:</span><br><span class="line">Error while creating temporary file to save snapshot:null</span><br></pre></td></tr></table></figure>
+<p>自动导入成功的结果：</p>
+<p><img src="https://images2015.cnblogs.com/blog/968033/201606/968033-20160624171643110-403576910.gif" alt=""></p>
+<h4 id="手工获取手机信息"><a class="markdownIt-Anchor" href="#手工获取手机信息"></a> 手工获取手机信息</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> dump资源文件 再导出到本地</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> adb shell uiautomator dump</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> adb pull /sdcard/window_dump.xml</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 获取截图 导出</span></span><br><span class="line">adb shell screencap -p /data/local/tmp/app.png</span><br><span class="line">adb pull /data/local/tmp/app.png .</span><br></pre></td></tr></table></figure>
+<p>传到Window里，有了截图文件和资源文件，点击UI Automator Viewer菜单栏第一个图标手工导入后即可解析，分析UI</p>
+<p><img src="/2019/09/14/软件测试大赛/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%A4%A7%E8%B5%9B%5Capp.jpg" alt="app"></p>
+<ol>
+<li><strong>获取快照</strong>
+<ul>
+<li>当你要分析一个页面时，首先将手机的页面停留在你要分析的页面，然后用数据线连接电脑。</li>
+</ul>
+</li>
+<li><strong>页面层级</strong>
+<ul>
+<li>右上方的整个区域，就是当前页面布局的层级关系</li>
+</ul>
+</li>
+<li><strong>不可用区域</strong>
+<ul>
+<li>右上方的整个区域中的第二个按钮Toggle NAF Nodes，按下后出现的黄色区域代表，这些控件是不被Uiautomator工具识别，无法获取到这些控件的实例</li>
+</ul>
+</li>
+<li><strong>属性详情</strong>：
+<ul>
+<li>右下方的整个区域，是当前选中的页面或者是控件的属性信息。写代码的时候就是需要通过查看属性中的控件的id或者是text等来获取控件的实例，然后点击操作它。</li>
+</ul>
+</li>
+</ol>
+<h4 id="编写脚本"><a class="markdownIt-Anchor" href="#编写脚本"></a> 编写脚本</h4>
+<ol>
+<li><strong>创建项目</strong>：创建新的Java项目(注意不是Android项目)。在该项目中来创建测试代码。</li>
+<li><strong>导入库和包</strong>：在Project Explorer视图中，右键点击测试项目，选择“ Properties &gt; Java Build Path”，然后选择“Libraries” tab界面。在“Libraries”界面选择“ Add Library &gt; JUnit”来添加<strong>JUnit3</strong> 库；然后点击“Add External JARs… ”并导航到Android SDK目录。选择platforms目录下面的 <strong>uiautomator.jar</strong> 和 <strong>android.jar</strong>文件。</li>
+</ol>
+<p><a href="https://www.cnblogs.com/lazytest/p/5612709.html" target="_blank" rel="noopener">uiautomatorviewer</a></p>
+<p><a href="https://www.cnblogs.com/givemelove/p/8486903.html" target="_blank" rel="noopener">uiautomatorviewer详解、脚本介绍</a></p>
+<h3 id="junit使用"><a class="markdownIt-Anchor" href="#junit使用"></a> Junit使用</h3>
+<h4 id="demo坑点记录"><a class="markdownIt-Anchor" href="#demo坑点记录"></a> DEMO坑点记录:</h4>
+<p>1.JUnit4和JRE1.7配套使用,Junit5需要8以上。而JUnit4和JUnit5都不支持JRE11，所以当时我的报错是<code>The import org.apache cannot be resolved</code>.</p>
+<p>2.右键项目-&gt;build path -&gt; Config build path -&gt; Libraries后还是报错,<code>java.lang.NoClassDefFoundError: org/junit/runner/manipulation/Filter</code>…解决方法是:①菜单栏-&gt;projects-&gt;clean②build path -&gt; Config build path -&gt; Libraries-&gt;remove重新导入Junit③运行OK</p>
+<h4 id="编写规范"><a class="markdownIt-Anchor" href="#编写规范"></a> 编写规范</h4>
+<p>1.测试方法上必须使用@Test进行修饰<br>
+2.测试方法必须使用public void 进行修饰，不能带任何的参数<br>
+3.新建一个源代码目录来存放我们的测试代码<br>
+4.测试类的包应该和被测试类保持一致<br>
+5.测试单元中的每个方法必须可以独立测试，测试方法间不能有任何的依赖<br>
+6.测试类使用Test作为类名的后缀（不是必须）<br>
+7.测试方法使用test作为方法名的前缀（不星必须）|</p>
+<h4 id="运行流程"><a class="markdownIt-Anchor" href="#运行流程"></a> 运行流程</h4>
+<p>1.@BeforeClass修饰的方法会在所有方法被调用前被执行，而且该方法是静态的，所以当测试类被加载后接着就会运行它，而且在内存中它只会存在一份实例，它<strong>比较适合加载配置文件</strong>。<br>
+2.@AfterClass所修饰的方法通常用来对资源的清理，如关闭数据库的连接<br>
+3.@Before和@After会在<strong>每个测试方法</strong>即(@Test修饰的方法函数)的前后各执行一次。</p>
+<p>@Test：将一个普通的方法修饰成为一个测试方法</p>
+<ul>
+<li>
+<p>@Test（expected=XX.class）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span>(expected=ArithmeticException.class)</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">divided</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">	assertEquals(<span class="number">0</span>, <span class="keyword">new</span> calculate().divide(<span class="number">6</span>, <span class="number">0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>@Test（timeout=毫秒）</p>
+</li>
+</ul>
+<p>@BeforeClass：它会在所有的方法运行前被执行，static修饰<br>
+@AfterClass：它会在所有的方法运行结束后被执行，static修饰<br>
+@Before：会在每一个测试方法被运行前执行一次<br>
+@After：会在每一个测试方法运行后被执行一次<br>
+@lgnore：所修饰的测试方法会被测试运行器忽略<br>
+@RunWith：可以更改测试运行器org.junit.runner.Runner</p>
+<h4 id="测试套件"><a class="markdownIt-Anchor" href="#测试套件"></a> 测试套件</h4>
+<p>1.测试套件就是组织测试类一起运行的<br>
+写一个作为测试套件的入口类，这个类里不包含其他的方法<br>
+更改测试运行器Suite.class<br>
+将要测试的类作为数组传入到Suite.SuiteClasses（0）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * Project Name:softTest </span></span><br><span class="line"><span class="comment"> * File Name:SuiteTest.java </span></span><br><span class="line"><span class="comment"> * Package Name:com.test.demo </span></span><br><span class="line"><span class="comment"> * Date:2019年9月15日下午1:57:13 </span></span><br><span class="line"><span class="comment"> * Copyright (c) 2019, chenzhou1025@126.com All Rights Reserved. </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment">*/</span>  </span><br><span class="line"><span class="keyword">package</span> com.test.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.junit.runners.Suite;</span><br><span class="line"><span class="keyword">import</span> org.junit.runners.Suite.SuiteClasses;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(Suite.class)</span><br><span class="line"><span class="meta">@Suite</span>.SuiteClasses(&#123;calculateTest.class&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SuiteTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="参数化设置"><a class="markdownIt-Anchor" href="#参数化设置"></a> 参数化设置</h4>
+<p>1.更改默认的测试运行器为RunWith（Parameterized.class）<br>
+2.声明变量来存放预期值和结果值<br>
+3.声明一个返回值为Collection的公共静态方法，并使用@Parameters进行修饰<br>
+4.为测试类声明一个带有参数的公共构造函数，并在其中为之声明变量赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * Project Name:softTest </span></span><br><span class="line"><span class="comment"> * File Name:parameterTest.java </span></span><br><span class="line"><span class="comment"> * Package Name:com.test.demo </span></span><br><span class="line"><span class="comment"> * Date:2019年9月15日下午2:06:38 </span></span><br><span class="line"><span class="comment"> * Copyright (c) 2019, chenzhou1025@126.com All Rights Reserved. </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment">*/</span>  </span><br><span class="line"><span class="keyword">package</span> com.test.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.assertEquals;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.junit.runners.Parameterized;</span><br><span class="line"><span class="keyword">import</span> org.junit.runners.Parameterized.Parameters;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(Parameterized.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">parameterTest</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> expected = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> input1 = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> input2 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Parameters</span></span><br><span class="line">    <span class="comment">// 给构造函数赋值的时候被调用的</span></span><br><span class="line">	<span class="keyword">public</span> 	<span class="keyword">static</span> Collection&lt;Object[]&gt; t() &#123;</span><br><span class="line">		<span class="keyword">return</span> Arrays.asList(<span class="keyword">new</span> Object[][] &#123;</span><br><span class="line">			&#123;<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>&#125;,</span><br><span class="line">			&#123;<span class="number">4</span>,<span class="number">2</span>,<span class="number">2</span>&#125;,</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">parameterTest</span><span class="params">(<span class="keyword">int</span> expected, <span class="keyword">int</span> input1, <span class="keyword">int</span> input2)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.expected = expected;</span><br><span class="line">		<span class="keyword">this</span>.input1 = input1;</span><br><span class="line">		<span class="keyword">this</span>.input2 = input2;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testAdd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		assertEquals(expected, <span class="keyword">new</span> calculate().add(input1, input2));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意点"><a class="markdownIt-Anchor" href="#注意点"></a> 注意点：</h3>
+<h4 id="定位控件的参数选择要求"><a class="markdownIt-Anchor" href="#定位控件的参数选择要求"></a> 定位控件的参数选择要求：</h4>
+<ol>
+<li>
+<p>对脚本控件定位参数的选择要追求在要求范围内的唯一性：</p>
+<ul>
+<li>
+<p>参数选择优先级：控件 Resource-id (driver.findElementById())&gt; 控件 XPath(driver.findElementByXPath())</p>
+<ul>
+<li>id举例：<code>com.floral.life:id/tv_title</code></li>
+<li>Xpath举例：<code>//android.widget.TextView[@text='鲜切花 ']，</code>▲.(此处’鲜切花 '的花字后面还有一个空格，所以不要自己输入属性值，应该直接把在 UI Automator Viewer 中的值直接拷贝到代码中去)。</li>
+</ul>
+</li>
+<li>
+<p>Xpath选择时，首要选择 text、content-desc 这种特殊性较强的属性值，不要选择 index、bounds 这种多个控件极易相同(即未满足全局唯一)的属性值。</p>
+</li>
+<li>
+<p>脚本中使用 XPath 进行定位时，务必与脚本编写要求中的 XPath 格式完全一致，即<code>//控件类名[@控件属性名='控件属性值']</code>不要使用<code>//*[@控件属性名='控件属性值']</code>等一系列其他格式</p>
+</li>
+</ul>
+</li>
+<li>
+<p>脚本中不要使用 driver.findElementsByxxx()一类的方法，不要用该方法<br>
+定位多个控件得到一个 list 再循环来操作 list 中控件(除非该控件的 XPath都不能满足在测试范围内的全局唯一)。</p>
+</li>
+<li>
+<p>脚本中允许自定义函数，但对于 driver.findElementById()这类原生方法，不要进行封装。</p>
+</li>
+<li>
+<p>逻辑上是一句话的代码务必写在一行内，不要在函数的参数处换行。</p>
+</li>
+</ol>
+<h2 id="开发者测试"><a class="markdownIt-Anchor" href="#开发者测试"></a> 开发者测试</h2>
+<p>同样需要配置Java sdk和Andriod SDK环境,除此之外还需要配置maven</p>
+<h3 id="配置maven"><a class="markdownIt-Anchor" href="#配置maven"></a> 配置maven</h3>
+<p>1.在<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">maven官网</a>下载<a href="http://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.zip" target="_blank" rel="noopener"><br>
+apache-maven-3.6.2-bin.zip</a>后解压,根据<a href="https://www.bilibili.com/video/av37883702?from=search&amp;seid=16282408693429403604" target="_blank" rel="noopener">视频</a>配置好maven</p>
+<p>2.发现最初安装eclipse时没有安装maven,于是安装maven.菜单–&gt;windwos–&gt;install new software–&gt;输入 <a href="http://download.eclipse.org/technology/m2e/milestones/1.4%E5%90%8E%E5%9B%9E%E8%BD%A6" target="_blank" rel="noopener">http://download.eclipse.org/technology/m2e/milestones/1.4后回车</a></p>
+<p>环境配置好后,测试一下</p>
+<p><img src="/2019/09/14/软件测试大赛/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%A4%A7%E8%B5%9B%5C%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.jpg" alt="测试结果"></p>
+<ul>
+<li>branchscore是主要评分规则</li>
+<li>变异得分无法实时查看，使用选手最后一次的提交脚本统一运行</li>
+</ul>
+<h3 id="编程建议"><a class="markdownIt-Anchor" href="#编程建议"></a> 编程建议:</h3>
+<ol>
+<li>必须使用断言
+<ul>
+<li>确认最后提交的测试用例全部正确， Webide或者客户端能运行得分</li>
+<li>使用setup()和teardown()方法进行环境初始化</li>
+<li>使用timeout限制测试用例运行时间，避免测试用例出现无响应情况</li>
+</ul>
+</li>
+<li>Evosuite生成的捕获异常的自动测试用例，可能导致变异无法跑通，<br>
+学生自己注意</li>
+<li>测试点注意事项:</li>
+</ol>
+<ul>
+<li>
+<p>对double类型进行判断</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> a = <span class="number">1.0</span>;</span><br><span class="line">	assertEquals(<span class="number">1.0</span>,a,<span class="number">0.00001</span>) <span class="comment">// bingo</span></span><br><span class="line">    <span class="comment">//assertEquals(1.0,a,0.00001)     wrong</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>对控制台输出进行测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinPackageTest</span></span>&#123;</span><br><span class="line">    String sep；</span><br><span class="line">    BinPackage bp；</span><br><span class="line">    PrintStream console=<span class="keyword">null</span>；</span><br><span class="line">    ByteArray InputStream in=<span class="keyword">null</span>；</span><br><span class="line">    ByteArrayOutputStream out=<span class="keyword">null</span>；</span><br><span class="line">    InputStream input=<span class="keyword">null</span>；</span><br><span class="line"></span><br><span class="line"><span class="meta">@Before</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span><span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    bp=<span class="keyword">new</span> BinPackage()；</span><br><span class="line">    out=<span class="keyword">new</span> ByteArrayoutputstream()；</span><br><span class="line">    input=System.in；</span><br><span class="line">    console=System.out；</span><br><span class="line">    System.setout(<span class="keyword">new</span> PrintStream(out))；</span><br><span class="line">    sep=System.getProperty(<span class="string">"line.separator"</span>)；</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="meta">@After</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tearDown</span><span class="params">()</span><span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    System.setIn(input)；</span><br><span class="line">    out.close()；</span><br><span class="line">    System.setout(console)；</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Test</span>(timeout=<span class="number">4000</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">    in=<span class="keyword">new</span> ByteArrayInputStream((<span class="string">"2"</span>+sep+<span class="string">"12"</span>tsep +<span class="string">"3"</span>+sep+<span class="string">"211"</span>+sep+<span class="string">"222"</span>+sep+<span class="string">"232"</span>).getBytes())；</span><br><span class="line">    System.setIn(in)；</span><br><span class="line">    bp.entrance()；</span><br><span class="line">    string ans=out.tostring()；</span><br><span class="line">    assertEquals(<span class="string">"false"</span>+ sep+<span class="string">"true"</span>+sep+<span class="string">"22"</span>+sep+<span class="string">"false"</span>+sep，ans)；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>对异常报错进行测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"><span class="keyword">import</span> org.junit.Rule;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.rules.ExpectedException;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccountTest</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> DOUBLE_DELTA=<span class="number">1e-15</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Rule</span></span><br><span class="line">    <span class="keyword">public</span> ExpectedException  thrown=ExpectedException.none();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span>(timeout=<span class="number">4000</span>)</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Bank bank=<span class="keyword">new</span> Bank();</span><br><span class="line">        Account checkingAccount=<span class="keyword">new</span> Account(Account.CHECKING);</span><br><span class="line">        Customer bill=<span class="keyword">new</span> Customer(<span class="string">"Bi11"</span>).openAccount(checkingAccount);</span><br><span class="line">        bank.addCustomer(bil1);</span><br><span class="line">        thrown.expect(I1legalArgumentException.class);</span><br><span class="line">        thrown.expectMessage(<span class="string">"amount must be greater than zero"</span>);</span><br><span class="line">        checkingAccount.withdraw(-<span class="number">100</span>.e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="nextday-参数化单元测试测试用例设计"><a class="markdownIt-Anchor" href="#nextday-参数化单元测试测试用例设计"></a> <a href="https://www.cnblogs.com/juking/p/6885925.html" target="_blank" rel="noopener">Nextday 参数化单元测试(测试用例)设计</a></h3>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/09/14/软件测试大赛/">https://nymrli.top/2019/09/14/软件测试大赛/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/09/14/如何成为一位老司机——考驾照经历/" title="如何成为一位老司机——考驾照经历"><span>< PreviousPost</span><br><span class="prevTitle">如何成为一位老司机——考驾照经历</span></a><a class="nextSlogan" href="/2019/09/13/Java自动化构建工具——Maven/" title="Java自动化构建工具——Maven"><span>NextPost ></span><br><span class="nextTitle">Java自动化构建工具——Maven</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '软件测试大赛',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#软件测试大赛"><span class="toc-number">1.</span> <span class="toc-text"> 软件测试大赛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#初学流程"><span class="toc-number">1.1.</span> <span class="toc-text"> 初学流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动应用测试开发"><span class="toc-number">1.2.</span> <span class="toc-text"> 移动应用测试开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境配置"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置java环境"><span class="toc-number">1.2.1.1.</span> <span class="toc-text"> 配置Java环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装adb"><span class="toc-number">1.2.1.2.</span> <span class="toc-text"> 安装ADB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装nodejs"><span class="toc-number">1.2.1.3.</span> <span class="toc-text"> 安装Node.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装appium"><span class="toc-number">1.2.1.4.</span> <span class="toc-text"> 安装Appium</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uiautomatorviewer使用"><span class="toc-number">1.2.2.</span> <span class="toc-text"> UIautomatorviewer使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#手工获取手机信息"><span class="toc-number">1.2.2.1.</span> <span class="toc-text"> 手工获取手机信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编写脚本"><span class="toc-number">1.2.2.2.</span> <span class="toc-text"> 编写脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#junit使用"><span class="toc-number">1.2.3.</span> <span class="toc-text"> Junit使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#demo坑点记录"><span class="toc-number">1.2.3.1.</span> <span class="toc-text"> DEMO坑点记录:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编写规范"><span class="toc-number">1.2.3.2.</span> <span class="toc-text"> 编写规范</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#运行流程"><span class="toc-number">1.2.3.3.</span> <span class="toc-text"> 运行流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试套件"><span class="toc-number">1.2.3.4.</span> <span class="toc-text"> 测试套件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参数化设置"><span class="toc-number">1.2.3.5.</span> <span class="toc-text"> 参数化设置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意点"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 注意点：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#定位控件的参数选择要求"><span class="toc-number">1.2.4.1.</span> <span class="toc-text"> 定位控件的参数选择要求：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发者测试"><span class="toc-number">1.3.</span> <span class="toc-text"> 开发者测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置maven"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 配置maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程建议"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 编程建议:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nextday-参数化单元测试测试用例设计"><span class="toc-number">1.3.3.</span> <span class="toc-text"> Nextday 参数化单元测试(测试用例)设计</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

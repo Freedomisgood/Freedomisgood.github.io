@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>搭建Jupyter服务器 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">搭建Jupyter服务器</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/24</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,321</span> | Reading time: <span class="post-count">10</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="搭建jupyter服务器"><a class="markdownIt-Anchor" href="#搭建jupyter服务器"></a> 搭建Jupyter服务器</h1>
+<p>1.配置好Python环境及安装pip</p>
+<p>2.安装jupyter:</p>
+<p><code>pip3 install jupyter</code> (此处使用的是python3)</p>
+<p>3.生成配置文件</p>
+<p><code>jupyter notebook --generate-config</code></p>
+<p>4.生成密钥:</p>
+<p>终端输入<code>$ ipython</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">from</span> notebook.auth <span class="keyword">import</span> passwd</span><br><span class="line">In [<span class="number">2</span>]: passwd()</span><br><span class="line">Enter password: </span><br><span class="line">Verify password: </span><br><span class="line"><span class="comment">#此时会让你两次输入密码，然后就会生成秘钥</span></span><br><span class="line"><span class="comment">#＊＊＊＊＊＊＊＊＊＊＊＊</span></span><br></pre></td></tr></table></figure>
+<p>5.修改配置文件<code>vim ~/.jupyter/jupyter_notebook_config.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">c=get_config()</span><br><span class="line">c.IPKernelApp.pylab =<span class="string">"inline"</span></span><br><span class="line">c.NotebookApp.ip=<span class="string">'*'</span> 				<span class="comment"># 设置所有ip皆可访问</span></span><br><span class="line">c.NotebookApp.password = <span class="string">'sha1:x'</span>   <span class="comment"># 刚生成的密文</span></span><br><span class="line">c.NotebookApp.open_browser = <span class="keyword">False</span>  <span class="comment"># 禁止自动打开浏览器</span></span><br><span class="line">c.NotebookApp.port = <span class="number">9999</span> 			<span class="comment"># 指定运行端口</span></span><br><span class="line">c.NotebookApp.notebook_dir = <span class="string">'/home/apollo3d/tf/jupyter_home'</span> <span class="comment"># 指定Jupyter的工作目录</span></span><br></pre></td></tr></table></figure>
+<h1 id="拓展云服务器搭建神器jupyterlab转"><a class="markdownIt-Anchor" href="#拓展云服务器搭建神器jupyterlab转"></a> 拓展:<a href="https://blog.csdn.net/ds19991999/article/details/83663349?tdsourcetag=s_pctim_aiomsg#commentBox" target="_blank" rel="noopener">云服务器搭建神器JupyterLab(转)</a></h1>
+<blockquote>
+<p><a href="https://github.com/jupyterlab/jupyterlab" target="_blank" rel="noopener"><code>JupyterLab</code></a>是一个交互式的开发环境，其用于应对包含着<code>notebook</code>、代码以及数据的工作场景。</p>
+</blockquote>
+<h2 id="1-前言"><a class="markdownIt-Anchor" href="#1-前言"></a> 1、前言</h2>
+<p>如果说vim是编辑器之神，那么JupyterLab就是笔记本之神。</p>
+<p>从2017年开始我注意到这一神奇的IDE笔记本，第一眼见到它，就觉得它真的太强大了，作为一个交互式的Python开发工具，其实也不算开发工具，准确的来说，它是一个演示代码的科学数据工具，支持markdown预览，支持Draw扩展，支持丰富的文件格式和多种开发语言，拥有众多插件诸于GitHub， Google-Dirve， Git和TOC，更重要的是，它是把浏览器当作开发工具，十分有创意。JupyterLab的开发者众多，GitHub上面的isuue也十分活跃，众多的大牛开发者也纷纷加入到JupyterLab的阵营，为JupyterLab的发展作贡献，JupyterLab得到迅速发展。</p>
+<p>好的工具当然是要好好利用了，回归正题，怎样通过云服务器搭建一个可远程使用的JupyterLab?</p>
+<h2 id="2-添加ppa源"><a class="markdownIt-Anchor" href="#2-添加ppa源"></a> 2、添加ppa源</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@iZwz9huxtbd86xp91s3j16Z:~# sudo add-apt-repository ppa:chronitis/jupyter</span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo: add-apt-repository: <span class="built_in">command</span> not found</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 出现这种情况,可以如下解决</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> $ sudo apt-get install software-properties-common</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-配置python"><a class="markdownIt-Anchor" href="#3-配置python"></a> 3、配置python</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install python-pip python-dev build-essential </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo pip install --upgrade pip <span class="comment"># </span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo pip install --upgrade virtualenv <span class="comment">#安装虚拟环境</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 升级pip</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo pip3 install --upgrade pip</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo pip2 install --upgrade pip</span></span><br></pre></td></tr></table></figure>
+<p>如果没有换源,先进行换源,下载速度会快很多</p>
+<ul>
+<li>阿里云 <a href="http://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="noopener">http://mirrors.aliyun.com/pypi/simple/</a></li>
+<li>中国科技大学 <a href="https://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.mirrors.ustc.edu.cn/simple/</a></li>
+<li>豆瓣(douban) <a href="http://pypi.douban.com/simple/" target="_blank" rel="noopener">http://pypi.douban.com/simple/</a></li>
+<li>清华大学 <a href="https://pypi.tuna.tsinghua.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple/</a></li>
+<li>中国科学技术大学 <a href="http://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">http://pypi.mirrors.ustc.edu.cn/simple/</a></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; ~/.pip/pip.conf</span><br><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+<p><code>npm</code>和<code>yarn</code>也可以换源，更简单，自行<code>google</code>。</p>
+<p><code>pip</code>国内的一些镜像包,换源之后出现<code>python2</code>版本过低的情况导致以前的包下载不了，那就直接将文件夹<code>~/.pip/pip.conf</code>删除就可以恢复原来的源。</p>
+<p>pip指向问题<br>
+有时候会出现pip,pip2,pip3都TM指向python2，这个之后就需要改一下这这三个文件。</p>
+<p>编辑这三个文件，将第一行注释分别改为python\python2\python3</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">~ $which pip</span><br><span class="line">/usr/local/bin/pip</span><br><span class="line">21:36 alien@alien-Inspiron-3443:</span><br><span class="line">~ $which pip2</span><br><span class="line">/usr/local/bin/pip2</span><br><span class="line">21:36 alien@alien-Inspiron-3443:</span><br><span class="line">~ $which pip3</span><br><span class="line">/usr/local/bin/pip3</span><br></pre></td></tr></table></figure>
+<h3 id="安装yarn和nodejs"><a class="markdownIt-Anchor" href="#安装yarn和nodejs"></a> 安装<code>yarn</code>和<code>nodejs</code></h3>
+<h4 id="配置仓库"><a class="markdownIt-Anchor" href="#配置仓库"></a> 配置仓库</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -</span><br><span class="line">echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list</span><br></pre></td></tr></table></figure>
+<h4 id="安装yarn"><a class="markdownIt-Anchor" href="#安装yarn"></a> 安装<code>yarn</code></h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install yarn</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果这边安装后,报错NameError: name <span class="string">'CoreConfig'</span> is not defined,那么需要更新nodejs版本</span></span><br></pre></td></tr></table></figure>
+<p>注意这里<code>yarn</code>自动安装了<code>nodejs</code>，不过版本太低，安装<code>jupyterlab</code>的时候会出问题，而且使用<code>n</code>或者<code>nvm</code>安装的<code>nodejs</code>也有问题，总之<code>nodejs</code>要按照下面这种方式就没事，这个是官方的<code>bug</code>，官方<code>issue</code>也提到过，但是目前还未解决。</p>
+<p>如果版本过低,安装插件、或是<code>jupyter lab build</code>发生<code>NameError: name 'CoreConfig' is not defined</code>错误,则可能是nodejs版本过低导致.我出现这个Bug后找了提了issue也没解决,后来突然想起了这边提到的<strong>nodejs版本问题</strong>,于是更新后解决…<a href="#nodejs%E6%9B%B4%E6%96%B0">nodejs更新方式见附录</a></p>
+<h4 id="安装nodejs"><a class="markdownIt-Anchor" href="#安装nodejs"></a> 安装<code>nodejs</code></h4>
+<p>创建一个新文件，输入两行<code>deb</code>，结束之后<code>Ctrl+C</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/apt/sources.list.d/nodesource.list</span><br><span class="line">deb https://deb.nodesource.com/node_6.x xenial main</span><br><span class="line">deb-src https://deb.nodesource.com/node_6.x xenial main</span><br></pre></td></tr></table></figure>
+<p>导入公匙并安装<code>nodejs</code>，这个版本的<code>nodejs</code>对<code>jupyterlab</code>支持比较友好。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -</span><br><span class="line">sudo apt-get update</span><br><span class="line">apt-cache policy nodejs</span><br><span class="line">sudo apt-get install nodejs</span><br><span class="line">nodejs --version</span><br><span class="line"></span><br><span class="line">​```shell</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">### 安装`ipython,matplotlib,scipy,pandas,numpy`</span></span></span><br><span class="line"></span><br><span class="line">最好`python2`和`python3`都安装。</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 安装`JupyterLab`及其配置</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 配置同上文Jupyter配置</span></span><br><span class="line"></span><br><span class="line">​```shell</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装</span></span><br><span class="line">sudo pip3 install jupyterlab</span><br><span class="line"><span class="meta">#</span><span class="bash"> 生成密码</span></span><br><span class="line">jupyter-notebook password</span><br></pre></td></tr></table></figure>
+<h3 id="创建哈希密码"><a class="markdownIt-Anchor" href="#创建哈希密码"></a> 创建哈希密码</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> notebook.auth <span class="keyword">import</span> passwd</span><br><span class="line">passwd()</span><br><span class="line"><span class="comment"># 输入你自己设置登录JupyterLab界面的密码，</span></span><br><span class="line"><span class="comment"># 然后就会生产下面这样的密码，将它记下来，待会儿用</span></span><br><span class="line"><span class="string">'sha1:b92f3fb7d848:a5d40ab2e26aa3b296ae1faa17aa34d3df351704'</span></span><br></pre></td></tr></table></figure>
+<h3 id="修改jupyterlab配置文件"><a class="markdownIt-Anchor" href="#修改jupyterlab配置文件"></a> 修改<code>JupyterLab</code>配置文件</h3>
+<p>先生成一个配置文件，记下输出的配置文件地址</p>
+<p><code>jupyter lab --generate-config</code>-&gt;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.allow_root = <span class="keyword">True</span> <span class="comment">#允许以root方式运行jupyterlab</span></span><br><span class="line">c.NotebookApp.ip = <span class="string">'0.0.0.0'</span> <span class="comment">#允许任意ip段访问</span></span><br><span class="line">c.NotebookApp.notebook_dir = <span class="string">u'/root/JupyterLab'</span> <span class="comment"># 设置jupyterlab页面的根目录</span></span><br><span class="line">c.NotebookApp.open_browser = <span class="keyword">False</span><span class="comment">#默认运行时不启动浏览器，因为服务器默认只有终端</span></span><br><span class="line">c.NotebookApp.password = <span class="string">u'sha1:b92f3fb7d848:a5d40ab2e26aa3b296ae1faa17aa34d3df351704'</span><span class="comment">#设置之前生产的哈希密码</span></span><br><span class="line">c.NotebookApp.port = <span class="number">8080</span><span class="comment">#设置访问端口</span></span><br></pre></td></tr></table></figure>
+<p>到此，<code>JupyterLab</code>已经安装成功了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jupyter-lab --version</span><br><span class="line">0.33.12</span><br><span class="line">jupyter lab build</span><br></pre></td></tr></table></figure>
+<p><code>jupyter lab build</code>时间有点久，如果没报错就成功了</p>
+<h2 id="jupyterlab扩展安装"><a class="markdownIt-Anchor" href="#jupyterlab扩展安装"></a> <code>JupyterLab</code>扩展安装</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">jupyter labextension list # 查看已经安装的扩展及其状态：</span><br><span class="line">jupyter labextension install @mflevine/jupyterlab_html # 比如安装一个扩展jupyterlab_html，支持html预览:</span><br><span class="line">jupyter labextension uninstall @mflevine/jupyterlab_html 			#卸载扩展:</span><br><span class="line">jupyter labextension update --all	#更新所有扩展:</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装一个生成目录的插件</span></span><br><span class="line">jupyter labextension install @jupyterlab/toc</span><br></pre></td></tr></table></figure>
+<p>还有功能</p>
+<ul>
+<li>支持做图</li>
+<li><code>markdown</code></li>
+<li>多标签</li>
+<li>内部打开网页</li>
+<li><code>latex</code></li>
+</ul>
+<h3 id="快捷键"><a class="markdownIt-Anchor" href="#快捷键"></a> 快捷键</h3>
+<p>编辑模式命令</p>
+<ul>
+<li>执行当前cell，执行后不自动调转到下一个cell：Ctrl-Enter</li>
+<li>使当前的cell进入编辑模式：Enter</li>
+<li>退出当前cell的编辑模式：Esc</li>
+</ul>
+<p>命令模式:</p>
+<ul>
+<li>删除当前的cell：双D</li>
+<li>为当前的cell加入line number：单L</li>
+<li>将当前的cell转化为具有一级标题的maskdown：单1</li>
+<li>将当前的cell转化为具有二级标题的maskdown：单2</li>
+<li>将当前的cell转化为具有三级标题的maskdown：单3</li>
+<li>撤销对某个cell的删除：z</li>
+<li>浏览器的各个Tab之间切换：Up和Dn</li>
+</ul>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<h2 id="nodejs更新"><a class="markdownIt-Anchor" href="#nodejs更新"></a> nodejs更新</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看更新前的版本</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> node -v</span></span><br><span class="line">v4.2.1</span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo npm cache clean -f</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo npm install -g n</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo n stable</span></span><br><span class="line"><span class="meta"> #</span><span class="bash"> 软链接,VERSION改成新的版本(删了后按TAB键)</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo ln -sf /usr/<span class="built_in">local</span>/n/versions/node/&lt;VERSION&gt;/bin/node /usr/bin/nodejs</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看是否更新成功</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> node -v</span></span><br><span class="line">v10.16.3</span><br></pre></td></tr></table></figure>
+<h2 id="安装内核"><a class="markdownIt-Anchor" href="#安装内核"></a> 安装内核</h2>
+<p>安装Python内核</p>
+<blockquote>
+<p>如果需要python2和python3同时存在的话</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo pip2 install ipykernel</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo pip3 install ipykernel</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看已经安装的内核</span></span><br><span class="line">jupyter kernelspec list</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除你不需要的内核</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> jupyter kernelspec remove &lt;kernel_name&gt;</span></span><br><span class="line">/root/JupyterLab</span><br></pre></td></tr></table></figure>
+<p>安装ijavascript</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:chronitis/jupyter</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install ijavascript</span><br><span class="line"><span class="meta">#</span><span class="bash"> ihaskell、ijulia、irkernel、iruby</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> https://github.com/jupyter/jupyter/wiki/Jupyter-kernels</span></span><br></pre></td></tr></table></figure>
+<h2 id="插件安装"><a class="markdownIt-Anchor" href="#插件安装"></a> 插件安装</h2>
+<h3 id="jupyterlab-toc"><a class="markdownIt-Anchor" href="#jupyterlab-toc"></a> <a href="https://github.com/ian-r-rose/jupyterlab-toc" target="_blank" rel="noopener">jupyterlab-toc</a>(目录功能)</h3>
+<p>Installation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter labextension install @jupyterlab/toc</span><br></pre></td></tr></table></figure>
+<h3 id="jupyterlab-tensorboard"><a class="markdownIt-Anchor" href="#jupyterlab-tensorboard"></a> <a href="https://github.com/chaoleili/jupyterlab_tensorboard" target="_blank" rel="noopener">Jupyterlab-Tensorboard</a></h3>
+<p>Installation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ jupyter labextension install jupyterlab_tensorboard</span><br></pre></td></tr></table></figure>
+<p><a href="http://image.rexking6.top/img/clip1545289777.png" target="_blank" rel="noopener"><img src="http://image.rexking6.top/img/clip1545289777.png" alt="img"></a></p>
+<p><a href="http://image.rexking6.top/img/clip1545289896.png" target="_blank" rel="noopener"><img src="http://image.rexking6.top/img/clip1545289896.png" alt="img"></a></p>
+<p><a href="http://image.rexking6.top/img/clip1545289906.png" target="_blank" rel="noopener"><img src="http://image.rexking6.top/img/clip1545289906.png" alt="img"></a></p>
+<p><a href="http://image.rexking6.top/img/clip1545289922.png" target="_blank" rel="noopener"><img src="http://image.rexking6.top/img/clip1545289922.png" alt="img"></a></p>
+<h3 id="jupyterlab-drawio"><a class="markdownIt-Anchor" href="#jupyterlab-drawio"></a> <a href="https://github.com/QuantStack/jupyterlab-drawio" target="_blank" rel="noopener">JupyterLab drawio</a>(processon图)</h3>
+<p>Installation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter labextension install jupyterlab-drawio</span><br></pre></td></tr></table></figure>
+<p><a href="http://image.rexking6.top/img/clip1545289579.png" target="_blank" rel="noopener"><img src="http://image.rexking6.top/img/clip1545289579.png" alt="img"></a></p>
+<p>注,图片来自<a href="http://blog.rexking6.top/2018/12/20/JupyterLab%E6%8F%92%E4%BB%B6/" target="_blank" rel="noopener">RexKing6’s Note</a></p>
+<p>go_*to_*definition插件</p>
+<p><code>jupyter labextension install @lckr/jupyterlab_variableinspector</code></p>
+<p>在lab中按alt+ 点击变量名 or 函数名，可以跳转到其对应的最初定义的地方(注意看闪烁光标的位置变化)。</p>
+<p><img src="https://pic2.zhimg.com/v2-14d06c618b4fa8a7fffb2455576a5bb9_b.webp" alt="img"></p>
+<h2 id="快捷键-2"><a class="markdownIt-Anchor" href="#快捷键-2"></a> 快捷键</h2>
+<p>Up : 选中上方单元<br>
+K : 选中上方单元<br>
+Down : 选中下方单元<br>
+J : 选中下方单元<br>
+Shift-K : 扩大选中上方单元<br>
+Shift-J : 扩大选中下方单元<br>
+A : 在上方插入新单元<br>
+B : 在下方插入新单元<br>
+X : 剪切选中的单元<br>
+C : 复制选中的单元<br>
+Shift-V : 粘贴到上方单元<br>
+V : 粘贴到下方单元<br>
+Z : 恢复删除的最后一个单元<br>
+D,D : 删除选中的单元<br>
+Shift-M : 合并选中的单元<br>
+I,I : 中断Notebook内核0,0<br>
+0,0 :重启Notebook内核<br>
+Tab : 代码补全或缩进<br>
+Shift-Tab : 提示<br>
+Ctrl-] : 缩进<br>
+Ctrl-[ : 解除缩进<br>
+Ctrl-A : 全选<br>
+Ctrl-Z : 复原<br>
+Ctrl-Shift-Z : 再做<br>
+Ctrl-Y : 再做<br>
+Ctrl-Home : 跳到单元开头<br>
+Ctrl-Up : 跳到单元开头<br>
+Ctrl-End : 跳到单元末尾<br>
+Ctrl-Down : 跳到单元末尾<br>
+Ctrl-Left : 跳到左边一个字首<br>
+Ctrl-Right : 跳到右边一个字首<br>
+Ctrl-Backspace : 删除前面一个字<br>
+Ctrl-Delete : 删除后面一个字<br>
+Esc : 进入命令模式<br>
+Ctrl-M : 进入命令模式<br>
+Shift-Enter : 运行本单元，选中下一单元<br>
+Ctrl-Enter : 运行本单元<br>
+Alt-Enter : 运行本单元，在下面插入一单元<br>
+Ctrl-Shift-- : 分割单元<br>
+Ctrl-Shift-Subtract : 分割单元<br>
+Ctrl-S : 文件存盘<br>
+Shift : 忽略<br>
+Up : 光标上移或转入上一单元<br>
+Down :光标下移或转入下一单元</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/09/21/搭建Jupyter服务器/">https://nymrli.top/2019/09/21/搭建Jupyter服务器/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/09/21/同性交友网站Github的骚操作/" title="同性交友网站Github的骚操作"><span>< PreviousPost</span><br><span class="prevTitle">同性交友网站Github的骚操作</span></a><a class="nextSlogan" href="/2019/09/19/深度学习/" title="深度学习"><span>NextPost ></span><br><span class="nextTitle">深度学习</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '搭建Jupyter服务器',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#搭建jupyter服务器"><span class="toc-number">1.</span> <span class="toc-text"> 搭建Jupyter服务器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拓展云服务器搭建神器jupyterlab转"><span class="toc-number">2.</span> <span class="toc-text"> 拓展:云服务器搭建神器JupyterLab(转)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-前言"><span class="toc-number">2.1.</span> <span class="toc-text"> 1、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-添加ppa源"><span class="toc-number">2.2.</span> <span class="toc-text"> 2、添加ppa源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-配置python"><span class="toc-number">2.3.</span> <span class="toc-text"> 3、配置python</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装yarn和nodejs"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 安装yarn和nodejs</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置仓库"><span class="toc-number">2.3.1.1.</span> <span class="toc-text"> 配置仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装yarn"><span class="toc-number">2.3.1.2.</span> <span class="toc-text"> 安装yarn</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装nodejs"><span class="toc-number">2.3.1.3.</span> <span class="toc-text"> 安装nodejs</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建哈希密码"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 创建哈希密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改jupyterlab配置文件"><span class="toc-number">2.3.3.</span> <span class="toc-text"> 修改JupyterLab配置文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jupyterlab扩展安装"><span class="toc-number">2.4.</span> <span class="toc-text"> JupyterLab扩展安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快捷键"><span class="toc-number">2.4.1.</span> <span class="toc-text"> 快捷键</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number">3.</span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#nodejs更新"><span class="toc-number">3.1.</span> <span class="toc-text"> nodejs更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装内核"><span class="toc-number">3.2.</span> <span class="toc-text"> 安装内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件安装"><span class="toc-number">3.3.</span> <span class="toc-text"> 插件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jupyterlab-toc"><span class="toc-number">3.3.1.</span> <span class="toc-text"> jupyterlab-toc(目录功能)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jupyterlab-tensorboard"><span class="toc-number">3.3.2.</span> <span class="toc-text"> Jupyterlab-Tensorboard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jupyterlab-drawio"><span class="toc-number">3.3.3.</span> <span class="toc-text"> JupyterLab drawio(processon图)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快捷键-2"><span class="toc-number">3.4.</span> <span class="toc-text"> 快捷键</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

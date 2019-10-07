@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Openmv使用 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Openmv使用</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/10/06</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">554</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="openmv使用"><a class="markdownIt-Anchor" href="#openmv使用"></a> Openmv使用</h1>
+<h2 id="下载openmv-ide"><a class="markdownIt-Anchor" href="#下载openmv-ide"></a> 下载Openmv IDE</h2>
+<ul>
+<li><a href="https://openmv.io/pages/download" target="_blank" rel="noopener">Openmv官网</a></li>
+<li><a href="https://singtown.com/openmv-download/" target="_blank" rel="noopener">中国代理——星瞳</a></li>
+<li><a href="https://github.com/openmv/openmv/releases" target="_blank" rel="noopener">Github_release</a></li>
+</ul>
+<p>推荐下载星瞳的，这个是中文版的，并且其他两个下载非常慢。</p>
+<h2 id="demo例程"><a class="markdownIt-Anchor" href="#demo例程"></a> Demo例程：</h2>
+<blockquote>
+<p>openmv虽然比较贵,但是它的功能非常强大,已经提供了相当多的例程了。具体例程可以去星瞳的官网上查看，说明非常详细。</p>
+</blockquote>
+<p>在此，我只介绍点我们这次需要用到的功能。</p>
+<p>我使用的是OPENMV-H7 R1，芯片是STM32H743，镜头为IR 1080P 2.8mm</p>
+<p>Hello World</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Hello World Example</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Welcome to the OpenMV IDE! Click on the green run arrow button below to run the script!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sensor, image, time</span><br><span class="line"></span><br><span class="line">sensor.reset()                      <span class="comment"># Reset and initialize the sensor.</span></span><br><span class="line">sensor.set_pixformat(sensor.RGB565) <span class="comment"># Set pixel format to RGB565 (or GRAYSCALE)</span></span><br><span class="line">sensor.set_framesize(sensor.QVGA)   <span class="comment"># Set frame size to QVGA (320x240)</span></span><br><span class="line">sensor.skip_frames(time = <span class="number">2000</span>)     <span class="comment"># Wait for settings take effect.</span></span><br><span class="line">clock = time.clock()                <span class="comment"># Create a clock object to track the FPS.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</span><br><span class="line">    clock.tick()                    <span class="comment"># Update the FPS clock.</span></span><br><span class="line">    img = sensor.snapshot()         <span class="comment"># Take a picture and return the image.</span></span><br><span class="line">    print(clock.fps())              <span class="comment"># Note: OpenMV Cam runs about half as fast when connected</span></span><br><span class="line">                                    <span class="comment"># to the IDE. The FPS should increase once disconnected.</span></span><br></pre></td></tr></table></figure>
+<h3 id="二维码识别"><a class="markdownIt-Anchor" href="#二维码识别"></a> 二维码识别</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># QRCode Example</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This example shows the power of the OpenMV Cam to detect QR Codes</span></span><br><span class="line"><span class="comment"># using lens correction (see the qrcodes_with_lens_corr.py script for higher performance).</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sensor, image, time</span><br><span class="line"></span><br><span class="line">sensor.reset()</span><br><span class="line">sensor.set_pixformat(sensor.RGB565)</span><br><span class="line">sensor.set_framesize(sensor.QVGA)</span><br><span class="line">sensor.skip_frames(time = <span class="number">2000</span>)</span><br><span class="line">sensor.set_auto_gain(<span class="keyword">False</span>) <span class="comment"># must turn this off to prevent image washout...</span></span><br><span class="line">clock = time.clock()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">True</span>):</span><br><span class="line">    clock.tick()</span><br><span class="line">    img = sensor.snapshot()</span><br><span class="line">    img.lens_corr(<span class="number">1.8</span>) <span class="comment"># strength of 1.8 is good for the 2.8mm lens.</span></span><br><span class="line">    <span class="keyword">for</span> code <span class="keyword">in</span> img.find_qrcodes():</span><br><span class="line">        img.draw_rectangle(code.rect(), color = (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        print(code)</span><br><span class="line">    print(clock.fps())</span><br></pre></td></tr></table></figure>
+<p>代码是用python编写的，文件系统为microPython，具有Cpython解释器翻译成机器码。需要脱机运行的文件命名为main.py即可(具体详情见microPython规范)。可放于flash或者32GB以下的SD卡中，SD卡读取优先级高于Flash，且flash内容容易丢失，且擦写次数有限，建议使用SD卡。</p>
+<p>主要需要用的库：</p>
+<ul>
+<li>sersor:通过这个对象可以控制摄像头及相关配置；</li>
+<li>image：处理图像的功能函数都在这个库里
+<ul>
+<li>sensor.snapshot()会返回一个&lt;class ‘Image’&gt;</li>
+</ul>
+</li>
+<li>time：跟Python自带的time模块不同，这个是专门用来记录摄像头用时的</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/10/06/Openmv使用/">https://nymrli.top/2019/10/06/Openmv使用/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/10/06/Python多进程/" title="Python多进程"><span>< PreviousPost</span><br><span class="prevTitle">Python多进程</span></a><a class="nextSlogan" href="/2019/10/03/TD-afterstate/" title="TD-afterstate"><span>NextPost ></span><br><span class="nextTitle">TD-afterstate</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Openmv使用',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#openmv使用"><span class="toc-number">1.</span> <span class="toc-text"> Openmv使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载openmv-ide"><span class="toc-number">1.1.</span> <span class="toc-text"> 下载Openmv IDE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#demo例程"><span class="toc-number">1.2.</span> <span class="toc-text"> Demo例程：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二维码识别"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 二维码识别</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

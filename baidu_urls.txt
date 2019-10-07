@@ -1,3 +1,11 @@
+https://nymrli.top/2019/10/07/蒙特卡洛树搜索MCTS/
+https://nymrli.top/2019/10/06/Python多进程/
+https://nymrli.top/2019/10/06/Openmv使用/
+https://nymrli.top/2019/10/03/TD-afterstate/
+https://nymrli.top/2019/09/29/git命令详解/
+https://nymrli.top/2019/09/28/numpy使用记录/
+https://nymrli.top/2019/09/27/Python-random/
+https://nymrli.top/2019/09/26/OpenAI-Gym使用/
 https://nymrli.top/2019/09/24/Linux安装selenium执行Python程序/
 https://nymrli.top/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/
 https://nymrli.top/2019/09/23/Github下载、访问慢解决方法-转/
@@ -40,11 +48,3 @@ https://nymrli.top/2019/07/07/yaml基础语法-spring-boot/
 https://nymrli.top/2019/07/07/Python类的继承-super-使用/
 https://nymrli.top/2019/06/15/Base64编码原理与应用[转]/
 https://nymrli.top/2019/06/15/Python的构建工具setup-py/
-https://nymrli.top/2019/06/03/Oauth2原理、使用/
-https://nymrli.top/2019/06/03/lua学习/
-https://nymrli.top/2019/06/03/Java课程第三次实验报告/
-https://nymrli.top/2019/06/03/南京邮电大学java程序设计作业在线编程第八次作业/
-https://nymrli.top/2019/06/03/Windows下命令行神奇cmder/
-https://nymrli.top/2019/05/27/微信公众号Pyhton/
-https://nymrli.top/2019/05/27/DigitalOcean-VPS注册/
-https://nymrli.top/2019/05/27/PyWinAuto使用/

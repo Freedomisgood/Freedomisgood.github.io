@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>git命令详解 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">git命令详解</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/10/06</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,084</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="git命令详解"><a class="markdownIt-Anchor" href="#git命令详解"></a> git命令详解</h1>
+<h2 id="自己的仓库管理"><a class="markdownIt-Anchor" href="#自己的仓库管理"></a> 自己的仓库管理：</h2>
+<p><code>git add &lt;filename&gt;</code></p>
+<ul>
+<li>将文件添加到暂存区中  (其中git add.可以将当前目录的子目录文件都添加到暂存区中)</li>
+</ul>
+<p><code>git commit -m &quot;...&quot;:</code></p>
+<ul>
+<li>保存仓库的历史记录,其中 -m &quot;…&quot;提交信息(概述)</li>
+</ul>
+<p><code>git config --global user.name &quot;...&quot;</code>、<code>git config --global user.email &quot;...&quot;</code>:</p>
+<ul>
+<li>配置提交作者信息</li>
+</ul>
+<p><code>git log</code>:</p>
+<ul>
+<li><strong>查看</strong>提交日志(当前状态为终点) 会产生版本库里一系列单独提交的历史</li>
+</ul>
+<p><code>git diff ID1/ID2</code>:</p>
+<ul>
+<li>查看版本差异</li>
+</ul>
+<p><code>git mv 新名字,旧名字</code></p>
+<ul>
+<li>重命名:</li>
+</ul>
+<p><code>git branch -a [-v]</code></p>
+<ul>
+<li>分支一展表, -r 查看远程git服务器上的分支</li>
+</ul>
+<p><code>git checkout 分支名</code>:</p>
+<ul>
+<li>切换分支</li>
+<li>-b创建,且切换到新建分支 等价于<code>git branch 分支名</code> + <code>git checkout 分支名</code></li>
+</ul>
+<p><code>git branch -d [分支名称]</code></p>
+<ul>
+<li>删除一个分支, -d选项只能删除已经参与过合并的分支，对于未参与合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项、</li>
+</ul>
+<p><code>git rest --head ID</code> :</p>
+<ul>
+<li>退回之前提交版本</li>
+</ul>
+<p><code>git status</code>  :</p>
+<ul>
+<li>查看仓库当前状态；</li>
+</ul>
+<p><code>git reflog</code>  :</p>
+<ul>
+<li>查看当前仓库的操作日志</li>
+</ul>
+<p><code>git rebase -i</code>:</p>
+<ul>
+<li>压缩历史(如果出现拼写错误时需要): <code>git rebase -i HEAD~2</code></li>
+</ul>
+<p><code>git merge --no-f 分支名</code>  :</p>
+<ul>
+<li>合并分支</li>
+</ul>
+<p><code>git remote set-url origin https://github.com/Freedomisgood/NjuptGo.git</code></p>
+<ul>
+<li>修改仓库指定新的远程仓库</li>
+</ul>
+<h2 id="远程仓库"><a class="markdownIt-Anchor" href="#远程仓库"></a> 远程仓库</h2>
+<p>如果本地没有仓库，则clone:<br>
+<code>git clone http://github.com/xxx/yyy.git</code></p>
+<p>在本地增加远程仓库信息：<code>git remote add apollo3d http://github.com/xxx/yyy.git</code>,此时远程库名为origin、apollo3d</p>
+<p>删除远程分支<code>git push origin --delete kickof</code></p>
+<p>git push代码到远程新分支<br>
+<code>git push origin master:my_remote_new_branch</code></p>
+<h3 id="git-pull"><a class="markdownIt-Anchor" href="#git-pull"></a> git pull</h3>
+<p>如果本地有仓库，则拉取更新命令为:<br>
+<code>git pull &lt;远程库名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</code></p>
+<p>比如，取回远程库中的online分支，与本地的online分支进行merge，要写成：</p>
+<p>git pull origin online:online<br>
+如果是要与本地当前分支merge，则冒号后面的&lt;本地分支名&gt;可以不写</p>
+<p><code>git pull origin online</code><br>
+通常，git会将本地库分支与远程分支之间建立一种追踪关系。比如，在git clone的时候，所有本地分支默认与远程库的同名分支建立追踪关系。也就是说，本地的master分支自动追踪origin/master分支。因此，如果当前处于本地online分支上，并且本地online分支与远程的online分支有追踪关系，那么远程的分支名可以省略：</p>
+<p>比如，取回远程库中的online分支，与本地的online分支进行merge，要写成：</p>
+<p><code>git pull origin</code></p>
+<p>其实，git pull 命令等同于先做了git fetch ，再做了git merge。即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin online</span><br><span class="line">git checkout online</span><br><span class="line">git merge origin/online</span><br></pre></td></tr></table></figure>
+<h3 id="git-push"><a class="markdownIt-Anchor" href="#git-push"></a> git push</h3>
+<h4 id="二推送本地分支到远程仓库"><a class="markdownIt-Anchor" href="#二推送本地分支到远程仓库"></a> 二.推送本地分支到远程仓库</h4>
+<p>（一）.创建本地分支<code>git checkout -b 新分支名</code><br>
+（二）.推送本地分支到远程仓库<code>git push --set-upstream origin 分支名</code></p>
+<h4 id="三-将远程git仓库里的指定分支拉取到本地本地不存在的分支"><a class="markdownIt-Anchor" href="#三-将远程git仓库里的指定分支拉取到本地本地不存在的分支"></a> 三、将远程git仓库里的指定分支拉取到本地（本地不存在的分支）</h4>
+<p><code>git checkout -b 本地分支名 origin/远程分支名</code></p>
+<h2 id="修改了gitignore生效指令"><a class="markdownIt-Anchor" href="#修改了gitignore生效指令"></a> 修改了.gitignore生效指令</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached . // 删除本地缓存</span><br><span class="line">git add . // 添加要提交的文件</span><br><span class="line">git commit -m &apos;update .gitignore&apos; // 更新本地的缓存</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2>
+<ul>
+<li>Git远程操作详解:<a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/06/git_remote.html</a></li>
+<li>使用git将项目上传到github（最简单方法）:<a href="https://www.cnblogs.com/cxk1995/p/5800196.html" target="_blank" rel="noopener">https://www.cnblogs.com/cxk1995/p/5800196.html</a></li>
+<li>&lt;&lt;Git入门与实践&gt;&gt;:日本</li>
+<li><a href="https://blog.csdn.net/yxlshk/article/details/79944535" target="_blank" rel="noopener">Git恢复之前版本的两种方法reset、revert（图文详解）</a></li>
+</ul>
+<h2 id="采坑记录"><a class="markdownIt-Anchor" href="#采坑记录"></a> 采坑记录</h2>
+<p>Q: 不小心<code>git reset --hard HEAD^</code>导致工作区文件全没了</p>
+<p>A:解决方案:</p>
+<ul>
+<li>
+<p><a href="https://stackoverflow.com/questions/7374069/undo-git-reset-hard-with-uncommitted-files-in-the-staging-area" target="_blank" rel="noopener">Undo git reset --hard with uncommitted files in the staging area</a></p>
+</li>
+<li>
+<p><a href="https://blog.csdn.net/w47_csdn/article/details/82701947" target="_blank" rel="noopener">恢复git reset --hard删除的文件</a></p>
+<p>根据这篇博客操作的结果<code>git cat-file -p ID &gt; a.md</code>是个对比文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">100644 blob cdca566953e3b7b56897b2fa6995129170403212	Q-learning.ipynb</span><br><span class="line">100644 blob 47735fcc505315aa61583dad9dc4facb7c00fbdc	Q-learning.py</span><br><span class="line">100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391	__init__.py</span><br><span class="line">040000 tree db76babbe2f2df4566b607e732c0c835418f9a83	__pycache__</span><br><span class="line">100644 blob debb716313cfbf28c055e89ce4a625a1d7801f5b	agents.py</span><br><span class="line">100644 blob 30ec43da68efe5eb5e8e31cb431fea981e256b6a	approximator.py</span><br><span class="line">100644 blob 1e8ac820d62943d16fa56fa981d72e27239527d9	core.py</span><br><span class="line">100644 blob a0cfa7ac7f9f15a658ace5c5c7c5bbe73f680502	myringworld.py</span><br><span class="line">100644 blob 69cb25ba30f4350454a0e731a70890cbf2530217	ringworld.py</span><br><span class="line">100644 blob 5638e012cb1b68783e6cdf45d2e769cca96e591f	utils.py</span><br><span class="line">100644 blob 96aa662c03d991487e6da8120884b6f647be7202	viewer.py</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>△.<a href="https://blog.csdn.net/lijiafa/article/details/78275936" target="_blank" rel="noopener">关于git reset --hard导致文件丢失的血的教训</a>——亲测有效</p>
+<ul>
+<li>解决add了但没有commit的文件，可以用上述方法找回</li>
+</ul>
+</li>
+</ul>
+<p>分支git branch参数区别</p>
+<p><img src="/2019/09/29/git命令详解/branch.jpg" alt="branch"></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/09/29/git命令详解/">https://nymrli.top/2019/09/29/git命令详解/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/10/03/TD-afterstate/" title="TD-afterstate"><span>< PreviousPost</span><br><span class="prevTitle">TD-afterstate</span></a><a class="nextSlogan" href="/2019/09/28/numpy使用记录/" title="numpy使用记录"><span>NextPost ></span><br><span class="nextTitle">numpy使用记录</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'git命令详解',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#git命令详解"><span class="toc-number">1.</span> <span class="toc-text"> git命令详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#自己的仓库管理"><span class="toc-number">1.1.</span> <span class="toc-text"> 自己的仓库管理：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程仓库"><span class="toc-number">1.2.</span> <span class="toc-text"> 远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-pull"><span class="toc-number">1.2.1.</span> <span class="toc-text"> git pull</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-push"><span class="toc-number">1.2.2.</span> <span class="toc-text"> git push</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#二推送本地分支到远程仓库"><span class="toc-number">1.2.2.1.</span> <span class="toc-text"> 二.推送本地分支到远程仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三-将远程git仓库里的指定分支拉取到本地本地不存在的分支"><span class="toc-number">1.2.2.2.</span> <span class="toc-text"> 三、将远程git仓库里的指定分支拉取到本地（本地不存在的分支）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改了gitignore生效指令"><span class="toc-number">1.3.</span> <span class="toc-text"> 修改了.gitignore生效指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text"> 参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#采坑记录"><span class="toc-number">1.5.</span> <span class="toc-text"> 采坑记录</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

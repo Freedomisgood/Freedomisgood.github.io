@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux命令手册</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/23</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,412</span> | Reading time: <span class="post-count">15</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="scp"><a class="markdownIt-Anchor" href="#scp"></a> scp</h2>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux命令手册</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/10/11</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,412</span> | Reading time: <span class="post-count">15</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="scp"><a class="markdownIt-Anchor" href="#scp"></a> scp</h2>
 <p><strong>1、从服务器上下载文件</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp username@servername:/path/filename /var/www/local_dir（本地目录）</span><br></pre></td></tr></table></figure>
 <p>例如scp <a href="mailto:root@192.168.0.101" target="_blank" rel="noopener">root@192.168.0.101</a>:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）</p>
@@ -149,7 +149,6 @@
 ./文件名				进入到进程的执行文件所在的路径下，执行文件</p>
 <p><a href="https://www.cnblogs.com/lcword/p/6046261.html" target="_blank" rel="noopener">https://www.cnblogs.com/lcword/p/6046261.html</a></p>
 <h2 id="端口操作"><a class="markdownIt-Anchor" href="#端口操作"></a> 端口操作</h2>
-<blockquote>
 <p>端口监听信息 <code>netstat -plant</code><br>
 一、查看哪些端口被打开 <code>netstat -anp</code></p>
 <p>二、关闭端口号:<code>iptables -A OUTPUT -p tcp --dport 端口号 -j DROP</code></p>
@@ -159,9 +158,7 @@
 　　<br>
 <code>netstat -an | grep 23 (查看是否打开23端口)</code> 或者 <code>lsof -i:80</code></p>
 <p>五、linux打开端口命令每一个打开的端口，都需要有相应的监听程序才可以</p>
-</blockquote>
 <h2 id="创建新用户"><a class="markdownIt-Anchor" href="#创建新用户"></a> 创建新用户</h2>
-<blockquote>
 <p>在 root 用户下运行这条命令创建一个新用户，yangxg 是用户名</p>
 <p>因为我叫杨学光，所以我取的用户名是 yangxg</p>
 <p>选择一个你喜欢的用户名，不一定非得和我的相同</p>
@@ -175,7 +172,6 @@
 <p><code>root@localhost:~# su - yangxg</code></p>
 <p>切换成功，@符号前面已经是新用户名而不是 root 了</p>
 <p><code>yangxg@localhost:~$</code></p>
-</blockquote>
 <h2 id="为root用户提供初始密码"><a class="markdownIt-Anchor" href="#为root用户提供初始密码"></a> 为root用户提供初始密码</h2>
 <p><code>sudo passwd root</code></p>
 <h2 id="修改为阿里云-dns"><a class="markdownIt-Anchor" href="#修改为阿里云-dns"></a> 修改为阿里云 DNS</h2>

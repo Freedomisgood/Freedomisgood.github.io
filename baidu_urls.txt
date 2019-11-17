@@ -1,5 +1,6 @@
-https://nymrli.top/2019/11/17/第二十八届“和巨耀通杯”南京邮电大学在线测评系统程序设计邀请赛-NOJ/
+https://nymrli.top/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/
 https://nymrli.top/2019/10/24/PAT冲冲冲/
+https://nymrli.top/2019/10/18/软件测试笔记/
 https://nymrli.top/2019/10/15/玩玩Stm32/
 https://nymrli.top/2019/10/07/蒙特卡洛树搜索MCTS/
 https://nymrli.top/2019/10/06/Python多进程/
@@ -18,6 +19,7 @@ https://nymrli.top/2019/09/19/深度学习/
 https://nymrli.top/2019/09/17/常用域名记录解释/
 https://nymrli.top/2019/09/17/Spring-Boot学习笔记/
 https://nymrli.top/2019/09/14/如何成为一位老司机——考驾照经历/
+https://nymrli.top/2019/09/14/软件测试大赛/
 https://nymrli.top/2019/09/13/Java自动化构建工具——Maven/
 https://nymrli.top/2019/09/13/打jar包和使用jar包/
 https://nymrli.top/2019/09/09/验证码识别程序设计流程/
@@ -46,5 +48,3 @@ https://nymrli.top/2019/07/13/C-学习笔记/
 https://nymrli.top/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/
 https://nymrli.top/2019/07/08/自动化运维工具Ansible/
 https://nymrli.top/2019/07/07/staticmethod和classmethod区别/
-https://nymrli.top/2019/07/07/yaml基础语法-spring-boot/
-https://nymrli.top/2019/07/07/Python类的继承-super-使用/

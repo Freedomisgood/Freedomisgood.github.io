@@ -308,8 +308,7 @@ cmd-&gt;ipconfig-&gt;IPv4
 符号 # 后面的内容被认为是注释
 
 
-命令由命令名称、小括号和参数组 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/02/18/Cmake-入门/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/24/C++日期操作/">C++日期操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-24T07:00:56.000Z">2019-01-24</time><i class="fa fa-edit"></i><time datetime="2019-01-24T07:00:56.000Z">2019-09-15</time></div><div class="recent-post-content"> C++日期操作
-12345678910111213int main( )&#123;      time_t now = time(0);	// 基于当前系统的当前日期/时间 的时间戳   cout &lt;&lt; "1970 到目前经过秒数:" &lt;&lt; now &lt;&lt; endl;   tm *ltm = localtime(&amp;now);// 将时间戳转换为结构体,再输出 tm 结构的各个组成部分   cout &lt;&lt; "年: "&lt;&lt; 1900 + ltm-&gt;tm_year &lt;&lt; endl;   cout &lt;&lt; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="程序开发经验"> 程序开发经验</a></div><div class="read-more"><a class="more" href="/2019/01/24/C++日期操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/01/ACM-贪心专题/">ACM_贪心专题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-01T12:17:50.000Z">2019-02-01</time><i class="fa fa-edit"></i><time datetime="2019-02-01T12:17:50.000Z">2019-09-15</time></div><div class="recent-post-content"> 贪心专题
+命令由命令名称、小括号和参数组 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/02/18/Cmake-入门/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/01/ACM-贪心专题/">ACM_贪心专题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-01T12:17:50.000Z">2019-02-01</time><i class="fa fa-edit"></i><time datetime="2019-02-01T12:17:50.000Z">2019-09-15</time></div><div class="recent-post-content"> 贪心专题
  1.活动安排
 有若干个活动，第i个开始时间和结束时间是[Si,fi)，只有一个教室，活动之间不能交叠，求最多安排多少个活动？
 Input
@@ -321,7 +320,12 @@ Input示例
 Output示例
 12
 博主提供:
-1234567891011121314151617181920212223242526272829303132#inc ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="贪心"> 贪心</a></div><div class="read-more"><a class="more" href="/2019/02/01/ACM-贪心专题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/03/ACM-动态规划/">ACM_动态规划</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-03T07:49:10.000Z">2019-02-03</time><i class="fa fa-edit"></i><time datetime="2019-02-03T07:49:10.000Z">2019-09-15</time></div><div class="recent-post-content">图解动态规划 : http://www.sohu.com/a/153858619_466939
+1234567891011121314151617181920212223242526272829303132#inc ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="贪心"> 贪心</a></div><div class="read-more"><a class="more" href="/2019/02/01/ACM-贪心专题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-快速幂/">ACM-快速幂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:54:05.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:54:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 简单位运算快速幂
+
+假设我们要求ab，那么其实b是可以拆成二进制的，该二进制数第i位的权为2(i-1)，例如当b==11时，a11=a(20+21+2^3)
+
+123456789int poww(int a,int b)&#123;    int ans=1,base=a;    while(b!)&#123;        if(b&amp;1) ans*=base;        base*=base;        b&gt;&gt;=1;　 &#125;    return ans;&#125;
+11的二进制是``1011，11 = 2³×1 + 2²×0 + 2¹×1 + 2º×1 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-快速幂/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/03/ACM-动态规划/">ACM_动态规划</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-03T07:49:10.000Z">2019-02-03</time><i class="fa fa-edit"></i><time datetime="2019-02-03T07:49:10.000Z">2019-09-15</time></div><div class="recent-post-content">图解动态规划 : http://www.sohu.com/a/153858619_466939
  动态规划 :
 
 最优子结构

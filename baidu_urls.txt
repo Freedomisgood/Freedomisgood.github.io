@@ -1,3 +1,4 @@
+https://nymrli.top/2019/11/24/Python网络编程Websocket/
 https://nymrli.top/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/
 https://nymrli.top/2019/10/24/PAT冲冲冲/
 https://nymrli.top/2019/10/18/软件测试笔记/
@@ -47,4 +48,3 @@ https://nymrli.top/2019/07/24/利用wireshark抓取TCP的整个过程分析/
 https://nymrli.top/2019/07/13/C-学习笔记/
 https://nymrli.top/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/
 https://nymrli.top/2019/07/08/自动化运维工具Ansible/
-https://nymrli.top/2019/07/07/staticmethod和classmethod区别/

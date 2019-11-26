@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>2019-9月7号C++编程笔记 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">2019-9月7号C++编程笔记</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/11/26</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="编程笔记"> 编程笔记</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">733</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="2019-9月7号c编程笔记"><a class="markdownIt-Anchor" href="#2019-9月7号c编程笔记"></a> 2019-9月7号C++编程笔记</h1>
+<h2 id="auto"><a class="markdownIt-Anchor" href="#auto"></a> auto</h2>
+<p>定义变量时放在变量前，无需知道具体变量类型，系统可自行<strong>推断类型</strong>，减少编程工作，特别是在<strong>模板使用时，使用更方便</strong>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> a=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">auto</span> b=<span class="string">'a'</span>;</span><br><span class="line"><span class="keyword">auto</span> s=<span class="string">"abdc"</span>;</span><br><span class="line"><span class="keyword">auto</span> c;<span class="comment">//这样使用时错误的，系统无法自动推断出变量类型</span></span><br><span class="line"><span class="comment">//下面为迭代指针使用，很方便</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line"><span class="keyword">auto</span> it=vec.begin();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">模板使用案例</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> InputIterator&gt;</span><br><span class="line">    <span class="function">TreeNode *<span class="title">creatTree</span><span class="params">(InputIterator in_beg,InputIterator in_end...)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">       .....</span><br><span class="line">        <span class="keyword">auto</span> inRootPos=find(in_beg,in_end,val);</span><br><span class="line">       ......</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="stdnext"><a class="markdownIt-Anchor" href="#stdnext"></a> <strong>std::next</strong></h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Defined in header &lt;iterator&gt;</span></span><br><span class="line"><span class="keyword">template</span>&lt; <span class="class"><span class="keyword">class</span> <span class="title">ForwardIt</span> &gt;</span></span><br><span class="line"><span class="class"><span class="title">ForwardIt</span> <span class="title">next</span>( <span class="title">ForwardIt</span> <span class="title">it</span>, <span class="title">typename</span> <span class="title">std</span>:</span>:iterator_traits&lt;ForwardIt&gt;::difference_type n = <span class="number">1</span> );</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<h3 id="parameters"><a class="markdownIt-Anchor" href="#parameters"></a> Parameters:</h3>
+<ul>
+<li>it  – 迭代指针</li>
+<li>n  – 向前进的元素个数，缺省默认为1</li>
+</ul>
+</li>
+<li>
+<p><strong>Return value</strong></p>
+<p>The nth successor of iterator it.（返回it的第n个后继迭代指针）</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vals.size(); ++i) &#123;</span><br><span class="line">	<span class="comment">// *std::next(vals.cbegin(), i)遍历set的所有值，每次取出一个val</span></span><br><span class="line">	<span class="comment">// count为计算values中包含val的个数</span></span><br><span class="line">	<span class="keyword">int</span> count = <span class="built_in">std</span>::count(values.cbegin(), values.cend(), *<span class="built_in">std</span>::next(vals.cbegin(), i));</span><br></pre></td></tr></table></figure>
+<h2 id="stdprev"><a class="markdownIt-Anchor" href="#stdprev"></a> <strong>std::prev</strong></h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用方法与next相似，不同的是prev返回的是it的第n个前驱迭代指针,即返回指针是begin()和rbegin()区别</span></span><br><span class="line"><span class="keyword">template</span>&lt; <span class="class"><span class="keyword">class</span> <span class="title">BidirIt</span> &gt;</span></span><br><span class="line"><span class="class"><span class="title">BidirIt</span> <span class="title">prev</span>( <span class="title">BidirIt</span> <span class="title">it</span>, <span class="title">typename</span> <span class="title">std</span>:</span>:iterator_traits&lt;BidirIt&gt;::difference_type n = <span class="number">1</span> );</span><br></pre></td></tr></table></figure>
+<h2 id="stdadvance"><a class="markdownIt-Anchor" href="#stdadvance"></a> std::advance</h2>
+<blockquote>
+<p><strong>方法与prev和next相似，只是无返回指针</strong></p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">ForwardIt</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">ForwardIt</span> <span class="title">next</span>(<span class="title">ForwardIt</span> <span class="title">it</span>, <span class="title">typename</span> <span class="title">std</span>:</span>:iterator_traits&lt;ForwardIt&gt;::difference_type n = <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="built_in">std</span>::advance(it, n);</span><br><span class="line">    <span class="keyword">return</span> it;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="const_cast"><a class="markdownIt-Anchor" href="#const_cast"></a> const_cast</h2>
+<ul>
+<li>
+<p><strong>去掉const属性</strong>：<code>const_cast&lt;int*&gt; (&amp;num)</code>，常用，因为不能把一个const变量直接赋给一个非const变量，必须要转换。</p>
+</li>
+<li>
+<p><strong>加上const属性</strong>：<code>const int* k = const_cast&lt;const int*&gt;(j)</code>，一般很少用，因为可以把一个非const变量直接赋给一个const变量，比如：const int* k = j;</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binary_tree* tmp = <span class="keyword">const_cast</span>&lt;binary_tree*&gt;(node);</span><br></pre></td></tr></table></figure>
+<h2 id="c11对vector成员函数的扩展"><a class="markdownIt-Anchor" href="#c11对vector成员函数的扩展"></a> C++11对vector成员函数的扩展</h2>
+<h3 id="emplace_back"><a class="markdownIt-Anchor" href="#emplace_back"></a> emplace_back</h3>
+<h3 id="stdvectorcbegin和stdvectorcend"><a class="markdownIt-Anchor" href="#stdvectorcbegin和stdvectorcend"></a> <strong>std::vector::cbegin和std::vector::cend</strong></h3>
+<p>这两个方法是与std::vector::begin和std::vector::end相对应的，从字面就能看出来，多了一个’c’，顾名思义就是const的意思。同理，<strong>std::vector::crbegin和std::vector::crend</strong></p>
+<h3 id="stdvectoremplace"><a class="markdownIt-Anchor" href="#stdvectoremplace"></a> <strong>std::vector::emplace</strong></h3>
+<p>之前已经对emplace_back进行了讨论，其实还有一个方法叫emplace。<br>
+我想说的就是，emplace之于emplace_back就像insert之于push_back。如下使用</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;code <span class="class"><span class="keyword">class</span>="<span class="title">hljs</span> <span class="title">cpp</span>"&gt;</span></span><br><span class="line"><span class="class">#<span class="title">include</span> &lt;iostream&gt;</span></span><br><span class="line"><span class="class">#<span class="title">include</span> &lt;vector&gt;</span></span><br><span class="line"><span class="class"> </span></span><br><span class="line"><span class="class"><span class="title">int</span> <span class="title">main</span> ()</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; myvector = &#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>&#125;;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">auto</span> it = myvector.emplace ( myvector.begin()+<span class="number">1</span>, <span class="number">100</span> );</span><br><span class="line">  myvector.emplace ( it, <span class="number">200</span> );</span><br><span class="line">  myvector.emplace ( myvector.end(), <span class="number">300</span> );</span><br><span class="line"> </span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"myvector contains:"</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; x: myvector)</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">' '</span> &lt;&lt; x;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">myvector contains: 10 200 100 20 30 300&lt;/int&gt;&lt;/vector&gt;&lt;/iostream&gt;&lt;/code&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="stdvectordata"><a class="markdownIt-Anchor" href="#stdvectordata"></a> <strong>std::vector::data</strong></h3>
+<p>Returns a direct pointer to the memory array used internally by the vector to store its owned elements.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;code <span class="class"><span class="keyword">class</span>="<span class="title">hljs</span> <span class="title">cpp</span>"&gt;#<span class="title">include</span> &lt;iostream&gt;</span></span><br><span class="line"><span class="class">#<span class="title">include</span> &lt;vector&gt;</span></span><br><span class="line"><span class="class"> </span></span><br><span class="line"><span class="class"><span class="title">int</span> <span class="title">main</span> ()</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; myvector (<span class="number">5</span>);</span><br><span class="line">  <span class="keyword">int</span>* p = myvector.data();</span><br><span class="line">  *p = <span class="number">10</span>;</span><br><span class="line">  ++p;</span><br><span class="line">  *p = <span class="number">20</span>;</span><br><span class="line">  p[<span class="number">2</span>] = <span class="number">100</span>;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"myvector contains:"</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">unsigned</span> i=<span class="number">0</span>; i&lt;myvector.size(); ++i)</span><br><span class="line">     	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; myvector[i] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">      =<span class="string">""</span> output:=<span class="string">""</span> myvector=<span class="string">""</span> contains:=<span class="string">""</span> <span class="number">10</span>=<span class="string">""</span> <span class="number">20</span>=<span class="string">""</span> <span class="number">0</span>=<span class="string">""</span> <span class="number">100</span>=<span class="string">""</span> <span class="number">0</span>&lt;/<span class="keyword">int</span>&gt;&lt;/<span class="built_in">vector</span>&gt;&lt;/iostream&gt;&lt;/code&gt;</span><br></pre></td></tr></table></figure>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/11/26/2019-9月7号C-编程笔记/">https://nymrli.top/2019/11/26/2019-9月7号C-编程笔记/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/11/26/app测试/" title="app测试"><span>< PreviousPost</span><br><span class="prevTitle">app测试</span></a><a class="nextSlogan" href="/2019/11/26/MinMax-极小极大算法——2048/" title="MinMax-极小极大算法——2048"><span>NextPost ></span><br><span class="nextTitle">MinMax-极小极大算法——2048</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '2019-9月7号C++编程笔记',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2019-9月7号c编程笔记"><span class="toc-number">1.</span> <span class="toc-text"> 2019-9月7号C++编程笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#auto"><span class="toc-number">1.1.</span> <span class="toc-text"> auto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stdnext"><span class="toc-number">1.2.</span> <span class="toc-text"> std::next</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#parameters"><span class="toc-number">1.2.1.</span> <span class="toc-text"> Parameters:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stdprev"><span class="toc-number">1.3.</span> <span class="toc-text"> std::prev</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stdadvance"><span class="toc-number">1.4.</span> <span class="toc-text"> std::advance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#const_cast"><span class="toc-number">1.5.</span> <span class="toc-text"> const_cast</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c11对vector成员函数的扩展"><span class="toc-number">1.6.</span> <span class="toc-text"> C++11对vector成员函数的扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#emplace_back"><span class="toc-number">1.6.1.</span> <span class="toc-text"> emplace_back</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stdvectorcbegin和stdvectorcend"><span class="toc-number">1.6.2.</span> <span class="toc-text"> std::vector::cbegin和std::vector::cend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stdvectoremplace"><span class="toc-number">1.6.3.</span> <span class="toc-text"> std::vector::emplace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stdvectordata"><span class="toc-number">1.6.4.</span> <span class="toc-text"> std::vector::data</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

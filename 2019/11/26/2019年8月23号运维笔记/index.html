@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>2019年8月23号运维笔记 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">2019年8月23号运维笔记</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/11/26</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="编程笔记"> 编程笔记</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,492</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="2019年8月23号运维笔记"><a class="markdownIt-Anchor" href="#2019年8月23号运维笔记"></a> 2019年8月23号运维笔记</h1>
+<h2 id="docker"><a class="markdownIt-Anchor" href="#docker"></a> docker</h2>
+<h3 id="docker-stop-containerid以后再重新启动时报错"><a class="markdownIt-Anchor" href="#docker-stop-containerid以后再重新启动时报错"></a> docker stop containerID，以后再重新启动时报错</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error response from daemon: driver failed programming external connectivity on endpoint app (3c0c01ac6b42b7a420644fc2b4debfbbcc0e1d2e74e6294155c28aca82f794c4):  (iptables failed: iptables --<span class="built_in">wait</span> -t nat -A DOCKER -p tcp -d 0/0 --dport 12345 -j DNAT --to-destination 172.17.0.2:80 ! -i docker0: iptables: No chain/target/match by that name.</span><br></pre></td></tr></table></figure>
+<p>A: 重启docker即可：<code>systemctl restart docker</code></p>
+<p>再开启你的容器： <code>docker run xxxx</code>或<code>docker start xxx</code></p>
+<p>查看docker容器的运行日志</p>
+<p><code>docker logs containerID</code></p>
+<h3 id="docker端口映射到宿主机后外网仍无法访问容器的web"><a class="markdownIt-Anchor" href="#docker端口映射到宿主机后外网仍无法访问容器的web"></a> docker端口映射到宿主机后外网仍无法访问容器的web</h3>
+<p>A：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解决办法：</span></span><br><span class="line">$ sudo vi /etc/sysctl.conf</span><br><span class="line">或者</span><br><span class="line">$ sudo  vi /usr/lib/sysctl.d/00-system.conf</span><br><span class="line"><span class="comment"># 添加如下代码：</span></span><br><span class="line">net.ipv4.ip_forward=1</span><br><span class="line"></span><br><span class="line">重启network服务</span><br><span class="line">$ sudo systemctl restart network</span><br><span class="line"></span><br><span class="line">查看是否修改成功</span><br><span class="line">$ sudo sysctl net.ipv4.ip_forward</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果返回为“net.ipv4.ip_forward = 1”则表示成功了</span></span><br></pre></td></tr></table></figure>
+<h2 id="nginx"><a class="markdownIt-Anchor" href="#nginx"></a> nginx</h2>
+<h3 id="查看nginx安装路径"><a class="markdownIt-Anchor" href="#查看nginx安装路径"></a> 查看nginx安装路径</h3>
+<p><code>ps -ef | grep nginx</code></p>
+<h2 id="查看nginx日志"><a class="markdownIt-Anchor" href="#查看nginx日志"></a> 查看nginx日志</h2>
+<p><code>systemctl status nginx.service</code></p>
+<p><code>journalctl -xe</code></p>
+<h3 id="指定运行配置文件"><a class="markdownIt-Anchor" href="#指定运行配置文件"></a> 指定运行配置文件</h3>
+<p>直接运行nginx可执行文件即可启动，nginx会自动读取配置文件目录下的“nginx.conf”配置文件，也可以在后面接“-c”参数来指定配置文件：</p>
+<p><code>/usr/sbin/nginx -c /etc/nginx/sites-enabled/nginx.conf</code></p>
+<h2 id="校验配置文件是否正确"><a class="markdownIt-Anchor" href="#校验配置文件是否正确"></a> 校验配置文件是否正确</h2>
+<p>由于nginx的配置文件比较复杂容易出错，修改配置后可以用“-t”参数来校验配置文件是否正确：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx -t    # 校验默认的配置文件</span><br><span class="line">nginx -t -c /path/to/configfile    # 校验指定配置文件</span><br></pre></td></tr></table></figure>
+<h2 id="了解日志管理"><a class="markdownIt-Anchor" href="#了解日志管理"></a> 了解日志管理</h2>
+<p>我们查看nginx安装目录下（<code>/var/log/nginx</code>）有个logs，包含了三个文件 “<strong>access.log</strong> 、<strong>error.log</strong>、<strong>nginx.pid</strong>”。</p>
+<p>当然，日志配置肯定也是通过nginx.conf配置文件来进行配置的 ，那我先来看配置文件是怎么写的。</p>
+<ul>
+<li><code>access_log logs/access.log main</code>这个是指access.log日志用main格式来显示。</li>
+<li><code>error_log logs/error.log error</code></li>
+</ul>
+<p>main格式是什么？mian格式是我们已经定义好了的一种各种，并取个名字便于引用。</p>
+<p>默认的main格式中具体用了哪些选项来记录日志呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$remote_addr, $http_x_forwarded_for 记录客户端IP地址</span><br><span class="line">$remote_user 记录客户端用户名称</span><br><span class="line">$request 记录请求的URL和HTTP协议</span><br><span class="line">$status 记录请求状态</span><br><span class="line">$body_bytes_sent 发送给客户端的字节数，不包括响应头的大小； 该变量与Apache模块mod_log_config里的“%B”参数兼容。</span><br><span class="line">$bytes_sent 发送给客户端的总字节数。</span><br><span class="line">$connection 连接的序列号。</span><br><span class="line">$connection_requests 当前通过一个连接获得的请求数量。</span><br><span class="line">$msec 日志写入时间。单位为秒，精度是毫秒。</span><br><span class="line">$pipe 如果请求是通过HTTP流水线(pipelined)发送，pipe值为“p”，否则为“.”。</span><br><span class="line">$http_referer 记录从哪个页面链接访问过来的</span><br><span class="line">$http_user_agent 记录客户端浏览器相关信息</span><br><span class="line">$request_length 请求的长度（包括请求行，请求头和请求正文）。</span><br><span class="line">$request_time 请求处理时间，单位为秒，精度毫秒； 从读入客户端的第一个字节开始，直到把最后一个字符发送给客户端后进行日志写入为止。</span><br><span class="line">$time_iso8601 ISO8601标准格式下的本地时间。</span><br><span class="line">$time_local 通用日志格式下的本地时间。</span><br></pre></td></tr></table></figure>
+<p>nginx.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">//该文件是存放到nginx安装目录下conf文件夹中</span><br><span class="line"> </span><br><span class="line">//全局区</span><br><span class="line"> </span><br><span class="line">//代表着当前有一个工作的子进程，可以自行修改，但是太多了无益因为会争夺cpu资源。一般最多设置成cpu数*核数</span><br><span class="line">worker_processes  1;</span><br><span class="line"> </span><br><span class="line">//一般配置nginx的连接特性</span><br><span class="line">events &#123;</span><br><span class="line">    //这里是指一个子进程最大允许连接1024个连接</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">//这里是配置http服务器的主要段</span><br><span class="line">http &#123;</span><br><span class="line">    </span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    //这里配置的是日志的显示格式</span><br><span class="line">    #log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">    #                 &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">    #                 &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br><span class="line">    </span><br><span class="line">    //这里调用指定日志显示的格式</span><br><span class="line">    #access_log  logs/access.log  main;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    //这里是配置虚拟主机段</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;//监听的端口</span><br><span class="line">        server_name  localhost;//监听访问地址</span><br><span class="line"> </span><br><span class="line">        #charset koi8-r;</span><br><span class="line"> </span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line"> </span><br><span class="line">        //定位，把特殊的文件或者路径再次定位</span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;//定位的目录，默认是ngxin安装目录下的html文件夹中</span><br><span class="line">            index  index.html index.htm;//定位的具体文件</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="nginx日志分析"><a class="markdownIt-Anchor" href="#nginx日志分析"></a> nginx日志分析</h2>
+<p>分析截止目前为止访问量最高的IP排20名。</p>
+<p><code>awk'{print $1}' /usr/local/nginx/logs/access.log |sort | uniq-c I|sort -nr</code></p>
+<p>分析从早上9点至中午12点总的访问量。</p>
+<p><code>sed-n&quot;/2016:09:00/,/2016:12:00/&quot; paccess_20161121.log</code></p>
+<p>分析上一秒的访问请求数。</p>
+<p><code>sed -n&quot;/2016：09：00：00/&quot; paccess_20161121.log</code></p>
+<p>https签名：<a href="https://www.jianshu.com/p/0d455c7a9326" target="_blank" rel="noopener">https://www.jianshu.com/p/0d455c7a9326</a></p>
+<h2 id="qnginx和uwsgi区别"><a class="markdownIt-Anchor" href="#qnginx和uwsgi区别"></a> Q：nginx和uwsgi区别</h2>
+<p>nginx的作用：<br>
+1.反向代理，可以拦截一些web攻击，保护后端的web服务器<br>
+2.负载均衡，根据轮询算法，分配请求到多节点web服务器<br>
+3.缓存静态资源，加快访问速度，释放web服务器的内存占用，专项专用</p>
+<p>uWSGI的适用：<br>
+1.单节点服务器的简易部署<br>
+2.轻量级，好部署</p>
+<p>Q：已知一个使用nginx配置的web服务器的域名为www.my.com监听80端口,假设在服务器的/var/www/html这个目录下面有静态文件index.html,那么在配置文件其它部分相同的情况下，分别使用下面两种配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Location /abc &#123;</span><br><span class="line">    root /var/www/html; </span><br><span class="line">    index index.html; </span><br><span class="line">&#125;</span><br><span class="line">location/abc &#123; </span><br><span class="line">    alias /var/ww/html/; </span><br><span class="line">    index index.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>访问http://www.my.com/abc分别会有什么结果？</p>
+<p>A：</p>
+<ul>
+<li>root 的为<code>/var/www/html/abc/index.html</code></li>
+<li>alias的为<code>/var/www/html/index.html</code></li>
+</ul>
+<p>Q：所以使用浏览器访问的话这两种配置会有什么区别？</p>
+<p>A：root的为404，alias的为200.</p>
+<p>注：如果通过两个路径都能访问到的话，那无论哪个配置都是200</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/11/26/2019年8月23号运维笔记/">https://nymrli.top/2019/11/26/2019年8月23号运维笔记/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2019/11/26/app测试/" title="app测试"><span>NextPost ></span><br><span class="nextTitle">app测试</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '2019年8月23号运维笔记',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2019年8月23号运维笔记"><span class="toc-number">1.</span> <span class="toc-text"> 2019年8月23号运维笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#docker"><span class="toc-number">1.1.</span> <span class="toc-text"> docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-stop-containerid以后再重新启动时报错"><span class="toc-number">1.1.1.</span> <span class="toc-text"> docker stop containerID，以后再重新启动时报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker端口映射到宿主机后外网仍无法访问容器的web"><span class="toc-number">1.1.2.</span> <span class="toc-text"> docker端口映射到宿主机后外网仍无法访问容器的web</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx"><span class="toc-number">1.2.</span> <span class="toc-text"> nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看nginx安装路径"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 查看nginx安装路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看nginx日志"><span class="toc-number">1.3.</span> <span class="toc-text"> 查看nginx日志</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#指定运行配置文件"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 指定运行配置文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#校验配置文件是否正确"><span class="toc-number">1.4.</span> <span class="toc-text"> 校验配置文件是否正确</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#了解日志管理"><span class="toc-number">1.5.</span> <span class="toc-text"> 了解日志管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx日志分析"><span class="toc-number">1.6.</span> <span class="toc-text"> nginx日志分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#qnginx和uwsgi区别"><span class="toc-number">1.7.</span> <span class="toc-text"> Q：nginx和uwsgi区别</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

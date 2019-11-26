@@ -1,3 +1,8 @@
+https://nymrli.top/2019/11/26/2019年8月23号运维笔记/
+https://nymrli.top/2019/11/26/app测试/
+https://nymrli.top/2019/11/26/2019-9月7号C-编程笔记/
+https://nymrli.top/2019/11/26/MinMax-极小极大算法——2048/
+https://nymrli.top/2019/11/26/MinMax和Alpha-beta剪枝分析-转/
 https://nymrli.top/2019/11/24/Python网络编程Websocket/
 https://nymrli.top/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/
 https://nymrli.top/2019/10/24/PAT冲冲冲/
@@ -43,8 +48,3 @@ https://nymrli.top/2019/07/29/基础知识补充——白噪声、高斯白噪�
 https://nymrli.top/2019/07/29/傅里叶变换-小波变化/
 https://nymrli.top/2019/07/26/Vim记忆/
 https://nymrli.top/2019/07/25/Docker使用/
-https://nymrli.top/2019/07/25/Python中的正则匹配/
-https://nymrli.top/2019/07/24/利用wireshark抓取TCP的整个过程分析/
-https://nymrli.top/2019/07/13/C-学习笔记/
-https://nymrli.top/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/
-https://nymrli.top/2019/07/08/自动化运维工具Ansible/

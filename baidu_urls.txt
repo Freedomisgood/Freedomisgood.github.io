@@ -1,3 +1,4 @@
+https://nymrli.top/2019/11/26/PIL的Image笔记/
 https://nymrli.top/2019/11/26/2019年8月23号运维笔记/
 https://nymrli.top/2019/11/26/app测试/
 https://nymrli.top/2019/11/26/2019-9月7号C-编程笔记/
@@ -47,4 +48,3 @@ https://nymrli.top/2019/07/29/时间序列概念及主要模型/
 https://nymrli.top/2019/07/29/基础知识补充——白噪声、高斯白噪声/
 https://nymrli.top/2019/07/29/傅里叶变换-小波变化/
 https://nymrli.top/2019/07/26/Vim记忆/
-https://nymrli.top/2019/07/25/Docker使用/

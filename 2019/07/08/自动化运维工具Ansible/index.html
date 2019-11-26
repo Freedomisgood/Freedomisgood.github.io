@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">自动化运维工具Ansible</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/18</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">4,043</span> | Reading time: <span class="post-count">17</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="自动化运维工具ansible笔记"><a class="markdownIt-Anchor" href="#自动化运维工具ansible笔记"></a> 自动化运维工具Ansible笔记</h1>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">自动化运维工具Ansible</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/11/26</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">4,140</span> | Reading time: <span class="post-count">18</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="自动化运维工具ansible笔记"><a class="markdownIt-Anchor" href="#自动化运维工具ansible笔记"></a> 自动化运维工具Ansible笔记</h1>
 <h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h2>
 <p>​        ansible是新出现的自动化运维工具，基于Python开发，集合了众多运维工具（puppet、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。<br>
 　　ansible是基于 paramiko 开发的,并且基于模块化工作，本身没有批量部署的能力。真正具有批量部署的是ansible所运行的模块，ansible只是提供一种框架。ansible不需要在远程主机上安装client/agents，因为它们是基于ssh来和远程主机通讯的。ansible目前已经已经被红帽官方收购，是自动化运维工具中大家认可度最高的，并且上手容易，学习简单。是每位运维工程师必须掌握的技能之一。</p>
@@ -216,31 +216,35 @@
 <h2 id="常用模块"><a class="markdownIt-Anchor" href="#常用模块"></a> 常用模块</h2>
 <ul>
 <li>command</li>
-<li>shell
+<li>shell :  远程节点执行模块
 <ul>
-<li><code>ansible all -m shel1-a 'getenforce'</code></li>
+<li><code>ansible all -m shel1 -a 'getenforce'</code></li>
 </ul>
 </li>
-<li>script</li>
-<li>copy
+<li>script:  在远程执行本地的脚本
+<ul>
+<li><code>ansible test -m script -a &quot;/sh/test.sh&quot;</code></li>
+</ul>
+</li>
+<li>copy :  复制模块
 <ul>
 <li><code>ansible all -m copy -a'src=/root/ansible/selinux dest=/etc/selinux/config backup=yes'</code></li>
 <li><code>ansible all -m copy-a 'src=/etc/shadow dest=/data/mode=000 owner=wang'</code></li>
 </ul>
 </li>
-<li>fetch
+<li>fetch :  远程获取
 <ul>
 <li><code>ansible srv-m fetch -a 'src=/root/a. sh dest=/data/scripts'</code></li>
 </ul>
 </li>
-<li>file
+<li>file : 文件操作,删除、创建
 <ul>
-<li>文件操作,删除、创建</li>
+<li><code>ansible test -m file -a &quot;dest=/tmp/hello state=touch&quot;</code></li>
 </ul>
 </li>
-<li>unachieve、achieve
+<li>unachieve、achieve : 压缩解压
 <ul>
-<li>压缩解压</li>
+<li><code>ansible test -m unarchive -a 'src=/srv/tomcat8/apache-tomcat-8.0.29.tar.gz dest=/usr/local copy=no mode=0755'</code></li>
 </ul>
 </li>
 <li>cron
@@ -250,7 +254,11 @@
 <li>删除<code>ansible all -m cron -a 'job=&quot;/usr/bin/wall FBI warning&quot;name=warningcron state=absent'</code></li>
 </ul>
 </li>
-<li>apt、yum</li>
+<li>apt、yum
+<ul>
+<li><code>ansible all -m apt 'name=vim update_cache=yes'</code></li>
+</ul>
+</li>
 <li>user</li>
 <li>group</li>
 <li>service
@@ -267,6 +275,7 @@
 </ul>
 <p>command模块在针对<strong>管道</strong>、*<em>重定向有</em>…**有问题==&gt;使用shell模块</p>
 <p><a href="https://www.cnblogs.com/ExzaiTin/p/7918415.html" target="_blank" rel="noopener">常用模块介绍</a></p>
+<p>▲一般 present 表示生成、下载, absent 表示删除或卸载。</p>
 <h2 id="系列命令"><a class="markdownIt-Anchor" href="#系列命令"></a> 系列命令</h2>
 <h3 id="galaxy"><a class="markdownIt-Anchor" href="#galaxy"></a> galaxy</h3>
 <p><code>ansible-galaxy install geerlingguy.nginx</code>	其中<code>geerlingguy</code>为角色在<code>./ansible/roles/</code></p>
@@ -397,7 +406,9 @@ meta/不常用</p>
 <h3 id="一键挂载nfs"><a class="markdownIt-Anchor" href="#一键挂载nfs"></a> 一键挂载NFS:</h3>
 <p><code>ansible full -m mount -a &quot;name=/data src=192.168.100.179:/data fstype=nfs state=mounted&quot; -b -K</code></p>
 <p>挂载需要用SUDO权限,所以-K必不可少.同时,在这之前已经使用过ssh进行了配对因此不需要输入登录用户密码.</p>
-<p><code>ss -ntl | grep 80</code></p>
+<hr>
+<p>其他命令记录<br>
+<code>ss -ntl | grep 80</code></p>
 <p><code>vim /etc/sysconfig/network-scripts/ifcfg-eth0</code>建议可以使用Alias</p>
 <p><code>service network restart</code>重启网络服务</p>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/07/08/自动化运维工具Ansible/">https://nymrli.top/2019/07/08/自动化运维工具Ansible/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/" title="通过XDRP实现Windows远程访问ubuntu桌面"><span>< PreviousPost</span><br><span class="prevTitle">通过XDRP实现Windows远程访问ubuntu桌面</span></a><a class="nextSlogan" href="/2019/07/07/staticmethod和classmethod区别/" title="staticmethod和classmethod区别"><span>NextPost ></span><br><span class="nextTitle">staticmethod和classmethod区别</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({

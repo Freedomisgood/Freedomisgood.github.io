@@ -97,7 +97,13 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/软件测试大赛/">软件测试大赛</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:07:12.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:07:12.000Z">2019-11-02</time></div><div class="recent-post-content"> 软件测试大赛
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/09/28/numpy使用记录/">numpy使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-28T03:13:29.000Z">2019-09-28</time><i class="fa fa-edit"></i><time datetime="2019-09-28T03:13:29.000Z">2019-11-27</time></div><div class="recent-post-content"> Numpy使用记录
+ numpy中的random
+numpy.random.choice(a, size=None, replace=True, p=None)
+
+a : 如果是一维数组，就表示从这个一维数组中随机采样；如果是int型，就表示从0到a-1这个序列中随机采样。
+size : 采样结果的数量，默认为1.可以是整数，表示要采样的数量；也可以为tuple，如(m, n, k)，则要采样的数量为m * n * k，size为(m, n, k)
+replace : boolean型，采样的样本是否要更换？这个地方我不太理解，测了一下发现replace指定为True时，采样的元素会有重复； ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/28/numpy使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/软件测试大赛/">软件测试大赛</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:07:12.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:07:12.000Z">2019-11-02</time></div><div class="recent-post-content"> 软件测试大赛
  初学流程
 
 首先了解比赛,查看帮助文档平台帮助
@@ -150,7 +156,23 @@ KLOOK客路：界面比番薯游好多了，还是非常精致的。最大的优
 
 提供下载网站chromedownloads,下载google-chrome-stable_current_amd64-75.0.3770.80.deb
 
-1234567891011$ sudo apt-get install libxss1 libappindicator1 libindicator7$ sudo dpkg -i google-chrome-stable_current_amd64-75.0.3 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/09/24/Linux安装selenium执行Python程序/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/验证码识别程序设计流程/">验证码识别程序设计流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T13:31:35.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T13:31:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 验证码识别程序设计流程
+1234567891011$ sudo apt-get install libxss1 libappindicator1 libindicator7$ sudo dpkg -i google-chrome-stable_current_amd64-75.0.3 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/09/24/Linux安装selenium执行Python程序/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/29/git命令详解/">git命令详解</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-29T09:39:07.000Z">2019-09-29</time><i class="fa fa-edit"></i><time datetime="2019-09-29T09:39:07.000Z">2019-10-11</time></div><div class="recent-post-content"> git命令详解
+ 自己的仓库管理：
+git add &lt;filename&gt;
+
+将文件添加到暂存区中  (其中git add.可以将当前目录的子目录文件都添加到暂存区中)
+
+git commit -m &quot;...&quot;:
+
+保存仓库的历史记录,其中 -m &quot;…&quot;提交信息(概述)
+
+git config --global user.name &quot;...&quot;、git config --global user.email &quot;...&quot;:
+
+配置提交作者信息
+
+git log:
+
+查看提交日志(当前状态为终点) 会产生版本库 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/29/git命令详解/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/验证码识别程序设计流程/">验证码识别程序设计流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T13:31:35.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T13:31:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 验证码识别程序设计流程
 
 以南邮正方教务系统为例
 
@@ -160,20 +182,14 @@ KLOOK客路：界面比番薯游好多了，还是非常精致的。最大的优
 
 1234567def getCaptcha():    CAPTCHA_URL = "http://jwxt.njupt.edu.cn/CheckCode.aspx"    r = requests.get(CAPTCHA_URL)    img = r.content    img = Image.open(BytesIO(img))    return img
  对图片去噪
-123456789101112131415161718 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/09/验证码识别程序设计流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/机器学习——决策树/">机器学习——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:44:35.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:44:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 机器学习——决策树
- 决策树基础概念
+123456789101112131415161718 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/09/验证码识别程序设计流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/26/OpenAI-Gym使用/">OpenAI Gym使用、rendering画图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-26T09:53:27.000Z">2019-09-26</time><i class="fa fa-edit"></i><time datetime="2019-09-26T09:53:27.000Z">2019-10-07</time></div><div class="recent-post-content"> OpenAI Gym使用、rendering画图
 
-决策树分为分类树和回归树两种，分类树对离散变量做决策树，回归树对连续变量做决策树。
-每个内部节点（非叶子节点）表示一个属性上的测试条件，每个分支代表一个测试输出结果，每个叶节点代表一种类别
+gym开源库：包含一个测试问题集，每个问题成为环境（environment），可以用于自己的RL算法开发。这些环境有共享的接口，允许用户设计通用的算法。其包含了deep mind 使用的Atari游戏测试床。
 
-决策树分为分类树和回归树两种，分类树对离散变量做决策树，回归树对连续变量做决策树。
-决策树的构造过程就是找到这些具有决定性作用的特征，根据其决定性程度来构造一个倒立的树–决定性作用最大的那个特征作为根节点，然后递归找到各分支下子数据集中次大的决定性特征，直至子数据集中所有数据都属于同一类。
-特征：
-
-有监督的学习
-非参数学习算法
-自顶向下递归方式构造决策树
-在每一 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/08/30/机器学习——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/19/深度学习/">深度学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-19T12:32:44.000Z">2019-09-19</time><i class="fa fa-edit"></i><time datetime="2019-09-19T12:32:44.000Z">2019-10-05</time></div><div class="recent-post-content"> 深度学习——神经网络
+在强化学习中有2个基本概念，一个是环境（environment），称为外部世界，另一个为智能体agent（写的算法）。agent发送action至environment，environment返回观察和回报。
+Gym官方文档
+ Hello gym
+123456789import gym# 创建一个小车倒立摆模型env = gym.m ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/26/OpenAI-Gym使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/19/深度学习/">深度学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-19T12:32:44.000Z">2019-09-19</time><i class="fa fa-edit"></i><time datetime="2019-09-19T12:32:44.000Z">2019-10-05</time></div><div class="recent-post-content"> 深度学习——神经网络
  构建网络的总原则
 一、增大网络容量，直到过拟命
 二、采取措施抑制过拟合
@@ -192,7 +208,15 @@ KLOOK客路：界面比番薯游好多了，还是非常精致的。最大的优
 
  Copy README
 Q：别人的REAMDE都那么炫酷，怎么办呢？
-A:点击他人的README.md文件，然后显示Raw就能看到html辣，由于markdown语法是支持嵌入html，因此只要把 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/21/同性交友网站Github的骚操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/17/常用域名记录解释/">常用域名记录解释</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time><i class="fa fa-edit"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time></div><div class="recent-post-content"> 常用域名记录解释
+A:点击他人的README.md文件，然后显示Raw就能看到html辣，由于markdown语法是支持嵌入html，因此只要把 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/21/同性交友网站Github的骚操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/27/Python-random/">Python random</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-27T14:11:59.000Z">2019-09-27</time><i class="fa fa-edit"></i><time datetime="2019-09-27T14:11:59.000Z">2019-09-29</time></div><div class="recent-post-content"> Python random
+
+老是忘记random中每个函数之间的区别，而且常常跟numpy里的random也经常搞混，因此还是写篇文章记一下吧。
+
+ random模块
+ choice和sample
+python中random.choice()可以从给定的可迭代对象中随机挑选出一个。
+而python中random.sample()方法则可以随机地从给定的可迭代对象中提取出N个不同的元素，列表的维数没有限制。（即第二参数给出个数N）
+1234567891011import randomprint(random.sample([chr(97 + x) for x in range(int(9)) ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/27/Python-random/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/17/常用域名记录解释/">常用域名记录解释</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time><i class="fa fa-edit"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time></div><div class="recent-post-content"> 常用域名记录解释
  A记录
 A记录是用来创建到IP地址的记录。
 A记录设置技巧
@@ -209,8 +233,7 @@ A记录设置技巧
  三、如何开发jar包
 开发jar包的人员开发流程：
  步骤1:编写类
-12345678//GetSum.javapackage cn.itcast.sum;public class GetSum&#123;      public static getSum(int a,int b)&#123; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/打jar包和使用jar包/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/强化学习——QLearning/">强化学习——QLearning</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-15</time></div><div class="recent-post-content"> 强化学习——QLearning
-价值转移公式只有一条Q(s,a)&lt;=Q(s,a)+/alpha∗(reward−Q(s,a)+/gamma∗maxaQ(s′,a))=(1−/alpha)∗Q(s,a)+/alpha∗(reward+/gamma∗maxaQ(s′,a))Q(s,a) &lt;= Q(s,a) + /alpha*(reward - Q(s,a) + /gamma*max_aQ(s&#x27;,a)) = (1-/alpha)*Q(s,a) + /alpha*(reward + /gamma*max_aQ(s&#x27;,a))Q(s,a)&lt;=Q(s,a)+/alph ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/强化学习——QLearning/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/如何成为一位老司机——考驾照经历/">如何成为一位老司机——考驾照经历</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-15</time></div><div class="recent-post-content"> 如何成为一位老司机——考驾照经历
+12345678//GetSum.javapackage cn.itcast.sum;public class GetSum&#123;      public static getSum(int a,int b)&#123; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/打jar包和使用jar包/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/如何成为一位老司机——考驾照经历/">如何成为一位老司机——考驾照经历</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-15</time></div><div class="recent-post-content"> 如何成为一位老司机——考驾照经历
 大一下报的名，几经转折，终于在2019-9-12，中秋放假前一天拿到了本本。
  科一理论考试
 太久远了，已经忘记了…
@@ -228,13 +251,7 @@ A记录设置技巧
 
  S弯道：
 
-确保人在路中间，可以略微偏左。左边小镜子底座压住右边黄线。方向盘一圈右手放在2点方向。如果黄线偏下，那么往1点方向调整，否则往3点 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/14/如何成为一位老司机——考驾照经历/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Sklearn——决策树/">Sklearn——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:43:27.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:43:27.000Z">2019-09-15</time></div><div class="recent-post-content"> Sklearn——决策树
-
-注明：转载自Jack Gui的博客
-
- 1、实战背景
-进入本文的正题：眼科医生是如何判断患者需要佩戴隐形眼镜的类型的？一旦理解了决策树的工作原理，我们甚至也可以帮助人们判断需要佩戴的镜片类型。
-隐形眼镜数据集是非常著名的数据集，它包含很多换着眼部状态的观察条件以及医生推荐的隐形眼镜类型。隐形眼镜类型包括硬材质(hard)、软材质(soft)以及不适合佩戴隐形眼镜(no lenses)。数据来源与UCI数据库，数据集下载地址：[lenses.txt)]([https://github.com/Jack-Cherish/Machine-Learning/blob/ma ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Pythton"> Pythton</a></div><div class="read-more"><a class="more" href="/2019/08/30/Sklearn——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/RL强化学习概念/">RL强化学习概念</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-15</time></div><div class="recent-post-content"> RL强化学习概念
+确保人在路中间，可以略微偏左。左边小镜子底座压住右边黄线。方向盘一圈右手放在2点方向。如果黄线偏下，那么往1点方向调整，否则往3点 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/14/如何成为一位老司机——考驾照经历/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/RL强化学习概念/">RL强化学习概念</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-15</time></div><div class="recent-post-content"> RL强化学习概念
  方法汇总
  价值-直接-想象
 通过价值选择行为：
@@ -322,13 +339,4 @@ CDN(Content Delivery Network)内容发布网络，基本思路就是将你网站
 15GB/月
 免费支持
 加入又拍云联盟，并在网站底部放置logo
-&gt; ...</div><div class="read-more"><a class="more" href="/2019/09/09/CDN加速个人博客——又拍云/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/ACM-博弈论/">ACM-博弈论</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:41:28.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:41:28.000Z">2019-09-15</time></div><div class="recent-post-content"> ACM-博弈论（gambling）
-
-博弈论：是二人或多人在平等的对局中各自利用对方的策略变换自己的对抗策略，达到取胜目标的理论。假设，双方每步都是最优决策
-
-博弈论是研究互动决策的理论。博弈可以分析自己与对手的利弊关系，从而确立自己在博弈中的优势，因此有不少博弈理论，可以帮助对弈者分析局势，从而采取相应策略，最终达到取胜的目的。
- 巴什博弈
-
-只有一堆n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取m个。最后取光者得胜。
-
-显然，如果n=m+1，1那么由于一次最多只能取m个，所以，无论先取者拿走多少个，后取者都能够一次拿走剩余的物品，后者取胜。因此我们发现了先手如何取胜的法 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/08/30/ACM-博弈论/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+&gt; ...</div><div class="read-more"><a class="more" href="/2019/09/09/CDN加速个人博客——又拍云/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

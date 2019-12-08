@@ -1,3 +1,7 @@
+https://nymrli.top/2019/12/07/ACM-树状数组和线段树/
+https://nymrli.top/2019/12/05/KM-Kuhn-Munkres-算法/
+https://nymrli.top/2019/12/05/ACM-二分图/
+https://nymrli.top/2019/12/05/Hungarian-algorithm匈牙利算法/
 https://nymrli.top/2019/11/26/Latex测试/
 https://nymrli.top/2019/11/26/PIL的Image笔记/
 https://nymrli.top/2019/11/26/2019年8月23号运维笔记/
@@ -44,7 +48,3 @@ https://nymrli.top/2019/08/30/Python爬虫常规流程/
 https://nymrli.top/2019/08/30/Word2016配置使用MathType/
 https://nymrli.top/2019/08/22/算法设计与分析C-概念点区分/
 https://nymrli.top/2019/08/22/通信企业管理-线上考试/
-https://nymrli.top/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/
-https://nymrli.top/2019/07/29/时间序列概念及主要模型/
-https://nymrli.top/2019/07/29/基础知识补充——白噪声、高斯白噪声/
-https://nymrli.top/2019/07/29/傅里叶变换-小波变化/

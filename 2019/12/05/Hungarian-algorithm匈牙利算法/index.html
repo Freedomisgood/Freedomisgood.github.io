@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Hungarian algorithm匈牙利算法 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Hungarian algorithm匈牙利算法</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/12/08</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,415</span> | Reading time: <span class="post-count">9</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="hungarian-algorithm匈牙利算法"><a class="markdownIt-Anchor" href="#hungarian-algorithm匈牙利算法"></a> Hungarian algorithm匈牙利算法</h1>
+<blockquote>
+<p>主要用来解决不带权的分配问题，O(V*E)</p>
+</blockquote>
+<p>首先，需要明白二分图（又名二部图）的概念</p>
+<h2 id="二分图bipartite-graph"><a class="markdownIt-Anchor" href="#二分图bipartite-graph"></a> 二分图Bipartite Graph</h2>
+<p>二分图是图论中一种特殊模型。设G=(V,E)是一个<strong>无向图</strong>(当且仅当图中不存在长度为奇数的环。)，如果顶点V可分割为<strong>两个互不相交</strong>的子集(A,B)，并且图中的每条边（i，j）所关联的两个顶点i和j<strong>分别属于这两个不同的顶点集</strong>(i in A,j in B)，则称图G为一个二分图。</p>
+<p>注意：如果一图是二分图，那么它<strong>一定没有奇环</strong>。如果一图没有奇环的话，那么它可以是二分图。(没有奇环是二分图的必要条件)</p>
+<p>▲通常被用来解决分配、匹配问题，如资源分配、工作安排、任务调度……任务的核心本质是求配对关系，或者给顶点和边赋权，求某种条件下的最优分配问题。</p>
+<p>△匹配问题可以用网络流解决，或者KM算法（KM算法是一种计算机算法，功能是求完备匹配下的最大权匹配），但是增广路算法更加简洁。</p>
+<h3 id="二分图的判定"><a class="markdownIt-Anchor" href="#二分图的判定"></a> 二分图的判定：</h3>
+<p>染色法1：假设DFS初始点A涂黑色，与它相邻的点就涂白色。如果搜到某一个点u的相邻点v已经涂色并且与u同色，就不可能是二分图啦~</p>
+<p>染色法2：就是给每个点进行标号，标为-1，1如果存在一条边连接的两个点标号相同，那么就是存在一个奇数环…</p>
+<h3 id="二分图的匹配"><a class="markdownIt-Anchor" href="#二分图的匹配"></a> 二分图的匹配</h3>
+<ul>
+<li><strong>匹配</strong>：将E的子集M称作一个<strong>匹配</strong>(子集M中的任意两条边都没有公共端点)</li>
+<li><strong>最大匹配</strong>：边数最多的匹配称作最大匹配——maximal matching</li>
+<li><strong>X(Y)完全匹配</strong>：如果X（Y）中的所有的顶点都出现在匹配M中，则称M是X(Y)完全匹配——perfect matching</li>
+<li><strong>M完全匹配</strong>：如果M既是X-完全匹配，又是Y-完全匹配，称M是完全匹配。此时<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><mi>X</mi><mi mathvariant="normal">∣</mi><mo>=</mo><mi mathvariant="normal">∣</mi><mi>Y</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|X| = |Y|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mord">∣</span></span></span></span>，也就是说这个匹配里的所有边刚好经过所有点一次。</li>
+</ul>
+<h3 id="最大匹配和完全匹配的应用"><a class="markdownIt-Anchor" href="#最大匹配和完全匹配的应用"></a> 最大匹配和完全匹配的应用：</h3>
+<p>Q：教师-课程安排，G=&lt;U,E,V&gt;，U为教师集合，V为课程集合，E中的边&lt;u,v&gt;表示某位教师u可以上课程v。需要求<strong>最大匹配</strong>，使得每门课程有人教，每人都有课上。</p>
+<p>A:匈牙利算法</p>
+<h2 id="匈牙利算法"><a class="markdownIt-Anchor" href="#匈牙利算法"></a> 匈牙利算法</h2>
+<h3 id="执行过程"><a class="markdownIt-Anchor" href="#执行过程"></a> 执行过程</h3>
+<p>①任意取一个匹配M（可以是空集或只有一条边）<br>
+②令S是非饱和点（尚未匹配的点）的集合自如果S=0，则M已经是最大匹配<br>
+④从S中取出一个非饱和点山作为起点，从此起点走交错路（交替属于M和非M的边构成的极大无重复点通路或回路）P<br>
+③如果P是一个增广路（P的终点也是非饱和点），则令M=MeP=（M-P）U（P-M）<br>
+⑥如果P都不是增广路，则从S中去掉uo，转到step3</p>
+<p>▲.顶点数不同，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><mi>X</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">≠</mi><mi mathvariant="normal">∣</mi><mi>Y</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|X| \neq |Y|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mord">∣</span></span></span></span>的二分图一定没有完全匹配</p>
+<p>▲正则的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><mi>X</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">≠</mi><mi mathvariant="normal">∣</mi><mi>Y</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|X| \neq |Y|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mord">∣</span></span></span></span>的二分图一定有完全匹配(正则:每个顶点的度数都相同)</p>
+<h4 id="増广路定理"><a class="markdownIt-Anchor" href="#増广路定理"></a> 増广路定理：</h4>
+<blockquote>
+<p>任意一个非最大匹配的匹配一定存在增广路。</p>
+</blockquote>
+<ol>
+<li>从一个未匹配点（未盖点）出发，<strong>依次</strong>经过<u>非匹配边</u>、<u>匹配边</u>、<u>非匹配边</u>…形成的路径叫<strong>交替路</strong>。</li>
+<li>两个端点都是未盖点→增广路（Augmenting Path，AP）
+<ul>
+<li>比如：8→4→7→1→5→2，图中红色是匹配边。</li>
+<li>特殊的：3-6也是增广路。</li>
+</ul>
+</li>
+<li>把AP上的匹配边和非匹配边互换，得到的匹配比刚才多一条边。</li>
+<li>匹配点只连一条匹配边（？），这样做不会破坏匹配的性质。</li>
+<li>增广路定理：即一个匹配是最大匹配等价于不存在增广路。
+<ul>
+<li>匈牙利算法的核心原理：就是不断找増广路（依据性质3），直至无法找到新的増广路，即为最大匹配。——使用递归（<strong>一直找增广路，不断交换匹配</strong>）</li>
+</ul>
+</li>
+<li>增广路可以用来改进匹配，最大匹配可以通过反复找增广路来求解。</li>
+<li><strong>已经匹配的点永远不会退出匹配，只会更换匹配</strong></li>
+</ol>
+<p>注：（匹配点又叫做盖点，非匹配点叫做未盖点（所谓“盖”指的是被一条边盖住）</p>
+<p><img src="/2019/12/05/Hungarian-algorithm匈牙利算法/E:%5Chexo%5Csource_posts%5CHungarian-algorithm%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95%5C%E5%A2%97%E5%B9%BF%E8%B7%AF.jpg" alt="増广路"></p>
+<h3 id="实现的细节"><a class="markdownIt-Anchor" href="#实现的细节"></a> 实现的细节：</h3>
+<p><img src="/2019/12/05/Hungarian-algorithm匈牙利算法/E:%5Chexo%5Csource_posts%5CHungarian-algorithm%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95%5Czgl2.jpg" alt="zgl2"></p>
+<p>每次选一个未盖点u进行DFS。如果找不到<strong>u开头</strong>的增广路，则换一个未盖点进行DFS，且以后<strong>再也不从u出发找增广路</strong>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BPM</span>&#123;</span>			<span class="comment">//二分图最大基数匹配，邻接矩阵写法</span></span><br><span class="line">    <span class="keyword">int</span> n，m，G[maxn][maxn];<span class="comment">//左右顶点个数，G[x][y]=1，边x-y</span></span><br><span class="line">    <span class="keyword">int</span> left[maxn];		<span class="comment">//1eft[i]为右边第i个点的匹配点编号，-1表示不存在</span></span><br><span class="line">    <span class="keyword">bool</span> T[maxn];		<span class="comment">//T[i]为右边第i个点是否已标记</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n，<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;n=n，<span class="keyword">this</span>-&gt;m=m;_zero(G);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">match</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(intv=e;v&lt;m;v++)</span><br><span class="line">        <span class="keyword">if</span>(G[u][v]&amp;&amp;！T[v])&#123;</span><br><span class="line">            T[v]=<span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(left[v]==<span class="number">-1</span> || match(left[v]))&#123;</span><br><span class="line">            <span class="comment">//left[v]！=-1，1eft[v]-v是匹配边</span></span><br><span class="line">            left[v]=u;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">int</span> solve（)&#123; <span class="comment">//求最大匹配</span></span><br><span class="line">    <span class="built_in">memset</span>(left，<span class="number">-1</span>，<span class="keyword">sizeof</span>(left));</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> u=e;u&lt;n;u++)&#123;<span class="comment">//从左边结点u开始增广</span></span><br><span class="line">        _zero(T); </span><br><span class="line">        <span class="keyword">if</span>(match(u)) ans++;<span class="comment">//u是未盖点</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="其他相关概念"><a class="markdownIt-Anchor" href="#其他相关概念"></a> 其他相关概念：</h3>
+<h4 id="最小顶点覆盖"><a class="markdownIt-Anchor" href="#最小顶点覆盖"></a> 最小顶点覆盖：</h4>
+<p>是指最少的顶点数使得二分图G中的每条边都至少与其中一个点相连<br>
+二分图的最小顶点覆盖数=二分图的最大匹配数</p>
+<h4 id="dag最小不相交路径覆盖"><a class="markdownIt-Anchor" href="#dag最小不相交路径覆盖"></a> DAG最小不相交路径覆盖</h4>
+<p>也称为最小边覆盖，是指用尽量少的顶点<strong>不相交</strong>（只经过一次）的简单路径覆盖二分图中的所有顶点<br>
+路径长度可以为0<br>
+二分图的最小路径覆盖数=|V|-二分图的最大匹配数<br>
+*最小可相交路径覆盖</p>
+<h4 id="最大独立集"><a class="markdownIt-Anchor" href="#最大独立集"></a> 最大独立集</h4>
+<p>最大独立集是指寻找一个点集，使得其中任意两点在图中无对应边。<br>
+对于一般图来说，最大独立集是一个NP完全问题，对于二分图来说最大独立集<br>
+=|V| - 二分图的最大匹配数</p>
+<h2 id="kmkuhn-munkres算法"><a class="markdownIt-Anchor" href="#kmkuhn-munkres算法"></a> KM(Kuhn-Munkres)算法</h2>
+<blockquote>
+<p>带权二分图最佳完美匹配，O(n^3)，（运用匈牙利算法辅助求解）</p>
+</blockquote>
+<ol>
+<li>只适用于带权最大匹配一定是完备匹配的情况，实践中建议用费用流来解决。</li>
+<li>完全二分图一定是偶数个点</li>
+<li><strong>可行顶标</strong>（Feasible Labeling）：结点函数（x），任意边（x，y）：1（x）+l（y）≥w（xiy）。</li>
+<li><strong>相等子图</strong>：G的生成子图，包含所有点以及满足l（x）+I（y）=w（x，y）的边（x，y）</li>
+<li>如果EL有完美匹配为PM，则该M是原图的最大权匹配：
+<ul>
+<li>PM的权和等于所有点的顶标之和SV。</li>
+<li>G的任一个最大权匹配M，边满足w（xy）≤l（x）+（y）→M边权和≤SV=PM边权和</li>
+<li>关键就是寻找好的可行顶标，使相等子图有完美匹配。</li>
+</ul>
+</li>
+</ol>
+<p>==&gt;找到原图的完美匹配–只要–&gt;找到相等子图的完美匹配即可</p>
+<p>▲KM完成之后所有的l(x)之和最小</p>
+<h3 id="举个栗子"><a class="markdownIt-Anchor" href="#举个栗子"></a> 举个栗子:</h3>
+<h4 id="少林决胜golden-tiger-clawuva11383"><a class="markdownIt-Anchor" href="#少林决胜golden-tiger-clawuva11383"></a> <strong>少林决胜(Golden Tiger Claw，UVa11383)</strong></h4>
+<p>给定一个N*N矩阵，每个格子里都有一个正整数w(i,j)。你的任务是给每行确定一个整数row(i)，每列也确定一个整数col(i)，使得对于任意格子(i, j)，w(i, j)≤row(i)+colj)。所有row(i)和col(i)之和应尽量小。</p>
+<p>【分析】<br>
+1.行看作二分图X点，列看作二分图Y点。<br>
+2.和最佳匹配没有任何关系，KM算法副产品。<br>
+3.KM中算法等式l（x）+l（y）≥w（x，y）。行X，列Y。<br>
+4.KM过程中，所有顶标不断减小，算法结束后，所有顶标之和是最小的。</p>
+<h4 id="蚂蚁antsneerc2008la4043"><a class="markdownIt-Anchor" href="#蚂蚁antsneerc2008la4043"></a> <strong>蚂蚁（Ants，NEERC2008，LA4043）</strong></h4>
+<p>给出n个白点和n个黑点的坐标，要求用n条不相交的线段把它们连接起来，其中每条线段恰好连接一个白点和一个黑点，每个点恰好连接到一条线段，如图所示。</p>
+<p>【分析】</p>
+<ol>
+<li>点有黑白两色，构造二分图，白X黑Y。每个黑点和每个白点相连，权值等于欧氏距离。</li>
+<li>连接方案实际上是计算一个完美匹配，匹配中假设al-b1与a2-b2相交，那么dist(a1，b1)+dist(a2，b2)&gt;dist(al，b2)+dist(a2，b1)，这两条线段改成al-b2和a2-b1后总长度会变少。</li>
+<li>所以最小匹配中不会出现线段相交。</li>
+<li>套KM算法即可计算最小完美匹配即可。</li>
+</ol>
+<h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料：</h2>
+<p><a href="https://www.bilibili.com/video/av14223723?from=search&amp;seid=7889448616401707001" target="_blank" rel="noopener">离散数学：图论：二分图的匹配</a>——陈斌 北京大学地球与空间科学学院</p>
+<p><a href="https://blog.csdn.net/D5__J9/article/details/80754657" target="_blank" rel="noopener">二分匹配——匈牙利算法和KM算法</a>——里面推荐的文章更值得一看</p>
+<p><a href="https://blog.csdn.net/NIeson2012/article/details/94472313" target="_blank" rel="noopener">带你入门多目标跟踪（三）匈牙利算法&amp;KM算法</a>——以图像目标跟踪距离</p>
+<p><a href="https://skywt.cn/posts/bipartite-matching" target="_blank" rel="noopener">二分图匹配问题与匈牙利算法</a>——里面讲解的概念挺全的</p>
+<p><a href="https://www.bilibili.com/video/av70803534/?spm_id_from=333.788.videocard.1" target="_blank" rel="noopener">二分图最大匹配以及常见模型——ACM角度</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/12/05/Hungarian-algorithm匈牙利算法/">https://nymrli.top/2019/12/05/Hungarian-algorithm匈牙利算法/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/12/05/ACM-二分图/" title="ACM-二分图"><span>< PreviousPost</span><br><span class="prevTitle">ACM-二分图</span></a><a class="nextSlogan" href="/2019/11/26/Latex测试/" title="Latex测试"><span>NextPost ></span><br><span class="nextTitle">Latex测试</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Hungarian algorithm匈牙利算法',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hungarian-algorithm匈牙利算法"><span class="toc-number">1.</span> <span class="toc-text"> Hungarian algorithm匈牙利算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#二分图bipartite-graph"><span class="toc-number">1.1.</span> <span class="toc-text"> 二分图Bipartite Graph</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二分图的判定"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 二分图的判定：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二分图的匹配"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 二分图的匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最大匹配和完全匹配的应用"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 最大匹配和完全匹配的应用：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#匈牙利算法"><span class="toc-number">1.2.</span> <span class="toc-text"> 匈牙利算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#执行过程"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 执行过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#増广路定理"><span class="toc-number">1.2.1.1.</span> <span class="toc-text"> 増广路定理：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现的细节"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 实现的细节：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他相关概念"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 其他相关概念：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#最小顶点覆盖"><span class="toc-number">1.2.3.1.</span> <span class="toc-text"> 最小顶点覆盖：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dag最小不相交路径覆盖"><span class="toc-number">1.2.3.2.</span> <span class="toc-text"> DAG最小不相交路径覆盖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最大独立集"><span class="toc-number">1.2.3.3.</span> <span class="toc-text"> 最大独立集</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kmkuhn-munkres算法"><span class="toc-number">1.3.</span> <span class="toc-text"> KM(Kuhn-Munkres)算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#举个栗子"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 举个栗子:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#少林决胜golden-tiger-clawuva11383"><span class="toc-number">1.3.1.1.</span> <span class="toc-text"> 少林决胜(Golden Tiger Claw，UVa11383)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#蚂蚁antsneerc2008la4043"><span class="toc-number">1.3.1.2.</span> <span class="toc-text"> 蚂蚁（Ants，NEERC2008，LA4043）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">1.4.</span> <span class="toc-text"> 参考资料：</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

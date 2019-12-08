@@ -97,18 +97,42 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax-极小极大算法——2048/">MinMax-极小极大算法——2048</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:46:41.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:46:41.000Z">2019-11-26</time></div><div class="recent-post-content"> MinMax-极小极大算法——2048
- 算法介绍
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/ACM-二分图/">ACM-二分图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T09:45:57.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T09:45:57.000Z">2019-12-08</time></div><div class="recent-post-content"> 二分图的判定：
+染色法1：假设DFS初始点A涂黑色，与它相邻的点就涂白色。如果搜到某一个点u的相邻点v已经涂色并且与u同色，就不可能是二分图啦~
+染色法2：就是给每个点进行标号，标为-1，1如果存在一条边连接的两个点标号相同，那么就是存在一个奇数环…
+热身题：
+ 判断无向图是否有环
 
-大家在编程的时候应该或多或少都接触到过这样的写法:min(max(xxx,yyy))，MinMax算法的表达形式就是如此，不过其中的Min和Max都是具有对应含义的。
+用DFS遍历图g，如果访问到已经访问过的顶点，那么有环
 
-一般解决博弈类问题的自然想法是将格局组织成一棵），树的每一个节点表示一种格局，而父子关系表示由父格局经过一步可以到达子格局。Minimax也不例外，它通过对以当前格局为根的格局树搜索来确定下一步的选择。而一切格局树搜索算法的核心都是对每个格局价值的评价。Minimax算法基于以下朴素思想确定格局价值：
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/12/05/ACM-二分图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/Hungarian-algorithm匈牙利算法/">Hungarian algorithm匈牙利算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T05:08:11.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T05:08:11.000Z">2019-12-08</time></div><div class="recent-post-content"> Hungarian algorithm匈牙利算法
 
-Minimax是一种悲观算法，即假设对手每一步都会将我方引入从当前看 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/11/26/MinMax-极小极大算法——2048/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/Latex测试/">Latex测试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T13:34:07.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T13:34:07.000Z">2019-11-26</time></div><div class="recent-post-content">UCB1(Si)=Vi‾+clog⁡Nni,c=2UCB1(S_{i})=\overline{V_{i}}+c \sqrt{\frac{\log N}{n_{i}}}, c=2UCB1(Si​)=Vi​​+cni​logN​​,c=2
-UCB1(Si)=Vi‾+clog⁡Nni,c=2UCB1(S_{i})=\overline{V_{i}}+c \sqrt{\frac{\log N}{n_{i}}}, c=2
-UCB1(Si​)=Vi​​+cni​logN​​,c=2
-Q(vi)N(vi)\frac{Q(v_{i})}{N(v_{i})}N(vi​)Q(vi​)​
-Q(vi)N(vi)\fra ...</div><div class="read-more"><a class="more" href="/2019/11/26/Latex测试/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/24/PAT冲冲冲/">PAT冲冲冲</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-24T10:30:45.000Z">2019-10-24</time><i class="fa fa-edit"></i><time datetime="2019-10-24T10:30:45.000Z">2019-11-26</time></div><div class="recent-post-content"> PAT冲冲冲
+主要用来解决不带权的分配问题，O(V*E)
+
+首先，需要明白二分图（又名二部图）的概念
+ 二分图Bipartite Graph
+二分图是图论中一种特殊模型。设G=(V,E)是一个无向图(当且仅当图中不存在长度为奇数的环。)，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（i，j）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。
+注意：如果一图是二分图，那么它一定没有奇环。如果一图没有奇环的话，那么它可以是二分图。(没有奇环是二分图的必要条件)
+▲通常被用来解决分配、匹配 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/12/05/Hungarian-algorithm匈牙利算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/07/ACM-树状数组和线段树/">ACM-树状数组和线段树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-07T05:04:53.000Z">2019-12-07</time><i class="fa fa-edit"></i><time datetime="2019-12-07T05:04:53.000Z">2019-12-07</time></div><div class="recent-post-content">Q：需求：（老板给你分了台2GHz单核，内存500M的服务器然后让你写程序）程序每秒会收到一组数据，每组数据包含10万条命令，总共会有100万个仓库，每个仓库库存没有上限且可为负，库存初始为0。你需要在一秒内完成全部的命令，然后将查询结果按顺序得出后传回，命令如下：
+
+Add i j，i和j为正整数，表示第i个仓库增加j个库存（j不超过220）
+Sub i j，i和j为正整数，表示第i个仓库减少个库存（j不超过220）
+Query i j，i和j为正整数，i&lt;=j，表示询问第i到第个仓库的总库存；End 表示结束，这条命令在每组数据最后出现；
+
+思路一：用array去存储每个仓库的容量， ...</div><div class="read-more"><a class="more" href="/2019/12/07/ACM-树状数组和线段树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/KM-Kuhn-Munkres-算法/">KM(Kuhn-Munkres)算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T13:52:58.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T13:52:58.000Z">2019-12-05</time></div><div class="recent-post-content"> KM(Kuhn-Munkres)算法
+
+带权二分图最佳完美匹配，O(n^3)，（运用匈牙利算法辅助求解）
+
+
+只适用于带权最大匹配一定是完备匹配的情况，实践中建议用费用流来解决。
+完全二分图一定是偶数个点
+可行顶标（Feasible Labeling）：结点函数（x），任意边（x，y）：1（x）+l（y）≥w（xiy）。
+相等子图：G的生成子图，包含所有点以及满足l（x）+I（y）=w（x，y）的边（x，y）
+如果EL有完美匹配为PM，则该M是原图的最大权匹配：
+
+PM的权和等于所有点的顶标之和SV。
+G的任一个最大权匹配M，边满足w（xy）≤l（x）+（y）→M边权和≤SV=PM边权和
+关 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/12/05/KM-Kuhn-Munkres-算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/24/PAT冲冲冲/">PAT冲冲冲</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-24T10:30:45.000Z">2019-10-24</time><i class="fa fa-edit"></i><time datetime="2019-10-24T10:30:45.000Z">2019-12-03</time></div><div class="recent-post-content"> PAT冲冲冲
 
 PAT甲级练习题 ——PAT (Advanced Level) Practice 
 PAT甲级(Advanced Level)真题
@@ -121,7 +145,35 @@ pat甲级题解目录
  乙级练习题
  NowCoder数列
 
-没想到第二题就是考了个数据范围，由于0≤n≤1000000，所以F(n)必然比long long大，而判断3的倍数可表示为===&gt; F(n) % 3 —&gt; (F(n-1)%3 + F(n-2)%3) %  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/10/24/PAT冲冲冲/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/07/蒙特卡洛树搜索MCTS/">蒙特卡洛树搜索MCTS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-07T09:18:02.000Z">2019-10-07</time><i class="fa fa-edit"></i><time datetime="2019-10-07T09:18:02.000Z">2019-11-26</time></div><div class="recent-post-content"> 蒙特卡洛树搜索MCTS
+没想到第二题就是考了个数据范围，由于0≤n≤1000000，所以F(n)必然比long long大，而判断3的倍数可表示为===&gt; F(n) % 3 —&gt; (F(n-1)%3 + F(n-2)%3) %  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/10/24/PAT冲冲冲/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/24/Python网络编程Websocket/">Python网络编程Websocket</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-24T02:17:11.000Z">2019-11-24</time><i class="fa fa-edit"></i><time datetime="2019-11-24T02:17:11.000Z">2019-11-28</time></div><div class="recent-post-content"> 网络知识——Websocket
+
+
+TCP ：面向连接—&gt; 打电话(相互回复,一来一回)，客户端向服务器端 拨号 , 三次握手 ,
+
+
+UDP : 面向无连接 --&gt; 寄快递(寄出去就不管了) e.g.直播
+
+
+UDP四层结构
+
+网络访问层(链路层):  物理连接设备(网线)、MAC地址（物理地址）
+互联网层： IP地址（定位设备）
+传输层： port (端口号) : 表示通信进程,将数据交给哪个应用处理
+应用层： 自己定义的协议（处理字符串消息的方法）
+
+套接字(socket) ： 特殊的设备文件 ， 写网络应用程序的接口，写入后就是发送，接收就是读取。 类似于 esp8266 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/11/24/Python网络编程Websocket/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax-极小极大算法——2048/">MinMax-极小极大算法——2048</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:46:41.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:46:41.000Z">2019-11-27</time></div><div class="recent-post-content"> MinMax-极小极大算法——2048
+ 算法介绍
+ MinMax
+
+大家在编程的时候应该或多或少都接触到过这样的写法:min(max(xxx,yyy))，MinMax算法的表达形式就是如此，不过其中的Min和Max都是具有对应含义的。
+
+一般解决博弈类问题的自然想法是将格局组织成一棵），树的每一个节点表示一种格局，而父子关系表示由父格局经过一步可以到达子格局。Minimax也不例外，它通过对以当前格局为根的格局树搜索来确定下一步的选择。而一切格局树搜索算法的核心都是对每个格局价值的评价。Minimax算法基于以下朴素思想确定格局价值：
+
+Minimax是一种悲观算法，即假设对手每一步都会将 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/11/26/MinMax-极小极大算法——2048/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/Latex测试/">Latex测试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T13:34:07.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T13:34:07.000Z">2019-11-26</time></div><div class="recent-post-content">UCB1(Si)=Vi‾+clog⁡Nni,c=2UCB1(S_{i})=\overline{V_{i}}+c \sqrt{\frac{\log N}{n_{i}}}, c=2UCB1(Si​)=Vi​​+cni​logN​​,c=2
+UCB1(Si)=Vi‾+clog⁡Nni,c=2UCB1(S_{i})=\overline{V_{i}}+c \sqrt{\frac{\log N}{n_{i}}}, c=2
+UCB1(Si​)=Vi​​+cni​logN​​,c=2
+Q(vi)N(vi)\frac{Q(v_{i})}{N(v_{i})}N(vi​)Q(vi​)​
+Q(vi)N(vi)\fra ...</div><div class="read-more"><a class="more" href="/2019/11/26/Latex测试/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/07/蒙特卡洛树搜索MCTS/">蒙特卡洛树搜索MCTS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-07T09:18:02.000Z">2019-10-07</time><i class="fa fa-edit"></i><time datetime="2019-10-07T09:18:02.000Z">2019-11-26</time></div><div class="recent-post-content"> 蒙特卡洛树搜索MCTS
  跟围棋的关联
  AlphaGo Zero
 
@@ -162,23 +214,7 @@ adb shell monkey [-options] times
 一般解决博弈类问题的自然想法是将格局组织成一棵），树的每一个节点表示一种格局，而父子关系表示由父格局经过一步可以到达子格局。Minimax也不例外，它通过对以当前格局为根的格局树搜索来确定下一步的选择。而一切格局树搜索算法的核心都是对每个格局价值的评价。Minimax算法基于以下朴素思想确定格局价值：
 
 Minimax是一种悲观算法，即假设对手每一步都会将我方引入从当前看理论上价值最小的格局方向，即对手具有完美决策能力。因此我方的策略应该是选择那些对方所能达到的让我方最差情况中最好的，也就是让对方在完美决策下所对我造成的损失最小。
-Mini ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/11/26/MinMax和Alpha-beta剪枝分析-转/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/24/Python网络编程Websocket/">Python网络编程Websocket</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-24T02:17:11.000Z">2019-11-24</time><i class="fa fa-edit"></i><time datetime="2019-11-24T02:17:11.000Z">2019-11-24</time></div><div class="recent-post-content"> 网络知识——Websocket
-
-
-TCP ：面向连接—&gt; 打电话(相互回复,一来一回)，客户端向服务器端 拨号 , 三次握手 ,
-
-
-UDP : 面向无连接 --&gt; 寄快递(寄出去就不管了) e.g.直播
-
-
-UDP四层结构
-
-网络访问层(链路层):  物理连接设备(网线)、MAC地址（物理地址）
-互联网层： IP地址（定位设备）
-传输层： port (端口号) : 表示通信进程,将数据交给哪个应用处理
-应用层： 自己定义的协议（处理字符串消息的方法）
-
-套接字(socket) ： 特殊的设备文件 ， 写网络应用程序的接口，写入后就是发送，接收就是读取。 类似于 esp8266 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/11/24/Python网络编程Websocket/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/">第二十八届“和巨耀通杯”南京邮电大学在线测评系统程序设计邀请赛--</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-17T09:43:56.000Z">2019-11-17</time><i class="fa fa-edit"></i><time datetime="2019-11-17T09:43:56.000Z">2019-11-17</time></div><div class="recent-post-content"> 第二十八届“和巨耀通杯”NOJ邀请赛
+Mini ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/11/26/MinMax和Alpha-beta剪枝分析-转/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/">第二十八届“和巨耀通杯”南京邮电大学在线测评系统程序设计邀请赛--</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-17T09:43:56.000Z">2019-11-17</time><i class="fa fa-edit"></i><time datetime="2019-11-17T09:43:56.000Z">2019-11-17</time></div><div class="recent-post-content"> 第二十八届“和巨耀通杯”NOJ邀请赛
 
 三人团队赛， 正好最近在刷PTA， 于是一个人报名尝试了一下。
 一共AC了三题， Rank28
@@ -223,30 +259,7 @@ sensor.QQVGA2: 128x160 (用于 lcd 扩展板)
 使用的时候报错Build info: version: 'unknown', revision: 'unknown', time: 'unknown'，以为是appnium版本的问题，第一次安装的是1.13，后来换成了1.9，其实没多大区别，只不过据说要保证版本在1.6以上。
 更换版本后，发现还是Build info:  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></div><div class="read-more"><a class="more" href="/2019/10/18/软件测试笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/15/玩玩Stm32/">玩玩Stm32</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-15</time><i class="fa fa-edit"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-18</time></div><div class="recent-post-content"> 玩玩Stm32
  文件结构
-12345678910111213141516G:.├───CORE	# startup_stm32f10x_hd.s汇编编写的启动文件|			# core_cm3.c底层函数├───HARDWARE	# 相关外设的初始化代码├───OBJ├───STM32F10x_FWLib	# 固件库包: GPIO/i2c/...│   ├───inc│   └───src├───SYSTEM			# 正点原子提供的常用、通用模块│   ├───delay│   ├───sys│   └───usart└───USER # stm32f10x_it.c 中断管理文件    | ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/15/玩玩Stm32/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/29/git命令详解/">git命令详解</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-29T09:39:07.000Z">2019-09-29</time><i class="fa fa-edit"></i><time datetime="2019-09-29T09:39:07.000Z">2019-10-11</time></div><div class="recent-post-content"> git命令详解
- 自己的仓库管理：
-git add &lt;filename&gt;
-
-将文件添加到暂存区中  (其中git add.可以将当前目录的子目录文件都添加到暂存区中)
-
-git commit -m &quot;...&quot;:
-
-保存仓库的历史记录,其中 -m &quot;…&quot;提交信息(概述)
-
-git config --global user.name &quot;...&quot;、git config --global user.email &quot;...&quot;:
-
-配置提交作者信息
-
-git log:
-
-查看提交日志(当前状态为终点) 会产生版本库 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/29/git命令详解/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/26/OpenAI-Gym使用/">OpenAI Gym使用、rendering画图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-26T09:53:27.000Z">2019-09-26</time><i class="fa fa-edit"></i><time datetime="2019-09-26T09:53:27.000Z">2019-10-07</time></div><div class="recent-post-content"> OpenAI Gym使用、rendering画图
-
-gym开源库：包含一个测试问题集，每个问题成为环境（environment），可以用于自己的RL算法开发。这些环境有共享的接口，允许用户设计通用的算法。其包含了deep mind 使用的Atari游戏测试床。
-
-在强化学习中有2个基本概念，一个是环境（environment），称为外部世界，另一个为智能体agent（写的算法）。agent发送action至environment，environment返回观察和回报。
-Gym官方文档
- Hello gym
-123456789import gym# 创建一个小车倒立摆模型env = gym.m ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/26/OpenAI-Gym使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/06/Python多进程/">Python多进程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-06T12:17:44.000Z">2019-10-06</time><i class="fa fa-edit"></i><time datetime="2019-10-06T12:17:44.000Z">2019-10-07</time></div><div class="recent-post-content"> Python多进程
+12345678910111213141516G:.├───CORE	# startup_stm32f10x_hd.s汇编编写的启动文件|			# core_cm3.c底层函数├───HARDWARE	# 相关外设的初始化代码├───OBJ├───STM32F10x_FWLib	# 固件库包: GPIO/i2c/...│   ├───inc│   └───src├───SYSTEM			# 正点原子提供的常用、通用模块│   ├───delay│   ├───sys│   └───usart└───USER # stm32f10x_it.c 中断管理文件    | ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/15/玩玩Stm32/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/06/Python多进程/">Python多进程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-06T12:17:44.000Z">2019-10-06</time><i class="fa fa-edit"></i><time datetime="2019-10-06T12:17:44.000Z">2019-10-07</time></div><div class="recent-post-content"> Python多进程
  守护进程
 
 守护进程其实就是**“子进程“是否伴随主进程一起结束**:守护==&gt;伴随，即守护进程会伴随主进程的代码运行完毕后而死掉
@@ -267,18 +280,4 @@ td做预测，afterstate做控制
 
  更多:
 强化学习经典入门书的读书笔记系列–第六篇Temporal-Difference
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/10/03/TD-afterstate/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/27/Python-random/">Python random</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-27T14:11:59.000Z">2019-09-27</time><i class="fa fa-edit"></i><time datetime="2019-09-27T14:11:59.000Z">2019-09-29</time></div><div class="recent-post-content"> Python random
-
-老是忘记random中每个函数之间的区别，而且常常跟numpy里的random也经常搞混，因此还是写篇文章记一下吧。
-
- random模块
- choice和sample
-python中random.choice()可以从给定的可迭代对象中随机挑选出一个。
-而python中random.sample()方法则可以随机地从给定的可迭代对象中提取出N个不同的元素，列表的维数没有限制。（即第二参数给出个数N）
-1234567891011import randomprint(random.sample([chr(97 + x) for x in range(int(9)) ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/27/Python-random/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/28/numpy使用记录/">numpy使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-28T03:13:29.000Z">2019-09-28</time><i class="fa fa-edit"></i><time datetime="2019-09-28T03:13:29.000Z">2019-09-28</time></div><div class="recent-post-content"> Numpy使用记录
- numpy中的random
-numpy.random.choice(a, size=None, replace=True, p=None)
-
-a : 如果是一维数组，就表示从这个一维数组中随机采样；如果是int型，就表示从0到a-1这个序列中随机采样。
-size : 采样结果的数量，默认为1.可以是整数，表示要采样的数量；也可以为tuple，如(m, n, k)，则要采样的数量为m * n * k，size为(m, n, k)
-replace : boolean型，采样的样本是否要更换？这个地方我不太理解，测了一下发现replace指定为True时，采样的元素会有重复； ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/28/numpy使用记录/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/10/03/TD-afterstate/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

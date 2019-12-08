@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>KM(Kuhn-Munkres)算法 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">KM(Kuhn-Munkres)算法</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/12/05</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">868</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="kmkuhn-munkres算法"><a class="markdownIt-Anchor" href="#kmkuhn-munkres算法"></a> KM(Kuhn-Munkres)算法</h1>
+<blockquote>
+<p>带权二分图最佳完美匹配，O(n^3)，（运用匈牙利算法辅助求解）</p>
+</blockquote>
+<ol>
+<li>只适用于带权最大匹配一定是完备匹配的情况，实践中建议用费用流来解决。</li>
+<li>完全二分图一定是偶数个点</li>
+<li><strong>可行顶标</strong>（Feasible Labeling）：结点函数（x），任意边（x，y）：1（x）+l（y）≥w（xiy）。</li>
+<li><strong>相等子图</strong>：G的生成子图，包含所有点以及满足l（x）+I（y）=w（x，y）的边（x，y）</li>
+<li>如果EL有完美匹配为PM，则该M是原图的最大权匹配：
+<ul>
+<li>PM的权和等于所有点的顶标之和SV。</li>
+<li>G的任一个最大权匹配M，边满足w（xy）≤l（x）+（y）→M边权和≤SV=PM边权和</li>
+<li>关键就是寻找好的可行顶标，使相等子图有完美匹配。</li>
+</ul>
+</li>
+</ol>
+<p>==&gt;找到原图的完美匹配–只要–&gt;找到相等子图的完美匹配即可</p>
+<p>▲KM完成之后所有的l(x)之和最小</p>
+<h2 id="执行过程"><a class="markdownIt-Anchor" href="#执行过程"></a> 执行过程</h2>
+<p>一般对KM算法的描述，基本上可以概括成以下几个步骤：<br>
+<strong>1.用邻接矩阵（或其他方法也行啦）来储存图。</strong><br>
+<strong>2.运用贪心算法初始化标杆。</strong><br>
+<strong>3.运用匈牙利算法找到完备匹配。</strong><br>
+<strong>4.如果找不到，则通过修改标杆，增加一些边。</strong><br>
+<strong>5.重复3，4的步骤，直到完全匹配时可结束。</strong></p>
+<p>二分图匹配里面我们找最大边进行连边!但是遇到某个点被匹配了两次怎么办？<br>
+那就用匈牙利算法进行<strong>更改匹配</strong>！</p>
+<p>这就是KM算法的思路了：<strong>尽量找最大的边进行连边，如果不能则换一条较大的</strong>。</p>
+<h2 id="举个栗子"><a class="markdownIt-Anchor" href="#举个栗子"></a> 举个栗子:</h2>
+<h3 id="少林决胜golden-tiger-clawuva11383"><a class="markdownIt-Anchor" href="#少林决胜golden-tiger-clawuva11383"></a> <strong>少林决胜(Golden Tiger Claw，UVa11383)</strong></h3>
+<p>给定一个N*N矩阵，每个格子里都有一个正整数w(i,j)。你的任务是给每行确定一个整数row(i)，每列也确定一个整数col(i)，使得对于任意格子(i, j)，w(i, j)≤row(i)+colj)。所有row(i)和col(i)之和应尽量小。</p>
+<p>【分析】<br>
+1.行看作二分图X点，列看作二分图Y点。<br>
+2.和最佳匹配没有任何关系，KM算法副产品。<br>
+3.KM中算法等式l（x）+l（y）≥w（x，y）。行X，列Y。<br>
+4.KM过程中，所有顶标不断减小，算法结束后，所有顶标之和是最小的。</p>
+<h3 id="蚂蚁antsneerc2008la4043"><a class="markdownIt-Anchor" href="#蚂蚁antsneerc2008la4043"></a> <strong>蚂蚁（Ants，NEERC2008，LA4043）</strong></h3>
+<p>给出n个白点和n个黑点的坐标，要求用n条不相交的线段把它们连接起来，其中每条线段恰好连接一个白点和一个黑点，每个点恰好连接到一条线段，如图所示。</p>
+<p>【分析】</p>
+<ol>
+<li>点有黑白两色，构造二分图，白X黑Y。每个黑点和每个白点相连，权值等于欧氏距离。</li>
+<li>连接方案实际上是计算一个完美匹配，匹配中假设al-b1与a2-b2相交，那么<code>dist(a1，b1)+dist(a2，b2)&gt;dist(al，b2)+dist(a2，b1)</code>，这两条线段改成al-b2和a2-b1后总长度会变少。</li>
+<li>所以最小匹配中不会出现线段相交。</li>
+<li>套KM算法即可计算最小完美匹配即可。</li>
+</ol>
+<h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料：</h2>
+<p><a href="https://www.cnblogs.com/Lanly/p/6291214.html" target="_blank" rel="noopener">二分图匹配之最佳匹配——KM算法</a></p>
+<p><a href="https://blog.csdn.net/chenshibo17/article/details/79933191" target="_blank" rel="noopener">KM算法详解+模板</a>——男女相亲匹配</p>
+<p><a href="https://blog.csdn.net/NIeson2012/article/details/94472313" target="_blank" rel="noopener">带你入门多目标跟踪（三）匈牙利算法&amp;KM算法</a>——以图像目标跟踪距离</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/12/05/KM-Kuhn-Munkres-算法/">https://nymrli.top/2019/12/05/KM-Kuhn-Munkres-算法/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/12/07/ACM-树状数组和线段树/" title="ACM-树状数组和线段树"><span>< PreviousPost</span><br><span class="prevTitle">ACM-树状数组和线段树</span></a><a class="nextSlogan" href="/2019/12/05/ACM-二分图/" title="ACM-二分图"><span>NextPost ></span><br><span class="nextTitle">ACM-二分图</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'KM(Kuhn-Munkres)算法',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#kmkuhn-munkres算法"><span class="toc-number">1.</span> <span class="toc-text"> KM(Kuhn-Munkres)算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#执行过程"><span class="toc-number">1.1.</span> <span class="toc-text"> 执行过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#举个栗子"><span class="toc-number">1.2.</span> <span class="toc-text"> 举个栗子:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#少林决胜golden-tiger-clawuva11383"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 少林决胜(Golden Tiger Claw，UVa11383)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#蚂蚁antsneerc2008la4043"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 蚂蚁（Ants，NEERC2008，LA4043）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">1.3.</span> <span class="toc-text"> 参考资料：</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

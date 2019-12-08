@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-并查集/">ACM-并查集</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T01:21:30.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T01:21:30.000Z">2019-11-26</time></div><div class="recent-post-content"> 并查集
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-并查集/">ACM-并查集</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T01:21:30.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T01:21:30.000Z">2019-12-05</time></div><div class="recent-post-content"> 并查集
 
 ACM竞赛中，并查集（DisjointSets）这个数据结构经常使用。顾名思义，并查集即表示集合，并且支持快速查找、合并操作。
 用于高效的查找某两个元素是否属于同一个集合；
@@ -106,7 +106,10 @@ ACM竞赛中，并查集（DisjointSets）这个数据结构经常使用。顾�
  合并
 并查集如何支持合并操作？不难发现，按照树的思想，在同一棵树中的所有元素，根都是相同的。也就是说，合并两个不同的集合，只需要将其中一个集合的根设置为另一个集合的根即可，而需要改变根的那个集合，其实只需要改变根节点的父节点即可。
  如何支持快速查找操作
-如果完全按照上面的合 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-并查集/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Google-Colab使用/">Google Colab使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:53:31.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:53:31.000Z">2019-09-15</time></div><div class="recent-post-content"> Google Colab使用
+如果完全按照上面的合 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-并查集/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/08/自动化运维工具Ansible/">自动化运维工具Ansible</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-08T06:45:45.000Z">2019-07-08</time><i class="fa fa-edit"></i><time datetime="2019-07-08T06:45:45.000Z">2019-11-26</time></div><div class="recent-post-content"> 自动化运维工具Ansible笔记
+ 简介
+​        ansible是新出现的自动化运维工具，基于Python开发，集合了众多运维工具（puppet、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。
+　　ansible是基于 paramiko 开发的,并且基于模块化工作，本身没有批量部署的能力。真正具有批量部署的是ansible所运行的模块，ansible只是提供一种框架。ansible不需要在远程主机上安装client/agents，因为它们是基于ssh来和远程主机通讯的。ansible目前已经已经被红帽官方收购，是自动化运维工具中大家 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/08/自动化运维工具Ansible/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Google-Colab使用/">Google Colab使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:53:31.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:53:31.000Z">2019-09-15</time></div><div class="recent-post-content"> Google Colab使用
 
 Google colab(Colaboratory)在编辑时候和jupyter notebook类似，并且提供免费的GPU以供使用，这对于需要处理大量数据运算的机器项目来说再合适不过了。挺香的
 
@@ -118,58 +121,12 @@ Google colab(Colaboratory)在编辑时候和jupyter notebook类似，并且提�
 连接Google Drive
 连接Google Sheet
 连接Google Cloud Storage
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图像处理"> 图像处理</a></div><div class="read-more"><a class="more" href="/2019/05/27/Google-Colab使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/蓝桥杯突击训练/">蓝桥杯突击训练</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T02:35:12.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T02:35:12.000Z">2019-09-15</time></div><div class="recent-post-content"> ACM 3-20笔记
- 3部排序
-
-左指针，右指针， 探路指针–&gt;链表的pq
-
- 马虎的算式
-
-枚举（五重循环，注意条件）
-内存1000ms大约运行10^8的指令
-
- 大数除法
-
-减法
-除法
-
- 39级阶梯
-
-斐波那契
-简化模型后再加上考虑条件
-
- 错误票据
-
-
-获得一行内容：getline()前要用getchar()吃掉换行符
-
-
-分割一行以空格分隔的元素
-
-
-12345string s;getline(cin,s);stringstream ss(s);string(tmp);while( getline(ss,tmp," ") )
-
-
-
-
- ▲翻硬币
-
- ACM 3-21笔记 （ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/03/28/蓝桥杯突击训练/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/微信公众号Pyhton/">微信公众号Pyhton</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T14:01:10.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T14:01:10.000Z">2019-09-15</time></div><div class="recent-post-content"> 微信公众号Pyhton开发
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图像处理"> 图像处理</a></div><div class="read-more"><a class="more" href="/2019/05/27/Google-Colab使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/微信公众号Pyhton/">微信公众号Pyhton</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T14:01:10.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T14:01:10.000Z">2019-09-15</time></div><div class="recent-post-content"> 微信公众号Pyhton开发
  编写上传代码到SAE
 1.申请SAE（sina application enginer），创建应用，SAE使用文档
 2.编写上传代码
 weixin.py
-12345678910111213141516171819202122232425262728#-*-coding:utf-8-*-import web import os import hashlib import time class WeixinInterface: 	def __init__(self):		self.app_root=os.path.dirname(__file__)		self.te ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/05/27/微信公众号Pyhton/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/学会Pull-request/">学会Pull request</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T11:18:14.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T11:18:14.000Z">2019-09-15</time></div><div class="recent-post-content"> GitHub中发起PR(pull Request)
-
-PR是为了贡献代码:
-​	贡献代码，通俗的说，就是自己修改了代码，希望合并到别人的Repository(仓库)中。将自己的智慧贡献给开源社区。
-
- 一.贡献代码:
- 1.第一步:Fork
-在GitHub社区闲逛时，看中了某个项目代码，如：spring-projects/spring-framework，点击页面Fork按钮，会生成一个自己的Repository(仓库：thinkingfioa/spring-framework),如下图：
-
- 2.第二步：修改
-Fork成功后，通过git clone、修改、commit、push等操作后，将 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/03/28/学会Pull-request/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/南京邮电大学java程序设计作业在线编程第八次作业/">南京邮电大学java程序设计作业在线编程第八次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:20:12.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:20:12.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
+12345678910111213141516171819202122232425262728#-*-coding:utf-8-*-import web import os import hashlib import time class WeixinInterface: 	def __init__(self):		self.app_root=os.path.dirname(__file__)		self.te ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/05/27/微信公众号Pyhton/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/南京邮电大学java程序设计作业在线编程第八次作业/">南京邮电大学java程序设计作业在线编程第八次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:20:12.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:20:12.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
  选择题得分：70
 
 
@@ -188,17 +145,27 @@ D.不确定
 A.person p[]=new person[3]; p[1]=new student();
 B.student s[]=new person[3]; s[1]=new person();
 C.person p[]= new student[3];p[1]= new person();
-D.student s[]=new stude ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/06/03/南京邮电大学java程序设计作业在线编程第八次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/使用git将项目上传到github（最简单方法）/">使用git将项目上传到github（最简单方法）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T11:39:36.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T11:39:36.000Z">2019-09-15</time></div><div class="recent-post-content"> 使用git将项目上传到github（最简单方法）
-首先你需要一个github账号，所有还没有的话先去注册吧！ Github
-**我们使用git需要先安装git工具，这里给出下载地址，下载后一路直接安装即可：**https://git-for-windows.github.io/
- 1.进入Github首页，点击New repository新建一个项目
+D.student s[]=new stude ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/06/03/南京邮电大学java程序设计作业在线编程第八次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/yaml基础语法-spring-boot/">yaml基础语法_spring_boot</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:04:35.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:04:35.000Z">2019-09-15</time></div><div class="recent-post-content"> yaml基础语法_spring_boot
 
- 2.填写相应信息后点击create即可
+yaml aren’t markup language 即yaml不是标语语言：
+xml（标记语言）:
+1234&gt; &lt;server&gt;&gt; 	&lt;port&gt;8888&lt;/port&gt;&gt; &lt;/server&gt;&gt;
 
-Repository name: 仓库名称
-Description(可选): 仓库描述介绍
-Public, Private : 仓库权限（公开共享，私有或指定合作者）
-Initialize this ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/03/28/使用git将项目上传到github（最简单方法）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/Windows下命令行神奇cmder/">Windows下命令行神器cmder</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:17:28.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:17:28.000Z">2019-09-15</time></div><div class="recent-post-content"> Cmder
+java spring boot默认全局配置文件:
+
+
+application.properties 使用的时 key=value
+
+
+application.yaml:
+
+
+k:v
+
+
+通过缩进，垂直对齐指定层次关系
+
+字符串可以默认不写引号，写引号中的转义符会被翻译：e.g.& ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/07/yaml基础语法-spring-boot/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/Windows下命令行神奇cmder/">Windows下命令行神器cmder</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:17:28.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:17:28.000Z">2019-09-15</time></div><div class="recent-post-content"> Cmder
  安装
 http://cmder.net/ 有两个版本，分别是mini与full版
 
@@ -209,14 +176,27 @@ mini 没有内建msysgit工具，这是Git for Windows的标准配备；
 
  把 cmder 加到环境变量
 将解压后的文件夹路径加入到系统环境变量的Path中
- 添加 c ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="安利"> 安利</a></div><div class="read-more"><a class="more" href="/2019/06/03/Windows下命令行神奇cmder/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/PyWinAuto使用/">PyWinAuto使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:54:45.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:54:45.000Z">2019-09-15</time></div><div class="recent-post-content"> PyWinAuto使用
+ 添加 c ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="安利"> 安利</a></div><div class="read-more"><a class="more" href="/2019/06/03/Windows下命令行神奇cmder/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/staticmethod和classmethod区别/">staticmethod和classmethod区别</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:06:00.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:06:00.000Z">2019-09-15</time></div><div class="recent-post-content"> staticmethod和classmethod
+
+类的实例化基本遵循创建实例对象、初始化实例对象、最后返回(产生)实例对象这么一个过程
+
+123456789101112131415161718class Test(object):    data = 'world' # 类对象的数据成员    def __init__(self, arg):        self.arg = arg    @staticmethod	# 静态方法，不能访问类数据成员    def func():        print("hello")    @classmethod	# 类方法,能访问类数据成员   ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/07/staticmethod和classmethod区别/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/PyWinAuto使用/">PyWinAuto使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:54:45.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:54:45.000Z">2019-09-15</time></div><div class="recent-post-content"> PyWinAuto使用
 简单操作示例：
 12app = application.Application().start(r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')# app = application.Application().start('notepad.exe')
  (一) 判断程序的backend
 注意，首先需要判断你要进行的程序是用什么语言写的，在实例化的时候会有区别，主要是判断backend是什么。
 
  (二)确定自动化入口点
-这里主要是限制自动化控制进程的范围。如一个程序有多个实例，自动化控制一 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2019/05/27/PyWinAuto使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/15/Python的构建工具setup-py/">Python的构建工具setup.py</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-15T04:08:44.000Z">2019-06-15</time><i class="fa fa-edit"></i><time datetime="2019-06-15T04:08:44.000Z">2019-09-15</time></div><div class="recent-post-content"> Python的构建工具setup.py
+这里主要是限制自动化控制进程的范围。如一个程序有多个实例，自动化控制一 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2019/05/27/PyWinAuto使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/Python类的继承-super-使用/">Python类的继承-super()使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:03:49.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:03:49.000Z">2019-09-15</time></div><div class="recent-post-content"> Python类的继承即super()使用
+ Super
+
+super() 函数是用于调用父类(超类)的一个方法，只有在新式类中可以使用
+super 是用来解决多重继承问题的，直接用类名调用父类方法在使用单继承的时候没问题，但是如果使用多继承，会涉及到查找顺序（MRO，Method Resolution Order，采用广度优先（区别于深度优先）的规则定义）、重复调用（钻石继承）等种种问题。
+MRO 就是类的方法解析顺序表, 其实也就是继承父类方法时的顺序表。
+
+语法
+以下是 super() 方法的语法:
+1234# 菜鸟教程super(type [, object-or-type])# 个人 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/07/Python类的继承-super-使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/15/Python的构建工具setup-py/">Python的构建工具setup.py</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-15T04:08:44.000Z">2019-06-15</time><i class="fa fa-edit"></i><time datetime="2019-06-15T04:08:44.000Z">2019-09-15</time></div><div class="recent-post-content"> Python的构建工具setup.py
  setup.py各参数介绍：
 12345678910111213141516171819202122232425--name 库名称，▲需要注意的是不要大写，不然会有坑--version (-V) 包版本--author 程序的作者--author_email 程序的作者的邮箱地址--maintainer 维护者--maintainer_email 维护者的邮箱地址--url 程序的官网地址--license 程序的授权信息--description 程序的简单描述--long_description 程序的详细描述--platforms 程序适用的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/06/15/Python的构建工具setup-py/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Python机器学习及实践——从零开始通往Kaggle竞赛之路/">Python机器学习及实践——从零开始通往Kaggle竞赛之路</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:50:34.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:50:34.000Z">2019-09-15</time></div><div class="recent-post-content"> Python机器学习及实践——从零开始通往Kaggle竞赛之路
  监督学习模型
@@ -236,7 +216,7 @@ mini 没有内建msysgit工具，这是Git for Windows的标准配备；
  OAuth 的核心就是向第三方应用颁发令牌
  令牌特点：
 （1）令牌是短期的，到期会自动失效，用户自己无法修改。密码一般长期有效，用户不修改，就不会发生变化。
-（2）令牌可以被数据所有者撤销，会立即失效。以上例而言，屋主可以随 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/06/03/Oauth2原理、使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/lua学习/">lua学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:22:03.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:22:03.000Z">2019-09-15</time></div><div class="recent-post-content"> lua学习
+（2）令牌可以被数据所有者撤销，会立即失效。以上例而言，屋主可以随 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/06/03/Oauth2原理、使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/lua学习/">lua学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:22:03.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:22:03.000Z">2019-09-15</time></div><div class="recent-post-content"> lua学习
 
 动态脚本语言，可嵌入C和C++，Lua负责逻辑，C、C++负责功能
 C编译，跨平台性良好
@@ -274,11 +254,4 @@ CollegeStudent 类在学生类上增加一个专业（profession）数据属性�
 Tarjan 算法一种由Robert Tarjan提出的求解有向图强连通分量的算法，它能做到线性时间的复杂度。
 
 如果两个顶点可以相互通达，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly connected components)。
-1234567891011121314151617181920212223void Tarjan ( int x ) &#123;         dfn[ x ] = ++dfs_num ;       ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-强连通分量/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-大数定理（高精度）/">ACM-大数定理（高精度）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T00:53:27.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T00:53:27.000Z">2019-09-15</time></div><div class="recent-post-content"> ACM-大数定理（高精度）
-
-由于c/c++中数据类型的范围比较固定，因此有些题目的数据范围正好卡在这些正常范围之外，此时就需要自己实现大数加减乘除的运算。
-c/c++需要自己手写
-java中有BigInteger类
-
- C++ 加法实现
-123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &lt;iostream&gt;#include &lt;string&gt;#include &lt;algorithm&gt;using namespace std;type ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-大数定理（高精度）/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/3/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+1234567891011121314151617181920212223void Tarjan ( int x ) &#123;         dfn[ x ] = ++dfs_num ;       ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-强连通分量/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/3/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

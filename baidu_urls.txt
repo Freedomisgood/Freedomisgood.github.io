@@ -6,7 +6,6 @@ https://nymrli.top/2019/12/07/ACM-树状数组和线段树/
 https://nymrli.top/2019/12/05/KM-Kuhn-Munkres-算法/
 https://nymrli.top/2019/12/05/ACM-二分图/
 https://nymrli.top/2019/12/05/Hungarian-algorithm匈牙利算法/
-https://nymrli.top/2019/11/26/Latex测试/
 https://nymrli.top/2019/11/26/PIL的Image笔记/
 https://nymrli.top/2019/11/26/2019年8月23号运维笔记/
 https://nymrli.top/2019/11/26/app测试/
@@ -15,7 +14,6 @@ https://nymrli.top/2019/11/26/MinMax-极小极大算法——2048/
 https://nymrli.top/2019/11/26/MinMax和Alpha-beta剪枝分析-转/
 https://nymrli.top/2019/11/24/Python网络编程Websocket/
 https://nymrli.top/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/
-https://nymrli.top/2019/10/24/PAT冲冲冲/
 https://nymrli.top/2019/10/24/PAT冲冲冲——甲级/
 https://nymrli.top/2019/10/18/软件测试笔记/
 https://nymrli.top/2019/10/15/玩玩Stm32/
@@ -48,3 +46,5 @@ https://nymrli.top/2019/08/30/机器学习——决策树/
 https://nymrli.top/2019/08/30/Sklearn——决策树/
 https://nymrli.top/2019/08/30/ACM-博弈论/
 https://nymrli.top/2019/08/30/Linux三剑客/
+https://nymrli.top/2019/08/30/2019-6月编程笔记/
+https://nymrli.top/2019/08/30/Python爬虫常规流程/

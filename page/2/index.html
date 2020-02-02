@@ -119,19 +119,7 @@ numpy.random.choice(a, size=None, replace=True, p=None)
 
 a : 如果是一维数组，就表示从这个一维数组中随机采样；如果是int型，就表示从0到a-1这个序列中随机采样。
 size : 采样结果的数量，默认为1.可以是整数，表示要采样的数量；也可以为tuple，如(m, n, k)，则要采样的数量为m * n * k，size为(m, n, k)
-replace : boolean型，采样的样本是否要更换？这个地方我不太理解，测了一下发现replace指定为True时，采样的元素会有重复； ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/28/numpy使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/07/蒙特卡洛树搜索MCTS/">蒙特卡洛树搜索MCTS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-07T09:18:02.000Z">2019-10-07</time><i class="fa fa-edit"></i><time datetime="2019-10-07T09:18:02.000Z">2019-11-26</time></div><div class="recent-post-content"> 蒙特卡洛树搜索MCTS
- 跟围棋的关联
- AlphaGo Zero
-
-蒙特卡洛树搜索——内含用于树遍历的 PUCT 函数的某些变体
-残差卷积神经网络——其中的策略和价值网络被用于评估棋局，以进行下一步落子位置的先验概率估算。
-强化学习——通过自我对弈进行神经网络训练
-
-AlphaGo Zero跟AlphaGo的最大区别是抛弃人类棋谱的，完全通过自我对弈来学会下棋的，并且仅用40小时就到达了AlphaGo的棋力。
-过程是这样，首先生成棋谱，然后将棋谱作为输入训练神经网络，训练好的神经网络用来预测落子和胜率。如下图：
-
-在AlphaGo Zero中蒙特卡洛树搜索主要是用来生成棋谱的
- 蒙特卡洛树 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/10/07/蒙特卡洛树搜索MCTS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/06/Openmv使用/">Openmv使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-06T01:45:28.000Z">2019-10-06</time><i class="fa fa-edit"></i><time datetime="2019-10-06T01:45:28.000Z">2019-11-07</time></div><div class="recent-post-content"> Openmv使用
+replace : boolean型，采样的样本是否要更换？这个地方我不太理解，测了一下发现replace指定为True时，采样的元素会有重复； ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/28/numpy使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/06/Openmv使用/">Openmv使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-06T01:45:28.000Z">2019-10-06</time><i class="fa fa-edit"></i><time datetime="2019-10-06T01:45:28.000Z">2019-11-07</time></div><div class="recent-post-content"> Openmv使用
  下载Openmv IDE
 
 Openmv官网
@@ -189,9 +177,7 @@ jupyter notebook --generate-config
 4.生成密钥:
 终端输入$ ipython
 123456In [1]: from notebook.auth import passwdIn [2]: passwd()Enter password: Verify password: #此时会让你两次输入密码，然后就会生成秘钥#＊＊＊＊＊＊＊＊＊＊＊＊
-5.修改配置文件vim ~/.jupyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/21/搭建Jupyter服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/15/玩玩Stm32/">玩玩Stm32</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-15</time><i class="fa fa-edit"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-18</time></div><div class="recent-post-content"> 玩玩Stm32
- 文件结构
-12345678910111213141516G:.├───CORE	# startup_stm32f10x_hd.s汇编编写的启动文件|			# core_cm3.c底层函数├───HARDWARE	# 相关外设的初始化代码├───OBJ├───STM32F10x_FWLib	# 固件库包: GPIO/i2c/...│   ├───inc│   └───src├───SYSTEM			# 正点原子提供的常用、通用模块│   ├───delay│   ├───sys│   └───usart└───USER # stm32f10x_it.c 中断管理文件    | ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/15/玩玩Stm32/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/24/Linux安装selenium执行Python程序/">Linux安装selenium执行Python程序</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-24T14:13:20.000Z">2019-09-24</time><i class="fa fa-edit"></i><time datetime="2019-09-24T14:13:20.000Z">2019-10-16</time></div><div class="recent-post-content"> Linux安装selenium执行Python程序
+5.修改配置文件vim ~/.jupyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/21/搭建Jupyter服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/24/Linux安装selenium执行Python程序/">Linux安装selenium执行Python程序</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-24T14:13:20.000Z">2019-09-24</time><i class="fa fa-edit"></i><time datetime="2019-09-24T14:13:20.000Z">2019-10-16</time></div><div class="recent-post-content"> Linux安装selenium执行Python程序
 
 
 配置python运行环境
@@ -204,7 +190,17 @@ jupyter notebook --generate-config
 
 提供下载网站chromedownloads,下载google-chrome-stable_current_amd64-75.0.3770.80.deb
 
-1234567891011$ sudo apt-get install libxss1 libappindicator1 libindicator7$ sudo dpkg -i google-chrome-stable_current_amd64-75.0.3 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/09/24/Linux安装selenium执行Python程序/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/26/OpenAI-Gym使用/">OpenAI Gym使用、rendering画图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-26T09:53:27.000Z">2019-09-26</time><i class="fa fa-edit"></i><time datetime="2019-09-26T09:53:27.000Z">2019-10-07</time></div><div class="recent-post-content"> OpenAI Gym使用、rendering画图
+1234567891011$ sudo apt-get install libxss1 libappindicator1 libindicator7$ sudo dpkg -i google-chrome-stable_current_amd64-75.0.3 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/09/24/Linux安装selenium执行Python程序/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/验证码识别程序设计流程/">验证码识别程序设计流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T13:31:35.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T13:31:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 验证码识别程序设计流程
+
+以南邮正方教务系统为例
+
+ 找到验证码图片的链接
+
+“http://jwxt.njupt.edu.cnCheckCode.aspx”
+
+1234567def getCaptcha():    CAPTCHA_URL = "http://jwxt.njupt.edu.cn/CheckCode.aspx"    r = requests.get(CAPTCHA_URL)    img = r.content    img = Image.open(BytesIO(img))    return img
+ 对图片去噪
+123456789101112131415161718 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/09/验证码识别程序设计流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/26/OpenAI-Gym使用/">OpenAI Gym使用、rendering画图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-26T09:53:27.000Z">2019-09-26</time><i class="fa fa-edit"></i><time datetime="2019-09-26T09:53:27.000Z">2019-10-07</time></div><div class="recent-post-content"> OpenAI Gym使用、rendering画图
 
 gym开源库：包含一个测试问题集，每个问题成为环境（environment），可以用于自己的RL算法开发。这些环境有共享的接口，允许用户设计通用的算法。其包含了deep mind 使用的Atari游戏测试床。
 
@@ -268,7 +264,15 @@ A记录设置技巧
 3、如果你给同一个二级域名设置了多个A记录，比如你建了两个blog的A记录，其中一个指向了111.111.111.111，另一个指向了111.111.111.112，那么在查询的时候，每次返回 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/09/17/常用域名记录解释/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/17/Spring-Boot学习笔记/">Spring Boot学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-17T09:01:40.000Z">2019-09-17</time><i class="fa fa-edit"></i><time datetime="2019-09-17T09:01:40.000Z">2019-09-17</time></div><div class="recent-post-content"> Spring Boot
  hello word
 第一个controller
-12345678910111213141516171819202122232425262728/**  * Project Name:demo  * File Name:HelloController.java  * Package Name:com.example.demo  * Date:2019年9月15日下午8:27:56  * Copyright (c) 2019, chenzhou1025@126.com All Rights Reserved.  * */  package com.example.de ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/09/17/Spring-Boot学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/如何成为一位老司机——考驾照经历/">如何成为一位老司机——考驾照经历</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-15</time></div><div class="recent-post-content"> 如何成为一位老司机——考驾照经历
+12345678910111213141516171819202122232425262728/**  * Project Name:demo  * File Name:HelloController.java  * Package Name:com.example.demo  * Date:2019年9月15日下午8:27:56  * Copyright (c) 2019, chenzhou1025@126.com All Rights Reserved.  * */  package com.example.de ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/09/17/Spring-Boot学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/打jar包和使用jar包/">打jar包和使用jar包</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-15</time></div><div class="recent-post-content"> 打jar包和使用jar包
+ 一、为什么要打jar包
+给别人用的时候一般给别人的是class文件。如果有很多类这么办？把类变成一个压缩包！windows下的压缩包是.zip格式等，而eclipse压缩包是.jar格式。
+ 二、如何查看jar包
+用解压缩软件解压即可。可以看到里面有哪些class文件。
+ 三、如何开发jar包
+开发jar包的人员开发流程：
+ 步骤1:编写类
+12345678//GetSum.javapackage cn.itcast.sum;public class GetSum&#123;      public static getSum(int a,int b)&#123; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/打jar包和使用jar包/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/如何成为一位老司机——考驾照经历/">如何成为一位老司机——考驾照经历</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-15</time></div><div class="recent-post-content"> 如何成为一位老司机——考驾照经历
 大一下报的名，几经转折，终于在2019-9-12，中秋放假前一天拿到了本本。
  科一理论考试
 太久远了，已经忘记了…

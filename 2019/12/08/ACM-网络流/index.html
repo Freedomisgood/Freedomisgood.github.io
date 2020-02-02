@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>ACM-网络流 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">ACM-网络流</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/12/08</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">693</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="最大流"><a class="markdownIt-Anchor" href="#最大流"></a> 最大流</h1>
+<h2 id="ff算法"><a class="markdownIt-Anchor" href="#ff算法"></a> FF算法</h2>
+<blockquote>
+<p>最基本找増广路的算法</p>
+</blockquote>
+<h3 id="dinic实现基础的ff算法"><a class="markdownIt-Anchor" href="#dinic实现基础的ff算法"></a> dinic实现(基础的FF算法)</h3>
+<blockquote>
+<p><strong>反边</strong>：我们知道，当我们在寻找增广路的时候，在前面找出的不一定是最优解，如果我们在减去残量网络中正向边的同时将相对应的反向边加上对应的值，我们就相当于可以反悔从这条边流过。</p>
+</blockquote>
+<p>技巧：flow[u]正边，flow[u^1]反边<br>
+建边的时候是同时建的，比如1的反边为2，2的反边为1，▲边不能从0开始</p>
+<p>主要思路：</p>
+<ul>
+<li>求增广路</li>
+<li>分层图</li>
+</ul>
+<h4 id="dinic的优化"><a class="markdownIt-Anchor" href="#dinic的优化"></a> dinic的优化</h4>
+<ul>
+<li>
+<p>当前弧优化(作用不明显)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 最原始</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> fl)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(now==aim)<span class="keyword">return</span> fl;</span><br><span class="line">    <span class="keyword">int</span> f=e;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> u=fir[now];u &amp;&amp; fl;u=nxt[u])&#123;</span><br><span class="line">        <span class="keyword">if</span>(flow[uj&amp;&amp;deep[to[u]]==deep[now]+<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> x=dfs(to[u],min(fl,flow[u]));</span><br><span class="line">            flow[u]-=x;flow[u^<span class="number">1</span>]+=x;fl-=x;f+=x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(lf)deep[now]=<span class="number">-2</span>;</span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 当前弧优化</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> fl)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(now==aim) <span class="keyword">return</span> fl;</span><br><span class="line">    <span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 修改为curfir[now]</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> u=curfir[now];u&amp;&amp;fl;u=nxt[u])&#123;</span><br><span class="line">        curfir=u;	<span class="comment">// 加了此处</span></span><br><span class="line">        <span class="keyword">if</span>(flow[u]&amp;&amp;deep[to[u]]==deep[now]+<span class="number">1</span>)&#123;</span><br><span class="line">            int dfs(to[u],min(fl,flow[u]));</span><br><span class="line">            flow[u]-=x;flow[u^<span class="number">1</span>]+=x;fl-=x;f+=x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!f)deep[now]=<span class="number">-2</span>;	<span class="comment">// 炸点优化</span></span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>多路增广</p>
+</li>
+<li>
+<p>炸点</p>
+</li>
+</ul>
+<p><strong>最大流最小割定理</strong>：最小割总和的权值==最大流的值，对于每张图都是成立的。（网络流的对称形式）</p>
+<p>具体代码:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxflow</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span></span>&#123;	<span class="comment">// 外层循环</span></span><br><span class="line">	aim = T;<span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(bfs(s, t))&#123;</span><br><span class="line">		ret += dfs(s, <span class="number">1</span>&lt;&lt;<span class="number">30</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span></span>&#123;		<span class="comment">// 建立分层图</span></span><br><span class="line">	<span class="built_in">memset</span>(deep,<span class="number">0</span>,(tot+<span class="number">2</span>)&lt;&lt;<span class="number">2</span>);</span><br><span class="line">    deep[S]=<span class="number">1</span>;d1[<span class="number">1</span>]=S;<span class="keyword">int</span> head=<span class="number">0</span>,tail=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(head!=tail)&#123;</span><br><span class="line">    	<span class="keyword">int</span> v=dl[++head];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> u=fir[v];u;u=nxt[u])&#123;</span><br><span class="line">            <span class="keyword">if</span>(flow[u]&amp;&amp;!deep[to[u]])&#123;</span><br><span class="line">            deep[to[u]]=deep[v]+<span class="number">1</span>;</span><br><span class="line">            d1[++tail]=to[u];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> deep[T];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> fl)</span></span>&#123;	<span class="comment">// dfs找増广路</span></span><br><span class="line">    <span class="keyword">if</span>(now==aim) <span class="keyword">return</span> fl;</span><br><span class="line">    <span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">// // 当前弧优化,修改为curfir[now]</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> u=curfir[now];u&amp;&amp;fl;u=nxt[u])&#123;</span><br><span class="line">        curfir=u;	<span class="comment">// 加了此处</span></span><br><span class="line">        <span class="keyword">if</span>(flow[u]&amp;&amp;deep[to[u]]==deep[now]+<span class="number">1</span>)&#123;</span><br><span class="line">            int dfs(to[u],min(fl,flow[u]));</span><br><span class="line">            flow[u]-=x;flow[u^<span class="number">1</span>]+=x;fl-=x;f+=x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!f)deep[now]=<span class="number">-2</span>;	<span class="comment">// 炸点优化</span></span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ek算法"><a class="markdownIt-Anchor" href="#ek算法"></a> EK算法</h2>
+<blockquote>
+<p>引入了反相边：在原有的有向图上引入了反向的边，且容量相等</p>
+</blockquote>
+<p><strong>执行过程：</strong><br>
+BFS找増广路</p>
+<ul>
+<li>找到的话，更新最大流、残余网路</li>
+<li>找不到则走完了</li>
+</ul>
+<p>两者的思想都是：找増广路，找到找不到为止</p>
+<p>参考:</p>
+<p><a href="https://www.bilibili.com/video/av18567992?p=1" target="_blank" rel="noopener">最大流（最小割）的EK算法</a></p>
+<h1 id="最小费用最大流"><a class="markdownIt-Anchor" href="#最小费用最大流"></a> 最小费用最大流</h1>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/12/08/ACM-网络流/">https://nymrli.top/2019/12/08/ACM-网络流/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/12/12/树莓派初始化操作/" title="树莓派初始化操作"><span>< PreviousPost</span><br><span class="prevTitle">树莓派初始化操作</span></a><a class="nextSlogan" href="/2019/12/07/ACM-树状数组和线段树/" title="ACM-树状数组和线段树"><span>NextPost ></span><br><span class="nextTitle">ACM-树状数组和线段树</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'ACM-网络流',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#最大流"><span class="toc-number">1.</span> <span class="toc-text"> 最大流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ff算法"><span class="toc-number">1.1.</span> <span class="toc-text"> FF算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dinic实现基础的ff算法"><span class="toc-number">1.1.1.</span> <span class="toc-text"> dinic实现(基础的FF算法)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dinic的优化"><span class="toc-number">1.1.1.1.</span> <span class="toc-text"> dinic的优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ek算法"><span class="toc-number">1.2.</span> <span class="toc-text"> EK算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最小费用最大流"><span class="toc-number">2.</span> <span class="toc-text"> 最小费用最大流</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

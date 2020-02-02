@@ -1,3 +1,7 @@
+https://nymrli.top/2020/02/02/PAT冲冲冲——乙级/
+https://nymrli.top/2019/12/25/sshpass——shell脚本实现SSH连接其他主机并执行终端命令/
+https://nymrli.top/2019/12/12/树莓派初始化操作/
+https://nymrli.top/2019/12/08/ACM-网络流/
 https://nymrli.top/2019/12/07/ACM-树状数组和线段树/
 https://nymrli.top/2019/12/05/KM-Kuhn-Munkres-算法/
 https://nymrli.top/2019/12/05/ACM-二分图/
@@ -12,6 +16,7 @@ https://nymrli.top/2019/11/26/MinMax和Alpha-beta剪枝分析-转/
 https://nymrli.top/2019/11/24/Python网络编程Websocket/
 https://nymrli.top/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/
 https://nymrli.top/2019/10/24/PAT冲冲冲/
+https://nymrli.top/2019/10/24/PAT冲冲冲——甲级/
 https://nymrli.top/2019/10/18/软件测试笔记/
 https://nymrli.top/2019/10/15/玩玩Stm32/
 https://nymrli.top/2019/10/07/蒙特卡洛树搜索MCTS/
@@ -43,8 +48,3 @@ https://nymrli.top/2019/08/30/机器学习——决策树/
 https://nymrli.top/2019/08/30/Sklearn——决策树/
 https://nymrli.top/2019/08/30/ACM-博弈论/
 https://nymrli.top/2019/08/30/Linux三剑客/
-https://nymrli.top/2019/08/30/2019-6月编程笔记/
-https://nymrli.top/2019/08/30/Python爬虫常规流程/
-https://nymrli.top/2019/08/30/Word2016配置使用MathType/
-https://nymrli.top/2019/08/22/算法设计与分析C-概念点区分/
-https://nymrli.top/2019/08/22/通信企业管理-线上考试/

@@ -122,22 +122,24 @@ exfat 支持更大空间，引导识别不了，做不了系统盘
 __all__是一个字符串list；
 约束作用：用来定义模块中对于from XXX import *时要对外导出的符号，即要暴露的借口，但它只对import *起作用，对from XXX import XXX不起作用。
 
-from njupt.zhengfang import Zhengfang是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程日记"> 编程日记</a></div><div class="read-more"><a class="more" href="/2019/08/30/2019-6月编程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/25/Docker使用/">Docker使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-25T02:58:19.000Z">2019-07-25</time><i class="fa fa-edit"></i><time datetime="2019-07-25T02:58:19.000Z">2019-10-16</time></div><div class="recent-post-content"> Docker学习
+from njupt.zhengfang import Zhengfang是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程日记"> 编程日记</a></div><div class="read-more"><a class="more" href="/2019/08/30/2019-6月编程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/新加坡游玩经验/">新加坡游玩经验</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:35:49.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:35:49.000Z">2019-10-18</time></div><div class="recent-post-content"> 新加坡南洋理工大学访学
+此次访学长达14天，不少安排都是学校安排，在此仅列出个人安排、经验心得。
 
-轻部署,省成本,易迁移
+ 门票购买：
+番薯游：这是老师推荐我们的，但下载以后感觉界面还是比较丑的，而且价格也不是非常便宜。这家是唯一一家促进扫码买门票的公司。
+KLOOK客路：界面比番薯游好多了，还是非常精致的。最大的优势在于可以找到经典的位置及景点介绍、门票时间等信息。
+淘宝：跟好几个平台对比之后，价格应该是最低的，并且时间限制比较小，其他的可能要预约，而TB当天购买就行（强调：动物园门票）
+▲特别说明下，动物园的门票水很深。当面购买$50,我当时去时没有预约，结果在KLOOK上看当天的票已经没有库存了，于是问了下 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/09/新加坡游玩经验/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/验证码识别程序设计流程/">验证码识别程序设计流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T13:31:35.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T13:31:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 验证码识别程序设计流程
 
- docker和虚拟机VM的区别
- 一、本质上的区别：
+以南邮正方教务系统为例
 
-VM(VMware)在宿主机器、宿主机器操作系统的基础上创建虚拟层、虚拟化的操作系统、虚拟化的仓库，然后再安装应用；
-Container(Docker容器)，在宿主机器、宿主机器操作系统上创建Docker引擎，在引擎的基础上再安装应用。
-那么问题来了，没有操作系统，怎么运行程序？
-可以在Docker中创建一个ubuntu的镜像文件，这样就能将ubuntu系统集成到Docker中，运行的应用就都是ubuntu的应用。
- 二、使用上的区别：
+ 找到验证码图片的链接
 
-Size:
+“http://jwxt.njupt.edu.cnCheckCode.aspx”
 
-虚拟机ubuntu大小为:24.1G ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2019/07/25/Docker使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/机器学习——决策树/">机器学习——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:44:35.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:44:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 机器学习——决策树
+1234567def getCaptcha():    CAPTCHA_URL = "http://jwxt.njupt.edu.cn/CheckCode.aspx"    r = requests.get(CAPTCHA_URL)    img = r.content    img = Image.open(BytesIO(img))    return img
+ 对图片去噪
+123456789101112131415161718 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/09/验证码识别程序设计流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/机器学习——决策树/">机器学习——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:44:35.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:44:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 机器学习——决策树
  决策树基础概念
 
 决策树分为分类树和回归树两种，分类树对离散变量做决策树，回归树对连续变量做决策树。
@@ -150,9 +152,7 @@ Size:
 有监督的学习
 非参数学习算法
 自顶向下递归方式构造决策树
-在每一 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/08/30/机器学习——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/">通过XDRP实现Windows远程访问ubuntu桌面</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T00:57:05.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T00:57:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 通过XDRP实现Windows远程访问
-1234567891011121314#安装xrdp $ sudo apt-get install xrdp #安装vnc4server $ sudo apt-get install vnc4server tightvncserver#安装xubuntu-desktop $ sudo apt-get install xubuntu-desktop #向xsession中写入xfce4-session $ echo “xfce4-session” &gt;~/.xsession #开启xrdp服务 $ sudo service xrdp restart
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/通信企业管理-线上考试/">通信企业管理_线上考试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:37:49.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:37:49.000Z">2019-09-15</time></div><div class="recent-post-content"> 通信企业管理
+在每一 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/08/30/机器学习——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/通信企业管理-线上考试/">通信企业管理_线上考试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:37:49.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:37:49.000Z">2019-09-15</time></div><div class="recent-post-content"> 通信企业管理
 
 看清题目和选项
 
@@ -200,15 +200,21 @@ A:时间序列分析尝试找出序列值在过去呈现的特征模式，假定
 
 序列相关性：当期的序列值和前期某个或某些序列值线性相关
 √  自相关系数（全相关系数）（ACF）：用来度量同一事件在不同时期之间的相关程度。ρh=r(h)r(0)\rho_{h}=\frac{r(h)}{r(0)}ρh​=r(0)r(h)​，其中r（h）为h期协方差函数，r（0）为方差
-√  偏自相关系数（PACF）：度量去除中间变量 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数学建模"> 数学建模</a></div><div class="read-more"><a class="more" href="/2019/07/29/时间序列概念及主要模型/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/强化学习——QLearning/">强化学习——QLearning</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-15</time></div><div class="recent-post-content"> 强化学习——QLearning
+√  偏自相关系数（PACF）：度量去除中间变量 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数学建模"> 数学建模</a></div><div class="read-more"><a class="more" href="/2019/07/29/时间序列概念及主要模型/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/打jar包和使用jar包/">打jar包和使用jar包</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-15</time></div><div class="recent-post-content"> 打jar包和使用jar包
+ 一、为什么要打jar包
+给别人用的时候一般给别人的是class文件。如果有很多类这么办？把类变成一个压缩包！windows下的压缩包是.zip格式等，而eclipse压缩包是.jar格式。
+ 二、如何查看jar包
+用解压缩软件解压即可。可以看到里面有哪些class文件。
+ 三、如何开发jar包
+开发jar包的人员开发流程：
+ 步骤1:编写类
+12345678//GetSum.javapackage cn.itcast.sum;public class GetSum&#123;      public static getSum(int a,int b)&#123; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/打jar包和使用jar包/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/强化学习——QLearning/">强化学习——QLearning</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-15</time></div><div class="recent-post-content"> 强化学习——QLearning
 价值转移公式只有一条Q(s,a)&lt;=Q(s,a)+/alpha∗(reward−Q(s,a)+/gamma∗maxaQ(s′,a))=(1−/alpha)∗Q(s,a)+/alpha∗(reward+/gamma∗maxaQ(s′,a))Q(s,a) &lt;= Q(s,a) + /alpha*(reward - Q(s,a) + /gamma*max_aQ(s&#x27;,a)) = (1-/alpha)*Q(s,a) + /alpha*(reward + /gamma*max_aQ(s&#x27;,a))Q(s,a)&lt;=Q(s,a)+/alph ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/强化学习——QLearning/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/">基础知识补充——白噪声、高斯白噪声</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T10:47:04.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T10:47:04.000Z">2019-09-15</time></div><div class="recent-post-content"> 白噪声、高斯白噪声
  白噪声过程:
 对于一个随机变量X(t)（t=1，2，3……），如果是由一个不相关的随机变量的序列构成的，即对于所有s不等于t，随机变量X(t)和X(s)的协方差为零，则称其为纯随机过程。对于一个纯随机过程来说，若其期望为0，方差为常数，则称之为白噪声过程。
  白噪声:
 白噪声序列，是指白噪声过程的样本实称，简称白噪声[1]。白噪声是**在较宽的频率范围内，各等带宽的频带所含的噪声能量相等的噪声**[2]，是一种功率频谱密度为常数的随机信号或随机过程，也就是说，此信号在各个频段上的功率是一样的。
-理想的白噪声具有无限的带宽，因而其能量无限大，但这是不可能实际存在的，所以， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/">利用wireshark抓取TCP的整个过程分析[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-24T07:51:29.000Z">2019-07-24</time><i class="fa fa-edit"></i><time datetime="2019-07-24T07:51:29.000Z">2019-09-15</time></div><div class="recent-post-content">原文地址：https://www.cnblogs.com/NickQ/p/9226579.html
-最近，已经很久都没有更新博客了。看看时间，想想自己做了哪些事情，突然发现自己真的是太贪心，到头来却一个都没搞好。手头的嵌入式都还没学出名堂，竟然还想着学FPGA,物联网，机器学习。然而，遇到新奇的事物，就会控制不住的去想，去找资料，实际上只是逃避遇到的问题，不想去解决而已。。最后的结果就是手头的活堆起来了，然后花大把整块的时间解决。真的是讨厌现在的自己。
-以后还是慢慢记录吧，不管做了什么，都慢慢尝试积累。。其他的东西，像FPGA，机器学习什么的，让他随风去吧，用到啥学啥。其他的当看客，了解了解就 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Word2016配置使用MathType/">Word2016配置使用MathType</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T12:58:53.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T12:58:53.000Z">2019-09-15</time></div><div class="recent-post-content"> Word 2016 使用MathType
+理想的白噪声具有无限的带宽，因而其能量无限大，但这是不可能实际存在的，所以， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Word2016配置使用MathType/">Word2016配置使用MathType</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T12:58:53.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T12:58:53.000Z">2019-09-15</time></div><div class="recent-post-content"> Word 2016 使用MathType
 据说MathType 6.9b后就能与Word 2016兼容了，所以不用特地去找7.0以上的版本，据说更新的功能差别也不是很大。
  闲谈
 
@@ -252,45 +258,48 @@ fs(find s) 跳到本行第一个s字符
 
  1、实战背景
 进入本文的正题：眼科医生是如何判断患者需要佩戴隐形眼镜的类型的？一旦理解了决策树的工作原理，我们甚至也可以帮助人们判断需要佩戴的镜片类型。
-隐形眼镜数据集是非常著名的数据集，它包含很多换着眼部状态的观察条件以及医生推荐的隐形眼镜类型。隐形眼镜类型包括硬材质(hard)、软材质(soft)以及不适合佩戴隐形眼镜(no lenses)。数据来源与UCI数据库，数据集下载地址：[lenses.txt)]([https://github.com/Jack-Cherish/Machine-Learning/blob/ma ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Pythton"> Pythton</a></div><div class="read-more"><a class="more" href="/2019/08/30/Sklearn——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Python爬虫常规流程/">Python爬虫常规流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:07:05.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:07:05.000Z">2019-09-15</time></div><div class="recent-post-content"> Python爬虫常规流程
+隐形眼镜数据集是非常著名的数据集，它包含很多换着眼部状态的观察条件以及医生推荐的隐形眼镜类型。隐形眼镜类型包括硬材质(hard)、软材质(soft)以及不适合佩戴隐形眼镜(no lenses)。数据来源与UCI数据库，数据集下载地址：[lenses.txt)]([https://github.com/Jack-Cherish/Machine-Learning/blob/ma ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Pythton"> Pythton</a></div><div class="read-more"><a class="more" href="/2019/08/30/Sklearn——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/RL强化学习概念/">RL强化学习概念</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-15</time></div><div class="recent-post-content"> RL强化学习概念
+ 方法汇总
+ 价值-直接-想象
+通过价值选择行为：
+
+Q Learning
+Sarsa
+Deep Q Network
+
+直接选择行为：
+
+Policy Gradients
+
+想象环境并从中学习
+
+Model Based RL
+
+ 基于模型
+
+
+Model-Free RL（无模型）不需要去理解环境的含义
+
+Q Learning
+Sarsa
+Policy Gradients
+
+
+
+Model-Based RL（有环境）需要去理解环境的含义，在&quot;脑子&quot;中模拟虚拟环境
+
+Q Learning
+Sarsa
+Policy Gradient
+
+前者需要一步一步得到环境 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/RL强化学习概念/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Python爬虫常规流程/">Python爬虫常规流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:07:05.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:07:05.000Z">2019-09-15</time></div><div class="recent-post-content"> Python爬虫常规流程
 以爬取有道翻译为例子。
  挖取可自用的API
 
 web 端的有道翻译，在之前是直接可以爬的。也就是说只要获取到了他的接口，你就可以肆无忌惮的使用他的接口进行翻译而不需要支付任何费用。那么自从有道翻译推出他的API服务的时候，就对这个接口做一个反爬虫机制（如果大家都能免费使用到他的翻译接口，那他的APl服务怎么赚钱）。这个反爬虫机制在爬虫领域算是一个非常经典的技术手段。
 
 1.查看要爬取的内容是否是静态加载的。
-比如在翻译输入框中输入apple，翻译输出框中会出现苹果，然后在``页面中右键-&gt;查看网页源代码，直接Ctrl+F搜索是否存在apple或者苹果`，如果 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/08/30/Python爬虫常规流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/25/Python中的正则匹配/">Python中的正则匹配</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-25T01:50:19.000Z">2019-07-25</time><i class="fa fa-edit"></i><time datetime="2019-07-25T01:50:19.000Z">2019-09-15</time></div><div class="recent-post-content"> Python中的正则匹配
-
-虽然正则早就会用了,但是有些使用方法老是忘记,因此还是写篇记录一下
-
- 特殊字符
-
-
-
-特别字符
-描述
-
-
-
-
-$
-匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n’ 或 ‘\r’。要匹配 $ 字符本身，请使用 $。
-
-
-( )
-标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 ( 和 )。
-
-
-*
-匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 *。
-
-
-+
-匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 +。
-
-
-.
-匹配除换行符 \n 之外的任何单 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/25/Python中的正则匹配/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Linux三剑客/">Linux三剑客</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:37:36.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:37:36.000Z">2019-09-15</time></div><div class="recent-post-content"> Linux三剑客
+比如在翻译输入框中输入apple，翻译输出框中会出现苹果，然后在``页面中右键-&gt;查看网页源代码，直接Ctrl+F搜索是否存在apple或者苹果`，如果 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/08/30/Python爬虫常规流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Linux三剑客/">Linux三剑客</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:37:36.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:37:36.000Z">2019-09-15</time></div><div class="recent-post-content"> Linux三剑客
  bash命令执行顺序
 
 把命令行分成单个命令词
@@ -331,13 +340,49 @@ sed -n '22,$p' test
 1.可以登录https://github.com/letsencrypt/letsencrypt，下载后通过lrzsz传到云服务器上，再解压
 2.修改hosts
 查找域名对应的ip地址，并修改hosts文件
-123456789101112131415linuxidc@linuxidc:~/linu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/C-学习笔记/">C++学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T01:00:50.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T01:00:50.000Z">2019-09-15</time></div><div class="recent-post-content"> C++学习笔记
+123456789101112131415linuxidc@linuxidc:~/linu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/CDN加速个人博客——又拍云/">CDN加速个人博客——又拍云</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-15</time></div><div class="recent-post-content"> CDN加速个人博客——又拍云
 
-system（）就是调用（DOS）系统命令（和shell命令）。
-pause ，即DOS命令集合中的暂停命令；
+CDN(Content Delivery Network)内容发布网络，基本思路就是将你网站放置在各地节点服务器，用户访问时找最近的节点服务器获取数据，达到加速的目的。
 
- sprintf
-123456789101112#include &lt;stdio.h&gt;int main( void )&#123;  char  buffer[200], s[] = &quot;computer&quot;, c = &apos;l&apos;;  int   i = 35, j;  float fp = 1.7320534f;  // 格式化并打印各种数据到buffer  j  = sprintf( buffer,    &quot ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/13/C-学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/ACM-博弈论/">ACM-博弈论</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:41:28.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:41:28.000Z">2019-09-15</time></div><div class="recent-post-content"> ACM-博弈论（gambling）
+ 几大厂商的CDN方案
+
+
+
+资费介绍页面
+免费额度
+是否支持HTTPS
+额外限制
+注册邀请链接
+
+
+
+
+七牛云
+10GB/月
+按量付费支持
+/
+&gt;&gt;&gt; 点击注册
+
+
+腾讯云
+10GB/月
+免费支持
+加了腾讯云CDN没有感觉多大加速
+/
+
+
+百度云
+10GB/天
+年费付费支持
+巨贵…
+/
+
+
+又拍云
+15GB/月
+免费支持
+加入又拍云联盟，并在网站底部放置logo
+&gt; ...</div><div class="read-more"><a class="more" href="/2019/09/09/CDN加速个人博客——又拍云/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/ACM-博弈论/">ACM-博弈论</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:41:28.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:41:28.000Z">2019-09-15</time></div><div class="recent-post-content"> ACM-博弈论（gambling）
 
 博弈论：是二人或多人在平等的对局中各自利用对方的策略变换自己的对抗策略，达到取胜目标的理论。假设，双方每步都是最优决策
 

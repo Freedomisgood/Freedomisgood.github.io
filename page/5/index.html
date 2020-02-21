@@ -241,7 +241,16 @@ C.Hello Hell ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag
 Repository name: 仓库名称
 Description(可选): 仓库描述介绍
 Public, Private : 仓库权限（公开共享，私有或指定合作者）
-Initialize this ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/03/28/使用git将项目上传到github（最简单方法）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/Linux下开机启动Python脚本/">Linux下开机启动Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:48:46.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:48:46.000Z">2019-09-15</time></div><div class="recent-post-content"> /etc/rc.local
+Initialize this ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/03/28/使用git将项目上传到github（最简单方法）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Python机器学习及实践——从零开始通往Kaggle竞赛之路/">Python机器学习及实践——从零开始通往Kaggle竞赛之路</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:50:34.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:50:34.000Z">2019-09-15</time></div><div class="recent-post-content"> Python机器学习及实践——从零开始通往Kaggle竞赛之路
+ 监督学习模型
+ 分类
+ 线性模型
+ Logistic
+逻辑回归函数 ： $g(z)=\frac {1}{1+_e^{-z}} $
+逻辑回归模型hw,b(x)=g(f(w,x,b))=11+e−z=11+e−(wTx+b)h_{w,b}(x)=g(f(w,x,b)) = \frac{1}{1+e^{-z}} = \frac {1}{1+e^{-(w^{T}x+b)}}hw,b​(x)=g(f(w,x,b))=1+e−z1​=1+e−(wTx+b)1​
+ 处理缺省值的方法：
+1.缺省值较少时直接删除数据
+12data = data ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/05/27/Python机器学习及实践——从零开始通往Kaggle竞赛之路/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/Linux下开机启动Python脚本/">Linux下开机启动Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:48:46.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:48:46.000Z">2019-09-15</time></div><div class="recent-post-content"> /etc/rc.local
 将脚本写在/etc/rc.local文件
 输入命令：sudo vi /etc/rc.local
 在exit 0上一行输入：python /usr/bin/python /home/pi/test.py
@@ -255,14 +264,7 @@ $ sudo chmod +x /etc/rc.local
 写一个服务放到linux的/etc/init.d目录中
 并且授权bash脚本chmod 755 /etc/ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/03/Linux下开机启动Python脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/Java课程第二次实验报告/">Java课程第二次实验报告</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T00:58:21.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T00:58:21.000Z">2019-09-15</time></div><div class="recent-post-content"> Java课程第二次实验报告
  1.寻找并输出11~999之间的数m，它满足m、m2、m3均为回文数。回文数是各位数字左右对称的整数。判断是否为回文要求通过编写方法来完成。
-123456789101112131415161718public class HelloWorld &#123;	public static boolean isPalindrome(int s) &#123;		String str = Integer.toString(s);		if( str.charAt(0) == str.charAt(str.length() - 1) )			return true;		el ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/04/25/Java课程第二次实验报告/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/02/flask-nginx如何获得真实IP/">flask+nginx如何获得真实IP</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-02T12:53:58.000Z">2019-03-02</time><i class="fa fa-edit"></i><time datetime="2019-03-02T12:53:58.000Z">2019-09-15</time></div><div class="recent-post-content">
-如果是通过 flask 的 request.remote_addr获取的 ip 都是 127.0.0.1
-
- 解决方案:
- nginx.conf中添加
-123# proxy_set_header Host $host:80; # proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-全文
-12345678910111213141516server &#123;    listen 8888;    server_name 0.0.0.0;    ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="nginx"> nginx</a></div><div class="read-more"><a class="more" href="/2019/03/02/flask-nginx如何获得真实IP/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/codeblocks中boost库安装/">codeblocks中boost库安装</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:04:59.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:04:59.000Z">2019-09-15</time></div><div class="recent-post-content">
+123456789101112131415161718public class HelloWorld &#123;	public static boolean isPalindrome(int s) &#123;		String str = Integer.toString(s);		if( str.charAt(0) == str.charAt(str.length() - 1) )			return true;		el ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/04/25/Java课程第二次实验报告/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/codeblocks中boost库安装/">codeblocks中boost库安装</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:04:59.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:04:59.000Z">2019-09-15</time></div><div class="recent-post-content">
 首先要提出的是，boost在VS中是可以直接导入的，但是在CB中是不行的，所以写了下这篇文章。
 
  安装boost

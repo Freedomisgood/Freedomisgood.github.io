@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>学会投资——做一个小小的股民 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">学会投资——做一个小小的股民</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/02/04</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="福利"> 福利</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,837</span> | Reading time: <span class="post-count">13</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
+<p>这一学期任选课选的是投资理财，本也有意接触投资这一方面，因此在开学后不断接触股票相关知识，不断在模拟盘尝试。在2019年11月6日正式关注股票，开始实盘炒股。</p>
+<p>由于很多概念点掌握的不是很清晰，所以决定把所有相关概念全都搜查确认一遍，同时记录下来，有益他人入门。</p>
+</blockquote>
+<h1 id="入门概念"><a class="markdownIt-Anchor" href="#入门概念"></a> 入门概念</h1>
+<h2 id="k线"><a class="markdownIt-Anchor" href="#k线"></a> K线</h2>
+<p><img src="https://bkimg.cdn.bcebos.com/pic/d4628535e5dde7117f5feca7a7efce1b9c1661d6?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2U4MA==,xp_5,yp_5" alt="K线"></p>
+<h3 id="阻力位和支撑位"><a class="markdownIt-Anchor" href="#阻力位和支撑位"></a> 阻力位和支撑位</h3>
+<p>我们把“向上反弹的底点”称为支撑位。用某个价格水平或图表上某个区域来表示。在这个点位下方,买方兴趣强大,足以抗拒卖方形成的强大压力。结果价格在这里停止下跌,回头向上反弹。通常,当前一个向上反弹的底点形成后,就可以确定一个支撑位了。反之则为阻力位.——支撑位表明了，这只股票合理的价格区间，一般在股价上升之后都会有回调过程（即主力验证某一个价位的支撑确实有效，而主动下跌到某个价位）</p>
+<p><img src="http://www.net767.com/book/UploadFiles_8829/200903/2009030719351531.bmp" alt=""></p>
+<h4 id="箱体支撑"><a class="markdownIt-Anchor" href="#箱体支撑"></a> 箱体支撑</h4>
+<p><img src="http://www.net767.com/book/UploadFiles_8829/201004/2010041414000675.gif" alt=""></p>
+<h3 id="辨别阻力位"><a class="markdownIt-Anchor" href="#辨别阻力位"></a> 辨别阻力位</h3>
+<p>当股价在一个价格区域波动时刻越久，表明在这个区域买进的出资人越多，股价跌破这一区域，买进的出资人被套，跟着时刻的推移，侥幸心理削减。当股价从头回到该区域，大多数出资者会选择卖出解套，削减丢失。在这个区域也就形成了阻力位。</p>
+<p>从心理的视点来讲，当股价上涨至一个高点回落之后，若股价再次上涨，许多出资人就会开端猜想这波行情的拐点。当价格挨近前期高点时，为了求稳，便会抛出所持股票，前高也就成为了阻力位。</p>
+<p>我们经过历史来判别的所谓支撑与阻力是不可靠的。如果在一些讲座听到专家只能跟着行情的屁股来定所谓阻力与支撑，而底子不知道这个阻位是否真的能阻住，这个支撑是否能真的撑住。这些观念就是过错的，我们不要轻信，我们最好能够依据自己的经历来辨认阻力位，它对各位的出资实业还是很有含义的。</p>
+<h2 id="股票成交原因"><a class="markdownIt-Anchor" href="#股票成交原因"></a> 股票成交原因</h2>
+<p>股票价格能够成交的原因是因为分歧，A觉得当前价格高估了所以愿意卖出，B觉得当前价格低估了所以愿意买入，互相都认为自己判断正确，对方判断错误，所以都接收对方的出价，当前价格才能够成交。</p>
+<h2 id="成交量"><a class="markdownIt-Anchor" href="#成交量"></a> 成交量</h2>
+<h3 id="放量-放大成交量"><a class="markdownIt-Anchor" href="#放量-放大成交量"></a> 放量-放大成交量</h3>
+<p>放量，就是——放大成交量的意思。成交放量的现象，表示在这个位置分歧更大，更多人卖出，也有更多人买入，最终买入的大于卖出的，还有在当前价格没买到股票的人，只有提高价格去买入了，于是价格就冲过阻力位了。——成交即为换手，因此跟换手率相关。</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">换</mi><mi mathvariant="normal">手</mi><mi mathvariant="normal">率</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">成</mi><mi mathvariant="normal">交</mi><mi mathvariant="normal">量</mi></mrow><mrow><mi mathvariant="normal">发</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">总</mi><mi mathvariant="normal">股</mi><mi mathvariant="normal">数</mi><mo stretchy="false">(</mo><mi mathvariant="normal">手</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">换手率 = \frac{成交量}{发行总股数 (手)}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mord cjk_fallback">换</span><span class="mord cjk_fallback">手</span><span class="mord cjk_fallback">率</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.613em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.677em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">发</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">总</span><span class="mord cjk_fallback">股</span><span class="mord cjk_fallback">数</span><span class="mopen">(</span><span class="mord cjk_fallback">手</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">交</span><span class="mord cjk_fallback">量</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h3 id="股市放量的原因"><a class="markdownIt-Anchor" href="#股市放量的原因"></a> 股市放量的原因：</h3>
+<p>有时属于主力出货,有时属于主力换庄</p>
+<p><strong>主力出货：</strong></p>
+<p>个股在低位运行中，突然开始急速拉升，伴随成交量大幅放量，说明主力在趁机<strong>吸筹</strong>，拉高的目地是给散户一点<strong>利润，使他们出局</strong>，主力趁机吸收筹码。<br>
+个股有可能会从此开始逐步拉升，使散户不敢再追高，眼睁睁看着个股绝尘而去，以至于到最后被迫追高，主力趁机出货。也可能个股还要盘整一段时间，继续折磨散户的耐性，使他们误认为前次的拉高是主力在出货，迫使散户丧失信心，交出筹码。</p>
+<h3 id="成交量数值的意义"><a class="markdownIt-Anchor" href="#成交量数值的意义"></a> 成交量数值的意义:</h3>
+<p>股票价格向上突破阻力位置，比如突破量子沙盘提示的空头防线D或E，<strong>突破向上</strong>，就<strong>需要有比平时多的成交量</strong>，才能冲过D或E继续向上。</p>
+<p>而向下跌破多头防线C不需要过多成交量，多头只要放弃防守，<strong>没有买入的动作和力量，价格就会跌落</strong>，这时候成交量可以不放大。</p>
+<h3 id="放量拉高-打压洗盘"><a class="markdownIt-Anchor" href="#放量拉高-打压洗盘"></a> 放量拉高、打压洗盘</h3>
+<p>放量：将筹码扔出撒向市场，促进股票交易还手，为了能抛出这么多，因此股价会上升；</p>
+<p>缩量：回购入筹码，由于需要买入大量，所以会使股价下降</p>
+<p>ref: <a href="https://zhuanlan.zhihu.com/p/103226043" target="_blank" rel="noopener">主力操盘手法解释</a></p>
+<h2 id="回踩和回落"><a class="markdownIt-Anchor" href="#回踩和回落"></a> 回踩和回落</h2>
+<p><strong>股票回踩</strong>就是股票要上涨之前，主力为了验证某一个价位的支撑确实有效，主动下跌到那个地方重新验证是否支撑有效。回踩的目的就是为了以后上涨可以放心，即使碰到大盘大幅回调，而那个位置的支撑也不会再回到。回踩时是缩量，且阴线很小但很集中。</p>
+<p>回落和回踩都是指的股票下跌这一动作，但回落往往用于<strong>股价的单纯下跌</strong>，即股价达到一个价格后，开始逐步下降；回踩则是指股价达到一个价位后，开始逐步下降，降到一个价格区间后，又开始继续上涨。回踩也可以看作是对上涨趋势的确认。</p>
+<p>ref：<a href="https://zhuanlan.zhihu.com/p/103212473" target="_blank" rel="noopener">回踩有效支撑买入法，做短线的朋友可以收藏！</a></p>
+<h2 id="游资"><a class="markdownIt-Anchor" href="#游资"></a> 游资</h2>
+<p>热钱（Hot Money），是指<a href="https://baike.baidu.com/item/%E6%B8%B8%E8%B5%84/2950921" target="_blank" rel="noopener">游资</a>，或叫投机性短期资金，在商业词典中热钱的定义为：“迅速移向能提供更好回报的任何国家的流动性极高的短期资本 [1] 。而上海证券研发中心认为，传统意义上的热钱主要指国际短期资本，但是根据中国国情热钱既包括国际短期资本，也包括中长期资本。 [1]</p>
+<p>热钱的目的在于用尽量少的时间以钱生钱，是只为追求高回报而在市场上迅速流动的短期投机性资金，纯粹以投机盈利，而不是制造就业、商品或服务。2011年10月新增外汇占款近四年来首度出现<a href="https://baike.baidu.com/item/%E8%B4%9F%E5%A2%9E%E9%95%BF/7106652" target="_blank" rel="noopener">负增长</a>，海外热钱撤离中国。对中国经济造成不同程度的影响。</p>
+<p>▲热钱与正当投资的最大分别是热钱的根本目的在于投机盈利，而不是制造就业、商品或服务。</p>
+<h1 id="实盘操作"><a class="markdownIt-Anchor" href="#实盘操作"></a> 实盘操作</h1>
+<h2 id="t0操作注意事项"><a class="markdownIt-Anchor" href="#t0操作注意事项"></a> <a href="http://www.360doc.com/content/19/0910/07/56121542_860144046.shtml" target="_blank" rel="noopener">T+0操作注意事项</a></h2>
+<p><strong>从做T方式分类：</strong></p>
+<p>半仓滚动做T：每次半仓低位买入相同仓位，然后高点T出，或高点T出后再低位买回相同仓位（最常用和最简单操作方式）</p>
+<p>三成底仓滚动做T：三成底仓，低位买三成仓位，逢高T出三成仓，再逢低买回三成仓，第二天逢高T出三成仓，低位视情况买回三成仓，冲高再T出三成仓，然后视情况逢低买回三成仓，循环滚动，视分时上升或下降趋势正T或倒T操作（熊市更适用，较复杂，需结合1和5分钟MACD等辅助判断）</p>
+<p>7成底仓滚动做T：7成底仓，逢高T出三成仓位，逢低买回三成仓，如果尾盘再跌，再卖出四成底仓，第二天逢低买回四成仓，逢高T出三成仓，逢低买回三成仓，循环滚动，视分时上升或下降趋势正T或倒T操作（牛市更适用，较复杂，需结束1和5分钟MACD等辅助判断）</p>
+<p><strong>做T的注意事项：</strong></p>
+<p>1、立即到证券公司找你的理财经理调低你的交易佣金，越低越好，目前万三是多数人可以调到的；操作成本的降低意味着每次进出操作的利润留下就变多了，这是做T的前提条件—降成本。<br>
+2、高价股更适合做T，因为短线买卖点非常短暂，要求立即成交，多数是挂委二-委五立即成交的，这样，势必会挂低几个价位。5元股卖低5分钱就是1%，50元股卖低5分钱才0.1%—一降成本。<br>
+3、深市的股票更适合做T，因为没有加收的过户费——降成本。<br>
+4、绩优股及中盘以上股更适合做T，绩优股可以确保股价不会快速坐电梯，中盘以上股不容易在暴跌时丧失流动性，从而失去做T机会——提升成功率。<br>
+5、大盘震荡市、盘整市时更容易做T，大盘或个股单边上扬时做T要迅速，一般在10~15分钟完成一个买入卖出的完整T操作，防止T飞——提升成功率。<br>
+6、要关注大盘走势，特别是在大盘连续下跌阶段——提升成功率。<br>
+7、要计算个股上涨和调整的幅度（统计平均的震幅区间）——提升成功率。<br>
+8、做T不应刻意追求2%以上的价差，越贪心越容易丢票；——提升成功率。<br>
+9、最好做自己非常熟悉的股票，反复看个股每天的分时图，复盘每日的买入卖出做T点位，看完1000个分时图，自然熟能生巧——提升成功率。</p>
+<p><strong>T+0操作“秘笈”</strong><br>
+T+0操作“秘笈”一：正向、追涨T+0&quot;<br>
+T+0操作“秘笈”二：“正向、抄底T+0”<br>
+T+0操作“秘笈”三：“逆向、追杀T+0&quot;</p>
+<p><strong>【注意事项】：</strong><br>
+1、T+0最好盘中必须完成，千万别做成加仓动作，尤其是大盘震荡、方向不明的时候；<br>
+2、T+O是多出来的套利，不做什么都没有，所以别贪，结合大盘和个股，个人经验以盈利2%<br>
+为目标，不行1%也走；<br>
+3、只有多研究分时走势，多多试验，才能不断提高成功功率。<br>
+4、谨慎假突破</p>
+<p>止损是交易中保护自己的重要手段，犹如汽车中的刹车装置，遇到突发情况善于“刹车”，才能确保安全。止损的最终目的是保存实力，提高资金利用率和效率，避免小错铸成大错、甚至导致全军覆没。止损不能规避风险，但可以避免遭到更大的意外风险。</p>
+<h2 id="短线操作"><a class="markdownIt-Anchor" href="#短线操作"></a> 短线操作</h2>
+<p><a href="https://www.55188.com/thread-9067174-1-1.html" target="_blank" rel="noopener"><strong>游资“乔帮主”是谁？曾经11万亏到3万的小散，偶遇高手他转变了</strong></a></p>
+<p>短线操作有两种主流模式，一种是追涨，另外一种是低吸。而在这个股市圈内，或者说游资圈内，低吸模式操作最有名的自然就是“乔帮主”了。他师承独股一箭，其实就是无意中发现了独股一箭的实盘帖，开始研究其交易特点，最终自己悟出来的。</p>
+<h2 id="回踩抄底操作"><a class="markdownIt-Anchor" href="#回踩抄底操作"></a> 回踩抄底操作</h2>
+<p><a href="https://baijiahao.baidu.com/s?id=1652406936105237978&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">一旦股价回踩，掌握“阴线”策略，股价反弹在即，庄家瑟瑟发抖！</a></p>
+<ul>
+<li>支撑线上阴线</li>
+<li>底部巨量短线机会</li>
+<li>金屋藏娇</li>
+</ul>
+<h2 id="尾盘操作"><a class="markdownIt-Anchor" href="#尾盘操作"></a> 尾盘操作</h2>
+<blockquote>
+<p>有经验的老股民，可能会在下午尾盘2点半之后才选股操作，因为接近收盘，风险比较低，尾盘买入的股票在次日上午冲高出货就可以获取利润，安全、刺激、没有后顾之忧。</p>
+</blockquote>
+<p>▲目前个人的操作模式为：早上找高出货， 尾盘找合适价位切入。</p>
+<p><strong>砸尾盘</strong></p>
+<p>尾盘下跌，也可以分为两点半开始下跌和临收盘下跌。一般情况下，尾盘下跌有可能是主力利用尾市的突出去打压出货，也有可能是主力打压洗盘，不管哪种情况，投资者都不要给予参与，因为基本都是主力在打压洗盘，<u>第二个交易日往往还是低开</u>。</p>
+<p><strong>尾盘跳空突破选股法</strong></p>
+<p>选股方法：每天9.25-9.30<strong>开盘价出现时候找股票</strong>!<br>
+打开60排行榜，把上升2-6个点的股票都添加到板块股中，从里面挨个进行筛选!<br>
+首先筛选要突破下降趋势线，并且是第一个调控缺口的股票!<br>
+每天基本有1-3个符合，开盘后看开盘的量能，筛选出来的<strong>股票量</strong>能如何?上涨放量，下跌缩量!<br>
+股票的<strong>买点一般在尾盘买入</strong>!</p>
+<p>★：<strong>尾盘打板</strong></p>
+<p>看看分时图，入股此时分时白线是回踩黄线不破并处于上升趋势，而且持续有大单买入，这就是我们要在尾盘买进的强势个股，次日冲高获利高抛即可。此方法不但安全，而且收益稳健，是上班族和短线操作者的最佳利器，如果大家都能学懂并理解，那么接下来你的收益将会出现一倍的增长以上。</p>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<h2 id="决战牛市之经典趋势操盘术"><a class="markdownIt-Anchor" href="#决战牛市之经典趋势操盘术"></a> <a href="http://www.wbfou.com/qtkc/557.html" target="_blank" rel="noopener">决战牛市之《经典趋势操盘术》</a></h2>
+<p>第一个指标：这只个股在趋势上必须摆脱熊市的压力进入了技术牛市。我们要配上的技术指标就是10周与30周长期均线。如果说一只股票还处于技术性熊市中，说明个股还不具备走牛的趋势，只能有反弹。</p>
+<p>第二个指标：一只股票好不好，至少它的走势一定要强于大盘，如果连大盘都不如，哪有强势可言。要配上的第二个指标是RS，用于对比个股与指数走势的强度。</p>
+<p>第三个指标，个股的图形一定要漂亮，要观察个股位置处于什么阶段，是否突破了重要压力位，是否创造了新高，如果个股不能突破下跌通道或历史平台位，就不能说已经具有走在上涨趋势的势头，上涨空间不可能打开。要加入的第三个指标就是趋势通道平台技术和长短期图形识别技术。</p>
+<p>第四个指标，一只股票摆脱了对熊市的技术压力，也强于大盘，从历史重要平台开始突围。买点是否出现，只有内部筹码的博弈已经稳定并处于强势中，才能决定个股多方是否在反攻，才能产生买卖点。要匹配的也是最重要的交易信号指标是RSI，再结合20日均线与成交量进行判断。</p>
+<p>第五个指标，前四个指标已经满足，说明个股已经蓄势启动，这个启动够不够强，有没有持续性，就要看量价关系。</p>
+<p>第六个指标，个股分析的最后一步才是基本面的研究，详细掌握这只股的基本面情况。理解在基本面方面驱动个股上涨的因素是那一种。</p>
+<h2 id="股票小白入门篇_知乎"><a class="markdownIt-Anchor" href="#股票小白入门篇_知乎"></a> <a href="https://zhuanlan.zhihu.com/p/90930638" target="_blank" rel="noopener">股票小白入门篇_知乎</a></h2>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/02/03/学会投资——做一个小小的股民/">https://nymrli.top/2020/02/03/学会投资——做一个小小的股民/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2020/02/02/PAT冲冲冲——乙级/" title="PAT冲冲冲——乙级"><span>NextPost ></span><br><span class="nextTitle">PAT冲冲冲——乙级</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '学会投资——做一个小小的股民',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#入门概念"><span class="toc-number">1.</span> <span class="toc-text"> 入门概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#k线"><span class="toc-number">1.1.</span> <span class="toc-text"> K线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#阻力位和支撑位"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 阻力位和支撑位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#箱体支撑"><span class="toc-number">1.1.1.1.</span> <span class="toc-text"> 箱体支撑</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#辨别阻力位"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 辨别阻力位</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#股票成交原因"><span class="toc-number">1.2.</span> <span class="toc-text"> 股票成交原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#成交量"><span class="toc-number">1.3.</span> <span class="toc-text"> 成交量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#放量-放大成交量"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 放量-放大成交量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#股市放量的原因"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 股市放量的原因：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成交量数值的意义"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 成交量数值的意义:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#放量拉高-打压洗盘"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 放量拉高、打压洗盘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回踩和回落"><span class="toc-number">1.4.</span> <span class="toc-text"> 回踩和回落</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游资"><span class="toc-number">1.5.</span> <span class="toc-text"> 游资</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实盘操作"><span class="toc-number">2.</span> <span class="toc-text"> 实盘操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#t0操作注意事项"><span class="toc-number">2.1.</span> <span class="toc-text"> T+0操作注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#短线操作"><span class="toc-number">2.2.</span> <span class="toc-text"> 短线操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回踩抄底操作"><span class="toc-number">2.3.</span> <span class="toc-text"> 回踩抄底操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#尾盘操作"><span class="toc-number">2.4.</span> <span class="toc-text"> 尾盘操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number">3.</span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#决战牛市之经典趋势操盘术"><span class="toc-number">3.1.</span> <span class="toc-text"> 决战牛市之《经典趋势操盘术》</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#股票小白入门篇_知乎"><span class="toc-number">3.2.</span> <span class="toc-text"> 股票小白入门篇_知乎</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

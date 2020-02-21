@@ -144,7 +144,17 @@ Container(Docker容器)，在宿主机器、宿主机器操作系统上创建Doc
 
 Size:
 
-虚拟机ubuntu大小为:24.1G ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2019/07/25/Docker使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/机器学习——决策树/">机器学习——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:44:35.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:44:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 机器学习——决策树
+虚拟机ubuntu大小为:24.1G ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2019/07/25/Docker使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/验证码识别程序设计流程/">验证码识别程序设计流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T13:31:35.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T13:31:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 验证码识别程序设计流程
+
+以南邮正方教务系统为例
+
+ 找到验证码图片的链接
+
+“http://jwxt.njupt.edu.cnCheckCode.aspx”
+
+1234567def getCaptcha():    CAPTCHA_URL = "http://jwxt.njupt.edu.cn/CheckCode.aspx"    r = requests.get(CAPTCHA_URL)    img = r.content    img = Image.open(BytesIO(img))    return img
+ 对图片去噪
+123456789101112131415161718 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/09/验证码识别程序设计流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/机器学习——决策树/">机器学习——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:44:35.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:44:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 机器学习——决策树
  决策树基础概念
 
 决策树分为分类树和回归树两种，分类树对离散变量做决策树，回归树对连续变量做决策树。
@@ -296,38 +306,7 @@ Policy Gradient
 web 端的有道翻译，在之前是直接可以爬的。也就是说只要获取到了他的接口，你就可以肆无忌惮的使用他的接口进行翻译而不需要支付任何费用。那么自从有道翻译推出他的API服务的时候，就对这个接口做一个反爬虫机制（如果大家都能免费使用到他的翻译接口，那他的APl服务怎么赚钱）。这个反爬虫机制在爬虫领域算是一个非常经典的技术手段。
 
 1.查看要爬取的内容是否是静态加载的。
-比如在翻译输入框中输入apple，翻译输出框中会出现苹果，然后在``页面中右键-&gt;查看网页源代码，直接Ctrl+F搜索是否存在apple或者苹果`，如果 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/08/30/Python爬虫常规流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/25/Python中的正则匹配/">Python中的正则匹配</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-25T01:50:19.000Z">2019-07-25</time><i class="fa fa-edit"></i><time datetime="2019-07-25T01:50:19.000Z">2019-09-15</time></div><div class="recent-post-content"> Python中的正则匹配
-
-虽然正则早就会用了,但是有些使用方法老是忘记,因此还是写篇记录一下
-
- 特殊字符
-
-
-
-特别字符
-描述
-
-
-
-
-$
-匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n’ 或 ‘\r’。要匹配 $ 字符本身，请使用 $。
-
-
-( )
-标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 ( 和 )。
-
-
-*
-匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 *。
-
-
-+
-匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 +。
-
-
-.
-匹配除换行符 \n 之外的任何单 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/25/Python中的正则匹配/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Linux三剑客/">Linux三剑客</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:37:36.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:37:36.000Z">2019-09-15</time></div><div class="recent-post-content"> Linux三剑客
+比如在翻译输入框中输入apple，翻译输出框中会出现苹果，然后在``页面中右键-&gt;查看网页源代码，直接Ctrl+F搜索是否存在apple或者苹果`，如果 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/08/30/Python爬虫常规流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Linux三剑客/">Linux三剑客</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:37:36.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:37:36.000Z">2019-09-15</time></div><div class="recent-post-content"> Linux三剑客
  bash命令执行顺序
 
 把命令行分成单个命令词

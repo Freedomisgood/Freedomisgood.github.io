@@ -200,7 +200,7 @@ Pandas:
  将信息按规则填好后.需要注意的是▲.在按登录之前需要翻墙,否则会出现如图&quot;我们无法找到你的设置&quot;.
  其次要注意的是,密码为IMAP或者POP、SMTP的密码，授权码查 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="邮件"> 邮件</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Window10"> Window10</a></div><div class="read-more"><a class="more" href="/2018/12/16/win自带邮件使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/12/Python中邮件的发送/">Python中邮件的发送</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-12T14:17:38.000Z">2018-12-12</time><i class="fa fa-edit"></i><time datetime="2018-12-12T14:17:38.000Z">2019-09-15</time></div><div class="recent-post-content"> Python普通的邮件发送
 需要一个安全的连接，例如SSL，因此接下来我们会使用SSL的方式去登录，但是在那之前，我们需要做一些准备，打开qq邮箱，点击设置-&gt;账户，找到POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务，开启IMAP/SMTP服务，然后根据要求使用手机发送到指定号码，获取授权码，这个授权码就是你接下来登录要使用的密码.
-123456789101112131415161718from email.mime.text import MIMETextimport smtplib_user = &apos;1063052964@qq.com&ap ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/12/Python中邮件的发送/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/03/Pyinstaller使用/">Pyinstaller使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-03T03:54:22.000Z">2018-12-03</time><i class="fa fa-edit"></i><time datetime="2018-12-03T03:54:22.000Z">2019-09-15</time></div><div class="recent-post-content"> pyinstaller使用
+123456789101112131415161718from email.mime.text import MIMETextimport smtplib_user = &apos;1063052964@qq.com&ap ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a></div><div class="read-more"><a class="more" href="/2018/12/12/Python中邮件的发送/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/03/Pyinstaller使用/">Pyinstaller使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-03T03:54:22.000Z">2018-12-03</time><i class="fa fa-edit"></i><time datetime="2018-12-03T03:54:22.000Z">2019-09-15</time></div><div class="recent-post-content"> pyinstaller使用
  安装
  1、安装pywin32==&gt;pyinstaller依赖于
 
@@ -246,7 +246,15 @@ Pandas:
 pipenv是requests库作者Kenneth Reitz编写的一个用于创建和管理Python虚拟环境的工具。
 Pipenv是Python官方机构推荐的Python包工具。
 我们知道，为了管理Python虚拟环境，通常用得比较多的是virtualenv和pyenv。但是有人觉得它们还不够好用，不够偷懒。这个人是谁，就是上面的那位。于是他开发了一个pipenv，结合了pip及virtualenv的功能和优点，集成出了pipenv这个工具。其目的是替代virtualenv和pyenv，将pip及virtualenv的功能集于一身。
- 一、 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/08/pipenv-新款Python虚拟环境工具详解-转/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/06/HTML和CSS学习/">HTML和CSS学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-06T02:57:32.000Z">2018-12-06</time><i class="fa fa-edit"></i><time datetime="2018-12-06T02:57:32.000Z">2019-09-15</time></div><div class="recent-post-content"> HTML学习
+ 一、 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/08/pipenv-新款Python虚拟环境工具详解-转/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/21/Pandas速成/">Pandas速成</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-21T13:57:29.000Z">2018-12-21</time><i class="fa fa-edit"></i><time datetime="2018-12-21T13:57:29.000Z">2019-09-15</time></div><div class="recent-post-content"> Pandas速成
+
+Series : 一位数组, 只允许存储相同的数据类型
+Time-Series : 以时间为索引的Series
+DataFrame : 二维的表格型数据结构  , 可以理解为是Series 的容器
+Panel : 三维数组,可以理解为DataFrame 的容器
+
+ Series
+1234567891011121314151617import matplotlib.pyplot as pltimport pandas as pdimport numpy as nparr = np.array([1,2,3])index = ['a','b','c']myseries = p ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/21/Pandas速成/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/06/HTML和CSS学习/">HTML和CSS学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-06T02:57:32.000Z">2018-12-06</time><i class="fa fa-edit"></i><time datetime="2018-12-06T02:57:32.000Z">2019-09-15</time></div><div class="recent-post-content"> HTML学习
  &lt;head&gt;中的&lt;meta&gt;标签
 
 
@@ -287,11 +295,7 @@ name 属性提供了名称/值对中的名称。
 1#include &quot;a.h&quot;
  c.c
 12345#include &quot;a.h&quot;#include &quot;b.h&quot;int main()&#123;    printf(&quot;Hello!&quot;);&#125;
-如果你程序是这样写的话，编译器就会出现Error #include nested too dee ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2018/12/08/ifdef、-ifndef、-endif/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/21/Flask系列–将应用部署在Heroku上/">Flask系列–将应用部署在Heroku上</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-21T07:54:01.000Z">2018-11-21</time><i class="fa fa-edit"></i><time datetime="2018-11-21T07:54:01.000Z">2019-09-15</time></div><div class="recent-post-content"> Flask补充系列–将应用部署在Heroku上
-之前曾经介绍过如何将Flask应用部署在自己的服务器上，对于手头并不宽裕的程序员来说，购置一台托管服务器还是一笔不小的开销。即便现在有公有云服务器可以买，不过如果你只是以学习为目的，这笔开销还是能省则省了。另外，如果你的应用中需要访问国外被河蟹掉的资源，在服务器上翻墙也是件麻烦事，所以这里我们补充一篇如何将Flask应用部署在Heroku上。
- 环境准备
-Heroku是一个PaaS服务提供商，使用前，你需要先注册一个Heroku帐号，注册帐号是免费的。
-此外你本地必须要有Python 2.7的开发环境，并且装好了Pip, Setuptools, ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2018/11/21/Flask系列–将应用部署在Heroku上/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/19/flask-sqlalchemy踩坑/">flask-sqlalchemy踩坑——外键</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-19T11:47:54.000Z">2018-12-19</time><i class="fa fa-edit"></i><time datetime="2018-12-19T11:47:54.000Z">2019-09-15</time></div><div class="recent-post-content"> 12.19：外键使用
+如果你程序是这样写的话，编译器就会出现Error #include nested too dee ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2018/12/08/ifdef、-ifndef、-endif/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/19/flask-sqlalchemy踩坑/">flask-sqlalchemy踩坑——外键</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-19T11:47:54.000Z">2018-12-19</time><i class="fa fa-edit"></i><time datetime="2018-12-19T11:47:54.000Z">2019-09-15</time></div><div class="recent-post-content"> 12.19：外键使用
 今天要设计一个如图关系的表关系时,踩了好几个坑…记录下
 
 代码:

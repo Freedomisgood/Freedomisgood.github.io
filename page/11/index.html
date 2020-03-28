@@ -120,7 +120,20 @@ pywin32用spy++工具查找到句柄，再结合PyUserInput就能很好地实现
  wx.onBluetoothAdapterStateChange(CALLBACK)
 ​	监听蓝牙适配器状态变化事件
  wx.startBluetoothDevicesDiscovery(OBJECT)
-​	开始搜寻附近的蓝牙外围设备。注意，该操作比较耗费系统资源，请在搜 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="微信小程序"> 微信小程序</a></div><div class="read-more"><a class="more" href="/2018/09/20/小程序蓝牙API/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/20/小程序入门学习/">小程序入门学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-20T01:57:01.000Z">2018-09-20</time><i class="fa fa-edit"></i><time datetime="2018-09-20T01:57:01.000Z">2019-09-15</time></div><div class="recent-post-content"> IDE搭建:
+​	开始搜寻附近的蓝牙外围设备。注意，该操作比较耗费系统资源，请在搜 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="微信小程序"> 微信小程序</a></div><div class="read-more"><a class="more" href="/2018/09/20/小程序蓝牙API/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/04/小程序开发遇到的坑/">小程序开发遇到的坑</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-04T12:26:58.000Z">2018-10-04</time><i class="fa fa-edit"></i><time datetime="2018-10-04T12:26:58.000Z">2019-09-15</time></div><div class="recent-post-content">
+ 小程序开发遇到的坑
+ function 与 =&gt; 的区别
+
+在JS中，箭头函数并不是简单的function(){}匿名函数的简写语法糖，实际上，箭头函数和匿名函数有个明显的区别：**箭头函数内部的this是词法作用域，在编写函数时就已经确定了。**而匿名函数的this指向运行时实际调用该方法的对象，无法在编写函数时确定。
+
+ 箭头函数和普通函数的区别
+
+不可以当做构造函数，也就是说，不可以使用 new 命令，否则会抛出错误。
+this、arguments、caller等对象在函数体内都不存在。
+不可以使用 yield 命令，因此箭头函数不能用作 Generator 函数。
+
+
+==& ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="微信小程序"> 微信小程序</a></div><div class="read-more"><a class="more" href="/2018/10/04/小程序开发遇到的坑/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/20/小程序入门学习/">小程序入门学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-20T01:57:01.000Z">2018-09-20</time><i class="fa fa-edit"></i><time datetime="2018-09-20T01:57:01.000Z">2019-09-15</time></div><div class="recent-post-content"> IDE搭建:
 下载:微信公众平台官网
  预备知识:
 

@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>VsCode配置Latex(texLive)环境 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">VsCode配置Latex(texLive)环境</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/03/25</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,361</span> | Reading time: <span class="post-count">10</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
+<p>写在前面: 除了配置VsCode以外， 我还配置了Sublime，一开始是不想用<a href="https://www.sumatrapdfreader.org/download-free-pdf-viewer.html" target="_blank" rel="noopener">SumatraPDF</a>，以为能省的。事实上，Vscode也确实提供了三种方法：在web browser、编辑器tab、外部PDF阅读器，共三种办法。个人感觉tab界面太小、浏览器查看毕竟还是没有PDF舒服，最后都体验下来还是选择了外部阅读器，而且SumatraPDF支持正向、反向搜索，挺香的。当然，还有种做法是把PDF编译出来以后，再用日常使用的阅读器打开PDF阅读也是可以的，我个人平时用福昕PDF阅读器会多一点</p>
+<p>SumatraPDF阅读器是个非常轻量级的PDF阅读器，开源轻巧，免安装，共14.6MB。要想配套使用PDF阅读器，网上教程基本上推荐的都是SumatraPDF，应该是SumatraPDF在适配Latex上做的比较好。我试了试指定福昕失败了。</p>
+</blockquote>
+<h1 id="安装texlive"><a class="markdownIt-Anchor" href="#安装texlive"></a> 安装Texlive</h1>
+<p>上Texlive的官网， 有<em>在线安装</em>和<em>DVD安装</em>两种方式，我们选择后者。在http://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/中下载<code>texlive2019.iso</code>的镜像，之后解压，选择<code>install-tl-advanced.bat</code>配置高级版(最好右键<strong>管理员身份运行</strong>)。</p>
+<p>可以点击“Advanced”进入高级安装来修改安装位置、取消你不需要安装的宏包。其中<em>TeXworks 前端</em>就是它自带的编辑器，不需要的可以取消。语言我基本就只选了<code>Chinese, Chinese/Janpanse/Korean, English</code></p>
+<p><img src="https://pic4.zhimg.com/80/v2-e4af1253d81437690bea363d923bddeb_hd.jpg" alt=""></p>
+<p>点击“Customize”来取消勾选不需要的宏包。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-f3e77646f2b270dd94ea6463a8c7d2ab_hd.jpg" alt=""></p>
+<p>很多宏包和功能我个人并不需要，因此我在这里取消勾选，大家可以根据需要勾选自己需要的功能，如果嫌麻烦全部安装也可以，并不消耗多少空间。</p>
+<p>设置完安装路径等选项之后点击“安装”，之后静坐 20 分钟等待安装完成。</p>
+<h1 id="安装vscode"><a class="markdownIt-Anchor" href="#安装vscode"></a> 安装VsCode</h1>
+<p>略, 基本安装就行了。用了很久的Sublime， 突然间想换个新的了， 而且VsCode确实也非常好看。</p>
+<h1 id="安装vscode中latex插件-latex-workshop"><a class="markdownIt-Anchor" href="#安装vscode中latex插件-latex-workshop"></a> 安装VsCode中Latex插件—— LaTeX Workshop</h1>
+<p><img src="https://pic2.zhimg.com/80/v2-9f0a10a9f3fc21f1c67d0a33c9cdfb09_hd.jpg" alt=""></p>
+<p>此时导入Latex工程，查看tex文件就可以看到关键字高亮了。</p>
+<h2 id="配置latex-workshop-插件"><a class="markdownIt-Anchor" href="#配置latex-workshop-插件"></a> 配置LaTeX Workshop 插件</h2>
+<p>菜单栏&quot;File-&gt;Preference-&gt;Settings&quot;然后选择右上角三个按钮中最左边的(Open settings(JSON)), 然后将括号里的内容填充到大括号里就行了，下面已经是我JSON配置的安装文件，可复制直接替换。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "latex-workshop.showContextMenu":true, //右键菜单</span><br><span class="line">    "latex-workshop.latex.tools": [</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"latexmk"</span>,</span><br><span class="line">        <span class="attr">"command"</span>: <span class="string">"latexmk"</span>,</span><br><span class="line">        <span class="attr">"args"</span>: [</span><br><span class="line">        <span class="string">"-synctex=1"</span>,</span><br><span class="line">        <span class="string">"-interaction=nonstopmode"</span>,</span><br><span class="line">        <span class="string">"-file-line-error"</span>,</span><br><span class="line">        <span class="string">"-pdf"</span>,</span><br><span class="line">        <span class="string">"%DOC%"</span></span><br><span class="line">        ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"xelatex"</span>,</span><br><span class="line">        <span class="attr">"command"</span>: <span class="string">"xelatex"</span>,</span><br><span class="line">        <span class="attr">"args"</span>: [</span><br><span class="line">        <span class="string">"-synctex=1"</span>,</span><br><span class="line">        <span class="string">"-interaction=nonstopmode"</span>,</span><br><span class="line">        <span class="string">"-file-line-error"</span>,</span><br><span class="line">        <span class="string">"%DOC%"</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;,          </span><br><span class="line">        &#123;</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"pdflatex"</span>,</span><br><span class="line">        <span class="attr">"command"</span>: <span class="string">"pdflatex"</span>,</span><br><span class="line">        <span class="attr">"args"</span>: [</span><br><span class="line">        <span class="string">"-synctex=1"</span>,</span><br><span class="line">        <span class="string">"-interaction=nonstopmode"</span>,</span><br><span class="line">        <span class="string">"-file-line-error"</span>,</span><br><span class="line">        <span class="string">"%DOC%"</span></span><br><span class="line">        ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"bibtex"</span>,</span><br><span class="line">        <span class="attr">"command"</span>: <span class="string">"bibtex"</span>,</span><br><span class="line">        <span class="attr">"args"</span>: [</span><br><span class="line">        <span class="string">"%DOCFILE%"</span></span><br><span class="line">        ]</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">"latex-workshop.latex.recipes": [</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"xelatex"</span>,</span><br><span class="line">        <span class="attr">"tools"</span>: [</span><br><span class="line">        <span class="string">"xelatex"</span></span><br><span class="line">                    ]</span><br><span class="line">                &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"latexmk"</span>,</span><br><span class="line">        <span class="attr">"tools"</span>: [</span><br><span class="line">        <span class="string">"latexmk"</span></span><br><span class="line">                    ]</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"pdflatex -&gt; bibtex -&gt; pdflatex*2"</span>,</span><br><span class="line">        <span class="attr">"tools"</span>: [</span><br><span class="line">        <span class="string">"pdflatex"</span>,</span><br><span class="line">        <span class="string">"bibtex"</span>,</span><br><span class="line">        <span class="string">"pdflatex"</span>,</span><br><span class="line">        <span class="string">"pdflatex"</span></span><br><span class="line">                    ]</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">"latex-workshop.view.pdf.viewer": "browser",  </span><br><span class="line">//"latex-workshop.view.pdf.viewer": "external",</span><br><span class="line">//"latex-workshop.view.pdf.ref.viewer":"external",</span><br><span class="line"></span><br><span class="line">//"latex-workshop.view.pdf.external.viewer.command": "E:\\a常用工具\\SumatraPDF-3.2-64\\SumatraPDF-3.2-64.exe", // 注意修改路径</span><br><span class="line">//"latex-workshop.view.pdf.external.synctex": &#123;</span><br><span class="line">//    "command": "E:\\a常用工具\\SumatraPDF-3.2-64\\SumatraPDF-3.2-64.exe",</span><br><span class="line">//    "args": [</span><br><span class="line">//        "-forward-search",</span><br><span class="line"> //       "%TEX%",</span><br><span class="line">//        "%LINE%",</span><br><span class="line">//        "%PDF%"</span><br><span class="line">//    ]</span><br><span class="line">//&#125;,</span><br><span class="line">"latex-workshop.latex.clean.fileTypes": [</span><br><span class="line">    "*.aux",</span><br><span class="line">    "*.bbl",</span><br><span class="line">    "*.blg",</span><br><span class="line">    "*.idx",</span><br><span class="line">    "*.ind",</span><br><span class="line">    "*.lof",</span><br><span class="line">    "*.lot",</span><br><span class="line">    "*.out",</span><br><span class="line">    "*.toc",</span><br><span class="line">    "*.acn",</span><br><span class="line">    "*.acr",</span><br><span class="line">    "*.alg",</span><br><span class="line">    "*.glg",</span><br><span class="line">    "*.glo",</span><br><span class="line">    "*.gls",</span><br><span class="line">    "*.ist",</span><br><span class="line">    "*.fls",</span><br><span class="line">    "*.log",</span><br><span class="line">    <span class="string">"*.fdb_latexmk"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>▲保存后，一定要重启VsCode，不然无法生效。我当时就是直接去编译了，报了<code>Recipe terminated with fatal error: spawn pdflatex ENOENT.</code>的错误提示。</p>
+<p>其中需要指出的是：<code>&quot;latex-workshop.view.pdf.viewer&quot;: &quot;browser&quot;,</code>设置的是默认阅览PDF的方式，一共有3种：web browser、编辑器tab、外部PDF阅读器。我注释掉的是设置SumatraPDF的方式。这个设置好后，再在Vscode中选择<code>View Latex PDF</code>时就会根据这个配置打开默认阅读PDF的方式，当然也可以点开<code>View Latex PDF</code>的下拉选项，进行指定方式的查阅。</p>
+<h4 id="正向搜索"><a class="markdownIt-Anchor" href="#正向搜索"></a> 正向搜索</h4>
+<blockquote>
+<p>查看code中选中的内容在PDF中什么位置。</p>
+</blockquote>
+<p>选择外部阅读器后，可以通过加入下列实现正向搜索功能。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">"latex-workshop.view.pdf.external.synctex": &#123;</span><br><span class="line">    "command": "E:/Programs/SumatraPDF/SumatraPDF.exe",	// 修改SumatraPDF路径</span><br><span class="line">    "args": [</span><br><span class="line">        "-forward-search",</span><br><span class="line">        "%TEX%",</span><br><span class="line">        "%LINE%",</span><br><span class="line">        <span class="string">"%PDF%"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p><strong>正向搜索的使用</strong>：将光标移动到TeX文件的正文。<code>ctrl+alt+x</code>，找到&quot;navigator,select and edit&quot;，点击第一项<code>syncTeX from cursor</code>(或右键选择，或<strong>快捷键</strong><code>ctrl+alt+j</code>)，会切换到PDF文件的相应位置。——设置“Latex右键菜单”后也可以右键选择<code>syncTeX from cursor</code></p>
+<h4 id="反向搜索"><a class="markdownIt-Anchor" href="#反向搜索"></a> 反向搜索</h4>
+<blockquote>
+<p>查看PDF中选中的内容在code中什么位置。</p>
+</blockquote>
+<p>选择&quot;设置-&gt;选项&quot;</p>
+<p><img src="/2020/03/23/VsCode配置Latex(texLive)环境/E:%5Chexo%5Csource_posts%5CVsCode%E9%85%8D%E7%BD%AELatex(texLive)%E7%8E%AF%E5%A2%83%5C1.jpg" alt="1"></p>
+<p><img src="https://pic1.zhimg.com/80/v2-2df9b5aacaeb4a26e216a951f98b893c_hd.jpg" alt=""></p>
+<p>将下列内容填入箭头所指位置，路径修改下即可（为一行内容）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\Users\Marvey\AppData\Local\Programs\Microsoft VS Code\Code.exe&quot; &quot;C:\Users\Marvey\AppData\Local\Programs\Microsoft VS Code\resources\app\out\cli.js&quot; -g &quot;%f&quot;:&quot;%l&quot;</span><br></pre></td></tr></table></figure>
+<p>感谢 <a href="https://www.zhihu.com/people/f5b398ec143be394e91c762ed6cda2f9" target="_blank" rel="noopener">@Macrofuns</a>指出，如果不加双引号，在文件路径有空格的情况下会导致无法反向搜索）</p>
+<h4 id="其他设置"><a class="markdownIt-Anchor" href="#其他设置"></a> 其他设置</h4>
+<ul>
+<li>LaTeX Workshop 默认保存的时候自动编译，如果不喜欢这个设置，可以添加以下代码进入设置区：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"latex-workshop.showContextMenu":true, //右键菜单 </span><br><span class="line">"latex-workshop.intellisense.package.enabled": true, //根据加载的包，自动完成命令或包 </span><br><span class="line">"latex-workshop.latex.autoBuild.run": "never", //禁止保存文件时自动build</span><br></pre></td></tr></table></figure>
+<p>借鉴From： <a href="https://www.liangzl.com/get-article-detail-136508.html" target="_blank" rel="noopener">使用VSCode编写LaTeX(latex+vscode+SumatraPDF)</a></p>
+<p>最后推荐两个配置视频：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Et411f7GV?t=581" target="_blank" rel="noopener">使用 Sublime Text +TexLive 搭建 LaTeX 编写环境</a>——用sublime看这个视频基本就够了</li>
+<li><a href="https://www.bilibili.com/video/BV1JE411K7ij" target="_blank" rel="noopener">为VSCode配置LaTex编译环境(TeXLive)</a></li>
+</ul>
+<hr>
+<h1 id="vscode其他配置"><a class="markdownIt-Anchor" href="#vscode其他配置"></a> VsCode其他配置</h1>
+<blockquote>
+<p>不准备单独再开一篇文章介绍我怎么配置的了， 就在此篇文章里略微提及下把。</p>
+</blockquote>
+<p>首先是插件介绍：</p>
+<ul>
+<li>Code run</li>
+</ul>
+<blockquote>
+<p>能够让你的IDE基本上运行大多数代码，只好安装编程语言时Path设置正确，默认配置就可以直接运行。</p>
+<p>默认编译运行的快捷键是<code>ctrl + Alt + N</code>，由于之前用的都是Sublime， 里面编译是<code>Ctrl+B</code>， 因此用习惯后有点不想改就直接修改掉了。方法为：<code>Ctrl + Shift + P</code>打开输入框，输入<code>Keyboard Shortcuts</code>, 就会弹出目前所有的快捷键，然后再将原来的<code>Ctrl +B</code>的快捷键取消(直接输入<code>Ctrl +B</code>就能找到目前谁的快捷键是<code>Ctrl +B</code>)，然后再输入<code>Code run</code>，将其快捷键设置为<code>Ctrl +B</code>即可。</p>
+</blockquote>
+<p>在运行Python代码的过程中，一直报错: <code>The environment variable 'Path' seems to have some paths containing the '&quot;' character. The existence of such a character is known to have caused the Python extension to not load. If the extension fails to load please modify your paths to remove this '&quot;' character.</code>后来在找到<a href="https://blog.csdn.net/liao1049164366/article/details/102988435" target="_blank" rel="noopener">解决方案</a>😗* 是因为你在添加其他环境变量时，加了; 分号—&gt;删掉就好了**</p>
+<ul>
+<li>open in browser</li>
+</ul>
+<blockquote>
+<p>编写html页面调试时比较方便</p>
+</blockquote>
+<ul>
+<li>koroFileHeader</li>
+</ul>
+<blockquote>
+<p>自动生成头部注释和函数注释的，测试了一下，除了html以外基本上都能用，挺好使的。</p>
+</blockquote>
+<p>如果不满意默认配置， 可以自己再稍微调一调，展示下我的设置：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * @description: Latex相关配置</span><br><span class="line">     */    </span><br><span class="line">    "latex-workshop.showContextMenu":true, //右键菜单</span><br><span class="line">    // ...Latex的太多了, 就不一一展示了.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @description: koroFileHeader相关配置</span><br><span class="line">     * ctrl+alt+i,添加文件头注释, ctrl+alt+t,添加函数注释</span><br><span class="line">     * "Do not edit"的内容会自动添加</span><br><span class="line">     */</span><br><span class="line">    "fileheader.customMade": &#123;         //文件头部注释</span><br><span class="line">        "Author": "Mrli",</span><br><span class="line">        "Date": "Do not edit",              // 文件创建事件</span><br><span class="line">        "LastEditTime": "Do not edit",      // 文件最后编辑时间</span><br><span class="line">        "Description": "",</span><br><span class="line">    &#125;,</span><br><span class="line">    "fileheader.cursorMode": &#123;          // 函数注释 </span><br><span class="line">        "Author": "Mrli",</span><br><span class="line">        "Date": "Do not edit",              // 当前时间, 函数的开始编写、完成编写时间</span><br><span class="line">        "Description": "",</span><br><span class="line">        "param": "",</span><br><span class="line">        "return": "",</span><br><span class="line">    &#125;,</span><br><span class="line">    "editor.fontFamily": "Monaco, 'Courier New', monospace"</span><br><span class="line">&#125;// 好用插件推荐 https://blog.csdn.net/qq_41139830/article/details/85221330</span><br></pre></td></tr></table></figure>
+<p>用户对插件的自定义配置基本上都是写在这个settings.json下。当然，可以对某个项目单独设置配置，即会在项目文件夹下生成<code>.vscode</code>文件夹，里面会有个<code>settings.json</code>来进行配置.</p>
+<ul>
+<li>Bracket Pair Colorizer</li>
+</ul>
+<blockquote>
+<p>编写JS代码时我是感觉真的好用，JS里大括号和括号有时真的很难记得匹配次序。</p>
+</blockquote>
+<ul>
+<li>Anaconda Extension Pack</li>
+</ul>
+<blockquote>
+<p>就图他的关键字提醒补全。</p>
+</blockquote>
+<p>插件比较大， 安装了挺久的，好像还自带一个Python Extension插件。</p>
+<ul>
+<li>Autopep8</li>
+</ul>
+<p>测试自动规范代码(<code>Alt + Shift + F</code>)时，提示要安装Autopep8，那就安装咯。但这个应该只能算Python的插件，<code>python.exe -m pip install -U autopep8 --user</code></p>
+<ul>
+<li>
+<h3 id="path-autocomplete"><a class="markdownIt-Anchor" href="#path-autocomplete"></a> Path Autocomplete</h3>
+</li>
+</ul>
+<blockquote>
+<p>有时候程序需要读取文件，自己手动去复制文件路径还是比较麻烦的，不过有了这个插件就方便多了，它能自动感知当前目录下所有的文件，只需要你自己选择就好了。</p>
+</blockquote>
+<ul>
+<li>windows opacity</li>
+</ul>
+<blockquote>
+<p>设置窗口透明度的，一开始以为挺好用， 用了后发现自己还想不太喜欢， 真的是太透明了，可以设置0-255， 240我用着差不多。（0的话会消失的）</p>
+</blockquote>
+<p>还有些可以网上再找找，推个挺不错的博客： <a href="https://blog.csdn.net/hnshhshjq/article/details/80140401" target="_blank" rel="noopener">https://blog.csdn.net/hnshhshjq/article/details/80140401</a></p>
+<hr>
+<p>快捷键: <a href="https://www.cnblogs.com/schut/p/10461840.html" target="_blank" rel="noopener">https://www.cnblogs.com/schut/p/10461840.html</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/03/23/VsCode配置Latex(texLive)环境/">https://nymrli.top/2020/03/23/VsCode配置Latex(texLive)环境/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2020/03/04/算法笔记Codeup题解/" title="算法笔记Codeup题解"><span>NextPost ></span><br><span class="nextTitle">算法笔记Codeup题解</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'VsCode配置Latex(texLive)环境',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装texlive"><span class="toc-number">1.</span> <span class="toc-text"> 安装Texlive</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装vscode"><span class="toc-number">2.</span> <span class="toc-text"> 安装VsCode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装vscode中latex插件-latex-workshop"><span class="toc-number">3.</span> <span class="toc-text"> 安装VsCode中Latex插件—— LaTeX Workshop</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置latex-workshop-插件"><span class="toc-number">3.1.</span> <span class="toc-text"> 配置LaTeX Workshop 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#正向搜索"><span class="toc-number">3.1.0.1.</span> <span class="toc-text"> 正向搜索</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反向搜索"><span class="toc-number">3.1.0.2.</span> <span class="toc-text"> 反向搜索</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他设置"><span class="toc-number">3.1.0.3.</span> <span class="toc-text"> 其他设置</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vscode其他配置"><span class="toc-number">4.</span> <span class="toc-text"> VsCode其他配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#path-autocomplete"><span class="toc-number">4.0.1.</span> <span class="toc-text"> Path Autocomplete</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,3 +1,4 @@
+https://nymrli.top/2020/03/23/VsCode配置Latex(texLive)环境/
 https://nymrli.top/2020/03/04/算法笔记Codeup题解/
 https://nymrli.top/2020/02/03/学会投资——做一个小小的股民/
 https://nymrli.top/2020/02/02/PAT冲冲冲——乙级/
@@ -47,4 +48,3 @@ https://nymrli.top/2019/09/09/强化学习——QLearning/
 https://nymrli.top/2019/08/30/机器学习——决策树/
 https://nymrli.top/2019/08/30/Sklearn——决策树/
 https://nymrli.top/2019/08/30/ACM-博弈论/
-https://nymrli.top/2019/08/30/Linux三剑客/

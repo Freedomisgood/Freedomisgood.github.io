@@ -1,0 +1,344 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>重拾Java笔记 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">重拾Java笔记</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/05/15</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,380</span> | Reading time: <span class="post-count">12</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="重拾java笔记"><a class="markdownIt-Anchor" href="#重拾java笔记"></a> 重拾Java笔记</h1>
+<blockquote>
+<p>根据<a href="http://www.monkey1024.com/javaseroute" target="_blank" rel="noopener">小猴子1024-JAVA基础</a>整理笔记</p>
+</blockquote>
+<h2 id="class与文件名"><a class="markdownIt-Anchor" href="#class与文件名"></a> class与文件名:</h2>
+<blockquote>
+<p>在一个Java文件里面，可以声明多个class，但是只能声明一个public class</p>
+</blockquote>
+<ul>
+<li>如果使用class来声明类，文件名可以是任何合法的文件名称，文件名不需要和Class类一致</li>
+<li>如果采用public class来声明class，那么文件名必须和类名一致</li>
+</ul>
+<p>结论: 使用javac命令所编译出的<strong>class文件</strong>的名称<strong>跟java的文件名没有关系</strong>，而是<strong>跟类名一致</strong>。</p>
+<h2 id="函数传参"><a class="markdownIt-Anchor" href="#函数传参"></a> 函数传参:</h2>
+<ul>
+<li>如果参数是基本数据类型, 是会生成一个新的形参</li>
+<li>如果参数是引用数据类型(不包括封装数据类型), 那么会生成该对象的引用（类、 接口类型、 <u>数组类型</u>、 枚举类型、 注解类型、 字符串型）==&gt;引用数据类型变量，调用方法时作为参数是按<strong>引用传递</strong>的</li>
+</ul>
+<p>参看: <a href="https://www.cnblogs.com/maskwolf/p/9972982.html" target="_blank" rel="noopener">Java中的基本数据类型和引用数据类型的区别</a></p>
+<h2 id="代码块的分类"><a class="markdownIt-Anchor" href="#代码块的分类"></a> 代码块的分类</h2>
+<p>使用{}括起来的代码被称为代码块，根据其位置和声明的不同可以分为下面4种：</p>
+<ul>
+<li><strong>局部代码块</strong>，在方法中出现，限定变量生命周期，及早释放，提高内存利用率</li>
+<li><strong>构造代码块</strong>，在类中方法外出现；多个构造方法方法中相同的代码存放到一起，每次调用构造都执行，并且在构造方法前执行</li>
+<li><strong>静态代码块</strong>， 在类中方法外出现，并加上static修饰；用于给<strong>类进行初始化，在加载的时候就执行</strong>，并且只执行一次。一般用于加载驱动。</li>
+<li><strong>同步代码块</strong>(后面多线程部分会讲解)</li>
+</ul>
+<h3 id="执行顺序"><a class="markdownIt-Anchor" href="#执行顺序"></a> 执行顺序:</h3>
+<p>1.<strong>静态代码块</strong>，随着类加载而加载,且只执行一次<br>
+2.<strong>构造代码块</strong>，每创建一个对象就会执行一次，优先于构造方法执行<br>
+3.<strong>构造方法</strong>，每创建一个对象就会执行一次</p>
+<h2 id="this指针"><a class="markdownIt-Anchor" href="#this指针"></a> this指针</h2>
+<p>▲注意点: 在构造函数中调用该对象的另一个构造方法时,  this(实参)必须写在最前面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//构造方法</span><br><span class="line">//需求：在创建日期对象的时候，默认的日期是:1970-1-1</span><br><span class="line">MyDate()&#123;</span><br><span class="line">    //通过this调用有参的构造方法</span><br><span class="line">    this(1970,1,1);//必须出现在第一行，否则将编译报错</span><br><span class="line">    //构造方法不能这样调用</span><br><span class="line">    //MyDate(1970,1,1);Error</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="继承问题"><a class="markdownIt-Anchor" href="#继承问题"></a> 继承问题：</h2>
+<p>静态代码块Fu<br>
+静态代码块Zi<br>
+构造代码块Fu<br>
+构造方法Fu<br>
+构造代码块Zi<br>
+构造方法Zi</p>
+<p>分析：<br>
+1.系统将Fu.class和Zi.class分别加载到方法区的内存里面，<strong>静态代码</strong>会随着.class文件一块<strong>加载到方法区</strong>里面，所以先打印出了静态代码块中的内容。<br>
+2.<strong>构造代码块优先于构造方法执行</strong>，父类初始化之前，所以打印出父类中的构造代码块和构造方法中的内容。</p>
+<h2 id="多态"><a class="markdownIt-Anchor" href="#多态"></a> 多态：</h2>
+<blockquote>
+<p>在工作当中尽量面向抽象编程，不要面向具体编程，即合理利用多态——<strong>SOLID原则</strong>中依赖倒置：高层模块不应该依赖低层模块，二者都应该依赖其抽象；抽象不应该依赖细节；细节应该依赖抽象。换言之，要针对接口编程，而不是针对实现编程。</p>
+</blockquote>
+<p><strong>多态的优点</strong></p>
+<ul>
+<li>提高程序的扩展性</li>
+<li>降低代码之间的耦合</li>
+</ul>
+<p><strong>用法</strong></p>
+<ul>
+<li>向上转型：上面代码中子类向父类型进行转换，是<strong>自动类型转换</strong>。</li>
+<li>向下转型： 父类向子类型转换，是<strong>强制类型转换</strong>。</li>
+</ul>
+<h2 id="重写"><a class="markdownIt-Anchor" href="#重写"></a> 重写</h2>
+<p>重写，也叫做覆盖，当父类中的方法无法满足子类需求时，子类可以将父类的方法进行重写编写来满足需求。比如孩子继承了父亲的房子，可以将房子重新装修。<br>
+方法重写的条件：</p>
+<ul>
+<li>两个类必须是继承关系</li>
+<li>必须具有相同的方法名，相同的返回值类型，相同的参数列表.</li>
+<li>重写的方法不能比被重写的方法拥有更低的访问权限。</li>
+<li>重写的方法不能比被重写的方法抛出更宽泛的异常。(关于异常后面的章节再讲。)</li>
+<li>私有的方法不能被重写。</li>
+<li>构造方法无法被重写，因为构造方法无法被继承。</li>
+<li>静态的方法不存在重写。</li>
+<li>重写指的是成员方法，和成员变量无关。</li>
+</ul>
+<h2 id="super关键字"><a class="markdownIt-Anchor" href="#super关键字"></a> Super关键字:</h2>
+<p>什么时候使用super？</p>
+<ul>
+<li>子类和父类中都有某个数据，例如，子类和父类中都有name这个属性。如果要再子类中访问父类中的name属性，需要使用super。例1</li>
+<li>子类重写了父类的某个方法（假设这个方法名叫m1），如果在子类中需要调用父类中的m1方法时，需要使用super。例1</li>
+<li>子类调用父类中的构造方法时，需要使用super。</li>
+</ul>
+<h2 id="object类之finalize方法"><a class="markdownIt-Anchor" href="#object类之finalize方法"></a> Object类之finalize方法</h2>
+<blockquote>
+<p>java对象如果没有更多的引用指向它（引用技术），则该java对象成为垃圾数据，等待垃圾回收器的回收，垃圾回收器在回收这个java对象之前会自动调用该对象的finalize方法==&gt;可以理解为解析函数</p>
+</blockquote>
+<h2 id="访问控制权限"><a class="markdownIt-Anchor" href="#访问控制权限"></a> 访问控制权限</h2>
+<p><strong>方法访问控制权限</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>修饰词</strong></th>
+<th><strong>本类</strong></th>
+<th><strong>同一个包的类</strong></th>
+<th><strong>子类</strong></th>
+<th><strong>任何地方</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>default（默认）</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+</tr>
+<tr>
+<td>public</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+<p><strong>方法访问控制权限</strong></p>
+<p>▲。注意以上对类的修饰只有：public和default，内部类除外</p>
+<p>priavte和public都比较好理解和记忆，这里就不演示了，主要演示一下不同包下的两个具有父子关系的类里面使用protected和default的区别。</p>
+<h3 id="构造函数的权限问题"><a class="markdownIt-Anchor" href="#构造函数的权限问题"></a> 构造函数的权限问题:</h3>
+<p>public是一个<a href="https://www.baidu.com/s?wd=%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90&amp;tn=SE_PcZhidaonwhc_ngpagmjz&amp;rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">访问权限</a>（访问修复饰符）。一般<a href="https://www.baidu.com/s?wd=%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0&amp;tn=SE_PcZhidaonwhc_ngpagmjz&amp;rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">构造函数</a>可加可不加public。</p>
+<ul>
+<li>如果加上制public,就代表此类可以对外开放,其他的类可以继承它,外部也可以实例化该对象。</li>
+<li>如果不加public,则默认的修饰词是default,表示可以被这个类的子类或者和这个类同包的类调用。</li>
+</ul>
+<p>除了这两个,你还可以添加private和default</p>
+<h2 id="final关键字"><a class="markdownIt-Anchor" href="#final关键字"></a> <strong>Final关键字:</strong></h2>
+<blockquote>
+<p>特点为确定不可变</p>
+</blockquote>
+<ul>
+<li>final修饰的类无法被继承。</li>
+<li>final修饰的方法无法被重写。</li>
+<li>final修饰的局部变量，一旦赋值，不可再改变。</li>
+<li>final修饰的成员变量必须初始化值。</li>
+</ul>
+<h2 id="static关键字"><a class="markdownIt-Anchor" href="#static关键字"></a> static关键字</h2>
+<h3 id="static的作用"><a class="markdownIt-Anchor" href="#static的作用"></a> static的作用</h3>
+<ul>
+<li>static可以修饰变量，被static修饰的变量叫做静态变量，<u>静态变量在类加载阶段赋值，并且只赋值一次</u>。请看例1</li>
+<li>static可以修饰方法，被static修饰的方法叫做静态方法，<strong>不用创建对象就能能直接访问该方法</strong>，即使用类名.静态方法名的方式。静态方法不能访问非静态的数据，静态方法不能使用this。请看例2</li>
+<li>static可以定义静态语句块，<u>静态语句块在类加载阶段执行，并且只执行一次，并且是自上而下的顺序执行，在构造方法之前执行</u>。请看例3</li>
+</ul>
+<p>static修饰的变量、方法、代码块都是隶属于**类(class)**级别的,跟对象无关。某一类物体如果可以被多个其他物体所共享，那么可以将这类物体使用static修饰。<br>
+比如wifi，多个人可以共同使用同一个wifi，所以wifi可以使用static修饰。手机是每人使用自己的，就不能用static修饰。</p>
+<h2 id="抽象类的特点"><a class="markdownIt-Anchor" href="#抽象类的特点"></a> 抽象类的特点</h2>
+<ul>
+<li>抽象类无法被实例化，无法创建抽象类的对象。</li>
+<li>虽然抽象类没有办法实例化，但是<strong>抽象类也有构造方法</strong>，该构造方法是给子类创建对象用的。这也算是多态的一种。</li>
+<li>抽象类中不一定有抽象方法，但抽象方法必须出现在抽象类中。</li>
+<li>抽象类中的子类可以是抽象类，如果不是抽象类的话必须对抽象类中的抽象方法进行重写。</li>
+<li>抽象类和抽象方法不能被final修饰</li>
+</ul>
+<h2 id="接口"><a class="markdownIt-Anchor" href="#接口"></a> 接口：</h2>
+<ul>
+<li>接口中只能出现常量和抽象方法（jdk8之后可以有default方法）</li>
+<li>接口里面<strong>没有构造方法</strong>，无法创建接口的对象</li>
+<li>接口和接口之间支持多继承，即一个接口可以有多个父接口</li>
+<li>一个类可以实现多个接口，即一个类可以有多个父接口</li>
+<li>一个类如果实现了接口，那么这个类需要重写接口中所有的抽象方法（建议），如果不重写则这个类需要声明为抽象类（不建议）</li>
+</ul>
+<h2 id="equals"><a class="markdownIt-Anchor" href="#equals"></a> equals</h2>
+<blockquote>
+<p>== 两边如果是引用类型，则比较内存地址，地址相同则是true,反之则false.</p>
+</blockquote>
+<ul>
+<li>Object中的equals方法比较的是两个引用的内存地址。</li>
+<li>但是在现实的业务逻辑当中，不应该比较内存地址，<strong>应该比较地址里面的内容</strong>，所以需要对equals方法进行重写。</li>
+</ul>
+<p>==&gt;▲注意：在使用自己创建的类进行equals比较时，一定要先重写equals方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据需求规定重写equals方法</span></span><br><span class="line"><span class="comment">//s1.equals(s2);</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>==obj)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> Star)&#123;</span><br><span class="line">        Star s = (Star)obj;</span><br><span class="line">        <span class="keyword">if</span>(s.id == id &amp;&amp; s.name.equals(name))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="内部类的分类"><a class="markdownIt-Anchor" href="#内部类的分类"></a> 内部类的分类</h2>
+<p>内部类，顾名思义就是在一个类的内部声明一个类。内部类主要分为：</p>
+<ul>
+<li>静态内部类</li>
+<li>匿名内部类</li>
+<li>成员内部类</li>
+<li>局部内部类</li>
+</ul>
+<h2 id="异常的分类"><a class="markdownIt-Anchor" href="#异常的分类"></a> 异常的分类</h2>
+<blockquote>
+<p>异常: 指的是程序在执行过程中，出现的非正常的情况，最终会导致JVM的非正常停止——JVM处理异常的方式是中断处理。</p>
+</blockquote>
+<p>异常主要分为：Error、一般性异常、RuntimeException</p>
+<ul>
+<li>Error(强制中断错误)：如果程序出现了Error，那么将无法恢复，只能重新启动程序，最典型的Error的异常是：OutOfMemoryError</li>
+<li>Exception（一般性异常（<strong>编译时</strong>异常）：出现了这种异常必须在程序里面显示的处理，否则程序无法编译通过</li>
+<li>RuntimeException（<strong>运行时</strong>异常）：此种异常可以不用显示的处理，例如被0除异常，java没有要求我们一定要处理。</li>
+</ul>
+<p><img src="http://www.monkey1024.com/wp-content/uploads/2017/04/1%E5%BC%82%E5%B8%B8%E7%BB%A7%E6%89%BF%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt="å¼å¸¸ç»§æ¿ç»æå¾"></p>
+<h3 id="jvm是如何处理异常的"><a class="markdownIt-Anchor" href="#jvm是如何处理异常的"></a> JVM是如何处理异常的</h3>
+<ul>
+<li>main方法自己将该问题处理,然后继续运行</li>
+<li>自己没有针对的处理方式,只有交给调用main的jvm来处理，jvm有一个默认的异常处理机制。例如上面出现的ArithmeticException，jvm在控制台里面打印出来了异常信息。</li>
+</ul>
+<p>大致流程: native method自己解决-&gt;交给Main解决-&gt;交给JVM解决</p>
+<p>更好的讲解: <a href="https://www.bilibili.com/video/BV1A4411K7Gx?p=282" target="_blank" rel="noopener">B站视频</a></p>
+<h3 id="throw和throws"><a class="markdownIt-Anchor" href="#throw和throws"></a> throw和throws</h3>
+<p>throws</p>
+<ul>
+<li>用在方法声明后面，跟的是<strong>异常类名</strong>    <code>public void m1() throws Exception</code></li>
+<li>可以跟多个异常类名，用逗号隔开</li>
+<li>表示抛出异常，由<strong>该方法的调用者来处理</strong> (<strong>向上抛出指定异常</strong>)</li>
+</ul>
+<p>throw</p>
+<ul>
+<li>用在方法体内，跟的是<strong>异常对象名</strong>    ==&gt; <code>throw new Exception()</code></li>
+<li>只能抛出一个异常对象名</li>
+<li>表示抛出异常，由方法体内的语句处理，<strong>需要直接在此处解决异常</strong>(在当前语句抛出指定异常)</li>
+</ul>
+<h3 id="自定义异常"><a class="markdownIt-Anchor" href="#自定义异常"></a> 自定义异常</h3>
+<p>1.自定义异常类一般都是以Exception结尾，说明该类是一个异常类<br>
+2.自定义异常类，必须的继承Exception或者RuntimeException<br>
+- 继承Exception：那么自定义的异常类就是一个编译期异常，如果方法内部抛出了编译期异常，就必须处理这个异常，要么throws，要么try…catch<br>
+- 继承RuntimeException：那么自定义的异常类就是一个运行期异常，无需处理，交给虚拟机处理（中断处理）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyException</span> <span class="keyword">extends</span> <span class="title">Exception</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加一个空参数的构造方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyException</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加一个带异常信息的构造方法</span></span><br><span class="line"><span class="comment">     * 查看源码发现，所有的异常类都会有一个带异常信息的构造方法，方法内部会调用父类带异常信息的构造方法，让父类来处理这个异常信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyException</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="字符串的不可变性"><a class="markdownIt-Anchor" href="#字符串的不可变性"></a> 字符串的不可变性</h2>
+<h3 id="string类不能被继承"><a class="markdownIt-Anchor" href="#string类不能被继承"></a> String类不能被继承</h3>
+<p>通过源码可以看到String类前面加了final修饰，因此String类是不能够被继承的。将其设置为不能被继承的原因是为了减少歧义。</p>
+<h3 id="字符串string的不可变性"><a class="markdownIt-Anchor" href="#字符串string的不可变性"></a> 字符串（String）的不可变性</h3>
+<p>String创建好之后值是不可以被改变的，这里指的是<strong>在堆中的字符串的值</strong>是不可以被改变。</p>
+<p>String不可变的主要原因是其底层使用了一个final修饰的byte数组(jdk9之后版本中)，final修饰的变量是不能被改变的。在jdk8版本中，String底层使用的是final修饰的char数组。这个版本之间的变化。</p>
+<h3 id="字符串常量池"><a class="markdownIt-Anchor" href="#字符串常量池"></a> 字符串常量池</h3>
+<p>我们声明的字符串会放到一个叫做字符串常量池的地方，这样可以减少内存的使用，字符串常量池是堆的一部分。</p>
+<p>详细请看: <a href="http://www.monkey1024.com/javase/481" target="_blank" rel="noopener">http://www.monkey1024.com/javase/481</a></p>
+<p><img src="/2020/05/15/重拾Java笔记/JVM%E5%86%85%E5%AD%98%E5%9B%BE.png" alt="JVM内存图"></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/05/15/重拾Java笔记/">https://nymrli.top/2020/05/15/重拾Java笔记/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2020/05/15/IDEA配置——自定义快捷键、生成注释/" title="IDEA配置——自定义快捷键、生成注释"><span>< PreviousPost</span><br><span class="prevTitle">IDEA配置——自定义快捷键、生成注释</span></a><a class="nextSlogan" href="/2020/04/29/华为春招4-29笔试题/" title="华为春招4.29笔试题"><span>NextPost ></span><br><span class="nextTitle">华为春招4.29笔试题</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '重拾Java笔记',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#重拾java笔记"><span class="toc-number">1.</span> <span class="toc-text"> 重拾Java笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#class与文件名"><span class="toc-number">1.1.</span> <span class="toc-text"> class与文件名:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数传参"><span class="toc-number">1.2.</span> <span class="toc-text"> 函数传参:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码块的分类"><span class="toc-number">1.3.</span> <span class="toc-text"> 代码块的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#执行顺序"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 执行顺序:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this指针"><span class="toc-number">1.4.</span> <span class="toc-text"> this指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继承问题"><span class="toc-number">1.5.</span> <span class="toc-text"> 继承问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态"><span class="toc-number">1.6.</span> <span class="toc-text"> 多态：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重写"><span class="toc-number">1.7.</span> <span class="toc-text"> 重写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#super关键字"><span class="toc-number">1.8.</span> <span class="toc-text"> Super关键字:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#object类之finalize方法"><span class="toc-number">1.9.</span> <span class="toc-text"> Object类之finalize方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问控制权限"><span class="toc-number">1.10.</span> <span class="toc-text"> 访问控制权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数的权限问题"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 构造函数的权限问题:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#final关键字"><span class="toc-number">1.11.</span> <span class="toc-text"> Final关键字:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#static关键字"><span class="toc-number">1.12.</span> <span class="toc-text"> static关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#static的作用"><span class="toc-number">1.12.1.</span> <span class="toc-text"> static的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类的特点"><span class="toc-number">1.13.</span> <span class="toc-text"> 抽象类的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口"><span class="toc-number">1.14.</span> <span class="toc-text"> 接口：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#equals"><span class="toc-number">1.15.</span> <span class="toc-text"> equals</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内部类的分类"><span class="toc-number">1.16.</span> <span class="toc-text"> 内部类的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常的分类"><span class="toc-number">1.17.</span> <span class="toc-text"> 异常的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jvm是如何处理异常的"><span class="toc-number">1.17.1.</span> <span class="toc-text"> JVM是如何处理异常的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#throw和throws"><span class="toc-number">1.17.2.</span> <span class="toc-text"> throw和throws</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义异常"><span class="toc-number">1.17.3.</span> <span class="toc-text"> 自定义异常</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串的不可变性"><span class="toc-number">1.18.</span> <span class="toc-text"> 字符串的不可变性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#string类不能被继承"><span class="toc-number">1.18.1.</span> <span class="toc-text"> String类不能被继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串string的不可变性"><span class="toc-number">1.18.2.</span> <span class="toc-text"> 字符串（String）的不可变性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串常量池"><span class="toc-number">1.18.3.</span> <span class="toc-text"> 字符串常量池</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

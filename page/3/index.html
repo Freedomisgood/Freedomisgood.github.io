@@ -220,39 +220,7 @@ A:时间序列分析尝试找出序列值在过去呈现的特征模式，假定
 对于一个随机变量X(t)（t=1，2，3……），如果是由一个不相关的随机变量的序列构成的，即对于所有s不等于t，随机变量X(t)和X(s)的协方差为零，则称其为纯随机过程。对于一个纯随机过程来说，若其期望为0，方差为常数，则称之为白噪声过程。
  白噪声:
 白噪声序列，是指白噪声过程的样本实称，简称白噪声[1]。白噪声是**在较宽的频率范围内，各等带宽的频带所含的噪声能量相等的噪声**[2]，是一种功率频谱密度为常数的随机信号或随机过程，也就是说，此信号在各个频段上的功率是一样的。
-理想的白噪声具有无限的带宽，因而其能量无限大，但这是不可能实际存在的，所以， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/26/Vim记忆/">Vim记忆</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-26T02:34:34.000Z">2019-07-26</time><i class="fa fa-edit"></i><time datetime="2019-07-26T02:34:34.000Z">2019-09-15</time></div><div class="recent-post-content"> VIM记忆技巧
- 增
-
-i(insert)
-I最前面insert
-a(append)
-A最后面append
-o(open a line)往下开启一行
-O往上开启一行
-
- 删
-
-d（delete）
-dw（delet word）
-dd（删除一行）
-x（删除一个字符）
-
- 拓展
-
-diw(delete inner word)
-daw(delete around word)
-
- 改
-
-c（change）
-ciw（change inner word）
-ci&quot;(change inner &quot;)
-ct）修改到右括号
-
- 查
-
-fs(find s) 跳到本行第一个s字符
-/往后查找,如/x ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/07/26/Vim记忆/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Sklearn——决策树/">Sklearn——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:43:27.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:43:27.000Z">2019-09-15</time></div><div class="recent-post-content"> Sklearn——决策树
+理想的白噪声具有无限的带宽，因而其能量无限大，但这是不可能实际存在的，所以， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Sklearn——决策树/">Sklearn——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:43:27.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:43:27.000Z">2019-09-15</time></div><div class="recent-post-content"> Sklearn——决策树
 
 注明：转载自Jack Gui的博客
 
@@ -340,7 +308,19 @@ sed -n '22,$p' test
 1.可以登录https://github.com/letsencrypt/letsencrypt，下载后通过lrzsz传到云服务器上，再解压
 2.修改hosts
 查找域名对应的ip地址，并修改hosts文件
-123456789101112131415linuxidc@linuxidc:~/linu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/CDN加速个人博客——又拍云/">CDN加速个人博客——又拍云</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-15</time></div><div class="recent-post-content"> CDN加速个人博客——又拍云
+123456789101112131415linuxidc@linuxidc:~/linu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/Java自动化构建工具——Maven/">Java自动化构建工具——Maven</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:50.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:50.000Z">2019-09-15</time></div><div class="recent-post-content"> Java自动化构建工具——Maven
+ 目前的技术在开发中存在的问题、Maven作用
+①一个项目就是一个工程
+
+如果项目非常庞大，就不适合继续使用package来划分模块。最好是每一个模块对应一个工程，利于分工协作。
+
+△借助于Maven就可以将一个项目拆分成多个工程。
+②项目中需要的jar包必须手动“复制”、“粘贴”到WEB-INF/lib目录下
+
+带来的问题是：同样的jar包文件重复出现在不同的项目工程中，一方面浪费存储空间，另外也让工程比较臃肿。
+
+△借助Maven，可以将jar包仅仅保存在“仓库”中，有需要使用的工程“引用”这个文件接口，并不需要真的把jar包复制过来。
+③jar包需 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/Java自动化构建工具——Maven/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/CDN加速个人博客——又拍云/">CDN加速个人博客——又拍云</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-15</time></div><div class="recent-post-content"> CDN加速个人博客——又拍云
 
 CDN(Content Delivery Network)内容发布网络，基本思路就是将你网站放置在各地节点服务器，用户访问时找最近的节点服务器获取数据，达到加速的目的。
 

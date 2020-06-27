@@ -21,6 +21,7 @@ https://nymrli.top/2019/11/24/Python网络编程Websocket/
 https://nymrli.top/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/
 https://nymrli.top/2019/10/18/软件测试笔记/
 https://nymrli.top/2019/10/15/玩玩Stm32/
+https://nymrli.top/2019/10/07/蒙特卡洛树搜索MCTS/
 https://nymrli.top/2019/10/06/Python多进程/
 https://nymrli.top/2019/10/06/Openmv使用/
 https://nymrli.top/2019/10/03/TD-afterstate/
@@ -47,4 +48,3 @@ https://nymrli.top/2019/09/09/强化学习——QLearning/
 https://nymrli.top/2019/08/30/机器学习——决策树/
 https://nymrli.top/2019/08/30/Sklearn——决策树/
 https://nymrli.top/2019/08/30/ACM-博弈论/
-https://nymrli.top/2019/08/30/Linux三剑客/

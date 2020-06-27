@@ -119,7 +119,19 @@ numpy.random.choice(a, size=None, replace=True, p=None)
 
 a : 如果是一维数组，就表示从这个一维数组中随机采样；如果是int型，就表示从0到a-1这个序列中随机采样。
 size : 采样结果的数量，默认为1.可以是整数，表示要采样的数量；也可以为tuple，如(m, n, k)，则要采样的数量为m * n * k，size为(m, n, k)
-replace : boolean型，采样的样本是否要更换？这个地方我不太理解，测了一下发现replace指定为True时，采样的元素会有重复； ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/28/numpy使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/">第二十八届“和巨耀通杯”南京邮电大学在线测评系统程序设计邀请赛--</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-17T09:43:56.000Z">2019-11-17</time><i class="fa fa-edit"></i><time datetime="2019-11-17T09:43:56.000Z">2019-11-17</time></div><div class="recent-post-content"> 第二十八届“和巨耀通杯”NOJ邀请赛
+replace : boolean型，采样的样本是否要更换？这个地方我不太理解，测了一下发现replace指定为True时，采样的元素会有重复； ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/28/numpy使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/07/蒙特卡洛树搜索MCTS/">蒙特卡洛树搜索MCTS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-07T09:18:02.000Z">2019-10-07</time><i class="fa fa-edit"></i><time datetime="2019-10-07T09:18:02.000Z">2019-11-26</time></div><div class="recent-post-content"> 蒙特卡洛树搜索MCTS
+ 跟围棋的关联
+ AlphaGo Zero
+
+蒙特卡洛树搜索——内含用于树遍历的 PUCT 函数的某些变体
+残差卷积神经网络——其中的策略和价值网络被用于评估棋局，以进行下一步落子位置的先验概率估算。
+强化学习——通过自我对弈进行神经网络训练
+
+AlphaGo Zero跟AlphaGo的最大区别是抛弃人类棋谱的，完全通过自我对弈来学会下棋的，并且仅用40小时就到达了AlphaGo的棋力。
+过程是这样，首先生成棋谱，然后将棋谱作为输入训练神经网络，训练好的神经网络用来预测落子和胜率。如下图：
+
+在AlphaGo Zero中蒙特卡洛树搜索主要是用来生成棋谱的
+ 蒙特卡洛树 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/10/07/蒙特卡洛树搜索MCTS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/">第二十八届“和巨耀通杯”南京邮电大学在线测评系统程序设计邀请赛--</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-17T09:43:56.000Z">2019-11-17</time><i class="fa fa-edit"></i><time datetime="2019-11-17T09:43:56.000Z">2019-11-17</time></div><div class="recent-post-content"> 第二十八届“和巨耀通杯”NOJ邀请赛
 
 三人团队赛， 正好最近在刷PTA， 于是一个人报名尝试了一下。
 一共AC了三题， Rank28
@@ -289,16 +301,4 @@ A记录设置技巧
 
  S弯道：
 
-确保人在路中间，可以略微偏左。左边小镜子底座压住右边黄线。方向盘一圈右手放在2点方向。如果黄线偏下，那么往1点方向调整，否则往3点 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/14/如何成为一位老司机——考驾照经历/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/Java自动化构建工具——Maven/">Java自动化构建工具——Maven</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:50.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:50.000Z">2019-09-15</time></div><div class="recent-post-content"> Java自动化构建工具——Maven
- 目前的技术在开发中存在的问题、Maven作用
-①一个项目就是一个工程
-
-如果项目非常庞大，就不适合继续使用package来划分模块。最好是每一个模块对应一个工程，利于分工协作。
-
-△借助于Maven就可以将一个项目拆分成多个工程。
-②项目中需要的jar包必须手动“复制”、“粘贴”到WEB-INF/lib目录下
-
-带来的问题是：同样的jar包文件重复出现在不同的项目工程中，一方面浪费存储空间，另外也让工程比较臃肿。
-
-△借助Maven，可以将jar包仅仅保存在“仓库”中，有需要使用的工程“引用”这个文件接口，并不需要真的把jar包复制过来。
-③jar包需 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/Java自动化构建工具——Maven/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+确保人在路中间，可以略微偏左。左边小镜子底座压住右边黄线。方向盘一圈右手放在2点方向。如果黄线偏下，那么往1点方向调整，否则往3点 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/14/如何成为一位老司机——考驾照经历/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,4 +1,7 @@
+https://nymrli.top/2020/05/24/getBargains的record和Solution/
+https://nymrli.top/2020/05/15/IDEA配置——自定义快捷键、生成注释/
 https://nymrli.top/2020/04/29/华为春招4-29笔试题/
+https://nymrli.top/2020/03/23/VsCode配置Latex(texLive)环境/
 https://nymrli.top/2020/03/04/算法笔记Codeup题解/
 https://nymrli.top/2020/02/02/PAT冲冲冲——乙级/
 https://nymrli.top/2019/12/25/sshpass——shell脚本实现SSH连接其他主机并执行终端命令/
@@ -45,6 +48,3 @@ https://nymrli.top/2019/08/30/机器学习——决策树/
 https://nymrli.top/2019/08/30/Sklearn——决策树/
 https://nymrli.top/2019/08/30/ACM-博弈论/
 https://nymrli.top/2019/08/30/Linux三剑客/
-https://nymrli.top/2019/08/30/2019-6月编程笔记/
-https://nymrli.top/2019/08/30/Python爬虫常规流程/
-https://nymrli.top/2019/08/30/Word2016配置使用MathType/

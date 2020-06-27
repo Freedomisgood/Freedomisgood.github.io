@@ -100,7 +100,11 @@
   .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a class="fa fa-toggle-up stick-top" href="/2019/01/19/每日codewars/">每日codewars</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-19T12:47:50.000Z">2019-01-19</time><i class="fa fa-edit"></i><time datetime="2019-01-19T12:47:50.000Z">2019-09-15</time></div><div class="recent-post-content"> Codewars
  12.17
  Sum without highest and lowest number
-1234567891011121314151617181920212223242526272829#include&lt;vector&gt;#include&lt;algorithm&gt;#include &lt;iostream&gt;using namespace std;int sum(vector&lt;int&gt; numbers)&#123;    /*    Sum without highest and lowest number    &#123; 6, 2, ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a></div><div class="read-more"><a class="more" href="/2019/01/19/每日codewars/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/17/git使用/">git基础知识</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-17T12:43:43.000Z">2019-01-17</time><i class="fa fa-edit"></i><time datetime="2019-01-17T12:43:43.000Z">2019-12-23</time></div><div class="recent-post-content"> 概念
+1234567891011121314151617181920212223242526272829#include&lt;vector&gt;#include&lt;algorithm&gt;#include &lt;iostream&gt;using namespace std;int sum(vector&lt;int&gt; numbers)&#123;    /*    Sum without highest and lowest number    &#123; 6, 2, ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a></div><div class="read-more"><a class="more" href="/2019/01/19/每日codewars/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/28/数据结构实验4——各种内排序算法的实现及性能比较/">数据结构实验4——各种内排序算法的实现及性能比较</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-28T11:20:19.000Z">2018-12-28</time><i class="fa fa-edit"></i><time datetime="2018-12-28T11:20:19.000Z">2020-04-28</time></div><div class="recent-post-content"> 部分代码
+ 辅助函数
+1234567891011121314/**生成随机数**/void RandCreate(int *a)&#123;    int i;    for ( i = 0; i &lt; N; ++i)        a[i] = 1 + (rand()%1000);&#125;/***交换数组中,两个下标的值***/void Swap(int *a,int i,int j)&#123;    int tmp;    tmp = a[i];    a[i] = a[j];    a[j] = tmp;&#125;
+简单选择排序
+123456789/**简单选择排序**/v ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/12/28/数据结构实验4——各种内排序算法的实现及性能比较/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/17/git使用/">git基础知识</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-17T12:43:43.000Z">2019-01-17</time><i class="fa fa-edit"></i><time datetime="2019-01-17T12:43:43.000Z">2019-12-23</time></div><div class="recent-post-content"> 概念
  工作区:
 工作空间分为三个状态区:
 
@@ -122,140 +126,119 @@ Head指向的是当前版本(最新的提交)
 123sudo apt-get install nginx -ysudo /etc/init.d/nginx start #(start可以改成restart/stop)#或是sudo service nginx start
 然后浏览器输入服务器IP或是127.0.0.1,观察是否有welcom to nginx!
  安装py3和virtualenv
-12sudo apt-get install git python3 pyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a></div><div class="read-more"><a class="more" href="/2019/01/17/阿里云nginx-wsgi部署flask/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/19/河海大学AI-机器人冬令营/">河海大学AI+机器人冬令营(12-26)</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-19T14:31:19.000Z">2019-01-19</time><i class="fa fa-edit"></i><time datetime="2019-01-19T14:31:19.000Z">2019-09-15</time></div><div class="recent-post-content"> 河海大学AI+机器人冬令营(19-26)
- The First Day~19
-11:50和CXY从学校出发，坐地铁的途中感觉比想象中舒服多了，没有很多挤着急着回家的学生党。
- 宾馆打卡
-13:30到尚客优宾馆，环境挺好。还有个办公桌,很舒服。
-
-在房间里待到了大概3点，人都差不多到齐了以后，河海的负责人张老师带领我们去了河海大学。
- 校门口打卡
-
-计软院的副院长、该活动的负责人幽默、诙谐地给我讲了讲活动背景、及要求和合作的机器人公司优必选。
-下面是机器人表演舞蹈串烧的照片。关节自由多真的很多啊…很多很难的动作~
-
-介绍环节大约在4点就结束了。之后是在图书馆门口的签名墙上花费了巨大的时间，每个 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活小记"> 生活小记</a></div><div class="read-more"><a class="more" href="/2019/01/19/河海大学AI-机器人冬令营/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/28/数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现/">数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-28T11:35:38.000Z">2018-12-28</time><i class="fa fa-edit"></i><time datetime="2018-12-28T11:35:38.000Z">2019-09-15</time></div><div class="recent-post-content"> 二叉树的遍历及计算
+12sudo apt-get install git python3 pyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a></div><div class="read-more"><a class="more" href="/2019/01/17/阿里云nginx-wsgi部署flask/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/16/数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题/">数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-16T09:50:05.000Z">2018-12-16</time><i class="fa fa-edit"></i><time datetime="2018-12-16T09:50:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 实验3.图的基本运算及职能交通中的最佳路径选择问题
+ 3.2-邻接矩阵的DFS和BFS
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图论"> 图论</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="实验作业"> 实验作业</a></div><div class="read-more"><a class="more" href="/2018/12/16/数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/28/数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现/">数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-28T11:35:38.000Z">2018-12-28</time><i class="fa fa-edit"></i><time datetime="2018-12-28T11:35:38.000Z">2019-09-15</time></div><div class="recent-post-content"> 二叉树的遍历及计算
 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041051061071081091101111121131141151161171181191201211221231241251261271281291301311321 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/12/28/数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/28/数据结构实验1——线性表及多项式的运算/">数据结构实验1——线性表及多项式的运算</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-28T11:42:11.000Z">2018-12-28</time><i class="fa fa-edit"></i><time datetime="2018-12-28T11:42:11.000Z">2019-09-15</time></div><div class="recent-post-content"> 链表操作
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126#include &lt;stdio.h&gt; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/12/28/数据结构实验1——线性表及多项式的运算/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/22/基础网络知识/">基础网络知识</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-22T11:31:47.000Z">2019-01-22</time><i class="fa fa-edit"></i><time datetime="2019-01-22T11:31:47.000Z">2019-09-15</time></div><div class="recent-post-content"> 什么是客户端、服务器端?
- 客户端 :
-​	发送数据、接收返回数据端
- 服务器:
-​	处理数据端
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126#include &lt;stdio.h&gt; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/12/28/数据结构实验1——线性表及多项式的运算/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/16/数据结构——图/">数据结构——图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-16T03:41:46.000Z">2018-12-16</time><i class="fa fa-edit"></i><time datetime="2018-12-16T03:41:46.000Z">2019-09-15</time></div><div class="recent-post-content"> 数据结构——图
+ 连通图
 
- TCP :
-面向连接—&gt; 打电话(相互回复,一来一回)
-客户端向服务器端 拨号 , 三次握手 ,
- UDP :
-面向无连接 --&gt; 寄快递(寄出去就不管了).   比如 : 直播
- UDP四层结构
+无向图
+
+连通图 : 图中任意两点都连通
+连通:如果从v到w存在一条(无向)路径,则称v和w是连通的
+**路径:**V到w的路径是一系列顶点{V,v1,V2，vn,w}的集合,其中任一对相邻的顶点间都有图中的边。路径的长度是路径中的边数(如果带权,则是所有边的权重和)。如果v到w之间的所有顶点都不同,则称简单路径
+
+▲路径是边的超集,一条路径中可以有多条边
 
 
-网络访问层(链路层):  物理连接设备(网线)、MAC地址（物理地址）
+回路:起点等于终点的路径 ==&gt; 有回路的路径为非简单路径
 
 
-互联网层： IP地址（定位设备）
+有向图:
+
+强连通 : 有向图中顶点v和W之间存在双向路径,则称v和w是强连通的强连通图
+强连通图 : 有向图中任意两顶点均强连通强连通 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图论"> 图论</a></div><div class="read-more"><a class="more" href="/2018/12/16/数据结构——图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/26/南邮《信号与系统B》复习知识点大纲/">南邮《信号与系统B》复习知识点大纲</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-26T14:15:36.000Z">2018-12-26</time><i class="fa fa-edit"></i><time datetime="2018-12-26T14:15:36.000Z">2019-09-15</time></div><div class="recent-post-content"> 友情提示
+请将图片右键另存为，保存到本地放大查看。
+ 第一章
 
 
-传输层： port (端口号) : 表示通信进程,将数据交给哪个应用处理
+ 第二章
 
-
-应用层： 自己定义的协议（处理字符串消息的方法）
-
-
- port :
-知名端口 : 0 - ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/01/22/基础网络知识/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/17/前端Vue框架学习/">前端Vue框架学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-17T12:47:22.000Z">2019-01-17</time><i class="fa fa-edit"></i><time datetime="2019-01-17T12:47:22.000Z">2019-09-15</time></div><div class="recent-post-content"> 前端Vue框架学习(未完)
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2018/12/26/南邮《信号与系统B》复习知识点大纲/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/17/前端Vue框架学习/">前端Vue框架学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-17T12:47:22.000Z">2019-01-17</time><i class="fa fa-edit"></i><time datetime="2019-01-17T12:47:22.000Z">2019-09-15</time></div><div class="recent-post-content"> 前端Vue框架学习(未完)
  MVVM模型
  使用Vue的初次操作
  创建一个Vue实例
 123456var c = new Vue(&#123;			//初始化一个Vue对象    el: '#box',				//对象,后面跟的是选择器 el(是element缩写    data : &#123;				//数据成员,必须用关键字data        msg:'welcome'    &#125;&#125;)
  完整的html页面
-1234567891011121314151617181920212223&lt;html&gt;&lt;head&gt;    &lt;script s ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2019/01/17/前端Vue框架学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/中文Bois模式界面/">中文Bois模式界面</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T05:40:19.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T05:40:19.000Z">2019-09-15</time></div><div class="recent-post-content">暗夜精灵的Bois界面。觉得还挺友好的。
+1234567891011121314151617181920212223&lt;html&gt;&lt;head&gt;    &lt;script s ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2019/01/17/前端Vue框架学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/26/不蒜子统计阅读次数失效/">不蒜子统计阅读次数失效——Cxo主题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-26T00:57:37.000Z">2018-12-26</time><i class="fa fa-edit"></i><time datetime="2018-12-26T00:57:37.000Z">2019-09-15</time></div><div class="recent-post-content"> 官方通知
 
+12&gt; ！！！！2018年9月 - 重要提示 ！！！！大家好，因七牛强制过期原有的『dn-lbstatics.qbox.me』域名（预计2018年10月初），与客服沟通数次无果，即使我提出为此付费也不行，只能更换域名到『busuanzi.ibruce.info』！因我是最早的一批七牛用户，为七牛至少带来了数百个邀请用户，很痛心，很无奈！各位继续使用不蒜子提供的服务，只需把原有的：&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/ ...</div><div class="read-more"><a class="more" href="/2018/12/26/不蒜子统计阅读次数失效/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/">Ubuntu下Sublime配置python编译环境及新手使用指导</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-26T00:41:18.000Z">2018-12-26</time><i class="fa fa-edit"></i><time datetime="2018-12-26T00:41:18.000Z">2019-09-15</time></div><div class="recent-post-content">
+##Sublime下配置python编译环境及搭建虚拟环境:(windows下大致相同)
+ 1.编译环境配置
 
+2019-3-6更新教程，发现好像 官方网址打不开了，要改一下源才行。
+解决办法：
 
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/01/23/中文Bois模式界面/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/19/Typora可选选项/">Typora可选选项</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-19T12:51:11.000Z">2019-01-19</time><i class="fa fa-edit"></i><time datetime="2019-01-19T12:51:11.000Z">2019-09-15</time></div><div class="recent-post-content">用了这么久markdown才发现原来支持Latex的符号公式，但是在Typera中需要自行设置出来，文件--&gt;偏好设置--&gt;markdown拓展语法（内联公式）、代码块（显示行号）
+点击 Preferences -&gt; Settings -&gt; Preferences.sublime-Settings—— User(一个新窗口)
+添加配置**(在原有大括号{}里面添加**)：&quot;channels&quot;: [&quot;https://raw.githubusercontent.com/HBLong/channel_v3_daily/master/chan ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a></div><div class="read-more"><a class="more" href="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/19/Typora可选选项/">Typora可选选项</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-19T12:51:11.000Z">2019-01-19</time><i class="fa fa-edit"></i><time datetime="2019-01-19T12:51:11.000Z">2019-09-15</time></div><div class="recent-post-content">用了这么久markdown才发现原来支持Latex的符号公式，但是在Typera中需要自行设置出来，文件--&gt;偏好设置--&gt;markdown拓展语法（内联公式）、代码块（显示行号）
 
 Latex 公式：32​\frac{3}{2}​23​​
 带有行号的代码块
 
 12345#include &lt;stdio.h&gt;int main()&#123;    printf("hello world");    return 0;&#125;
 其他功能自行发现吧！_
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/01/19/Typora可选选项/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/Shell代码编写记录/">Shell代码编写记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T05:48:59.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T05:48:59.000Z">2019-09-15</time></div><div class="recent-post-content"> 随机选取端口
-12345# 随机设置代理和监控端口，允许每台机器有多个代理# 注意:$RANDOM返回一个从0到32767的值，端口&lt;= 1024保留给root用户# TODO:不是随机选择端口，而是绑定到可用端口export SPARK_SERVERPORT=$[$RANDOM + 1025]export SPARK_AGENTPORT=$[$RANDOM + 1025]
- 后台执行,获取其PID
-12345678rcssserver3d --agent-port $SPARK_AGENTPORT --server-port $SPARK_SERVERPORT &amp;# 将rcs ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Shell"> Shell</a></div><div class="read-more"><a class="more" href="/2019/01/23/Shell代码编写记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/Python中对时间戳、时间的处理/">Python中对时间戳、时间的处理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T02:17:34.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T02:17:34.000Z">2019-09-15</time></div><div class="recent-post-content"> Python中对时间戳、时间的处理
- time模块
- 获得时间戳
-123timestmamp = time.time()&gt;&gt;&gt; # 1548208280.4581678
- 将时间戳转换成时间
-12345678import timetimestamp = 1462451334timeArr = time.localtime(timestamp) # 转换成时间数组print(timeArr)# &gt;&gt;&gt;time.struct_time(tm_year=2016, tm_mon=5, tm_mday=5, tm_hour=20, tm_min=28, tm_se ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/01/23/Python中对时间戳、时间的处理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/Matlab基础教程/">Matlab基础教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T05:43:34.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T05:43:34.000Z">2019-09-15</time></div><div class="recent-post-content"> Matlab学习
-1234A = [1 3 5];max(A)ans =     5
-如果存在多个输入参数，请使用逗号加以分隔：
-12345B = [10 6 4];max(A,B)ans =    10     6     5%A中列元素与B中列元素一一比较.
-clc 函数清除命令行窗口。
- 函数
-123disp(&apos;hello world&apos;)hello world要调用不需要任何输入且不会返回任何输出的函数，请只键入函数名称：
- 二维绘图
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/01/19/Typora可选选项/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/20/Postman模拟上传文件/">Postman模拟上传文件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-20T10:57:35.000Z">2018-12-20</time><i class="fa fa-edit"></i><time datetime="2018-12-20T10:57:35.000Z">2019-09-15</time></div><div class="recent-post-content"> Postman模拟
+ 1.首先得知道前端的样子:
 
-r--' 字符串为线条设定。每个设定可包含表示线条颜色、样式和标记的字符。标记是在绘制的每个数据点上显示的符号，例如，+、o 或  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Matlab"> Matlab</a></div><div class="read-more"><a class="more" href="/2019/01/23/Matlab基础教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/19/Latex学习/">Latex学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-19T12:49:31.000Z">2019-01-19</time><i class="fa fa-edit"></i><time datetime="2019-01-19T12:49:31.000Z">2019-09-15</time></div><div class="recent-post-content"> 基本概念和使用
+ 2.针对前端字段进行模拟POST
+
+▲这边key为&lt;input&gt;中的name属性
+ ▲▲URL最后的’/’:
+ POST请求URL要对应
+12345@app.route(&apos;/photo/&apos;,methods = [&apos;GET&apos;,&apos;POST&apos;] )http://127.0.0.1:5000/photo/@app.route(&apos;/photo&apos;,methods = [&apos;GET&apos;,&apos;POST&apos;] )http://127. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Postman"> Postman</a></div><div class="read-more"><a class="more" href="/2018/12/20/Postman模拟上传文件/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/21/Pandas速成/">Pandas速成</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-21T13:57:29.000Z">2018-12-21</time><i class="fa fa-edit"></i><time datetime="2018-12-21T13:57:29.000Z">2019-09-15</time></div><div class="recent-post-content"> Pandas速成
+
+Series : 一位数组, 只允许存储相同的数据类型
+Time-Series : 以时间为索引的Series
+DataFrame : 二维的表格型数据结构  , 可以理解为是Series 的容器
+Panel : 三维数组,可以理解为DataFrame 的容器
+
+ Series
+1234567891011121314151617import matplotlib.pyplot as pltimport pandas as pdimport numpy as nparr = np.array([1,2,3])index = ['a','b','c']myseries = p ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/21/Pandas速成/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/19/Latex学习/">Latex学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-19T12:49:31.000Z">2019-01-19</time><i class="fa fa-edit"></i><time datetime="2019-01-19T12:49:31.000Z">2019-09-15</time></div><div class="recent-post-content"> 基本概念和使用
  Hello, world!
 12345\documentclass&#123;article&#125;%这里是导言区\begin&#123;document&#125;Hello, world!\end&#123;document&#125;
  请注意，TeX 对控制序列的大小写是敏感的
  部分控制序列还有被方括号[]包括的可选参数。
 出现了控制序列 begin，这个控制序列总是与 end 成对出现。这两个控制序列以及他们中间的内容被称为「环境」；他们之后的第一个必要参数总是一致的，被称为环境名。
-只有在 “document” 环境中的内容，才会被正常输出到文档中去或是作 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Latex"> Latex</a></div><div class="read-more"><a class="more" href="/2019/01/19/Latex学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/21/Jupyter使用/">Jupyter使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-21T02:46:56.000Z">2019-01-21</time><i class="fa fa-edit"></i><time datetime="2019-01-21T02:46:56.000Z">2019-09-15</time></div><div class="recent-post-content"> Jupyter使用
- 准备
-安装pip install jupyter
-运行jupyter notebook
+只有在 “document” 环境中的内容，才会被正常输出到文档中去或是作 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Latex"> Latex</a></div><div class="read-more"><a class="more" href="/2019/01/19/Latex学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/19/flask-sqlalchemy踩坑/">flask-sqlalchemy踩坑——外键</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-19T11:47:54.000Z">2018-12-19</time><i class="fa fa-edit"></i><time datetime="2018-12-19T11:47:54.000Z">2019-09-15</time></div><div class="recent-post-content"> 12.19：外键使用
+今天要设计一个如图关系的表关系时,踩了好几个坑…记录下
 
- 基础概念与操作
-Jupyter有三种类型的cells：
-
-code cells
-markdown cells
-raw cells
-常用的是code cells和 markdown cells类型。
-
-
-Cells状态分为命令模式和编辑模式，Enter进入编辑模式，ESC进入命令模式，命令模式和编辑模式下支持很多操作快捷键，非常好用。
- 常用命令模式快捷键：
-
-y: 单元进入代码状态
-m: 转入markdown状态
-r：转入raw状态
-a: 上方插入新单元
-b：下方插入新单元
-x： ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/01/21/Jupyter使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/19/DFS专项练习/">DFS专项练习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-19T12:53:03.000Z">2019-01-19</time><i class="fa fa-edit"></i><time datetime="2019-01-19T12:53:03.000Z">2019-09-15</time></div><div class="recent-post-content"> DFS专题
+代码:
+123456789101112131415161718192021222324from exts import dbclass Account(db.Model):    __tablename__ = 'account'    id = db.Column(db.Integer,primary_key=True,autoincrement=True)    Username = db.Column(db.String(30),nullable=True,unique=True)    PWD = db. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据库"> 数据库</a></div><div class="read-more"><a class="more" href="/2018/12/19/flask-sqlalchemy踩坑/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/19/DFS专项练习/">DFS专项练习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-19T12:53:03.000Z">2019-01-19</time><i class="fa fa-edit"></i><time datetime="2019-01-19T12:53:03.000Z">2019-09-15</time></div><div class="recent-post-content"> DFS专题
  leetcode 104. 二叉树的最大深度
-123456789101112131415161718/** * Definition for a binary tree node. * struct TreeNode &#123; *     int val; *     TreeNode *left; *     TreeNode *right; *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125; * &#125;; */#include&lt;algorithm&gt;class Solu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/01/19/DFS专项练习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/Charles配置/">Charles配置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T05:32:21.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T05:32:21.000Z">2019-09-15</time></div><div class="recent-post-content"> Charles配置
+123456789101112131415161718/** * Definition for a binary tree node. * struct TreeNode &#123; *     int val; *     TreeNode *left; *     TreeNode *right; *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125; * &#125;; */#include&lt;algorithm&gt;class Solu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/01/19/DFS专项练习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/21/BaiduMap-API/">BaiduMap_API</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-21T13:55:50.000Z">2018-12-21</time><i class="fa fa-edit"></i><time datetime="2018-12-21T13:55:50.000Z">2019-09-15</time></div><div class="recent-post-content"> Baidu Map API
+ 核心类Map
 
- 下载SSL证书
 
 
- 设置SSL端口
+构造函数
+描述
 
-*为通配IP网址，一般SSL的端口都是443
-手机抓包
 
- 打开Charles代理
 
-具体配置，电脑端不用做任何配置，但是需要把防火墙关掉（这点很重要）！
-charles需要设置下代理端口：进入Proxy，点击Proxy Setting, 端口设置为8888（一般默认为这个）
- 配置手机SSL证书
 
-然后手机打开浏览器输入chls.pro/ssl下载证书
- 小米手机安装charles证书
+Map(container: String | HTMLElement, opts: MapOptions)
+在指定的容器内创建地图实例，之后需要调用Map.centerAndZoom()方法对地图进行初始化。未进行初始化的地图将不能进行任何操作
 
-1.使用第三方浏览器下载.pem 格式的文件 （我使用的是QQ浏览器）
-2.将这个文件放入小米的 DownLoad 文件夹下 (这步也可以不 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2019/01/23/Charles配置/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/Chrome开发者工具Network/">Chrome开发者工具Network</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T05:38:12.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T05:38:12.000Z">2019-09-15</time></div><div class="recent-post-content"> Chrome开发者工具中Network功能介绍
 
-第一列Name:请求的名称，一般会将URL的最后一 部分内容当作名称。
-第二列Status: 响应的状态码，这里显示为200，代表响应是正常的。通过状态码，我们可   以判断发送了请求之后是否得到了正常的响应。
-第三列Type: 请求的文档类型。这里为document, 代表我们这次请求的是一个HTML文档,内容就是一些HTML代码。
-第四列initiator: 请求源。用来标记请求是由哪个对象或进程发起的。
-第五列Size: 从服务器下载的文件和请求的资源大小。如果是从缓存中取得的资源，则该列会显示from cache。
-第六列Time:发 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/01/23/Chrome开发者工具Network/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/24/C++日期操作/">C++日期操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-24T07:00:56.000Z">2019-01-24</time><i class="fa fa-edit"></i><time datetime="2019-01-24T07:00:56.000Z">2019-09-15</time></div><div class="recent-post-content"> C++日期操作
-12345678910111213int main( )&#123;      time_t now = time(0);	// 基于当前系统的当前日期/时间 的时间戳   cout &lt;&lt; "1970 到目前经过秒数:" &lt;&lt; now &lt;&lt; endl;   tm *ltm = localtime(&amp;now);// 将时间戳转换为结构体,再输出 tm 结构的各个组成部分   cout &lt;&lt; "年: "&lt;&lt; 1900 + ltm-&gt;tm_year &lt;&lt; endl;   cout &lt;&lt; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="程序开发经验"> 程序开发经验</a></div><div class="read-more"><a class="more" href="/2019/01/24/C++日期操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/19/12-27-Team-Leader/">12-27 Team Leader</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-19T12:40:37.000Z">2019-01-19</time><i class="fa fa-edit"></i><time datetime="2019-01-19T12:40:37.000Z">2019-09-15</time></div><div class="recent-post-content">How Is An Excellent Team Leader
+
+12var map = new BMap.Map("MAP");map.centerAndZoom(points[0], 15);
+
+
+
+方法
+返回值
+描述
+
+
+
+
+enableDragging()
+none
+启用地图拖拽，默认启用
+
+
+enableScrollWhee ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="API"> API</a></div><div class="read-more"><a class="more" href="/2018/12/21/BaiduMap-API/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/19/12-27-Team-Leader/">12-27 Team Leader</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-19T12:40:37.000Z">2019-01-19</time><i class="fa fa-edit"></i><time datetime="2019-01-19T12:40:37.000Z">2019-09-15</time></div><div class="recent-post-content">How Is An Excellent Team Leader
 
 
 A couple of days ago, my friend and I took part in a science and technology competition which was completed by a team of four. Usually, The person who can come up with the best idea is the caption, leading or so-called principal. For the reason, I was the principal  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="English Speaking"> English Speaking</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活小记"> 生活小记</a></div><div class="read-more"><a class="more" href="/2019/01/19/12-27-Team-Leader/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/6/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

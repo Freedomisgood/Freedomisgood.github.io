@@ -1,5 +1,8 @@
+https://nymrli.top/2020/09/04/SQL练习/
 https://nymrli.top/2020/07/11/IDEA插件开发/
 https://nymrli.top/2020/05/24/getBargains的record和Solution/
+https://nymrli.top/2020/05/15/IDEA配置——自定义快捷键、生成注释/
+https://nymrli.top/2020/05/15/重拾Java笔记/
 https://nymrli.top/2020/04/29/华为春招4-29笔试题/
 https://nymrli.top/2020/03/23/VsCode配置Latex(texLive)环境/
 https://nymrli.top/2020/03/04/算法笔记Codeup题解/
@@ -36,6 +39,7 @@ https://nymrli.top/2019/09/21/同性交友网站Github的骚操作/
 https://nymrli.top/2019/09/21/搭建Jupyter服务器/
 https://nymrli.top/2019/09/19/深度学习/
 https://nymrli.top/2019/09/17/常用域名记录解释/
+https://nymrli.top/2019/09/17/SpringBoot学习笔记/
 https://nymrli.top/2019/09/14/如何成为一位老司机——考驾照经历/
 https://nymrli.top/2019/09/14/软件测试大赛/
 https://nymrli.top/2019/09/13/Java自动化构建工具——Maven/
@@ -44,7 +48,3 @@ https://nymrli.top/2019/09/09/验证码识别程序设计流程/
 https://nymrli.top/2019/09/09/新加坡游玩经验/
 https://nymrli.top/2019/09/09/CDN加速个人博客——又拍云/
 https://nymrli.top/2019/09/09/RL强化学习概念/
-https://nymrli.top/2019/09/09/强化学习——QLearning/
-https://nymrli.top/2019/08/30/机器学习——决策树/
-https://nymrli.top/2019/08/30/Sklearn——决策树/
-https://nymrli.top/2019/08/30/ACM-博弈论/

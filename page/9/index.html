@@ -97,7 +97,14 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2018/11/07/定时执行Python脚本/">定时执行Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-07T09:51:16.000Z">2018-11-07</time><i class="fa fa-edit"></i><time datetime="2018-11-07T09:51:16.000Z">2020-03-29</time></div><div class="recent-post-content"> 定时任务执行python脚本
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2018/11/08/Shell脚本基础/">Shell脚本基础</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-08T04:19:49.000Z">2018-11-08</time><i class="fa fa-edit"></i><time datetime="2018-11-08T04:19:49.000Z">2020-09-04</time></div><div class="recent-post-content"> Shell
+ 编写
+打开文本编辑器，新建一个文件，扩展名为sh（sh代表shell），扩展名并不影响脚本执行，见名知意就好，如果你用php写shell 脚本，扩展名就用php好了。
+12#!/bin/bash#!/usr/bin/php
+“#!”是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行。
+ 作为可执行程序
+12chmod +x test.sh./test.sh
+注意，一定要写成./test.sh，而不是test.sh，运行其它二进制的程序也一样，直接写test.sh，linux系统会去PATH里寻找有没有叫test.sh的，而只有/bin, /sbin, /usr/bin，/ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Shell"> Shell</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/08/Shell脚本基础/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/07/定时执行Python脚本/">定时执行Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-07T09:51:16.000Z">2018-11-07</time><i class="fa fa-edit"></i><time datetime="2018-11-07T09:51:16.000Z">2020-03-29</time></div><div class="recent-post-content"> 定时任务执行python脚本
  使用linux的crontab
  1.开启crontab日志。
 crontab默认不开启日志，所以先开启定时任务的日志来查看
@@ -110,7 +117,21 @@ crontab默认不开启日志，所以先开启定时任务的日志来查看
 
 M: 分（0-59 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/07/定时执行Python脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/matplotlib-pyplot使用/">matplotlib.pyplot使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:58:51.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:58:51.000Z">2019-12-11</time></div><div class="recent-post-content"> matplotlib.pyplot使用
  注释
-1234567891011121314151617181920212223242526272829303132333435## 方法一####################for x_value,y_value in zip(x,y):    plt.text(x_value,y_value,y_value,fontsize= 15)	#文字标注(x,y,值)###################### 方法二####################for xy in zip(x, y):    plt.annotate("(%s,%s)"  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/10/matplotlib-pyplot使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/04/高科GSWIFI江苏破解教程/">高科GSWIFI江苏破解教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-04T02:06:34.000Z">2018-11-04</time><i class="fa fa-edit"></i><time datetime="2018-11-04T02:06:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 1.重置路由器设置
+1234567891011121314151617181920212223242526272829303132333435## 方法一####################for x_value,y_value in zip(x,y):    plt.text(x_value,y_value,y_value,fontsize= 15)	#文字标注(x,y,值)###################### 方法二####################for xy in zip(x, y):    plt.annotate("(%s,%s)"  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/10/matplotlib-pyplot使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/26/pyqt与QT5/">pyqt5与QT5</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-26T04:11:52.000Z">2018-11-26</time><i class="fa fa-edit"></i><time datetime="2018-11-26T04:11:52.000Z">2019-09-17</time></div><div class="recent-post-content">Pyqt5和QT5
+ 拖拽式布局
+添加QT Designer、PyUIc、Pyrcc
+ 1.添加外部工具(Extenal Tools)
+ QT Designer
+
+File–&gt;Settings–&gt;Tools–&gt;Extenal Tools --&gt; ‘’+’’ &gt; 添加具体细节,如图一图二
+
+
+​												图一
+
+​													图二
+修改Name为QT Designer,Program为QT目录下designer.exe文件,不需要参数,Work directory为D:\QT\{QT version}\msvc2015_64\bin
+
+添 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/26/pyqt与QT5/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/04/高科GSWIFI江苏破解教程/">高科GSWIFI江苏破解教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-04T02:06:34.000Z">2018-11-04</time><i class="fa fa-edit"></i><time datetime="2018-11-04T02:06:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 1.重置路由器设置
 
 为了以防之前其他人已经设置过某些东西,可能会影响到之后的使用，所以干脆直接重置。
 
@@ -120,7 +141,36 @@ P.S.如果第二步,手机和电脑无法直接通过IP地址进入管理界面�
 
  3.登录路由器管理界面
 ▲注意： 大多数路由器的管理界面IP地址为 192.168.1.1或者192.168.100.1,虽然高科路由器后面贴纸上说明的IP地址是192.168.8.1,但是那个不是初始的IP,需要自己设置到192.168.8.1.
-如下是我已经修改好的IP ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2018/11/04/高科GSWIFI江苏破解教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/08/多媒体Au使用/">多媒体Au使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-08T04:18:47.000Z">2018-11-08</time><i class="fa fa-edit"></i><time datetime="2018-11-08T04:18:47.000Z">2019-09-15</time></div><div class="recent-post-content"> AU使用。
+如下是我已经修改好的IP ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2018/11/04/高科GSWIFI江苏破解教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/24/机器学习——数学概念/">机器学习——数学概念</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-24T05:00:34.000Z">2018-11-24</time><i class="fa fa-edit"></i><time datetime="2018-11-24T05:00:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 箱线图
+箱线图（Box plot）也称箱须图（Box-whisker Plot）、箱线图、盒图，可以用来反映一组或多组连续型定量数据分布的中心位置和散布范围，因形状如箱子而得名。
+- 连续型数据：在一定区间内可以任意取值的变量叫连续变量，其数值是连续不断的。例如，生产零件的规格尺寸，人体测量的身高、体重等，其数值只能用测量或计量的方法取得。可视化这类数据的图表主要有箱形图和直方图。
+- 离散型数据：数值只能用自然数或整数单位计算的则为离散变量。例如，企业个数，职工人数，设备台数等，只能按计量单位数计数，数值一般用计数方法取得。大多数图表可视化的都是这类数据，比如柱状图、折线图等。
+ 
+ 优点 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数学知识"> 数学知识</a></div><div class="read-more"><a class="more" href="/2018/11/24/机器学习——数学概念/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/23/机器学习——Python实践-笔记/">机器学习——python实践.笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-23T13:20:18.000Z">2018-11-23</time><i class="fa fa-edit"></i><time datetime="2018-11-23T13:20:18.000Z">2019-09-15</time></div><div class="recent-post-content"> 机器学习——Python实践
+
+Numpy:
+
+python开源数值计算拓展,用来存储和处理大型矩阵,提供了许多高级的数值编程工具,如 矩阵数据类型、矢量处理、精密的运算库
+
+利用Numpy数组来准备机器学习算法的数据
+
+
+
+
+matplotlib:
+
+python中最著名的2D绘图库,适合交互式的进行制图;也可作为绘图空间,嵌入GUI应用程序中
+
+创建图表,展示数据
+
+
+
+
+Pandas:
+
+基于Numpy的工具,为了解决数据分析任务而创建的.~纳入了大量库和标准的数据模型,提供了操作大型数据集的工具,和快速便捷处理数据的函数和方法
+
+导入、展示数据，以便挣钱对数据的理解和数据清洗、转换等 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/23/机器学习——Python实践-笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/08/多媒体Au使用/">多媒体Au使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-08T04:18:47.000Z">2018-11-08</time><i class="fa fa-edit"></i><time datetime="2018-11-08T04:18:47.000Z">2019-09-15</time></div><div class="recent-post-content"> AU使用。
 
 留人声、去伴奏
 
@@ -153,32 +203,7 @@ P.S.如果第二步,手机和电脑无法直接通过IP地址进入管理界面�
 
  1. WSGI：
 
-全称是Web Server Gateway Interface(服务器网关接口)。WSGI不是服务器，python模块，框架，API或者任何软件，只是一种规范( 是一个**Web服务器（如nginx）与应用服务器（如uWSGI）**通信的一种规范（协议）==&gt; 可以理解为服务器与应用程序通信的接口规范要求)，描述web server如何与web application通信的规范。server和application的规范在PEP 3333中有具体描述。因为WSGI没有官方的实现, 所以WSGI更 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/28/Windows-控制台Cmd乱码（及永久修改编码）解决方法/">Windows控制台Cmd乱码（及永久修改编码）解决方法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-28T08:42:20.000Z">2018-10-28</time><i class="fa fa-edit"></i><time datetime="2018-10-28T08:42:20.000Z">2019-09-15</time></div><div class="recent-post-content">我本机的系统环境：`OS Name: Microsoft Windows 10 家庭中文版
- Windows 控制台Cmd乱码的解决办法(一次性)
-在cmd中输入 CHCP 65001
-
-注：CHCP是一个计算机指令，能够显示或设置活动代码页编号。
-代码页  描述
-
-
-65001   UTF-8代码页
-
-
-950 繁体中文
-
-
-936 简体中文默认的GBK
-
-
-437 MS-DOS 美国英语
-
-
-
-但是通过CHCP设置编码是治标不治本的,想永久的更改cmd编码值需要修改注册表
- Windows 控制台Cmd乱码的解决办法(永久性)
- 方法一：
-1.在cmd中输入regedit进入注册表
-2.找 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2018/10/28/Windows-控制台Cmd乱码（及永久修改编码）解决方法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/Ubuntu更改nginx默认端口/">Ubuntu更改nginx默认端口</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:55:13.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:55:13.000Z">2019-09-15</time></div><div class="recent-post-content"> Ubuntu更改nginx默认端口
+全称是Web Server Gateway Interface(服务器网关接口)。WSGI不是服务器，python模块，框架，API或者任何软件，只是一种规范( 是一个**Web服务器（如nginx）与应用服务器（如uWSGI）**通信的一种规范（协议）==&gt; 可以理解为服务器与应用程序通信的接口规范要求)，描述web server如何与web application通信的规范。server和application的规范在PEP 3333中有具体描述。因为WSGI没有官方的实现, 所以WSGI更 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/Ubuntu更改nginx默认端口/">Ubuntu更改nginx默认端口</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:55:13.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:55:13.000Z">2019-09-15</time></div><div class="recent-post-content"> Ubuntu更改nginx默认端口
 
 nginx 默认使用80端口，有时候我们希望nginx运行在其他端口，就需要更改nginx配置
 
@@ -188,41 +213,41 @@ nginx配置文件在/etc/nginx目录下的nginx.conf。(可以修改处理器数
 访问日志 /var/log/nginx/access.log
 
 在nginx.conf-&gt;http选项末尾有引入两个目录下的文件分别为：
-123456[/etc/nginx/nginx.conf]http &#123;        #   省略部分内容   ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2018/11/10/Ubuntu更改nginx默认端口/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Sublime-Text3-Python虚拟环境（补充）——解决控制台中文乱码情况/">Sublime Text3 Python虚拟环境（补充）——解决控制台中文乱码情况</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:52:35.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:52:35.000Z">2019-09-15</time></div><div class="recent-post-content">转自：edwardgui的博客
-
-正常的用python编译控制台是不会出现乱码的，但是在使用虚拟环境的情况下中文总是乱码，一开始以为是windows控制台编码的问题。找了挺久后发现是python+virtualenv编译系统的问题，现在我就带领大家解决这个问题。
-
- ▲注：Windows环境下
-
-首先看下是否已经安装了Virtualenv package插件，如果没有，则Ctrl+Shift+P，install Package,输入Virtualenv安装。
-找到插件安装的地方：C:\Users{Username}\AppData\Roaming\Sublime Text 3\Installe ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a></div><div class="read-more"><a class="more" href="/2018/10/24/Sublime-Text3-Python虚拟环境（补充）——解决控制台中文乱码情况/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/07/ServerChan-南邮教务处/">ServerChan+南邮教务处</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-07T09:32:10.000Z">2018-11-07</time><i class="fa fa-edit"></i><time datetime="2018-11-07T09:32:10.000Z">2019-09-15</time></div><div class="recent-post-content"> SeverChan_Nyedu
+123456[/etc/nginx/nginx.conf]http &#123;        #   省略部分内容   ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2018/11/10/Ubuntu更改nginx默认端口/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/07/ServerChan-南邮教务处/">ServerChan+南邮教务处</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-07T09:32:10.000Z">2018-11-07</time><i class="fa fa-edit"></i><time datetime="2018-11-07T09:32:10.000Z">2019-09-15</time></div><div class="recent-post-content"> SeverChan_Nyedu
 Crawl the infomation about competitons, when new infos comes, remind people on Wechat by ServerChan:
 😍该程序通过爬取南邮教务处,将当前时间与最新时间进行匹配,如果是当日则通过ServerChan发送到本人的微信,提醒有新的竞赛.
  完成笔记:
  1.关于lxml中etree.xpath()对于tbody的处理
 
-该网页通过table对页面进行分布设置,其中table标签会自动生成tbody标签,如图…此时用xpath进行匹配的时候就不需要将tbody加上,否 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/07/ServerChan-南邮教务处/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/">Python爬虫知识点——将Cookie保存到本地的多种方法介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:43:34.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:43:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 方法一：urllib2
-
-结合cookielib及urllib2，Python2时期比较常用的方法，年代比较久远了。个人觉得太麻烦，改用requests.
-▲需要注意的是cookielib在python3中已经改成了http.cookiejar
-
-1234567891011121314151617181920212223242526272829303132333435#该方法本人未测试import urllib2import cookielib#将cookie保存在文件中def saveCookie():    #设置保存cookie的文件    filename = &apos;cooki ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——Session与Cookie/">Python爬虫知识点——Session与Cookie</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:56.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:56.000Z">2019-09-15</time></div><div class="recent-post-content"> Session和Cookie：
-
-Cookie：保持登录后的认证状态而保存在本地的数据
-session:用cookie来标记用户，cookie携带了会话ID消息，通过检查cookie就能找到会话(session)
-
-cookie与session相互配合，一个处于客户端，一个处于服务端，两者相互协作。
- 会话cookie和持久cookie
-
-会话Cookie：把cookie放在浏览器内存里，浏览器关闭后失效。
-持久Cookie：保存cookie到客户端的硬盘中，下次继续使用。
-
-由Cookie的Max Age和Expires决定了过期的时间。
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——Session与Cookie/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/Pythonanywhere解决链接Mysql问题-部署flask/">Pythonanywhere解决链接Mysql问题(部署flask)</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:54:14.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:54:14.000Z">2019-09-15</time></div><div class="recent-post-content"> Pythonanywhere解决链接Mysql问题(部署flask)
+该网页通过table对页面进行分布设置,其中table标签会自动生成tbody标签,如图…此时用xpath进行匹配的时候就不需要将tbody加上,否 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/07/ServerChan-南邮教务处/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/Pythonanywhere解决链接Mysql问题-部署flask/">Pythonanywhere解决链接Mysql问题(部署flask)</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:54:14.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:54:14.000Z">2019-09-15</time></div><div class="recent-post-content"> Pythonanywhere解决链接Mysql问题(部署flask)
 
 由于在bash控制台里通过命令mysql -p(这其实是因为错误的连接方式,由于不是默认的端口3306,自然连接不到,官方文档中有正确的连接方式)链接不到Mysql时,再加上进虚拟环境用python manage db migrate也失败后,我是异常慌张的…然后立马发现关于pythonanywhere链接Mysql的解决不是很多,要么就是说免费账号是无法用的…心顿时拔凉,但最后还是找到了pythonanywhere官方的文档,解决了这个问题,发现都是配置的问题
 
-一开始的我本地及阿里云链接mysql数据库配置文件是这样 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="MySQL"> MySQL</a></div><div class="read-more"><a class="more" href="/2018/11/10/Pythonanywhere解决链接Mysql问题-部署flask/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/23/Pycharm里无法查看Sqlite数据表/">Pycharm里无法查看Sqlite数据表</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-23T07:27:38.000Z">2018-11-23</time><i class="fa fa-edit"></i><time datetime="2018-11-23T07:27:38.000Z">2019-09-15</time></div><div class="recent-post-content"> Pycharm里无法查看Sqlite数据表
+一开始的我本地及阿里云链接mysql数据库配置文件是这样 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="MySQL"> MySQL</a></div><div class="read-more"><a class="more" href="/2018/11/10/Pythonanywhere解决链接Mysql问题-部署flask/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/03/Pyinstaller使用/">Pyinstaller使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-03T03:54:22.000Z">2018-12-03</time><i class="fa fa-edit"></i><time datetime="2018-12-03T03:54:22.000Z">2019-09-15</time></div><div class="recent-post-content"> pyinstaller使用
+ 安装
+ 1、安装pywin32==&gt;pyinstaller依赖于
+
+
+下载安装文件：查找到跟自己适用的python版本及window系统版本匹配的pywin32，下载后安装
+
+
+使用pip命令安装：pip install pywin32
+
+
+ 2、安装Pyinstaller
+
+
+下载安装文件安装：官网
+
+
+使用pip命令安装：pip install PyInstaller
+
+
+使用Pycharm直接搜索pyinstaller会自动安装依赖库pywin32
+
+ 使用
+ 1、使用下载安装的方式安装的Pyinstaller打包方式
+将需要打包的文件放在解压得到的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/03/Pyinstaller使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/23/Pycharm里无法查看Sqlite数据表/">Pycharm里无法查看Sqlite数据表</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-23T07:27:38.000Z">2018-11-23</time><i class="fa fa-edit"></i><time datetime="2018-11-23T07:27:38.000Z">2019-09-15</time></div><div class="recent-post-content"> Pycharm里无法查看Sqlite数据表
 听说Pycharm可以直接看数据库,于是试了试,发现无法读取sqlite数据库的内容…于是发现下载相应的驱动.如图
 
  解决方法:
@@ -232,18 +257,19 @@ cookie与session相互配合，一个处于客户端，一个处于服务端，�
 
  三.安装完成,正常使用
 
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据库"> 数据库</a></div><div class="read-more"><a class="more" href="/2018/11/23/Pycharm里无法查看Sqlite数据表/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/25/JS正则及常用方法函数总结/">JS正则及常用方法函数总结</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-25T03:55:20.000Z">2018-10-25</time><i class="fa fa-edit"></i><time datetime="2018-10-25T03:55:20.000Z">2019-09-15</time></div><div class="recent-post-content"> JS正则及常用方法函数总结
-
-正则表达式作为一种匹配处理字符串的利器在很多语言中都得到了广泛实现和应用，web开发本质上是处理字符串（服务端接受请求处理后拼接字符串作为响应，这在早期的CGI编程中最明显，然后客户端解析字符串进行渲染和执行），所以说，JS作为一门常用于web开发的语言，必然要具备正则这种强大的特性，本文将对JS中的正则用法及常用函数进行一番总结。
-
- 1.正则对象及其属性
-首先正则对象是JS中内置的一个对象，好比Array以及Math一样，不需要第三方库的支持，通常我们采取两种方式来定义一个正则对象.
- 1）构造函数方式
-12345var  reg=new RegExp('a ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="JavaScript"> JavaScript</a></div><div class="read-more"><a class="more" href="/2018/10/25/JS正则及常用方法函数总结/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/21/Flask系列–将应用部署在Heroku上/">Flask系列–将应用部署在Heroku上</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-21T07:54:01.000Z">2018-11-21</time><i class="fa fa-edit"></i><time datetime="2018-11-21T07:54:01.000Z">2019-09-15</time></div><div class="recent-post-content"> Flask补充系列–将应用部署在Heroku上
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据库"> 数据库</a></div><div class="read-more"><a class="more" href="/2018/11/23/Pycharm里无法查看Sqlite数据表/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/21/Flask系列–将应用部署在Heroku上/">Flask系列–将应用部署在Heroku上</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-21T07:54:01.000Z">2018-11-21</time><i class="fa fa-edit"></i><time datetime="2018-11-21T07:54:01.000Z">2019-09-15</time></div><div class="recent-post-content"> Flask补充系列–将应用部署在Heroku上
 之前曾经介绍过如何将Flask应用部署在自己的服务器上，对于手头并不宽裕的程序员来说，购置一台托管服务器还是一笔不小的开销。即便现在有公有云服务器可以买，不过如果你只是以学习为目的，这笔开销还是能省则省了。另外，如果你的应用中需要访问国外被河蟹掉的资源，在服务器上翻墙也是件麻烦事，所以这里我们补充一篇如何将Flask应用部署在Heroku上。
  环境准备
 Heroku是一个PaaS服务提供商，使用前，你需要先注册一个Heroku帐号，注册帐号是免费的。
-此外你本地必须要有Python 2.7的开发环境，并且装好了Pip, Setuptools, ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2018/11/21/Flask系列–将应用部署在Heroku上/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/apt-get-update无法连接/">apt-get update无法连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T05:21:45.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T05:21:45.000Z">2019-09-15</time></div><div class="recent-post-content"> 出现的问题
+此外你本地必须要有Python 2.7的开发环境，并且装好了Pip, Setuptools, ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2018/11/21/Flask系列–将应用部署在Heroku上/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/apt代理的设置/">apt代理的设置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:56:53.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:56:53.000Z">2019-09-15</time></div><div class="recent-post-content">
+原因是在apt-get update时遇到了Unable to connect to 代理，（由于apt-get update一直显示无法连接172.17.18.141百度后发现并不是个特殊的IP,）于是想到是否使用了代理。
+
+ apt代理的设置：
+ 临时方法
+export http_proxy=http://10.3.0.1:80
+ 长久方法
+(1) 需要在/etc/apt/apt.conf中添加以下代码： (如果您希望apt-get(而不是其他应用程序)一直使用http代理,您可以使用这种方式。)
+Acquire::http::proxy &quot;http://用户名:密码@地址:端 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2018/11/10/apt代理的设置/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/apt-get-update无法连接/">apt-get update无法连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T05:21:45.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T05:21:45.000Z">2019-09-15</time></div><div class="recent-post-content"> 出现的问题
 原因是在apt-get update时遇到了Unable to connect to 代理，（由于apt-get update一直显示无法连接172.17.18.141百度后发现这并不是个特殊的IP,而且也可以ping到百度）于是想到是否使用了代理。
 
 
@@ -253,12 +279,4 @@ Heroku是一个PaaS服务提供商，使用前，你需要先注册一个Heroku�
 export http_proxy=http://10.3.0.1:80
  长久方法
 (1) 需要在/etc/apt/apt.conf中添加以下代码： (如果您希望apt-get(而不是其他应用程序)一直使用http代理,您可以使用这种方式。)
-Acquire::http::proxy &qu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/02/apt-get-update无法连接/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/apt代理的设置/">apt代理的设置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:56:53.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:56:53.000Z">2019-09-15</time></div><div class="recent-post-content">
-原因是在apt-get update时遇到了Unable to connect to 代理，（由于apt-get update一直显示无法连接172.17.18.141百度后发现并不是个特殊的IP,）于是想到是否使用了代理。
-
- apt代理的设置：
- 临时方法
-export http_proxy=http://10.3.0.1:80
- 长久方法
-(1) 需要在/etc/apt/apt.conf中添加以下代码： (如果您希望apt-get(而不是其他应用程序)一直使用http代理,您可以使用这种方式。)
-Acquire::http::proxy &quot;http://用户名:密码@地址:端 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2018/11/10/apt代理的设置/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/8/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+Acquire::http::proxy &qu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/02/apt-get-update无法连接/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/8/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

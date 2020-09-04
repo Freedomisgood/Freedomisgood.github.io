@@ -101,12 +101,12 @@
 
 鉴于同学被字节狂问SQL题，因此也激发了我的危机感。 作为非科班的， 写SQL还是比较慌的， 因此做下专题训练。
 
-  查找最晚入职员工的所有信息(入门题)
-1select * from employees order by hire_date limit 1;
-牛客每个人最近的登录日期(一)
-123select max(date)from logingroup by user_id
- 牛客每个人最近的登录日期(二)
-123456select user.name,client.name,max(login.date)from loginleft join user on log ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="SQL"> SQL</a></div><div class="read-more"><a class="more" href="/2020/09/04/SQL练习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/15/重拾Java笔记/">重拾Java笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-15T02:22:04.000Z">2020-05-15</time><i class="fa fa-edit"></i><time datetime="2020-05-15T02:22:04.000Z">2020-08-05</time></div><div class="recent-post-content"> 重拾Java笔记
+ 理论知识:
+SQL语句执行顺序
+ 1.sql执行顺序 
+12345678910(1)from (3) join (2) on (4) where (5)group by(开始使用select中的别名，后面的语句中都可以使用)(6) avg,sum.... (7)having (8) select (9) distinct (10) order by
+2.sql语句执行顺序
+12345678910(8) SELECT (9)DISTINCT&lt;select_l ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="SQL"> SQL</a></div><div class="read-more"><a class="more" href="/2020/09/04/SQL练习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/15/重拾Java笔记/">重拾Java笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-15T02:22:04.000Z">2020-05-15</time><i class="fa fa-edit"></i><time datetime="2020-05-15T02:22:04.000Z">2020-08-05</time></div><div class="recent-post-content"> 重拾Java笔记
 
 工作主要用Java, 因此开始准备Java基础再补补。根据小猴子1024-JAVA基础整理笔记
 

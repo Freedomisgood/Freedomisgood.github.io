@@ -1,3 +1,4 @@
+https://nymrli.top/2020/09/06/扇区、块-簇/
 https://nymrli.top/2020/09/04/SQL练习/
 https://nymrli.top/2020/07/11/IDEA插件开发/
 https://nymrli.top/2020/05/24/getBargains的record和Solution/
@@ -22,6 +23,7 @@ https://nymrli.top/2019/11/26/MinMax-极小极大算法——2048/
 https://nymrli.top/2019/11/26/MinMax和Alpha-beta剪枝分析-转/
 https://nymrli.top/2019/11/24/Python网络编程Websocket/
 https://nymrli.top/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/
+https://nymrli.top/2019/10/24/PAT冲冲冲——甲级/
 https://nymrli.top/2019/10/18/软件测试笔记/
 https://nymrli.top/2019/10/15/玩玩Stm32/
 https://nymrli.top/2019/10/07/蒙特卡洛树搜索MCTS/
@@ -46,5 +48,3 @@ https://nymrli.top/2019/09/13/Java自动化构建工具——Maven/
 https://nymrli.top/2019/09/13/打jar包和使用jar包/
 https://nymrli.top/2019/09/09/验证码识别程序设计流程/
 https://nymrli.top/2019/09/09/新加坡游玩经验/
-https://nymrli.top/2019/09/09/CDN加速个人博客——又拍云/
-https://nymrli.top/2019/09/09/RL强化学习概念/

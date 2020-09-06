@@ -135,7 +135,16 @@ from njupt.zhengfang import Zhengfang是 ...</div><div class="recent-post-tags">
  安装ADB
 1.菜单——&gt;Tools——&gt;Settings，将Server地址为 mirrors.neusoft.edu.cn， 端口 80 ，并且在Others里勾选 Force	https://…,最后一定要选择菜单——&gt;Packages菜单——&gt;Reload
 注:其他可用的镜像
-2.把 Android	SDK	路径下的tools ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></div><div class="read-more"><a class="more" href="/2019/09/14/软件测试大赛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/新加坡游玩经验/">新加坡游玩经验</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:35:49.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:35:49.000Z">2019-10-18</time></div><div class="recent-post-content"> 新加坡南洋理工大学访学
+2.把 Android	SDK	路径下的tools ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></div><div class="read-more"><a class="more" href="/2019/09/14/软件测试大赛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/21/搭建Jupyter服务器/">搭建Jupyter、JupyterLab服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-21T01:53:01.000Z">2019-09-21</time><i class="fa fa-edit"></i><time datetime="2019-09-21T01:53:01.000Z">2019-10-20</time></div><div class="recent-post-content"> 搭建Jupyter服务器
+1.配置好Python环境及安装pip
+2.安装jupyter:
+pip3 install jupyter (此处使用的是python3)
+3.生成配置文件
+jupyter notebook --generate-config
+4.生成密钥:
+终端输入$ ipython
+123456In [1]: from notebook.auth import passwdIn [2]: passwd()Enter password: Verify password: #此时会让你两次输入密码，然后就会生成秘钥#＊＊＊＊＊＊＊＊＊＊＊＊
+5.修改配置文件vim ~/.jupyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/21/搭建Jupyter服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/新加坡游玩经验/">新加坡游玩经验</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:35:49.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:35:49.000Z">2019-10-18</time></div><div class="recent-post-content"> 新加坡南洋理工大学访学
 此次访学长达14天，不少安排都是学校安排，在此仅列出个人安排、经验心得。
 
  门票购买：
@@ -165,52 +174,19 @@ KLOOK客路：界面比番薯游好多了，还是非常精致的。最大的优
 有监督的学习
 非参数学习算法
 自顶向下递归方式构造决策树
-在每一 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/08/30/机器学习——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/17/常用域名记录解释/">常用域名记录解释</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time><i class="fa fa-edit"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time></div><div class="recent-post-content"> 常用域名记录解释
+在每一 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/08/30/机器学习——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/19/深度学习/">深度学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-19T12:32:44.000Z">2019-09-19</time><i class="fa fa-edit"></i><time datetime="2019-09-19T12:32:44.000Z">2019-10-05</time></div><div class="recent-post-content"> 深度学习——神经网络
+ 构建网络的总原则
+一、增大网络容量，直到过拟命
+二、采取措施抑制过拟合
+三、继续增大网络容量，直到过拟合
+ 线性回归
+1234567891011121314151617181920212223242526272829303132333435363738# -*- coding: utf-8 -*-# Commented out IPython magic to ensure Python compatibility.import kerasimport numpy as npimport matplotlib.pyplot as plt# %matplotlib in ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/19/深度学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/17/常用域名记录解释/">常用域名记录解释</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time><i class="fa fa-edit"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time></div><div class="recent-post-content"> 常用域名记录解释
  A记录
 A记录是用来创建到IP地址的记录。
 A记录设置技巧
 1、如果想创建不带www的记录，即ezloo.com，在主机记录中填写@或者留空，不同的注册商可能不一样。
 2、创建多个域名到同一个IP，比如给博客建了二级域名，可以使用*.blog.ezloo.com来指向一个IP，这样的话，不管是访问a.blog.ezloo.com还是b.blog.ezloo.com都能到同一个IP。
-3、如果你给同一个二级域名设置了多个A记录，比如你建了两个blog的A记录，其中一个指向了111.111.111.111，另一个指向了111.111.111.112，那么在查询的时候，每次返回 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/09/17/常用域名记录解释/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/通信企业管理-线上考试/">通信企业管理_线上考试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:37:49.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:37:49.000Z">2019-09-15</time></div><div class="recent-post-content"> 通信企业管理
-
-看清题目和选项
-
- 单选题
-1单选(2分)
-在总公司领导下设立多个分支，各分支有各自独立的产品和市场，实行独立核算，经营管理上拥有自主性和独立性。这是（ A   ）组织结构。
-
-A.事业部型
-B.矩阵型
-C.职能型
-D.直线型
-
-2单选(2分)
-按照最新版《中华人民共和国公司法》规定，股份有限公司的发起人最多不超过（    C ）。
-
-A.100人
-B.50人
-C.200人
-D.150人
-
-3单选(2分)
-工作或行动之前预先拟定具体的工作内容和步骤是管理的（  D  ）职能。
-
-A.组织职能
-B.控制职能
-C.领导职能
-D.计划职能
-
-4单选(2分)
-提出“14项管理原则”的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2019/08/22/通信企业管理-线上考试/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/算法设计与分析C-概念点区分/">算法设计与分析C_概念点区分</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:39:29.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:39:29.000Z">2019-09-15</time></div><div class="recent-post-content"> 算法设计与分析C
- 算法5_分治法
-分治法——将一个复杂的问题分解成若干个规模较小、相互独立，但类型相同的子问题求解；然后再将各子问题的解组合成原始问题的一个完整答案，这样的问题求解策略就叫分治法。
-分治法所能解决的问题一般具有以下几个特征：
-该问题的规模缩小到一定的程度就可以容易地解决；
-该问题可以分解为若干个规模较小的相同问题；
-利用该问题分解出的子问题的解可以合并为该问题的解；
-该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子问题。
-反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。
-由分 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2019/08/22/算法设计与分析C-概念点区分/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/打jar包和使用jar包/">打jar包和使用jar包</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-15</time></div><div class="recent-post-content"> 打jar包和使用jar包
+3、如果你给同一个二级域名设置了多个A记录，比如你建了两个blog的A记录，其中一个指向了111.111.111.111，另一个指向了111.111.111.112，那么在查询的时候，每次返回 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/09/17/常用域名记录解释/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/打jar包和使用jar包/">打jar包和使用jar包</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-15</time></div><div class="recent-post-content"> 打jar包和使用jar包
  一、为什么要打jar包
 给别人用的时候一般给别人的是class文件。如果有很多类这么办？把类变成一个压缩包！windows下的压缩包是.zip格式等，而eclipse压缩包是.jar格式。
  二、如何查看jar包
@@ -379,4 +355,4 @@ CDN(Content Delivery Network)内容发布网络，基本思路就是将你网站
 
 只有一堆n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取m个。最后取光者得胜。
 
-显然，如果n=m+1，1那么由于一次最多只能取m个，所以，无论先取者拿走多少个，后取者都能够一次拿走剩余的物品，后者取胜。因此我们发现了先手如何取胜的法 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/08/30/ACM-博弈论/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+显然，如果n=m+1，1那么由于一次最多只能取m个，所以，无论先取者拿走多少个，后取者都能够一次拿走剩余的物品，后者取胜。因此我们发现了先手如何取胜的法 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/08/30/ACM-博弈论/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

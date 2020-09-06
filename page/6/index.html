@@ -105,7 +105,20 @@
 1$ sudo vim frps.ini
 1234[common]                 #必须有的配置段，在frpc.ini和frps.ini中都必须要有bind_port = 7000         #服务端服务的监听端口vhost_http_port = 16666  #自己设定的http访问端口vhost_https_port = 17777 #自己设定的https访问端口
 保存并且退出，使用如下服务命令启动frps服务
-1$ nohup . ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/eclipse使用/">eclipse使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T05:18:25.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T05:18:25.000Z">2019-11-27</time></div><div class="recent-post-content"> Eclipse
+1$ nohup . ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/14/搭建Gitlab服务器/">搭建Gitlab服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-14T10:32:26.000Z">2019-03-14</time><i class="fa fa-edit"></i><time datetime="2019-03-14T10:32:26.000Z">2019-12-12</time></div><div class="recent-post-content"> 搭建Gitlab服务器
+ 下载安装Gitlab
+由于直接下载Gitlab会很慢(被墙的缘故) ， 于是选择清华的镜像安装，清华源
+ Ubuntu 16.04 用户
+
+Linux其他版本或者不是Ubuntu 16.04 见官网修改方式
+
+
+首先信任 GitLab 的 GPG 公钥:
+
+1curl https://packages.gitlab.com/gpg.key 2&gt; /dev/null | sudo apt-key add - &amp;&gt;/dev/null
+▲如果这步不行，先进行下一步
+
+文本框中内容写进 /etc/apt/sources.list.d/gitlab-ce. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/14/搭建Gitlab服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/eclipse使用/">eclipse使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T05:18:25.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T05:18:25.000Z">2019-11-27</time></div><div class="recent-post-content"> Eclipse
  选择工作路径
 
  新建工程
@@ -136,7 +149,8 @@
 筛素数是为了求得一个区间内的所有素数，而把不是素数的筛去。
 
 最普通的办法——判断一个数是不是素数
-123456789101112131415161718#define SIZE 1000000int main()&#123;    int check[SIZE];    int prime[SIZE] = &#123;0&#125;;    int pos;    int flag;    for (int i = 2 ; i &lt; SIZE ; i++)&#123;        flag = 1;        for (int j = 2 ; j &lt; sq ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="线性筛"> 线性筛</a></div><div class="read-more"><a class="more" href="/2019/03/03/ACM-线性筛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/构造一个能发数据的POST请求头/">构造一个能发数据的POST请求头</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T14:23:52.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T14:23:52.000Z">2019-09-15</time></div><div class="recent-post-content">之前学请求、响应的时候只是过了一边，大致知道有这些东西。但这次真正要用的时候却又忘了到底该如何写，错误的请求头、请求体的格式导致esp8266一直发送不了数据到服务器上，又重新看了遍请求request的知识，才终于搞明白
+123456789101112131415161718#define SIZE 1000000int main()&#123;    int check[SIZE];    int prime[SIZE] = &#123;0&#125;;    int pos;    int flag;    for (int i = 2 ; i &lt; SIZE ; i++)&#123;        flag = 1;        for (int j = 2 ; j &lt; sq ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="线性筛"> 线性筛</a></div><div class="read-more"><a class="more" href="/2019/03/03/ACM-线性筛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/程序设计周cpp学习笔记/">程序设计周cpp学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:56:14.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:56:14.000Z">2019-09-15</time></div><div class="recent-post-content"> 文件名传参
+123456789101112131415using namespace std;#define FILENAME "data.csv"void readfile(string file)&#123;	ifstream inFile;	inFile.open(file.c_str(), ios::out); // 打开模式可省略	string lineStr;	while (getline(inFile, lineStr) )		// 打印整行字符串		cout &lt;&lt; lineStr  &lt;&lt; '-'&lt;&lt; endl; &#125;  int ma ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="程序设计"> 程序设计</a></div><div class="read-more"><a class="more" href="/2019/03/07/程序设计周cpp学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/构造一个能发数据的POST请求头/">构造一个能发数据的POST请求头</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T14:23:52.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T14:23:52.000Z">2019-09-15</time></div><div class="recent-post-content">之前学请求、响应的时候只是过了一边，大致知道有这些东西。但这次真正要用的时候却又忘了到底该如何写，错误的请求头、请求体的格式导致esp8266一直发送不了数据到服务器上，又重新看了遍请求request的知识，才终于搞明白
  请求
  最初的写法:
 由于在esp8266上已经选择、连接好了了httpbin.org的穿透，就以为Host可以不用加了，于是产生了 最初的写法：
@@ -304,45 +318,14 @@ cmd-&gt;ipconfig-&gt;IPv4
 符号 # 后面的内容被认为是注释
 
 
-命令由命令名称、小括号和参数组 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/02/18/Cmake-入门/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/01/ACM-贪心专题/">ACM_贪心专题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-01T12:17:50.000Z">2019-02-01</time><i class="fa fa-edit"></i><time datetime="2019-02-01T12:17:50.000Z">2019-09-15</time></div><div class="recent-post-content"> 贪心专题
- 1.活动安排
-有若干个活动，第i个开始时间和结束时间是[Si,fi)，只有一个教室，活动之间不能交叠，求最多安排多少个活动？
-Input
-123第一行一个正整数n (n &lt;= 10000)代表活动的个数。第二行到第(n + 1)行包含n个开始时间和结束时间。开始时间严格小于结束时间，并且时间都是非负整数，小于1000000000
-Output
-1一行包含一个整数表示活动个数。
-Input示例
-123431 23 42 9
-Output示例
-12
-博主提供:
-1234567891011121314151617181920212223242526272829303132#inc ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="贪心"> 贪心</a></div><div class="read-more"><a class="more" href="/2019/02/01/ACM-贪心专题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-快速幂/">ACM-快速幂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:54:05.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:54:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 简单位运算快速幂
+命令由命令名称、小括号和参数组 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/02/18/Cmake-入门/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-快速幂/">ACM-快速幂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:54:05.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:54:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 简单位运算快速幂
 
 假设我们要求ab，那么其实b是可以拆成二进制的，该二进制数第i位的权为2(i-1)，例如当b==11时，a11=a(20+21+2^3)
 
 123456789int poww(int a,int b)&#123;    int ans=1,base=a;    while(b!)&#123;        if(b&amp;1) ans*=base;        base*=base;        b&gt;&gt;=1;　 &#125;    return ans;&#125;
-11的二进制是``1011，11 = 2³×1 + 2²×0 + 2¹×1 + 2º×1 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-快速幂/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/03/ACM-动态规划/">ACM_动态规划</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-03T07:49:10.000Z">2019-02-03</time><i class="fa fa-edit"></i><time datetime="2019-02-03T07:49:10.000Z">2019-09-15</time></div><div class="recent-post-content">图解动态规划 : http://www.sohu.com/a/153858619_466939
- 动态规划 :
-
-最优子结构
-边界
-状态转移方程式
-
- 题目二： 国王和金矿
-有一个国家发现了5座金矿，每座金矿的黄金储量不同，需要参与挖掘的工人数也不同。参与挖矿工人的总数是10人。每座金矿要么全挖，要么不挖，不能派出一半人挖取一半金矿。要求用程序求解出，要想得到尽可能多的黄金，应该选择挖取哪几座金矿？
-
- 解法一: 排列组合
-时间复杂度 : O(2^N)
- 解法二 : DP
- 1.找到最优子结构
-
-10人4金矿(有一个金矿没挖)
-10-3人4金矿(挖了一个金矿)
-
- 2.最优选择
-5个金矿的最优 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="DP"> DP</a></div><div class="read-more"><a class="more" href="/2019/02/03/ACM-动态规划/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-DFS、BFS/">ACM-DFS、BFS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:55:03.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:55:03.000Z">2019-09-15</time></div><div class="recent-post-content"> 深度优先搜索(DFS)
+11的二进制是``1011，11 = 2³×1 + 2²×0 + 2¹×1 + 2º×1 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-快速幂/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-DFS、BFS/">ACM-DFS、BFS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:55:03.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:55:03.000Z">2019-09-15</time></div><div class="recent-post-content"> 深度优先搜索(DFS)
 
 从某个状态,不断转移状态直到无法转移,然后回退到前一步的状态,继续转移到其他状态,如此不断重复,直到找到最终解. ====&gt; 递归函数
 隐式的用到了栈(stack)
 
-123456789101112131415161718192021222324252627//[部分和问题]#include &lt;iostream&gt;#define MAXN 10000int n,k;int s[MAXN];using namespace std;bool dfs(int i,int sum)&#123;    if( i == n ) return sum == k; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-DFS、BFS/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/5/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+123456789101112131415161718192021222324252627//[部分和问题]#include &lt;iostream&gt;#define MAXN 10000int n,k;int s[MAXN];using namespace std;bool dfs(int i,int sum)&#123;    if( i == n ) return sum == k; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-DFS、BFS/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/5/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

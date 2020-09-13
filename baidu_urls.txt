@@ -1,3 +1,4 @@
+https://nymrli.top/2020/09/08/数据结构——单调栈/
 https://nymrli.top/2020/09/06/扇区、块-簇/
 https://nymrli.top/2020/09/04/SQL练习/
 https://nymrli.top/2020/07/11/IDEA插件开发/
@@ -5,6 +6,7 @@ https://nymrli.top/2020/05/24/getBargains的record和Solution/
 https://nymrli.top/2020/05/15/IDEA配置——自定义快捷键、生成注释/
 https://nymrli.top/2020/05/15/重拾Java笔记/
 https://nymrli.top/2020/04/29/华为春招4-29笔试题/
+https://nymrli.top/2020/04/20/剑指Offer-leetcode刷题记录/
 https://nymrli.top/2020/03/23/VsCode配置Latex(texLive)环境/
 https://nymrli.top/2020/03/04/算法笔记Codeup题解/
 https://nymrli.top/2020/02/02/PAT冲冲冲——乙级/
@@ -46,5 +48,3 @@ https://nymrli.top/2019/09/14/如何成为一位老司机——考驾照经历/
 https://nymrli.top/2019/09/14/软件测试大赛/
 https://nymrli.top/2019/09/13/Java自动化构建工具——Maven/
 https://nymrli.top/2019/09/13/打jar包和使用jar包/
-https://nymrli.top/2019/09/09/验证码识别程序设计流程/
-https://nymrli.top/2019/09/09/新加坡游玩经验/

@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>数据结构——单调栈 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">数据结构——单调栈</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/09/13</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,070</span> | Reading time: <span class="post-count">9</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
+<p>秋季PAT的第一题就是单调栈，之前没怎么学过， 因此这次专门学习做下笔记。</p>
+</blockquote>
+<h1 id="单调栈monotone-stack"><a class="markdownIt-Anchor" href="#单调栈monotone-stack"></a> 单调栈Monotone Stack；</h1>
+<h2 id="概念"><a class="markdownIt-Anchor" href="#概念"></a> 概念:</h2>
+<p>从行为上看，它不仅仅是用存储与访问受限的栈，而是一种<strong>辅助工具</strong>，用于检测数据的单调性变化并<strong>作出反应</strong>（表现: 当入栈元素会影响栈总体单调性时，要出栈一些元素以维持单调性）</p>
+<h2 id="场景"><a class="markdownIt-Anchor" href="#场景"></a> 场景：</h2>
+<ul>
+<li>查找左（右）区间稍大（小）的元素；</li>
+<li>确定<strong>区间</strong>构成的<strong>极值</strong>，如max f（la，b]）；</li>
+<li>确定某条件（单调）下的<strong>最长区间</strong>；</li>
+</ul>
+<h2 id="point"><a class="markdownIt-Anchor" href="#point"></a> Point：</h2>
+<p>单调递增栈: 指栈内元素的<strong>出栈序列</strong><u>递增</u>（或递减），而<strong>栈内元素</strong>是递减（或递增），即当元素比栈顶小的时候入栈。因此需要输出下一个最大的元素。</p>
+<p>当然也有人是直接根据栈内元素大小关系来区别， 比如栈内元素递减就叫做递减栈。</p>
+<p>此外没有双向栈的存在。</p>
+<h2 id="核心思想"><a class="markdownIt-Anchor" href="#核心思想"></a> 核心思想</h2>
+<p>在元素Y入栈的时候会跟栈顶元素X<strong>比较</strong>， 如果Y比栈内所有元素Xs都大的话，就可以拿到栈里所有的元素即区间。关键是这个比较， 就可以找到第一个满足要求的数据。</p>
+<p>e.g.有列表[1, 3, 2, 0, 7]，从左向右遍历，当遍历为7时栈里有[3, 2, 0]，此时入栈元素为7， 能得到==&gt;那么对于0来说，右边最大的就是当前入栈元素7， 左边最小的就是栈内下一个元素2。而对3来说，此时3上边的元素就都是比3小的元素们。</p>
+<h3 id="496-下一个更大元素-i"><a class="markdownIt-Anchor" href="#496-下一个更大元素-i"></a> <a href="https://leetcode-cn.com/problems/next-greater-element-i/" target="_blank" rel="noopener">496. 下一个更大元素 I</a></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nextGreaterElement</span><span class="params">(self, nums1: List[int], nums2: List[int])</span> -&gt; List[int]:</span></span><br><span class="line">        hash_dict = dict()</span><br><span class="line">        stack = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums2:</span><br><span class="line">            <span class="keyword">while</span> stack <span class="keyword">and</span> i &gt; stack[<span class="number">-1</span>]:</span><br><span class="line">                <span class="comment"># 在原有序列中比栈顶元素大的就是当前入栈元素i</span></span><br><span class="line">                hash_dict[stack.pop()] = i</span><br><span class="line">            stack.append(i)</span><br><span class="line">        <span class="keyword">return</span> [hash_dict.get(i,<span class="number">-1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> nums1]</span><br></pre></td></tr></table></figure>
+<h2 id="code模板"><a class="markdownIt-Anchor" href="#code模板"></a> Code模板：</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getFirstMax</span><span class="params">(nums: List[int])</span>:</span></span><br><span class="line">    <span class="comment"># 站内元素递减栈， 输出序列递增</span></span><br><span class="line">    stack = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums) - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">        val = nums[i]</span><br><span class="line">        <span class="keyword">if</span> stack <span class="keyword">and</span> val &gt; stack[<span class="number">-1</span>]:</span><br><span class="line">            stack.pop()</span><br><span class="line">        <span class="comment"># 入栈操作在之前逻辑都执行完之哦吼，最后再入栈</span></span><br><span class="line">        stack.append(val)</span><br></pre></td></tr></table></figure>
+<p>这种写法， 主要是运用的stack.pop元素</p>
+<h2 id="例题"><a class="markdownIt-Anchor" href="#例题"></a> 例题</h2>
+<h3 id="leetcode496"><a class="markdownIt-Anchor" href="#leetcode496"></a> Leetcode#496：</h3>
+<blockquote>
+<p>单调栈</p>
+</blockquote>
+<h3 id="leetcode962"><a class="markdownIt-Anchor" href="#leetcode962"></a> Leetcode#962：</h3>
+<blockquote>
+<p>单调栈</p>
+</blockquote>
+<h3 id="leetcode1124"><a class="markdownIt-Anchor" href="#leetcode1124"></a> Leetcode#1124：</h3>
+<blockquote>
+<p>前缀和+单调栈</p>
+</blockquote>
+<p>参看：<a href="https://www.bilibili.com/video/BV1Pp4y1e7o5%EF%BC%8C" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1Pp4y1e7o5，</a> 此人讲的单调栈，都是利用的栈顶元素。</p>
+<h3 id="单调队列"><a class="markdownIt-Anchor" href="#单调队列"></a> 单调队列</h3>
+<h4 id="p1886-滑动窗口-模板单调队列"><a class="markdownIt-Anchor" href="#p1886-滑动窗口-模板单调队列"></a> <a href="https://www.luogu.com.cn/problem/P1886" target="_blank" rel="noopener">P1886 滑动窗口 /【模板】单调队列</a></h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: Mrli</span></span><br><span class="line"><span class="comment"> * @Date: 2020-09-07 22:10:25</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2020-09-12 14:24:26</span></span><br><span class="line"><span class="comment"> * @Description: </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个写法可以借鉴一下</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    <span class="keyword">int</span> id;	        <span class="comment">// 下标</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1; <span class="comment">// 最小</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2; <span class="comment">// 最大</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line"><span class="built_in">deque</span>&lt;node&gt; q1;</span><br><span class="line"><span class="built_in">deque</span>&lt;node&gt; q2;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        node nd;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; nd.val;</span><br><span class="line">        nd.id = i;</span><br><span class="line">        </span><br><span class="line">		<span class="comment">// 如果当前元素小于栈顶元素， 则栈顶元素出栈</span></span><br><span class="line">        <span class="comment">// --&gt;获得栈顶小于当前预算</span></span><br><span class="line">        <span class="keyword">while</span>( !q1.empty() &amp;&amp; nd.val &lt;= q1.back().val)&#123;</span><br><span class="line">             q1.pop_back();      </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>( !q2.empty() &amp;&amp; nd.val &gt;= q2.back().val) q2.pop_back();</span><br><span class="line">        q1.push_back(nd);</span><br><span class="line">        q2.push_back(nd);</span><br><span class="line">        <span class="keyword">if</span> ( i - q1.front().id + <span class="number">1</span> &gt; k) q1.pop_front();                 <span class="comment">// 如果栈底元素已经超出边界则出栈</span></span><br><span class="line">        <span class="keyword">if</span> ( i - q2.front().id + <span class="number">1</span> &gt; k) q2.pop_front();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (i &gt;= k)&#123;        <span class="comment">// 当索引满足窗口大小的时候才进行操作</span></span><br><span class="line">            v1.push_back(q1.front().val);                  <span class="comment">// 栈底元素为当前k窗口中最小的</span></span><br><span class="line">            v2.push_back(q2.front().val);                  <span class="comment">// 栈底元素为当前k窗口中最大的</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> len = v1.size();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">       <span class="built_in">cout</span> &lt;&lt; v1[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    len = v2.size();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">       <span class="built_in">cout</span> &lt;&lt; v2[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="holiday"><a class="markdownIt-Anchor" href="#holiday"></a> holiday</h4>
+<p>题目描述</p>
+<p>经过几个月辛勤的工作，FJ决定让奶牛放假。</p>
+<p>假期可以在1…N天内任意选择一段（需要连续），每一天都有一个享受指数W。但是奶牛的要求非常苛刻，假期不能短于P天，否则奶牛不能得到足够的休息；假期也不能超过Q天，否则奶牛会玩的腻烦。</p>
+<p>FJ想知道奶牛们能获得的最大享受指数。</p>
+<p><strong>输入格式</strong></p>
+<p>第一行：N,P,Q.</p>
+<p>第二行：N个数字，中间用一个空格隔开。</p>
+<p><strong>输出格式</strong></p>
+<p>一个整数，奶牛们能获得的最大享受指数。</p>
+<p>样例数据</p>
+<p><em>input</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">5 2 4</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-9 -4 -3 8 -6</span><br></pre></td></tr></table></figure>
+<p><em>output</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
+<p>Hint 选择第3-4天，享受指数为-3+8=5。</p>
+<p><strong>数据规模与约定</strong></p>
+<p>50% 1≤N≤10000，100% 1≤N≤100000</p>
+<p>时间限制：1s， 空间限制：256MB</p>
+<p>思路：</p>
+<blockquote>
+<p>用前缀和处理前i天的指数和<br>
+其实就是从P的位置开始枚举，每次把i-P压入队列，如果<strong>i-Q大于队首元素的位置</strong>，弹出队首<br>
+每次取出队首让ans=max（sum[i]-sum[Day.front()]）<br>
+最后输出ans</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 9999999999</span></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> sum[<span class="number">100300</span>];</span><br><span class="line"><span class="keyword">int</span> n,p,q;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans=-INF;</span><br><span class="line"><span class="built_in">deque</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; Day;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	freopen(<span class="string">"holiday.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	<span class="comment">// freopen("holiday.out","w",stdout);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;p,&amp;q);</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> x;</span><br><span class="line">    <span class="comment">// 前缀和</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;x);</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+x;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=p;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> nowIndex = i - p;</span><br><span class="line">        <span class="comment">// 指数和小的放前面</span></span><br><span class="line">		<span class="keyword">while</span>(!Day.empty() &amp;&amp; sum[nowIndex] &lt; sum[Day.back()] ) Day.pop_back();</span><br><span class="line">		Day.push_back(nowIndex);</span><br><span class="line">        <span class="comment">// 实际上应该理解为 当前日期i - 队首的日期 &gt; Q天, 则让pop_front </span></span><br><span class="line">		<span class="keyword">while</span>(!Day.empty() &amp;&amp; i - q &gt; Day.front())  Day.pop_front();</span><br><span class="line">        <span class="comment">// sum[i] - sum[Day.front()]  为索引i~Day.front()这几天的指数和</span></span><br><span class="line">		ans=max(ans, sum[i]-sum[Day.front()]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>总结: <strong>单调队列</strong>对于处理线性<strong>滑动区间最值</strong>可谓游刃有余</p>
+<p>借鉴: <a href="https://blog.csdn.net/jwg2732/article/details/107879262?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~first_rank_v2~rank_v25-1-107879262.nonecase&amp;utm_term=%E4%BB%80%E4%B9%88%E5%8F%AB%E5%81%9A%E5%8D%95%E8%B0%83%E6%A0%88#1.%E5%8D%95%E8%B0%83%E6%A0%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9E%E7%8E%B0" target="_blank" rel="noopener">数据结构之单调队列与单调栈</a></p>
+<h3 id="单调栈"><a class="markdownIt-Anchor" href="#单调栈"></a> 单调栈</h3>
+<h4 id="p2866-usaco06novbad-hair-day-s"><a class="markdownIt-Anchor" href="#p2866-usaco06novbad-hair-day-s"></a> <a href="https://www.luogu.com.cn/problem/P2866" target="_blank" rel="noopener">P2866 [USACO06NOV]Bad Hair Day S</a></h4>
+<p>根据题目细品: 第N头牛站最前面, 第1头站最后面, 然后如果Hi &gt; Hn, 则能看到。要求累加第i头牛能看到前面牛的头发数， 即可以理解为第i头牛往前看， 找到比它大的Hi或者边界（边界可以看做为Hi=0的）。===&gt; 输入样例从左往右找比当前元素大的，单调递减栈–&gt;正常for i = 0</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">long</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cow</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">int</span> height;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">stack</span>&lt;cow&gt; st;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tmp;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="comment">// C_i的高度</span></span><br><span class="line">       <span class="built_in">cin</span> &gt;&gt; tmp;</span><br><span class="line">       <span class="comment">// 找到比当前元素大的一个元素， 期间小的都累计</span></span><br><span class="line">       <span class="keyword">while</span>( !st.empty() &amp;&amp; tmp &gt;= st.top().height ) &#123;</span><br><span class="line">           ans += ( i - st.top().id - <span class="number">1</span>);</span><br><span class="line">           st.pop();</span><br><span class="line">       &#125;</span><br><span class="line">       st.push(&#123;i, tmp&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 到最后的时候， 剩下的递减的都是前面没有比自己高的牛了， 如样例最后剩5&lt;-6， 那么6(2)前面没数字了， 所以为0， 5前面(12)只有6了，且6的2高&lt;5的12高， 因此6-5=1有1头牛</span></span><br><span class="line">    <span class="keyword">while</span>(!st.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> now = st.top().id;</span><br><span class="line">        st.pop();</span><br><span class="line">        ans += (n - now);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>思路2：</p>
+<ol>
+<li>每次输入一头牛的身高，找比这头牛矮的，出栈</li>
+<li><strong>剩下的牛皆可以看到这只牛</strong></li>
+<li>ans值加等于栈中牛的个数</li>
+<li>这头牛入栈</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,t;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans; <span class="comment">//注意要开long long </span></span><br><span class="line"><span class="built_in">stack</span> &lt;<span class="keyword">int</span>&gt; a;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">        <span class="comment">// 将栈内删到全都是比t的高的</span></span><br><span class="line">		<span class="keyword">while</span> (!a.empty() &amp;&amp; a.top() &lt;= t)  </span><br><span class="line">			a.pop();</span><br><span class="line">        <span class="comment">// 注意： 先size后push</span></span><br><span class="line">		ans+=a.size();</span><br><span class="line">		a.push(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="气温-列表"><a class="markdownIt-Anchor" href="#气温-列表"></a> <a href="https://blog.csdn.net/fyydhsw/article/details/102830770" target="_blank" rel="noopener">气温 列表</a></h4>
+<p>从左往右找比当前元素大的–&gt;单调递减栈（从栈底到栈顶递减），正常for i = 0</p>
+<hr>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>单调栈可利用的点:</p>
+<ul>
+<li>剩下的元素 跟 当前元素的关系；弹出元素的个数；剩余元素的个数</li>
+<li>栈顶 和 当前元素的关系==&gt; 找到第一个比数大、小的</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/09/08/数据结构——单调栈/">https://nymrli.top/2020/09/08/数据结构——单调栈/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2020/09/06/扇区、块-簇/" title="扇区、块/簇"><span>NextPost ></span><br><span class="nextTitle">扇区、块/簇</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '数据结构——单调栈',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#单调栈monotone-stack"><span class="toc-number">1.</span> <span class="toc-text"> 单调栈Monotone Stack；</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">1.1.</span> <span class="toc-text"> 概念:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.2.</span> <span class="toc-text"> 场景：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#point"><span class="toc-number">1.3.</span> <span class="toc-text"> Point：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#核心思想"><span class="toc-number">1.4.</span> <span class="toc-text"> 核心思想</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#496-下一个更大元素-i"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 496. 下一个更大元素 I</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#code模板"><span class="toc-number">1.5.</span> <span class="toc-text"> Code模板：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例题"><span class="toc-number">1.6.</span> <span class="toc-text"> 例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode496"><span class="toc-number">1.6.1.</span> <span class="toc-text"> Leetcode#496：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode962"><span class="toc-number">1.6.2.</span> <span class="toc-text"> Leetcode#962：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode1124"><span class="toc-number">1.6.3.</span> <span class="toc-text"> Leetcode#1124：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单调队列"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 单调队列</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#p1886-滑动窗口-模板单调队列"><span class="toc-number">1.6.4.1.</span> <span class="toc-text"> P1886 滑动窗口 /【模板】单调队列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#holiday"><span class="toc-number">1.6.4.2.</span> <span class="toc-text"> holiday</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单调栈"><span class="toc-number">1.6.5.</span> <span class="toc-text"> 单调栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#p2866-usaco06novbad-hair-day-s"><span class="toc-number">1.6.5.1.</span> <span class="toc-text"> P2866 [USACO06NOV]Bad Hair Day S</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#气温-列表"><span class="toc-number">1.6.5.2.</span> <span class="toc-text"> 气温 列表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.7.</span> <span class="toc-text"> 总结</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

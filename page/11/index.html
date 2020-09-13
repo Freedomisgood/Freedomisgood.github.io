@@ -108,12 +108,7 @@
  安装nginx
 1234sudo apt-get install nginxsudo /etc/init.d/nginx start (start可以改成restart/stop)#或是sudo service nginx start然后浏览器输入服务器IP,观察是否有welcom to nginx!
  安装py3和virtualenv
-12sudo apt-get install git python3 python3-pipsudo pip3 install virtuale ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="服务器"> 服务器</a></div><div class="read-more"><a class="more" href="/2018/10/12/nginx+uwsi搭建django环境服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/">python pywin32 PyUserInput实现自动化脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-08-31T11:43:00.000Z">2018-08-31</time><i class="fa fa-edit"></i><time datetime="2018-08-31T11:43:00.000Z">2019-09-17</time></div><div class="recent-post-content"> python pywin32 PyUserInput实现自动化脚本
-pywin32用spy++工具查找到句柄，再结合PyUserInput就能很好地实现自动化脚本。
-
-句柄是一个32位整数，在windows中标记对象用，类似一个dict中的key，详情参看这篇文章。
-
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/">解决安装PyUserInput、pyHook遇到的问题——AttributeError: 'HookManager' object has no attribute 'keyboard_hook</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-02T11:33:32.000Z">2018-09-02</time><i class="fa fa-edit"></i><time datetime="2018-09-02T11:33:32.000Z">2019-09-15</time></div><div class="recent-post-content">安装PyUserInput失败。
+12sudo apt-get install git python3 python3-pipsudo pip3 install virtuale ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="服务器"> 服务器</a></div><div class="read-more"><a class="more" href="/2018/10/12/nginx+uwsi搭建django环境服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/">解决安装PyUserInput、pyHook遇到的问题——AttributeError: 'HookManager' object has no attribute 'keyboard_hook</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-02T11:33:32.000Z">2018-09-02</time><i class="fa fa-edit"></i><time datetime="2018-09-02T11:33:32.000Z">2019-09-15</time></div><div class="recent-post-content">安装PyUserInput失败。
 
 经查看发现是pyHook（pyHook是一个用来进行键盘、鼠标等层面事件监控的库。这个库的正常工作需要pythoncom等操作系统的API的支持。）无法安装，不知道是不是因为这个库可以被用于一些比较邪恶的目的。经搜索发现直接pip install pyHook是找不到相关包的，但可以下源码编译安装，可以在 https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyhook 这里可以直接下载到.whl文件，这个文件可以作为pip install 的参数来进行安装。
 
@@ -200,21 +195,18 @@ Spy++ (SPYXX.EXE) 是一个基于 Win32 的实用工具，它提供系统的进�
 此时会有两种情况。
 
 成功搜索到
-搜索 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2018/09/02/Spy-使用介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/08/30/Python字典基本操作介绍/">Python字典基本操作介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-08-30T13:14:27.000Z">2018-08-30</time><i class="fa fa-edit"></i><time datetime="2018-08-30T13:14:27.000Z">2019-09-15</time></div><div class="recent-post-content"> 创建字典
+搜索 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2018/09/02/Spy-使用介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/18/python中关于round函数的注意事项/">python中关于round函数的注意事项</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-18T03:37:00.000Z">2018-10-18</time><i class="fa fa-edit"></i><time datetime="2018-10-18T03:37:00.000Z">2019-09-15</time></div><div class="recent-post-content"> python中关于round函数的注意事项
 
-info={}
-info=dict()
+round函数很简单，对浮点数进行近似取值，保留几位小数。
 
+比如:
+12345&gt;&gt;&gt; round(10.0/3, 2)3.33&gt;&gt;&gt; round(20/7)3#第一个参数是一个浮点数，第二个参数是保留的小数位数，可选，如果不写的话默认保留到整数。
+12345678910#[round]函数文档-py3def round(number, ndigits=None): # real signature unknown; restored from __doc__    """    round(number[,  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/18/python中关于round函数的注意事项/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/linux下apt-get介绍/">linux下apt-get介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T08:42:20.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T08:42:20.000Z">2019-09-15</time></div><div class="recent-post-content"> apt-get
 
- 初始化字典
- 法一
-123key = &apos;name&apos;info = &#123; key :&apos;cold&apos;&#125;==&#123;&apos;name&apos;:&apos;cold&apos;&#125;
- 法二
-12info = dict(key = &apos;cold&apos;)==&#123;&apos;key&apos;:&apos;cold&apos;&#125;
- 法三
-1#还有可以使用dict(zip(a,b))其中a,b都是列表,会生成以A中元素为键,B中元素为值的字典
+Advanced Package Tool又名apt-get，是一条linux命令，适用于deb包管理式的操作系统如Unix和Linux系统的应用程序管理器，主要用于自动从互联网的软件仓库中搜索、安装、升级、卸载软件或操作系统。
 
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/08/30/Python字典基本操作介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/18/LeetCode-26-删除排序数组中的重复项/">LeetCode 26. 删除排序数组中的重复项</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-18T03:35:36.000Z">2018-10-18</time><i class="fa fa-edit"></i><time datetime="2018-10-18T03:35:36.000Z">2019-09-15</time></div><div class="recent-post-content"> LeetCode 26. 删除排序数组中的重复项
+rpm包和deb包是两种Linux系统下最常见的安装包格式，在安装一些软件或服务的时候免不了要和它们打交道。rpm包主要应用在RedHat系列包括 Fedora等发行版的Linux系统上，deb包主要应用于Debian系列包括现在比较流行的Ubuntu等发行版上。
+我们知道如果要安装现成的这两种包的话，安装rpm包的命令是“rpm -参数”，安装 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/10/24/linux下apt-get介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/18/LeetCode-26-删除排序数组中的重复项/">LeetCode 26. 删除排序数组中的重复项</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-18T03:35:36.000Z">2018-10-18</time><i class="fa fa-edit"></i><time datetime="2018-10-18T03:35:36.000Z">2019-09-15</time></div><div class="recent-post-content"> LeetCode 26. 删除排序数组中的重复项
 给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
 示例 1:

@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>手撕操作系统中的页面置换算法 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">手撕操作系统中的页面置换算法</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/09/21</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,978</span> | Reading time: <span class="post-count">8</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="操作系统基础-内存换页算法"><a class="markdownIt-Anchor" href="#操作系统基础-内存换页算法"></a> 操作系统基础 内存换页算法</h1>
+<p><strong>公平算法：</strong></p>
+<ul>
+<li>随机算法、先来先出（FIFO）算法、第二次机会算法、时钟算法</li>
+</ul>
+<p><strong>非公平算法：</strong></p>
+<ul>
+<li>最优OPT算法、NRU算法、LRU算法、工作集算法、工作集时钟算法</li>
+</ul>
+<p>其中LRU算法会被面试的时候要求手撕， 因此本篇就稍微介绍一下LRU和LFU两个算法， 这两个算法除了在内存换页上会被使用到，</p>
+<h2 id="简单介绍一些算法"><a class="markdownIt-Anchor" href="#简单介绍一些算法"></a> 简单介绍一些算法：</h2>
+<h3 id="随机更换算法"><a class="markdownIt-Anchor" href="#随机更换算法"></a> 随机更换算法</h3>
+<p>需要替换页面的时候，产生一个随机页面号，替换与该页面对应的物理页面。</p>
+<h3 id="先来先出fifo算法"><a class="markdownIt-Anchor" href="#先来先出fifo算法"></a> 先来先出（FIFO）算法</h3>
+<p>更换最早进入内存的页面。其中有Belady异常现象: 缺页率随内存块数增加而增加</p>
+<h3 id="最优opt算法"><a class="markdownIt-Anchor" href="#最优opt算法"></a> 最优OPT算法：</h3>
+<p>最佳置换算法是由Belady于1966年提出的一种理论上的算法。其所选择的被淘汰页面将是以后永不使用的，或许是在最长（未来）时间内不再被访问的页面。<br>
+采用最佳置换算法通常可保证获得<u>最低的缺页率</u>。</p>
+<p>▲由于人们目前还无法预知，一个进程在内存的若干个页面中，哪一个页面是未来最长时间内不再被访问的，因而该算法是无法实现的。</p>
+<p>Q： 既然无法实现， 那么他的价值是什么呢？</p>
+<p>A： 他被作为评价一个内存换页算法效率的标榜</p>
+<h3 id="nru算法"><a class="markdownIt-Anchor" href="#nru算法"></a> NRU算法</h3>
+<p>最近未使用算法（Not Recently Used，NRU），就是选择一个最近没有被访问的页面来替换，在所有的最近没有使用的页面里，按照各个页面的修改位和访问位的组合来进行划分。相比LRU需要较多硬件支持， NRU算法在页表项设置两个状态位：引用位R和修改位M</p>
+<h2 id="lru"><a class="markdownIt-Anchor" href="#lru"></a> LRU</h2>
+<h3 id="q-什么是-lru-算法"><a class="markdownIt-Anchor" href="#q-什么是-lru-算法"></a> Q、什么是 LRU 算法?</h3>
+<p>A: Least Recently Used最近最久未使用算法，本质一种缓存淘汰策略。</p>
+<p>计算机的缓存容量有限，如果缓存满了就要删除一些内容，给新内容腾位置。但问题是，删除哪些内容呢？我们肯定希望删掉哪些没什么用的缓存，而把有用的数据继续留在缓存里，方便之后继续使用。那么，什么样的数据，我们判定为「有用的」的数据呢？</p>
+<p>LRU 缓存淘汰算法就是一种常用策略。LRU 的全称是 Least Recently Used，也就是说我们认为最近使用过的数据应该是是「有用的」，很久都没用过的数据应该是无用的，内存满了就优先删那些很久没用过的数据。</p>
+<p>▲同时它也是一种换页算法， 在内存换页上需要较多的硬件支持（计数器or栈）</p>
+<h4 id="常见的缓存算法"><a class="markdownIt-Anchor" href="#常见的缓存算法"></a> 常见的缓存算法</h4>
+<ul>
+<li>LRU (Least recently used) 最近最少使用，如果数据最近被访问过，那么将来被访问的几率也更高。</li>
+<li>LFU (Least frequently used) 最不经常使用，如果一个数据在最近一段时间内使用次数很少，那么在将来一段时间内被使用的可能性也很小。
+<ul>
+<li>LFU由于涉及频率, 因此在代码实现上有个计数器来统计出现次数T，在需要换页（缓存更新的时候）将替换掉最低T的key</li>
+</ul>
+</li>
+<li>FIFO (Fist in first out) 先进先出， 如果一个数据最先进入缓存中，则应该最早淘汰掉。</li>
+</ul>
+<h3 id="lru算法与opt算法比较"><a class="markdownIt-Anchor" href="#lru算法与opt算法比较"></a> LRU算法与OPT算法比较</h3>
+<p>OPT是从“向后看”的观点出发的，即它是依据以后各页的使用情况进行判断，是理想状况；而LRU算法则是“向前看”的，即根据各页以前的使用情况来判断，而页面过去和未来的走向之间虽无必然的联系，但也有一定的预测关系。<br>
+总的来说，LRU算法是一种比较好的算法。</p>
+<h3 id="q-算法要求"><a class="markdownIt-Anchor" href="#q-算法要求"></a> Q: 算法要求</h3>
+<p>LRU 算法实际上是让你设计数据结构：首先要接收一个 capacity 参数作为缓存的最大容量，然后实现<strong>两个 API</strong>，一个是 put(key, val) 方法存入键值对，另一个是 get(key) 方法获取 key 对应的 val，如果 key 不存在则返回 -1。其中， get(key)的时候会把这个新查询的key放到最前端</p>
+<p>由于性能要求，get 和 put 方法必须都是 O(1) 的时间复杂度。</p>
+<ul>
+<li>get需要O(1) --&gt; hash</li>
+<li>put需要O(1) --&gt;链表</li>
+</ul>
+<h3 id="coding实现"><a class="markdownIt-Anchor" href="#coding实现"></a> Coding实现</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> lru;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">        Integer key;</span><br><span class="line">        Integer val;</span><br><span class="line">        <span class="comment">// 双向列表: 前后向节点</span></span><br><span class="line">        Node nxt, prev;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Node(<span class="keyword">int</span> k, <span class="keyword">int</span> v) &#123;</span><br><span class="line">            <span class="keyword">this</span>.key = k;</span><br><span class="line">            <span class="keyword">this</span>.val = v;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"Node&#123;"</span> +</span><br><span class="line">                    <span class="string">"key="</span> + key +</span><br><span class="line">                    <span class="string">", val="</span> + val +</span><br><span class="line">                    <span class="string">'&#125;'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">DoubleList</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line">        <span class="comment">// 头尾空指针</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> Node head;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> Node tail;</span><br><span class="line"></span><br><span class="line">        DoubleList() &#123;</span><br><span class="line">            <span class="comment">// 初始化</span></span><br><span class="line">            <span class="keyword">this</span>.size = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">this</span>.head = <span class="keyword">new</span> Node();</span><br><span class="line">            <span class="keyword">this</span>.tail = <span class="keyword">new</span> Node();</span><br><span class="line">            <span class="keyword">this</span>.head.nxt = tail;</span><br><span class="line">            <span class="keyword">this</span>.tail.prev = head;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 将节点到头部, head-&gt;nxt = node;</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> node 待插入节点</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFirst</span><span class="params">(Node node)</span></span>&#123;</span><br><span class="line">            <span class="comment">// 4个指针关系</span></span><br><span class="line">            node.nxt = head.nxt;</span><br><span class="line">            node.prev = head;</span><br><span class="line">            head.nxt.prev = node;</span><br><span class="line">            head.nxt = node;</span><br><span class="line">            <span class="comment">// 记得增加当前容器Size</span></span><br><span class="line">            <span class="keyword">this</span>.size ++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(Node node)</span></span>&#123;</span><br><span class="line">            <span class="comment">// 略过当前节点, 调整前后指针</span></span><br><span class="line">            node.nxt.prev = node.prev;</span><br><span class="line">            node.prev.nxt = node.nxt;</span><br><span class="line">            <span class="comment">// 调整容器Size</span></span><br><span class="line">            <span class="keyword">this</span>.size--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Node <span class="title">removeLast</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="comment">// 删除尾节点, 为tail.prev</span></span><br><span class="line">            Node node = tail.prev;</span><br><span class="line">            <span class="comment">// ▲笔误写错, 查了半小时</span></span><br><span class="line">            node.nxt= tail;</span><br><span class="line">            remove(node);</span><br><span class="line">            <span class="comment">// 删除的时候还要在mp中删除索引, 因此要返回值</span></span><br><span class="line">            <span class="keyword">return</span> node;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.size;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"DoubleList&#123;"</span> +</span><br><span class="line">                    <span class="string">"size="</span> + size +</span><br><span class="line">                    <span class="string">'&#125;'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> capacity;</span><br><span class="line">    Map&lt;Integer, Node&gt; mp;</span><br><span class="line">    DoubleList list;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LRUCache</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.capacity = capacity;</span><br><span class="line">        list = <span class="keyword">new</span> DoubleList();</span><br><span class="line">        mp = <span class="keyword">new</span> HashMap&lt;Integer, Node&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 访问过的key对应的Node需要放到队首部(最近查询)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key 键</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 有相应的key则返回对应Node的val, 无则返回-1</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( mp.containsKey( key) )&#123;</span><br><span class="line">            <span class="keyword">int</span> res = mp.get(key).val;</span><br><span class="line">            <span class="comment">// ★ 把当前访问的放到队首</span></span><br><span class="line">            put(key, res);</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 1. 如果已有key, 则删除容器中原有的Node, 将其放到队首</span></span><br><span class="line"><span class="comment">     * 2. 如果没有key,</span></span><br><span class="line"><span class="comment">     *      2.1 如果容器已满, 则将队尾的排出, 再将新Node加在队首</span></span><br><span class="line"><span class="comment">     *      2.2 如果容器未满, 则直接将新Node加在队首</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> value</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        Node node = <span class="keyword">new</span> Node(key, value);</span><br><span class="line">        <span class="keyword">if</span> (mp.containsKey(key))&#123;</span><br><span class="line">            list.remove(mp.get(key));</span><br><span class="line">            list.addFirst(node);</span><br><span class="line">            mp.put(key, node);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> ( list.getSize() == capacity )&#123;</span><br><span class="line">                Node last = list.removeLast();</span><br><span class="line">                mp.remove(last.key);</span><br><span class="line">            &#125;</span><br><span class="line">            list.addFirst(node);</span><br><span class="line">            mp.put(key, node);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"LRUCache&#123;"</span> +</span><br><span class="line">                <span class="string">"capacity="</span> + capacity +</span><br><span class="line">                <span class="string">", mp="</span> + mp.toString() +</span><br><span class="line">                <span class="string">", list="</span> + list.toString() +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>LeetCode代码检验 : <a href="https://leetcode-cn.com/problems/lru-cache/" target="_blank" rel="noopener">146. LRU缓存机制</a></p>
+<p>算法实现参考： <a href="https://www.bilibili.com/video/BV18A411i7ui?from=search&amp;seid=15979179417437329877" target="_blank" rel="noopener">LRU算法：手把手带你实现一个干啥都快的快乐算法</a>， 思路挺清晰的， 只不过只有LRUCache的代码， 需要自己实现双向链表</p>
+<h2 id="lfu"><a class="markdownIt-Anchor" href="#lfu"></a> LFU</h2>
+<p>LFU (Least frequently used) 最不经常使用，如果一个数据在最近一段时间内使用次数很少，那么在将来一段时间内被使用的可能性也很小。</p>
+<ul>
+<li>LFU由于涉及频率, 因此在代码实现上有个计数器来统计出现次数T，在需要换页（缓存更新的时候）将替换掉最低T的ke</li>
+</ul>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<p>参考链接:</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1k54y1D7RB?from=search&amp;seid=6126947713407811317" target="_blank" rel="noopener">【1】简单易懂，包你学会！ | 操作系统 | 页面置换</a> ——  认知性了解</li>
+<li><a href="https://www.bilibili.com/video/BV1xt4y1173x?from=search&amp;seid=6126947713407811317" target="_blank" rel="noopener">操作系统-页面置换<em>算法</em>（OPT、FIFO、LRU、</a>——换页过程</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/09/21/手撕操作系统中的页面置换算法/">https://nymrli.top/2020/09/21/手撕操作系统中的页面置换算法/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2020/09/15/docsify使用记录/" title="docsify使用记录"><span>NextPost ></span><br><span class="nextTitle">docsify使用记录</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '手撕操作系统中的页面置换算法',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#操作系统基础-内存换页算法"><span class="toc-number">1.</span> <span class="toc-text"> 操作系统基础 内存换页算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单介绍一些算法"><span class="toc-number">1.1.</span> <span class="toc-text"> 简单介绍一些算法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#随机更换算法"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 随机更换算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#先来先出fifo算法"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 先来先出（FIFO）算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最优opt算法"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 最优OPT算法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nru算法"><span class="toc-number">1.1.4.</span> <span class="toc-text"> NRU算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lru"><span class="toc-number">1.2.</span> <span class="toc-text"> LRU</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#q-什么是-lru-算法"><span class="toc-number">1.2.1.</span> <span class="toc-text"> Q、什么是 LRU 算法?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常见的缓存算法"><span class="toc-number">1.2.1.1.</span> <span class="toc-text"> 常见的缓存算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lru算法与opt算法比较"><span class="toc-number">1.2.2.</span> <span class="toc-text"> LRU算法与OPT算法比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#q-算法要求"><span class="toc-number">1.2.3.</span> <span class="toc-text"> Q: 算法要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#coding实现"><span class="toc-number">1.2.4.</span> <span class="toc-text"> Coding实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lfu"><span class="toc-number">1.3.</span> <span class="toc-text"> LFU</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number">2.</span> <span class="toc-text"> 附录</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

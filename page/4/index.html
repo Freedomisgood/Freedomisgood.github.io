@@ -130,7 +130,22 @@ Size:
 （FOURIER TRANSFORM，简称FT）
 
  为什么傅里叶变换可以把一个信号从时域变换到频域?
-先给出公式，傅里叶变换的形式为：X(w)=∫−∞+∞x(t)e−jwtdtX(w)=\int_{-\infty}^{+\infty} x(t) e^{-j w t} d tX(w)= ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/傅里叶变换-小波变化/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/">通过XDRP实现Windows远程访问ubuntu桌面</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T00:57:05.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T00:57:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 通过XDRP实现Windows远程访问
+先给出公式，傅里叶变换的形式为：X(w)=∫−∞+∞x(t)e−jwtdtX(w)=\int_{-\infty}^{+\infty} x(t) e^{-j w t} d tX(w)= ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/傅里叶变换-小波变化/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/2019-6月编程笔记/">2019_6月编程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:26:03.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:26:03.000Z">2019-11-26</time></div><div class="recent-post-content"> 2019_6月编程笔记
+
+注，不少内容比较多，已单独分出去成为独立的文章，更详细的介绍可见这些文章
+
+ 硬盘格式
+fat32 单文件4G， 做引导分区
+系统引导程序能读fat32
+只能主引导记录，选择能找到efi程序
+exfat 支持更大空间，引导识别不了，做不了系统盘
+ Python
+ all
+
+__all__是一个字符串list；
+约束作用：用来定义模块中对于from XXX import *时要对外导出的符号，即要暴露的借口，但它只对import *起作用，对from XXX import XXX不起作用。
+
+from njupt.zhengfang import Zhengfang是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程日记"> 编程日记</a></div><div class="read-more"><a class="more" href="/2019/08/30/2019-6月编程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/">通过XDRP实现Windows远程访问ubuntu桌面</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T00:57:05.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T00:57:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 通过XDRP实现Windows远程访问
 1234567891011121314#安装xrdp $ sudo apt-get install xrdp #安装vnc4server $ sudo apt-get install vnc4server tightvncserver#安装xubuntu-desktop $ sudo apt-get install xubuntu-desktop #向xsession中写入xfce4-session $ echo “xfce4-session” &gt;~/.xsession #开启xrdp服务 $ sudo service xrdp restart
  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/通信企业管理-线上考试/">通信企业管理_线上考试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:37:49.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:37:49.000Z">2019-09-15</time></div><div class="recent-post-content"> 通信企业管理
 
@@ -252,9 +267,7 @@ MRO 就是类的方法解析顺序表, 其实也就是继承父类方法时的�
 
 语法
 以下是 super() 方法的语法:
-1234# 菜鸟教程super(type [, object-or-type])# 个人 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/07/Python类的继承-super-使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/15/Python的构建工具setup-py/">Python的构建工具setup.py</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-15T04:08:44.000Z">2019-06-15</time><i class="fa fa-edit"></i><time datetime="2019-06-15T04:08:44.000Z">2019-09-15</time></div><div class="recent-post-content"> Python的构建工具setup.py
- setup.py各参数介绍：
-12345678910111213141516171819202122232425--name 库名称，▲需要注意的是不要大写，不然会有坑--version (-V) 包版本--author 程序的作者--author_email 程序的作者的邮箱地址--maintainer 维护者--maintainer_email 维护者的邮箱地址--url 程序的官网地址--license 程序的授权信息--description 程序的简单描述--long_description 程序的详细描述--platforms 程序适用的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/06/15/Python的构建工具setup-py/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Python爬虫常规流程/">Python爬虫常规流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:07:05.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:07:05.000Z">2019-09-15</time></div><div class="recent-post-content"> Python爬虫常规流程
+1234# 菜鸟教程super(type [, object-or-type])# 个人 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/07/Python类的继承-super-使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Python爬虫常规流程/">Python爬虫常规流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:07:05.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:07:05.000Z">2019-09-15</time></div><div class="recent-post-content"> Python爬虫常规流程
 以爬取有道翻译为例子。
  挖取可自用的API
 
@@ -292,7 +305,39 @@ $
 
 
 .
-匹配除换行符 \n 之外的任何单 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/25/Python中的正则匹配/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/">Let's Encrypt安装配置nginx的SSL证书教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:34:04.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:34:04.000Z">2019-09-15</time></div><div class="recent-post-content"> Let’s Encrypt 安装配置nginx的SSL证书教程
+匹配除换行符 \n 之外的任何单 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/25/Python中的正则匹配/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Linux三剑客/">Linux三剑客</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:37:36.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:37:36.000Z">2019-09-15</time></div><div class="recent-post-content"> Linux三剑客
+ bash命令执行顺序
+
+把命令行分成单个命令词
+展开别名
+展开大括号的声明（{}）
+展开波浪符声明（~）
+命令替换$0和&quot;)
+再次把命令行分成命令词
+展开文件通配（*、？、[abc]等等）
+准备I/0重导向（&lt;、&gt;）
+运行命令
+
+文件查找
+非实时搜索locate
+
+速度快
+
+
+更新updatabase
+
+实时搜索工具find
+
+搜索速度略慢
+精确查找
+只能搜索用户具备读取和执行权限的目录
+
+ sed(Stream EDitor):
+
+sed使用单引号
+
+sed -n '22,$p' test
+指令解释:常用选项[-n]，‘地址定界[22,$],编辑命 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/08/30/Linux三剑客/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/">Let's Encrypt安装配置nginx的SSL证书教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:34:04.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:34:04.000Z">2019-09-15</time></div><div class="recent-post-content"> Let’s Encrypt 安装配置nginx的SSL证书教程
  使用cerbot生成证书
  安装Let’s Encrypt
 安装非常简单直接克隆就可以了
@@ -307,6 +352,4 @@ system（）就是调用（DOS）系统命令（和shell命令）。
 pause ，即DOS命令集合中的暂停命令；
 
  sprintf
-123456789101112#include &lt;stdio.h&gt;int main( void )&#123;  char  buffer[200], s[] = &quot;computer&quot;, c = &apos;l&apos;;  int   i = 35, j;  float fp = 1.7320534f;  // 格式化并打印各种数据到buffer  j  = sprintf( buffer,    &quot ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/13/C-学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/15/Base64编码原理与应用[转]/">Base64编码原理与应用[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-15T04:08:53.000Z">2019-06-15</time><i class="fa fa-edit"></i><time datetime="2019-06-15T04:08:53.000Z">2019-09-15</time></div><div class="recent-post-content"> Base64编码原理与应用[转]
-2015年，我们在青云平台上实现了“百度云观测”应用。青云应用本质上是一个iframe，在向iframe服务方发送的请求中会携带一些数据，青云平台会使用Base64 URL对这些数据进行编码，其提供的编码解码算法示例如下：
-12345678// php版本function base64_URL_encode($data) &#123;  return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');&#125;function base64_URL_decode($data) &#123;  retur ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2019/06/15/Base64编码原理与应用[转]/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/3/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+123456789101112#include &lt;stdio.h&gt;int main( void )&#123;  char  buffer[200], s[] = &quot;computer&quot;, c = &apos;l&apos;;  int   i = 35, j;  float fp = 1.7320534f;  // 格式化并打印各种数据到buffer  j  = sprintf( buffer,    &quot ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/13/C-学习笔记/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/3/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

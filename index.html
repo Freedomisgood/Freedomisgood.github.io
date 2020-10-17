@@ -97,7 +97,34 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/09/21/手撕操作系统中的页面置换算法/">手撕操作系统中的页面置换算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-21T11:14:25.000Z">2020-09-21</time><i class="fa fa-edit"></i><time datetime="2020-09-21T11:14:25.000Z">2020-09-21</time></div><div class="recent-post-content"> 操作系统基础 内存换页算法
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/10/13/AutoLianliankan笔记/">AutoLianliankan笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-13T10:58:47.000Z">2020-10-13</time><i class="fa fa-edit"></i><time datetime="2020-10-13T10:58:47.000Z">2020-10-14</time></div><div class="recent-post-content">
+近来无事，又研究其了之前看到过的自动连连看的代码，碰到了一些问题， 因此做下笔记
+
+pywin32
+
+win32gui：定位窗体，操作窗体
+win32api：提供API，操作鼠标、键盘
+win32con：具体API事件
+
+==&gt;对于窗体的操作使用win32gui；而对键盘、鼠标操作可以用更高级封装的库pymouse、pykeyboard；剪切板使用win32clipboard
+ 程序的设计：
+
+getWindowPosition=&gt;先确定游戏窗口位置pos，并置顶
+getScreenImage()==&gt;在窗口置顶后再截图
+getAllSquare()=&gt;找到游戏边界， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></div><div class="read-more"><a class="more" href="/2020/10/13/AutoLianliankan笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/08/数据结构——单调栈/">数据结构——单调栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-08T11:25:38.000Z">2020-09-08</time><i class="fa fa-edit"></i><time datetime="2020-09-08T11:25:38.000Z">2020-09-23</time></div><div class="recent-post-content">
+秋季PAT的第一题就是单调栈，之前没怎么学过， 因此这次专门学习做下笔记。
+
+ 单调栈Monotone Stack
+ 概念:
+从行为上看，它不仅仅是用存储与访问受限的栈，而是一种辅助工具，用于检测数据的单调性变化并作出反应（表现: 当入栈元素会影响栈总体单调性时，要出栈一些元素以维持单调性）
+ 场景：
+
+向左or向右找到第一个稍大（小）的元素、其索引下标；
+确定某条件（单调）下的最长区间；
+确定区间构成的极值，如max f（la，b]）；
+
+ Point：
+单调递增栈: 指栈内元素的出栈序列递增（或递减），而栈内元素是递减（或递增），即当元素比栈顶小的时候入栈。因此需要输出下一个最大的元素。 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2020/09/08/数据结构——单调栈/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/21/手撕操作系统中的页面置换算法/">手撕操作系统中的页面置换算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-21T11:14:25.000Z">2020-09-21</time><i class="fa fa-edit"></i><time datetime="2020-09-21T11:14:25.000Z">2020-09-22</time></div><div class="recent-post-content"> 操作系统基础 内存换页算法
 公平算法：
 
 随机算法、先来先出（FIFO）算法、第二次机会算法、时钟算法
@@ -130,20 +157,7 @@ SQL语句执行顺序
  1.sql执行顺序 
 12345678910(1) from (3) join (2) on (4) where (5) group by(开始使用select中的别名，后面的语句中都可以使用)(6) avg,sum.... (7) having (8) select (9) distinct (10) order by
 2.sql语句执行顺序
-12345678910(8) SELECT (9)DISTINCT&lt;selec ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="SQL"> SQL</a></div><div class="read-more"><a class="more" href="/2020/09/04/SQL练习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/08/数据结构——单调栈/">数据结构——单调栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-08T11:25:38.000Z">2020-09-08</time><i class="fa fa-edit"></i><time datetime="2020-09-08T11:25:38.000Z">2020-09-14</time></div><div class="recent-post-content">
-秋季PAT的第一题就是单调栈，之前没怎么学过， 因此这次专门学习做下笔记。
-
- 单调栈Monotone Stack
- 概念:
-从行为上看，它不仅仅是用存储与访问受限的栈，而是一种辅助工具，用于检测数据的单调性变化并作出反应（表现: 当入栈元素会影响栈总体单调性时，要出栈一些元素以维持单调性）
- 场景：
-
-向左or向右找到第一个稍大（小）的元素、其索引下标；
-确定某条件（单调）下的最长区间；
-确定区间构成的极值，如max f（la，b]）；
-
- Point：
-单调递增栈: 指栈内元素的出栈序列递增（或递减），而栈内元素是递减（或递增），即当元素比栈顶小的时候入栈。因此需要输出下一个最大的元素。 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2020/09/08/数据结构——单调栈/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/07/ACM-树状数组和线段树/">ACM-树状数组和线段树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-07T05:04:53.000Z">2019-12-07</time><i class="fa fa-edit"></i><time datetime="2019-12-07T05:04:53.000Z">2020-09-12</time></div><div class="recent-post-content">高性能问题：
+12345678910(8) SELECT (9)DISTINCT&lt;selec ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="SQL"> SQL</a></div><div class="read-more"><a class="more" href="/2020/09/04/SQL练习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/07/ACM-树状数组和线段树/">ACM-树状数组和线段树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-07T05:04:53.000Z">2019-12-07</time><i class="fa fa-edit"></i><time datetime="2019-12-07T05:04:53.000Z">2020-09-12</time></div><div class="recent-post-content">高性能问题：
 Q：需求：（老板给你分了台2GHz单核，内存500M的服务器然后让你写程序）程序每秒会收到一组数据，每组数据包含10万条命令，总共会有100万个仓库，每个仓库库存没有上限且可为负，库存初始为0。你需要在一秒内完成全部的命令，然后将查询结果按顺序得出后传回，命令如下：
 
 Add i j，i和j为正整数，表示第i个仓库增加j个库存（j不超过220）
@@ -260,15 +274,7 @@ sudo apt-get install ttf-wqy-zenhei
 如果EL有完美匹配为PM，则该M是原图的最大权匹配：
 
 PM的权和等于所有点的顶标之和SV。
-G的任一个最大权匹配M，边满足w（xy）≤l（x）+（y）→M边权和≤S ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/12/05/KM-Kuhn-Munkres-算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/ACM-二分图/">ACM-二分图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T09:45:57.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T09:45:57.000Z">2019-12-08</time></div><div class="recent-post-content"> 二分图的判定：
-染色法1：假设DFS初始点A涂黑色，与它相邻的点就涂白色。如果搜到某一个点u的相邻点v已经涂色并且与u同色，就不可能是二分图啦~
-染色法2：就是给每个点进行标号，标为-1，1如果存在一条边连接的两个点标号相同，那么就是存在一个奇数环…
-热身题：
- 判断无向图是否有环
-
-用DFS遍历图g，如果访问到已经访问过的顶点，那么有环
-
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/12/05/ACM-二分图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/08/ACM-网络流/">ACM-网络流</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-08T11:03:34.000Z">2019-12-08</time><i class="fa fa-edit"></i><time datetime="2019-12-08T11:03:34.000Z">2019-12-08</time></div><div class="recent-post-content"> 最大流
+G的任一个最大权匹配M，边满足w（xy）≤l（x）+（y）→M边权和≤S ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/12/05/KM-Kuhn-Munkres-算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/08/ACM-网络流/">ACM-网络流</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-08T11:03:34.000Z">2019-12-08</time><i class="fa fa-edit"></i><time datetime="2019-12-08T11:03:34.000Z">2019-12-08</time></div><div class="recent-post-content"> 最大流
  FF算法
 
 最基本找増广路的算法

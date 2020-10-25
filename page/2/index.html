@@ -116,7 +116,14 @@ PAT考试经验总结（甲乙级均适用）想满分的请看这里！——�
 
     1001 A+B Format (20 分)
 
-看似很简单的一道题，但坑点确实不少， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/10/24/PAT冲冲冲——甲级/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax-极小极大算法——2048/">MinMax-极小极大算法——2048</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:46:41.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:46:41.000Z">2020-02-04</time></div><div class="recent-post-content"> MinMax-极小极大算法——2048
+看似很简单的一道题，但坑点确实不少， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/10/24/PAT冲冲冲——甲级/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/07/ACM-树状数组和线段树/">ACM-树状数组和线段树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-07T05:04:53.000Z">2019-12-07</time><i class="fa fa-edit"></i><time datetime="2019-12-07T05:04:53.000Z">2020-09-12</time></div><div class="recent-post-content">高性能问题：
+Q：需求：（老板给你分了台2GHz单核，内存500M的服务器然后让你写程序）程序每秒会收到一组数据，每组数据包含10万条命令，总共会有100万个仓库，每个仓库库存没有上限且可为负，库存初始为0。你需要在一秒内完成全部的命令，然后将查询结果按顺序得出后传回，命令如下：
+
+Add i j，i和j为正整数，表示第i个仓库增加j个库存（j不超过220）
+Sub i j，i和j为正整数，表示第i个仓库减少个库存（j不超过220）
+Query i j，i和j为正整数，i&lt;=j，表示询问第i到第个仓库的总库存；End 表示结束，这条命令在每组数据最后出现；
+
+思路一：用array去存储每 ...</div><div class="read-more"><a class="more" href="/2019/12/07/ACM-树状数组和线段树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax-极小极大算法——2048/">MinMax-极小极大算法——2048</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:46:41.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:46:41.000Z">2020-02-04</time></div><div class="recent-post-content"> MinMax-极小极大算法——2048
  算法介绍
  MinMax
 
@@ -148,7 +155,19 @@ git config --global user.name &quot;...&quot;、git config --global user.email &
 
 git log:
 
-查看提交日志(当前状态为终点) 会产生版本库 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/29/git命令详解/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/ACM-二分图/">ACM-二分图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T09:45:57.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T09:45:57.000Z">2019-12-08</time></div><div class="recent-post-content"> 二分图的判定：
+查看提交日志(当前状态为终点) 会产生版本库 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/29/git命令详解/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/KM-Kuhn-Munkres-算法/">KM(Kuhn-Munkres)算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T13:52:58.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T13:52:58.000Z">2019-12-10</time></div><div class="recent-post-content"> KM(Kuhn-Munkres)算法
+
+带权二分图最佳完美匹配，O(n^3)，（运用匈牙利算法辅助求解），同时也是完备匹配
+
+
+只适用于带权最大匹配一定是完备匹配的情况，实践中建议用费用流来解决。
+完全二分图一定是偶数个点
+可行顶标（Feasible Labeling）：结点函数（x），任意边（x，y）：1（x）+l（y）≥w（xiy）。
+相等子图：G的生成子图，包含所有点以及满足l（x）+I（y）=w（x，y）的边（x，y）
+如果EL有完美匹配为PM，则该M是原图的最大权匹配：
+
+PM的权和等于所有点的顶标之和SV。
+G的任一个最大权匹配M，边满足w（xy）≤l（x）+（y）→M边权和≤S ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/12/05/KM-Kuhn-Munkres-算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/ACM-二分图/">ACM-二分图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T09:45:57.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T09:45:57.000Z">2019-12-08</time></div><div class="recent-post-content"> 二分图的判定：
 染色法1：假设DFS初始点A涂黑色，与它相邻的点就涂白色。如果搜到某一个点u的相邻点v已经涂色并且与u同色，就不可能是二分图啦~
 染色法2：就是给每个点进行标号，标为-1，1如果存在一条边连接的两个点标号相同，那么就是存在一个奇数环…
 热身题：
@@ -172,13 +191,7 @@ UDP四层结构
 传输层： port (端口号) : 表示通信进程,将数据交给哪个应用处理
 应用层： 自己定义的协议（处理字符串消息的方法）
 
-套接字(socket) ： 特殊的设备文件 ， 写网络应用程序的接口，写入后就是发送，接收就是读取。 类似于 esp8266 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/11/24/Python网络编程Websocket/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/28/numpy使用记录/">numpy使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-28T03:13:29.000Z">2019-09-28</time><i class="fa fa-edit"></i><time datetime="2019-09-28T03:13:29.000Z">2019-11-27</time></div><div class="recent-post-content"> Numpy使用记录
- numpy中的random
-numpy.random.choice(a, size=None, replace=True, p=None)
-
-a : 如果是一维数组，就表示从这个一维数组中随机采样；如果是int型，就表示从0到a-1这个序列中随机采样。
-size : 采样结果的数量，默认为1.可以是整数，表示要采样的数量；也可以为tuple，如(m, n, k)，则要采样的数量为m * n * k，size为(m, n, k)
-replace : boolean型，采样的样本是否要更换？这个地方我不太理解，测了一下发现replace指定为True时，采样的元素会有重复； ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/28/numpy使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/07/蒙特卡洛树搜索MCTS/">蒙特卡洛树搜索MCTS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-07T09:18:02.000Z">2019-10-07</time><i class="fa fa-edit"></i><time datetime="2019-10-07T09:18:02.000Z">2019-11-26</time></div><div class="recent-post-content"> 蒙特卡洛树搜索MCTS
+套接字(socket) ： 特殊的设备文件 ， 写网络应用程序的接口，写入后就是发送，接收就是读取。 类似于 esp8266 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/11/24/Python网络编程Websocket/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/07/蒙特卡洛树搜索MCTS/">蒙特卡洛树搜索MCTS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-07T09:18:02.000Z">2019-10-07</time><i class="fa fa-edit"></i><time datetime="2019-10-07T09:18:02.000Z">2019-11-26</time></div><div class="recent-post-content"> 蒙特卡洛树搜索MCTS
  跟围棋的关联
  AlphaGo Zero
 
@@ -285,12 +298,4 @@ td做预测，afterstate做控制
 
  更多:
 强化学习经典入门书的读书笔记系列–第六篇Temporal-Difference
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/10/03/TD-afterstate/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/27/Python-random/">Python random</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-27T14:11:59.000Z">2019-09-27</time><i class="fa fa-edit"></i><time datetime="2019-09-27T14:11:59.000Z">2019-09-29</time></div><div class="recent-post-content"> Python random
-
-老是忘记random中每个函数之间的区别，而且常常跟numpy里的random也经常搞混，因此还是写篇文章记一下吧。
-
- random模块
- choice和sample
-python中random.choice()可以从给定的可迭代对象中随机挑选出一个。
-而python中random.sample()方法则可以随机地从给定的可迭代对象中提取出N个不同的元素，列表的维数没有限制。（即第二参数给出个数N）
-1234567891011import randomprint(random.sample([chr(97 + x) for x in range(int(9)) ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/27/Python-random/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/10/03/TD-afterstate/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Python中import的细节 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Python中import的细节</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/10/24</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,085</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
+<p>防忘系列…</p>
+</blockquote>
+<p>Pycharm并没有IDEA一样可以设置<strong>对import进行排序</strong>以及<strong>自动消除没用到的库</strong>（要用快捷键Ctrl + Alt + O）， 并且如果导入方式不正确会 1.找不到自定义包 2.Pycharm对指定内容报错（下划线或红线）</p>
+<h2 id="python中模块包库概念"><a class="markdownIt-Anchor" href="#python中模块包库概念"></a> <a href="https://www.cnblogs.com/mlgjb/p/7875494.html" target="_blank" rel="noopener">Python中模块，包，库概念</a></h2>
+<p><strong>模块</strong>：就是<u>.py文件</u>，里面定义了一些函数和变量，需要的时候就可以导入这些模块。</p>
+<p><strong>包</strong>：在模块之上的概念，为了方便管理而将文件进行打包。包目录下第一个文件便是<code>__init__.py</code>，然后是一些模块文件和子目录，假如子目录中也有<code>__init__.py</code>，那么它就是这个包的<strong>子包</strong>了。</p>
+<p><strong>库</strong>：具有相关功能模块、包的集合。这也是Python的一大特色之一，即具有强大的标准库、第三方库以及自定义模块。</p>
+<p><strong>标准库</strong>：就是下载安装的python里那些自带的模块，要注意的是，里面有一些模块是看不到的比如像sys模块，这与linux下的cd命令看不到是一样的情况。</p>
+<p><strong>第三方库</strong>：就是由其他的第三方机构，发布的具有特定功能的模块。</p>
+<p><strong>自定义模块</strong>：用户自己可以自行编写模块，然后使用。</p>
+<p>总结: 我们<code>pip install &lt;package&gt;</code>安装的是库，库下有很多包，我们在自己的项目文件中import有以下几种用法:</p>
+<ul>
+<li>import numpy as np</li>
+<li>import urllib.parse import urlencode</li>
+<li>from lxml import HTML</li>
+</ul>
+<p>之前大家应该碰到过，命名自己<code>pip install xx</code>安装的是叫xx的库，但是在用的时候写的却是<code>from yy import zz</code>，明显不对应嘛。因此，其实库和包的区别还可以通过<code>setup.py</code>打包成库来看。——<a href="https://blog.csdn.net/zyf_2014/article/details/83059874" target="_blank" rel="noopener">使用setup.py打包python文件</a>； <a href="https://www.jb51.net/article/190659.htm" target="_blank" rel="noopener">Python实现打包成库供别的模块调用</a></p>
+<p>其中比较重要的就是<strong>5.编写:setup.py</strong>，</p>
+<blockquote>
+<p>注意：setup.py与要打包的test_package包同在bricewulib根目录下。</p>
+</blockquote>
+<p>其中比较重要的几项是:name,version,packages</p>
+<ul>
+<li>name:描述的是你打包的文件夹名。</li>
+<li>version描述的是文件的版本号。</li>
+<li>packages是所有要打包的包（package），这里需要打包的是test_package包以及test_package包下的test_package。输入<code>python setup.py sdist</code>然后就能创建bricewulib库，使用test_package包</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setup(</span><br><span class="line">	name = &quot;bricewulib&quot;,</span><br><span class="line">	version = &quot;1.0&quot;,</span><br><span class="line">	packages=[&quot;test_package&quot;,&quot;test_package.test_package2&quot;]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="import推荐顺序"><a class="markdownIt-Anchor" href="#import推荐顺序"></a> import推荐顺序</h2>
+<p>我们推荐所有的模块在 Python 模块的开头部分导入。 而且最好按照这样的顺序:</p>
+<ol>
+<li>Python 标准库模块</li>
+<li>Python 第三方模块</li>
+<li>应用程序自定义模块</li>
+</ol>
+<p>通过空行来分割——<a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/background/" target="_blank" rel="noopener">(Python’s Style Guide)</a>, PEP8 。</p>
+<h2 id="python的import机制"><a class="markdownIt-Anchor" href="#python的import机制"></a> Python的import机制</h2>
+<p>运行、编写Python代码时，一定要注意的是脚本路径和脚本执行路径，以及相对路径和绝对路径</p>
+<p><strong>如果在项目中运用了相对路径,则一定要注意脚本执行路径</strong></p>
+<p>假设A是B的父目录, 如我们想在A目录调用B中模块, 而B中模板是又import了A下模板, 如login: <code>from login import ftSession</code>。<strong>命令行</strong>在A路径下输入<code>python B/main.py</code>时, 会报错。因为import其实就是在搜索目录下按相对路径找的。</p>
+<p><strong>Pycharm的坑:</strong></p>
+<p>借鉴: <a href="https://zhuanlan.zhihu.com/p/109036573" target="_blank" rel="noopener">Python的import机制坑在哪？</a></p>
+<blockquote>
+<p><strong>pycharm里打出来的路径是更多的，它把项目根目录加进去了。</strong>(也可以设置: 进入设置，找到Console下的Python Console，勾选选项**“Add source roots to PYTHONPAT”** )</p>
+</blockquote>
+<p>查看搜索路径:<code>print(sys.path)</code></p>
+<p><img src="/2020/10/23/Python中import的细节/Python%E4%B8%ADimport%E7%9A%84%E7%BB%86%E8%8A%82%5Csettings.jpg" alt="settings"></p>
+<p>What’s resource root?</p>
+<p><img src="https://pic4.zhimg.com/80/v2-99d4cf12cb731bf457b3ee503dfd5d42_720w.jpg?source=1940ef5c" alt="img"></p>
+<p>以上导致的问题就是:</p>
+<p><strong>pycharm中，project folder是默认的source root</strong>，当你使用import语句导入模块时，Pycharm默认在project folder中寻找；所以当你在project folder下的某个subfolder导入某个同样定义在这个subfolder中的模块时，会出现导入错误。</p>
+<blockquote>
+<p><strong>pycharm中的第一个文件夹，即代表项目</strong>, 当在其中再次建立文件夹时，<strong>是按package处理的</strong></p>
+<p>如果要在这些文件夹内<strong>import其他文件，需要将完整路径导入进来</strong></p>
+</blockquote>
+<p>所以最终在Pycharm中导入的方式有两种: <a href="https://www.zhihu.com/question/63028700" target="_blank" rel="noopener">burning回答</a></p>
+<ul>
+<li>从project folder开始相对导入</li>
+<li>将module文件夹直接定义为source root</li>
+</ul>
+<p><strong>pycharm在同目录下import划红线但实际可以运行</strong></p>
+<blockquote>
+<p>解决方法: 右键将model所在的文件夹设置为source root</p>
+</blockquote>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/10/23/Python中import的细节/">https://nymrli.top/2020/10/23/Python中import的细节/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2020/10/18/emplace-back与push-back/" title="emplace_back与push_back"><span>NextPost ></span><br><span class="nextTitle">emplace_back与push_back</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Python中import的细节',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python中模块包库概念"><span class="toc-number">1.</span> <span class="toc-text"> Python中模块，包，库概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import推荐顺序"><span class="toc-number">2.</span> <span class="toc-text"> import推荐顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python的import机制"><span class="toc-number">3.</span> <span class="toc-text"> Python的import机制</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

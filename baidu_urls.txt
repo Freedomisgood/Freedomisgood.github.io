@@ -1,3 +1,5 @@
+https://nymrli.top/2020/10/27/粒子滤波Matlab代码解读/
+https://nymrli.top/2020/10/27/范数的概念-MATLAB使用/
 https://nymrli.top/2020/10/23/Python中import的细节/
 https://nymrli.top/2020/10/18/emplace-back与push-back/
 https://nymrli.top/2020/10/13/AutoLianliankan笔记/
@@ -46,5 +48,3 @@ https://nymrli.top/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/
 https://nymrli.top/2019/09/23/Github下载、访问慢解决方法-转/
 https://nymrli.top/2019/09/21/同性交友网站Github的骚操作/
 https://nymrli.top/2019/09/21/搭建Jupyter服务器/
-https://nymrli.top/2019/09/19/深度学习/
-https://nymrli.top/2019/09/17/常用域名记录解释/

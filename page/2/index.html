@@ -123,7 +123,20 @@ Add i j，i和j为正整数，表示第i个仓库增加j个库存（j不超过22
 Sub i j，i和j为正整数，表示第i个仓库减少个库存（j不超过220）
 Query i j，i和j为正整数，i&lt;=j，表示询问第i到第个仓库的总库存；End 表示结束，这条命令在每组数据最后出现；
 
-思路一：用array去存储每 ...</div><div class="read-more"><a class="more" href="/2019/12/07/ACM-树状数组和线段树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax-极小极大算法——2048/">MinMax-极小极大算法——2048</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:46:41.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:46:41.000Z">2020-02-04</time></div><div class="recent-post-content"> MinMax-极小极大算法——2048
+思路一：用array去存储每 ...</div><div class="read-more"><a class="more" href="/2019/12/07/ACM-树状数组和线段树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/02/02/PAT冲冲冲——乙级/">PAT冲冲冲——乙级</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-02-02T08:26:41.000Z">2020-02-02</time><i class="fa fa-edit"></i><time datetime="2020-02-02T08:26:41.000Z">2020-09-05</time></div><div class="recent-post-content"> PAT冲冲冲——乙级
+
+PAT甲级练习题 ——PAT (Advanced Level) Practice 
+PAT甲级(Advanced Level)真题
+柳婼 の blog经验
+saquarius’s blog
+PAT甲级题目及分类总结
+pat甲级题解目录
+
+▲报名费256，可以刷牛客网的题来获得-50的优惠券，该练习场下的所有题目只要通过都算
+ 乙级练习题
+ NowCoder数列
+
+没想到第二题就是考了个数据范围，由于0≤n≤1000000，所以F(n)必然比long long大，而判断3的倍数可表示为===&gt; F(n) % 3 —&gt; (F(n-1)%3 + F(n-2)%3 ...</div><div class="read-more"><a class="more" href="/2020/02/02/PAT冲冲冲——乙级/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax-极小极大算法——2048/">MinMax-极小极大算法——2048</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:46:41.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:46:41.000Z">2020-02-04</time></div><div class="recent-post-content"> MinMax-极小极大算法——2048
  算法介绍
  MinMax
 
@@ -131,7 +144,14 @@ Query i j，i和j为正整数，i&lt;=j，表示询问第i到第个仓库的总�
 
 一般解决博弈类问题的自然想法是将格局组织成一棵），树的每一个节点表示一种格局，而父子关系表示由父格局经过一步可以到达子格局。Minimax也不例外，它通过对以当前格局为根的格局树搜索来确定下一步的选择。而一切格局树搜索算法的核心都是对每个格局价值的评价。Minimax算法基于以下朴素思想确定格局价值：
 
-Minimax是一种悲观算法，即假设对手每一步都会将 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/11/26/MinMax-极小极大算法——2048/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/Hungarian-algorithm匈牙利算法/">Hungarian algorithm匈牙利算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T05:08:11.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T05:08:11.000Z">2019-12-22</time></div><div class="recent-post-content"> Hungarian algorithm匈牙利算法
+Minimax是一种悲观算法，即假设对手每一步都会将 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/11/26/MinMax-极小极大算法——2048/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/25/sshpass——shell脚本实现SSH连接其他主机并执行终端命令/">sshpass——shell脚本实现SSH连接其他主机并执行终端命令</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-25T09:29:08.000Z">2019-12-25</time><i class="fa fa-edit"></i><time datetime="2019-12-25T09:29:08.000Z">2019-12-25</time></div><div class="recent-post-content"> sshpass
+
+ssh登陆不能在命令行中指定密码。sshpass的出现，解决了这一问题。即sshpass可以用于非交互SSH的密码验证，一般用在sh脚本中，无须再次输入密码。
+
+sshpass允许用-p参数指定明文密码，然后直接登录远程服务器。(支持密码从命令行、文件、环境变量中读取)
+1.安装sudo apt install sshpass
+2.使用说明
+12345678910111213141516171819# -p 直接指定密码sshpass -p '123456' ssh user_name@host_ip# -f: -f filename #后跟保存密码的文件名，密码是文件内容 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/12/25/sshpass——shell脚本实现SSH连接其他主机并执行终端命令/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/Hungarian-algorithm匈牙利算法/">Hungarian algorithm匈牙利算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T05:08:11.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T05:08:11.000Z">2019-12-22</time></div><div class="recent-post-content"> Hungarian algorithm匈牙利算法
 
 主要用来解决不带权的分配问题，O(V*E)
 
@@ -266,32 +286,7 @@ Mini ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="
 签到题
 
 Description:
-You are playing a game which you will battle with an enemy. As you don’t want to lose, your total power can’t be lower than your enemy’s. Your power is simply added by the power of your soldiers, ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/06/Openmv使用/">Openmv使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-06T01:45:28.000Z">2019-10-06</time><i class="fa fa-edit"></i><time datetime="2019-10-06T01:45:28.000Z">2019-11-07</time></div><div class="recent-post-content"> Openmv使用
- 下载Openmv IDE
-
-Openmv官网
-中国代理——星瞳
-Github_release
-
-推荐下载星瞳的，这个是中文版的，并且其他两个下载非常慢。
- 捕捉图片设置：
-设置彩色／黑白
-
-sensor.set_pixformat() 设置像素模式。
-
-sensor.GRAYSCALE: 灰度，每个像素8bit。
-sensor.RGB565: 彩色，每个像素16bit。
-
-
-
-设置图像大小
-
-
-sensor.set_framesize() 设置图像的大小
-
-sensor.QQVGA: 160x120
-sensor.QQVGA2: 128x160 (用于 lcd 扩展板)
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/06/Openmv使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/18/软件测试笔记/">软件测试笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-18T13:03:29.000Z">2019-10-18</time><i class="fa fa-edit"></i><time datetime="2019-10-18T13:03:29.000Z">2019-11-02</time></div><div class="recent-post-content"> 软件测试笔记
+You are playing a game which you will battle with an enemy. As you don’t want to lose, your total power can’t be lower than your enemy’s. Your power is simply added by the power of your soldiers, ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/18/软件测试笔记/">软件测试笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-18T13:03:29.000Z">2019-10-18</time><i class="fa fa-edit"></i><time datetime="2019-10-18T13:03:29.000Z">2019-11-02</time></div><div class="recent-post-content"> 软件测试笔记
  移动应用测试
  appnium使用
 
@@ -301,12 +296,4 @@ sensor.QQVGA2: 128x160 (用于 lcd 扩展板)
 使用的时候报错Build info: version: 'unknown', revision: 'unknown', time: 'unknown'，以为是appnium版本的问题，第一次安装的是1.13，后来换成了1.9，其实没多大区别，只不过据说要保证版本在1.6以上。
 更换版本后，发现还是Build info:  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></div><div class="read-more"><a class="more" href="/2019/10/18/软件测试笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/15/玩玩Stm32/">玩玩Stm32</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-15</time><i class="fa fa-edit"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-18</time></div><div class="recent-post-content"> 玩玩Stm32
  文件结构
-12345678910111213141516G:.├───CORE	# startup_stm32f10x_hd.s汇编编写的启动文件|			# core_cm3.c底层函数├───HARDWARE	# 相关外设的初始化代码├───OBJ├───STM32F10x_FWLib	# 固件库包: GPIO/i2c/...│   ├───inc│   └───src├───SYSTEM			# 正点原子提供的常用、通用模块│   ├───delay│   ├───sys│   └───usart└───USER # stm32f10x_it.c 中断管理文件    | ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/15/玩玩Stm32/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/06/Python多进程/">Python多进程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-06T12:17:44.000Z">2019-10-06</time><i class="fa fa-edit"></i><time datetime="2019-10-06T12:17:44.000Z">2019-10-07</time></div><div class="recent-post-content"> Python多进程
- 守护进程
-
-守护进程其实就是**“子进程“是否伴随主进程一起结束**:守护==&gt;伴随，即守护进程会伴随主进程的代码运行完毕后而死掉
-
-进程：当父进程需要将一个任务并发出去执行，需要将该任务放到以个子进程里
-守护：当该子进程内的代码在父进程代码运行完毕后就没有存在的意义了，就应该
-将该子进程设置为守护进程，会在父进程代码结束后死掉
-1234567891011121314151617181920212223from multiprocessing import Processimport timedef foo():    print(123)    time.sle ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/10/06/Python多进程/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+12345678910111213141516G:.├───CORE	# startup_stm32f10x_hd.s汇编编写的启动文件|			# core_cm3.c底层函数├───HARDWARE	# 相关外设的初始化代码├───OBJ├───STM32F10x_FWLib	# 固件库包: GPIO/i2c/...│   ├───inc│   └───src├───SYSTEM			# 正点原子提供的常用、通用模块│   ├───delay│   ├───sys│   └───usart└───USER # stm32f10x_it.c 中断管理文件    | ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/15/玩玩Stm32/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,3 +1,5 @@
+https://nymrli.top/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/
+https://nymrli.top/2020/11/09/scrcpy-AutoJS/
 https://nymrli.top/2020/10/27/粒子滤波Matlab代码解读/
 https://nymrli.top/2020/10/27/范数的概念-MATLAB使用/
 https://nymrli.top/2020/10/23/Python中import的细节/
@@ -46,5 +48,3 @@ https://nymrli.top/2019/09/26/OpenAI-Gym使用/
 https://nymrli.top/2019/09/24/Linux安装selenium执行Python程序/
 https://nymrli.top/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/
 https://nymrli.top/2019/09/23/Github下载、访问慢解决方法-转/
-https://nymrli.top/2019/09/21/同性交友网站Github的骚操作/
-https://nymrli.top/2019/09/21/搭建Jupyter服务器/

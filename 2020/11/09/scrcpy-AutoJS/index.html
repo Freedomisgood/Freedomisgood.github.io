@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>scrcpy+AutoJS · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">scrcpy+AutoJS</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/11/10</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,231</span> | Reading time: <span class="post-count">9</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="scrcpy简介"><a class="markdownIt-Anchor" href="#scrcpy简介"></a> scrcpy简介</h2>
+<blockquote>
+<p><strong>特点:</strong><br>
+利用电脑的键盘和鼠标可以控制手机。把 APK 文件拖拽到电脑窗口即可安装应用到手机，把普通文件拖拽到窗口即可复制到手机。<br>
+不需要在手机上安装任何应用。</p>
+</blockquote>
+<p>简单地来说，scrcpy就是通过adb调试的方式来将手机屏幕投到电脑上，并可以通过电脑控制您的Android设备。它可以通过USB连接，也可以通过Wifi连接（类似于隔空投屏），而且不需要任何root权限，不需要在手机里安装任何程序。scrcpy同时适用于GNU / Linux，Windows和macOS。</p>
+<p>它的一些特性：</p>
+<ul>
+<li>亮度（原生，仅显示设备屏幕）</li>
+<li>性能（30~60fps）</li>
+<li>质量（1920×1080或以上）</li>
+<li>低延迟（35~70ms）</li>
+<li>启动时间短（显示第一张图像约1秒）</li>
+<li>非侵入性（设备上没有安装任何东西）</li>
+</ul>
+<p>此项目为开源项目，Github地址：<a href="https://github.com/Genymobile/scrcpy" target="_blank" rel="noopener">Genymobile/scrcpy: Display and control your Android device</a></p>
+<h3 id="使用scrcpy的要求"><a class="markdownIt-Anchor" href="#使用scrcpy的要求"></a> 使用scrcpy的要求</h3>
+<ol>
+<li>Android设备至少需要API 21（Android 5.0以上版本）;</li>
+<li>确保在您的设备上启用了<a href="https://developer.android.com/studio/command-line/adb.html#Enabling" target="_blank" rel="noopener">adb调试</a>;</li>
+<li>在某些设备上，您还需要启用<a href="https://github.com/Genymobile/scrcpy/issues/70#issuecomment-373286323" target="_blank" rel="noopener">其他选项</a>以使用键盘和鼠标控制它。</li>
+</ol>
+<p>adb调试的开启一般是多次点击手机系统版本，如我用的是MIUI10，开启方法是 “设置”-&gt;“我的设备”-&gt;“全部参数”-&gt;点击7下MIUI版本，开启“开发者选项”。然后在 “设置”-&gt;“更多设置”-&gt;“开发者选项” 中同时开启 <code>USB调试</code> 和 <code>USB调试(安全设置)</code>。</p>
+<h3 id="使用说明"><a class="markdownIt-Anchor" href="#使用说明"></a> 使用说明</h3>
+<blockquote>
+<p>程序使用了Java语言，我们需要在电脑中搭建Java运行环境，参考：<a href="https://blog.csdn.net/sigmarising/article/details/80139287" target="_blank" rel="noopener">Windows10 配置 Java 开发环境</a></p>
+</blockquote>
+<h4 id="使用usb进行连接"><a class="markdownIt-Anchor" href="#使用usb进行连接"></a> 使用USB进行连接</h4>
+<p>此方式推荐使用，相对更加流畅。</p>
+<ol>
+<li>手机通过USB连接到PC上，首次连接会弹出是否信任该电脑，点击始终信任即可。</li>
+<li>运行<code>adb usb</code>查看是否连接成功</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\Github_Run\scrcpy-win64-v1.10&gt;adb usb</span><br><span class="line">restarting in USB mode</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>运行<code>scrcpy</code>即可。</li>
+</ol>
+<h4 id="使用无线连接"><a class="markdownIt-Anchor" href="#使用无线连接"></a> 使用无线连接</h4>
+<blockquote>
+<p>可参考官方文档：<a href="https://www.genymotion.com/blog/open-source-project-scrcpy-now-works-wirelessly/" target="_blank" rel="noopener">Open Source Project - Scrcpy now works wirelessly</a></p>
+</blockquote>
+<p>此连接方式更加方便快捷，若宽带速率高，使用效果更佳，使用方法也非常简单。</p>
+<ol>
+<li>确保PC和手机在同一Wifi中</li>
+<li>手机先通过USB与PC相连</li>
+<li>在PC上运行 adb tcpip 服务端口，如端口为5555</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\Github_Run\scrcpy-win64-v1.10&gt;adb tcpip 5555</span><br><span class="line">restarting in TCP mode port: 5555</span><br></pre></td></tr></table></figure>
+<ol>
+<li>拔下你的设备，断开USB连接</li>
+<li>在PC上运行 adb connect 手机IP:服务端口（手机IP可通过手机的<code>状态信息</code>查看，或者登录路由器查看，一般以192.168开头）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\Github_Run\scrcpy-win64-v1.10&gt;adb connect 192.168.0.4:5555</span><br><span class="line">connected to 192.168.0.4:5555</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>运行scrcpy，在cmd中输入<code>scrcpy.exe</code>即可</li>
+</ol>
+<p>注: 若要切换回USB模式：<code>adb usb</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 附调节比特率和分辨率</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> scrcpy --bit-rate 2M --max-size 800</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者简写</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> scrcpy -b2M -m800</span></span><br></pre></td></tr></table></figure>
+<h2 id="autojs"><a class="markdownIt-Anchor" href="#autojs"></a> AutoJS</h2>
+<blockquote>
+<p>一个支持无障碍服务的Android平台上的JavaScript IDE，其发展目标是JsBox和Workflow。<br>
+Auto.js使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript" target="_blank" rel="noopener">JavaScript</a>作为脚本语言，目前使用<a href="https://developer.mozilla.org/zh-CN/docs/Mozilla/Projects/Rhino" target="_blank" rel="noopener">Rhino 1.7.7.2</a>作为脚本引擎，支持ES5与部分ES6特性。</p>
+<p>官方教程: <a href="https://hyb1996.github.io/AutoJs-Docs/#/?id=autojs" target="_blank" rel="noopener">https://hyb1996.github.io/AutoJs-Docs/#/?id=autojs</a><br>
+使用教程视频: <a href="https://space.bilibili.com/21486893/video" target="_blank" rel="noopener"><strong>笔青居</strong></a></p>
+</blockquote>
+<h3 id="如何连接"><a class="markdownIt-Anchor" href="#如何连接"></a> 如何连接?</h3>
+<p><strong>手机安装使用步骤：</strong></p>
+<p>① 开启无障碍服务<br>
+② 音量上键停止脚本：当脚本处于无法停止的状态时，使用音量上键强制停止脚本。<br>
+③ 开启悬浮窗：<br>
+④ 连接手机(如果不习惯在手机上coding, 可以安装作者提供的VsCode插件, 在Vscode上编码: <a href="https://github.com/hyb1996/Auto.js-VSCode-Extension" target="_blank" rel="noopener">Auto.js-VSCodeExt</a>——插件的使用教程也非常简洁易懂， 在此就不重复了。</p>
+<p><img src="/2020/11/09/scrcpy-AutoJS/%E8%BF%9E%E6%8E%A5Autojs.jpg" alt="连接Autojs"></p>
+<p><img src="/2020/11/09/scrcpy-AutoJS/%E5%81%9C%E6%AD%A2%E8%84%9A%E6%9C%AC.jpg" alt="停止脚本"></p>
+<h3 id="微信朋友圈点赞demo"><a class="markdownIt-Anchor" href="#微信朋友圈点赞demo"></a> 微信朋友圈点赞demo</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">comment = desc(<span class="string">"评论"</span>).findOne();</span><br><span class="line">log(comment);</span><br><span class="line">comment.click();</span><br><span class="line">sleep(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 由于"赞"控件的Clickable是false, 所以点击它的父控件</span></span><br><span class="line">praise = text(<span class="string">"赞"</span>).findOne();</span><br><span class="line">praiseParent = praise.parent();</span><br><span class="line">praiseParent.click();</span><br></pre></td></tr></table></figure>
+<h2 id="js知识补充"><a class="markdownIt-Anchor" href="#js知识补充"></a> Js知识补充</h2>
+<p><strong>作用域:</strong></p>
+<blockquote>
+<p>JS只有函数作用域和全局作用域</p>
+</blockquote>
+<ul>
+<li>
+<p>全局作用域: 如果是显性的写在全局的, 则变量的作用域为全局</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt; /*</span><br><span class="line">&gt; * 作用域</span><br><span class="line">&gt; *     - 作用域指一个变量的作用的范围</span><br><span class="line">&gt; *     - 在JS中一共有两种作用域：</span><br><span class="line">&gt; *         1.全局作用域</span><br><span class="line">&gt; *             - 直接编写在script标签中的JS代码，都在全局作用域</span><br><span class="line">&gt; *             - 全局作用域在页面打开时创建，在页面关闭时销毁</span><br><span class="line">&gt; *             - 在全局作用域中有一个全局对象window，</span><br><span class="line">&gt; *                 它代表的是一个浏览器的窗口，它由浏览器创建我们可以直接使用</span><br><span class="line">&gt; *             - 在全局作用域中：</span><br><span class="line">&gt; *                 创建的变量都会作为window对象的属性保存</span><br><span class="line">&gt; *                 创建的函数都会作为window对象的方法保存</span><br><span class="line">&gt; * 一切皆对象</span><br><span class="line">&gt; *             - 全局作用域中的变量都是全局变量，</span><br><span class="line">&gt; *                 在页面的任意的部分都可以访问的到</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote></blockquote>
+</li>
+<li>
+<p>块级作用域: {}为块, {}内即为块级作用域。但是注意<strong>JS没有块级作用域</strong>， 即块里声明的变量, 作用域实际为全局。—&gt;ES6 新增了<code>let</code>命令，用来声明局部变量。它的用法类似于<code>var</code>，但是所声明的变量，只在<code>let</code>命令所在的代码块内有效，而且有暂时性死区的约束。==&gt;ES6用新增的<code>let</code>，来声明块级作用域的变量。(let另一个特性: let变量不能重复声明–var可以, 以最后的为准, 效果跟python声明变量类似)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; i++)&#123;&#125;</span><br><span class="line">log(i);	<span class="comment">// 输出为10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; i++)&#123;&#125;</span><br><span class="line">log(i);	<span class="comment">// ReferenceError: "i" is not defined. ([remote]test.js#14)ReferenceError: "i" is not defined.</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>函数作用域: 在函数内即为函数作用域， 如果不用var表明， 则声明的是全局变量。用var表明是局部变量</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; /*</span><br><span class="line">&gt; * 函数作用域</span><br><span class="line">&gt; *     - 调用函数时创建函数作用域，函数执行完毕以后，函数作用域销毁</span><br><span class="line">&gt; *     - 每调用一次函数就会创建一个新的函数作用域，他们之间是互相独立的</span><br><span class="line">&gt; *     - 在函数作用域中可以访问到全局作用域的变量</span><br><span class="line">&gt; *         在全局作用域中无法访问到函数作用域的变量</span><br><span class="line">&gt; *     - 当在函数作用域操作一个变量时，它会先在自身作用域中寻找，如果有就直接使用</span><br><span class="line">&gt; *         如果没有则向上一级作用域中寻找，直到找到全局作用域，</span><br><span class="line">&gt; *         如果全局作用域中依然没有找到，则会报错ReferenceError</span><br><span class="line">&gt; *     - 在函数中要访问全局变量可以使用window对象</span><br><span class="line">&gt; */</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br><span class="line">log(a);		<span class="comment">// 输出1</span></span><br><span class="line">log(b);		<span class="comment">// ReferenceError: "b" is not defined. ([remote]test.js#19)ReferenceError: "b" is not defined.</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>数组</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]		<span class="comment">// 第一种声明数组的方式</span></span><br><span class="line">a.push(<span class="number">4</span>)		<span class="comment">// 往数组最后添加元素</span></span><br><span class="line">log(a);</span><br><span class="line">log(a.indexOf(<span class="number">2</span>));	<span class="comment">// 找出某元素在数组中的索引</span></span><br><span class="line">a.pop();			<span class="comment">// 弹出最后一个元素</span></span><br><span class="line">log(a);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">b = <span class="built_in">Array</span>();		<span class="comment">// 第二种声明数组的方式</span></span><br><span class="line">log(b);</span><br></pre></td></tr></table></figure>
+<p><strong>数据类型:</strong></p>
+<ul>
+<li>string、number、boolean、nullundefined</li>
+<li>Object：Function、Array、Date</li>
+</ul>
+<p>可以使用typeof来查看对象的类型</p>
+<p><strong>变量函数提前声明</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* 变量的声明提前</span><br><span class="line">*     - 使用var关键字声明的变量，会在所有的代码执行之前被声明（但是不会赋值），</span><br><span class="line">*         但是如果声明变量时不使用var关键字，则变量不会被声明提前</span><br><span class="line">*</span><br><span class="line">* 函数的声明提前</span><br><span class="line">*     - 使用函数声明形式创建的函数 function 函数()&#123;&#125;</span><br><span class="line">*         它会在所有的代码执行之前就被创建，所以我们可以在函数声明前来调用函数</span><br><span class="line">*        使用函数表达式创建的函数，不会被声明提前，所以不能在声明前调用</span><br><span class="line">*/</span><br><span class="line">/*console.log(&quot;a = &quot;+a);</span><br><span class="line">情况1：使用 var a = 123; a是undefined，声明变量在此句之后，但var a 会使变量提前声明，</span><br><span class="line">情况2： 使用  a = 123;  a未找到，会报错，因为a未提前声明</span><br><span class="line">a = 123； 等价于  window.a = 123;</span><br><span class="line">var a = 123;*/   到了此句才赋值，等价于在所有代码之前 声明a  var a;  执行到此句再赋值 a=123;</span><br><span class="line"></span><br><span class="line">//fun();</span><br><span class="line">//函数声明，会被提前创建</span><br><span class="line">function fun()&#123;</span><br><span class="line">console.log(&quot;我是一个fun函数&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//函数表达式，不会被提前创建，此句只是提前声明了fun2，不知道是不是函数，可能是变量， undefined而在此次才开始赋值一个函数表达式</span><br><span class="line">var fun2 = function()&#123;</span><br><span class="line">console.log(&quot;我是fun2函数&quot;);</span><br><span class="line">&#125;;</span><br><span class="line">fun2();</span><br></pre></td></tr></table></figure>
+<p><strong>Andriod开发知识：</strong></p>
+<ul>
+<li>packageName： 应用包名</li>
+<li>applicationName: 应用名</li>
+<li>currenetActivity: 当前页面</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/11/09/scrcpy-AutoJS/">https://nymrli.top/2020/11/09/scrcpy-AutoJS/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/" title="南邮校园网CSDN等部分网站图片无法加载解决方案"><span>< PreviousPost</span><br><span class="prevTitle">南邮校园网CSDN等部分网站图片无法加载解决方案</span></a><a class="nextSlogan" href="/2020/10/27/粒子滤波Matlab代码解读/" title="粒子滤波Matlab代码解读"><span>NextPost ></span><br><span class="nextTitle">粒子滤波Matlab代码解读</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'scrcpy+AutoJS',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#scrcpy简介"><span class="toc-number">1.</span> <span class="toc-text"> scrcpy简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用scrcpy的要求"><span class="toc-number">1.1.</span> <span class="toc-text"> 使用scrcpy的要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用说明"><span class="toc-number">1.2.</span> <span class="toc-text"> 使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用usb进行连接"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 使用USB进行连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用无线连接"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 使用无线连接</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#autojs"><span class="toc-number">2.</span> <span class="toc-text"> AutoJS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何连接"><span class="toc-number">2.1.</span> <span class="toc-text"> 如何连接?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微信朋友圈点赞demo"><span class="toc-number">2.2.</span> <span class="toc-text"> 微信朋友圈点赞demo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js知识补充"><span class="toc-number">3.</span> <span class="toc-text"> Js知识补充</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

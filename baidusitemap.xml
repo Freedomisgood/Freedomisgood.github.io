@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://nymrli.top/2020/11/10/%E5%8D%97%E9%82%AE%E6%A0%A1%E5%9B%AD%E7%BD%91CSDN%E7%AD%89%E9%83%A8%E5%88%86%E7%BD%91%E7%AB%99%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2020-11-10T10:28:28.033Z</lastmod>
+  </url>  <url>
+    <loc>https://nymrli.top/2020/11/09/scrcpy-AutoJS/</loc>
+    <lastmod>2020-11-10T05:56:11.443Z</lastmod>
+  </url>  <url>
     <loc>https://nymrli.top/2020/09/04/SQL%E7%BB%83%E4%B9%A0/</loc>
-    <lastmod>2020-11-07T03:39:48.035Z</lastmod>
+    <lastmod>2020-11-08T05:12:45.626Z</lastmod>
+  </url>  <url>
+    <loc>https://nymrli.top/2019/05/27/PyWinAuto%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2020-11-07T03:45:50.734Z</lastmod>
   </url>  <url>
     <loc>https://nymrli.top/2018/08/31/python-win32api-win32gui-win32con-PyUserInput%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/</loc>
     <lastmod>2020-11-07T03:39:42.948Z</lastmod>
@@ -391,10 +400,10 @@
     <loc>https://nymrli.top/2019/01/17/%E5%89%8D%E7%AB%AFVue%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2019-09-15T08:07:31.031Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2018/11/08/%E5%86%99%E7%88%AC%E8%99%AB%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%A2%B0%E5%88%B0%E7%9A%84%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://nymrli.top/2019/07/24/%E5%88%A9%E7%94%A8wireshark%E6%8A%93%E5%8F%96TCP%E7%9A%84%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/</loc>
     <lastmod>2019-09-15T08:07:31.030Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2019/07/24/%E5%88%A9%E7%94%A8wireshark%E6%8A%93%E5%8F%96TCP%E7%9A%84%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/</loc>
+    <loc>https://nymrli.top/2018/11/08/%E5%86%99%E7%88%AC%E8%99%AB%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%A2%B0%E5%88%B0%E7%9A%84%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2019-09-15T08:07:31.030Z</lastmod>
   </url>  <url>
     <loc>https://nymrli.top/2018/09/01/%E4%BE%8B%E9%A2%984-1-3-%E5%8F%A4%E8%80%81%E7%9A%84%E5%AF%86%E7%A0%81%E3%80%81%E5%88%BD%E5%AD%90%E6%89%8B%E7%9A%84%E6%B8%B8%E6%88%8F%EF%BC%8C%E6%95%91%E6%B5%8E%E9%87%91%E5%8F%91%E6%94%BE/</loc>
@@ -477,9 +486,6 @@
   </url>  <url>
     <loc>https://nymrli.top/2019/09/09/RL%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%BF%B5/</loc>
     <lastmod>2019-09-15T08:07:30.999Z</lastmod>
-  </url>  <url>
-    <loc>https://nymrli.top/2019/05/27/PyWinAuto%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2019-09-15T08:07:30.998Z</lastmod>
   </url>  <url>
     <loc>https://nymrli.top/2019/07/07/Python%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF-super-%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2019-09-15T08:07:30.997Z</lastmod>
@@ -607,10 +613,10 @@
     <loc>https://nymrli.top/2019/09/13/Java%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E2%80%94%E2%80%94Maven/</loc>
     <lastmod>2019-09-15T08:07:30.945Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2018/12/06/HTML%E5%92%8CCSS%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://nymrli.top/2018/12/08/ifdef%E3%80%81-ifndef%E3%80%81-endif/</loc>
     <lastmod>2019-09-15T08:07:30.944Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2018/12/08/ifdef%E3%80%81-ifndef%E3%80%81-endif/</loc>
+    <loc>https://nymrli.top/2018/12/06/HTML%E5%92%8CCSS%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2019-09-15T08:07:30.944Z</lastmod>
   </url>  <url>
     <loc>https://nymrli.top/2018/08/30/hello-hexo/</loc>
@@ -625,10 +631,10 @@
     <loc>https://nymrli.top/2019/02/28/Flask-%E6%9C%AC%E5%9C%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E8%BF%9E%E6%8E%A5/</loc>
     <lastmod>2019-09-15T08:07:30.934Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2019/03/02/flask-nginx%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E7%9C%9F%E5%AE%9EIP/</loc>
+    <loc>https://nymrli.top/2018/12/19/flask-sqlalchemy%E8%B8%A9%E5%9D%91/</loc>
     <lastmod>2019-09-15T08:07:30.933Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2018/12/19/flask-sqlalchemy%E8%B8%A9%E5%9D%91/</loc>
+    <loc>https://nymrli.top/2019/03/02/flask-nginx%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E7%9C%9F%E5%AE%9EIP/</loc>
     <lastmod>2019-09-15T08:07:30.933Z</lastmod>
   </url>  <url>
     <loc>https://nymrli.top/2019/01/19/DFS%E4%B8%93%E9%A1%B9%E7%BB%83%E4%B9%A0/</loc>
@@ -640,10 +646,10 @@
     <loc>https://nymrli.top/2019/02/18/Cmake-%E5%85%A5%E9%97%A8/</loc>
     <lastmod>2019-09-15T08:07:30.927Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2019/01/23/Charles%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://nymrli.top/2019/01/23/Chrome%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7Network/</loc>
     <lastmod>2019-09-15T08:07:30.926Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2019/01/23/Chrome%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7Network/</loc>
+    <loc>https://nymrli.top/2019/01/23/Charles%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2019-09-15T08:07:30.926Z</lastmod>
   </url>  <url>
     <loc>https://nymrli.top/2019/09/09/CDN%E5%8A%A0%E9%80%9F%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%94%E2%80%94%E5%8F%88%E6%8B%8D%E4%BA%91/</loc>
@@ -652,10 +658,10 @@
     <loc>https://nymrli.top/2019/07/13/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2019-09-15T08:07:30.924Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2019/01/24/C++%E6%97%A5%E6%9C%9F%E6%93%8D%E4%BD%9C/</loc>
+    <loc>https://nymrli.top/2019/03/25/C++%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%BA%93MLPack/</loc>
     <lastmod>2019-09-15T08:07:30.922Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2019/03/25/C++%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%BA%93MLPack/</loc>
+    <loc>https://nymrli.top/2019/01/24/C++%E6%97%A5%E6%9C%9F%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2019-09-15T08:07:30.922Z</lastmod>
   </url>  <url>
     <loc>https://nymrli.top/2019/06/15/Base64%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%5B%E8%BD%AC%5D/</loc>
@@ -673,10 +679,10 @@
     <loc>https://nymrli.top/2019/02/01/ACM-%E8%B4%AA%E5%BF%83%E4%B8%93%E9%A2%98/</loc>
     <lastmod>2019-09-15T08:07:30.917Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2019/03/07/ACM-%E5%BF%AB%E9%80%9F%E5%B9%82/</loc>
+    <loc>https://nymrli.top/2019/04/25/ACM-%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/</loc>
     <lastmod>2019-09-15T08:07:30.915Z</lastmod>
   </url>  <url>
-    <loc>https://nymrli.top/2019/04/25/ACM-%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/</loc>
+    <loc>https://nymrli.top/2019/03/07/ACM-%E5%BF%AB%E9%80%9F%E5%B9%82/</loc>
     <lastmod>2019-09-15T08:07:30.915Z</lastmod>
   </url>  <url>
     <loc>https://nymrli.top/2019/08/30/ACM-%E5%8D%9A%E5%BC%88%E8%AE%BA/</loc>

@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>李宏毅机器学习_摘要 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">李宏毅机器学习_摘要</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/11/17</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,042</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="p3regression-case-study"><a class="markdownIt-Anchor" href="#p3regression-case-study"></a> <a href="https://www.bilibili.com/video/BV1JE411g7XF?p=3" target="_blank" rel="noopener">P3Regression - Case Study</a></h2>
+<h3 id="regularization解决overfittingl2正则化解决过拟合问题"><a class="markdownIt-Anchor" href="#regularization解决overfittingl2正则化解决过拟合问题"></a> regularization解决overfitting(L2正则化解决过拟合问题)</h3>
+<p><img src="/2020/11/17/李宏毅机器学习-摘要/E:%5Chexo%5Csource_posts%5C%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%91%98%E8%A6%81%5C2_%E6%AD%A3%E5%88%99%E5%8C%96.jpg" alt="2_正则化"></p>
+<blockquote>
+<p>regularization可以使曲线变得更加smooth，training data上的error变大，但是 testing data上的error变小。有关regularization的具体原理说明详见下一部分</p>
+</blockquote>
+<p>原来的loss function只考虑了prediction的error，即$$\sum_{i}<sup>{n}\left(\hat{y}</sup>{i}-\left(b+\sum_{j} w_{j} x_{j}\right)\right)^{2}$$；而regularization则是在原来的loss function的基础上加上了一项$$\lambda \sum\left(w_{i}\right)^{2}$$，就是把这个model里面所有的Wi的平方和用λ加权(其中i代表遍历n个training data，j代表遍历model的每一项)</p>
+<p>也就是说，*<em>我们期待参数w i w_i*w*<em>i*越小甚至接近于0的function，为什么呢？</em></em></p>
+<p>因为参数值接近0的function，是比较平滑的；所谓的平滑的意思是，当今天的输入有变化的时候，output对输入的变化是比较不敏感的。举例来说，对<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>=</mo><mi>b</mi><mo>+</mo><mo>∑</mo><msub><mi>w</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">y=b+\sum w_{i} x_{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.00001em;vertical-align:-0.25001em;"></span><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>这个model，当input变化Δ x，output的变化就是，$$w_{i} \Delta x_{i}$$也就是说，如果w越i小越接近0的话，<u>输出对输入就越不sensitive敏感</u>，我们的function就是一个越平滑的function；说到这里你会发现，我们之前没有把bias——b这个参数考虑进去的原因是<strong>bias的大小跟function的平滑程度是没有关系的</strong>，bias值的大小只是把function上下移动而已</p>
+<p><strong>那为什么我们喜欢比较平滑的function呢？</strong></p>
+<p>如果我们有一个比较平滑的function，由于输出对输入是不敏感的，测试的时候，一些noises噪声对这个平滑的function的影响就会比较小，而给我们一个比较好的结果</p>
+<p><strong>注：这里的λ需要我们手动去调整以取得最好的值</strong></p>
+<p>λ值越大代表考虑smooth的那个regularization那一项的影响力越大，我们找到的function就越平滑</p>
+<p>观察下图可知，当我们的λ越大的时候，在training data上得到的error其实是越大的，但是这件事情是非常合理的，因为当λ越大的时候，我们就越倾向于考虑w的值而越少考虑error的大小；但是有趣的是，虽然在training data上得到的error越大，但是在testing data上得到的error可能会是比较小的</p>
+<p>我们喜欢比较平滑的function，因为它对noise不那么sensitive；但是我们又不喜欢太平滑的function，因为它就失去了对data拟合的能力；而function的平滑程度，就需要通过调整λ来决定，就像下图中，当λ=100时，在testing data上的error最小，因此我们选择λ=100</p>
+<h2 id="p4basic-concept"><a class="markdownIt-Anchor" href="#p4basic-concept"></a> <a href="https://www.bilibili.com/video/BV1JE411g7XF?p=4" target="_blank" rel="noopener">P4Basic Concept</a></h2>
+<h3 id="bias和variance"><a class="markdownIt-Anchor" href="#bias和variance"></a> bias和variance</h3>
+<p><img src="/2020/11/17/李宏毅机器学习-摘要/E:%5Chexo%5Csource_posts%5C%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%91%98%E8%A6%81%5Cbias%E5%92%8Cvariance.jpg" alt="bias和variance"></p>
+<p>bias表示离靶心的距离, 而variance表示散布情况</p>
+<p><img src="/2020/11/17/李宏毅机器学习-摘要/E:%5Chexo%5Csource_posts%5C%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%91%98%E8%A6%81%5C%E5%87%BD%E6%95%B0%E6%90%9C%E7%B4%A2%E7%A9%BA%E9%97%B41.jpg" alt="函数搜索空间1"></p>
+<p><img src="/2020/11/17/李宏毅机器学习-摘要/E:%5Chexo%5Csource_posts%5C%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%91%98%E8%A6%81%5C%E5%87%BD%E6%95%B0%E6%90%9C%E7%B4%A2%E7%A9%BA%E9%97%B4.jpg" alt="函数搜索空间"></p>
+<p>图中所示，只有足够大的函数搜索空间，才能找到正确的“靶心”，因此就需要吧模型设计得足够复杂。而复杂模型需要大数据来降低方差， 因此需要大量的数据防止过拟合</p>
+<p><img src="/2020/11/17/李宏毅机器学习-摘要/E:%5Chexo%5Csource_posts%5C%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%91%98%E8%A6%81%5C%E6%8B%9F%E5%90%88%E6%83%85%E5%86%B5.jpg" alt="拟合情况"></p>
+<p>如果来自variance的误差很大， 那么就是过拟合； 如果来自bias的误差很大，那么就是欠拟合（underfitting）</p>
+<p><img src="/2020/11/17/李宏毅机器学习-摘要/E:%5Chexo%5Csource_posts%5C%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%91%98%E8%A6%81%5C%E6%8B%9F%E5%90%88%E5%A4%84%E7%90%86.jpg" alt="拟合处理"></p>
+<p>bias大： 如果无法fit训练数据, 证明是欠拟合;如果能fit训练数据，但是在测试数据上有较大的误差，那么就是过拟合——做法：增大特征or增大次项</p>
+<p>variance大： 更多的数据（数据增强）or 正则化</p>
+<p><img src="/2020/11/17/李宏毅机器学习-摘要/E:%5Chexo%5Csource_posts%5C%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%91%98%E8%A6%81%5Cvariance%E6%8B%9F%E5%90%88%E5%A4%84%E7%90%86.jpg" alt="variance拟合处理"></p>
+<h3 id="交叉验证"><a class="markdownIt-Anchor" href="#交叉验证"></a> 交叉验证：</h3>
+<p><img src="/2020/11/17/李宏毅机器学习-摘要/E:%5Chexo%5Csource_posts%5C%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%91%98%E8%A6%81%5CP4%5C%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81.jpg" alt="交叉验证"></p>
+<p>在trainingset训练后,虽然在公开的测试集上表示良好,但是private testing set不好的话, 则还是比较糟糕的模型。因此在判断一个模型的好坏的时候， 可以将trainingSet进行交叉验证</p>
+<p><img src="/2020/11/17/李宏毅机器学习-摘要/E:%5Chexo%5Csource_posts%5C%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%91%98%E8%A6%81%5CP4%5CcrossValidation.jpg" alt="crossValidation"></p>
+<p>非常不建议因为在public testing set上表现不好而反过来重新选择trainingSet的模型， 因为这相当于在训练的时候吧testing也考虑在内了， 违背了设计的初衷，并且这样的结果在private testing set上也会表现不好。</p>
+<h4 id="n-fold-cross-validation-十折交叉验证"><a class="markdownIt-Anchor" href="#n-fold-cross-validation-十折交叉验证"></a> N-fold cross validation （十折交叉验证）</h4>
+<p>如果不相信某一个trainset的结果的话， 那就分很多trainset</p>
+<p><img src="/2020/11/17/李宏毅机器学习-摘要/E:%5Chexo%5Csource_posts%5C%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%91%98%E8%A6%81%5CP4%5CcrossValidation.jpg" alt="crossValidation"></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/11/17/李宏毅机器学习-摘要/">https://nymrli.top/2020/11/17/李宏毅机器学习-摘要/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2020/11/15/JupyterHub搭建/" title="JupyterHub搭建"><span>NextPost ></span><br><span class="nextTitle">JupyterHub搭建</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '李宏毅机器学习_摘要',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#p3regression-case-study"><span class="toc-number">1.</span> <span class="toc-text"> P3Regression - Case Study</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#regularization解决overfittingl2正则化解决过拟合问题"><span class="toc-number">1.1.</span> <span class="toc-text"> regularization解决overfitting(L2正则化解决过拟合问题)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p4basic-concept"><span class="toc-number">2.</span> <span class="toc-text"> P4Basic Concept</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bias和variance"><span class="toc-number">2.1.</span> <span class="toc-text"> bias和variance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交叉验证"><span class="toc-number">2.2.</span> <span class="toc-text"> 交叉验证：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#n-fold-cross-validation-十折交叉验证"><span class="toc-number">2.2.1.</span> <span class="toc-text"> N-fold cross validation （十折交叉验证）</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

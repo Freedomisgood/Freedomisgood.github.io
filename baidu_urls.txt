@@ -1,3 +1,6 @@
+https://nymrli.top/2020/11/17/李宏毅机器学习-摘要/
+https://nymrli.top/2020/11/15/JupyterHub搭建/
+https://nymrli.top/2020/11/12/GithubAction/
 https://nymrli.top/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/
 https://nymrli.top/2020/11/09/scrcpy-AutoJS/
 https://nymrli.top/2020/10/27/粒子滤波Matlab代码解读/
@@ -45,6 +48,3 @@ https://nymrli.top/2019/09/29/git命令详解/
 https://nymrli.top/2019/09/28/numpy使用记录/
 https://nymrli.top/2019/09/27/Python-random/
 https://nymrli.top/2019/09/26/OpenAI-Gym使用/
-https://nymrli.top/2019/09/24/Linux安装selenium执行Python程序/
-https://nymrli.top/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/
-https://nymrli.top/2019/09/23/Github下载、访问慢解决方法-转/

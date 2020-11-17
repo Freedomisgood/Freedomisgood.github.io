@@ -1,0 +1,177 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>GithubActions · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">GithubActions</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/11/12</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="小白文"> 小白文</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,383</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
+<p><a href="https://github.com/features/actions" target="_blank" rel="noopener">GitHub Actions</a> 是 GitHub 的<a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" target="_blank" rel="noopener">持续集成服务</a>，于2018年10月<a href="https://github.blog/changelog/2018-10-16-github-actions-limited-beta/" target="_blank" rel="noopener">推出</a>。</p>
+</blockquote>
+<h2 id="github-actions-是什么"><a class="markdownIt-Anchor" href="#github-actions-是什么"></a> GitHub Actions 是什么？</h2>
+<p>大家知道，持续集成由很多操作组成，比如抓取代码、运行测试、登录远程服务器，发布到第三方服务等等。GitHub 把这些操作就称为 actions。</p>
+<p>很多操作在不同项目里面是类似的，完全可以共享。GitHub 注意到了这一点，想出了一个很妙的点子，允许开发者把每个操作写成独立的脚本文件，存放到代码仓库，使得其他开发者可以引用。</p>
+<p>如果你需要某个 action，不必自己写复杂的脚本，直接引用他人写好的 action 即可，整个持续集成过程，就变成了一个 actions 的组合。这就是 GitHub Actions 最特别的地方。</p>
+<p>GitHub 做了一个<a href="https://github.com/marketplace?type=actions" target="_blank" rel="noopener">官方市场</a>，可以搜索到他人提交的 actions。另外，还有一个 <a href="https://github.com/sdras/awesome-actions" target="_blank" rel="noopener">awesome actions</a> 的仓库，也可以找到不少 action。</p>
+<h2 id="基础名词概念"><a class="markdownIt-Anchor" href="#基础名词概念"></a> 基础名词概念</h2>
+<p>GitHub Actions 有一些自己的术语。<br>
+（1）<strong>workflow</strong> （工作流程）：持续集成一次运行的过程，就是一个 workflow。<br>
+（2）<strong>job</strong> （任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务。<br>
+（3）<strong>step</strong>（步骤）：每个 job 由多个 step 构成，一步步完成。<br>
+（4）<strong>action</strong> （动作）：每个 step 可以依次执行一个或多个命令（action）。</p>
+<p><a href="http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html" target="_blank" rel="noopener">GitHub Actions阮一峰</a></p>
+<p>具体内容说明:</p>
+<ul>
+<li>name自动构建的名字</li>
+<li>on触发条件
+<ul>
+<li>watch监视
+<ul>
+<li>type:started 类型：点击了星标</li>
+</ul>
+</li>
+<li>可以是数组： [push, pull_request]</li>
+</ul>
+</li>
+<li>env环境变量</li>
+<li>jobs任务</li>
+<li>build工作的id</li>
+<li>run-on工作运行的环境平台</li>
+<li>if工作运行的判断</li>
+<li>steps 包含一系列任务步骤
+<ul>
+<li>name子任务名</li>
+<li>uses 使用官方的一些action库完成一些操作</li>
+<li>run 运行脚本</li>
+<li>id运行id</li>
+</ul>
+</li>
+</ul>
+<h2 id="workflow-文件"><a class="markdownIt-Anchor" href="#workflow-文件"></a> workflow 文件</h2>
+<p>GitHub Actions 的配置文件叫做 workflow 文件，存放在代码仓库的<code>.github/workflows</code>目录。</p>
+<p>workflow 文件采用 <a href="http://www.ruanyifeng.com/blog/2016/07/yaml.html" target="_blank" rel="noopener">YAML 格式</a>，文件名可以任意取，但是后缀名统一为<code>.yml</code>，比如<code>foo.yml</code>。一个库可以有多个 workflow 文件。GitHub 只要发现<code>.github/workflows</code>目录里面有<code>.yml</code>文件，就会自动运行该文件。</p>
+<hr>
+<p>综上, Github actions配合GithubPages会非常方便</p>
+<p><strong>什么是 GitHub Pages?</strong></p>
+<p>打开 GitHub Pages 的首页我们会看到如下图所示：<br>
+他可以当做你或者你的项目的 Websites，那么我们可以知道 GitHub Pages 有两种最基本的用法：</p>
+<ol>
+<li>作为你自己（或者组织）的网站（访问地址示例：<a href="https://link.zhihu.com/?target=http%3A//username.github.io/" target="_blank" rel="noopener">http://username.github.io</a>）</li>
+<li>作为你某一个项目的网站（访问地址示例：<a href="https://link.zhihu.com/?target=http%3A//username.github.io/projectname" target="_blank" rel="noopener">http://username.github.io/projectname</a>）</li>
+<li>由于性能不太好, 因此最主要的用途是作为部署静态网页, 给demo展示: 做 demo 展示不同于做项目开发, 我们需要的是快速轻便的开发和部署, 而不是完备的一整套开发流程.</li>
+</ol>
+<p>Github pages 的好处</p>
+<ol>
+<li><strong>使用零成本:</strong> github pages 集成在 github 中, 直接和代码管理绑定在一起, 随着代码更新自动重新部署, 使用非常方便.</li>
+<li><strong>免费:</strong> 免费提供 <a href="http://username.github.io" target="_blank" rel="noopener">username.github.io</a> 的域名, 免费的静态网站服务器.</li>
+<li><strong>无数量限制:</strong> github pages 没有使用的数量限制, 每一个 github repository 都可以部署为一个静态网站.</li>
+</ol>
+<hr>
+<h2 id="workflowdemo"><a class="markdownIt-Anchor" href="#workflowdemo"></a> workflowDemo</h2>
+<h3 id="官方demo"><a class="markdownIt-Anchor" href="#官方demo"></a> 官方demo</h3>
+<p>默认的生成模板: 会在仓库的<code>./github/workflows</code>目录下创建一个<code>.yml</code>的文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This is a basic workflow to help you get started with Actions</span></span><br><span class="line"></span><br><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Controls when the action will run. Triggers the workflow on push or pull request</span></span><br><span class="line"><span class="comment"># events but only for the main branch</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> <span class="string">[</span> <span class="string">main</span> <span class="string">]</span></span><br><span class="line"><span class="attr">  pull_request:</span></span><br><span class="line"><span class="attr">    branches:</span> <span class="string">[</span> <span class="string">main</span> <span class="string">]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># A workflow run is made up of one or more jobs that can run sequentially or in parallel</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment"># This workflow contains a single job called "build"——任务名</span></span><br><span class="line"><span class="attr">  build:</span></span><br><span class="line">    <span class="comment"># The type of runner that the job will run on</span></span><br><span class="line">    <span class="comment"># To set the operating system for your job, specify the operating system using runs-on: ubuntu-latest, ubuntu-18.04, or ubuntu-16.04、windows-latest or windows-2019、macos-latest or macos-10.15</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Steps represent a sequence of tasks that will be executed as part of the job</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line">      <span class="comment"># Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it</span></span><br><span class="line">      <span class="comment"># 检出， 将代码从代码库中拉下来， 然后复制到本地的虚拟机上</span></span><br><span class="line"><span class="attr">      - uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># Runs a single command using the runners shell</span></span><br><span class="line">      <span class="comment"># 给操作——run, 起个操作名——name</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Run</span> <span class="string">a</span> <span class="string">one-line</span> <span class="string">script</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">echo</span> <span class="string">Hello,</span> <span class="string">world!</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># Runs a set of commands using the runners shell</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Run</span> <span class="string">a</span> <span class="string">multi-line</span> <span class="string">script</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          echo Add other actions to build,</span></span><br><span class="line"><span class="string">          echo test, and deploy your project.</span></span><br></pre></td></tr></table></figure>
+<h3 id="bilibilitool的workflow"><a class="markdownIt-Anchor" href="#bilibilitool的workflow"></a> <strong><a href="https://github.com/RayWangQvQ/BiliBiliTool" target="_blank" rel="noopener">BiliBiliTool的workflow</a></strong></h3>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">bilibili-daily-task</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  </span><br><span class="line"><span class="attr">  push:</span> <span class="comment"># push触发</span></span><br><span class="line"><span class="attr">    branches:</span> <span class="string">[</span> <span class="string">main</span> <span class="string">]</span></span><br><span class="line"><span class="attr">  workflow_dispatch:</span> <span class="comment"># 手动触发</span></span><br><span class="line"><span class="attr">  schedule:</span> <span class="comment"># 计划任务触发</span></span><br><span class="line"><span class="attr">    - cron:</span> <span class="string">'10 6 * * *'</span> <span class="comment"># cron表达式，Actions时区是UTC时间，所以要往前推8个小时,如上表示每天14点10分</span></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  run-bilibili-tool:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 检出</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      </span><br><span class="line">    <span class="comment"># 设置服务器时区为东八区 </span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Set</span> <span class="string">time</span> <span class="string">zone</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">sudo</span> <span class="string">timedatectl</span> <span class="string">set-timezone</span> <span class="string">'Asia/Shanghai'</span></span><br><span class="line">      </span><br><span class="line">    <span class="comment"># .Net Core 环境</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Setup</span> <span class="string">.NET</span> <span class="string">Core</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/setup-dotnet@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        dotnet-version:</span> <span class="number">3.1</span><span class="number">.301</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 安装依赖</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">dotnet</span> <span class="string">restore</span></span><br><span class="line">      </span><br><span class="line">    <span class="comment"># 构建应用</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">dotnet</span> <span class="string">build</span> <span class="bullet">--configuration</span> <span class="string">Release</span> <span class="bullet">--no-restore</span></span><br><span class="line">       </span><br><span class="line">    <span class="comment"># 运行</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Run</span></span><br><span class="line">      <span class="comment"># env是从仓库settings的secrets中取值</span></span><br><span class="line"><span class="attr">      env:</span></span><br><span class="line"><span class="attr">        userId:</span> <span class="string">$&#123;&#123;secrets.USERID&#125;&#125;</span></span><br><span class="line"><span class="attr">        sessData:</span> <span class="string">$&#123;&#123;secrets.SESSDATA&#125;&#125;</span></span><br><span class="line"><span class="attr">        biliJct:</span> <span class="string">$&#123;&#123;secrets.BILIJCT&#125;&#125;</span></span><br><span class="line"><span class="attr">        otherConfigs:</span> <span class="string">$&#123;&#123;secrets.OTHERCONFIGS&#125;&#125;</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">dotnet</span> <span class="string">run</span> <span class="bullet">-p</span> <span class="string">./src/Ray.BiliBiliTool.Console</span> <span class="bullet">-userId=$&#123;userId&#125;</span> <span class="bullet">-sessData=$&#123;sessData&#125;</span> <span class="bullet">-biliJct=$&#123;biliJct&#125;</span> <span class="bullet">-closeConsoleWhenEnd=1</span> <span class="string">$&#123;otherConfigs&#125;</span></span><br></pre></td></tr></table></figure>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/11/12/GithubAction/">https://nymrli.top/2020/11/12/GithubAction/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2020/11/15/JupyterHub搭建/" title="JupyterHub搭建"><span>< PreviousPost</span><br><span class="prevTitle">JupyterHub搭建</span></a><a class="nextSlogan" href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/" title="南邮校园网CSDN等部分网站图片无法加载解决方案"><span>NextPost ></span><br><span class="nextTitle">南邮校园网CSDN等部分网站图片无法加载解决方案</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'GithubActions',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#github-actions-是什么"><span class="toc-number">1.</span> <span class="toc-text"> GitHub Actions 是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础名词概念"><span class="toc-number">2.</span> <span class="toc-text"> 基础名词概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#workflow-文件"><span class="toc-number">3.</span> <span class="toc-text"> workflow 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#workflowdemo"><span class="toc-number">4.</span> <span class="toc-text"> workflowDemo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#官方demo"><span class="toc-number">4.1.</span> <span class="toc-text"> 官方demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bilibilitool的workflow"><span class="toc-number">4.2.</span> <span class="toc-text"> BiliBiliTool的workflow</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

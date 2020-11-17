@@ -173,12 +173,19 @@ Linux其他版本或者不是Ubuntu 16.04 见官网修改方式
 例如scp root@192.168.0.101:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）
 2、上传本地文件到服务器
 1scp /path/filename username@servername:/path
-例如scp /var/www/test.php  root@192.168.0.101:/var/w ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/15/Linux命令手册/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/ACM-线性筛/">ACM_线性筛</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T08:57:36.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T08:57:36.000Z">2019-10-29</time></div><div class="recent-post-content"> 什么是线性筛?
+例如scp /var/www/test.php  root@192.168.0.101:/var/w ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/15/Linux命令手册/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Google-Colab使用/">Google Colab使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:53:31.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:53:31.000Z">2019-09-15</time></div><div class="recent-post-content"> Google Colab使用
 
-筛素数是为了求得一个区间内的所有素数，而把不是素数的筛去。
+Google colab(Colaboratory)在编辑时候和jupyter notebook类似，并且提供免费的GPU以供使用，这对于需要处理大量数据运算的机器项目来说再合适不过了。挺香的
 
-最普通的办法——判断一个数是不是素数
-123456789101112131415161718#define SIZE 1000000int main()&#123;    int check[SIZE];    int prime[SIZE] = &#123;0&#125;;    int pos;    int flag;    for (int i = 2 ; i &lt; SIZE ; i++)&#123;        flag = 1;        for (int j = 2 ; j &lt; sq ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="线性筛"> 线性筛</a></div><div class="read-more"><a class="more" href="/2019/03/03/ACM-线性筛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/程序设计周cpp学习笔记/">程序设计周cpp学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:56:14.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:56:14.000Z">2019-09-15</time></div><div class="recent-post-content"> 文件名传参
+新建一个笔记本（.ipynb）后，选择&quot;修改-&gt;笔记本设置-&gt;硬件加速器-&gt;GPU&quot;就可以想要用英伟达Tesla K80 GPU啦(2599美元一块)
+ colab中文件交互
+文档里提供了四种方式，分别是：
+
+从本地直接上传
+连接Google Drive
+连接Google Sheet
+连接Google Cloud Storage
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图像处理"> 图像处理</a></div><div class="read-more"><a class="more" href="/2019/05/27/Google-Colab使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/程序设计周cpp学习笔记/">程序设计周cpp学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:56:14.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:56:14.000Z">2019-09-15</time></div><div class="recent-post-content"> 文件名传参
 123456789101112131415using namespace std;#define FILENAME "data.csv"void readfile(string file)&#123;	ifstream inFile;	inFile.open(file.c_str(), ios::out); // 打开模式可省略	string lineStr;	while (getline(inFile, lineStr) )		// 打印整行字符串		cout &lt;&lt; lineStr  &lt;&lt; '-'&lt;&lt; endl; &#125;  int ma ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="程序设计"> 程序设计</a></div><div class="read-more"><a class="more" href="/2019/03/07/程序设计周cpp学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/学会Pull-request/">学会Pull request</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T11:18:14.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T11:18:14.000Z">2019-09-15</time></div><div class="recent-post-content"> GitHub中发起PR(pull Request)
 
 PR是为了贡献代码:
@@ -253,7 +260,16 @@ C.Hello Hell ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag
 Repository name: 仓库名称
 Description(可选): 仓库描述介绍
 Public, Private : 仓库权限（公开共享，私有或指定合作者）
-Initialize this ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/03/28/使用git将项目上传到github（最简单方法）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/Linux下开机启动Python脚本/">Linux下开机启动Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:48:46.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:48:46.000Z">2019-09-15</time></div><div class="recent-post-content"> /etc/rc.local
+Initialize this ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/03/28/使用git将项目上传到github（最简单方法）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Python机器学习及实践——从零开始通往Kaggle竞赛之路/">Python机器学习及实践——从零开始通往Kaggle竞赛之路</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:50:34.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:50:34.000Z">2019-09-15</time></div><div class="recent-post-content"> Python机器学习及实践——从零开始通往Kaggle竞赛之路
+ 监督学习模型
+ 分类
+ 线性模型
+ Logistic
+逻辑回归函数 ： $g(z)=\frac {1}{1+_e^{-z}} $
+逻辑回归模型hw,b(x)=g(f(w,x,b))=11+e−z=11+e−(wTx+b)h_{w,b}(x)=g(f(w,x,b)) = \frac{1}{1+e^{-z}} = \frac {1}{1+e^{-(w^{T}x+b)}}hw,b​(x)=g(f(w,x,b))=1+e−z1​=1+e−(wTx+b)1​
+ 处理缺省值的方法：
+1.缺省值较少时直接删除数据
+12data = data ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/05/27/Python机器学习及实践——从零开始通往Kaggle竞赛之路/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/Linux下开机启动Python脚本/">Linux下开机启动Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:48:46.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:48:46.000Z">2019-09-15</time></div><div class="recent-post-content"> /etc/rc.local
 将脚本写在/etc/rc.local文件
 输入命令：sudo vi /etc/rc.local
 在exit 0上一行输入：python /usr/bin/python /home/pi/test.py
@@ -265,28 +281,21 @@ $ sudo chmod +x /etc/rc.local
 
  /etc/init.d
 写一个服务放到linux的/etc/init.d目录中
-并且授权bash脚本chmod 755 /etc/ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/03/Linux下开机启动Python脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/Java课程第二次实验报告/">Java课程第二次实验报告</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T00:58:21.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T00:58:21.000Z">2019-09-15</time></div><div class="recent-post-content"> Java课程第二次实验报告
+并且授权bash脚本chmod 755 /etc/ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/03/Linux下开机启动Python脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Keras使用——图像增强/">Keras使用——图像增强</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:52:14.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:52:14.000Z">2019-09-15</time></div><div class="recent-post-content"> Keras使用——图像增强
+ 使用Keras进行深度学习的图像增强（Image Augmentation）
+
+Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。
+Keras为支持快速实验而生，能够把你的idea迅速转换为结果，如果你有如下需求，请选择Keras：
+
+简易和快速的原型设计（keras具有高度模块化，极简，和可扩充特性）
+支持CNN和RNN，或二者的结合
+无缝CPU和GPU切换
+
+
+ ImageDataGenerator
+Keras提供了ImageDataGenerator类，定义关于图片准备和增强的配置 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图像处理"> 图像处理</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="深度学习"> 深度学习</a></div><div class="read-more"><a class="more" href="/2019/05/27/Keras使用——图像增强/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/Java课程第二次实验报告/">Java课程第二次实验报告</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T00:58:21.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T00:58:21.000Z">2019-09-15</time></div><div class="recent-post-content"> Java课程第二次实验报告
  1.寻找并输出11~999之间的数m，它满足m、m2、m3均为回文数。回文数是各位数字左右对称的整数。判断是否为回文要求通过编写方法来完成。
-123456789101112131415161718public class HelloWorld &#123;	public static boolean isPalindrome(int s) &#123;		String str = Integer.toString(s);		if( str.charAt(0) == str.charAt(str.length() - 1) )			return true;		el ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/04/25/Java课程第二次实验报告/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/02/flask-nginx如何获得真实IP/">flask+nginx如何获得真实IP</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-02T12:53:58.000Z">2019-03-02</time><i class="fa fa-edit"></i><time datetime="2019-03-02T12:53:58.000Z">2019-09-15</time></div><div class="recent-post-content">
-如果是通过 flask 的 request.remote_addr获取的 ip 都是 127.0.0.1
-
- 解决方案:
- nginx.conf中添加
-123# proxy_set_header Host $host:80; # proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-全文
-12345678910111213141516server &#123;    listen 8888;    server_name 0.0.0.0;    ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="nginx"> nginx</a></div><div class="read-more"><a class="more" href="/2019/03/02/flask-nginx如何获得真实IP/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/codeblocks中boost库安装/">codeblocks中boost库安装</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:04:59.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:04:59.000Z">2019-09-15</time></div><div class="recent-post-content">
-首先要提出的是，boost在VS中是可以直接导入的，但是在CB中是不行的，所以写了下这篇文章。
-
- 安装boost
-1.首先先去boost官网下载boost的源码 ， 选择你要下载的版本。
-2.解压（可能会耗费一段时间，小文件比较多）
-3.双击运行脚本文件bootstrap.bat（引导程序），之后就生成这两个可执行文件
-我们为了能直观的看到编译boost的细节信息，进入dos (win +ｒ快捷键　输入cmd )
-4.cd 到解压boost库的目录下
-5.命令执行bjam.exe
-4-5是没必要的，要是不想看输出的东西的话，其实双击bjam.exe即可
-
-▲.编译的时间略久（你可以干一会其 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/03/03/codeblocks中boost库安装/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/25/C++机器学习库MLPack/">C++机器学习库MLPack</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-25T09:44:11.000Z">2019-03-25</time><i class="fa fa-edit"></i><time datetime="2019-03-25T09:44:11.000Z">2019-09-15</time></div><div class="recent-post-content"> C++机器学习库MLPack
+123456789101112131415161718public class HelloWorld &#123;	public static boolean isPalindrome(int s) &#123;		String str = Integer.toString(s);		if( str.charAt(0) == str.charAt(str.length() - 1) )			return true;		el ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/04/25/Java课程第二次实验报告/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/25/C++机器学习库MLPack/">C++机器学习库MLPack</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-25T09:44:11.000Z">2019-03-25</time><i class="fa fa-edit"></i><time datetime="2019-03-25T09:44:11.000Z">2019-09-15</time></div><div class="recent-post-content"> C++机器学习库MLPack
 
 mlpack: a scalable C++ machine learning library
 
@@ -296,7 +305,7 @@ mlpack: a scalable C++ machine learning library
 列出两种安装教程吧，第一种实测可以。第二种在测试Armadillo的时候没通过，还是缺库，有兴趣的人可以通过给的Armadillo官网链接下载安装Armadillo再试试
 
  安装方法一：
-Mlpack 官网 提供了下载的方法 ： sudo apt-get install libmlpack-dev ， 但貌似有博客指出目前国内源里是没有这个镜像的，所以采取的办法是直接从观望上下 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/03/25/C++机器学习库MLPack/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-快速幂/">ACM-快速幂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:54:05.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:54:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 简单位运算快速幂
+Mlpack 官网 提供了下载的方法 ： sudo apt-get install libmlpack-dev ， 但貌似有博客指出目前国内源里是没有这个镜像的，所以采取的办法是直接从观望上下 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/03/25/C++机器学习库MLPack/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-快速幂/">ACM-快速幂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:54:05.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:54:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 简单位运算快速幂
 
 假设我们要求ab，那么其实b是可以拆成二进制的，该二进制数第i位的权为2(i-1)，例如当b==11时，a11=a(20+21+2^3)
 

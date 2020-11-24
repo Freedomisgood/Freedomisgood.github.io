@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Linux服务器同步时钟 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux服务器同步时钟</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/11/22</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,461</span> | Reading time: <span class="post-count">7</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
+<blockquote>
+<p>因为今天在集群193跑程序的时候发现时间不同步, 因此想想把集群的时间全部同步一下</p>
+</blockquote>
+<ol>
+<li>
+<p>在Linux中设置系统时间，可以用date命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看时间</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> date</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改时间</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> date -s <span class="string">"20140225 20:16:00"</span>  <span class="comment">#yyyymmdd hh:mm:ss</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Linux硬件时间的设置</p>
+</li>
+</ol>
+<p>硬件时间的设置，可以用hwclock或者clock命令。两者基本相同，只用一个就行，只不过clock命令除了支持x86硬件体系外，还支持Alpha硬件体系。</p>
+<ol start="3">
+<li>系统时间和硬件时间的同步</li>
+</ol>
+<p>同步系统时间和硬件时间，可以使用hwclock命令。</p>
+<p><strong>4. 不同机器之间的时间同步</strong></p>
+<p>为了避免主机时间因为长期运行下所导致的时间偏差，进行时间同步（synchronize）的工作是非常必要的。Linux系统下，一般使用ntp服务器来同步不同机器的时间。一台机器，可以同时是ntp服务端和ntp客户端。在生产系统中，推荐使用像DNS服务器一样分层的时间服务器来同步时间。</p>
+<p>不同机器间同步时间，可以使用ntpdate命令，也可以使用ntpd服务。==&gt;▲. 注意两个不能同时使用: 如果使用了ntpd后还是用ntpdate会报错<code>ntpdate[39462]: the NTP socket is in use, exiting</code>, 要查询ntp的状态，用ntpq命令，比如看目前是否和ntp server同步，用<code>ntpq -p</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">     remote           refid      st t when poll reach   delay   offset  jitter</span><br><span class="line">==============================================================================</span><br><span class="line"> 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000</span><br><span class="line"> 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000</span><br><span class="line"> 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000</span><br><span class="line"> 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000</span><br><span class="line"> ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000</span><br><span class="line"> ntp1.ams1.nl.le 130.133.1.10     2 u    1   64    1  305.632  -43.387   0.146</span><br><span class="line">*120.25.115.20   10.137.53.7      2 u    1   64    1   29.425   -1.059   0.410</span><br><span class="line"> 203.107.6.88    100.107.25.114   2 u    1   64    1   32.056   -2.093   0.257</span><br><span class="line"> ntp.xtom.nl     84.199.11.211    2 u    1   64    1  175.286   -6.179   0.210</span><br><span class="line"> 94.130.49.186 ( 195.13.23.5      3 u    2   64    1  212.348  -17.943   0.561</span><br><span class="line"> tock.ntp.infoma .GPS.            1 u    2   64    1  239.693  -11.135   0.175</span><br><span class="line"> 119.28.206.193  100.122.36.196   2 u    -   64    1   41.525   -4.034   0.002</span><br></pre></td></tr></table></figure>
+<p>可以看到*号标出的就是集群正在同步的时钟服务器: 120.25.115.20是阿里云</p>
+<p>由于不能同时使用， 而ntpdate的稳定性不好， 因此ntpdate用来一次性同步时间（或者ntpdate+cron组合）、或者用ntpdate同步一次时间后，持续用ntpd服务器来同步。</p>
+<p>下面使用ntpdate来同步时间：使用ntpdate前, 先将ntpd关闭: <code>service ntpd stop</code>或<code>sudo systemctl stop ntp</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">  /usr/sbin/ntpdate  time.stdtime.gov.tw</span></span><br><span class="line">Error : Temporary failure in name resolution</span><br><span class="line">29 Oct 14:18:59 ntpdate[25327]: can't find host time.stdtime.gov.tw</span><br><span class="line">29 Oct 14:18:59 ntpdate[25327]: no servers can be used, exiting</span><br></pre></td></tr></table></figure>
+<p>确认防火墙没有问题后，执行域名解析，发现失败</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nslookup  time.stdtime.gov.tw</span></span><br><span class="line">;; connection timed out; no servers could be reached</span><br></pre></td></tr></table></figure>
+<p>尝试ping外网，以确认能正常连到外网，连网正常</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ping 8.8.8.8</span></span><br><span class="line">PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.</span><br><span class="line">64 bytes from 8.8.8.8: icmp_seq=1 ttl=53 time=1.48 ms</span><br><span class="line">64 bytes from 8.8.8.8: icmp_seq=2 ttl=53 time=1.40 ms</span><br><span class="line">--- 8.8.8.8 ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 1000ms</span><br><span class="line">rtt min/avg/max/mdev = 1.404/1.445/1.487/0.056 ms</span><br></pre></td></tr></table></figure>
+<p>于是修改DNS文件, /etc/resolv.conf, 虽然这边提示不要手动修改, 但是临时改掉是没问题的</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Dynamic resolv.conf(5) file <span class="keyword">for</span> glibc resolver(3) generated by resolvconf(8)</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN</span></span><br><span class="line"><span class="meta">#</span><span class="bash">nameserver 127.0.1.1</span></span><br><span class="line">nameserver 8.8.8.8</span><br></pre></td></tr></table></figure>
+<p>修改后，再次执行时间同步，ok鸟！</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apollo3d@apollo15:~/cl/Python_project/cplm/Min38$ sudo ntpdate ntp1.aliyun.com</span><br><span class="line">21 Nov 23:04:25 ntpdate[40285]: adjust time server 120.25.115.20 offset 0.002194 se</span><br></pre></td></tr></table></figure>
+<p>除了阿里云的还有pool.ntp.org可以用来同步。</p>
+<p>▲但是同步之后时间还是不太对， 于是观察时区， 发现集群两台电脑上其实只是时区是不同的， 同步的服务器都是一样的阿里云的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apollo3d@apollo2:~$ date</span><br><span class="line">2020年 11月 22日 星期日 12:14:11 CST</span><br><span class="line"></span><br><span class="line">apollo3d@apollo15:~/cl/Python_project/cplm/Min38$ date</span><br><span class="line">Sat Nov 21 23:14:01 EST 2020</span><br></pre></td></tr></table></figure>
+<p>发现一个是EST和CST。网上查询得知 EST代表英国时间, CST代表北京时间, EDT：指美国东部夏令时间</p>
+<p>那么现在只要改成北京时间的时区CST就可以了，修改如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mv /etc/localtime /etc/localtime.bak</span><br><span class="line">[root@localhost ~]# ln -s /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime</span><br><span class="line">[root@localhost ~]# date</span><br></pre></td></tr></table></figure>
+<p>但是发现两台语言不一样, 一个是中文, 一个是英文, 猜测是操作系统中英版导致的: 输出环境变量:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">apollo3d@apollo2:~$ date</span><br><span class="line">2020年 11月 22日 星期日 12:14:11 CST</span><br><span class="line"><span class="meta">$</span><span class="bash"> env</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可以看到时区是中国</span></span><br><span class="line">HOME=/home/apollo3d</span><br><span class="line">LOGNAME=apollo3d</span><br><span class="line">LESSCLOSE=/usr/bin/lesspipe %s %s</span><br><span class="line">LC_TIME=zh_CN.UTF-8</span><br><span class="line">LC_NAME=zh_CN.UTF-8</span><br><span class="line">_=/usr/bin/env</span><br><span class="line"></span><br><span class="line">apollo3d@apollo15:~/cl/Python_project/cplm/Min38$ date</span><br><span class="line">Sat Nov 21 23:14:01 EST 2020</span><br><span class="line"><span class="meta">$</span><span class="bash"> env</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可以看到语言是en_US, 但是没设置时区</span></span><br><span class="line">MAIL=/var/mail/apollo3d</span><br><span class="line">PWD=/home/apollo3d/cl/Python_project/cplm/Min38</span><br><span class="line">JAVA_HOME=/home/apollo3d/Apollo_Rescue/jdk1.8.0_161</span><br><span class="line">LANG=en_US.UTF-8</span><br><span class="line">HOME=/home/apollo3d</span><br><span class="line">SUDO_COMMAND=/bin/su</span><br></pre></td></tr></table></figure>
+<p>因此可以修改LANG:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo vim /etc/sysconfig/i18n</span></span><br><span class="line">LANG="en_US.UTF-8"改为LANG="zh_CN.GB2312"</span><br></pre></td></tr></table></figure>
+<p>再运行我的Python脚本的时候发现竟然报错了: ValueError: Timezone offset does not match system offset: -18000 != 28800. Please, check your config files.</p>
+<p>因为系统时区和代码运行时区不一样导致。解决办法：在创建BlockingScheduler对象时指定上海的时区<code>scheduler = BlockingScheduler(timezone=&quot;Asia/Shanghai&quot;)</code></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/11/22/Linux服务器同步时钟/">https://nymrli.top/2020/11/22/Linux服务器同步时钟/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2020/11/17/李宏毅机器学习-摘要/" title="李宏毅机器学习_摘要"><span>NextPost ></span><br><span class="nextTitle">李宏毅机器学习_摘要</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Linux服务器同步时钟',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"> </span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

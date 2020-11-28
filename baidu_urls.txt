@@ -1,4 +1,6 @@
-https://nymrli.top/2020/11/26/《漫画机器学习入门》大关真之——读书笔记/
+https://nymrli.top/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/
+https://nymrli.top/2020/11/28/熟悉Latex写作/
+https://nymrli.top/2020/11/28/深度学习-Pytorch读书笔记/
 https://nymrli.top/2020/11/22/Linux服务器同步时钟/
 https://nymrli.top/2020/11/17/李宏毅机器学习-摘要/
 https://nymrli.top/2020/11/15/JupyterHub搭建/
@@ -46,5 +48,3 @@ https://nymrli.top/2019/10/07/蒙特卡洛树搜索MCTS/
 https://nymrli.top/2019/10/06/Python多进程/
 https://nymrli.top/2019/10/06/Openmv使用/
 https://nymrli.top/2019/10/03/TD-afterstate/
-https://nymrli.top/2019/09/29/git命令详解/
-https://nymrli.top/2019/09/28/numpy使用记录/

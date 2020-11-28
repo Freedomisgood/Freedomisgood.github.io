@@ -99,12 +99,16 @@
   i.fa.fa-comment
   .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2018/12/12/Python中邮件的发送/">Python中邮件的发送</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-12T14:17:38.000Z">2018-12-12</time><i class="fa fa-edit"></i><time datetime="2018-12-12T14:17:38.000Z">2020-11-12</time></div><div class="recent-post-content"> Python普通的邮件发送
 需要一个安全的连接，例如SSL，因此接下来我们会使用SSL的方式去登录，但是在那之前，我们需要做一些准备，打开qq邮箱，点击设置-&gt;账户，找到POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务，开启IMAP/SMTP服务，然后根据要求使用手机发送到指定号码，获取授权码，这个授权码就是你接下来登录要使用的密码.
-123456789101112131415161718from email.mime.text import MIMETextimport smtplib_user = '1063052964@qq.com'_pwd =  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a></div><div class="read-more"><a class="more" href="/2018/12/12/Python中邮件的发送/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/21/PythonWeb-flask部署内网电脑/">PythonWeb--flask部署内网电脑</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-21T14:08:04.000Z">2018-12-21</time><i class="fa fa-edit"></i><time datetime="2018-12-21T14:08:04.000Z">2020-05-15</time></div><div class="recent-post-content"> PythonWeb–flask部署问题
+123456789101112131415161718from email.mime.text import MIMETextimport smtplib_user = '1063052964@qq.com'_pwd =  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/12/Python中邮件的发送/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/21/PythonWeb-flask部署内网电脑/">PythonWeb--flask部署内网电脑</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-21T14:08:04.000Z">2018-12-21</time><i class="fa fa-edit"></i><time datetime="2018-12-21T14:08:04.000Z">2020-05-15</time></div><div class="recent-post-content"> PythonWeb–flask部署问题
 以前在云服务器上都是用root权限部署的,很流畅…这次用了活动室电脑是管理员权限apollo3d…于是出现了很大的问题…
  内网穿透
 活动室电脑的IP是通过路由器分配的IP,如192.168.1.145,这是一个局域网,别人是不可能通过这个IP访问到你的服务器的.（访问都是通过公网的。除非两台电脑在同一个局域网内）。
 于是想到直接连活动室的网不就行了吗（如果活动室的是公网IP，只要对路由器设置个端口映射就行了），但发现，活动室的IP也是校园网分配的，已经经过了多次的NAT，于是这个方法也没用。
-搜了下网上关于“内网中的电脑当做服务器”，找到了方案就是“ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a></div><div class="read-more"><a class="more" href="/2018/12/21/PythonWeb-flask部署内网电脑/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/08/使用Cerbot申请免费证书升级-http到https/">使用Cerbot申请免费证书升级 http到https</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-08T08:10:03.000Z">2018-12-08</time><i class="fa fa-edit"></i><time datetime="2018-12-08T08:10:03.000Z">2019-10-07</time></div><div class="recent-post-content"> 使用 Cerbot 免费证书 简单 升级 http 到 https
+搜了下网上关于“内网中的电脑当做服务器”，找到了方案就是“ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a></div><div class="read-more"><a class="more" href="/2018/12/21/PythonWeb-flask部署内网电脑/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/28/数据结构实验4——各种内排序算法的实现及性能比较/">数据结构实验4——各种内排序算法的实现及性能比较</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-28T11:20:19.000Z">2018-12-28</time><i class="fa fa-edit"></i><time datetime="2018-12-28T11:20:19.000Z">2020-04-28</time></div><div class="recent-post-content"> 部分代码
+ 辅助函数
+1234567891011121314/**生成随机数**/void RandCreate(int *a)&#123;    int i;    for ( i = 0; i &lt; N; ++i)        a[i] = 1 + (rand()%1000);&#125;/***交换数组中,两个下标的值***/void Swap(int *a,int i,int j)&#123;    int tmp;    tmp = a[i];    a[i] = a[j];    a[j] = tmp;&#125;
+简单选择排序
+123456789/**简单选择排序**/v ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/12/28/数据结构实验4——各种内排序算法的实现及性能比较/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/08/使用Cerbot申请免费证书升级-http到https/">使用Cerbot申请免费证书升级 http到https</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-08T08:10:03.000Z">2018-12-08</time><i class="fa fa-edit"></i><time datetime="2018-12-08T08:10:03.000Z">2019-10-07</time></div><div class="recent-post-content"> 使用 Cerbot 免费证书 简单 升级 http 到 https
 1、安装 cerbot:
 12git clone https://github.com/letsencrypt/letsencryptcd letsencrypt
 要求：
@@ -116,23 +120,10 @@ Git环境
 2、运行:
 12// 根据自己的需求调整代码./certbot-auto certonly --standalone --email admin@example.com -d example.com -d www.example.com -d other.example.net
 成功提示:
-123456789 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2018/12/08/使用Cerbot申请免费证书升级-http到https/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/26/pyqt与QT5/">pyqt5与QT5</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-26T04:11:52.000Z">2018-11-26</time><i class="fa fa-edit"></i><time datetime="2018-11-26T04:11:52.000Z">2019-09-17</time></div><div class="recent-post-content">Pyqt5和QT5
- 拖拽式布局
-添加QT Designer、PyUIc、Pyrcc
- 1.添加外部工具(Extenal Tools)
- QT Designer
-
-File–&gt;Settings–&gt;Tools–&gt;Extenal Tools --&gt; ‘’+’’ &gt; 添加具体细节,如图一图二
-
-
-​												图一
-
-​													图二
-修改Name为QT Designer,Program为QT目录下designer.exe文件,不需要参数,Work directory为D:\QT\{QT version}\msvc2015_64\bin
-
-添 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/26/pyqt与QT5/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/16/数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题/">数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-16T09:50:05.000Z">2018-12-16</time><i class="fa fa-edit"></i><time datetime="2018-12-16T09:50:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 实验3.图的基本运算及职能交通中的最佳路径选择问题
+123456789 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2018/12/08/使用Cerbot申请免费证书升级-http到https/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/16/数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题/">数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-16T09:50:05.000Z">2018-12-16</time><i class="fa fa-edit"></i><time datetime="2018-12-16T09:50:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 实验3.图的基本运算及职能交通中的最佳路径选择问题
  3.2-邻接矩阵的DFS和BFS
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图论"> 图论</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="实验作业"> 实验作业</a></div><div class="read-more"><a class="more" href="/2018/12/16/数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/16/数据结构——图/">数据结构——图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-16T03:41:46.000Z">2018-12-16</time><i class="fa fa-edit"></i><time datetime="2018-12-16T03:41:46.000Z">2019-09-15</time></div><div class="recent-post-content"> 数据结构——图
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图论"> 图论</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="实验作业"> 实验作业</a></div><div class="read-more"><a class="more" href="/2018/12/16/数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/28/数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现/">数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-28T11:35:38.000Z">2018-12-28</time><i class="fa fa-edit"></i><time datetime="2018-12-28T11:35:38.000Z">2019-09-15</time></div><div class="recent-post-content"> 二叉树的遍历及计算
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041051061071081091101111121131141151161171181191201211221231241251261271281291301311321 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/12/28/数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/16/数据结构——图/">数据结构——图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-16T03:41:46.000Z">2018-12-16</time><i class="fa fa-edit"></i><time datetime="2018-12-16T03:41:46.000Z">2019-09-15</time></div><div class="recent-post-content"> 数据结构——图
  连通图
 
 无向图
@@ -191,31 +182,7 @@ File–&gt;Settings–&gt;Tools–&gt;Extenal Tools --&gt; ‘’+’’ &gt; �
 解决办法：
 
 点击 Preferences -&gt; Settings -&gt; Preferences.sublime-Settings—— User(一个新窗口)
-添加配置**(在原有大括号{}里面添加**)：&quot;channels&quot;: [&quot;https://raw.githubusercontent.com/HBLong/channel_v3_daily/master/chan ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a></div><div class="read-more"><a class="more" href="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/03/Pyinstaller使用/">Pyinstaller使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-03T03:54:22.000Z">2018-12-03</time><i class="fa fa-edit"></i><time datetime="2018-12-03T03:54:22.000Z">2019-09-15</time></div><div class="recent-post-content"> pyinstaller使用
- 安装
- 1、安装pywin32==&gt;pyinstaller依赖于
-
-
-下载安装文件：查找到跟自己适用的python版本及window系统版本匹配的pywin32，下载后安装
-
-
-使用pip命令安装：pip install pywin32
-
-
- 2、安装Pyinstaller
-
-
-下载安装文件安装：官网
-
-
-使用pip命令安装：pip install PyInstaller
-
-
-使用Pycharm直接搜索pyinstaller会自动安装依赖库pywin32
-
- 使用
- 1、使用下载安装的方式安装的Pyinstaller打包方式
-将需要打包的文件放在解压得到的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/03/Pyinstaller使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/20/Postman模拟上传文件/">Postman模拟上传文件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-20T10:57:35.000Z">2018-12-20</time><i class="fa fa-edit"></i><time datetime="2018-12-20T10:57:35.000Z">2019-09-15</time></div><div class="recent-post-content"> Postman模拟
+添加配置**(在原有大括号{}里面添加**)：&quot;channels&quot;: [&quot;https://raw.githubusercontent.com/HBLong/channel_v3_daily/master/chan ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a></div><div class="read-more"><a class="more" href="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/20/Postman模拟上传文件/">Postman模拟上传文件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-20T10:57:35.000Z">2018-12-20</time><i class="fa fa-edit"></i><time datetime="2018-12-20T10:57:35.000Z">2019-09-15</time></div><div class="recent-post-content"> Postman模拟
  1.首先得知道前端的样子:
 
  2.针对前端字段进行模拟POST

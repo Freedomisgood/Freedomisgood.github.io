@@ -1,0 +1,252 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《漫画机器学习入门》大关真之——读书笔记 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">《漫画机器学习入门》大关真之——读书笔记</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/11/28</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,827</span> | Reading time: <span class="post-count">13</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="漫画机器学习入门总结"><a class="markdownIt-Anchor" href="#漫画机器学习入门总结"></a> 《漫画机器学习入门》总结</h1>
+<p>机器学习是指计算机通过不断地处理数据并修正算法和参数来学习各种规则， 从而不断改进模型而得到更优化的算法。书中主要讲解了玻尔兹曼机的机器学习</p>
+<h3 id="谁是世界上最美丽的人"><a class="markdownIt-Anchor" href="#谁是世界上最美丽的人"></a> <a href="https://blog.csdn.net/weixin_41513917/article/details/102646458#%E7%9F%A5%E8%AF%86%E7%82%B9" target="_blank" rel="noopener">谁是世界上最美丽的人？</a></h3>
+<ol>
+<li>
+<p>****特征量****就是如每一个人的年龄，眼睛大小； 特征向量就是每个人的特征量放到一起，特征向量是表达特征的一个数组</p>
+</li>
+<li>
+<p>误差函数： 在美丽程度这个问题上， 误差函数就是—— 计算“美丽程度”的实际输出与给定的理想输出之间的差值</p>
+</li>
+<li>
+<p>最优化问题：  最小化误差函数，其实是一个求解最优化问题：我们的任务就是要找到没有误差或者误差小到满足要求的最适合的模型。这就要通过调节模型中的参数，使误差函数值尽量小，这就是求解（参数）最优化问题。</p>
+<ol>
+<li>微分：稍微拉动一点摇杆，确认误差是否变小。这种操作叫做<strong>微分</strong>。</li>
+<li>梯度下降法： 一直拉到误差不再减少，直到误差值保持不变或者反而有所上升时为止。希望不停地调整权重，使得误差一直在朝着减小的方向前进。这种调整误差的方法叫<strong>梯度下降法</strong>。</li>
+<li><img src="https://img-blog.csdnimg.cn/20191021100811994.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTUxMzkxNw==,size_16,color_FFFFFF,t_70" alt=""></li>
+</ol>
+</li>
+<li>
+<p>回归就是：建立模型—拟合—微调</p>
+</li>
+<li>
+<p>机器学习是寻找输入数据与输出数据之间关系(model-&gt;function map)的一门学问。</p>
+</li>
+<li>
+<p>每一个特征量都很重要，但是不同特征量的重要程度是不同的，所以需要寻找特征的权重矩阵</p>
+</li>
+<li>
+<p>训练数据和测试数据： 学习和测试是机器学习的两项基本任务。 (1)好的算法很重要； (2)要将获得的数据分为训练用数据和测试用数据；(3)仅仅匹配训练用数据是不行的——仅仅满足训练用数据叫overfit过拟合，如果连训练数据都不符合叫underfit欠拟合</p>
+</li>
+<li>
+<p>验证的方法：交叉验证：将所有的数据分成4组， 每组中1份数据用于测试，3份用于训练</p>
+</li>
+<li>
+<p>复杂化模型——寻找新的特征值：sigmoid 函数：当发现检测的结果不太好，王后想把模型变得更复杂一些。王后尝试将原始的特征量组合起来获得新的特征量，再加权求输出，却发现因为只有乘法和加法的情况这种<strong>线性特性</strong>，与之前并没有本质区别。因此，引入了sigmoid函数，这个非线性函数。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>i</mi><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>x</mi></mrow></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">sig(x) = \frac{1}{1-e^{-x}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.2484389999999999em;vertical-align:-0.403331em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7026642857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathdefault mtight">x</span></span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.403331em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p><img src="https://img-blog.csdnimg.cn/2019102111070935.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTUxMzkxNw==,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>加权组合，构成新的特征值： 如果我们把将特征量组合，新增加5个特征量的话（如图），摇杆的数量就变成了原来的5倍。</p>
+<p>多层神经网络：在单层神经网络的基础上，增加一层非线性变换，结构上也就多了一个中间的曾，就是多层神经网络。</p>
+</li>
+<li>
+<p>只由输入到输出方向进行信息的传递，被称为正向型神经网络； 而双方向都能够进行信息交换的结构被称为双向型神经网络。双向型神经网络典型代表是Hopfield一处的，玻尔兹曼机也是基于这种神经网络。 双向信息处理模式不同于淡出的正向信息处理， 它可以有多个输出结果， 而且从这些输出结果中它可以回忆起以前记忆过的信息，因此也被叫做联想记忆。</p>
+</li>
+<li>
+<p>模型越复杂，网络就越纠缠，拉动一根线就会对整个网络产生较大的影响。反过来，网络中任何一根线又会连接很多其他的线，拉它的时候也会受到很大限制，甚至拉不动。 距离输出层越近的摇杆越容易搬动，这是有梯度的结果。因为搬动一下离输出很近的摇杆，它的效果能够很方便地传递给输出。离输出越远，梯度越难计算，越难调整。===&gt;BP算法， 以及最好不要使用Sigmod函数， 因为容易梯度消失， 可以换用tanh或者reLU（观察函数的微分结果）</p>
+</li>
+<li>
+<p><strong>dropout</strong>：为了防止过度学习， 需要掌握平衡， 做出取舍：  适当地选取一定比例的特征量，剩下的全部舍弃不用。</p>
+</li>
+<li>
+<p>批量学习与在线学习：</p>
+<p><strong>批量学习（batch learning）</strong>：将全部数据收集齐了之后一起作为训练用数据使用，这叫做批量学习（batch learning）</p>
+<p><strong>在线学习（online learning）</strong>:与此相对的，随着数据不断地获取而逐步进行的学习则称为在线学习（online learning）</p>
+<p>现在批量学习也在改进，有些地方与在线学习差不多， 如使用概率梯度下降法：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191021170700902.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTUxMzkxNw==,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>（采用概率的方式去分组，也叫随机选择，就是不能利用某种故意的特定意图去分组）</p>
+<p>当利用概率分组后，对每一组数据进行训练，动一下摇杆看误差如何变化，然后再向误差变小的方向搬动摇杆，这就是概率梯度下降法。（通过适当地概率计算，让参数或左或右地跳动着变化）</p>
+<p>这种算法考虑的是，与其冲着预先规定好的方向一直走下去，倒不如是不是地左看看，右看看。这样反倒更容易找到隐藏的近路。</p>
+<p>在线学习和随机梯度下降法的优势在于， 可以捕捉灵光霎现的机会， 增加了跳脱鞍点的可能性。</p>
+</li>
+</ol>
+<h3 id="粮食问题"><a class="markdownIt-Anchor" href="#粮食问题"></a> 粮食问题</h3>
+<ol>
+<li>
+<p>感知机perceptron(弗兰克·罗森布拉特)和支持向量机SVM(Vladmir N.Vapnik)</p>
+<p>感知机：移动分割超平面进行数据分类。感知机的缺点：非线性模型处理不好</p>
+<p>支持向量机：使分割超平面处于一种非常“好”的状态，即所有数据点尽量都远离分割超平面，因此能够更好的识别并且<strong>使得安全裕量最大</strong></p>
+</li>
+<li>
+<p><strong>矩阵的秩</strong>：= 模式的种类， 一个模式以一行向量表示。<u>矩阵中两行的规律相似，应该属于同一种模式</u>。假设数据中存在某些模式，那么在矩阵中一定会存在某一行的数值代表该模式，其他的某一行代表另一种模式。</p>
+<p>如果模式能够从可见数据中推演出来，通过对可见数据做有效处理，就能够推测出不可见的那部分数据，这其实是一种无监督学习：希望能够完美地补充矩阵中空白的数据，并能够预测出新的模式。（计算机从大量数据中通过自己的分析来找出规律，叫做无监督学习）</p>
+</li>
+<li>
+<h3 id="预测方面有监督无监督的不同"><a class="markdownIt-Anchor" href="#预测方面有监督无监督的不同"></a> 预测方面有监督/无监督的不同 ：</h3>
+<p>从数据中学到东西，这一点是一致的。之后，在是否进行预测这一点上是不同的。<br>
+有监督学习是希望计算机越来越聪明并逐渐能够代替人的某些工作。<br>
+无监督学习，是希望计算机从特征量中选择出我们容易理解的某种模式，将模式分成若干或者某种形式的分类。</p>
+</li>
+<li>
+<p><strong>稀疏化</strong>：有些算法会将不重要的特征量的权重直接设定为0，舍弃一些不重要的东西， 导致矩阵中产生很多0， 这种矩阵将稀疏矩阵。</p>
+</li>
+<li>
+<p><strong>非负矩阵分解（ Nonnegative Matrix Factor ）</strong>： 非负，指在计算的时候不使用负值，也就是只做加法运算。就像用钢笔描绘人脸，先有眼睛，鼻子，再加上嘴等等。这些都是一个一个添加的。（非负好比用钢笔作画不能删除， 而普通作画是用铅笔， 所以可以有负值）</p>
+<p>如果也用减法，就像用铅笔，还可以用橡皮擦去一些地方。</p>
+</li>
+</ol>
+<h3 id="基于玻尔兹曼机器学习的图像处理方法"><a class="markdownIt-Anchor" href="#基于玻尔兹曼机器学习的图像处理方法"></a> 基于玻尔兹曼机器学习的图像处理方法</h3>
+<blockquote>
+<p>首先要明确的一点是， 图片是由像素组成的。每一个像素到底是呈现数模颜色，这是由数据来决定的。</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>玻尔兹曼机器学习</strong>:将图像的颜色数据输入到玻尔兹曼机中，计算机通过分析这些数据，就可以得到实际图像的特征，各像素点显示某种颜色的概率，以及<strong>相邻像素间的关系</strong>。这种过程叫做玻尔兹曼机器学习。</p>
+</li>
+<li>
+<p><strong>似然度</strong>： 相似的程度。 机器学习的目的要么是让误差值最小，要么是让似然度最大</p>
+</li>
+<li>
+<p><strong>采样</strong>：将实际提供的数据输入到玻尔兹曼机后， 模型会输出伪数据（重构数据）， 这个自身不断<strong>产生数据</strong>的过程就叫做采样 sampling</p>
+<p>玻尔兹曼机器学习在进行时，采用马尔科夫蒙特卡罗方法，来逐一考虑相邻像素之间的关系，来完成双向型神经网络的信息流动。这是一种在整个网络结构中的循环，<u>在这一过程中还要不断地采集大量的重构数据。很费时间</u>。==&gt; 替代算法是，单纯考虑由相邻像素传送过来的信息，<strong>平均场近似法</strong></p>
+<p><img src="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/hexo/source/_posts/%E6%BC%AB%E7%94%BB%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E5%A4%A7%E5%85%B3%E7%9C%9F%E4%B9%8B%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/1.jpg" alt="平均近场法"></p>
+</li>
+<li>
+<p>中间结果包含每一个像素颜色的变化过程，也能够构成中间过程的许多图像。这些中间产生的图像数据就是重构数据， 也可以叫做伪数据。其实核心就是“依据临近像素的数据， 在现有的参数值情况下， 预测中心像素的颜色值”</p>
+</li>
+<li>
+<p>机器学习与统计力学： 我们在研究原子和分子的时候， 位置、运动扽信息是分析研究的对象， 但是统计力学有趣的地方是利用统计学理论去获取事物整体的特征。类比机器学习， 就像我们并不去计较每一个颗粒的位置和速度， 对于机器学习我们也是希望得到大量数据间的整体组合信息， 这种整体组合信息在最优化问题求解时就是推到出函数模型</p>
+</li>
+<li>
+<p>可见变量、隐含变量：在图像中， 每一个像素颜色的数值时可以直接读取的， 这一部分就叫做可见变量。由可见变量之间关联关系构成的新变量称为隐含变量， 从而可以建立出眼睛、鼻子等部件， 从而将利用各个部件就可以将图像分成各个部分了。 利用上述方式就可以以“开关”的形式来操作了，通过像素和开关之间的关系就可以决定在可见变量一侧表示出什么， 这种方法认为可见变量之间没有任何关系， 各个开关之间也没有关联。只考虑开关与像素之间的关系， 叫做受限玻尔兹曼机（RBM）， 有较好的特性， 如一定条件下的独立性</p>
+</li>
+<li>
+<p><strong>变分原理</strong>：物理学中， 指自然界中静止实物的一个普遍适用的数学定律，也称最小作用原理。比如在确定了物体的起点和终点后， 通过动能和势能之差就能计算出最短路径。</p>
+</li>
+<li>
+<p><strong>对比散度算法</strong>：将实际的颜色数据与建立的模型采集到的伪数据进行比较， 我们希望能够从中找到某些有用的东西。</p>
+</li>
+<li>
+<p><img src="https://img-blog.csdnimg.cn/20191022114125126.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTUxMzkxNw==,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>深度玻尔兹曼机将图像数据作为输入， 内部作为隐含变量的各种开关来决定到底输出什么图像， 因此为了能够对应不同的图像， 建立数量巨大的复杂的隐含变量时非常必要的——深度玻尔兹曼机的目的时<strong>学习图像中隐含的特征</strong>， 知道了图像中拥有的特征可以就可以返回来看可见变量中是否有猫和狗了——传统机器学习和深度学习的区别也在于此， 传统机器学习需要自己手动提取特征（特征工程）， 而神经网络可以自己提取特征。</p>
+</li>
+<li>
+<p>受限玻尔兹曼机是两层神经网络。包含输入层，隐藏层，输出层</p>
+</li>
+<li>
+<p>预训练： ①运用在无监督学习中， 不告诉model特征有哪些 ②用预训练网络做微调：一般图片分类的神经网络每一类别的图片量级至少在5000-10000左右，如果没有这么多图片，（使用数据增强的方法后也不够），此时就需要用预训练网络了（在几十万张图片训练集上获得较好效果的图片多分类器）。然后用我们现有的图片在这个预训练网络的基础上继续训练， 利用现有的图片继续训练就是为了让网络重新适应现有的图片训练集， 这种适应过程往往比从头训练一个网络更快更好， 这种方法跟迁移学习的思想很像。</p>
+</li>
+<li>
+<p>自我符号化（在无监督学习中具有代表性）：吧收到的输入信号原原本本地返回来。</p>
+</li>
+</ol>
+<p><img src="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/hexo/source/_posts/%E6%BC%AB%E7%94%BB%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E5%A4%A7%E5%85%B3%E7%9C%9F%E4%B9%8B%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%87%AA%E6%88%91%E7%AC%A6%E5%8F%B7%E5%8C%96.jpg" alt="自我符号化"></p>
+<p>注意， 左右知识结构上的复制，权值是不一样的。这些权值是需要进行调整后才能满足右边的“输入”等于左边输入的。在这个调整权值的过程中，输入数据所隐含的特征就可以被挖掘出来了。<mark>&gt;从而使得中间层具有能够反映输入数据中特征的能力。</mark>&gt; 中间层的自我符号化训练其实也是提取特征的过程</p>
+<ol start="13">
+<li>
+<p>卷积神经网络：</p>
+<blockquote>
+<p>在处理图像时已有已知的神经网络可以利用了——卷积神经网络。</p>
+</blockquote>
+<p><strong>卷积</strong>：卷积是利用了，人在看见图像识别图像时并不需要将所有的细小像素全部看清的特征而设计的。卷积就是在某种程度上将临近的像素组合起来形成新的特征量，然后利用卷积结果进行分析</p>
+<p><strong>池化</strong>：在图片中即使模糊我们也能通过模糊的影像大致判断出—&gt;数据即使有些差异也能够得出同样的结果。因此可以利用卷积将特征进行排序，将相近的特征进行比较并选用其中的最大值或平均值，叫做池化</p>
+<p>▲通过卷积和池化操作，神经网络从而可以将图像中的特征量自动地提取出来了。</p>
+</li>
+</ol>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/">https://nymrli.top/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2020/11/28/熟悉Latex写作/" title="熟悉Latex写作"><span>NextPost ></span><br><span class="nextTitle">熟悉Latex写作</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '《漫画机器学习入门》大关真之——读书笔记',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#漫画机器学习入门总结"><span class="toc-number">1.</span> <span class="toc-text"> 《漫画机器学习入门》总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#谁是世界上最美丽的人"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 谁是世界上最美丽的人？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#粮食问题"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 粮食问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预测方面有监督无监督的不同"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 预测方面有监督/无监督的不同 ：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于玻尔兹曼机器学习的图像处理方法"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 基于玻尔兹曼机器学习的图像处理方法</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

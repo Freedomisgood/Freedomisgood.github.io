@@ -111,7 +111,16 @@ Query i j，i和j为正整数，i&lt;=j，表示询问第i到第个仓库的总�
 代码大多用C++，仅是过而已，没有进行优化。
 
  面试题03. 数组中重复的数字
-12345678910111213141516class Solution &#123;public:    int findRepeatNumber(vector&lt;int&gt;&amp; nums) &#123;        std::ios::sync_with_stdio(false);        int size = nums.size();        if (size &lt;0 ) return 0;  ...</div><div class="read-more"><a class="more" href="/2020/04/20/剑指Offer-leetcode刷题记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/02/02/PAT冲冲冲——乙级/">PAT冲冲冲——乙级</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-02-02T08:26:41.000Z">2020-02-02</time><i class="fa fa-edit"></i><time datetime="2020-02-02T08:26:41.000Z">2020-09-05</time></div><div class="recent-post-content"> PAT冲冲冲——乙级
+12345678910111213141516class Solution &#123;public:    int findRepeatNumber(vector&lt;int&gt;&amp; nums) &#123;        std::ios::sync_with_stdio(false);        int size = nums.size();        if (size &lt;0 ) return 0;  ...</div><div class="read-more"><a class="more" href="/2020/04/20/剑指Offer-leetcode刷题记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/15/IDEA配置——自定义快捷键、生成注释/">IDEA配置——自定义快捷键、生成注释</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-15T02:22:20.000Z">2020-05-15</time><i class="fa fa-edit"></i><time datetime="2020-05-15T02:22:20.000Z">2020-09-06</time></div><div class="recent-post-content"> IDEA配置——自定义快捷键、生成注释
+
+以前因为上JAVA课，还是不常用Java， 所以安装了个Eclipse， 但是现在要经常使用java的话， 感觉还是IDEA的支持做的可能更加到位一点
+
+ Maven换源:
+
+因为有段时间写SpringBoot被依赖给坑过，所以把Maven换源写在最前面。
+
+IDEA是会有默认的Maven工具的， 因此之前如果修改过Maven配置， 还需要在IDEA中指定具体使用的是哪一个MAVEN，使用哪一个配置文件。
+▲(Ctrl + Alt + S修改的是当前工程)， 如果需要对新工程进行修改， 则点击File-&gt;New Projects Setting ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2020/05/15/IDEA配置——自定义快捷键、生成注释/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/02/02/PAT冲冲冲——乙级/">PAT冲冲冲——乙级</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-02-02T08:26:41.000Z">2020-02-02</time><i class="fa fa-edit"></i><time datetime="2020-02-02T08:26:41.000Z">2020-09-05</time></div><div class="recent-post-content"> PAT冲冲冲——乙级
 
 PAT甲级练习题 ——PAT (Advanced Level) Practice 
 PAT甲级(Advanced Level)真题
@@ -136,7 +145,20 @@ pat甲级题解目录
 小驼峰命名（lowerCamelCase）：如果仅有一个单词，那么所有字母全部小写，如果是两个及以上的单词组成的名称，那么除了第一个单词是全部小写外，其他都是的首字母大写，其他字母小写。e.g.getMyName
 
 1.1 包的命名
-包的命名由全部小写的单词组成。一般使用公司的域名的作为自 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a></div><div class="read-more"><a class="more" href="/2020/05/15/重拾Java笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/04/29/华为春招4-29笔试题/">华为春招4.29笔试题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-04-29T14:43:54.000Z">2020-04-29</time><i class="fa fa-edit"></i><time datetime="2020-04-29T14:43:54.000Z">2020-04-29</time></div><div class="recent-post-content"> 4.29三道笔试题：
+包的命名由全部小写的单词组成。一般使用公司的域名的作为自 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a></div><div class="read-more"><a class="more" href="/2020/05/15/重拾Java笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/24/getBargains的record和Solution/">getBargains的record和Solution</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-24T08:44:25.000Z">2020-05-24</time><i class="fa fa-edit"></i><time datetime="2020-05-24T08:44:25.000Z">2020-05-31</time></div><div class="recent-post-content">
+该篇为**getBargains**仓库README.md直接搬运，记录一些appnium和andriod 10碰到的问题
+
+ 自动拿券
+
+通过别人发的口令, 打开淘宝APP进行抢券
+
+ 1.itchat接收群消息
+ 2.将口令复制到剪贴板
+ 3.打开淘宝APP点击抢券
+ 碰到的问题:
+
+
+出现如下警告:Warning: Activity not started, its current task has been brought to the front or Warning: Activity not started, intent has been delivered to curre ...</div><div class="read-more"><a class="more" href="/2020/05/24/getBargains的record和Solution/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/04/29/华为春招4-29笔试题/">华为春招4.29笔试题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-04-29T14:43:54.000Z">2020-04-29</time><i class="fa fa-edit"></i><time datetime="2020-04-29T14:43:54.000Z">2020-04-29</time></div><div class="recent-post-content"> 4.29三道笔试题：
 
 做了其他大厂的笔试题后，好像确实华为的稍微简单点。只不过其他的笔试题是有模拟题的，华为的这三道题基本上都是DFS
 
@@ -229,23 +251,7 @@ G的任一个最大权匹配M，边满足w（xy）≤l（x）+（y）→M边权�
 
 
 当前弧优化(作用不明显)
-12345678910111213141516171819202122232425262728// 最原始int dfs(int no ...</div><div class="read-more"><a class="more" href="/2019/12/08/ACM-网络流/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/24/Python网络编程Websocket/">Python网络编程Websocket</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-24T02:17:11.000Z">2019-11-24</time><i class="fa fa-edit"></i><time datetime="2019-11-24T02:17:11.000Z">2019-11-28</time></div><div class="recent-post-content"> 网络知识——Websocket
-
-
-TCP ：面向连接—&gt; 打电话(相互回复,一来一回)，客户端向服务器端 拨号 , 三次握手 ,
-
-
-UDP : 面向无连接 --&gt; 寄快递(寄出去就不管了) e.g.直播
-
-
-UDP四层结构
-
-网络访问层(链路层):  物理连接设备(网线)、MAC地址（物理地址）
-互联网层： IP地址（定位设备）
-传输层： port (端口号) : 表示通信进程,将数据交给哪个应用处理
-应用层： 自己定义的协议（处理字符串消息的方法）
-
-套接字(socket) ： 特殊的设备文件 ， 写网络应用程序的接口，写入后就是发送，接收就是读取。 类似于 esp8266 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/11/24/Python网络编程Websocket/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/PIL的Image笔记/">PIL的Image笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T10:06:58.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T10:06:58.000Z">2019-11-26</time></div><div class="recent-post-content"> PIL的Image学习
+12345678910111213141516171819202122232425262728// 最原始int dfs(int no ...</div><div class="read-more"><a class="more" href="/2019/12/08/ACM-网络流/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/PIL的Image笔记/">PIL的Image笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T10:06:58.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T10:06:58.000Z">2019-11-26</time></div><div class="recent-post-content"> PIL的Image学习
  transpose和rotate
 
 transpose
@@ -269,9 +275,4 @@ adb shell monkey [-options] times
 1234567-s seed种子值：种子相同时， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="测试"> 测试</a></div><div class="read-more"><a class="more" href="/2019/11/26/app测试/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/2019-9月7号C-编程笔记/">2019-9月7号C++编程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:47:55.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:47:55.000Z">2019-11-26</time></div><div class="recent-post-content"> 2019-9月7号C++编程笔记
  auto
 定义变量时放在变量前，无需知道具体变量类型，系统可自行推断类型，减少编程工作，特别是在模板使用时，使用更方便。
-123456789101112131415161718auto a=1;auto b='a';auto s="abdc";auto c;//这样使用时错误的，系统无法自动推断出变量类型//下面为迭代指针使用，很方便vector&lt;int&gt; vec;auto it=vec.begin();/**模板使用案例*/template&lt;typename InputIterator&gt;    TreeNode *creatTre ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程笔记"> 编程笔记</a></div><div class="read-more"><a class="more" href="/2019/11/26/2019-9月7号C-编程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax和Alpha-beta剪枝分析-转/">MinMax和Alpha-beta剪枝分析[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:45:45.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:45:45.000Z">2019-11-26</time></div><div class="recent-post-content"> MinMax和Alpha-beta剪枝分析[转]
-
-一般解决博弈类问题的自然想法是将格局组织成一棵），树的每一个节点表示一种格局，而父子关系表示由父格局经过一步可以到达子格局。Minimax也不例外，它通过对以当前格局为根的格局树搜索来确定下一步的选择。而一切格局树搜索算法的核心都是对每个格局价值的评价。Minimax算法基于以下朴素思想确定格局价值：
-
-Minimax是一种悲观算法，即假设对手每一步都会将我方引入从当前看理论上价值最小的格局方向，即对手具有完美决策能力。因此我方的策略应该是选择那些对方所能达到的让我方最差情况中最好的，也就是让对方在完美决策下所对我造成的损失最小。
-Mini ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/11/26/MinMax和Alpha-beta剪枝分析-转/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+123456789101112131415161718auto a=1;auto b='a';auto s="abdc";auto c;//这样使用时错误的，系统无法自动推断出变量类型//下面为迭代指针使用，很方便vector&lt;int&gt; vec;auto it=vec.begin();/**模板使用案例*/template&lt;typename InputIterator&gt;    TreeNode *creatTre ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程笔记"> 编程笔记</a></div><div class="read-more"><a class="more" href="/2019/11/26/2019-9月7号C-编程笔记/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

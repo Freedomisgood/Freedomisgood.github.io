@@ -126,12 +126,16 @@ Size:
  为什么傅里叶变换可以把一个信号从时域变换到频域?
 先给出公式，傅里叶变换的形式为：X(w)=∫−∞+∞x(t)e−jwtdtX(w)=\int_{-\infty}^{+\infty} x(t) e^{-j w t} d tX(w)= ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/傅里叶变换-小波变化/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/">通过XDRP实现Windows远程访问ubuntu桌面</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T00:57:05.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T00:57:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 通过XDRP实现Windows远程访问
 1234567891011121314#安装xrdp $ sudo apt-get install xrdp #安装vnc4server $ sudo apt-get install vnc4server tightvncserver#安装xubuntu-desktop $ sudo apt-get install xubuntu-desktop #向xsession中写入xfce4-session $ echo “xfce4-session” &gt;~/.xsession #开启xrdp服务 $ sudo service xrdp restart
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/微信公众号Pyhton/">微信公众号Pyhton</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T14:01:10.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T14:01:10.000Z">2019-09-15</time></div><div class="recent-post-content"> 微信公众号Pyhton开发
- 编写上传代码到SAE
-1.申请SAE（sina application enginer），创建应用，SAE使用文档
-2.编写上传代码
-weixin.py
-12345678910111213141516171819202122232425262728#-*-coding:utf-8-*-import web import os import hashlib import time class WeixinInterface: 	def __init__(self):		self.app_root=os.path.dirname(__file__)		self.te ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/05/27/微信公众号Pyhton/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/">基础知识补充——白噪声、高斯白噪声</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T10:47:04.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T10:47:04.000Z">2019-09-15</time></div><div class="recent-post-content"> 白噪声、高斯白噪声
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/时间序列概念及主要模型/">时间序列概念及主要模型</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T11:05:18.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T11:05:18.000Z">2019-09-15</time></div><div class="recent-post-content"> 时间序列概念及主要模型
+Q:什么是时间序列分析?
+A:时间序列是按照时间顺序，按照一定时间间隔取得的一系列观测值
+Q:怎样做时间序列分析?
+A:时间序列分析尝试找出序列值在过去呈现的特征模式，假定这种模式在未来能够持续，进而对未来进行预测
+ 时间序列三大特征
+
+序列相关性：当期的序列值和前期某个或某些序列值线性相关
+√  自相关系数（全相关系数）（ACF）：用来度量同一事件在不同时期之间的相关程度。ρh=r(h)r(0)\rho_{h}=\frac{r(h)}{r(0)}ρh​=r(0)r(h)​，其中r（h）为h期协方差函数，r（0）为方差
+√  偏自相关系数（PACF）：度量去除中间变量 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数学建模"> 数学建模</a></div><div class="read-more"><a class="more" href="/2019/07/29/时间序列概念及主要模型/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/">基础知识补充——白噪声、高斯白噪声</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T10:47:04.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T10:47:04.000Z">2019-09-15</time></div><div class="recent-post-content"> 白噪声、高斯白噪声
  白噪声过程:
 对于一个随机变量X(t)（t=1，2，3……），如果是由一个不相关的随机变量的序列构成的，即对于所有s不等于t，随机变量X(t)和X(s)的协方差为零，则称其为纯随机过程。对于一个纯随机过程来说，若其期望为0，方差为常数，则称之为白噪声过程。
  白噪声:
@@ -177,18 +181,7 @@ k:v
 
 通过缩进，垂直对齐指定层次关系
 
-字符串可以默认不写引号，写引号中的转义符会被翻译：e.g.& ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/07/yaml基础语法-spring-boot/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/Windows下命令行神奇cmder/">Windows下命令行神器cmder</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:17:28.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:17:28.000Z">2019-09-15</time></div><div class="recent-post-content"> Cmder
- 安装
-http://cmder.net/ 有两个版本，分别是mini与full版
-
-mini 没有内建msysgit工具，这是Git for Windows的标准配备；
-全安装版 cmder 自带了 msysgit, 压缩包 108M
-除了 git 本身这个命令之外, 里面可以使用大量的 linux 命令；比如 grep, curl(没有 wget)； 像vim, grep, tar, unzip, ssh, ls, bash, perl
-可以交叉使用 cygwin 的部分增强命令
-
- 把 cmder 加到环境变量
-将解压后的文件夹路径加入到系统环境变量的Path中
- 添加 c ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="安利"> 安利</a></div><div class="read-more"><a class="more" href="/2019/06/03/Windows下命令行神奇cmder/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/26/Vim记忆/">Vim记忆</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-26T02:34:34.000Z">2019-07-26</time><i class="fa fa-edit"></i><time datetime="2019-07-26T02:34:34.000Z">2019-09-15</time></div><div class="recent-post-content"> VIM记忆技巧
+字符串可以默认不写引号，写引号中的转义符会被翻译：e.g.& ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/07/yaml基础语法-spring-boot/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/26/Vim记忆/">Vim记忆</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-26T02:34:34.000Z">2019-07-26</time><i class="fa fa-edit"></i><time datetime="2019-07-26T02:34:34.000Z">2019-09-15</time></div><div class="recent-post-content"> VIM记忆技巧
  增
 
 i(insert)
@@ -275,14 +268,23 @@ $
  OAuth 的核心就是向第三方应用颁发令牌
  令牌特点：
 （1）令牌是短期的，到期会自动失效，用户自己无法修改。密码一般长期有效，用户不修改，就不会发生变化。
-（2）令牌可以被数据所有者撤销，会立即失效。以上例而言，屋主可以随 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/06/03/Oauth2原理、使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/lua学习/">lua学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:22:03.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:22:03.000Z">2019-09-15</time></div><div class="recent-post-content"> lua学习
+（2）令牌可以被数据所有者撤销，会立即失效。以上例而言，屋主可以随 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/06/03/Oauth2原理、使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/lua学习/">lua学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:22:03.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:22:03.000Z">2019-09-15</time></div><div class="recent-post-content"> lua学习
 
 动态脚本语言，可嵌入C和C++，Lua负责逻辑，C、C++负责功能
 C编译，跨平台性良好
 
 12345678910111213141516-- 循环结构 [1,10]for i=1,10 do	print(i)end-- 函数function function_name( ... )	-- bodyend-- 选择结构if	elseend
  表{} &lt;==&gt;字典
-12345678910Conftg=&#123; hello="Hello Lua", world="World"&#125;Config.words="Hello"Config.num=180Config ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="lua"> lua</a></div><div class="read-more"><a class="more" href="/2019/06/03/lua学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/Java课程第三次实验报告/">Java课程第三次实验报告</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:21:19.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:21:19.000Z">2019-09-15</time></div><div class="recent-post-content"> Java课程第三次实验报告
+12345678910Conftg=&#123; hello="Hello Lua", world="World"&#125;Config.words="Hello"Config.num=180Config ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="lua"> lua</a></div><div class="read-more"><a class="more" href="/2019/06/03/lua学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/">Let's Encrypt安装配置nginx的SSL证书教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:34:04.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:34:04.000Z">2019-09-15</time></div><div class="recent-post-content"> Let’s Encrypt 安装配置nginx的SSL证书教程
+ 使用cerbot生成证书
+ 安装Let’s Encrypt
+安装非常简单直接克隆就可以了
+1git clone https://github.com/letsencrypt/letsencrypt
+如果网速较慢（国外服务器应该快点）
+1.可以登录https://github.com/letsencrypt/letsencrypt，下载后通过lrzsz传到云服务器上，再解压
+2.修改hosts
+查找域名对应的ip地址，并修改hosts文件
+123456789101112131415linuxidc@linuxidc:~/linu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/Java课程第三次实验报告/">Java课程第三次实验报告</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:21:19.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:21:19.000Z">2019-09-15</time></div><div class="recent-post-content"> Java课程第三次实验报告
 \1. 在前面实验二已定义的学生类Student的基础上，以Student类为父类，为学生类派生出一个子类为大学生类（CollegeStudent）。
 CollegeStudent 类在学生类上增加一个专业（profession）数据属性；方法上增加获得专业和设置专业两个方法。并对超类中的toString( )方法进行重写，使得CollegeStudent类中的toString( )方法除了显示学生类的信息外，还要显示它的专业属性。
 编写测试程序的主类。在主类中创建一个Student对象和CollegeStudent对象，并显示或修改这两个对象的属性值。

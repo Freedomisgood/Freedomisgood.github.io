@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>fork curlconverter for Better · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">fork curlconverter for Better</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/12/01</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,891</span> | Reading time: <span class="post-count">9</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
+<p>终于12月了，又是一个月初，定个flag，pr一个Gitcode</p>
+<p>由于之前写Python爬虫的时候，从<a href="https://github.com/NickCarneiro/curlconverter" target="_blank" rel="noopener">curlconverter</a>受惠很多，并且看到<a href="https://github.com/NickCarneiro/curlconverter/issues/22" target="_blank" rel="noopener">issue #22: Add generator for Java</a>中有Java版本的需求还未完成，所以目标就是完成JAVA for curl</p>
+</blockquote>
+<p>curlconverter提供了一个网页版： <a href="https://curl.trillworks.com/%EF%BC%8C" target="_blank" rel="noopener">https://curl.trillworks.com/，</a> 其实其本质上也是用js完成的，功能如README中所写：</p>
+<h2 id="readme"><a class="markdownIt-Anchor" href="#readme"></a> README</h2>
+<h3 id="install"><a class="markdownIt-Anchor" href="#install"></a> Install</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save curlconverter</span><br></pre></td></tr></table></figure>
+<h3 id="usage"><a class="markdownIt-Anchor" href="#usage"></a> Usage</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> curlconverter = <span class="built_in">require</span>(<span class="string">'curlconverter'</span>);</span><br><span class="line"></span><br><span class="line">curlconverter.toPython(<span class="string">"curl 'http://en.wikipedia.org/' -H 'Accept-Encoding: gzip, deflate, sdch' -H 'Accept-Language: en-US,en;q=0.8' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Referer: http://www.wikipedia.org/' -H 'Cookie: GeoIP=US:Albuquerque:35.1241:-106.7675:v4; uls-previous-languages=%5B%22en%22%5D; mediaWiki.user.sessionId=VaHaeVW3m0ymvx9kacwshZIDkv8zgF9y; centralnotice_buckets_by_campaign=%7B%22C14_enUS_dsk_lw_FR%22%3A%7B%22val%22%3A%220%22%2C%22start%22%3A1412172000%2C%22end%22%3A1422576000%7D%2C%22C14_en5C_dec_dsk_FR%22%3A%7B%22val%22%3A3%2C%22start%22%3A1417514400%2C%22end%22%3A1425290400%7D%2C%22C14_en5C_bkup_dsk_FR%22%3A%7B%22val%22%3A1%2C%22start%22%3A1417428000%2C%22end%22%3A1425290400%7D%7D; centralnotice_bannercount_fr12=22; centralnotice_bannercount_fr12-wait=14' -H 'Connection: keep-alive' --compressed"</span>);</span><br></pre></td></tr></table></figure>
+<p>Returns a string of Python code like:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">cookies = &#123;</span><br><span class="line">    <span class="string">'GeoIP'</span>: <span class="string">'US:Albuquerque:35.1241:-106.7675:v4'</span>,</span><br><span class="line">    <span class="string">'uls-previous-languages'</span>: <span class="string">'%5B%22en%22%5D'</span>,</span><br><span class="line">    <span class="string">'mediaWiki.user.sessionId'</span>: <span class="string">'VaHaeVW3m0ymvx9kacwshZIDkv8zgF9y'</span>,</span><br><span class="line">    <span class="string">'centralnotice_buckets_by_campaign'</span>: <span class="string">'%7B%22C14_enUS_dsk_lw_FR%22%3A%7B%22val%22%3A%220%22%2C%22start%22%3A1412172000%2C%22end%22%3A1422576000%7D%2C%22C14_en5C_dec_dsk_FR%22%3A%7B%22val%22%3A3%2C%22start%22%3A1417514400%2C%22end%22%3A1425290400%7D%2C%22C14_en5C_bkup_dsk_FR%22%3A%7B%22val%22%3A1%2C%22start%22%3A1417428000%2C%22end%22%3A1425290400%7D%7D'</span>,</span><br><span class="line">    <span class="string">'centralnotice_bannercount_fr12'</span>: <span class="string">'22'</span>,</span><br><span class="line">    <span class="string">'centralnotice_bannercount_fr12-wait'</span>: <span class="string">'14'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Accept-Encoding'</span>: <span class="string">'gzip, deflate, sdch'</span>,</span><br><span class="line">    <span class="string">'Accept-Language'</span>: <span class="string">'en-US,en;q=0.8'</span>,</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'</span>,</span><br><span class="line">    <span class="string">'Accept'</span>: <span class="string">'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>: <span class="string">'http://www.wikipedia.org/'</span>,</span><br><span class="line">    <span class="string">'Connection'</span>: <span class="string">'keep-alive'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(<span class="string">'http://en.wikipedia.org/'</span>, headers=headers, cookies=cookies)</span><br></pre></td></tr></table></figure>
+<p>想要参加开发，最重要的就是看清master提出的contributing要求：</p>
+<h3 id="contributing"><a class="markdownIt-Anchor" href="#contributing"></a> Contributing</h3>
+<blockquote>
+<p>I’d rather write programs to write programs than write programs.</p>
+<p>Dick Sites, Digital Equipment Corporation, September 1985</p>
+</blockquote>
+<p>Make sure you’re running node 12 or greater. The test suite will fail on older versions of node.</p>
+<p>If you add a new generator, make sure to update the list of supported languages in <a href="https://github.com/NickCarneiro/curlconverter/blob/master/bin/cli.js" target="_blank" rel="noopener">cli.js</a> or else it won’t be accessible from the command line. Further, you’ll want to update test.js and index.js for your new generator to make it part of the testing.</p>
+<p>If you want to add new functionality, start with a test.</p>
+<ul>
+<li>Create a file containing the curl command in <code>fixtures/curl_commands</code> with a descriptive filename like <code>post_with_headers.txt</code></li>
+<li>Create a file containing the output in <code>fixtures/python_output/</code> with a matching filename (but different extension) like <code>post_with_headers.py</code></li>
+<li>Run tests with <code>npm test</code>.</li>
+<li>If your filenames match correctly, you should see one failing test. Fix it by modifying the parser in <code>util.js</code> or the generators in <code>generators/</code></li>
+</ul>
+<p>The parser generates a generic data structure consumed by code generator functions.</p>
+<p>You can run a specific test with this command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node test.js --test=test_name</span><br></pre></td></tr></table></figure>
+<p>where “test_name” is a file (without extension) in <code>fixtures/curl_commands</code></p>
+<p>You can run a specific test with this command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node test.js --language=R</span><br></pre></td></tr></table></figure>
+<p>I recommend setting this up with a debugger so you can see exactly what the parser is passing to the generator. Here’s my Intellij run configuration for a single test:</p>
+<p>Before submitting a PR, please check that your JS code conforms to the code style enforced by <a href="https://standardjs.com/" target="_blank" rel="noopener">standardjs</a>. Use the following to fix your code if it doesn’t:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ standard --fix my_file.js</span><br></pre></td></tr></table></figure>
+<p>If you get stuck, please reach out via email. I am always willing to hop on a google hangout and pair program.</p>
+<h4 id="翻译"><a class="markdownIt-Anchor" href="#翻译"></a> 翻译：</h4>
+<blockquote>
+<p>相比写程序，我更愿意写出能写程序的程序。——Dick Sites, Digital Equipment Corporation, September 1985</p>
+</blockquote>
+<p>确保你正在运行node 12或更高版本。测试套件在旧版本的node上会失败。</p>
+<p>如果你添加了一个新的生成器，请确保更新cli.js中的支持语言列表，否则它将无法从命令行访问。此外，你还要为你的新生成器更新test.js和index.js，使其成为测试的一部分。</p>
+<p>如果您想添加新功能，请从测试开始。</p>
+<ul>
+<li>在<code>fixtures/curl_commands</code>中创建一个包含curl命令的文件，文件名为post_with_headers.txt。</li>
+<li>在<code>fixtures/python_output/</code>中创建一个包含输出的文件，并使用一个匹配的文件名（但不同的扩展名），比如<code>post_with_headers.py</code>。</li>
+<li>用<code>npm test</code>运行测试。</li>
+<li>如果您的文件名正确匹配，您应该看到一个失败的测试。通过修改<code>util.js</code>中的解析器或<code>generators/</code>中的生成器来解决。</li>
+</ul>
+<p>解析器需要生成一个通用数据结构给代码生成器函数。</p>
+<p>你可以用这个命令运行一个特定的测试。<code>node test.js --test=test_name</code>， 其中 &quot;test_name &quot;是<code>fixtures/curl_commands</code>中的一个文件（没有扩展名）。</p>
+<p>你可以用这个命令运行一个特定的测试。<code>node test.js --language=R</code>，我建议用调试器来设置，这样你就可以看到解析器传递给生成器的具体内容。这是我的Intellij运行配置，用于单次测试。</p>
+<p><img src="https://github.com/NickCarneiro/curlconverter/raw/master/docs/intellijconfig.png" alt="Screenshot of intellij debug configuration"></p>
+<p>在提交PR之前，请检查您的JS代码是否符合standardjs执行的代码风格。如果不符合的话，请使用下面的方法来修正你的代码。<code>$ standard --fix my_file.js.</code></p>
+<p>如果你遇到困难，请通过电子邮件联系我。我总是愿意跳上google上线、校验程序。</p>
+<hr>
+<h2 id="分析其他contributor的pr"><a class="markdownIt-Anchor" href="#分析其他contributor的pr"></a> 分析其他contributor的PR</h2>
+<h3 id="dainisgorbunovs"><a class="markdownIt-Anchor" href="#dainisgorbunovs"></a> <strong><a href="https://github.com/DainisGorbunovs" target="_blank" rel="noopener">DainisGorbunovs</a></strong></h3>
+<ul>
+<li>PR说明：<a href="https://github.com/NickCarneiro/curlconverter/pull/154" target="_blank" rel="noopener">https://github.com/NickCarneiro/curlconverter/pull/154</a>
+<ul>
+<li>Thanks / what I found helpful：
+<ul>
+<li>可以使用nc -l 3000，然后在另一个标签页中 curl -X POST <a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a> --data “hello=world” (感谢 @NickCarneiro)</li>
+<li>可以使用Wireshark来检查（抓包）</li>
+<li>可以使用<strong>httpbin</strong>服务（用途：个人感觉是将curl结果跟generate结果对比）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>commit详情：<a href="https://github.com/DainisGorbunovs/curlconverter/commit/5cfedbf595177aa912b78f0fde05f15da81f11f9" target="_blank" rel="noopener">https://github.com/DainisGorbunovs/curlconverter/commit/5cfedbf595177aa912b78f0fde05f15da81f11f9</a></li>
+</ul>
+<hr>
+<h2 id="java-for-curl"><a class="markdownIt-Anchor" href="#java-for-curl"></a> JAVA for Curl</h2>
+<h3 id="http库选取"><a class="markdownIt-Anchor" href="#http库选取"></a> http库选取</h3>
+<blockquote>
+<p>在2016年的时候**<a href="https://github.com/NickCarneiro" target="_blank" rel="noopener">NickCarneiro</a>**就<a href="https://github.com/NickCarneiro/curlconverter/issues/22" target="_blank" rel="noopener">Add generator for Java #22</a>提出增加JAVA版本， 但无奈JAVA较为繁琐，并且没有像Python的requests一样好用的库，因此现在都还未有JAVA版本</p>
+<blockquote>
+<p>Java is super popular and super verbose, making it a good candidate for curlconverter.<br>
+We need to find out if there is some modern library for sending http requests. Please advise.</p>
+</blockquote>
+</blockquote>
+<h4 id="1-httpclient"><a class="markdownIt-Anchor" href="#1-httpclient"></a> 1、HttpClient</h4>
+<blockquote>
+<p>HttpClient：代码复杂，还得操心资源回收等。代码很复杂，冗余代码多，不建议直接使用。</p>
+</blockquote>
+<h5 id="httpclient使用介绍"><a class="markdownIt-Anchor" href="#httpclient使用介绍"></a> HttpClient使用介绍</h5>
+<p>使用HttpClient发送请求主要分为以下几步骤：</p>
+<ul>
+<li>创建 CloseableHttpClient对象或CloseableHttpAsyncClient对象，前者同步，后者为异步</li>
+<li>创建Http请求对象</li>
+<li>调用execute方法执行请求，如果是异步请求在执行之前需调用start方法</li>
+</ul>
+<ol>
+<li>java原生HttpURLConnection</li>
+<li>apache HttpClient3.1</li>
+<li>apache httpClient4.5</li>
+</ol>
+<p>上述见：<a href="https://www.cnblogs.com/hhhshct/p/8523697.html" target="_blank" rel="noopener">java实现HTTP请求的三种方式</a>—— 有代码demo</p>
+<h4 id="2-okhttp"><a class="markdownIt-Anchor" href="#2-okhttp"></a> 2、okhttp</h4>
+<blockquote>
+<p>okhttp：OkHttp是一个高效的HTTP客户端，允许所有同一个主机地址的请求共享同一个socket连接；连接池减少请求延时；透明的GZIP压缩减少响应数据的大小；缓存响应内容，避免一些完全重复的请求</p>
+</blockquote>
+<p>OkHttp使用</p>
+<p>使用OkHttp发送请求主要分为以下几步骤：</p>
+<ul>
+<li>创建OkHttpClient对象</li>
+<li>创建Request对象</li>
+<li>将Request 对象封装为Call</li>
+<li>通过Call 来执行同步或异步请求，调用execute方法同步执行，调用enqueue方法异步执行</li>
+</ul>
+<h4 id="3-resttemplate"><a class="markdownIt-Anchor" href="#3-resttemplate"></a> 3、RestTemplate</h4>
+<blockquote>
+<p>RestTemplate： 是 Spring 提供的用于访问Rest服务的客户端， RestTemplate 提供了多种便捷访问远程Http服务的方法,能够大大提高客户端的编写效率。</p>
+</blockquote>
+<p><a href="https://www.cnblogs.com/zk-blog/p/12465951.html" target="_blank" rel="noopener">https://www.cnblogs.com/zk-blog/p/12465951.html</a></p>
+<h4 id="4http-request"><a class="markdownIt-Anchor" href="#4http-request"></a> 4.<strong><a href="https://github.com/kevinsawicki/http-request" target="_blank" rel="noopener">http-request</a></strong></h4>
+<blockquote>
+<p>在我们日常工作中，我们需要经常和第三方接口进行交互通信，很多时候我们都是使用http协议进行交互，java原生自带对http的支持（<code>java.net.*</code>），但是使用起来不太方便，除此之外，用的最多的就是apache httpclient工具包。但是个人使用这么久而言，感觉不管是原生的抑或是httpclient，使用起来都不太顺手，也略显复杂</p>
+</blockquote>
+<p>文章见： <a href="https://www.jianshu.com/p/e955b01e2e16" target="_blank" rel="noopener">JAVA http请求工具类http-request</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/12/01/fork-curlconverter-for-Better/">https://nymrli.top/2020/12/01/fork-curlconverter-for-Better/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2020/12/01/AI-for-Othello/" title="AI for Othello"><span>< PreviousPost</span><br><span class="prevTitle">AI for Othello</span></a><a class="nextSlogan" href="/2020/11/29/github中各配置文件/" title="github中各配置文件"><span>NextPost ></span><br><span class="nextTitle">github中各配置文件</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'fork curlconverter for Better',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#readme"><span class="toc-number">1.</span> <span class="toc-text"> README</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#install"><span class="toc-number">1.1.</span> <span class="toc-text"> Install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#usage"><span class="toc-number">1.2.</span> <span class="toc-text"> Usage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#contributing"><span class="toc-number">1.3.</span> <span class="toc-text"> Contributing</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#翻译"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 翻译：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析其他contributor的pr"><span class="toc-number">2.</span> <span class="toc-text"> 分析其他contributor的PR</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dainisgorbunovs"><span class="toc-number">2.1.</span> <span class="toc-text"> DainisGorbunovs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-for-curl"><span class="toc-number">3.</span> <span class="toc-text"> JAVA for Curl</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#http库选取"><span class="toc-number">3.1.</span> <span class="toc-text"> http库选取</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-httpclient"><span class="toc-number">3.1.1.</span> <span class="toc-text"> 1、HttpClient</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#httpclient使用介绍"><span class="toc-number">3.1.1.1.</span> <span class="toc-text"> HttpClient使用介绍</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-okhttp"><span class="toc-number">3.1.2.</span> <span class="toc-text"> 2、okhttp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-resttemplate"><span class="toc-number">3.1.3.</span> <span class="toc-text"> 3、RestTemplate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4http-request"><span class="toc-number">3.1.4.</span> <span class="toc-text"> 4.http-request</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

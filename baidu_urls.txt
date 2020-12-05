@@ -1,3 +1,4 @@
+https://nymrli.top/2020/12/05/枚举类的优雅写法Java-Python/
 https://nymrli.top/2020/12/05/理解科学计算中的dim参数/
 https://nymrli.top/2020/12/03/Lets-learn-设计模式/
 https://nymrli.top/2020/12/01/玩玩油猴脚本/
@@ -47,4 +48,3 @@ https://nymrli.top/2019/11/26/MinMax-极小极大算法——2048/
 https://nymrli.top/2019/11/26/MinMax和Alpha-beta剪枝分析-转/
 https://nymrli.top/2019/11/24/Python网络编程Websocket/
 https://nymrli.top/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/
-https://nymrli.top/2019/10/24/PAT冲冲冲——甲级/

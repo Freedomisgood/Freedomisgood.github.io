@@ -128,7 +128,21 @@ SQL语句执行顺序
  先来先出（FIFO）算法
 更换最早进入内存的页面。其中有Belady异常现象: 缺页率随内存块数增加而增加
  最优OPT算法：
-最佳置换算法是由Belady于1966年 ...</div><div class="read-more"><a class="more" href="/2020/09/21/手撕操作系统中的页面置换算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/08/数据结构——单调栈/">数据结构——单调栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-08T11:25:38.000Z">2020-09-08</time><i class="fa fa-edit"></i><time datetime="2020-09-08T11:25:38.000Z">2020-09-23</time></div><div class="recent-post-content">
+最佳置换算法是由Belady于1966年 ...</div><div class="read-more"><a class="more" href="/2020/09/21/手撕操作系统中的页面置换算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/13/AutoLianliankan笔记/">AutoLianliankan笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-13T10:58:47.000Z">2020-10-13</time><i class="fa fa-edit"></i><time datetime="2020-10-13T10:58:47.000Z">2020-10-14</time></div><div class="recent-post-content">
+近来无事，又研究其了之前看到过的自动连连看的代码，碰到了一些问题， 因此做下笔记
+
+pywin32
+
+win32gui：定位窗体，操作窗体
+win32api：提供API，操作鼠标、键盘
+win32con：具体API事件
+
+==&gt;对于窗体的操作使用win32gui；而对键盘、鼠标操作可以用更高级封装的库pymouse、pykeyboard；剪切板使用win32clipboard
+ 程序的设计：
+
+getWindowPosition=&gt;先确定游戏窗口位置pos，并置顶
+getScreenImage()==&gt;在窗口置顶后再截图
+getAllSquare()=&gt;找到游戏边界， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></div><div class="read-more"><a class="more" href="/2020/10/13/AutoLianliankan笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/08/数据结构——单调栈/">数据结构——单调栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-08T11:25:38.000Z">2020-09-08</time><i class="fa fa-edit"></i><time datetime="2020-09-08T11:25:38.000Z">2020-09-23</time></div><div class="recent-post-content">
 秋季PAT的第一题就是单调栈，之前没怎么学过， 因此这次专门学习做下笔记。
 
  单调栈Monotone Stack
@@ -263,15 +277,7 @@ sudo apt-get install ttf-wqy-zenhei
 如果EL有完美匹配为PM，则该M是原图的最大权匹配：
 
 PM的权和等于所有点的顶标之和SV。
-G的任一个最大权匹配M，边满足w（xy）≤l（x）+（y）→M边权和≤S ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/12/05/KM-Kuhn-Munkres-算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/ACM-二分图/">ACM-二分图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T09:45:57.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T09:45:57.000Z">2019-12-08</time></div><div class="recent-post-content"> 二分图的判定：
-染色法1：假设DFS初始点A涂黑色，与它相邻的点就涂白色。如果搜到某一个点u的相邻点v已经涂色并且与u同色，就不可能是二分图啦~
-染色法2：就是给每个点进行标号，标为-1，1如果存在一条边连接的两个点标号相同，那么就是存在一个奇数环…
-热身题：
- 判断无向图是否有环
-
-用DFS遍历图g，如果访问到已经访问过的顶点，那么有环
-
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/12/05/ACM-二分图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/08/ACM-网络流/">ACM-网络流</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-08T11:03:34.000Z">2019-12-08</time><i class="fa fa-edit"></i><time datetime="2019-12-08T11:03:34.000Z">2019-12-08</time></div><div class="recent-post-content"> 最大流
+G的任一个最大权匹配M，边满足w（xy）≤l（x）+（y）→M边权和≤S ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/12/05/KM-Kuhn-Munkres-算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/08/ACM-网络流/">ACM-网络流</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-08T11:03:34.000Z">2019-12-08</time><i class="fa fa-edit"></i><time datetime="2019-12-08T11:03:34.000Z">2019-12-08</time></div><div class="recent-post-content"> 最大流
  FF算法
 
 最基本找増广路的算法

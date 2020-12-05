@@ -102,7 +102,43 @@
 从某个状态,不断转移状态直到无法转移,然后回退到前一步的状态,继续转移到其他状态,如此不断重复,直到找到最终解. ====&gt; 递归函数
 隐式的用到了栈(stack)
 
-123456789101112131415161718192021222324252627//[部分和问题]#include &lt;iostream&gt;#define MAXN 10000int n,k;int s[MAXN];using namespace std;bool dfs(int i,int sum)&#123;    if( i == n ) return sum == k; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-DFS、BFS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/">frp结合nginx实现内网web服务和tcp的转发</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-02T10:48:23.000Z">2019-03-02</time><i class="fa fa-edit"></i><time datetime="2019-03-02T10:48:23.000Z">2020-05-26</time></div><div class="recent-post-content">
+123456789101112131415161718192021222324252627//[部分和问题]#include &lt;iostream&gt;#define MAXN 10000int n,k;int s[MAXN];using namespace std;bool dfs(int i,int sum)&#123;    if( i == n ) return sum == k; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-DFS、BFS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/蓝桥杯突击训练/">蓝桥杯突击训练</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T02:35:12.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T02:35:12.000Z">2020-09-17</time></div><div class="recent-post-content"> ACM 3-20笔记
+ 3部排序
+
+左指针，右指针， 探路指针–&gt;链表的pq
+
+ 马虎的算式
+
+枚举（五重循环，注意条件）
+内存1000ms大约运行10^8的指令
+
+ 大数除法
+
+减法
+除法
+
+ 39级阶梯
+
+斐波那契
+简化模型后再加上考虑条件
+
+ 错误票据
+
+
+获得一行内容：getline()前要用getchar()吃掉换行符
+
+
+分割一行以空格分隔的元素
+
+
+12345string s;getline(cin,s);stringstream ss(s);string tmp;while( getline(ss,tmp," ") )
+
+
+
+
+ ▲翻硬币
+
+ ACM 3-21笔记 （2 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/03/28/蓝桥杯突击训练/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/">frp结合nginx实现内网web服务和tcp的转发</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-02T10:48:23.000Z">2019-03-02</time><i class="fa fa-edit"></i><time datetime="2019-03-02T10:48:23.000Z">2020-05-26</time></div><div class="recent-post-content">
 服务端 - 阿里云服务器: Ubuntu 16.04
 客户端 - 活动室电脑 : Ubuntu 16.04
 
@@ -251,25 +287,7 @@ D.-2
 \2. 语句 String s1=new String(“Hello”); String s2=new String(“Hello”); System.out.println(s1==s2); System.out.printlv(s1.equals(s2)); 执行后的输出结果是（ ）
 A.Hello false
 B.Hello true
-C.Hello Hell ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/07/南京邮电大学java程序设计作业在线编程第三次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/南京邮电大学java程序设计作业在线编程第一次作业/">南京邮电大学java程序设计作业在线编程第一次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T04:50:14.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T04:50:14.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
- 选择题得分：40
-\1. Java语言中，基本数据类型一共有（ ）种。
-A.16
-B.2
-C.4
-D.8
-正确答案是: D
-\2. Java虚拟机的英文缩写是（ ）
-A.JRE
-B.ECLIPSE
-C.JVM
-D.JDK
-正确答案是: C
-\3. Java程序中，最常见的对主方法的定义是（ ）。
-A.private static int main(String args[ ]){ }
-B.public static void main(String args[ ]){ }
-C.public static int main(char args[ ]){ }
-D.private  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/02/26/南京邮电大学java程序设计作业在线编程第一次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/为了不跑操而Excel——Orz/">为了不跑操而Excel——Orz</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T07:45:07.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T07:45:07.000Z">2019-09-15</time></div><div class="recent-post-content"> 为了不跑操而Excel——Orz
+C.Hello Hell ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/07/南京邮电大学java程序设计作业在线编程第三次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/为了不跑操而Excel——Orz/">为了不跑操而Excel——Orz</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T07:45:07.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T07:45:07.000Z">2019-09-15</time></div><div class="recent-post-content"> 为了不跑操而Excel——Orz
  3月1日
  Excel
 
@@ -314,7 +332,7 @@ $ sudo chmod +x /etc/rc.local
  查看自己的IP地址
  1.命令行方式
 cmd-&gt;ipconfig-&gt;IPv4
- 2.查网络与共享中心 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a></div><div class="read-more"><a class="more" href="/2019/02/28/Flask-本地局域网连接/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/02/flask-nginx如何获得真实IP/">flask+nginx如何获得真实IP</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-02T12:53:58.000Z">2019-03-02</time><i class="fa fa-edit"></i><time datetime="2019-03-02T12:53:58.000Z">2019-09-15</time></div><div class="recent-post-content">
+ 2.查网络与共享中心 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/02/28/Flask-本地局域网连接/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/02/flask-nginx如何获得真实IP/">flask+nginx如何获得真实IP</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-02T12:53:58.000Z">2019-03-02</time><i class="fa fa-edit"></i><time datetime="2019-03-02T12:53:58.000Z">2019-09-15</time></div><div class="recent-post-content">
 如果是通过 flask 的 request.remote_addr获取的 ip 都是 127.0.0.1
 
  解决方案:

@@ -106,7 +106,20 @@
 ▲记住上述几个要点， 以及最好先看下文章最后我的踩坑记录，确保自己知道可能会有这些坑
 ▲.全程保持能连接外网（翻墙）
  安装NVIDIA驱动
-123$ ubuntu-drivers devices # 查看# 查看NVIDIA驱动版本$ sudo dpkg --list | gr ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/21/搭建Jupyter服务器/">搭建Jupyter、JupyterLab服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-21T01:53:01.000Z">2019-09-21</time><i class="fa fa-edit"></i><time datetime="2019-09-21T01:53:01.000Z">2020-11-15</time></div><div class="recent-post-content"> 搭建Jupyter服务器
+123$ ubuntu-drivers devices # 查看# 查看NVIDIA驱动版本$ sudo dpkg --list | gr ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/24/Linux安装selenium执行Python程序/">Linux安装selenium执行Python程序</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-24T14:13:20.000Z">2019-09-24</time><i class="fa fa-edit"></i><time datetime="2019-09-24T14:13:20.000Z">2020-11-21</time></div><div class="recent-post-content"> Linux安装selenium执行Python程序
+
+
+配置python运行环境
+
+
+安装selenium,pip install selenium
+
+
+安装chrome
+
+提供下载网站chromedownloads,下载google-chrome-stable_current_amd64-75.0.3770.80.deb
+
+123456789101112$ sudo apt-get install libxss1 libappindicator1 libindicator7# 注意需要先把google-chrome-stable_current_amd64-75.0.3770.80.deb ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/09/24/Linux安装selenium执行Python程序/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/21/搭建Jupyter服务器/">搭建Jupyter、JupyterLab服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-21T01:53:01.000Z">2019-09-21</time><i class="fa fa-edit"></i><time datetime="2019-09-21T01:53:01.000Z">2020-11-15</time></div><div class="recent-post-content"> 搭建Jupyter服务器
 1.配置好Python环境及安装pip
 2.安装jupyter:
 pip3 install jupyter (此处使用的是python3)
@@ -248,39 +261,7 @@ Q Learning
 Sarsa
 Policy Gradient
 
-前者需要一步一步得到环境 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/RL强化学习概念/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Linux三剑客/">Linux三剑客</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:37:36.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:37:36.000Z">2019-09-15</time></div><div class="recent-post-content"> Linux三剑客
- bash命令执行顺序
-
-把命令行分成单个命令词
-展开别名
-展开大括号的声明（{}）
-展开波浪符声明（~）
-命令替换$0和&quot;)
-再次把命令行分成命令词
-展开文件通配（*、？、[abc]等等）
-准备I/0重导向（&lt;、&gt;）
-运行命令
-
-文件查找
-非实时搜索locate
-
-速度快
-
-
-更新updatabase
-
-实时搜索工具find
-
-搜索速度略慢
-精确查找
-只能搜索用户具备读取和执行权限的目录
-
- sed(Stream EDitor):
-
-sed使用单引号
-
-sed -n '22,$p' test
-指令解释:常用选项[-n]，‘地址定界[22,$],编辑命 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/08/30/Linux三剑客/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/Java自动化构建工具——Maven/">Java自动化构建工具——Maven</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:50.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:50.000Z">2019-09-15</time></div><div class="recent-post-content"> Java自动化构建工具——Maven
+前者需要一步一步得到环境 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/RL强化学习概念/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/Java自动化构建工具——Maven/">Java自动化构建工具——Maven</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:50.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:50.000Z">2019-09-15</time></div><div class="recent-post-content"> Java自动化构建工具——Maven
  目前的技术在开发中存在的问题、Maven作用
 ①一个项目就是一个工程
 

@@ -1,3 +1,4 @@
+https://nymrli.top/2020/12/11/UML简单记录/
 https://nymrli.top/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/
 https://nymrli.top/2020/12/11/细品单例模式/
 https://nymrli.top/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/
@@ -6,7 +7,7 @@ https://nymrli.top/2020/12/05/枚举类的优雅写法Java-Python/
 https://nymrli.top/2020/12/05/理解科学计算中的dim参数/
 https://nymrli.top/2020/12/03/Lets-learn-设计模式/
 https://nymrli.top/2020/12/01/玩玩油猴脚本/
-https://nymrli.top/2020/12/01/AI-for-Othello/
+https://nymrli.top/2020/12/01/浙大2020春夏-人工智能习题1——AIforOthello/
 https://nymrli.top/2020/12/01/fork-curlconverter-for-Better/
 https://nymrli.top/2020/11/29/github中各配置文件/
 https://nymrli.top/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/
@@ -47,4 +48,3 @@ https://nymrli.top/2019/12/05/Hungarian-algorithm匈牙利算法/
 https://nymrli.top/2019/11/26/PIL的Image笔记/
 https://nymrli.top/2019/11/26/2019年8月23号运维笔记/
 https://nymrli.top/2019/11/26/app测试/
-https://nymrli.top/2019/11/26/2019-9月7号C-编程笔记/

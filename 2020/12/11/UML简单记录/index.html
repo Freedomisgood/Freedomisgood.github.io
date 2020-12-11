@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>UML简单记录 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">UML简单记录</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/12/11</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,207</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
+<p>要学习设计模式，首先绕不开的就是UML图，同时对于一名开发而言，开发文档中也必然会出现UML的身影。之前在实习的时候，其实已经学过不少了，但不用后又很容易忘记——因此这也是一个防忘系列</p>
+</blockquote>
+<h2 id="uml"><a class="markdownIt-Anchor" href="#uml"></a> UML</h2>
+<blockquote>
+<p>UML(Unified Modeling Language)是一种标准的图形化<strong>建模语言</strong>，是一种为<strong>面对对象</strong>系统的产品进行说明、可视化、编制文档的标准语言，它是面向对象分析与设计的一种<strong>标准表示</strong>。</p>
+</blockquote>
+<p>（1）UML是一种语言。<br>
+从上面的定义可以看出，就其本质，UML是一种语言，既然是语言，那就是用来交流的，UML用来在哪些人员之间进行交流呢？很明显，UML主要是在软件开发的整个生命周期所涉及到的人员之间进行交流的语言。<br>
+（2）UML是一种建模语言。<br>
+那么什么是建模呢？<br>
+模型是用某种工具对事物的一种表达方式，通常会表达出事物最重要的方面而简化或忽略其他方面。比如常见的工程模型、飞机模型、车辆模型等。<br>
+模型在软件上主要的作用是，可以在一定的抽象层次上，使人们通过对模型的分析和研究，来制定出最终的软件结构和内部的相互关系。<br>
+（3）UML是一种图形化建模语言。<br>
+为什么要图形化呢？<br>
+很简单，图形化的东西直观、简单、准确，更有利于软件开发的整个生命周期所涉及到的人员之间进行交流。因为对于一个大型的软件项目，参与的人员很多，根本不可能相互用语言来交流，图形化是一个很好的方案。<br>
+（4）UML是一种标准的图形化建模语言。<br>
+只有标准的东西，才会有更多的人学习和使用它，大家对同一表达的理解才会一样，才能真正达到相互交流的目的。<br>
+否则要是没有标准，大家各自为政，可能会出现同一个图形，大家有不同的认识和理解，那就没法交流了。</p>
+<h3 id="基本构件"><a class="markdownIt-Anchor" href="#基本构件"></a> 基本构件</h3>
+<p>建模的核心是模型，模型是现实的简化、真实系统的抽象。因此好的建模语言就需要提供全样的模块组成，如下就是UML的基本构件。UML主要由三部分概念组成：具体的事物、事物间的关系、事物与关系组合而成的图。</p>
+<p>我们使用UML的目的就是确认好具体的事物以及事物间的关系，并以此来选择合适的图来表达，三者是紧紧联系的。在UML2.0中，我们使用最频繁的就是类图、时序图了。</p>
+<p><img src="/2020/12/11/UML简单记录/%E5%9F%BA%E6%9C%AC%E6%9E%84%E5%BB%BA.jpg" alt="基本构建"></p>
+<h4 id="事物"><a class="markdownIt-Anchor" href="#事物"></a> 事物</h4>
+<p>事物是抽象化的最终结果，分为结构事物、行为事物、分组事物、注释事物。其中我们比较频繁使用的是结构事物中的类和接口、行为事物中的交互和状态机</p>
+<h4 id="关系"><a class="markdownIt-Anchor" href="#关系"></a> 关系</h4>
+<p>UML将事物之间的关系归纳为6种：</p>
+<p><img src="/2020/12/11/UML简单记录/gx.png" alt="gx"></p>
+<h5 id="实现-继承"><a class="markdownIt-Anchor" href="#实现-继承"></a> 实现、继承</h5>
+<p>实现是实现接口，继承是继承父类。</p>
+<p>▲两者的图形都是子指向父，并且箭头全是空心三角箭头。</p>
+<h5 id="关联"><a class="markdownIt-Anchor" href="#关联"></a> 关联</h5>
+<p>类之间存在关联关系就可以用普通关联来表达</p>
+<p><img src="/2020/12/11/UML简单记录/%E5%85%B3%E8%81%94.jpg" alt="关联"></p>
+<h5 id="聚合"><a class="markdownIt-Anchor" href="#聚合"></a> 聚合</h5>
+<blockquote>
+<p>聚合在《研读设计模式》中认为是关联的子集，可分为普通聚合、共享聚合、复合聚合</p>
+</blockquote>
+<p>聚合关系表示类之间整体与部分的关系，成员对象是整体对象的一部分，但是成员对象可以脱离整体对象独立存在。e.g.公交车司机和工作服，两者没有共同的声明周期。</p>
+<h5 id="组合"><a class="markdownIt-Anchor" href="#组合"></a> 组合</h5>
+<p>组合关系表示类之间整体与部分的关系，整体和部分有一致的生存期，一旦整体对象不存在，那么部分对象也将不存在，整体和部分是同生共死的关系。e.g.人由头部和身体组成，两者不可分割。</p>
+<h5 id="总结以上关系"><a class="markdownIt-Anchor" href="#总结以上关系"></a> 总结以上关系</h5>
+<p>在这6种类关系中，组合、聚合和关联的代码结构一样，可以从关系的强弱来理解，各类关系从强到弱依次是：继承&gt;实现&gt;组合&gt;聚合&gt;关联&gt;依赖。下面我们用一张完整的类图，熔前面描述的所有类与类之间的关系串联起来。</p>
+<p><img src="/2020/12/11/UML简单记录/E:%5Chexo%5Csource_posts%5CUML%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95%5C%E5%85%B3%E7%B3%BB%E6%95%B4%E7%90%86.jpg" alt="关系整理"></p>
+<h3 id="图"><a class="markdownIt-Anchor" href="#图"></a> 图</h3>
+<p>UML2.0一共有13中图（UML1.5定义了9种，2.0增加了4种），最常用的就是类图、对象图、时序图、状态图</p>
+<p><img src="/2020/12/11/UML简单记录/%E5%9B%BE.jpg" alt="图"></p>
+<h2 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h2>
+<h3 id="经典关系图"><a class="markdownIt-Anchor" href="#经典关系图"></a> 经典关系图</h3>
+<img src="/2020/12/11/UML简单记录/关系图.jpg" alt="关系图">
+<h3 id="记忆技巧"><a class="markdownIt-Anchor" href="#记忆技巧"></a> 记忆技巧</h3>
+<p><img src="/2020/12/11/UML简单记录/%E8%AE%B0%E5%BF%86.jpg" alt="记忆"></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/12/11/UML简单记录/">https://nymrli.top/2020/12/11/UML简单记录/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/" title="浙大2020春夏-人工智能习题2——垃圾分类"><span>NextPost ></span><br><span class="nextTitle">浙大2020春夏-人工智能习题2——垃圾分类</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'UML简单记录',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#uml"><span class="toc-number">1.</span> <span class="toc-text"> UML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本构件"><span class="toc-number">1.1.</span> <span class="toc-text"> 基本构件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#事物"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 事物</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关系"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 关系</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#实现-继承"><span class="toc-number">1.1.2.1.</span> <span class="toc-text"> 实现、继承</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#关联"><span class="toc-number">1.1.2.2.</span> <span class="toc-text"> 关联</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#聚合"><span class="toc-number">1.1.2.3.</span> <span class="toc-text"> 聚合</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#组合"><span class="toc-number">1.1.2.4.</span> <span class="toc-text"> 组合</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#总结以上关系"><span class="toc-number">1.1.2.5.</span> <span class="toc-text"> 总结以上关系</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图"><span class="toc-number">1.2.</span> <span class="toc-text"> 图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">2.</span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#经典关系图"><span class="toc-number">2.1.</span> <span class="toc-text"> 经典关系图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记忆技巧"><span class="toc-number">2.2.</span> <span class="toc-text"> 记忆技巧</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -143,25 +143,13 @@ P.S.如果第二步,手机和电脑无法直接通过IP地址进入管理界面�
 
 ···选中所有，菜单栏-收藏夹-移除人声
 
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Au"> Au</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="多媒体"> 多媒体</a></div><div class="read-more"><a class="more" href="/2018/11/08/多媒体Au使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/复制Django项目时需要注意、修改的地方/">复制Django项目时需要注意、修改的地方</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:25:37.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:25:37.000Z">2019-09-15</time></div><div class="recent-post-content"> 复制Django项目:
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Au"> Au</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="多媒体"> 多媒体</a></div><div class="read-more"><a class="more" href="/2018/11/08/多媒体Au使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/08/写爬虫过程中碰到的编码问题/">写爬虫过程中碰到的编码问题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-08T04:23:19.000Z">2018-11-08</time><i class="fa fa-edit"></i><time datetime="2018-11-08T04:23:19.000Z">2019-09-15</time></div><div class="recent-post-content"> 写爬虫过程中碰到的编码问题
+ 遇到 ’ \uxxxx ’ 的16进制字符串编解码问题，使用unicode-escape解决之。
+实际上，在将unicode存储到文本的过程中，还有一种存储方式，不需要将unicode转换为实际的文本存储字符集，而是将unicode的内存编码值进行存储，读取文件的时候再反向转换回来，是采用：unicode-escape的转换方式。
 
-manage.py中需要修改的地方
+将unicode的内存编码值进行存储，读取文件时在反向转换回来。这里就采用了unicode-escape的方式
 
-1os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;window.settings&quot;)
-
-settings.py中需要修改的地方
-
-12345&quot;&quot;&quot;Django settings for window project.&quot;&quot;&quot;ROOT_URLCONF = &apos;window.urls&apos;WSGI_APPLICATION = &apos;window.wsgi.applic ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Django"> Django</a></div><div class="read-more"><a class="more" href="/2018/10/24/复制Django项目时需要注意、修改的地方/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/XShell通过SSH远程连接云服务器/">XShell通过SSH远程连接云服务器通过SSH远程连接云服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:32:05.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:32:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 1.账号密码登录
- 法一:
-
-
-
-
-
- 法二:
-
-
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="服务器"> 服务器</a></div><div class="read-more"><a class="more" href="/2018/10/24/XShell通过SSH远程连接云服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/">WSGI uWSGI uwsgi及nginx说明</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T07:50:12.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T07:50:12.000Z">2019-09-15</time></div><div class="recent-post-content"> 客户端发出请求==&gt;服务器接受、处理请求与响应 的过程示意图
+12345678print(u&apos;中文测试&apos;.encode(&apos;utf-8&apos;))p ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/08/写爬虫过程中碰到的编码问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/">WSGI uWSGI uwsgi及nginx说明</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T07:50:12.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T07:50:12.000Z">2019-09-15</time></div><div class="recent-post-content"> 客户端发出请求==&gt;服务器接受、处理请求与响应 的过程示意图
 
  1. WSGI：
 
@@ -190,7 +178,17 @@ settings.py中需要修改的地方
  Windows 控制台Cmd乱码的解决办法(永久性)
  方法一：
 1.在cmd中输入regedit进入注册表
-2.找 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2018/10/28/Windows-控制台Cmd乱码（及永久修改编码）解决方法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Sublime-Text3-Python虚拟环境（补充）——解决控制台中文乱码情况/">Sublime Text3 Python虚拟环境（补充）——解决控制台中文乱码情况</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:52:35.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:52:35.000Z">2019-09-15</time></div><div class="recent-post-content">转自：edwardgui的博客
+2.找 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2018/10/28/Windows-控制台Cmd乱码（及永久修改编码）解决方法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/Ubuntu更改nginx默认端口/">Ubuntu更改nginx默认端口</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:55:13.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:55:13.000Z">2019-09-15</time></div><div class="recent-post-content"> Ubuntu更改nginx默认端口
+
+nginx 默认使用80端口，有时候我们希望nginx运行在其他端口，就需要更改nginx配置
+
+nginx配置文件在/etc/nginx目录下的nginx.conf。(可以修改处理器数量、日志路径、pid文件路径等，默认的日志。)
+
+错误日志 /var/log/nginx/error.log
+访问日志 /var/log/nginx/access.log
+
+在nginx.conf-&gt;http选项末尾有引入两个目录下的文件分别为：
+123456[/etc/nginx/nginx.conf]http &#123;        #   省略部分内容   ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2018/11/10/Ubuntu更改nginx默认端口/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Sublime-Text3-Python虚拟环境（补充）——解决控制台中文乱码情况/">Sublime Text3 Python虚拟环境（补充）——解决控制台中文乱码情况</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:52:35.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:52:35.000Z">2019-09-15</time></div><div class="recent-post-content">转自：edwardgui的博客
 
 正常的用python编译控制台是不会出现乱码的，但是在使用虚拟环境的情况下中文总是乱码，一开始以为是windows控制台编码的问题。找了挺久后发现是python+virtualenv编译系统的问题，现在我就带领大家解决这个问题。
 
@@ -224,7 +222,12 @@ GET请求提交的数据最多只有1024字节，POST无限制
  请求头：
 用来说明服务器要使用的附加信息，比较总要的有Cookie、Referer、User-Agent等。
 
-Accept:请求报头域，用于指定客户端可接受 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——请求/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/">Python爬虫知识点——爬虫的基本原理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:10.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:10.000Z">2019-09-15</time></div><div class="recent-post-content"> 爬虫的基本原理
+Accept:请求报头域，用于指定客户端可接受 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——请求/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/">Python爬虫知识点——将Cookie保存到本地的多种方法介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:43:34.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:43:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 方法一：urllib2
+
+结合cookielib及urllib2，Python2时期比较常用的方法，年代比较久远了。个人觉得太麻烦，改用requests.
+▲需要注意的是cookielib在python3中已经改成了http.cookiejar
+
+1234567891011121314151617181920212223242526272829303132333435#该方法本人未测试import urllib2import cookielib#将cookie保存在文件中def saveCookie():    #设置保存cookie的文件    filename = &apos;cooki ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/">Python爬虫知识点——爬虫的基本原理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:10.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:10.000Z">2019-09-15</time></div><div class="recent-post-content"> 爬虫的基本原理
 
 爬虫就是获取网页并提取和保存信息的自动化程序
 
@@ -237,12 +240,7 @@ Accept:请求报头域，用于指定客户端可接受 ...</div><div class="rec
  提取信息：
 通过分析网页结构，提取网页信息。通常使用的解析库有:BeautifulSoup、lxml、pyquery，也可以使用正则，但是构造正则表达式比较复杂且易错
  保存数据：
-将提取的数据保存到某处以便后续利用。保存形式有：TXT、Json、数据库：MySQL、MongoDB、或远程服务器SF ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/">Python爬虫知识点——将Cookie保存到本地的多种方法介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:43:34.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:43:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 方法一：urllib2
-
-结合cookielib及urllib2，Python2时期比较常用的方法，年代比较久远了。个人觉得太麻烦，改用requests.
-▲需要注意的是cookielib在python3中已经改成了http.cookiejar
-
-1234567891011121314151617181920212223242526272829303132333435#该方法本人未测试import urllib2import cookielib#将cookie保存在文件中def saveCookie():    #设置保存cookie的文件    filename = &apos;cooki ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——响应/">Python爬虫知识点——响应</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:17.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:17.000Z">2019-09-15</time></div><div class="recent-post-content"> 响应：
+将提取的数据保存到某处以便后续利用。保存形式有：TXT、Json、数据库：MySQL、MongoDB、或远程服务器SF ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——响应/">Python爬虫知识点——响应</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:17.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:17.000Z">2019-09-15</time></div><div class="recent-post-content"> 响应：
 响应状态码、响应头、响应体
  响应状态码：
 					表2-3常见的错误代码及错误原因
@@ -297,17 +295,7 @@ Accept:请求报头域，用于指定客户端可接受 ...</div><div class="rec
  作用
 突破自身IP访问限制，访问些平时不能访问的站点。
 访问一些单位或团体内部资源:比如使用教育网内地址段免费代理服务器，就可以用于对教育网开放的各类FTP下载上传，以及各类资料查询共享等服务。
-提高访问速度:通常代理服务器都设置-一个较大的硬盘缓 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——代理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——URL与URI/">Python爬虫知识点——URL与URI</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:35:53.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:35:53.000Z">2019-09-15</time></div><div class="recent-post-content"> URL与URI
-
-
-URL全称：Uniform Resource Locator(统一资源定位符)
-
-
-URI全称：Uniform Resource Identifier(统一资源标识符)
-如https://github.com/favicon.ico为例，它既是一个URL又是一个URI。我们通过URL/URI唯一指定了它的访问方式。其中包括访问协议https、访问路径、资源名称favicon.ico。通过这个链接提供的消息，我们就可以直接访问到此资源所在的位置。这便是URL、URI的作用。
-
-URL是URI的子集。===&gt;每个URL都是URI，但不是每个URI都是URL。
-URI包括 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——URL与URI/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——Session与Cookie/">Python爬虫知识点——Session与Cookie</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:56.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:56.000Z">2019-09-15</time></div><div class="recent-post-content"> Session和Cookie：
+提高访问速度:通常代理服务器都设置-一个较大的硬盘缓 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——代理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——Session与Cookie/">Python爬虫知识点——Session与Cookie</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:56.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:56.000Z">2019-09-15</time></div><div class="recent-post-content"> Session和Cookie：
 
 Cookie：保持登录后的认证状态而保存在本地的数据
 session:用cookie来标记用户，cookie携带了会话ID消息，通过检查cookie就能找到会话(session)
@@ -319,21 +307,26 @@ cookie与session相互配合，一个处于客户端，一个处于服务端，�
 持久Cookie：保存cookie到客户端的硬盘中，下次继续使用。
 
 由Cookie的Max Age和Expires决定了过期的时间。
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——Session与Cookie/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——Chrome开发者工具Network/">Python爬虫知识点——Chrome开发者工具Network</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:35:31.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:35:31.000Z">2019-09-15</time></div><div class="recent-post-content"> Chrome开发者工具中Network功能介绍
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——Session与Cookie/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/Pythonanywhere解决链接Mysql问题-部署flask/">Pythonanywhere解决链接Mysql问题(部署flask)</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:54:14.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:54:14.000Z">2019-09-15</time></div><div class="recent-post-content"> Pythonanywhere解决链接Mysql问题(部署flask)
 
-第一列Name:请求的名称，一般会将URL的最后一 部分内容当作名称。
-第二列Status: 响应的状态码，这里显示为200，代表响应是正常的。通过状态码，我们可   以判断发送了请求之后是否得到了正常的响应。
-第三列Type: 请求的文档类型。这里为document, 代表我们这次请求的是一个HTML文档,内容就是一些HTML代码。
-第四列initiator: 请求源。用来标记请求是由哪个对象或进程发起的。
-第五列Size: 从服务器下载的文件和请求的资源大小。如果是从缓存中取得的资源，则该列会显示from cache。
-第六列Time:发 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——Chrome开发者工具Network/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/25/JS正则及常用方法函数总结/">JS正则及常用方法函数总结</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-25T03:55:20.000Z">2018-10-25</time><i class="fa fa-edit"></i><time datetime="2018-10-25T03:55:20.000Z">2019-09-15</time></div><div class="recent-post-content"> JS正则及常用方法函数总结
+由于在bash控制台里通过命令mysql -p(这其实是因为错误的连接方式,由于不是默认的端口3306,自然连接不到,官方文档中有正确的连接方式)链接不到Mysql时,再加上进虚拟环境用python manage db migrate也失败后,我是异常慌张的…然后立马发现关于pythonanywhere链接Mysql的解决不是很多,要么就是说免费账号是无法用的…心顿时拔凉,但最后还是找到了pythonanywhere官方的文档,解决了这个问题,发现都是配置的问题
+
+一开始的我本地及阿里云链接mysql数据库配置文件是这样 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="MySQL"> MySQL</a></div><div class="read-more"><a class="more" href="/2018/11/10/Pythonanywhere解决链接Mysql问题-部署flask/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/25/JS正则及常用方法函数总结/">JS正则及常用方法函数总结</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-25T03:55:20.000Z">2018-10-25</time><i class="fa fa-edit"></i><time datetime="2018-10-25T03:55:20.000Z">2019-09-15</time></div><div class="recent-post-content"> JS正则及常用方法函数总结
 
 正则表达式作为一种匹配处理字符串的利器在很多语言中都得到了广泛实现和应用，web开发本质上是处理字符串（服务端接受请求处理后拼接字符串作为响应，这在早期的CGI编程中最明显，然后客户端解析字符串进行渲染和执行），所以说，JS作为一门常用于web开发的语言，必然要具备正则这种强大的特性，本文将对JS中的正则用法及常用函数进行一番总结。
 
  1.正则对象及其属性
 首先正则对象是JS中内置的一个对象，好比Array以及Math一样，不需要第三方库的支持，通常我们采取两种方式来定义一个正则对象.
  1）构造函数方式
-12345var  reg=new RegExp('a ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="JavaScript"> JavaScript</a></div><div class="read-more"><a class="more" href="/2018/10/25/JS正则及常用方法函数总结/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/apt-get-update无法连接/">apt-get update无法连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T05:21:45.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T05:21:45.000Z">2019-09-15</time></div><div class="recent-post-content"> 出现的问题
+12345var  reg=new RegExp('a ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="JavaScript"> JavaScript</a></div><div class="read-more"><a class="more" href="/2018/10/25/JS正则及常用方法函数总结/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/apt代理的设置/">apt代理的设置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:56:53.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:56:53.000Z">2019-09-15</time></div><div class="recent-post-content">
+原因是在apt-get update时遇到了Unable to connect to 代理，（由于apt-get update一直显示无法连接172.17.18.141百度后发现并不是个特殊的IP,）于是想到是否使用了代理。
+
+ apt代理的设置：
+ 临时方法
+export http_proxy=http://10.3.0.1:80
+ 长久方法
+(1) 需要在/etc/apt/apt.conf中添加以下代码： (如果您希望apt-get(而不是其他应用程序)一直使用http代理,您可以使用这种方式。)
+Acquire::http::proxy &quot;http://用户名:密码@地址:端 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2018/11/10/apt代理的设置/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/apt-get-update无法连接/">apt-get update无法连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T05:21:45.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T05:21:45.000Z">2019-09-15</time></div><div class="recent-post-content"> 出现的问题
 原因是在apt-get update时遇到了Unable to connect to 代理，（由于apt-get update一直显示无法连接172.17.18.141百度后发现这并不是个特殊的IP,而且也可以ping到百度）于是想到是否使用了代理。
 
 

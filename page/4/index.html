@@ -106,7 +106,7 @@ jupyter notebook --generate-config
 4.生成密钥:
 终端输入$ ipython
 123456In [1]: from notebook.auth import passwdIn [2]: passwd()Enter password: Verify password: #此时会让你两次输入密码，然后就会生成秘钥#＊＊＊＊＊＊＊＊＊＊＊＊
-5.修改配置文件vim ~/.jupyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/21/搭建Jupyter服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/">Ubuntu16.04+CUDA toolkit10.1+cudNN7.6+bazel0.26.1</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-23T08:38:55.000Z">2019-09-23</time><i class="fa fa-edit"></i><time datetime="2019-09-23T08:38:55.000Z">2020-12-02</time></div><div class="recent-post-content"> Ubuntu 16.04 + CUDA toolkit 10.1 + cudNN7.6 + bazel 0.26.1
+5.修改配置文件vim ~/.jupyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/21/搭建Jupyter服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/">Ubuntu16.04+CUDA toolkit10.1+cudNN7.6+bazel0.26.1</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-23T08:38:55.000Z">2019-09-23</time><i class="fa fa-edit"></i><time datetime="2019-09-23T08:38:55.000Z">2020-12-02</time></div><div class="recent-post-content"> Ubuntu 16.04 + CUDA toolkit 10.1 + cudNN7.6 + bazel 0.26.1
 
 保证cuDNN跟CUDA SDK的版本一致即可.
 从源码编译的话需要查看显卡的计算能力,可在查看GPU计算能力，在配置的时候填入即可，跟CUDA SDK的版本无关
@@ -155,32 +155,7 @@ numpy.random.choice(a, size=None, replace=True, p=None)
 
 a : 如果是一维数组，就表示从这个一维数组中随机采样；如果是int型，就表示从0到a-1这个序列中随机采样。
 size : 采样结果的数量，默认为1.可以是整数，表示要采样的数量；也可以为tuple，如(m, n, k)，则要采样的数量为m * n * k，size为(m, n, k)
-replace : boolean型，采样的样本是否要更换？这个地方我不太理解，测了一下发现replace指定为True时，采样的元素会有重复； ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/28/numpy使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/06/Openmv使用/">Openmv使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-06T01:45:28.000Z">2019-10-06</time><i class="fa fa-edit"></i><time datetime="2019-10-06T01:45:28.000Z">2019-11-07</time></div><div class="recent-post-content"> Openmv使用
- 下载Openmv IDE
-
-Openmv官网
-中国代理——星瞳
-Github_release
-
-推荐下载星瞳的，这个是中文版的，并且其他两个下载非常慢。
- 捕捉图片设置：
-设置彩色／黑白
-
-sensor.set_pixformat() 设置像素模式。
-
-sensor.GRAYSCALE: 灰度，每个像素8bit。
-sensor.RGB565: 彩色，每个像素16bit。
-
-
-
-设置图像大小
-
-
-sensor.set_framesize() 设置图像的大小
-
-sensor.QQVGA: 160x120
-sensor.QQVGA2: 128x160 (用于 lcd 扩展板)
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/06/Openmv使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/软件测试大赛/">软件测试大赛</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:07:12.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:07:12.000Z">2019-11-02</time></div><div class="recent-post-content"> 软件测试大赛
+replace : boolean型，采样的样本是否要更换？这个地方我不太理解，测了一下发现replace指定为True时，采样的元素会有重复； ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/28/numpy使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/软件测试大赛/">软件测试大赛</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:07:12.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:07:12.000Z">2019-11-02</time></div><div class="recent-post-content"> 软件测试大赛
  初学流程
 
 首先了解比赛,查看帮助文档平台帮助
@@ -294,4 +269,46 @@ A记录设置技巧
 带来的问题是：同样的jar包文件重复出现在不同的项目工程中，一方面浪费存储空间，另外也让工程比较臃肿。
 
 △借助Maven，可以将jar包仅仅保存在“仓库”中，有需要使用的工程“引用”这个文件接口，并不需要真的把jar包复制过来。
-③jar包需 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/Java自动化构建工具——Maven/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/3/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+③jar包需 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/Java自动化构建工具——Maven/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/CDN加速个人博客——又拍云/">CDN加速个人博客——又拍云</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-15</time></div><div class="recent-post-content"> CDN加速个人博客——又拍云
+
+CDN(Content Delivery Network)内容发布网络，基本思路就是将你网站放置在各地节点服务器，用户访问时找最近的节点服务器获取数据，达到加速的目的。
+
+ 几大厂商的CDN方案
+
+
+
+资费介绍页面
+免费额度
+是否支持HTTPS
+额外限制
+注册邀请链接
+
+
+
+
+七牛云
+10GB/月
+按量付费支持
+/
+&gt;&gt;&gt; 点击注册
+
+
+腾讯云
+10GB/月
+免费支持
+加了腾讯云CDN没有感觉多大加速
+/
+
+
+百度云
+10GB/天
+年费付费支持
+巨贵…
+/
+
+
+又拍云
+15GB/月
+免费支持
+加入又拍云联盟，并在网站底部放置logo
+&gt; ...</div><div class="read-more"><a class="more" href="/2019/09/09/CDN加速个人博客——又拍云/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/3/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

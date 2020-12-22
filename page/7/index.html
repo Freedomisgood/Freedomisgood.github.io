@@ -138,16 +138,7 @@
 
  ▲翻硬币
 
- ACM 3-21笔记 （2 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/03/28/蓝桥杯突击训练/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-并查集/">ACM-并查集</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T01:21:30.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T01:21:30.000Z">2020-06-03</time></div><div class="recent-post-content"> 并查集
-
-ACM竞赛中，并查集（DisjointSets）这个数据结构经常使用。顾名思义，并查集即表示集合，并且支持快速查找、合并操作。
-用于高效的查找某两个元素是否属于同一个集合；
-
-并查集如何表示一个集合？它借助树的思想，将一个集合看成一棵有根树。那又如何表示一棵树？初始状态下，一个元素即一棵树，根即是元素本身。
- 合并
-并查集如何支持合并操作？不难发现，按照树的思想，在同一棵树中的所有元素，根都是相同的。也就是说，合并两个不同的集合，只需要将其中一个集合的根设置为另一个集合的根即可，而需要改变根的那个集合，其实只需要改变根节点的父节点即可。
- 如何支持快速查找操作
-如果完全按照上面的合 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-并查集/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-大数定理（高精度）/">ACM-大数定理（高精度）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T00:53:27.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T00:53:27.000Z">2020-05-28</time></div><div class="recent-post-content"> ACM-大数定理（高精度）
+ ACM 3-21笔记 （2 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/03/28/蓝桥杯突击训练/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-大数定理（高精度）/">ACM-大数定理（高精度）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T00:53:27.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T00:53:27.000Z">2020-05-28</time></div><div class="recent-post-content"> ACM-大数定理（高精度）
 
 由于c/c++中数据类型的范围比较固定，因此有些题目的数据范围正好卡在这些正常范围之外，此时就需要自己实现大数加减乘除的运算。
 c/c++需要自己手写
@@ -175,7 +166,7 @@ Linux其他版本或者不是Ubuntu 16.04 见官网修改方式
 1curl https://packages.gitlab.com/gpg.key 2&gt; /dev/null | sudo apt-key add - &amp;&gt;/dev/null
 ▲如果这步不行，先进行下一步
 
-文本框中内容写进 /etc/apt/sources.list.d/gitlab-ce. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/14/搭建Gitlab服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/15/Linux命令手册/">Linux命令手册</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-15T14:33:26.000Z">2019-03-15</time><i class="fa fa-edit"></i><time datetime="2019-03-15T14:33:26.000Z">2019-12-11</time></div><div class="recent-post-content"> scp
+文本框中内容写进 /etc/apt/sources.list.d/gitlab-ce. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/03/14/搭建Gitlab服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/15/Linux命令手册/">Linux命令手册</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-15T14:33:26.000Z">2019-03-15</time><i class="fa fa-edit"></i><time datetime="2019-03-15T14:33:26.000Z">2019-12-11</time></div><div class="recent-post-content"> scp
 1、从服务器上下载文件
 1scp username@servername:/path/filename /var/www/local_dir（本地目录）
 例如scp root@192.168.0.101:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）
@@ -187,7 +178,14 @@ Linux其他版本或者不是Ubuntu 16.04 见官网修改方式
 
 最普通的办法——判断一个数是不是素数
 123456789101112131415161718#define SIZE 1000000int main()&#123;    int check[SIZE];    int prime[SIZE] = &#123;0&#125;;    int pos;    int flag;    for (int i = 2 ; i &lt; SIZE ; i++)&#123;        flag = 1;        for (int j = 2 ; j &lt; sq ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="线性筛"> 线性筛</a></div><div class="read-more"><a class="more" href="/2019/03/03/ACM-线性筛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/程序设计周cpp学习笔记/">程序设计周cpp学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:56:14.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:56:14.000Z">2019-09-15</time></div><div class="recent-post-content"> 文件名传参
-123456789101112131415using namespace std;#define FILENAME "data.csv"void readfile(string file)&#123;	ifstream inFile;	inFile.open(file.c_str(), ios::out); // 打开模式可省略	string lineStr;	while (getline(inFile, lineStr) )		// 打印整行字符串		cout &lt;&lt; lineStr  &lt;&lt; '-'&lt;&lt; endl; &#125;  int ma ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="程序设计"> 程序设计</a></div><div class="read-more"><a class="more" href="/2019/03/07/程序设计周cpp学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/学会Pull-request/">学会Pull request</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T11:18:14.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T11:18:14.000Z">2019-09-15</time></div><div class="recent-post-content"> GitHub中发起PR(pull Request)
+123456789101112131415using namespace std;#define FILENAME "data.csv"void readfile(string file)&#123;	ifstream inFile;	inFile.open(file.c_str(), ios::out); // 打开模式可省略	string lineStr;	while (getline(inFile, lineStr) )		// 打印整行字符串		cout &lt;&lt; lineStr  &lt;&lt; '-'&lt;&lt; endl; &#125;  int ma ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="程序设计"> 程序设计</a></div><div class="read-more"><a class="more" href="/2019/03/07/程序设计周cpp学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/构造一个能发数据的POST请求头/">构造一个能发数据的POST请求头</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T14:23:52.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T14:23:52.000Z">2019-09-15</time></div><div class="recent-post-content">之前学请求、响应的时候只是过了一边，大致知道有这些东西。但这次真正要用的时候却又忘了到底该如何写，错误的请求头、请求体的格式导致esp8266一直发送不了数据到服务器上，又重新看了遍请求request的知识，才终于搞明白
+ 请求
+ 最初的写法:
+由于在esp8266上已经选择、连接好了了httpbin.org的穿透，就以为Host可以不用加了，于是产生了 最初的写法：
+1POST /post?= HTTP/1.1
+▲根据玩单片机的小伙伴说必须多出一行\r\n，所以这边是有一行空行的
+ 结果： 400 BAD_REQUEST
+搜索过后得知 : 如果使用http 1.1协议的话主机名HOST字段是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/03/01/构造一个能发数据的POST请求头/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/学会Pull-request/">学会Pull request</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T11:18:14.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T11:18:14.000Z">2019-09-15</time></div><div class="recent-post-content"> GitHub中发起PR(pull Request)
 
 PR是为了贡献代码:
 ​	贡献代码，通俗的说，就是自己修改了代码，希望合并到别人的Repository(仓库)中。将自己的智慧贡献给开源社区。
@@ -304,7 +302,7 @@ mlpack: a scalable C++ machine learning library
 列出两种安装教程吧，第一种实测可以。第二种在测试Armadillo的时候没通过，还是缺库，有兴趣的人可以通过给的Armadillo官网链接下载安装Armadillo再试试
 
  安装方法一：
-Mlpack 官网 提供了下载的方法 ： sudo apt-get install libmlpack-dev ， 但貌似有博客指出目前国内源里是没有这个镜像的，所以采取的办法是直接从观望上下 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/03/25/C++机器学习库MLPack/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-快速幂/">ACM-快速幂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:54:05.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:54:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 简单位运算快速幂
+Mlpack 官网 提供了下载的方法 ： sudo apt-get install libmlpack-dev ， 但貌似有博客指出目前国内源里是没有这个镜像的，所以采取的办法是直接从观望上下 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/03/25/C++机器学习库MLPack/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-快速幂/">ACM-快速幂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:54:05.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:54:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 简单位运算快速幂
 
 假设我们要求ab，那么其实b是可以拆成二进制的，该二进制数第i位的权为2(i-1)，例如当b==11时，a11=a(20+21+2^3)
 

@@ -97,7 +97,23 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/05/15/IDEA配置——自定义快捷键、生成注释/">IDEA配置——自定义快捷键、生成注释</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-15T02:22:20.000Z">2020-05-15</time><i class="fa fa-edit"></i><time datetime="2020-05-15T02:22:20.000Z">2020-12-14</time></div><div class="recent-post-content"> IDEA配置——自定义快捷键、生成注释
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/09/21/手撕操作系统中的页面置换算法/">手撕操作系统中的页面置换算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-21T11:14:25.000Z">2020-09-21</time><i class="fa fa-edit"></i><time datetime="2020-09-21T11:14:25.000Z">2020-12-21</time></div><div class="recent-post-content"> 操作系统基础 内存换页算法
+公平算法：
+
+随机算法、先来先出（FIFO）算法、第二次机会算法、时钟算法
+
+非公平算法：
+
+最优OPT算法、NRU算法、LRU算法、工作集算法、工作集时钟算法
+
+其中LRU算法会被面试的时候要求手撕， 因此本篇就稍微介绍一下LRU和LFU两个算法， 这两个算法除了在内存换页上会被使用到，
+ 简单介绍一些算法：
+ 随机更换算法
+需要替换页面的时候，产生一个随机页面号，替换与该页面对应的物理页面。
+ 先来先出（FIFO）算法
+更换最早进入内存的页面。其中有Belady异常现象: 缺页率随内存块数增加而增加
+ 最优OPT算法：
+最佳置换算法是由Belady于1966年 ...</div><div class="read-more"><a class="more" href="/2020/09/21/手撕操作系统中的页面置换算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/15/IDEA配置——自定义快捷键、生成注释/">IDEA配置——自定义快捷键、生成注释</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-15T02:22:20.000Z">2020-05-15</time><i class="fa fa-edit"></i><time datetime="2020-05-15T02:22:20.000Z">2020-12-14</time></div><div class="recent-post-content"> IDEA配置——自定义快捷键、生成注释
 
 以前因为上JAVA课，还是不常用Java， 所以安装了个Eclipse， 但是现在要经常使用java的话， 感觉还是IDEA的支持做的可能更加到位一点
 
@@ -139,23 +155,7 @@ SQL语句执行顺序
  1.sql执行顺序 
 12345678910(1) from (3) join (2) on (4) where (5) group by(开始使用select中的别名，后面的语句中都可以使用)(6) avg,sum.... (7) having (8) select (9) distinct (10) order by
 2.sql语句执行顺序
-12345678910(8) SELECT (9)DISTINCT&lt;selec ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="SQL"> SQL</a></div><div class="read-more"><a class="more" href="/2020/09/04/SQL练习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/21/手撕操作系统中的页面置换算法/">手撕操作系统中的页面置换算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-21T11:14:25.000Z">2020-09-21</time><i class="fa fa-edit"></i><time datetime="2020-09-21T11:14:25.000Z">2020-10-31</time></div><div class="recent-post-content"> 操作系统基础 内存换页算法
-公平算法：
-
-随机算法、先来先出（FIFO）算法、第二次机会算法、时钟算法
-
-非公平算法：
-
-最优OPT算法、NRU算法、LRU算法、工作集算法、工作集时钟算法
-
-其中LRU算法会被面试的时候要求手撕， 因此本篇就稍微介绍一下LRU和LFU两个算法， 这两个算法除了在内存换页上会被使用到，
- 简单介绍一些算法：
- 随机更换算法
-需要替换页面的时候，产生一个随机页面号，替换与该页面对应的物理页面。
- 先来先出（FIFO）算法
-更换最早进入内存的页面。其中有Belady异常现象: 缺页率随内存块数增加而增加
- 最优OPT算法：
-最佳置换算法是由Belady于1966年 ...</div><div class="read-more"><a class="more" href="/2020/09/21/手撕操作系统中的页面置换算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/27/粒子滤波Matlab代码解读/">粒子滤波Matlab代码解读</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-27T09:39:23.000Z">2020-10-27</time><i class="fa fa-edit"></i><time datetime="2020-10-27T09:39:23.000Z">2020-10-31</time></div><div class="recent-post-content"> 粒子滤波概念
+12345678910(8) SELECT (9)DISTINCT&lt;selec ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="SQL"> SQL</a></div><div class="read-more"><a class="more" href="/2020/09/04/SQL练习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/27/粒子滤波Matlab代码解读/">粒子滤波Matlab代码解读</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-27T09:39:23.000Z">2020-10-27</time><i class="fa fa-edit"></i><time datetime="2020-10-27T09:39:23.000Z">2020-10-31</time></div><div class="recent-post-content"> 粒子滤波概念
 理解粒子滤波(particle filter)
 粒子滤波的Matlab仿真算法实现
  1.1 机器人定位问题

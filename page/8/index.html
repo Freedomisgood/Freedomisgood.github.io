@@ -123,7 +123,14 @@
 
 
  编写第一个程序
-123 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="IDE"> IDE</a></div><div class="read-more"><a class="more" href="/2019/02/26/eclipse使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/24/搭建frp服务-阿里云服务器/">搭建frp服务--阿里云服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-24T06:56:27.000Z">2019-02-24</time><i class="fa fa-edit"></i><time datetime="2019-02-24T06:56:27.000Z">2019-09-15</time></div><div class="recent-post-content"> 搭建frp服务–阿里云服务器
+123 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="IDE"> IDE</a></div><div class="read-more"><a class="more" href="/2019/02/26/eclipse使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/构造一个能发数据的POST请求头/">构造一个能发数据的POST请求头</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T14:23:52.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T14:23:52.000Z">2019-09-15</time></div><div class="recent-post-content">之前学请求、响应的时候只是过了一边，大致知道有这些东西。但这次真正要用的时候却又忘了到底该如何写，错误的请求头、请求体的格式导致esp8266一直发送不了数据到服务器上，又重新看了遍请求request的知识，才终于搞明白
+ 请求
+ 最初的写法:
+由于在esp8266上已经选择、连接好了了httpbin.org的穿透，就以为Host可以不用加了，于是产生了 最初的写法：
+1POST /post?= HTTP/1.1
+▲根据玩单片机的小伙伴说必须多出一行\r\n，所以这边是有一行空行的
+ 结果： 400 BAD_REQUEST
+搜索过后得知 : 如果使用http 1.1协议的话主机名HOST字段是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/03/01/构造一个能发数据的POST请求头/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/24/搭建frp服务-阿里云服务器/">搭建frp服务--阿里云服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-24T06:56:27.000Z">2019-02-24</time><i class="fa fa-edit"></i><time datetime="2019-02-24T06:56:27.000Z">2019-09-15</time></div><div class="recent-post-content"> 搭建frp服务–阿里云服务器
 为了可以远程访问活动室的电脑，需要进行内网穿透。之前9块钱买了花生壳的服务，勉强用用还行，带宽很有限。听说了frp后,打算在阿里云上安个frp服务，充当中转服务器。
  什么是frp
 
@@ -136,34 +143,7 @@ wget https://github.com/fatedier/frp/releases/download/v0.20.0 ...</div><div cla
  多台虚拟主机:
 1.分配IP地址
 2.新建、编写usr/local/nginx的conf配置文件
-12345678910111213http&#123;    sever&#123;        listen 192.168.1.17:80;				//监听 (IP地址:) 端口        server_name 192.168.1.17;			// 域名或者ip        access_log logs/server1.access.log conbined;//指定位置+使用日志文件默认格式        location /        &#123;    ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/01/24/学习nginx配置/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/22/基础网络知识/">基础网络知识</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-22T11:31:47.000Z">2019-01-22</time><i class="fa fa-edit"></i><time datetime="2019-01-22T11:31:47.000Z">2019-09-15</time></div><div class="recent-post-content"> 什么是客户端、服务器端?
- 客户端 :
-​	发送数据、接收返回数据端
- 服务器:
-​	处理数据端
-
- TCP :
-面向连接—&gt; 打电话(相互回复,一来一回)
-客户端向服务器端 拨号 , 三次握手 ,
- UDP :
-面向无连接 --&gt; 寄快递(寄出去就不管了).   比如 : 直播
- UDP四层结构
-
-
-网络访问层(链路层):  物理连接设备(网线)、MAC地址（物理地址）
-
-
-互联网层： IP地址（定位设备）
-
-
-传输层： port (端口号) : 表示通信进程,将数据交给哪个应用处理
-
-
-应用层： 自己定义的协议（处理字符串消息的方法）
-
-
- port :
-知名端口 : 0 - ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/01/22/基础网络知识/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/南京邮电大学java程序设计作业在线编程第二次作业/">南京邮电大学java程序设计作业在线编程第二次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T04:52:41.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T04:52:41.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
+12345678910111213http&#123;    sever&#123;        listen 192.168.1.17:80;				//监听 (IP地址:) 端口        server_name 192.168.1.17;			// 域名或者ip        access_log logs/server1.access.log conbined;//指定位置+使用日志文件默认格式        location /        &#123;    ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/01/24/学习nginx配置/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/南京邮电大学java程序设计作业在线编程第二次作业/">南京邮电大学java程序设计作业在线编程第二次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T04:52:41.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T04:52:41.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
  选择题得分：60
 \1. 表达式9==8&amp;&amp;3&lt;7的运算结果是（ ）
 A.1

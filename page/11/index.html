@@ -151,7 +151,10 @@ P.S.如果第二步,手机和电脑无法直接通过IP地址进入管理界面�
 
 将unicode的内存编码值进行存储，读取文件时在反向转换回来。这里就采用了unicode-escape的方式
 
-12345678print(u&apos;中文测试&apos;.encode(&apos;utf-8&apos;))p ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/08/写爬虫过程中碰到的编码问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/">WSGI uWSGI uwsgi及nginx说明</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T07:50:12.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T07:50:12.000Z">2019-09-15</time></div><div class="recent-post-content"> 客户端发出请求==&gt;服务器接受、处理请求与响应 的过程示意图
+12345678print(u&apos;中文测试&apos;.encode(&apos;utf-8&apos;))p ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/08/写爬虫过程中碰到的编码问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/二分搜索降低时间复杂度/">二分搜索降低时间复杂度</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T13:36:01.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T13:36:01.000Z">2019-09-15</time></div><div class="recent-post-content"> 二分搜索降低时间复杂度
+123456int main()&#123;    cin &gt;&gt; n &gt;&gt; m;    for(int i=0;i&lt;n;i++) cin &gt;&gt; s[i];    canFit();    return 0;&#125;
+
+1234567891011121314151617#include &lt;iostream&gt;#include &lt;algorithm&gt;#define MAXN 150using namespace std;int n,m,s[MAXN];int ss[MAXN];bool canFit()& ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2018/11/10/二分搜索降低时间复杂度/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/">WSGI uWSGI uwsgi及nginx说明</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T07:50:12.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T07:50:12.000Z">2019-09-15</time></div><div class="recent-post-content"> 客户端发出请求==&gt;服务器接受、处理请求与响应 的过程示意图
 
  1. WSGI：
 
@@ -229,54 +232,7 @@ Accept:请求报头域，用于指定客户端可接受 ...</div><div class="rec
 结合cookielib及urllib2，Python2时期比较常用的方法，年代比较久远了。个人觉得太麻烦，改用requests.
 ▲需要注意的是cookielib在python3中已经改成了http.cookiejar
 
-1234567891011121314151617181920212223242526272829303132333435#该方法本人未测试import urllib2import cookielib#将cookie保存在文件中def saveCookie():    #设置保存cookie的文件    filename = &apos;cooki ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——响应/">Python爬虫知识点——响应</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:17.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:17.000Z">2019-09-15</time></div><div class="recent-post-content"> 响应：
-响应状态码、响应头、响应体
- 响应状态码：
-					表2-3常见的错误代码及错误原因
-
-
-
-
-状态码
-说明
-详情
-
-
-
-
-100
-继续
-请求者应当继续提出请求。服务器返回此代码表示已收到请求的第一部分，正在等待其余部分。
-
-
-101
-切换协议
-请求者已要求服务器切换协议，服务器已确认并准备切换。
-
-
-200
-成功
-服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。
-
-
-201
-已创建
-请求成功并且服务器创建了新的资源。
-
-
-202
-已接受
-服务器已接受请求，但尚未处理。
-
-
-203
-非授权信息
-服务器已成功处理了请求，但返回的信息可能来自另一来源。
-
-
-204
-无内容
-服 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——响应/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——代理/">Python爬虫知识点——代理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:28.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:28.000Z">2019-09-15</time></div><div class="recent-post-content"> 代理
+1234567891011121314151617181920212223242526272829303132333435#该方法本人未测试import urllib2import cookielib#将cookie保存在文件中def saveCookie():    #设置保存cookie的文件    filename = &apos;cooki ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——代理/">Python爬虫知识点——代理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:28.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:28.000Z">2019-09-15</time></div><div class="recent-post-content"> 代理
  基本原理
 代理实际上指代理服务器。功能是代理 网络用户去取得网络信息，是网络信息的中转站。
 正常的请求过程为：发送请求给服务器===&gt;web服务器吧响应传回

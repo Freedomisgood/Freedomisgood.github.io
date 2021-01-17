@@ -135,7 +135,20 @@ Add i j，i和j为正整数，表示第i个仓库增加j个库存（j不超过22
 Sub i j，i和j为正整数，表示第i个仓库减少个库存（j不超过220）
 Query i j，i和j为正整数，i&lt;=j，表示询问第i到第个仓库的总库存；End 表示结束，这条命令在每组数据最后出现；
 
-思路一：用array去存储每 ...</div><div class="read-more"><a class="more" href="/2019/12/07/ACM-树状数组和线段树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax-极小极大算法——2048/">MinMax-极小极大算法——2048</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:46:41.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:46:41.000Z">2020-02-04</time></div><div class="recent-post-content"> MinMax-极小极大算法——2048
+思路一：用array去存储每 ...</div><div class="read-more"><a class="more" href="/2019/12/07/ACM-树状数组和线段树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/02/02/PAT冲冲冲——乙级/">PAT冲冲冲——乙级</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-02-02T08:26:41.000Z">2020-02-02</time><i class="fa fa-edit"></i><time datetime="2020-02-02T08:26:41.000Z">2020-09-05</time></div><div class="recent-post-content"> PAT冲冲冲——乙级
+
+PAT甲级练习题 ——PAT (Advanced Level) Practice 
+PAT甲级(Advanced Level)真题
+柳婼 の blog经验
+saquarius’s blog
+PAT甲级题目及分类总结
+pat甲级题解目录
+
+▲报名费256，可以刷牛客网的题来获得-50的优惠券，该练习场下的所有题目只要通过都算
+ 乙级练习题
+ NowCoder数列
+
+没想到第二题就是考了个数据范围，由于0≤n≤1000000，所以F(n)必然比long long大，而判断3的倍数可表示为===&gt; F(n) % 3 —&gt; (F(n-1)%3 + F(n-2)%3 ...</div><div class="read-more"><a class="more" href="/2020/02/02/PAT冲冲冲——乙级/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax-极小极大算法——2048/">MinMax-极小极大算法——2048</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:46:41.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:46:41.000Z">2020-02-04</time></div><div class="recent-post-content"> MinMax-极小极大算法——2048
  算法介绍
  MinMax
 
@@ -283,12 +296,4 @@ You are playing a game which you will battle with an enemy. As you don’t want 
 使用的时候报错Build info: version: 'unknown', revision: 'unknown', time: 'unknown'，以为是appnium版本的问题，第一次安装的是1.13，后来换成了1.9，其实没多大区别，只不过据说要保证版本在1.6以上。
 更换版本后，发现还是Build info:  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></div><div class="read-more"><a class="more" href="/2019/10/18/软件测试笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/15/玩玩Stm32/">玩玩Stm32</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-15</time><i class="fa fa-edit"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-18</time></div><div class="recent-post-content"> 玩玩Stm32
  文件结构
-12345678910111213141516G:.├───CORE	# startup_stm32f10x_hd.s汇编编写的启动文件|			# core_cm3.c底层函数├───HARDWARE	# 相关外设的初始化代码├───OBJ├───STM32F10x_FWLib	# 固件库包: GPIO/i2c/...│   ├───inc│   └───src├───SYSTEM			# 正点原子提供的常用、通用模块│   ├───delay│   ├───sys│   └───usart└───USER # stm32f10x_it.c 中断管理文件    | ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/15/玩玩Stm32/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/06/Python多进程/">Python多进程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-06T12:17:44.000Z">2019-10-06</time><i class="fa fa-edit"></i><time datetime="2019-10-06T12:17:44.000Z">2019-10-07</time></div><div class="recent-post-content"> Python多进程
- 守护进程
-
-守护进程其实就是**“子进程“是否伴随主进程一起结束**:守护==&gt;伴随，即守护进程会伴随主进程的代码运行完毕后而死掉
-
-进程：当父进程需要将一个任务并发出去执行，需要将该任务放到以个子进程里
-守护：当该子进程内的代码在父进程代码运行完毕后就没有存在的意义了，就应该
-将该子进程设置为守护进程，会在父进程代码结束后死掉
-1234567891011121314151617181920212223from multiprocessing import Processimport timedef foo():    print(123)    time.sle ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/10/06/Python多进程/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+12345678910111213141516G:.├───CORE	# startup_stm32f10x_hd.s汇编编写的启动文件|			# core_cm3.c底层函数├───HARDWARE	# 相关外设的初始化代码├───OBJ├───STM32F10x_FWLib	# 固件库包: GPIO/i2c/...│   ├───inc│   └───src├───SYSTEM			# 正点原子提供的常用、通用模块│   ├───delay│   ├───sys│   └───usart└───USER # stm32f10x_it.c 中断管理文件    | ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/15/玩玩Stm32/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

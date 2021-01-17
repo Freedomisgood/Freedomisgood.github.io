@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">IDEA插件开发</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/12/01</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">518</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">IDEA插件开发</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/01/08</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">772</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
 <p>目的是想将类方法和成员方法区分开来， 想设计这么一个插件</p>
 </blockquote>
 <h2 id="新建idea-插件工程"><a class="markdownIt-Anchor" href="#新建idea-插件工程"></a> 新建IDEA 插件工程</h2>
@@ -113,7 +113,98 @@
 <p>在xml配置指定</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application-components</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">component</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">implementation-class</span>&gt;</span></span><br><span class="line">        top.nymrli.privatesee.MyApplicationComponent</span><br><span class="line">      <span class="tag">&lt;/<span class="name">implementation-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">application-components</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="弹窗效果"><a class="markdownIt-Anchor" href="#弹窗效果"></a> 弹窗效果</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TanChuanDialog</span> <span class="keyword">extends</span> <span class="title">DialogWrapper</span> </span>&#123;</span><br><span class="line">    JPanel jPanel;</span><br><span class="line">    JLabel label;</span><br><span class="line">    JButton btn;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TanChuanDialog</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">// 设置弹窗的标题</span></span><br><span class="line">        setTitle(<span class="string">"启动弹窗"</span>);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置弹窗中间展示内容</span></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> JComponent <span class="title">createCenterPanel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        jPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">        label = <span class="keyword">new</span> JLabel(<span class="string">"显示内容"</span>);</span><br><span class="line">        jPanel.add(label);</span><br><span class="line">        <span class="keyword">return</span> jPanel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自定义设置底部的按钮</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> JComponent <span class="title">createSouthPanel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        jPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">         btn = <span class="keyword">new</span> JButton(<span class="string">"再干一杯"</span>);</span><br><span class="line">         btn.addActionListener(e-&gt;&#123;</span><br><span class="line">             label.setText(<span class="string">"被点击了哦"</span>);</span><br><span class="line">         &#125;);</span><br><span class="line">        jPanel.add(btn);</span><br><span class="line">        <span class="keyword">return</span> jPanel;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/07/11/IDEA插件开发/">https://nymrli.top/2020/07/11/IDEA插件开发/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2020/09/04/SQL练习/" title="SQL练习"><span>< PreviousPost</span><br><span class="prevTitle">SQL练习</span></a><a class="nextSlogan" href="/2020/05/24/getBargains的record和Solution/" title="getBargains的record和Solution"><span>NextPost ></span><br><span class="nextTitle">getBargains的record和Solution</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TanChuanDialog</span> <span class="keyword">extends</span> <span class="title">DialogWrapper</span> </span>&#123;</span><br><span class="line">    JPanel jPanel;</span><br><span class="line">    JLabel label;</span><br><span class="line">    JButton btn;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TanChuanDialog</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">// 设置弹窗的标题</span></span><br><span class="line">        setTitle(<span class="string">"启动弹窗"</span>);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置弹窗中间展示内容</span></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> JComponent <span class="title">createCenterPanel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        jPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">        label = <span class="keyword">new</span> JLabel(<span class="string">"显示内容"</span>);</span><br><span class="line">        jPanel.add(label);</span><br><span class="line">        <span class="keyword">return</span> jPanel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自定义设置底部的按钮</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> JComponent <span class="title">createSouthPanel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        jPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">         btn = <span class="keyword">new</span> JButton(<span class="string">"再干一杯"</span>);</span><br><span class="line">         btn.addActionListener(e-&gt;&#123;</span><br><span class="line">             label.setText(<span class="string">"被点击了哦"</span>);</span><br><span class="line">         &#125;);</span><br><span class="line">        jPanel.add(btn);</span><br><span class="line">        <span class="keyword">return</span> jPanel;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="插件推荐"><a class="markdownIt-Anchor" href="#插件推荐"></a> 插件推荐</h1>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li>sequencediagram  时序图生成插件</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>插件名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Codegalance</td>
+<td>提供侧栏的代码缩览图</td>
+</tr>
+<tr>
+<td>translation</td>
+<td>IDE内提供划线翻译功能</td>
+</tr>
+<tr>
+<td>grep-console</td>
+<td>显示多颜色调试日志</td>
+</tr>
+<tr>
+<td><a href="https://my.oschina.net/codingcloud/blog/3076722" target="_blank" rel="noopener">restfultoolkit</a></td>
+<td><em>一套 RESTful 服务开发辅助工具集</em>，<br>1. 可根据URL查找对应controller<br>2. 提供一个service tree窗口<br>3. 一个简单的http请求工具<br>4. 提供将类生成json数据</td>
+</tr>
+<tr>
+<td>gsonformaterPlus</td>
+<td>json对象生成器</td>
+</tr>
+<tr>
+<td>jsonparser</td>
+<td>内置json美化工具</td>
+</tr>
+<tr>
+<td>mybatis log plugin (现收费)</td>
+<td>根据log4j的打印的sql日志一键生成执行的<code>sql</code>语句</td>
+</tr>
+<tr>
+<td><a href="https://www.cnblogs.com/tdyang/p/12855971.html" target="_blank" rel="noopener">free mybatis plugin</a></td>
+<td>1.提供xml和dao层的互相跳转功能，箭头形状。<br>2，<br>mapper生成xml文件: alt+enter快捷键<br>3.mybatis自动补全及语法错误提示<br>4.集成mybatis generator gui界面</td>
+</tr>
+<tr>
+<td>Alibaba Java Coding Guidelines</td>
+<td>阿里巴巴JAVA开发规范检测插件</td>
+</tr>
+<tr>
+<td>codata</td>
+<td>人工智能代码检测补全插件</td>
+</tr>
+<tr>
+<td>easycode</td>
+<td>自动生成mybatis mapper相关</td>
+</tr>
+<tr>
+<td>lombok</td>
+<td>lombok识别插件，2020IDEA已内置</td>
+</tr>
+<tr>
+<td>JUnitGenerate</td>
+<td>单元测试生成器</td>
+</tr>
+<tr>
+<td>MyBatisCodeHelperPro</td>
+<td>全能mybatis插件</td>
+</tr>
+<tr>
+<td>alibaba cloud toolkit</td>
+<td>快速部署到服务器</td>
+</tr>
+<tr>
+<td>idea zookeeper</td>
+<td>图形化zookeeper</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.zhihu.com/zvideo/1319971719340761088" target="_blank" rel="noopener">https://www.zhihu.com/zvideo/1319971719340761088</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/07/11/IDEA插件开发/">https://nymrli.top/2020/07/11/IDEA插件开发/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2020/09/04/SQL练习/" title="SQL练习"><span>< PreviousPost</span><br><span class="prevTitle">SQL练习</span></a><a class="nextSlogan" href="/2020/05/24/getBargains的record和Solution/" title="getBargains的record和Solution"><span>NextPost ></span><br><span class="nextTitle">getBargains的record和Solution</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'IDEA插件开发',
   owner: 'Freedomisgood',
   repo: 'Freedomisgood.github.io',
@@ -122,4 +213,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#新建idea-插件工程"><span class="toc-number">1.</span> <span class="toc-text"> 新建IDEA 插件工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建action"><span class="toc-number">2.</span> <span class="toc-text"> 新建action</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动初始化"><span class="toc-number">3.</span> <span class="toc-text"> 启动初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#弹窗效果"><span class="toc-number">4.</span> <span class="toc-text"> 弹窗效果</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#新建idea-插件工程"><span class="toc-number">1.</span> <span class="toc-text"> 新建IDEA 插件工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建action"><span class="toc-number">2.</span> <span class="toc-text"> 新建action</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动初始化"><span class="toc-number">3.</span> <span class="toc-text"> 启动初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#弹窗效果"><span class="toc-number">4.</span> <span class="toc-text"> 弹窗效果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#插件推荐"><span class="toc-number"></span> <span class="toc-text"> 插件推荐</span></a></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

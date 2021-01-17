@@ -97,7 +97,21 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/09/21/手撕操作系统中的页面置换算法/">手撕操作系统中的页面置换算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-21T11:14:25.000Z">2020-09-21</time><i class="fa fa-edit"></i><time datetime="2020-09-21T11:14:25.000Z">2020-12-21</time></div><div class="recent-post-content"> 操作系统基础 内存换页算法
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/02/03/学会投资——做一个小小的股民/">学会投资——做一个小小的股民</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-02-03T09:03:38.000Z">2020-02-03</time><i class="fa fa-edit"></i><time datetime="2020-02-03T09:03:38.000Z">2021-01-17</time></div><div class="recent-post-content">
+这一学期任选课选的是投资理财，本也有意接触投资这一方面，因此在开学后不断接触股票相关知识，不断在模拟盘尝试。在2019年11月6日正式关注股票，开始实盘炒股。
+由于很多概念点掌握的不是很清晰，所以决定把所有相关概念全都搜查确认一遍，同时记录下来，有益他人入门。
+
+ 入门概念
+ K线
+
+ 阻力位和支撑位
+我们把“向上反弹的底点”称为支撑位。用某个价格水平或图表上某个区域来表示。在这个点位下方,买方兴趣强大,足以抗拒卖方形成的强大压力。结果价格在这里停止下跌,回头向上反弹。通常,当前一个向上反弹的底点形成后,就可以确定一个支撑位了。反之则为阻力位.——支撑位表明了，这只股票合理的价格区间，一般在 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="福利"> 福利</a></div><div class="read-more"><a class="more" href="/2020/02/03/学会投资——做一个小小的股民/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/07/11/IDEA插件开发/">IDEA插件开发</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-07-11T07:50:42.000Z">2020-07-11</time><i class="fa fa-edit"></i><time datetime="2020-07-11T07:50:42.000Z">2021-01-08</time></div><div class="recent-post-content">
+目的是想将类方法和成员方法区分开来， 想设计这么一个插件
+
+ 新建IDEA 插件工程
+File -&gt; new -&gt; Project -&gt; Plugin即可
+初始会生成一个项目xml配置文件, 以下是我进行修改后的
+12345678910111213141516171819202122232425262728293031323334353637&lt;idea-plugin&gt;  &lt;id&gt;top.nymrli.privatesee&lt;/id&gt;  &lt;name&gt;privateSee&lt;/name&gt;  &lt;version&gt;1 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2020/07/11/IDEA插件开发/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/21/手撕操作系统中的页面置换算法/">手撕操作系统中的页面置换算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-21T11:14:25.000Z">2020-09-21</time><i class="fa fa-edit"></i><time datetime="2020-09-21T11:14:25.000Z">2020-12-21</time></div><div class="recent-post-content"> 操作系统基础 内存换页算法
 公平算法：
 
 随机算法、先来先出（FIFO）算法、第二次机会算法、时钟算法
@@ -129,13 +143,7 @@ Pycharm并没有IDEA一样可以设置对import进行排序以及自动消除没
  Python中模块，包，库概念
 模块：就是.py文件，里面定义了一些函数和变量，需要的时候就可以导入这些模块。
 包：在模块之上的概念，为了方便管理而将文件进行打包。包目录下第一个文件便是__init__.py，然后是一些模块文件和子目录，假如子目录中也有__init__.py，那么它就是这个包的子包了。
-库：具有相关功能模块、包的集合。这也是Python ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/10/23/Python中import的细节/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/07/11/IDEA插件开发/">IDEA插件开发</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-07-11T07:50:42.000Z">2020-07-11</time><i class="fa fa-edit"></i><time datetime="2020-07-11T07:50:42.000Z">2020-12-01</time></div><div class="recent-post-content">
-目的是想将类方法和成员方法区分开来， 想设计这么一个插件
-
- 新建IDEA 插件工程
-File -&gt; new -&gt; Project -&gt; Plugin即可
-初始会生成一个项目xml配置文件, 以下是我进行修改后的
-12345678910111213141516171819202122232425262728293031323334353637&lt;idea-plugin&gt;  &lt;id&gt;top.nymrli.privatesee&lt;/id&gt;  &lt;name&gt;privateSee&lt;/name&gt;  &lt;version&gt;1 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2020/07/11/IDEA插件开发/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/09/scrcpy-AutoJS/">scrcpy+AutoJS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-09T03:26:19.000Z">2020-11-09</time><i class="fa fa-edit"></i><time datetime="2020-11-09T03:26:19.000Z">2020-11-14</time></div><div class="recent-post-content"> scrcpy简介
+库：具有相关功能模块、包的集合。这也是Python ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/10/23/Python中import的细节/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/09/scrcpy-AutoJS/">scrcpy+AutoJS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-09T03:26:19.000Z">2020-11-09</time><i class="fa fa-edit"></i><time datetime="2020-11-09T03:26:19.000Z">2020-11-14</time></div><div class="recent-post-content"> scrcpy简介
 
 特点:
 利用电脑的键盘和鼠标可以控制手机。把 APK 文件拖拽到电脑窗口即可安装应用到手机，把普通文件拖拽到窗口即可复制到手机。
@@ -221,20 +229,7 @@ Docsify 一个神奇的动态生成文档网站的工具。
 扇区(Sector)大小是固定的，默认情况下，每个扇区（Sector）为512字节，2009年后，硬盘厂商开始发布4KB字节扇区的硬盘了，4KB扇区硬盘已经在消费级市场广泛应用。但是同一块硬盘上的扇区大小一定是一致的。不可能存在多种不同大小的扇区。
  逻辑扇区、物理扇区
 物理扇区是磁盘上真实存在对应的扇区；
-逻辑扇区是由于扇区大小由512B变成4KB后， 为了与老系统兼 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/09/06/扇区、块-簇/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/02/02/PAT冲冲冲——乙级/">PAT冲冲冲——乙级</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-02-02T08:26:41.000Z">2020-02-02</time><i class="fa fa-edit"></i><time datetime="2020-02-02T08:26:41.000Z">2020-09-05</time></div><div class="recent-post-content"> PAT冲冲冲——乙级
-
-PAT甲级练习题 ——PAT (Advanced Level) Practice 
-PAT甲级(Advanced Level)真题
-柳婼 の blog经验
-saquarius’s blog
-PAT甲级题目及分类总结
-pat甲级题解目录
-
-▲报名费256，可以刷牛客网的题来获得-50的优惠券，该练习场下的所有题目只要通过都算
- 乙级练习题
- NowCoder数列
-
-没想到第二题就是考了个数据范围，由于0≤n≤1000000，所以F(n)必然比long long大，而判断3的倍数可表示为===&gt; F(n) % 3 —&gt; (F(n-1)%3 + F(n-2)%3 ...</div><div class="read-more"><a class="more" href="/2020/02/02/PAT冲冲冲——乙级/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/15/重拾Java笔记/">重拾Java笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-15T02:22:04.000Z">2020-05-15</time><i class="fa fa-edit"></i><time datetime="2020-05-15T02:22:04.000Z">2020-08-05</time></div><div class="recent-post-content"> 重拾Java笔记
+逻辑扇区是由于扇区大小由512B变成4KB后， 为了与老系统兼 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/09/06/扇区、块-簇/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/15/重拾Java笔记/">重拾Java笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-15T02:22:04.000Z">2020-05-15</time><i class="fa fa-edit"></i><time datetime="2020-05-15T02:22:04.000Z">2020-08-05</time></div><div class="recent-post-content"> 重拾Java笔记
 
 工作主要用Java, 因此开始准备Java基础再补补。根据小猴子1024-JAVA基础整理笔记
 

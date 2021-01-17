@@ -37,6 +37,7 @@ https://nymrli.top/2020/04/29/华为春招4-29笔试题/
 https://nymrli.top/2020/04/20/剑指Offer-leetcode刷题记录/
 https://nymrli.top/2020/03/23/VsCode配置Latex(texLive)环境/
 https://nymrli.top/2020/03/04/算法笔记Codeup题解/
+https://nymrli.top/2020/02/03/学会投资——做一个小小的股民/
 https://nymrli.top/2020/02/02/PAT冲冲冲——乙级/
 https://nymrli.top/2019/12/25/sshpass——shell脚本实现SSH连接其他主机并执行终端命令/
 https://nymrli.top/2019/12/12/树莓派初始化操作/
@@ -47,4 +48,3 @@ https://nymrli.top/2019/12/05/ACM-二分图/
 https://nymrli.top/2019/12/05/Hungarian-algorithm匈牙利算法/
 https://nymrli.top/2019/11/26/PIL的Image笔记/
 https://nymrli.top/2019/11/26/2019年8月23号运维笔记/
-https://nymrli.top/2019/11/26/app测试/

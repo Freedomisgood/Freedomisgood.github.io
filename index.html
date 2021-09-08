@@ -97,7 +97,85 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/12/08/《人工智能-模型与算法——浙江大学公开课》笔记/">《人工智能:模型与算法——浙江大学公开课》笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-08T07:06:21.000Z">2020-12-08</time><i class="fa fa-edit"></i><time datetime="2020-12-08T07:06:21.000Z">2020-12-26</time></div><div class="recent-post-content"> P11.1可计算思想起源与发展
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2021/08/11/Shiro使用学习/">Shiro使用学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-11T07:39:08.000Z">2021-08-11</time><i class="fa fa-edit"></i><time datetime="2021-08-11T07:39:08.000Z">2021-09-07</time></div><div class="recent-post-content">Apache Shiro 是一个强大易用的 Java 安全框架，提供了认证、授权、加密和会话管理等功能（如下图），对于任何一个应用程序，Shiro 都可以提供全面的安全管理服务。并且相对于其他安全框架，Shiro 要简单的多。
+
+ Shiro 的架构
+
+从外部来看应该具有非常简单易于使用的 API，且 API 契约明确；从内部来看的话，其应该有一个可扩展的架构，即非常容易插入用户自定义实现，
+
+交互流程如下：
+
+应用代码直接交互的对象是 Subject，也就是说 Shiro 的对外 API 核心就是 Subject。
+Subject：主体，代表了当前 “用户”，这个用户不一定是一个具体的人，与 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="应用框架学习"> 应用框架学习</a></div><div class="read-more"><a class="more" href="/2021/08/11/Shiro使用学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/24/学习画好架构图/">学习画好架构图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-24T06:57:11.000Z">2021-08-24</time><i class="fa fa-edit"></i><time datetime="2021-08-24T06:57:11.000Z">2021-08-24</time></div><div class="recent-post-content">
+一图胜万语，做好一张架构图能让别人一眼就清晰地弄懂程序的功能与依赖，大大降低大家的理解成本和提升沟通效率。但作为新人而言，如何画出要点，提炼出核心概念是个有难度的事。
+
+ 什么是架构？
+架构是结构和愿景，是对系统中的实体以及实体之间的关系所进行的抽象描述，是一系列的决策。
+系统架构是概念的体现，是对物/信息的功能与形式元素之间的对应情况所做的分配，是对元素之间的关系以及元素同周边环境之间的关系所做的定义。
+ 什么是架构图？
+系统架构图是为了抽象地表示软件系统的整体轮廓和各个组件之间的相互关系和约束边界，以及软件系统的物理部署和软件系统的演进方向的整体视图。
+ 架构图的作用
+要让干系人理解、遵 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="福利"> 福利</a></div><div class="read-more"><a class="more" href="/2021/08/24/学习画好架构图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/19/AOP学习/">AOP学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-19T08:35:08.000Z">2021-08-19</time><i class="fa fa-edit"></i><time datetime="2021-08-19T08:35:08.000Z">2021-08-20</time></div><div class="recent-post-content"> AOP学习
+ AOP
+ 要素
+
+
+Aspect切面：是切入点和通知的抽象——切面则是横切关注点的抽象，与类相似，类是对物体特征的抽象，切面则是横切关注点抽象。
+切入点PointCut：定义要拦截哪些类的哪些方法
+
+切入点表达式@Pointcut(&quot;execution(* com.service.*.*(..))&quot;)
+执行exectution后的第一个参数代表的是方法的修饰范围（public、private、protected）,第二个表示拦截的方法，第一个*表示所有类，第二个*表示所有的方法，括号中的…表示任意参数
+常用的切入点表达式有：
+
+execution(publi ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="spring"> spring</a></div><div class="read-more"><a class="more" href="/2021/08/19/AOP学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/11/JWT使用学习/">JWT使用学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-11T08:44:17.000Z">2021-08-11</time><i class="fa fa-edit"></i><time datetime="2021-08-11T08:44:17.000Z">2021-08-18</time></div><div class="recent-post-content"> JWT: Json Web Token
+
+
+与普通Token一样都是访问资源的令牌，都可以记录用户信息，都是只有验证成功后才可以获取信息。
+不同的是普通Token，服务端验证token信息时要进行数据库查询操作；JWT验证token信息就不用，在服务端使用密钥校验就可以，不用经过数据库查询。==》它是一个数字签名
+
+
+ JWT信息组成
+JSON Web Token由三部分组成，它们之间用圆点(.)连接。这三部分分别是：
+
+
+Header
+
+Header header典型的由两部分组成：token的类型（“JWT”）和算法名称（比如：HMAC SHA256或者RSA等等）。
+
+
+
+Payloa ...</div><div class="read-more"><a class="more" href="/2021/08/11/JWT使用学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/07/27/Go的配置和使用/">Go的配置和使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-07-27T03:10:11.000Z">2021-07-27</time><i class="fa fa-edit"></i><time datetime="2021-07-27T03:10:11.000Z">2021-07-27</time></div><div class="recent-post-content"> Vscode中配置Go
+ 1.首先安装好Go
+ 2.vscode中下载Go环境插件
+
+ 3.安装Go程序插件
+
+Go语言开发的时候为我们提供诸如代码提示、代码自动补全等功能。
+
+1234# 打开输入框ctrl + shift + p # 输入Go:Install/Update Tools
+▲由于网络问题会无法安装插件，网上老版的方法是在Go目录下从github手动下载好文件，但亲测无效，转而采用新方法如下。
+ 先设置GOPROXY
+
+打开终端执行以下命令：go env -w GOPROXY=https://goproxy.cn,direct
+环境配置中按照https://goproxy.io ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a></div><div class="read-more"><a class="more" href="/2021/07/27/Go的配置和使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/03/03/天猫秒杀插件-Chrome插件编写/">天猫秒杀插件-Chrome插件编写</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-03-03T13:37:15.000Z">2021-03-03</time><i class="fa fa-edit"></i><time datetime="2021-03-03T13:37:15.000Z">2021-03-03</time></div><div class="recent-post-content"> 天猫秒杀插件
+ Tmall_Kill
+Code Template： https://link.zhihu.com/?target=https%3A//github.com/cehui0303/Tmall_Tickets
+代码比较简单，实现原理为，打开浏览器后执行插件，JS脚本将会在指定时间点击“结算”按钮，然后发起订单，从而锁定库存抢货。
+ main.js
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="脚本"> 脚本</a></div><div class="read-more"><a class="more" href="/2021/03/03/天猫秒杀插件-Chrome插件编写/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/01/24/认真学次DP——动态规划/">认真学次DP——动态规划</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time><i class="fa fa-edit"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time></div><div class="recent-post-content"> 动态规划DP
+
+一般算法面试题解决最优化问题，有两种解决途径：暴力枚举、或者DP，由于其灵活和高效，无数程序员为它着迷，大厂面试也是必考。
+但是，动态规划形式上非常多变，本质上没有套路，问题不同，动态规划的迭代方程就不同。而有些问题，对于计算机科学家，都难以找到迭代方程。因此，对于平平常常的我们，刷算法题时想不出动态规划的解法，也大可不必气馁。
+
+ DP组成——三个条件
+某个问题是否能应用动态规划，通常需要满足 3 个条件：
+
+具有最优子结构
+具有无后续性
+具有重复子问题
+
+最优子结构性质：只需求得子问题的最优解后，原问题的最优解最能推导出来，这表明此问题具备最优子结构性质！
+**后续状态无 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="算法"> 算法</a></div><div class="read-more"><a class="more" href="/2021/01/24/认真学次DP——动态规划/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/08/《人工智能-模型与算法——浙江大学公开课》笔记/">《人工智能:模型与算法——浙江大学公开课》笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-08T07:06:21.000Z">2020-12-08</time><i class="fa fa-edit"></i><time datetime="2020-12-08T07:06:21.000Z">2020-12-26</time></div><div class="recent-post-content"> P11.1可计算思想起源与发展
 智能： 从感知、到理解、到认知、到决策与行动
 计算的诞生：从可计算到不可计算-&gt;20世纪初，人们发现有许多问题无法找到解决的方法。于是开始怀疑，是否对这些问题来说，根本就不存在算法，即不可计算。
 人工智能：以机器为载体的人类智能或生物智能
@@ -116,13 +194,7 @@
 UML(Unified Modeling Language)是一种标准的图形化建模语言，是一种为面对对象系统的产品进行说明、可视化、编制文档的标准语言，它是面向对象分析与设计的一种标准表示。
 
 （1）UML是一种语言。
-从上面的定义可以看出，就其本质，UML是一种语言，既然是语言，那就是用来交流的，UML用来在哪些人员之间进行交流呢？很明显， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/12/11/UML简单记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/17/李宏毅机器学习-摘要/">李宏毅机器学习_摘要</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-17T12:36:05.000Z">2020-11-17</time><i class="fa fa-edit"></i><time datetime="2020-11-17T12:36:05.000Z">2020-12-20</time></div><div class="recent-post-content"> P3Regression - Case Study
- regularization解决overfitting(L2正则化解决过拟合问题)
-
-
-regularization可以使曲线变得更加smooth，training data上的error变大，但是 testing data上的error变小。有关regularization的具体原理说明详见下一部分
-
-原来的loss function只考虑了prediction的error，即$$\sum_{i}{n}\left(\hat{y}{i}-\left(b+\sum_{j} w_{j} x_{j}\right)\right)^{2}$$；而r ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2020/11/17/李宏毅机器学习-摘要/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/29/github中各配置文件/">github中各配置文件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-29T10:10:04.000Z">2020-11-29</time><i class="fa fa-edit"></i><time datetime="2020-11-29T10:10:04.000Z">2020-12-19</time></div><div class="recent-post-content"> .pre-commit-config.yaml
+从上面的定义可以看出，就其本质，UML是一种语言，既然是语言，那就是用来交流的，UML用来在哪些人员之间进行交流呢？很明显， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/12/11/UML简单记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/29/github中各配置文件/">github中各配置文件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-29T10:10:04.000Z">2020-11-29</time><i class="fa fa-edit"></i><time datetime="2020-11-29T10:10:04.000Z">2020-12-19</time></div><div class="recent-post-content"> .pre-commit-config.yaml
 
 来源：easyquotation，项目中有makefile和.pre-commit-config.yaml、.coveragerc、.pylintrc三个比较新奇的。
 
@@ -144,15 +216,7 @@ homework for ZJU: https://mo.zju.edu.cn/homework/zju_ai_2020_ss
 A. 生成受损图像。
 
 a) 受损图像是由原始图像添加了不同噪声遮罩（noise masks）得到的。
-b ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/深度学习-Pytorch读书笔记/">深度学习+Pytorch学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T03:24:12.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T03:24:12.000Z">2020-12-13</time></div><div class="recent-post-content">
-在课程设计实验周里总共读了3本书， 《深度学习算法实践》、《深度学习框架PyTorch快速开发与实战》、《PyTorch深度学习入门》。 其中《深度学习算法实践》、《深度学习框架PyTorch快速开发与实战》比较失望，质量比较差；《PyTorch深度学习入门》的代码质量高一点，但需要理论辅助，由于事先看了李宏毅老师的深度学习，因此还算容易入手。
-
- 《深度学习框架PyTorch快速开发与实战》
-网上关于《深度学习框架PyTorch快速开发与实战》的评价：
-
- 关于作者
-
-作者一共三个，在封面内侧有简单的介绍, 三个作者的简绍里没有“深度学习”相关的内容（请注意书名）.单从这本书的作者介绍来说 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2020/11/28/深度学习-Pytorch读书笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/细品单例模式/">细品单例模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time></div><div class="recent-post-content">虽然还没正式踏入开发就业浪潮中，但为了保证自己的代码质量，最近还是在学设计模式相关内容。以下为读《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记。
+b ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/细品单例模式/">细品单例模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time></div><div class="recent-post-content">虽然还没正式踏入开发就业浪潮中，但为了保证自己的代码质量，最近还是在学设计模式相关内容。以下为读《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记。
 
 GoF的《设计模式》就是设计模式的始祖、经典教科书。其描述严谨，举例恰当，分类组织，是应该反复细读的经典，两本书皆提及了GoF这本书，引用了GoF中的部分例子。
 
@@ -215,9 +279,7 @@ curlconverter提供了一个网页版： https://curl.trillworks.com/， 其实�
  Install
 1$ npm install --save curlconverter
  Usage
-123var curlc ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></div><div class="read-more"><a class="more" href="/2020/12/01/fork-curlconverter-for-Better/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/熟悉Latex写作/">学会Latex写作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T11:55:06.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T11:55:06.000Z">2020-11-28</time></div><div class="recent-post-content">首先开始的便是文档定义:
-12345\documentclass[bachelor]&#123;njupthesis&#125;% \documentclass[option]&#123;class&#125;% class有article, proc, minimal, book, slides% option: a4paper(纸张大小)、10pt(字体大小)、fleqn(行间公式对齐方式)、leqno(行间公式的编号对齐方式)、onecolumn(单栏)、titlepage(文档标题后另起一页)\end&#123;document&#125;
-查看： https://blog.csdn. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/11/28/熟悉Latex写作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/">《漫画机器学习入门》大关真之——读书笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T13:39:01.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T13:39:01.000Z">2020-11-28</time></div><div class="recent-post-content"> 《漫画机器学习入门》总结
+123var curlc ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></div><div class="read-more"><a class="more" href="/2020/12/01/fork-curlconverter-for-Better/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/">《漫画机器学习入门》大关真之——读书笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T13:39:01.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T13:39:01.000Z">2020-11-28</time></div><div class="recent-post-content"> 《漫画机器学习入门》总结
 机器学习是指计算机通过不断地处理数据并修正算法和参数来学习各种规则， 从而不断改进模型而得到更优化的算法。书中主要讲解了玻尔兹曼机的机器学习
  谁是世界上最美丽的人？
 
@@ -228,53 +290,4 @@ curlconverter提供了一个网页版： https://curl.trillworks.com/， 其实�
 误差函数： 在美丽程度这个问题上， 误差函数就是—— 计算“美丽程度”的实际输出与给定的理想输出之间的差值
 
 
-最优化问题：  最小化误差函数，其实是一个求解最优化问题：我们的任务就是要找到没有误差或者误差小到满足要求的最适合的模型。这就要通过调节模型中的参数，使误差函数值 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/22/Linux服务器同步时钟/">Linux服务器同步时钟</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-22T04:49:35.000Z">2020-11-22</time><i class="fa fa-edit"></i><time datetime="2020-11-22T04:49:35.000Z">2020-11-22</time></div><div class="recent-post-content"> 
-
-因为今天在集群193跑程序的时候发现时间不同步, 因此想想把集群的时间全部同步一下
-
-
-
-在Linux中设置系统时间，可以用date命令：
-1234# 查看时间$ date# 修改时间$ date -s "20140225 20:16:00"  #yyyymmdd hh:mm:ss
-
-
-Linux硬件时间的设置
-
-
-硬件时间的设置，可以用hwclock或者clock命令。两者基本相同，只用一个就行，只不过clock命令除了支持x86硬件体系外，还支持Alpha硬件体系。
-
-系统时间和硬件时间的同步
-
-同步系统时间和硬件时间，可以使用hwclock命令。
-4. 不同机器之间的时间同步
-为了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2020/11/22/Linux服务器同步时钟/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/15/JupyterHub搭建/">JupyterHub搭建</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-15T14:08:52.000Z">2020-11-15</time><i class="fa fa-edit"></i><time datetime="2020-11-15T14:08:52.000Z">2020-11-20</time></div><div class="recent-post-content">
-之前搭建的JupyterLab逐渐被使用起来了, 单用户的模式还是不太方便, 因此准备用JupyterHub来做下用户隔离
-
- 1. 安装nodejs和npm
-按照JupyterLab官方教程, 先是安装最新的nodejs和npm, 但是由于16.04的apt源安装的nodejs版本比较久, 因此在后面的安装中会有坑, 这边根据网上的教程手动安装最新的nodejs
-12$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -$ sudo apt-get install -y nodejs
-安装成功后输入node --v ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2020/11/15/JupyterHub搭建/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/12/GithubAction/">GithubActions</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-12T08:20:54.000Z">2020-11-12</time><i class="fa fa-edit"></i><time datetime="2020-11-12T08:20:54.000Z">2020-11-12</time></div><div class="recent-post-content">
-GitHub Actions 是 GitHub 的持续集成服务，于2018年10月推出。
-
- GitHub Actions 是什么？
-大家知道，持续集成由很多操作组成，比如抓取代码、运行测试、登录远程服务器，发布到第三方服务等等。GitHub 把这些操作就称为 actions。
-很多操作在不同项目里面是类似的，完全可以共享。GitHub 注意到了这一点，想出了一个很妙的点子，允许开发者把每个操作写成独立的脚本文件，存放到代码仓库，使得其他开发者可以引用。
-如果你需要某个 action，不必自己写复杂的脚本，直接引用他人写好的 action 即可，整个持续集成过程，就变成了一个 actions ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="小白文"> 小白文</a></div><div class="read-more"><a class="more" href="/2020/11/12/GithubAction/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/">南邮校园网CSDN等部分网站图片无法加载解决方案</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-10T10:14:56.000Z">2020-11-10</time><i class="fa fa-edit"></i><time datetime="2020-11-10T10:14:56.000Z">2020-11-10</time></div><div class="recent-post-content"> 问题定位
-转自： https://blog.csdn.net/pamzerbhu/article/details/108549279
-
-用语言描述如下：
-打开页面后页面加载正常，但是图片完全没有加载。但是挂全局代理是可以看到图片的。挂代理后如下所示：
-
-
-
-开始定位问题：
-点击审查元素，接着找到我这张图的链接，直接用浏览器打开，报错**NET::ERR_CERT_COMMON_NAME_INVALID**
-
-
-
-然后点击 高级–继续访问 img-blog.csdn.net (不安全)
-图片成功加载：
-
-
-好了，找到了问题。接下来就是面向搜索引擎的找方法时间。
-经过查询发现是DNS的问题（或者 ...</div><div class="read-more"><a class="more" href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+最优化问题：  最小化误差函数，其实是一个求解最优化问题：我们的任务就是要找到没有误差或者误差小到满足要求的最适合的模型。这就要通过调节模型中的参数，使误差函数值 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

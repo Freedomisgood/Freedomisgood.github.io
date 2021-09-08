@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">IDEA配置——自定义快捷键、生成注释</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/12/14</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,094</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="idea配置自定义快捷键-生成注释"><a class="markdownIt-Anchor" href="#idea配置自定义快捷键-生成注释"></a> IDEA配置——自定义快捷键、生成注释</h1>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">IDEA配置——自定义快捷键、生成注释</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/08/22</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,280</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="idea配置自定义快捷键-生成注释"><a class="markdownIt-Anchor" href="#idea配置自定义快捷键-生成注释"></a> IDEA配置——自定义快捷键、生成注释</h1>
 <blockquote>
 <p>以前因为上JAVA课，还是不常用Java， 所以安装了个Eclipse， 但是现在要经常使用java的话， 感觉还是IDEA的支持做的可能更加到位一点</p>
 </blockquote>
@@ -211,9 +211,14 @@
 <td style="text-align:center">Ctrl + W</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">切换到下一行</td>
+<td style="text-align:center">Split Line</td>
+<td style="text-align:center">Ctrl + enter</td>
+</tr>
+<tr>
+<td style="text-align:center">代码生成</td>
+<td style="text-align:center">Code - generate</td>
+<td style="text-align:center">alt + L</td>
 </tr>
 </tbody>
 </table>
@@ -275,7 +280,7 @@
 <tr>
 <td style="text-align:center">查看类继承关系图</td>
 <td style="text-align:center"></td>
-<td style="text-align:center">ctrl+alt+H</td>
+<td style="text-align:center">ctrl+alt+shift+U</td>
 </tr>
 </tbody>
 </table>
@@ -297,9 +302,18 @@
 <li><a href="http://xn--c1h978l9vlkycv0b31ip06ax0emv6bxteeq1b.No" target="_blank" rel="noopener">记得要把最下面的提示▲.No</a> applicable contexts yet.Define-&gt;设置为java</li>
 <li>然后在Edit variables里面添加参数和返回值的自动取值</li>
 </ol>
-<p>按上述步骤设置完后就可以使用了： 在方法上面直接输入<code>/ + 你设置的Abbreviation快捷键 + tab</code>键就直接生成了 （我设置的是<code>/ + q + tab</code>）</p>
+<p>按上述步骤设置完后就可以使用了： 在方法上面直接输入<code>/ + 你设置的Abbreviation快捷键 + tab</code>键就直接生成了 （我设置的是Abbreviation是q，那么通过<code>/ + q + tab</code>就可以调用导出了）</p>
 <p>神秘密码(Template text中填的):</p>
+<blockquote>
+<p><code>$params$</code>和<code>$returns$</code>在Edit variables中分别选择methodParameters(), methodReturnType()</p>
+</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">** </span><br><span class="line">* @Description: $description$ </span><br><span class="line">* @Param: $params$ </span><br><span class="line">* @Return: $returns$ </span><br><span class="line">* @Author: MrLi</span><br><span class="line">* @Date: $date$ </span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<p>不错的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">**</span><br><span class="line"> * @author: Mrli</span><br><span class="line"> * @description:  </span><br><span class="line"> * @date: $date$ $time$$param$ $return$</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，<code>date</code> 和 <code>time</code> 的 <code>Expression</code> 使用的是 IDEA 内置的函数，直接使用下拉框选择就可以了，而 <code>param</code> 这个参数 IDEA 默认的实现很差，因此我们需要手动实现，代码如下：</p>
+<p><code>groovyScript(&quot;def result = '';def params = \&quot;${_1}\&quot;.replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList(); for(i = 0; i &lt; params.size(); i++) {if(params[i] != '')result+='* @param: ' + params[i] + ((i &lt; params.size() - 1) ? '\\r\\n ' : '')}; return result == '' ? null : '\\r\\n ' + result&quot;, methodParameters())</code></p>
+<p>另外 <code>return</code> 这个参数需要修改，代码如下：</p>
+<p><code>groovyScript(&quot;return \&quot;${_1}\&quot; == 'void' ? null : '\\r\\n * @return: ' + \&quot;${_1}\&quot;&quot;, methodReturnType())</code></p>
 <h2 id="删除没有用到的包"><a class="markdownIt-Anchor" href="#删除没有用到的包"></a> 删除没有用到的包</h2>
 <p>1.手动快捷键</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + Alt + O1</span><br></pre></td></tr></table></figure>
@@ -322,6 +336,8 @@
 <li>codata</li>
 <li>easycode 自动生成mybatis mapper相关</li>
 <li>lombok</li>
+<li>SequenceDiagram</li>
+<li>Maven Helper</li>
 </ul>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/05/15/IDEA配置——自定义快捷键、生成注释/">https://nymrli.top/2020/05/15/IDEA配置——自定义快捷键、生成注释/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2020/05/24/getBargains的record和Solution/" title="getBargains的record和Solution"><span>< PreviousPost</span><br><span class="prevTitle">getBargains的record和Solution</span></a><a class="nextSlogan" href="/2020/05/15/重拾Java笔记/" title="重拾Java笔记"><span>NextPost ></span><br><span class="nextTitle">重拾Java笔记</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'IDEA配置——自定义快捷键、生成注释',

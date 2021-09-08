@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>JWT使用学习 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">JWT使用学习</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/08/18</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,953</span> | Reading time: <span class="post-count">11</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="jwt-json-web-token"><a class="markdownIt-Anchor" href="#jwt-json-web-token"></a> JWT: Json Web Token</h1>
+<blockquote>
+<ul>
+<li>与普通Token一样都是访问资源的令牌，都可以记录用户信息，都是只有验证成功后才可以获取信息。</li>
+<li>不同的是普通Token，服务端验证token信息时要进行数据库查询操作；JWT验证token信息就不用，在服务端使用<strong>密钥校验</strong>就可以，不用经过数据库查询。==》它是一个数字签名</li>
+</ul>
+</blockquote>
+<h2 id="jwt信息组成"><a class="markdownIt-Anchor" href="#jwt信息组成"></a> JWT信息组成</h2>
+<p>JSON Web Token由三部分组成，它们之间用圆点(.)连接。这三部分分别是：</p>
+<ul>
+<li>
+<p>Header</p>
+<ul>
+<li>Header header典型的由两部分组成：token的类型（“JWT”）和算法名称（比如：HMAC SHA256或者RSA等等）。</li>
+</ul>
+</li>
+<li>
+<p>Payload</p>
+<ul>
+<li>
+<p>Payload JWT的第二部分是payload，它包含声明（要求）。声明是关于实体(通常是用户)和其他数据的声明。声明有三种类型: registered, public 和 private。</p>
+</li>
+<li>
+<ul>
+<li>
+<p>Registered claims : 这里有一组预定义的声明，它们不是强制的，但是推荐。比如：iss (issuer), exp (expiration time), sub (subject), aud (audience)等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">// 这部分是Registered claims</span><br><span class="line">  &quot;iss&quot;: &quot;Online JWT Builder&quot;,  // 该JWT的签发者</span><br><span class="line">  &quot;iat&quot;: 1416797419, 		// iat(issued at): 在什么时候签发的(UNIX时间)</span><br><span class="line">  &quot;exp&quot;: 1448333419,    	// 什么时候过期，这里是一个Unix时间戳</span><br><span class="line">  &quot;aud&quot;: &quot;www.example.com&quot;,  // 接收该JWT的一方</span><br><span class="line">  &quot;sub&quot;: &quot;jrocket@example.com&quot;,  // 该JWT所面向的用户</span><br><span class="line">// 这部分是Public claims</span><br><span class="line">  &quot;GivenName&quot;: &quot;Johnny&quot;, </span><br><span class="line">  &quot;Surname&quot;: &quot;Rocket&quot;, </span><br><span class="line">  &quot;Email&quot;: &quot;jrocket@example.com&quot;, </span><br><span class="line">  &quot;Role&quot;: [ &quot;Manager&quot;, &quot;Project Administrator&quot; ] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Public claims : 可以随意定义。</p>
+</li>
+<li>
+<p>Private claims : 用于在同意使用它们的各方之间共享信息，并且不是注册的或公开的声明。 下面是一个例子：</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Signature</p>
+<ul>
+<li>签名秘钥。 为了得到签名部分，你必须有编码过的header、编码过的payload、<strong>一个秘钥</strong>，签名算法是header中指定的那个，然对它们签名即可。</li>
+</ul>
+</li>
+</ul>
+<p>注： 不要在JWT的payload或header中放置敏感信息，除非它们是加密的。</p>
+<p>然后对每一部分进行base64加密，再通过<code>.</code>组合即可得到JWT。 因此，一个典型的JWT看起来是这个样子的：<code>xxxxx.yyyyy.zzzzz</code></p>
+<p><img src="https://i.loli.net/2021/08/18/7r9GzsDtQqXZUV1.png" alt=""></p>
+<h2 id="jwt网络工作流程"><a class="markdownIt-Anchor" href="#jwt网络工作流程"></a> JWT网络工作流程</h2>
+<p><img src="https://i.loli.net/2021/08/18/JjZHgVbdhwGtiFN.png" alt=""></p>
+<img src="https://pic1.zhimg.com/80/v2-7789057d5744891fdf3366d7887ab6e8_1440w.jpg" style="zoom:50%;">
+<h2 id="使用场景"><a class="markdownIt-Anchor" href="#使用场景"></a> 使用场景：</h2>
+<ul>
+<li>
+<p>Authorization (授权) : 这是使用JWT的最常见场景。一旦用户登录，后续每个请求都将包含JWT，允许用户访问该令牌允许的路由、服务和资源。<strong>单点登录</strong>是现在广泛使用的JWT的一个特性，因为它的开销很小，并且可以轻松地跨域使用。</p>
+</li>
+<li>
+<p>Information Exchange (信息交换) : 对于安全的在各方之间传输信息而言，JSON Web Tokens无疑是一种很好的方式。因为JWT可以被签名，例如，用公钥/私钥对，你可以确定发送人就是它们所说的那个人。另外，由于签名是使用头和有效负载计算的，您还可以验证内容没有被篡改。</p>
+<p><a href="https://jwt.io/" target="_blank" rel="noopener">https://jwt.io/</a></p>
+</li>
+</ul>
+<h2 id="json-web-tokens是如何工作的"><a class="markdownIt-Anchor" href="#json-web-tokens是如何工作的"></a> JSON Web Tokens是如何工作的</h2>
+<p>在认证的时候，当用户用他们的凭证成功登录以后，一个JSON Web Token将会被返回。此后，token就是用户凭证了，你必须非常小心以防止出现安全问题。一般而言，你保存令牌的时候不应该超过你所需要它的时间。</p>
+<p>无论何时用户想要访问受保护的路由或者资源的时候，用户代理（通常是浏览器）都应该带上JWT，典型的，通常放在**Authorization header(授权头)**中，用Bearer schema。</p>
+<p>服务器上的受保护的路由将会检查Authorization header中的JWT是否有效，如果有效，则用户可以访问受保护的资源。如果JWT包含足够多的必需的数据，那么就可以减少对某些操作的数据库查询的需要，尽管可能并不总是如此。</p>
+<p>如果token是在授权头（Authorization header）中发送的，那么跨源资源共享(CORS)将不会成为问题，因为它不使用cookie。</p>
+<p>这个token必须要在每次请求时传递给服务端，它应该保存在请求头里， 另外，服务端要支持<code>CORS(跨来源资源共享)</code>策略，一般我们在服务端这么做就可以了<code>Access-Control-Allow-Origin: *</code>。</p>
+<h2 id="基于token的身份认证-与-基于服务器的身份认证-的区别"><a class="markdownIt-Anchor" href="#基于token的身份认证-与-基于服务器的身份认证-的区别"></a> 基于Token的身份认证 与 基于服务器的身份认证 的区别:</h2>
+<p>基于服务器的身份认证方式存在一些问题：</p>
+<ul>
+<li>Sessions : 每次用户认证通过以后，服务器需要创建一条记录保存用户信息，通常是在内存中，随着认证通过的用户越来越多，服务器的在这里的开销就会越来越大。</li>
+<li>Scalability : 由于Session是在内存中的，这就带来一些扩展性的问题。</li>
+<li>CORS : 当我们想要扩展我们的应用，让我们的数据被多个移动设备使用时，我们必须考虑跨资源共享问题。当使用AJAX调用从另一个域名下获取资源时，我们可能会遇到禁止请求的问题。</li>
+<li>CSRF : 用户很容易受到CSRF攻击。</li>
+</ul>
+<p><strong>JWT与Session的差异</strong></p>
+<ul>
+<li>它们都是存储用户信息；然而，Session是在服务器端的，客户端只有session id，而JWT是在客户端的。
+<ul>
+<li>Session方式存储用户信息的最大问题在于要占用大量服务器内存，增加服务器的开销。而JWT方式将用户状态分散到了客户端中，可以明显减轻服务端的内存压力。</li>
+</ul>
+</li>
+<li>基于Token的身份认证是无状态的，服务器或者Session中不会存储任何用户信息，即没有会话的概念</li>
+</ul>
+<p><strong>用Token的好处</strong></p>
+<ul>
+<li>无状态和可扩展性：Tokens存储在客户端。完全无状态，可扩展。我们的负载均衡器可以将用户传递到任意服务器，因为在任何地方都没有状态或会话信息。</li>
+<li>安全：Token不是Cookie。（The token, not a cookie.）每次请求的时候Token都会被发送。而且，由于没有Cookie被发送，还有助于防止CSRF攻击。即使在你的实现中将token存储到客户端的Cookie中，这个Cookie也只是一种存储机制，而非身份认证机制。没有基于会话的信息可以操作，因为我们没有会话!</li>
+<li>还有一点，token在一段时间以后会过期，这个时候用户需要重新登录。这有助于我们保持安全。还有一个概念叫token撤销，它允许我们根据相同的授权许可使特定的token甚至一组token无效。</li>
+</ul>
+<p><strong>JWT与OAuth的区别</strong></p>
+<ul>
+<li>OAuth2是一种授权框架 ，JWT是一种认证协议 -无论使用哪种方式切记用HTTPS来保证数据的安全性</li>
+<li>OAuth2用在使用第三方账号登录的情况(比如使用weibo, qq, github登录某个app)，而JWT是用在前后端分离, 需要简单的对后台API进行保护时使用。</li>
+</ul>
+<h2 id="优点"><a class="markdownIt-Anchor" href="#优点"></a> 优点</h2>
+<ul>
+<li>因为json的通用性，所以JWT是可以进行跨语言支持的，像JAVA,JavaScript,NodeJS,PHP等很多语言都可以使用。</li>
+<li>因为有了payload部分，所以JWT可以在自身存储一些其他业务逻辑所必要的非敏感信息。</li>
+<li>便于传输，jwt的构成非常简单，字节占用很小，所以它是非常便于传输的。</li>
+<li>它不需要在服务端保存会话信息, 所以它易于应用的扩展</li>
+</ul>
+<hr>
+<p>from：<a href="https://zhuanlan.zhihu.com/p/86937325" target="_blank" rel="noopener">五分钟带你了解啥是JWT</a></p>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<h2 id="几种常用的认证机制"><a class="markdownIt-Anchor" href="#几种常用的认证机制"></a> 几种常用的认证机制</h2>
+<h3 id="http-basic-auth"><a class="markdownIt-Anchor" href="#http-basic-auth"></a> HTTP Basic Auth</h3>
+<p>HTTP Basic Auth简单点说明就是每次请求API时都提供用户的username和password，简言之，Basic Auth是配合RESTful API 使用的最简单的认证方式，只需提供用户名密码即可，但由于有把用户名密码暴露给第三方客户端的风险，在生产环境下被使用的越来越少。因此，在开发对外开放的RESTful API时，尽量避免采用HTTP Basic Auth</p>
+<h3 id="oauth"><a class="markdownIt-Anchor" href="#oauth"></a> OAuth</h3>
+<p>OAuth（开放授权）是一个开放的授权标准，允许用户让第三方应用访问该用户在某一web服务上存储的私密的资源（如照片，视频，联系人列表），而无需将用户名和密码提供给第三方应用。</p>
+<p>这种基于OAuth的认证机制适用于个人消费者类的互联网产品，如社交类APP等应用，但是不太适合拥有自有认证权限管理的企业应用；</p>
+<h3 id="cookie-auth"><a class="markdownIt-Anchor" href="#cookie-auth"></a> Cookie Auth</h3>
+<p>Cookie认证机制就是为一次请求认证在服务端创建一个Session对象，同时在客户端的浏览器端创建了一个Cookie对象；通过客户端带上来Cookie对象来与服务器端的session对象匹配来实现状态管理的。默认的，当我们关闭浏览器的时候，cookie会被删除。但可以通过修改cookie 的expire time使cookie在一定时间内有效；</p>
+<h3 id="token-auth"><a class="markdownIt-Anchor" href="#token-auth"></a> Token Auth</h3>
+<p>Token机制相对于Cookie机制又有什么好处呢？</p>
+<ul>
+<li><strong>支持跨域访问</strong>: Cookie是不允许垮域访问的，这一点对Token机制是不存在的，前提是传输的用户认证信息通过HTTP头传输.</li>
+<li><strong>无状态(也称：服务端可扩展行)</strong>:Token机制在服务端不需要存储session信息，因为Token 自身包含了所有登录用户的信息，只需要在客户端的cookie或本地介质存储状态信息.</li>
+<li><strong>更适用CDN</strong>: 可以通过内容分发网络请求你服务端的所有资料（如：javascript，HTML,图片等），而你的服务端只要提供API即可.</li>
+<li><strong>去耦</strong>: 不需要绑定到一个特定的身份验证方案。Token可以在任何地方生成，只要在你的API被调用的时候，你可以进行Token生成调用即可.</li>
+<li><strong>更适用于移动应用</strong>: 当你的客户端是一个原生平台（iOS, Android，Windows 8等）时，<u>Cookie是不被支持的</u>（你需要通过Cookie容器进行处理），这时采用Token认证机制就会简单得多。</li>
+<li><strong>CSRF</strong>:因为不再依赖于Cookie，所以你就不需要考虑对CSRF（跨站请求伪造）的防范。</li>
+<li><strong>性能</strong>: 一次网络往返时间（通过数据库查询session信息）总比做一次HMACSHA256计算 的Token验证和解析要费时得多.</li>
+<li><strong>不需要为登录页面做特殊处理</strong>: 如果你使用Protractor 做功能测试的时候，不再需要为登录页面做特殊处理.</li>
+<li><strong>基于标准化</strong>:你的API可以采用标准化的 JSON Web Token (JWT). 这个标准已经存在多个后端库（.NET, Ruby, Java,Python, PHP）和多家公司的支持（如：Firebase,Google, Microsoft）.</li>
+</ul>
+<img src="https://i.loli.net/2021/08/18/m5zEhtXnRAp78yB.png" style="zoom:50%;">
+<h3 id="json-webtoken-auth"><a class="markdownIt-Anchor" href="#json-webtoken-auth"></a> JSON WebToken Auth</h3>
+<h2 id="使用java库来生成jwt"><a class="markdownIt-Anchor" href="#使用java库来生成jwt"></a> 使用java库来生成JWT</h2>
+<h2 id="jjwt"><a class="markdownIt-Anchor" href="#jjwt"></a> JJWT</h2>
+<h3 id="加密生成jwt"><a class="markdownIt-Anchor" href="#加密生成jwt"></a> 加密生成JWT</h3>
+<p><img src="https://i.loli.net/2021/08/18/4JOiPv38VnYtxle.png" alt=""></p>
+<h3 id="解密jwt"><a class="markdownIt-Anchor" href="#解密jwt"></a> 解密JWT</h3>
+<p><img src="https://i.loli.net/2021/08/18/YnHBPeQo7MFU6xI.png" alt=""></p>
+<h2 id="java-jwt"><a class="markdownIt-Anchor" href="#java-jwt"></a> JAVA JWT</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JWTUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 过期时间5分钟</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> EXPIRE_TIME = <span class="number">5</span>*<span class="number">60</span>*<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 校验token是否正确</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> token 密钥</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> secret 用户的密码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 是否正确</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">verify</span><span class="params">(String token, String username, String secret)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Algorithm algorithm = Algorithm.HMAC256(secret);</span><br><span class="line">            JWTVerifier verifier = JWT.require(algorithm)</span><br><span class="line">                    .withClaim(<span class="string">"username"</span>, username)</span><br><span class="line">                    .build();</span><br><span class="line">            DecodedJWT jwt = verifier.verify(token);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception exception) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获得token中的信息无需secret解密也能获得</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> token中包含的用户名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getUsername</span><span class="params">(String token)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            DecodedJWT jwt = JWT.decode(token);</span><br><span class="line">            <span class="keyword">return</span> jwt.getClaim(<span class="string">"username"</span>).asString();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (JWTDecodeException e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成签名,5min后过期</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> username 用户名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> secret 用户的密码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 加密的token</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">sign</span><span class="params">(String username, String secret)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Date date = <span class="keyword">new</span> Date(System.currentTimeMillis()+EXPIRE_TIME);</span><br><span class="line">            Algorithm algorithm = Algorithm.HMAC256(secret);</span><br><span class="line">            <span class="comment">// 附带username信息</span></span><br><span class="line">            <span class="keyword">return</span> JWT.create()</span><br><span class="line">                    .withClaim(<span class="string">"username"</span>, username)</span><br><span class="line">                    .withExpiresAt(date)</span><br><span class="line">                    .sign(algorithm);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/08/11/JWT使用学习/">https://nymrli.top/2021/08/11/JWT使用学习/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/08/19/AOP学习/" title="AOP学习"><span>< PreviousPost</span><br><span class="prevTitle">AOP学习</span></a><a class="nextSlogan" href="/2021/08/11/Shiro使用学习/" title="Shiro使用学习"><span>NextPost ></span><br><span class="nextTitle">Shiro使用学习</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'JWT使用学习',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jwt-json-web-token"><span class="toc-number">1.</span> <span class="toc-text"> JWT: Json Web Token</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jwt信息组成"><span class="toc-number">1.1.</span> <span class="toc-text"> JWT信息组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jwt网络工作流程"><span class="toc-number">1.2.</span> <span class="toc-text"> JWT网络工作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用场景"><span class="toc-number">1.3.</span> <span class="toc-text"> 使用场景：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#json-web-tokens是如何工作的"><span class="toc-number">1.4.</span> <span class="toc-text"> JSON Web Tokens是如何工作的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于token的身份认证-与-基于服务器的身份认证-的区别"><span class="toc-number">1.5.</span> <span class="toc-text"> 基于Token的身份认证 与 基于服务器的身份认证 的区别:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-number">1.6.</span> <span class="toc-text"> 优点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number">2.</span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#几种常用的认证机制"><span class="toc-number">2.1.</span> <span class="toc-text"> 几种常用的认证机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#http-basic-auth"><span class="toc-number">2.1.1.</span> <span class="toc-text"> HTTP Basic Auth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oauth"><span class="toc-number">2.1.2.</span> <span class="toc-text"> OAuth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie-auth"><span class="toc-number">2.1.3.</span> <span class="toc-text"> Cookie Auth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#token-auth"><span class="toc-number">2.1.4.</span> <span class="toc-text"> Token Auth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#json-webtoken-auth"><span class="toc-number">2.1.5.</span> <span class="toc-text"> JSON WebToken Auth</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用java库来生成jwt"><span class="toc-number">2.2.</span> <span class="toc-text"> 使用java库来生成JWT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jjwt"><span class="toc-number">2.3.</span> <span class="toc-text"> JJWT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加密生成jwt"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 加密生成JWT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解密jwt"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 解密JWT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-jwt"><span class="toc-number">2.4.</span> <span class="toc-text"> JAVA JWT</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

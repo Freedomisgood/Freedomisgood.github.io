@@ -1,3 +1,10 @@
+https://nymrli.top/2021/08/24/学习画好架构图/
+https://nymrli.top/2021/08/19/AOP学习/
+https://nymrli.top/2021/08/11/JWT使用学习/
+https://nymrli.top/2021/08/11/Shiro使用学习/
+https://nymrli.top/2021/07/27/Go的配置和使用/
+https://nymrli.top/2021/03/03/天猫秒杀插件-Chrome插件编写/
+https://nymrli.top/2021/01/24/认真学次DP——动态规划/
 https://nymrli.top/2020/12/11/UML简单记录/
 https://nymrli.top/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/
 https://nymrli.top/2020/12/11/细品单例模式/
@@ -37,14 +44,7 @@ https://nymrli.top/2020/04/29/华为春招4-29笔试题/
 https://nymrli.top/2020/04/20/剑指Offer-leetcode刷题记录/
 https://nymrli.top/2020/03/23/VsCode配置Latex(texLive)环境/
 https://nymrli.top/2020/03/04/算法笔记Codeup题解/
-https://nymrli.top/2020/02/03/学会投资——做一个小小的股民/
 https://nymrli.top/2020/02/02/PAT冲冲冲——乙级/
 https://nymrli.top/2019/12/25/sshpass——shell脚本实现SSH连接其他主机并执行终端命令/
 https://nymrli.top/2019/12/12/树莓派初始化操作/
 https://nymrli.top/2019/12/08/ACM-网络流/
-https://nymrli.top/2019/12/07/ACM-树状数组和线段树/
-https://nymrli.top/2019/12/05/KM-Kuhn-Munkres-算法/
-https://nymrli.top/2019/12/05/ACM-二分图/
-https://nymrli.top/2019/12/05/Hungarian-algorithm匈牙利算法/
-https://nymrli.top/2019/11/26/PIL的Image笔记/
-https://nymrli.top/2019/11/26/2019年8月23号运维笔记/

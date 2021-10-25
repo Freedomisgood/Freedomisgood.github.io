@@ -101,22 +101,27 @@
 <p>Spy++ (SPYXX.EXE) 是一个基于 Win32 的实用工具，它提供系统的进程、线程、窗口和窗口消息的图形视图。使用 Spy++ 可以执行下列操作： 显示系统对象（包括进程、线程和窗口）之间关系的图形树。 搜索指定的窗口、线程、进程或消息。 查看选定的窗口、线程、进程或消息的属性。</p>
 </blockquote>
 <p>我们可以使用微软的Spy++来查看窗口类名等信息，然后再结合pywin32实现。</p>
-<h4 id="加载初始界面"><a href="#加载初始界面" class="headerlink" title="加载初始界面:"></a>加载初始界面:</h4><p><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202226101-432781308.jpg" alt=""></p>
-<h5 id="然后点击工具栏的望远镜。如图所示"><a href="#然后点击工具栏的望远镜。如图所示" class="headerlink" title="然后点击工具栏的望远镜。如图所示:"></a>然后点击工具栏的望远镜。如图所示:</h5><p><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202408509-1040679679.jpg" alt=""></p>
-<p>出现搜索窗口，然后通过移动靶心到想要查找句柄的窗口后单击就行了。==&gt;它的句柄、标题、类都会显示</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202438546-172174720.jpg" alt=""></h2><p>再点击确定。</p>
+<h4 id="加载初始界面"><a class="markdownIt-Anchor" href="#加载初始界面"></a> 加载初始界面:</h4>
+<p><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202226101-432781308.jpg" alt=""></p>
+<h5 id="然后点击工具栏的望远镜-如图所示"><a class="markdownIt-Anchor" href="#然后点击工具栏的望远镜-如图所示"></a> 然后点击工具栏的望远镜。如图所示:</h5>
+<p><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202408509-1040679679.jpg" alt=""></p>
+<h2 id="出现搜索窗口然后通过移动靶心到想要查找句柄的窗口后单击就行了-它的句柄-标题-类都会显示"><a class="markdownIt-Anchor" href="#出现搜索窗口然后通过移动靶心到想要查找句柄的窗口后单击就行了-它的句柄-标题-类都会显示"></a> 出现搜索窗口，然后通过移动靶心到想要查找句柄的窗口后单击就行了。==&gt;它的句柄、标题、类都会显示<br>
+<img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202438546-172174720.jpg" alt=""></h2>
+<p>再点击确定。</p>
 <p>此时会有两种情况。</p>
 <ul>
 <li>成功搜索到</li>
-<li>搜索不到<blockquote>
+<li>搜索不到</li>
+</ul>
+<blockquote>
 <p>原因是你查找的窗口是在打开spy++后打开的，解决的办法就是按F5进行刷新，然后就行了</p>
 </blockquote>
-</li>
-</ul>
 <p><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202623152-1227390007.jpg" alt=""></p>
-<p>成功后都会出现如下：<br><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202746383-481316317.jpg" alt=""></p>
+<p>成功后都会出现如下：<br>
+<img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829202746383-481316317.jpg" alt=""></p>
 <hr>
-<p>右键，点击“属性”能看到更多详细内容。<br><img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829203653870-1326129222.jpg" alt=""></p>
+<p>右键，点击“属性”能看到更多详细内容。<br>
+<img src="https://images2018.cnblogs.com/blog/1350574/201808/1350574-20180829203653870-1326129222.jpg" alt=""></p>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2018/09/02/Spy-使用介绍/">https://nymrli.top/2018/09/02/Spy-使用介绍/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2018/09/20/小程序入门学习/" title="小程序入门学习"><span>< PreviousPost</span><br><span class="prevTitle">小程序入门学习</span></a><a class="nextSlogan" href="/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/" title="解决安装PyUserInput、pyHook遇到的问题——AttributeError: 'HookManager' object has no attribute 'keyboard_hook"><span>NextPost ></span><br><span class="nextTitle">解决安装PyUserInput、pyHook遇到的问题——AttributeError: 'HookManager' object has no attribute 'keyboard_hook</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'Spy++使用介绍',
   owner: 'Freedomisgood',
@@ -126,4 +131,5 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#加载初始界面"><span class="toc-number">1.</span> <span class="toc-text">加载初始界面:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#然后点击工具栏的望远镜。如图所示"><span class="toc-number">1.1.</span> <span class="toc-text">然后点击工具栏的望远镜。如图所示:</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text"></span></a></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#加载初始界面"><span class="toc-number">1.</span> <span class="toc-text"> 加载初始界面:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#然后点击工具栏的望远镜-如图所示"><span class="toc-number">1.1.</span> <span class="toc-text"> 然后点击工具栏的望远镜。如图所示:</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#出现搜索窗口然后通过移动靶心到想要查找句柄的窗口后单击就行了-它的句柄-标题-类都会显示"><span class="toc-number"></span> <span class="toc-text"> 出现搜索窗口，然后通过移动靶心到想要查找句柄的窗口后单击就行了。==&gt;它的句柄、标题、类都会显示
+</span></a></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

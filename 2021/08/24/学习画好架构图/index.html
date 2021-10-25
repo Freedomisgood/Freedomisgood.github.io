@@ -100,16 +100,20 @@
   .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">学习画好架构图</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/08/24</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="福利"> 福利</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">564</span> | Reading time: <span class="post-count">2</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
 <p>一图胜万语，做好一张架构图能让别人一眼就清晰地弄懂程序的功能与依赖，大大降低大家的理解成本和提升沟通效率。但作为新人而言，如何画出要点，提炼出核心概念是个有难度的事。</p>
 </blockquote>
-<h2 id="什么是架构？"><a href="#什么是架构？" class="headerlink" title="什么是架构？"></a><strong>什么是架构？</strong></h2><p>架构是结构和愿景，是对系统中的实体以及实体之间的关系所进行的抽象描述，是一系列的决策。</p>
+<h2 id="什么是架构"><a class="markdownIt-Anchor" href="#什么是架构"></a> <strong>什么是架构？</strong></h2>
+<p>架构是结构和愿景，是对系统中的实体以及实体之间的关系所进行的抽象描述，是一系列的决策。</p>
 <p>系统架构是概念的体现，是对物/信息的功能与形式元素之间的对应情况所做的分配，是对元素之间的关系以及元素同周边环境之间的关系所做的定义。</p>
-<h2 id="什么是架构图？"><a href="#什么是架构图？" class="headerlink" title="什么是架构图？"></a><strong>什么是架构图？</strong></h2><p>系统架构图是为了抽象地表示<u>软件系统</u>的<strong>整体轮廓</strong>和<u>各个组件</u>之间的相互关系和<strong>约束边界</strong>，以及软件系统的物理部署和软件系统的演进方向的<strong>整体视图</strong>。</p>
-<h2 id="架构图的作用"><a href="#架构图的作用" class="headerlink" title="架构图的作用"></a><strong>架构图的作用</strong></h2><p>要让干系人理解、遵循架构决策，就需要把架构信息传递出去。架构图就是一个很好的载体。那么，画架构图是为了：</p>
+<h2 id="什么是架构图"><a class="markdownIt-Anchor" href="#什么是架构图"></a> <strong>什么是架构图？</strong></h2>
+<p>系统架构图是为了抽象地表示<u>软件系统</u>的<strong>整体轮廓</strong>和<u>各个组件</u>之间的相互关系和<strong>约束边界</strong>，以及软件系统的物理部署和软件系统的演进方向的<strong>整体视图</strong>。</p>
+<h2 id="架构图的作用"><a class="markdownIt-Anchor" href="#架构图的作用"></a> <strong>架构图的作用</strong></h2>
+<p>要让干系人理解、遵循架构决策，就需要把架构信息传递出去。架构图就是一个很好的载体。那么，画架构图是为了：</p>
 <ul>
 <li>解决沟通障碍</li>
 <li>达成共识</li>
 <li>减少歧义</li>
 </ul>
-<h2 id="架构核心要素"><a href="#架构核心要素" class="headerlink" title="架构核心要素"></a>架构核心要素</h2><p><img src="/2021/08/24/学习画好架构图/Users\mrli\AppData\Roaming\Typora\typora-user-images\image-20210824152422270.png" alt="image-20210824152422270"></p>
+<h2 id="架构核心要素"><a class="markdownIt-Anchor" href="#架构核心要素"></a> 架构核心要素</h2>
+<p><img src="/2021/08/24/学习画好架构图/C:%5CUsers%5Cmrli%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210824152422270.png" alt="image-20210824152422270"></p>
 <p>综合上述各种权威定义，软件系统的架构通常需要包含如下四类核心要素：</p>
 <ul>
 <li><strong>元素（elements）</strong>：将系统拆分为一组元素 - 模块、组件、结构体、子系统；</li>
@@ -117,16 +121,20 @@
 <li><strong>属性（properties）</strong>：每个元素具备的属性 - 名称、职责、接口、实现限制等；</li>
 <li><strong>原理（principles）</strong>：为什么这么设计 - 拆分依据、设计原则、决策原因等。</li>
 </ul>
-<h2 id="架构图分类"><a href="#架构图分类" class="headerlink" title="架构图分类"></a><strong>架构图分类</strong></h2><p>搜集了很多资料，分类有很多，有一种比较流行的是4+1视图，分别为场景视图、逻辑视图、物理视图、处理流程视图和开发视图。</p>
+<h2 id="架构图分类"><a class="markdownIt-Anchor" href="#架构图分类"></a> <strong>架构图分类</strong></h2>
+<p>搜集了很多资料，分类有很多，有一种比较流行的是4+1视图，分别为场景视图、逻辑视图、物理视图、处理流程视图和开发视图。</p>
 <p>from：<a href="https://blog.csdn.net/wwd0501/article/details/105688895" target="_blank" rel="noopener">如何画好软件项目架构图？</a>， <a href="https://zhuanlan.zhihu.com/p/260068315" target="_blank" rel="noopener">架构制图：工具与方法论</a></p>
-<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="五种常见软件架构"><a href="#五种常见软件架构" class="headerlink" title="五种常见软件架构"></a><a href="https://www.cnblogs.com/doit8791/p/9343826.html" target="_blank" rel="noopener">五种常见软件架构</a></h2><ul>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<h2 id="五种常见软件架构"><a class="markdownIt-Anchor" href="#五种常见软件架构"></a> <a href="https://www.cnblogs.com/doit8791/p/9343826.html" target="_blank" rel="noopener">五种常见软件架构</a></h2>
+<ul>
 <li>分层架构</li>
 <li>事件驱动架构</li>
 <li>微核架构</li>
 <li>微服务架构</li>
 <li>云架构</li>
 </ul>
-<h2 id="架构图example："><a href="#架构图example：" class="headerlink" title="架构图example："></a>架构图example：</h2><p><img src="/2021/08/24/学习画好架构图/Users\mrli\AppData\Roaming\Typora\typora-user-images\image-20210824150755684.png" alt="image-20210824150755684"></p>
+<h2 id="架构图example"><a class="markdownIt-Anchor" href="#架构图example"></a> 架构图example：</h2>
+<p><img src="/2021/08/24/学习画好架构图/C:%5CUsers%5Cmrli%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210824150755684.png" alt="image-20210824150755684"></p>
 <hr>
 <p><img src="https://i.loli.net/2021/08/24/x3g8pz7heaDvTXd.png" alt=""></p>
 <hr>
@@ -140,4 +148,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是架构？"><span class="toc-number">1.</span> <span class="toc-text">什么是架构？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是架构图？"><span class="toc-number">2.</span> <span class="toc-text">什么是架构图？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构图的作用"><span class="toc-number">3.</span> <span class="toc-text">架构图的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构核心要素"><span class="toc-number">4.</span> <span class="toc-text">架构核心要素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构图分类"><span class="toc-number">5.</span> <span class="toc-text">架构图分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number"></span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#五种常见软件架构"><span class="toc-number">1.</span> <span class="toc-text">五种常见软件架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构图example："><span class="toc-number">2.</span> <span class="toc-text">架构图example：</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是架构"><span class="toc-number">1.</span> <span class="toc-text"> 什么是架构？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是架构图"><span class="toc-number">2.</span> <span class="toc-text"> 什么是架构图？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构图的作用"><span class="toc-number">3.</span> <span class="toc-text"> 架构图的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构核心要素"><span class="toc-number">4.</span> <span class="toc-text"> 架构核心要素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构图分类"><span class="toc-number">5.</span> <span class="toc-text"> 架构图分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number"></span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#五种常见软件架构"><span class="toc-number">1.</span> <span class="toc-text"> 五种常见软件架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构图example"><span class="toc-number">2.</span> <span class="toc-text"> 架构图example：</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

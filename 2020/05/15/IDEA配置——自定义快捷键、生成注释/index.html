@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">IDEA配置——自定义快捷键、生成注释</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/08/22</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,280</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="idea配置自定义快捷键-生成注释"><a class="markdownIt-Anchor" href="#idea配置自定义快捷键-生成注释"></a> IDEA配置——自定义快捷键、生成注释</h1>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">IDEA配置——自定义快捷键、生成注释</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/10/17</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,399</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="idea配置自定义快捷键-生成注释"><a class="markdownIt-Anchor" href="#idea配置自定义快捷键-生成注释"></a> IDEA配置——自定义快捷键、生成注释</h1>
 <blockquote>
 <p>以前因为上JAVA课，还是不常用Java， 所以安装了个Eclipse， 但是现在要经常使用java的话， 感觉还是IDEA的支持做的可能更加到位一点</p>
 </blockquote>
@@ -285,6 +285,7 @@
 </tbody>
 </table>
 <p>▲、以上以windows设置为模板修改</p>
+<p>由于File-&gt;Manage IDE Settings-&gt;Export settings的内容是不包含keyMap的，因此可以直接保存keyMap文件来备份，路径为C:\Users\mrli\AppData\Roaming\JetBrains\IntelliJIdea2020.3\jba_config\win.keymaps</p>
 <h2 id="生成类注释-文件注释"><a class="markdownIt-Anchor" href="#生成类注释-文件注释"></a> <a href="%5Bhttps://blog.csdn.net/qq_34581118/article/details/78409782#%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A%5D(https://blog.csdn.net/qq_34581118/article/details/78409782#%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A)">生成类注释、文件注释</a></h2>
 <blockquote>
 <p>没弄图， 主要是按照<a href="%5Bhttps://blog.csdn.net/qq_34581118/article/details/78409782#%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A%5D(https://blog.csdn.net/qq_34581118/article/details/78409782#%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A)">idea生成类注释和方法注释的正确方法</a>配置的</p>
@@ -325,19 +326,21 @@
 <h2 id="intellij-idea-神器居然还有这些小技巧"><a class="markdownIt-Anchor" href="#intellij-idea-神器居然还有这些小技巧"></a> <a href="https://blog.csdn.net/kl28978113/article/details/80305974" target="_blank" rel="noopener">Intellij IDEA 神器居然还有这些小技巧</a>[转]</h2>
 <h2 id="java开发好用的插件"><a class="markdownIt-Anchor" href="#java开发好用的插件"></a> Java开发好用的插件</h2>
 <ul>
-<li>Codeglance</li>
-<li>translation</li>
-<li>grey console</li>
-<li>restfultoolkit</li>
-<li>gsonformater</li>
-<li>mybatis log plugin</li>
+<li>Codeglance： 代码概览</li>
+<li>translation： 翻译插件</li>
+<li>grey console： 控制台美化</li>
+<li>restfultoolkit： 接口工具箱</li>
+<li>gsonformater： json格式化工具</li>
+<li>mybatis log plugin： sql日志插件</li>
 <li>free mybatis plugin</li>
-<li>Alibaba Java Coding Guidelines</li>
-<li>codata</li>
+<li>Alibaba Java Coding Guidelines：阿里编程规范</li>
+<li>codata: 人工智能代码补全</li>
 <li>easycode 自动生成mybatis mapper相关</li>
-<li>lombok</li>
-<li>SequenceDiagram</li>
-<li>Maven Helper</li>
+<li>lombok： setter/getter生成</li>
+<li>SequenceDiagram: 时序图分析</li>
+<li>Maven Helper： maven依赖分析工具</li>
+<li>Maven search： 依赖dependency查找工具</li>
+<li>CamelCase： 单词格式转换</li>
 </ul>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/05/15/IDEA配置——自定义快捷键、生成注释/">https://nymrli.top/2020/05/15/IDEA配置——自定义快捷键、生成注释/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2020/05/24/getBargains的record和Solution/" title="getBargains的record和Solution"><span>< PreviousPost</span><br><span class="prevTitle">getBargains的record和Solution</span></a><a class="nextSlogan" href="/2020/05/15/重拾Java笔记/" title="重拾Java笔记"><span>NextPost ></span><br><span class="nextTitle">重拾Java笔记</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'IDEA配置——自定义快捷键、生成注释',

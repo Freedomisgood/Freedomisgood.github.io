@@ -102,145 +102,166 @@
 
  hello word
 第一个controller
-12345678910111213141516171819202122232425262728/**  * Project Name:demo  * File Name:HelloController.java  * Package Name:com.example.demo  * Date:2019年9月15日下午8:27:56  * Copyright (c) 2019, chenzhou1025@126.com All Rights Reserved.  * */  package ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/09/17/SpringBoot学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/24/Linux安装selenium执行Python程序/">Linux安装selenium执行Python程序</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-24T14:13:20.000Z">2019-09-24</time><i class="fa fa-edit"></i><time datetime="2019-09-24T14:13:20.000Z">2021-10-06</time></div><div class="recent-post-content">Linux安装selenium执行Python程序
+12345678910111213141516171819202122232425262728/**  * Project Name:demo  * File Name:HelloController.java  * Package Name:com.example.demo  * Date:2019年9月15日下午8:27:56  * Copyright (c) 2019, chenzhou1025@126.com All Rights Reserved.  * */  package ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/09/17/SpringBoot学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/24/Linux安装selenium执行Python程序/">Linux安装selenium执行Python程序</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-24T14:13:20.000Z">2019-09-24</time><i class="fa fa-edit"></i><time datetime="2019-09-24T14:13:20.000Z">2021-10-06</time></div><div class="recent-post-content"> Linux安装selenium执行Python程序
+
+
 配置python运行环境
+
 
 安装selenium,pip install selenium
 
+
 安装chrome
 
-提供下载网站chromedownloads,下载google-chrome-stable_current_amd64-75.0.3770.80.deb 
+提供下载网站chromedownloads,下载google-chrome-stable_current_amd64-75.0.3770.80.deb
 
-123456789101112$ sudo apt-get install libxss1 libappindicator1 libindicator7# 注意需要先把google-chrome-stable_current_amd64-75.0.3770.80.deb 下载下 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/09/24/Linux安装selenium执行Python程序/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/机器学习——决策树/">机器学习——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:44:35.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:44:35.000Z">2021-05-30</time></div><div class="recent-post-content">机器学习——决策树决策树基础概念
-决策树分为分类树和回归树两种，分类树对离散变量做决策树，回归树对连续变量做决策树。
-每个内部节点（非叶子节点）表示一个属性上的测试条件，每个分支代表一个测试输出结果，每个叶节点代表一种类别
-
-决策树分为分类树和回归树两种，分类树对离散变量做决策树，回归树对连续变量做决策树。
-决策树的构造过程就是找到这些具有决定性作用的特征，根据其决定性程度来构造一个倒立的树—决定性作用最大的那个特征作为根节点，然后递归找到各分支下子数据集中次大的决定性特征，直至子数据集中所有数据都属于同一类。
-特征：
-
-有监督的学习
-非参数学习算法
-自顶向下递归方式构造决策树
-在每一步选择中 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/08/30/机器学习——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Sklearn——决策树/">Sklearn——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:43:27.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:43:27.000Z">2021-05-30</time></div><div class="recent-post-content">Sklearn——决策树
-注明：转载自Jack Gui的博客
-
-1、实战背景进入本文的正题：眼科医生是如何判断患者需要佩戴隐形眼镜的类型的？一旦理解了决策树的工作原理，我们甚至也可以帮助人们判断需要佩戴的镜片类型。
-隐形眼镜数据集是非常著名的数据集，它包含很多换着眼部状态的观察条件以及医生推荐的隐形眼镜类型。隐形眼镜类型包括硬材质(hard)、软材质(soft)以及不适合佩戴隐形眼镜(no lenses)。数据来源与UCI数据库，数据集下载地址：lenses.txt))
-
-
-
-
-young
-myope
-no
-reduced
-no lenses
-
-
-
-
-young
-myope
-no
-normal ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Pythton"> Pythton</a></div><div class="read-more"><a class="more" href="/2019/08/30/Sklearn——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/21/搭建Jupyter服务器/">搭建Jupyter、JupyterLab服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-21T01:53:01.000Z">2019-09-21</time><i class="fa fa-edit"></i><time datetime="2019-09-21T01:53:01.000Z">2020-12-05</time></div><div class="recent-post-content">搭建Jupyter服务器1.配置好Python环境及安装pip
+123456789101112$ sudo apt-get install libxss1 libappindicator1 libindicator7# 注意需要先把google-chrome-stable_current_amd64-75.0.3770.80.deb ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/09/24/Linux安装selenium执行Python程序/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/21/搭建Jupyter服务器/">搭建Jupyter、JupyterLab服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-21T01:53:01.000Z">2019-09-21</time><i class="fa fa-edit"></i><time datetime="2019-09-21T01:53:01.000Z">2020-12-05</time></div><div class="recent-post-content"> 搭建Jupyter服务器
+1.配置好Python环境及安装pip
 2.安装jupyter:
 pip3 install jupyter (此处使用的是python3)
 3.生成配置文件
 jupyter notebook --generate-config
-4.生成密钥:  
+4.生成密钥:
 终端输入$ ipython
 123456In [1]: from notebook.auth import passwdIn [2]: passwd()Enter password: Verify password: #此时会让你两次输入密码，然后就会生成秘钥#＊＊＊＊＊＊＊＊＊＊＊＊
-5.修改配置文件vim ~/.jupyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/21/搭建Jupyter服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/">Ubuntu16.04+CUDA toolkit10.1+cudNN7.6+bazel0.26.1</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-23T08:38:55.000Z">2019-09-23</time><i class="fa fa-edit"></i><time datetime="2019-09-23T08:38:55.000Z">2020-12-02</time></div><div class="recent-post-content">Ubuntu 16.04 + CUDA toolkit 10.1 + cudNN7.6 + bazel 0.26.1
+5.修改配置文件vim ~/.jupyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/21/搭建Jupyter服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/">Ubuntu16.04+CUDA toolkit10.1+cudNN7.6+bazel0.26.1</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-23T08:38:55.000Z">2019-09-23</time><i class="fa fa-edit"></i><time datetime="2019-09-23T08:38:55.000Z">2020-12-02</time></div><div class="recent-post-content"> Ubuntu 16.04 + CUDA toolkit 10.1 + cudNN7.6 + bazel 0.26.1
+
 保证cuDNN跟CUDA SDK的版本一致即可.
 从源码编译的话需要查看显卡的计算能力,可在查看GPU计算能力，在配置的时候填入即可，跟CUDA SDK的版本无关
 ▲必须注册账号后，才能选择下载
 
 ▲记住上述几个要点， 以及最好先看下文章最后我的踩坑记录，确保自己知道可能会有这些坑
 ▲.全程保持能连接外网（翻墙）
-安装NVIDIA驱动123$ ubuntu-drivers devices # 查看# 查看NVIDIA驱动版本$ sudo dpkg --list | grep n ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/21/同性交友网站Github的骚操作/">同性交友网站Github的骚操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-21T03:56:19.000Z">2019-09-21</time><i class="fa fa-edit"></i><time datetime="2019-09-21T03:56:19.000Z">2020-09-15</time></div><div class="recent-post-content">做好看的REAMDE
-123456789101112131415161718&lt;p align="center"&gt;  &lt;a href="https://travis-ci.com/xkcoding/spring-boot-demo"&gt;&lt;img alt="Travis-CI" src="https://travis-ci.com/xkcoding/spring-boot-demo.svg?branch=master"/&gt;&lt;/a&gt;  &lt;a href="https://www.codacy.com/app/xkcoding/spring-boot- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/21/同性交友网站Github的骚操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/软件测试大赛/">软件测试大赛</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:07:12.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:07:12.000Z">2019-11-02</time></div><div class="recent-post-content">软件测试大赛初学流程
+ 安装NVIDIA驱动
+123$ ubuntu-drivers devices # 查看# 查看NVIDIA驱动版本$ sudo dpkg --list | gr ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/21/同性交友网站Github的骚操作/">同性交友网站Github的骚操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-21T03:56:19.000Z">2019-09-21</time><i class="fa fa-edit"></i><time datetime="2019-09-21T03:56:19.000Z">2020-09-15</time></div><div class="recent-post-content"> 做好看的REAMDE
+
+123456789101112131415161718&lt;p align="center"&gt;  &lt;a href="https://travis-ci.com/xkcoding/spring-boot-demo"&gt;&lt;img alt="Travis-CI" src="https://travis-ci.com/xkcoding/spring-boot-demo.svg?branch=master"/&gt;&lt;/a&gt;  &lt;a href="https://www.codacy.com/app/xkcoding/spring-boo ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/21/同性交友网站Github的骚操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/29/git命令详解/">git命令详解</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-29T09:39:07.000Z">2019-09-29</time><i class="fa fa-edit"></i><time datetime="2019-09-29T09:39:07.000Z">2019-12-12</time></div><div class="recent-post-content"> git命令详解
+ 自己的仓库管理：
+git add &lt;filename&gt;
+
+将文件添加到暂存区中  (其中git add.可以将当前目录的子目录文件都添加到暂存区中)
+
+git commit -m &quot;...&quot;:
+
+保存仓库的历史记录,其中 -m &quot;…&quot;提交信息(概述)
+
+git config --global user.name &quot;...&quot;、git config --global user.email &quot;...&quot;:
+
+配置提交作者信息
+
+git log:
+
+查看提交日志(当前状态为终点) 会产生版本库 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/29/git命令详解/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/28/numpy使用记录/">numpy使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-28T03:13:29.000Z">2019-09-28</time><i class="fa fa-edit"></i><time datetime="2019-09-28T03:13:29.000Z">2019-11-27</time></div><div class="recent-post-content"> Numpy使用记录
+ numpy中的random
+numpy.random.choice(a, size=None, replace=True, p=None)
+
+a : 如果是一维数组，就表示从这个一维数组中随机采样；如果是int型，就表示从0到a-1这个序列中随机采样。
+size : 采样结果的数量，默认为1.可以是整数，表示要采样的数量；也可以为tuple，如(m, n, k)，则要采样的数量为m * n * k，size为(m, n, k)
+replace : boolean型，采样的样本是否要更换？这个地方我不太理解，测了一下发现replace指定为True时，采样的元素会有重复； ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/28/numpy使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/软件测试大赛/">软件测试大赛</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:07:12.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:07:12.000Z">2019-11-02</time></div><div class="recent-post-content"> 软件测试大赛
+ 初学流程
+
 首先了解比赛,查看帮助文档平台帮助
 然后在工具下载中下载工具、eclipse插件
 最后根据教程中将插件安装好即可
 
-移动应用测试开发环境配置配置Java环境略,见Java 开发环境配置_菜鸟教程
-安装ADB1.菜单——&gt;Tools——&gt;Settings，将Server地址为 mirrors.neusoft.edu.cn， 端口 80 ，并且在Others里勾选 Force    https://...,最后一定要选择菜单——&gt;Packages菜单——&gt;Reload
+ 移动应用测试开发
+ 环境配置
+ 配置Java环境
+略,见Java 开发环境配置_菜鸟教程
+ 安装ADB
+1.菜单——&gt;Tools——&gt;Settings，将Server地址为 mirrors.neusoft.edu.cn， 端口 80 ，并且在Others里勾选 Force	https://…,最后一定要选择菜单——&gt;Packages菜单——&gt;Reload
 注:其他可用的镜像
-2.把 Android    SDK    路径下的tools  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></div><div class="read-more"><a class="more" href="/2019/09/14/软件测试大赛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/新加坡游玩经验/">新加坡游玩经验</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:35:49.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:35:49.000Z">2019-10-18</time></div><div class="recent-post-content">新加坡南洋理工大学访学此次访学长达14天，不少安排都是学校安排，在此仅列出个人安排、经验心得。
+2.把 Android	SDK	路径下的tools ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></div><div class="read-more"><a class="more" href="/2019/09/14/软件测试大赛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/新加坡游玩经验/">新加坡游玩经验</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:35:49.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:35:49.000Z">2019-10-18</time></div><div class="recent-post-content"> 新加坡南洋理工大学访学
+此次访学长达14天，不少安排都是学校安排，在此仅列出个人安排、经验心得。
 
-门票购买：番薯游：这是老师推荐我们的，但下载以后感觉界面还是比较丑的，而且价格也不是非常便宜。这家是唯一一家促进扫码买门票的公司。
+ 门票购买：
+番薯游：这是老师推荐我们的，但下载以后感觉界面还是比较丑的，而且价格也不是非常便宜。这家是唯一一家促进扫码买门票的公司。
 KLOOK客路：界面比番薯游好多了，还是非常精致的。最大的优势在于可以找到经典的位置及景点介绍、门票时间等信息。
 淘宝：跟好几个平台对比之后，价格应该是最低的，并且时间限制比较小，其他的可能要预约，而TB当天购买就行（强调：动物园门票）
-▲特别说明下，动物园的门票水很深。当面购买$50,我当时去时没有预约，结果在KLOOK上看当天的票已经没有库存了，于是问了下换票机旁 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/09/新加坡游玩经验/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/验证码识别程序设计流程/">验证码识别程序设计流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T13:31:35.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T13:31:35.000Z">2019-10-07</time></div><div class="recent-post-content">验证码识别程序设计流程
+▲特别说明下，动物园的门票水很深。当面购买$50,我当时去时没有预约，结果在KLOOK上看当天的票已经没有库存了，于是问了下 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/09/新加坡游玩经验/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/验证码识别程序设计流程/">验证码识别程序设计流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T13:31:35.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T13:31:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 验证码识别程序设计流程
+
 以南邮正方教务系统为例
 
-找到验证码图片的链接
-“http://jwxt.njupt.edu.cnCheckCode.aspx“
+ 找到验证码图片的链接
+
+“http://jwxt.njupt.edu.cnCheckCode.aspx”
 
 1234567def getCaptcha():    CAPTCHA_URL = "http://jwxt.njupt.edu.cn/CheckCode.aspx"    r = requests.get(CAPTCHA_URL)    img = r.content    img = Image.open(BytesIO(img))    return img
-对图片去噪123456789101112131415161718192021 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/09/验证码识别程序设计流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/26/OpenAI-Gym使用/">OpenAI Gym使用、rendering画图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-26T09:53:27.000Z">2019-09-26</time><i class="fa fa-edit"></i><time datetime="2019-09-26T09:53:27.000Z">2019-10-07</time></div><div class="recent-post-content">OpenAI Gym使用、rendering画图
+ 对图片去噪
+123456789101112131415161718 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/09/验证码识别程序设计流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/26/OpenAI-Gym使用/">OpenAI Gym使用、rendering画图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-26T09:53:27.000Z">2019-09-26</time><i class="fa fa-edit"></i><time datetime="2019-09-26T09:53:27.000Z">2019-10-07</time></div><div class="recent-post-content"> OpenAI Gym使用、rendering画图
+
 gym开源库：包含一个测试问题集，每个问题成为环境（environment），可以用于自己的RL算法开发。这些环境有共享的接口，允许用户设计通用的算法。其包含了deep mind 使用的Atari游戏测试床。
 
 在强化学习中有2个基本概念，一个是环境（environment），称为外部世界，另一个为智能体agent（写的算法）。agent发送action至environment，environment返回观察和回报。
 Gym官方文档
-Hello gym123456789import gym# 创建一个小车倒立摆模型env = gym.make( ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/26/OpenAI-Gym使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/19/深度学习/">深度学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-19T12:32:44.000Z">2019-09-19</time><i class="fa fa-edit"></i><time datetime="2019-09-19T12:32:44.000Z">2019-10-05</time></div><div class="recent-post-content">深度学习——神经网络构建网络的总原则一、增大网络容量，直到过拟命二、采取措施抑制过拟合三、继续增大网络容量，直到过拟合
-线性回归1234567891011121314151617181920212223242526272829303132333435363738# -*- coding: utf-8 -*-# Commented out IPython magic to ensure Python compatibility.import kerasimport numpy as npimport matplotlib.pyplot as plt# %matplotlib inlinex =  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/19/深度学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/23/Github下载、访问慢解决方法-转/">Github下载、访问慢解决方法[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-23T08:36:21.000Z">2019-09-23</time><i class="fa fa-edit"></i><time datetime="2019-09-23T08:36:21.000Z">2019-09-29</time></div><div class="recent-post-content"> Github下载、访问慢解决方法[转]
+ Hello gym
+123456789import gym# 创建一个小车倒立摆模型env = gym.m ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/26/OpenAI-Gym使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/19/深度学习/">深度学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-19T12:32:44.000Z">2019-09-19</time><i class="fa fa-edit"></i><time datetime="2019-09-19T12:32:44.000Z">2019-10-05</time></div><div class="recent-post-content"> 深度学习——神经网络
+ 构建网络的总原则
+一、增大网络容量，直到过拟命
+二、采取措施抑制过拟合
+三、继续增大网络容量，直到过拟合
+ 线性回归
+1234567891011121314151617181920212223242526272829303132333435363738# -*- coding: utf-8 -*-# Commented out IPython magic to ensure Python compatibility.import kerasimport numpy as npimport matplotlib.pyplot as plt# %matplotlib in ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/19/深度学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/03/TD-afterstate/">TD-afterstate</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-03T11:28:36.000Z">2019-10-03</time><i class="fa fa-edit"></i><time datetime="2019-10-03T11:28:36.000Z">2019-10-03</time></div><div class="recent-post-content"> TD-afterstate
+
+afterstae: 当前执行一个动作后的状态，可以理解为中间态
+是处理问题的一个改动,一种思想
+
+以俄罗斯方块为例:
+状态是由当前的局面和一个随机方块组成，执行一个下落动作之后会产生一个局面就称为afterstate，即动作结束后不能进行新的动作（没有新方块）的状态。
+中间态和下一个随机方块构成了下一个状态
+对于没有这种随机性的问题，afterstate就是next state
+td做预测，afterstate做控制
+
+ 更多:
+强化学习经典入门书的读书笔记系列–第六篇Temporal-Difference
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/10/03/TD-afterstate/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/23/Github下载、访问慢解决方法-转/">Github下载、访问慢解决方法[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-23T08:36:21.000Z">2019-09-23</time><i class="fa fa-edit"></i><time datetime="2019-09-23T08:36:21.000Z">2019-09-29</time></div><div class="recent-post-content"> Github下载、访问慢解决方法[转]
 
 下载tensorflow就16KiB/s,改完后能有900+KiB/s
 
 修改hosts
-1234567891011121314151617151.101.44.249 github.global.ssl.fastly.net192.30.253.113 github.com103.245.222.133 assets-cdn.github.com23.235.47.133 assets-cdn.github.com203.208.39.104 assets-cdn.github.com204.232.175.78 documentcloud.git ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/23/Github下载、访问慢解决方法-转/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/17/常用域名记录解释/">常用域名记录解释</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time><i class="fa fa-edit"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time></div><div class="recent-post-content">常用域名记录解释A记录A记录是用来创建到IP地址的记录。
+1234567891011121314151617151.101.44.249 github.global.ssl.fastly.net192.30.253.113 github.com103.245.222.133 assets-cdn.github.com23.235.47.133 assets-cdn.github.com203.208.39.104 assets-cdn.github.com204.232.175.78 documentcloud.git ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/23/Github下载、访问慢解决方法-转/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/27/Python-random/">Python random</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-27T14:11:59.000Z">2019-09-27</time><i class="fa fa-edit"></i><time datetime="2019-09-27T14:11:59.000Z">2019-09-29</time></div><div class="recent-post-content"> Python random
+
+老是忘记random中每个函数之间的区别，而且常常跟numpy里的random也经常搞混，因此还是写篇文章记一下吧。
+
+ random模块
+ choice和sample
+python中random.choice()可以从给定的可迭代对象中随机挑选出一个。
+而python中random.sample()方法则可以随机地从给定的可迭代对象中提取出N个不同的元素，列表的维数没有限制。（即第二参数给出个数N）
+1234567891011import randomprint(random.sample([chr(97 + x) for x in range(int(9)) ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/27/Python-random/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/17/常用域名记录解释/">常用域名记录解释</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time><i class="fa fa-edit"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time></div><div class="recent-post-content"> 常用域名记录解释
+ A记录
+A记录是用来创建到IP地址的记录。
 A记录设置技巧
 1、如果想创建不带www的记录，即ezloo.com，在主机记录中填写@或者留空，不同的注册商可能不一样。
 2、创建多个域名到同一个IP，比如给博客建了二级域名，可以使用*.blog.ezloo.com来指向一个IP，这样的话，不管是访问a.blog.ezloo.com还是b.blog.ezloo.com都能到同一个IP。
-3、如果你给同一个二级域名设置了多个A记录，比如你建了两个blog的A记录，其中一个指向了111.111.111.111，另一个指向了111.111.111.112，那么在查询的时候，每次返回的数据包 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/09/17/常用域名记录解释/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/打jar包和使用jar包/">打jar包和使用jar包</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-15</time></div><div class="recent-post-content">打jar包和使用jar包一、为什么要打jar包给别人用的时候一般给别人的是class文件。如果有很多类这么办？把类变成一个压缩包！windows下的压缩包是.zip格式等，而eclipse压缩包是.jar格式。
-二、如何查看jar包用解压缩软件解压即可。可以看到里面有哪些class文件。
-三、如何开发jar包开发jar包的人员开发流程：
-步骤1:编写类12345678//GetSum.javapackage cn.itcast.sum;public class GetSum&#123;      public static getSum(int a,int b)&#123;           ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/打jar包和使用jar包/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/强化学习——QLearning/">强化学习——QLearning</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-15</time></div><div class="recent-post-content">强化学习——QLearning价值转移公式只有一条$Q(s,a) &lt;= Q(s,a) + /alpha(reward - Q(s,a) + /gammamax_aQ(s’,a)) = (1-/alpha)Q(s,a) + /alpha(reward + /gammamax_aQ(s’,a))$，即$新Q(s1,a2) = 老Q(s1,a2) + /alpha  差距(现实-估计)$
-
-ALPHA为学习率，设置估计与现实的差距有多少被学习。能够使得更新比较平缓，防止模型过早收敛到局部解
-如果有两种途径都能得到Reward宝藏，如果直接设置1，那么很大程度上，算法都会沿着已尝试出有Rewar ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/强化学习——QLearning/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/如何成为一位老司机——考驾照经历/">如何成为一位老司机——考驾照经历</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-15</time></div><div class="recent-post-content">如何成为一位老司机——考驾照经历大一下报的名，几经转折，终于在2019-9-12，中秋放假前一天拿到了本本。
-科一理论考试太久远了，已经忘记了…
-科二训练倒车入库：左边小镜子底座盖过黄线，向左打死。正手倒车时，靠近左边直角距离3个手指回正，然后看左边镜子出现直角，然后。左手是一到二指头。
+3、如果你给同一个二级域名设置了多个A记录，比如你建了两个blog的A记录，其中一个指向了111.111.111.111，另一个指向了111.111.111.112，那么在查询的时候，每次返回 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/09/17/常用域名记录解释/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/打jar包和使用jar包/">打jar包和使用jar包</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-15</time></div><div class="recent-post-content"> 打jar包和使用jar包
+ 一、为什么要打jar包
+给别人用的时候一般给别人的是class文件。如果有很多类这么办？把类变成一个压缩包！windows下的压缩包是.zip格式等，而eclipse压缩包是.jar格式。
+ 二、如何查看jar包
+用解压缩软件解压即可。可以看到里面有哪些class文件。
+ 三、如何开发jar包
+开发jar包的人员开发流程：
+ 步骤1:编写类
+12345678//GetSum.javapackage cn.itcast.sum;public class GetSum&#123;      public static getSum(int a,int b)&#123; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/打jar包和使用jar包/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/如何成为一位老司机——考驾照经历/">如何成为一位老司机——考驾照经历</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-15</time></div><div class="recent-post-content"> 如何成为一位老司机——考驾照经历
+大一下报的名，几经转折，终于在2019-9-12，中秋放假前一天拿到了本本。
+ 科一理论考试
+太久远了，已经忘记了…
+ 科二
+ 训练
+ 倒车入库：
+左边小镜子底座盖过黄线，向左打死。
+正手倒车时，靠近左边直角距离3个手指回正，然后看左边镜子出现直角，然后。
+左手是一到二指头。
 ▲入库重在自己调整，记住准则：左右镜子，哪边空隙大，方向盘往哪边打
-小四项：直角转弯:
+ 小四项：
+ 直角转弯:
+
 人在路中间，直角重合于车窗黑线后向左打死。
 
-S弯道：
-确保人在路中间，可以略微偏左。左边小镜子底座压住右边黄线。方向盘一圈右手放在2点方向。如果黄线偏下，那么往1点方向调整，否则往3点方向调整。然后保持到车头中间碰到左边 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/14/如何成为一位老司机——考驾照经历/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/RL强化学习概念/">RL强化学习概念</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-15</time></div><div class="recent-post-content">RL强化学习概念方法汇总价值-直接-想象通过价值选择行为：
+ S弯道：
 
-Q Learning
-Sarsa
-Deep Q Network
-
-直接选择行为：
-
-Policy Gradients
-
-想象环境并从中学习
-
-Model Based RL
-
-基于模型
-Model-Free RL（无模型）不需要去理解环境的含义
-
-Q Learning
-Sarsa
-Policy Gradients
-
-
-
-
-Model-Based RL（有环境）需要去理解环境的含义，在”脑子”中模拟虚拟环境
-
-Q Learning
-Sarsa
-Policy Gradient
-
-
-
-  前者需要一步一步得到环境的反馈后才能进行下一步；而后 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/RL强化学习概念/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/Java自动化构建工具——Maven/">Java自动化构建工具——Maven</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:50.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:50.000Z">2019-09-15</time></div><div class="recent-post-content">Java自动化构建工具——Maven目前的技术在开发中存在的问题、Maven作用①一个项目就是一个工程
+确保人在路中间，可以略微偏左。左边小镜子底座压住右边黄线。方向盘一圈右手放在2点方向。如果黄线偏下，那么往1点方向调整，否则往3点 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/14/如何成为一位老司机——考驾照经历/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/Java自动化构建工具——Maven/">Java自动化构建工具——Maven</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:50.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:50.000Z">2019-09-15</time></div><div class="recent-post-content"> Java自动化构建工具——Maven
+ 目前的技术在开发中存在的问题、Maven作用
+①一个项目就是一个工程
 
 如果项目非常庞大，就不适合继续使用package来划分模块。最好是每一个模块对应一个工程，利于分工协作。
 
@@ -250,7 +271,7 @@ Policy Gradient
 带来的问题是：同样的jar包文件重复出现在不同的项目工程中，一方面浪费存储空间，另外也让工程比较臃肿。
 
 △借助Maven，可以将jar包仅仅保存在“仓库”中，有需要使用的工程“引用”这个文件接口，并不需要真的把jar包复制过来。
-③jar包需要别人替 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/Java自动化构建工具——Maven/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/CDN加速个人博客——又拍云/">CDN加速个人博客——又拍云</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-15</time></div><div class="recent-post-content"> CDN加速个人博客——又拍云
+③jar包需 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/Java自动化构建工具——Maven/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/CDN加速个人博客——又拍云/">CDN加速个人博客——又拍云</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-15</time></div><div class="recent-post-content"> CDN加速个人博客——又拍云
 
 CDN(Content Delivery Network)内容发布网络，基本思路就是将你网站放置在各地节点服务器，用户访问时找最近的节点服务器获取数据，达到加速的目的。
 

@@ -97,29 +97,42 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">app测试</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/11/26</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="测试"> 测试</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,310</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="app测试"><a href="#app测试" class="headerlink" title="app测试"></a>app测试</h1><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p><code>adb shell monkey 500</code>随机执行500次</p>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">app测试</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/11/26</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="测试"> 测试</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,310</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="app测试"><a class="markdownIt-Anchor" href="#app测试"></a> app测试</h1>
+<h2 id="命令"><a class="markdownIt-Anchor" href="#命令"></a> 命令</h2>
+<p><code>adb shell monkey 500</code>随机执行500次</p>
 <p><code>adb shell pm list packages -3</code> 查看第三方包</p>
 <p><code>adb shell monkey -p tv.danmaku.bili</code>指定在某个软件中随机压力测试</p>
 <p><code>adb shell monkey -p tv.danmaku.bili -p com.umaman.laiyifen 500</code>会先执行来伊份</p>
 <p>▲.在测试应用程序某些选项的同时，也会进行系统级功能的测试，如截图、调音量等</p>
 <p><code>adb shell monkey [-options] times</code></p>
-<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-s seed种子值：种子相同时，就能产生一样的伪随机操作序列</span><br><span class="line">-p package指定包名：压力测试执行在某个软件内</span><br><span class="line">--pct-touch percentage：指定触摸的比例</span><br><span class="line">--throttle MILLSEC ：设置每个操作之间的间隔为xx毫秒</span><br><span class="line"></span><br><span class="line">-v [-v [-v]]：输出日志，v越多越详细</span><br><span class="line">--ignore-crashes ：不管程序有无崩溃，都执行完所有操作</span><br></pre></td></tr></table></figure>
-<h2 id="各事件比例（Event-percentages-）"><a href="#各事件比例（Event-percentages-）" class="headerlink" title="各事件比例（Event percentages:）"></a>各事件比例（Event percentages:）</h2><ul>
-<li>0: 50.0%                  -pct-touch  触摸操作</li>
-<li>1: 5.8823533%        -pct-motion 移动操作</li>
-<li>2: 1.1764706%        -pct-pinchzoom 缩放操作</li>
-<li>3: 8.82353%            -pct-traceball 滚动操作</li>
+<h3 id="参数说明"><a class="markdownIt-Anchor" href="#参数说明"></a> 参数说明</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-s seed种子值：种子相同时，就能产生一样的伪随机操作序列</span><br><span class="line">-p package指定包名：压力测试执行在某个软件内</span><br><span class="line">--pct-touch percentage：指定触摸的比例</span><br><span class="line">--throttle MILLSEC ：设置每个操作之间的间隔为xx毫秒</span><br><span class="line"></span><br><span class="line">-v [-v [-v]]：输出日志，v越多越详细</span><br><span class="line">--ignore-crashes ：不管程序有无崩溃，都执行完所有操作</span><br></pre></td></tr></table></figure>
+<h2 id="各事件比例event-percentages"><a class="markdownIt-Anchor" href="#各事件比例event-percentages"></a> 各事件比例（Event percentages:）</h2>
+<ul>
+<li>0: 50.0%    			  -pct-touch  触摸操作</li>
+<li>1: 5.8823533%		-pct-motion 移动操作</li>
+<li>2: 1.1764706%		-pct-pinchzoom 缩放操作</li>
+<li>3: 8.82353%			-pct-traceball 滚动操作</li>
 </ul>
-<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>event injected数量不对</p>
+<h2 id="异常"><a class="markdownIt-Anchor" href="#异常"></a> 异常</h2>
+<p>event injected数量不对</p>
 <p>crash闪退</p>
 <p>ANR没有响应</p>
-<h2 id="出现异常后，需要提供给开发的东西"><a href="#出现异常后，需要提供给开发的东西" class="headerlink" title="出现异常后，需要提供给开发的东西"></a>出现异常后，需要提供给开发的东西</h2><p>l.被测手机详细信息<br>2.monkey测试日志<br>3.手机运行截图<br>4.monkey运行射手机日志</p>
-<h1 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h1><h2 id="测试用例设计三部曲"><a href="#测试用例设计三部曲" class="headerlink" title="测试用例设计三部曲"></a>测试用例设计三部曲</h2><ul>
-<li>要测试什么              -业务</li>
+<h2 id="出现异常后需要提供给开发的东西"><a class="markdownIt-Anchor" href="#出现异常后需要提供给开发的东西"></a> 出现异常后，需要提供给开发的东西</h2>
+<p>l.被测手机详细信息<br>
+2.monkey测试日志<br>
+3.手机运行截图<br>
+4.monkey运行射手机日志</p>
+<h1 id="测试用例"><a class="markdownIt-Anchor" href="#测试用例"></a> 测试用例</h1>
+<h2 id="测试用例设计三部曲"><a class="markdownIt-Anchor" href="#测试用例设计三部曲"></a> 测试用例设计三部曲</h2>
+<ul>
+<li>要测试什么		  	-业务</li>
 <li>怎么纠样测试           -测试环境搭建</li>
 <li>如何判新正确与否    -需求</li>
 </ul>
-<h2 id="测试计划"><a href="#测试计划" class="headerlink" title="测试计划"></a>测试计划</h2><p>不同的环境下（兼容性）<br>正常安装</p>
+<h2 id="测试计划"><a class="markdownIt-Anchor" href="#测试计划"></a> 测试计划</h2>
+<p>不同的环境下（兼容性）<br>
+正常安装</p>
 <p>空间不足-&gt;验证松勤安卓APP在HWX空间不足的条件下的安装行为</p>
 <ul>
 <li>√正常行为：提示空间不够</li>
@@ -128,7 +141,25 @@
 </ul>
 <p>安装过程没电-重新安装</p>
 <p>断网-网络Fiddler</p>
-<h2 id="常用功能测试点"><a href="#常用功能测试点" class="headerlink" title="常用功能测试点"></a>常用功能测试点</h2><p>常用的功能测试方法有“界面测试方法”和“黑盒测试技术”，具体可参见测试组配置库中的相应文档。下面列举了一些常用的功能测试点：<br>1.页面链接检查每一个链接是否都有对应的页面，并且页面之间切换正确。<br>2.相关性检查：删除/增加一项会不会对其他项产生影响，如果产生影响，这些影响是否都正确。<br>3.检查按钮的功能是否正确：如新增、修改、取消、删除、保存等功能是否正确。<br>4.字符串长度检查：输入超出需求规定的字符串长度的内容，看系统是否检查字符串长度，会不会有提示窗口。<br>5.字符类型检查：在应该输入指定类型的内容的地方输入其他类型的内容（如在应该输入整型的地方输入其他字符类型），看系统是否检查字符类型，是否会有提示窗口。<br>6.标点符号检查：输入内容包括各种标点符号，特别是空格，各种引号，回车键，看系统是否会有异常错误。<br>7.信息重复：在一些需要命名，且名字应该唯一的地方输入重复的名字或ID，看系统怎么处理，是否报错；重名是否区分大小写，以及在输入内容的前后输入空格，系统是否作出正确处理。<br>8.检查删除功能：在一些可以一次删除多个信息的地方，不选择任何信息，进行删除，看系统如何处理，是否出错；选择一个和多个信息，进行删除，看是否正确处理。<br>9.检查添加和修改是否一致：检查添加和修改信息的要求是否一致，如添加要求必填的项，修改也应该必填；添加规定为整型的项，修改也必须为整型。<br>10.检查修改重名：修改时把不能重名的项改为已存在的内容，看系统是否处理，报重名的错。<br>11.重复提交表单：一条已经成功提交的纪录，退出后再提交，看看系统是否会做什么处理。<br>12.查询功能：在有查询功能的地方输入系统存在和不存在的内容，结果是否正确；如果可以输入多个查询条件，同时添加合理和不合理的条件，看系统处理是否正确。<br>13.输入信息位置：注意在光标停留的地方输入信息时，光标和所输入的信息是否跳到别的地方。<br>14.上传下载文件检查：上传下载文件的功能是否实现，上传文件是否能打开。对上传文件的格式有何规定，系统是否有提示信息。<br>15.必填项检查：应该填写的项没有填写时系统是否都做了处理，对必填项是否有提示信息，如在必填项放加*。<br>16.快捷键检查：是否支持常用快捷键，如Ctl+C Ctrl+V Backspace等，对一些不允许输入信息的字段，如选人，选日期是否也有快捷键。<br>17.回车键检查：在输入结束后直接按回车键，看系统处理如何，会否报错。</p>
+<h2 id="常用功能测试点"><a class="markdownIt-Anchor" href="#常用功能测试点"></a> 常用功能测试点</h2>
+<p>常用的功能测试方法有“界面测试方法”和“黑盒测试技术”，具体可参见测试组配置库中的相应文档。下面列举了一些常用的功能测试点：<br>
+1.页面链接检查每一个链接是否都有对应的页面，并且页面之间切换正确。<br>
+2.相关性检查：删除/增加一项会不会对其他项产生影响，如果产生影响，这些影响是否都正确。<br>
+3.检查按钮的功能是否正确：如新增、修改、取消、删除、保存等功能是否正确。<br>
+4.字符串长度检查：输入超出需求规定的字符串长度的内容，看系统是否检查字符串长度，会不会有提示窗口。<br>
+5.字符类型检查：在应该输入指定类型的内容的地方输入其他类型的内容（如在应该输入整型的地方输入其他字符类型），看系统是否检查字符类型，是否会有提示窗口。<br>
+6.标点符号检查：输入内容包括各种标点符号，特别是空格，各种引号，回车键，看系统是否会有异常错误。<br>
+7.信息重复：在一些需要命名，且名字应该唯一的地方输入重复的名字或ID，看系统怎么处理，是否报错；重名是否区分大小写，以及在输入内容的前后输入空格，系统是否作出正确处理。<br>
+8.检查删除功能：在一些可以一次删除多个信息的地方，不选择任何信息，进行删除，看系统如何处理，是否出错；选择一个和多个信息，进行删除，看是否正确处理。<br>
+9.检查添加和修改是否一致：检查添加和修改信息的要求是否一致，如添加要求必填的项，修改也应该必填；添加规定为整型的项，修改也必须为整型。<br>
+10.检查修改重名：修改时把不能重名的项改为已存在的内容，看系统是否处理，报重名的错。<br>
+11.重复提交表单：一条已经成功提交的纪录，退出后再提交，看看系统是否会做什么处理。<br>
+12.查询功能：在有查询功能的地方输入系统存在和不存在的内容，结果是否正确；如果可以输入多个查询条件，同时添加合理和不合理的条件，看系统处理是否正确。<br>
+13.输入信息位置：注意在光标停留的地方输入信息时，光标和所输入的信息是否跳到别的地方。<br>
+14.上传下载文件检查：上传下载文件的功能是否实现，上传文件是否能打开。对上传文件的格式有何规定，系统是否有提示信息。<br>
+15.必填项检查：应该填写的项没有填写时系统是否都做了处理，对必填项是否有提示信息，如在必填项放加*。<br>
+16.快捷键检查：是否支持常用快捷键，如Ctl+C Ctrl+V Backspace等，对一些不允许输入信息的字段，如选人，选日期是否也有快捷键。<br>
+17.回车键检查：在输入结束后直接按回车键，看系统处理如何，会否报错。</p>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/11/26/app测试/">https://nymrli.top/2019/11/26/app测试/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/11/26/2019年8月23号运维笔记/" title="2019年8月23号运维笔记"><span>< PreviousPost</span><br><span class="prevTitle">2019年8月23号运维笔记</span></a><a class="nextSlogan" href="/2019/11/26/2019-9月7号C-编程笔记/" title="2019-9月7号C++编程笔记"><span>NextPost ></span><br><span class="nextTitle">2019-9月7号C++编程笔记</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'app测试',
   owner: 'Freedomisgood',
@@ -138,4 +169,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#app测试"><span class="toc-number">1.</span> <span class="toc-text">app测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">1.1.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参数说明"><span class="toc-number">1.1.1.</span> <span class="toc-text">参数说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各事件比例（Event-percentages-）"><span class="toc-number">1.2.</span> <span class="toc-text">各事件比例（Event percentages:）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常"><span class="toc-number">1.3.</span> <span class="toc-text">异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#出现异常后，需要提供给开发的东西"><span class="toc-number">1.4.</span> <span class="toc-text">出现异常后，需要提供给开发的东西</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试用例"><span class="toc-number">2.</span> <span class="toc-text">测试用例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试用例设计三部曲"><span class="toc-number">2.1.</span> <span class="toc-text">测试用例设计三部曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试计划"><span class="toc-number">2.2.</span> <span class="toc-text">测试计划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用功能测试点"><span class="toc-number">2.3.</span> <span class="toc-text">常用功能测试点</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#app测试"><span class="toc-number">1.</span> <span class="toc-text"> app测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">1.1.</span> <span class="toc-text"> 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参数说明"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 参数说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各事件比例event-percentages"><span class="toc-number">1.2.</span> <span class="toc-text"> 各事件比例（Event percentages:）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常"><span class="toc-number">1.3.</span> <span class="toc-text"> 异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#出现异常后需要提供给开发的东西"><span class="toc-number">1.4.</span> <span class="toc-text"> 出现异常后，需要提供给开发的东西</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试用例"><span class="toc-number">2.</span> <span class="toc-text"> 测试用例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试用例设计三部曲"><span class="toc-number">2.1.</span> <span class="toc-text"> 测试用例设计三部曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试计划"><span class="toc-number">2.2.</span> <span class="toc-text"> 测试计划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用功能测试点"><span class="toc-number">2.3.</span> <span class="toc-text"> 常用功能测试点</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

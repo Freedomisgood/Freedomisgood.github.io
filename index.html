@@ -179,13 +179,28 @@
 由于最近在学云原生的课会接触到docker和k8s，因此试验了如何通过docker来部署springboot。
 由于docker的实现依赖于linux内核提供的cgroups和namespace功能，而windows支持还没找到非常好的解决方案，因此在功能上windows docker还是有缺陷。我尝试过安装docker desktop for windows但是在WSL2的安装上失败了（2021年9月21日），试了二十分钟无果后放弃，决定还是在linux上构建。
 
-服务器上搭建Java环境和docker环境
+ 服务器上搭建Java环境和docker环境
+
 由于将docker的构建放到了服务器上，因此这部分可以理解为是构建打包环境
 
-构建 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2021/09/21/docker部署springboot项目/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/25/CICD-Jenkins与Travis/">CICD-Jenkins与Travis</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-25T05:39:46.000Z">2021-10-25</time><i class="fa fa-edit"></i><time datetime="2021-10-25T05:39:46.000Z">2021-10-25</time></div><div class="recent-post-content">Jenkins与travis使用Jenkins与Travis为CI、CD工具，其为Devops模式下的平台组件，能够让我们更好地进行开发测试与交付。由于最近云原生的课上在介绍DevOps和云监控，所以正好趁这个机会体验下Devops的交付流程，之前也有使用过Github Action作为CICD工具，但除了开源项目以外，Github使用比较少。这次呢就可以再熟悉下业内常用的CICD组件了：Jenkins or Travis
-DevOps发展背景
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2021/09/21/docker部署springboot项目/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/20/Java-Logger/">Java Logger</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-20T09:15:14.000Z">2021-10-20</time><i class="fa fa-edit"></i><time datetime="2021-10-20T09:15:14.000Z">2021-10-25</time></div><div class="recent-post-content"> Java Logger——Java的日志体系
+在JDK 1.3及以前，Java打日志依赖System.out.println(), System.err.println()或者e.printStackTrace()，Debug日志被写到STDOUT流，错误日志被写到STDERR流。这样打日志有一个非常大的缺陷，即无法定制化，且日志粒度不够细。
+于是， Gülcü 于2001年发布了Log4j，后来成为Apache 基金会的顶级项目。Log4j 在设计上非常优秀，对后续的 Java Log 框架有长久而深远的影响，它定义的Logger、Appender、Level等概念如今已经被广泛使用。Lo ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2021/10/20/Java-Logger/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/25/CICD-Jenkins与Travis/">CICD-Jenkins与Travis</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-25T05:39:46.000Z">2021-10-25</time><i class="fa fa-edit"></i><time datetime="2021-10-25T05:39:46.000Z">2021-10-25</time></div><div class="recent-post-content"> Jenkins与travis使用
+Jenkins与Travis为CI、CD工具，其为Devops模式下的平台组件，能够让我们更好地进行开发测试与交付。由于最近云原生的课上在介绍DevOps和云监控，所以正好趁这个机会体验下Devops的交付流程，之前也有使用过Github Action作为CICD工具，但除了开源项目以外，Github使用比较少。这次呢就可以再熟悉下业内常用的CICD组件了：Jenkins or Travis
+ DevOps发展背景
+
 传统交付模式的串行及隔离化形成了部门壁垒，降低了工作效率
-通过“在云上创建资源”-&gt;实现“云服务器自动化管理”-&gt;“应用无状态上云”后即可 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2021/10/25/CICD-Jenkins与Travis/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/12/ZJU开学摸底考试——数据库概论复习/">ZJU开学摸底考试——数据库概论复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-12T08:16:24.000Z">2021-10-12</time><i class="fa fa-edit"></i><time datetime="2021-10-12T08:16:24.000Z">2021-10-19</time></div><div class="recent-post-content"> 数据库概论
+通过“在云上创建资源”-&gt;实现“云服务器自动化管理”-&gt;“应用无状态上云 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2021/10/25/CICD-Jenkins与Travis/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/07/27/Go的配置和使用/">Go的配置和使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-07-27T03:10:11.000Z">2021-07-27</time><i class="fa fa-edit"></i><time datetime="2021-07-27T03:10:11.000Z">2021-10-22</time></div><div class="recent-post-content">Go语法学习
+Go 语言被设计成一门应用于搭载 Web 服务器，存储集群或类似用途的巨型中央服务器的系统编程语言。
+对于高性能分布式系统领域而言，Go 语言无疑比大多数其它语言有着更高的开发效率。它提供了海量并行的支持，这对于游戏服务端的开发而言是再好不过了。
+
+变量声明
+变量来源于数学，是计算机语言中能储存计算结果或能表示值抽象概念。变量可以通过变量名访问。
+
+声明变量的一般形式是使用 var 关键字：
+
+第一种，指定变量类型，如果没有初始化，则变量默认为零值: var identifier1, identifier2 type==&gt;bool零值为false，int为0
+第二种，根据值 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a></div><div class="read-more"><a class="more" href="/2021/07/27/Go的配置和使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/12/ZJU开学摸底考试——数据库概论复习/">ZJU开学摸底考试——数据库概论复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-12T08:16:24.000Z">2021-10-12</time><i class="fa fa-edit"></i><time datetime="2021-10-12T08:16:24.000Z">2021-10-19</time></div><div class="recent-post-content"> 数据库概论
  数据库的4个基本概念
 
 
@@ -213,8 +228,9 @@ DevOps发展背景
 
 位于用户应用与操作系统之间的一层数据管理软件；
 跟操作系统一样是计算机 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/10/12/ZJU开学摸底考试——数据库概论复习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/17/javadoc——让大家更好写java项目/">javadoc——让大家更好写java项目</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-17T13:57:14.000Z">2021-10-17</time><i class="fa fa-edit"></i><time datetime="2021-10-17T13:57:14.000Z">2021-10-18</time></div><div class="recent-post-content">近期在Github上看到一个有趣的项目，是各个技能树的挑战，并且起了个冒险岛的故事——字节传说:勇士将无惧挑战。其中除了提交Pr的教程（挑战）外，还有个比较有意思的是Javadoc，想想之前没专门写过，于是本勇士本次就毅然接收了Javadoc的挑战。
-Javadoc
-很多程序对Javadoc都不重视，认识不到Javadoc的作用，很多人都是这样认为的：“我只要写好功能就够了，写Javadoc太浪费时间，也没啥作用，还不如用写Javadoc的时间再多些个功能呢！”，我们知道注释是为了解释代码的作用的，是为了将来给自己或者别人快速了解代码的，在方法内一般用行注释//的比较多，是针对一小块代码做出解 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="技能糖"> 技能糖</a></div><div class="read-more"><a class="more" href="/2021/10/17/javadoc——让大家更好写java项目/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/27/物联网基础与应用-课程笔记/">物联网基础与应用-课程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-27T15:44:21.000Z">2021-09-27</time><i class="fa fa-edit"></i><time datetime="2021-09-27T15:44:21.000Z">2021-10-11</time></div><div class="recent-post-content"> IOT课上实验
+ Javadoc
+
+很多程序对Javadoc都不重视，认识不到Javadoc的作用，很多人都是这样认为的：“我只要写好功能就够了，写Javadoc太浪费时间，也没啥作用，还不如用写Javadoc的时间再多些个功能呢！”，我们知道注释是为了解释代码的作用的，是为了将来给自己或者别人快速了解代码的，在方法内一般用行注释//的比较多，是针对一小块代码做 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="技能糖"> 技能糖</a></div><div class="read-more"><a class="more" href="/2021/10/17/javadoc——让大家更好写java项目/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/27/物联网基础与应用-课程笔记/">物联网基础与应用-课程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-27T15:44:21.000Z">2021-09-27</time><i class="fa fa-edit"></i><time datetime="2021-09-27T15:44:21.000Z">2021-10-11</time></div><div class="recent-post-content"> IOT课上实验
  交叉编译环境
  什么是交叉编译环境？
 交叉编译其实是相对于本地编译(native build)来说的，大家最开始学习 C/C++ 这些语言的时候，都是在自己的笔记本上写程序，然后在直接在电脑上编译生成可执行文件，最后在电脑上运行。整个流程为：程序的编辑-&gt;编译-&gt;运行，整个过程都是在一台 X86 电脑上。
@@ -234,7 +250,9 @@ XML 标签对大小写敏感
 XML 文档必须有根元素
 XML 的属性值须加引号，双引号、单引号都可以
 实体引用：&amp;lt;, &amp;gt;, &amp;amp, &amp;apos, &amp;quot
-在 XML 中，空格会被保留， 但多余的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学习笔记"> 学习笔记</a></div><div class="read-more"><a class="more" href="/2021/10/09/XML语法规则笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/25/ZJU云原生技术及应用-课程笔记/">ZJU云原生技术及应用-课程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-25T14:48:36.000Z">2021-09-25</time><i class="fa fa-edit"></i><time datetime="2021-09-25T14:48:36.000Z">2021-10-09</time></div><div class="recent-post-content">ZJU要求课程内容
+在 XML 中，空格会被保留， 但多余的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学习笔记"> 学习笔记</a></div><div class="read-more"><a class="more" href="/2021/10/09/XML语法规则笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/25/ZJU云原生技术及应用-课程笔记/">ZJU云原生技术及应用-课程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-25T14:48:36.000Z">2021-09-25</time><i class="fa fa-edit"></i><time datetime="2021-09-25T14:48:36.000Z">2021-10-09</time></div><div class="recent-post-content"> ZJU要求
+ 课程内容
+
 云计算基本概念和Docker容器原理（4课时）
 Kubernetes核心原理与关键组件 （8课时）
 微服务技术原理与治理 （4课时）
@@ -243,27 +261,34 @@ Kubernetes核心原理与关键组件 （8课时）
 IBM讲座-混合云架构（4课时）
 云原生应用实践与案例分析（4课时）
 
-考核方式
+ 考核方式
+
 平时（20%）+ 课程设计（80%，含报告）
 
 课程设计（三选一）
 
+
 云原生技术研究报告或综述
 围绕云原生关键技术点，如容器安全、多集群管理、云边协同和边缘智能等，综述当前技术现状并进行必要的分析
 
+
 源代码分析报告
-分析Kubernetes或者KubeEdge等云原生项目相关源代码，撰写代码分析报告（行级 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU课程"> ZJU课程</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="云原生"> 云原生</a></div><div class="read-more"><a class="more" href="/2021/09/25/ZJU云原生技术及应用-课程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/30/makefile使用记录/">Makefile使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-30T04:16:04.000Z">2021-09-30</time><i class="fa fa-edit"></i><time datetime="2021-09-30T04:16:04.000Z">2021-10-09</time></div><div class="recent-post-content">Makefile使用记录
+分析Kubernetes或者KubeEdge等云原生项目相关源代码，撰写代 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU课程"> ZJU课程</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="云原生"> 云原生</a></div><div class="read-more"><a class="more" href="/2021/09/25/ZJU云原生技术及应用-课程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/30/makefile使用记录/">Makefile使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-30T04:16:04.000Z">2021-09-30</time><i class="fa fa-edit"></i><time datetime="2021-09-30T04:16:04.000Z">2021-10-09</time></div><div class="recent-post-content"> Makefile使用记录
+
 Makefile 文件描述了 Linux 系统下 C/C++ 工程的编译规则，它用来自动化编译 C/C++ 项目。一旦写编写好 Makefile 文件，只需要一个 make 命令，整个工程就开始自动编译，不再需要手动执行 GCC 命令。===&gt;此外拓展功能不至于C++，其相当于组合一系列Linux命令，因此也可以用来编译其他工程。
 
-什么是Makefile？ Windows 下的集成开发环境（IDE）已经内置了 Makefile，或者说会自动生成 Makefile，因此windows下不用去手动编写makefile。但是在 Linux 下的C语言开发会碰到
+ 什么是Makefile？
+Windows 下的集成开发环境（IDE）已经内置了 Makefile，或者说会自动生成 Makefile，因此windows下不用去手动编写makefile。但是在 Linux 下的C语言开发会碰到 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="配置"> 配置</a></div><div class="read-more"><a class="more" href="/2021/09/30/makefile使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/26/学点Gradle/">学点Gradle</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-26</time><i class="fa fa-edit"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-27</time></div><div class="recent-post-content"> Gradle学习
+在kotlin中使用mapstruct出现了些问题， 网上搜寻后得到结论：需要使用kapt(Kotlin annotation processing tool 即kotlin注解处理工具)， 但给出的大多都是通过Gradle来进行配置的。因此借此机会学习了下Gradle：
+ plugins和apply plugin:
 
-S ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="配置"> 配置</a></div><div class="read-more"><a class="more" href="/2021/09/30/makefile使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/26/学点Gradle/">学点Gradle</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-26</time><i class="fa fa-edit"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-27</time></div><div class="recent-post-content">Gradle学习在kotlin中使用mapstruct出现了些问题， 网上搜寻后得到结论：需要使用kapt(Kotlin annotation processing tool 即kotlin注解处理工具)， 但给出的大多都是通过Gradle来进行配置的。因此借此机会学习了下Gradle：
-plugins和apply plugin:
 由于文档写到了， 由于不清楚这些在哪些位置加入， 因此查看了plugins和apply plugin:的区别：
-1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt; &g ...</div><div class="read-more"><a class="more" href="/2021/09/26/学点Gradle/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/03/03/天猫秒杀插件-Chrome插件编写/">Chrome插件编写-天猫秒杀插件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-03-03T13:37:15.000Z">2021-03-03</time><i class="fa fa-edit"></i><time datetime="2021-03-03T13:37:15.000Z">2021-09-18</time></div><div class="recent-post-content">chrome插件开发
+1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="read-more"><a class="more" href="/2021/09/26/学点Gradle/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/03/03/天猫秒杀插件-Chrome插件编写/">Chrome插件编写-天猫秒杀插件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-03-03T13:37:15.000Z">2021-03-03</time><i class="fa fa-edit"></i><time datetime="2021-03-03T13:37:15.000Z">2021-09-18</time></div><div class="recent-post-content"> chrome插件开发
+
 借鉴TODO-List：Chrome插件开发简要指南
 
-文件结构在应用商店中下载下来的插件基本上都是以.crx为文件后缀，该文件其实就是一个压缩包（文件夹压缩而来），包括插件所需要的html、css、javascript、图片资源等等文件。
+ 文件结构
+在应用商店中下载下来的插件基本上都是以.crx为文件后缀，该文件其实就是一个压缩包（文件夹压缩而来），包括插件所需要的html、css、javascript、图片资源等等文件。
 其中，
 
 manifest.json是整个插件的功能及文件配置清单，非常重要。
@@ -271,13 +296,15 @@ static目录是放置整个插件的静态资源文件的，包括css、js、图
 template目录是放置整个插件的功能页面模板的。
 _locales目录是放置整个插件的国际化语言脚本的。
 
-一般来说，清单文件manifest.json文件是必须的，且必须 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="脚本"> 脚本</a></div><div class="read-more"><a class="more" href="/2021/03/03/天猫秒杀插件-Chrome插件编写/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/13/学点Kotlin/">学点Kotlin</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-13T09:18:17.000Z">2021-09-13</time><i class="fa fa-edit"></i><time datetime="2021-09-13T09:18:17.000Z">2021-09-13</time></div><div class="recent-post-content">Kotlin 基础语法Kotlin 文件以 .kt 为后缀。
-函数定义函数定义使用关键字 fun，参数格式为：参数 : 类型
+一般来说，清单文件manifest.json文件是必须的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="脚本"> 脚本</a></div><div class="read-more"><a class="more" href="/2021/03/03/天猫秒杀插件-Chrome插件编写/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/13/学点Kotlin/">学点Kotlin</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-13T09:18:17.000Z">2021-09-13</time><i class="fa fa-edit"></i><time datetime="2021-09-13T09:18:17.000Z">2021-09-13</time></div><div class="recent-post-content"> Kotlin 基础语法
+Kotlin 文件以 .kt 为后缀。
+ 函数定义
+函数定义使用关键字 fun，参数格式为：参数 : 类型
 123fun sum(a: Int, b: Int): Int &#123;   // Int 参数，返回值 Int    return a + b&#125;
 表达式作为函数体，返回类型自动推断：
 123fun sum(a: Int, b: Int) = a + bpublic fun sum(a: Int, b: Int): Int = a + b   // public 方法则必须明确写出返回类型
 无返回值的函数(类似Java中的void)：
-123456789f ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Kotlin"> Kotlin</a></div><div class="read-more"><a class="more" href="/2021/09/13/学点Kotlin/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/19/AOP学习/">AOP学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-19T08:35:08.000Z">2021-08-19</time><i class="fa fa-edit"></i><time datetime="2021-08-19T08:35:08.000Z">2021-09-09</time></div><div class="recent-post-content"> AOP学习
+123456 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Kotlin"> Kotlin</a></div><div class="read-more"><a class="more" href="/2021/09/13/学点Kotlin/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/19/AOP学习/">AOP学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-19T08:35:08.000Z">2021-08-19</time><i class="fa fa-edit"></i><time datetime="2021-08-19T08:35:08.000Z">2021-09-09</time></div><div class="recent-post-content"> AOP学习
  AOP
  要素
 
@@ -291,51 +318,50 @@ Aspect切面：是切入点和通知的抽象——切面则是横切关注点�
 
 execution(publi ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Spring"> Spring</a></div><div class="read-more"><a class="more" href="/2021/08/19/AOP学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/11/Shiro使用学习/">Shiro使用学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-11T07:39:08.000Z">2021-08-11</time><i class="fa fa-edit"></i><time datetime="2021-08-11T07:39:08.000Z">2021-09-07</time></div><div class="recent-post-content">Apache Shiro 是一个强大易用的 Java 安全框架，提供了认证、授权、加密和会话管理等功能（如下图），对于任何一个应用程序，Shiro 都可以提供全面的安全管理服务。并且相对于其他安全框架，Shiro 要简单的多。
 
-Shiro 的架构
+ Shiro 的架构
+
 从外部来看应该具有非常简单易于使用的 API，且 API 契约明确；从内部来看的话，其应该有一个可扩展的架构，即非常容易插入用户自定义实现，
 
 交互流程如下：
 
 应用代码直接交互的对象是 Subject，也就是说 Shiro 的对外 API 核心就是 Subject。
-Subject：主体，代表了当前 “用户”，这个用户不一定是一个具体的人，与当前 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="应用框架学习"> 应用框架学习</a></div><div class="read-more"><a class="more" href="/2021/08/11/Shiro使用学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/24/学习画好架构图/">学习画好架构图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-24T06:57:11.000Z">2021-08-24</time><i class="fa fa-edit"></i><time datetime="2021-08-24T06:57:11.000Z">2021-08-24</time></div><div class="recent-post-content">
+Subject：主体，代表了当前 “用户”，这个用户不一定是一个具体的人，与 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="应用框架学习"> 应用框架学习</a></div><div class="read-more"><a class="more" href="/2021/08/11/Shiro使用学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/24/学习画好架构图/">学习画好架构图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-24T06:57:11.000Z">2021-08-24</time><i class="fa fa-edit"></i><time datetime="2021-08-24T06:57:11.000Z">2021-08-24</time></div><div class="recent-post-content">
 一图胜万语，做好一张架构图能让别人一眼就清晰地弄懂程序的功能与依赖，大大降低大家的理解成本和提升沟通效率。但作为新人而言，如何画出要点，提炼出核心概念是个有难度的事。
 
-什么是架构？架构是结构和愿景，是对系统中的实体以及实体之间的关系所进行的抽象描述，是一系列的决策。
+ 什么是架构？
+架构是结构和愿景，是对系统中的实体以及实体之间的关系所进行的抽象描述，是一系列的决策。
 系统架构是概念的体现，是对物/信息的功能与形式元素之间的对应情况所做的分配，是对元素之间的关系以及元素同周边环境之间的关系所做的定义。
-什么是架构图？系统架构图是为了抽象地表示软件系统的整体轮廓和各个组件之间的相互关系和约束边界，以及软件系统的物理部署和软件系统的演进方向的整体视图。
-架构图的作用要让干系人理解、遵循架构决策， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="福利"> 福利</a></div><div class="read-more"><a class="more" href="/2021/08/24/学习画好架构图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/11/JWT使用学习/">JWT使用学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-11T08:44:17.000Z">2021-08-11</time><i class="fa fa-edit"></i><time datetime="2021-08-11T08:44:17.000Z">2021-08-18</time></div><div class="recent-post-content">JWT: Json Web Token
+ 什么是架构图？
+系统架构图是为了抽象地表示软件系统的整体轮廓和各个组件之间的相互关系和约束边界，以及软件系统的物理部署和软件系统的演进方向的整体视图。
+ 架构图的作用
+要让干系人理解、遵 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="福利"> 福利</a></div><div class="read-more"><a class="more" href="/2021/08/24/学习画好架构图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/11/JWT使用学习/">JWT使用学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-11T08:44:17.000Z">2021-08-11</time><i class="fa fa-edit"></i><time datetime="2021-08-11T08:44:17.000Z">2021-08-18</time></div><div class="recent-post-content"> JWT: Json Web Token
+
 
 与普通Token一样都是访问资源的令牌，都可以记录用户信息，都是只有验证成功后才可以获取信息。
 不同的是普通Token，服务端验证token信息时要进行数据库查询操作；JWT验证token信息就不用，在服务端使用密钥校验就可以，不用经过数据库查询。==》它是一个数字签名
 
 
-JWT信息组成JSON Web Token由三部分组成，它们之间用圆点(.)连接。这三部分分别是：
+ JWT信息组成
+JSON Web Token由三部分组成，它们之间用圆点(.)连接。这三部分分别是：
+
 
 Header
 
 Header header典型的由两部分组成：token的类型（“JWT”）和算法名称（比如：HMAC SHA256或者RSA等等）。
 
 
-Payload
 
-Pay ...</div><div class="read-more"><a class="more" href="/2021/08/11/JWT使用学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/01/24/认真学次DP——动态规划/">认真学次DP——动态规划</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time><i class="fa fa-edit"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time></div><div class="recent-post-content">动态规划DP
+Payloa ...</div><div class="read-more"><a class="more" href="/2021/08/11/JWT使用学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/01/24/认真学次DP——动态规划/">认真学次DP——动态规划</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time><i class="fa fa-edit"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time></div><div class="recent-post-content"> 动态规划DP
+
 一般算法面试题解决最优化问题，有两种解决途径：暴力枚举、或者DP，由于其灵活和高效，无数程序员为它着迷，大厂面试也是必考。
 但是，动态规划形式上非常多变，本质上没有套路，问题不同，动态规划的迭代方程就不同。而有些问题，对于计算机科学家，都难以找到迭代方程。因此，对于平平常常的我们，刷算法题时想不出动态规划的解法，也大可不必气馁。
 
-DP组成——三个条件某个问题是否能应用动态规划，通常需要满足 3 个条件：
+ DP组成——三个条件
+某个问题是否能应用动态规划，通常需要满足 3 个条件：
 
 具有最优子结构
 具有无后续性
 具有重复子问题
 
 最优子结构性质：只需求得子问题的最优解后，原问题的最优解最能推导出来，这表明此问题具备最优子结构性质！
-后续状态无关性：在具体 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="算法"> 算法</a></div><div class="read-more"><a class="more" href="/2021/01/24/认真学次DP——动态规划/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/UML简单记录/">UML简单记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T05:59:15.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T05:59:15.000Z">2020-12-22</time></div><div class="recent-post-content">
-要学习设计模式，首先绕不开的就是UML图，同时对于一名开发而言，开发文档中也必然会出现UML的身影。之前在实习的时候，其实已经学过不少了，但不用后又很容易忘记，(在阿里实习的时候就以为记得很熟了，结果现在又忘了)——因此这也是一个防忘系列
-
-UML
-UML(Unified Modeling Language)是一种标准的图形化建模语言，是一种为面对对象系统的产品进行说明、可视化、编制文档的标准语言，它是面向对象分析与设计的一种标准表示。
-
-（1）UML是一种语言。从上面的定义可以看出，就其本质，UML是一种语言，既然是语言，那就是用来交流的，UML用来在哪些人员之间进行交流呢？很明显，UML ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/12/11/UML简单记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/">浙大2020春夏-人工智能习题2——垃圾分类</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:45.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:45.000Z">2020-12-19</time></div><div class="recent-post-content">
-homework for ZJU: https://mo.zju.edu.cn/homework/zju_ai_2020_ss
-
-1. 实验介绍1.1 实验背景自今年 7 月 1 日起，上海市将正式实施 《上海市生活垃圾管理条例》。垃圾分类，看似是微不足道的“小事”，实则关系到13亿多人生活环境的改善，理应大力提倡。垃圾识别分类数据集中包括玻璃 (glass) 、硬纸板 (cardboard) 、金属 (metal) 、纸 (paper) 、塑料 (plastic) 、一般垃圾 (trash) ，共6个类别。生活垃圾由于种类繁多，具体分类缺乏统一标准，大多人在实际操作时会“选择困难”，基于深 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+**后续状态无 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="算法"> 算法</a></div><div class="read-more"><a class="more" href="/2021/01/24/认真学次DP——动态规划/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

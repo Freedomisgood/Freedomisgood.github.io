@@ -97,10 +97,13 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Jupyter使用</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/15</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,003</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="Jupyter使用"><a href="#Jupyter使用" class="headerlink" title="Jupyter使用"></a>Jupyter使用</h1><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>安装<code>pip install jupyter</code></p>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Jupyter使用</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/15</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">999</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="jupyter使用"><a class="markdownIt-Anchor" href="#jupyter使用"></a> Jupyter使用</h1>
+<h2 id="准备"><a class="markdownIt-Anchor" href="#准备"></a> 准备</h2>
+<p>安装<code>pip install jupyter</code></p>
 <p>运行<code>jupyter notebook</code></p>
 <hr>
-<h2 id="基础概念与操作"><a href="#基础概念与操作" class="headerlink" title="基础概念与操作"></a>基础概念与操作</h2><p>Jupyter有三种类型的cells：</p>
+<h2 id="基础概念与操作"><a class="markdownIt-Anchor" href="#基础概念与操作"></a> 基础概念与操作</h2>
+<p>Jupyter有三种类型的cells：</p>
 <ul>
 <li>code cells</li>
 <li>markdown cells</li>
@@ -109,7 +112,8 @@
 </ul>
 <hr>
 <p>Cells状态分为<strong>命令模式</strong>和<strong>编辑模式</strong>，Enter进入编辑模式，ESC进入命令模式，命令模式和编辑模式下支持很多操作快捷键，非常好用。</p>
-<h3 id="常用命令模式快捷键："><a href="#常用命令模式快捷键：" class="headerlink" title="常用命令模式快捷键："></a><strong>常用命令模式快捷键：</strong></h3><blockquote>
+<h3 id="常用命令模式快捷键"><a class="markdownIt-Anchor" href="#常用命令模式快捷键"></a> <strong>常用命令模式快捷键：</strong></h3>
+<blockquote>
 <p>y: 单元进入代码状态</p>
 <p>m: 转入markdown状态</p>
 <p>r：转入raw状态</p>
@@ -125,7 +129,8 @@
 <p>shift+Enter：运行本单元，并跳到下个单元，两种模式都适用</p>
 <p>alt+Enter：运行本单元，并在下方插入新单元，两种模式都适用</p>
 </blockquote>
-<h3 id="常用编辑模式快捷键："><a href="#常用编辑模式快捷键：" class="headerlink" title="常用编辑模式快捷键："></a><strong>常用编辑模式快捷键：</strong></h3><blockquote>
+<h3 id="常用编辑模式快捷键"><a class="markdownIt-Anchor" href="#常用编辑模式快捷键"></a> <strong>常用编辑模式快捷键：</strong></h3>
+<blockquote>
 <p>Tab：代码补齐或缩进</p>
 <p>Shift+Tab：调用方法提示，非常有用，在调用包中函数时，对于函数中的使用说明和相关参数配置，按两次shift+Tab可获取详细的方法提示。</p>
 <p>Ctrl+]：缩进</p>
@@ -136,37 +141,49 @@
 <p>Shift+Home：往前选取本行所有内容</p>
 <p>Shift+End：往后选取本行所有内容；</p>
 </blockquote>
-<h3 id="执行当前cell，并自动跳到下一个cell：Shift-Enter"><a href="#执行当前cell，并自动跳到下一个cell：Shift-Enter" class="headerlink" title="执行当前cell，并自动跳到下一个cell：Shift Enter"></a>执行当前cell，并自动跳到下一个cell：Shift Enter</h3><h3 id="执行当前cell，执行后不自动调转到下一个cell：Ctrl-Enter"><a href="#执行当前cell，执行后不自动调转到下一个cell：Ctrl-Enter" class="headerlink" title="执行当前cell，执行后不自动调转到下一个cell：Ctrl-Enter"></a>执行当前cell，执行后不自动调转到下一个cell：Ctrl-Enter</h3><h3 id="载入代码"><a href="#载入代码" class="headerlink" title="载入代码"></a>载入代码</h3><p><code>%load /Users/chenqionghe/test.py</code></p>
-<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><h3 id="jupyter-notebook-写代码自动补全"><a href="#jupyter-notebook-写代码自动补全" class="headerlink" title="jupyter notebook 写代码自动补全"></a>jupyter notebook 写代码自动补全</h3><p>进入命令行环境，有两种方式进入命令行。</p>
+<h3 id="执行当前cell并自动跳到下一个cellshift-enter"><a class="markdownIt-Anchor" href="#执行当前cell并自动跳到下一个cellshift-enter"></a> 执行当前cell，并自动跳到下一个cell：Shift Enter</h3>
+<h3 id="执行当前cell执行后不自动调转到下一个cellctrl-enter"><a class="markdownIt-Anchor" href="#执行当前cell执行后不自动调转到下一个cellctrl-enter"></a> 执行当前cell，执行后不自动调转到下一个cell：Ctrl-Enter</h3>
+<h3 id="载入代码"><a class="markdownIt-Anchor" href="#载入代码"></a> 载入代码</h3>
+<p><code>%load /Users/chenqionghe/test.py</code></p>
+<h2 id="插件"><a class="markdownIt-Anchor" href="#插件"></a> 插件</h2>
+<h3 id="jupyter-notebook-写代码自动补全"><a class="markdownIt-Anchor" href="#jupyter-notebook-写代码自动补全"></a> jupyter notebook 写代码自动补全</h3>
+<p>进入命令行环境，有两种方式进入命令行。</p>
 <ul>
 <li>方法1：通过anconda navigator界面，选择environments，选择对应环境名，选择open terminal</li>
 <li>方法2：直接使用cmd或者terminal等终端进入命令行。激活你想要配置代码补全的环境（如果是默认环境不用激活）</li>
 </ul>
-<p>1.安装<strong>nbextensions</strong> </p>
+<p>1.安装<strong>nbextensions</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install jupyter_contrib_nbextensions -i https://pypi.mirrors.ustc.edu.cn/simple</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> jupyter contrib nbextension install --user</span></span><br></pre></td></tr></table></figure>
 <p>2.安装<strong>nbextensions_configurator</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install --user jupyter_nbextensions_configurator </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> jupyter nbextensions_configurator <span class="built_in">enable</span> --user</span></span><br></pre></td></tr></table></figure>
 <p>效果如图</p>
-<p><img src="/2019/01/21/Jupyter使用/补全.jpg" alt="补全"></p>
+<p><img src="/2019/01/21/Jupyter使用/%E8%A1%A5%E5%85%A8.jpg" alt="补全"></p>
 <p><a href="https://www.i5seo.com/jupyter-notebooks-python.html" target="_blank" rel="noopener">Jupyter Notebooks：一份全面的初学者实用指南</a></p>
-<h3 id="Tableof-Contents-目录索引"><a href="#Tableof-Contents-目录索引" class="headerlink" title="Tableof Contents(目录索引)"></a>Tableof Contents(目录索引)</h3><p>这个功能可以自动找到所有的标题，生成目录。</p>
+<h3 id="tableof-contents目录索引"><a class="markdownIt-Anchor" href="#tableof-contents目录索引"></a> Tableof Contents(目录索引)</h3>
+<p>这个功能可以自动找到所有的标题，生成目录。</p>
 <p>并且这个目录还是移动的呦，你可以放在侧边栏，也可以拖动到任何你喜欢的地方悬浮起来。</p>
-<h3 id="Hinterland-代码补全"><a href="#Hinterland-代码补全" class="headerlink" title="Hinterland(代码补全)"></a>Hinterland(代码补全)</h3><blockquote>
+<h3 id="hinterland代码补全"><a class="markdownIt-Anchor" href="#hinterland代码补全"></a> Hinterland(代码补全)</h3>
+<blockquote>
 <p>Hinterland功能可以让你每敲完一个键，就出现下拉菜单，可以直接选中你需要的词汇。</p>
 </blockquote>
-<h3 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h3><blockquote>
+<h3 id="snippets"><a class="markdownIt-Anchor" href="#snippets"></a> Snippets</h3>
+<blockquote>
 <p>Snippets在工具栏里加了一个下拉菜单，可以非常方便的直接插入代码段，完全不用手动敲。</p>
 </blockquote>
-<h3 id="Autopep8"><a href="#Autopep8" class="headerlink" title="Autopep8"></a>Autopep8</h3><blockquote>
-<p> 一键美化代码，强迫症的福音。</p>
+<h3 id="autopep8"><a class="markdownIt-Anchor" href="#autopep8"></a> Autopep8</h3>
+<blockquote>
+<p>一键美化代码，强迫症的福音。</p>
 </blockquote>
-<h3 id="Qgrid"><a href="#Qgrid" class="headerlink" title="Qgrid"></a>Qgrid</h3><blockquote>
+<h3 id="qgrid"><a class="markdownIt-Anchor" href="#qgrid"></a> Qgrid</h3>
+<blockquote>
 <p>Qgrid也是一个Jupyter的小部件，不过它主要用于数据帧，装上之后，就可以像操作Excel里的筛选功能一样，方便的处理数据。</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install qgrid</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> jupyter nbextension <span class="built_in">enable</span> --py --sys-prefix qgrid</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> only required <span class="keyword">if</span> you have not enabled the ipywidgets nbextension yet</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> jupyter nbextension <span class="built_in">enable</span> --py --sys-prefix widgetsnbextension</span></span><br></pre></td></tr></table></figure>
-<h2 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h2><p>安装主题包:<code>pip install --upgrade jupyterthemes</code></p>
+<h2 id="主题设置"><a class="markdownIt-Anchor" href="#主题设置"></a> 主题设置</h2>
+<p>安装主题包:<code>pip install --upgrade jupyterthemes</code></p>
 <p>查看可用主题：<code>jt -l</code></p>
-<h3 id="Available-Themes"><a href="#Available-Themes" class="headerlink" title="Available Themes:"></a>Available Themes:</h3><ul>
+<h3 id="available-themes"><a class="markdownIt-Anchor" href="#available-themes"></a> Available Themes:</h3>
+<ul>
 <li>chesterish</li>
 <li>grade3</li>
 <li>gruvboxd</li>
@@ -181,16 +198,16 @@
 <p><img src="http://6.eewimg.cn/mp/uploads/2018/12/27/05d99520-09b8-11e9-b0e3-00163e2e672a.jpg" alt=""></p>
 <p>solarizedl主题：</p>
 <p><img src="http://6.eewimg.cn/mp/uploads/2018/12/27/05e0cdea-09b8-11e9-b0e3-00163e2e672a.jpg" alt=""></p>
-<p>上述图片来自量子位<sup><a href="#fn_量子位" id="reffn_量子位">量子位</a></sup></p>
+<p>上述图片来自量子位<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
 <p>consolamono主题:</p>
 <p><img src="/2019/01/21/Jupyter使用/consolamono.jpg" alt="consolamono"></p>
-<h3 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数:"></a>命令参数:</h3><p><img src="https://img-blog.csdn.net/2018030513433616" alt=""></p>
+<h3 id="命令参数"><a class="markdownIt-Anchor" href="#命令参数"></a> 命令参数:</h3>
+<p><img src="https://img-blog.csdn.net/2018030513433616" alt=""></p>
 <p>修改主题命令<code>$ jt --lineh 140 -f consolamono -tf ptmono -t grade3 -ofs 14 -nfs 14 -tfs 14 -fs 14 -T -N</code></p>
 <hr>
-<blockquote id="fn_量子位">
-<sup>量子位</sup>. <a href="http://www.eeworld.com.cn/mp/QbitAI/a58625.jspx" target="_blank" rel="noopener">http://www.eeworld.com.cn/mp/QbitAI/a58625.jspx</a><a href="#reffn_量子位" title="Jump back to footnote [量子位] in the text."> &#8617;</a>
-</blockquote>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="代码补全-不使用额外插件"><a href="#代码补全-不使用额外插件" class="headerlink" title="代码补全,不使用额外插件:"></a>代码补全,不使用额外插件:</h3><blockquote>
+<h2 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h2>
+<h3 id="代码补全不使用额外插件"><a class="markdownIt-Anchor" href="#代码补全不使用额外插件"></a> 代码补全,不使用额外插件:</h3>
+<blockquote>
 <p>使用jedi</p>
 </blockquote>
 <p>1.打开Anaconda Prompt或者jupyter安装的虚拟环境</p>
@@ -201,6 +218,13 @@
 <p>2.修改<code>ipython_config.py</code>中的配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c.Completer.jedi_compute_type_timeout = 400</span><br><span class="line">c.Completer.greedy = True</span><br><span class="line">c.Completer.use_jedi = True</span><br></pre></td></tr></table></figure>
 <p>3.重启jupyter</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="http://www.eeworld.com.cn/mp/QbitAI/a58625.jspx" target="_blank" rel="noopener">http://www.eeworld.com.cn/mp/QbitAI/a58625.jspx</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/01/21/Jupyter使用/">https://nymrli.top/2019/01/21/Jupyter使用/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/01/22/基础网络知识/" title="基础网络知识"><span>< PreviousPost</span><br><span class="prevTitle">基础网络知识</span></a><a class="nextSlogan" href="/2019/01/19/河海大学AI-机器人冬令营/" title="河海大学AI+机器人冬令营(12-26)"><span>NextPost ></span><br><span class="nextTitle">河海大学AI+机器人冬令营(12-26)</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'Jupyter使用',
   owner: 'Freedomisgood',
@@ -210,4 +234,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jupyter使用"><span class="toc-number">1.</span> <span class="toc-text">Jupyter使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">1.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础概念与操作"><span class="toc-number">1.2.</span> <span class="toc-text">基础概念与操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令模式快捷键："><span class="toc-number">1.2.1.</span> <span class="toc-text">常用命令模式快捷键：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用编辑模式快捷键："><span class="toc-number">1.2.2.</span> <span class="toc-text">常用编辑模式快捷键：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行当前cell，并自动跳到下一个cell：Shift-Enter"><span class="toc-number">1.2.3.</span> <span class="toc-text">执行当前cell，并自动跳到下一个cell：Shift Enter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行当前cell，执行后不自动调转到下一个cell：Ctrl-Enter"><span class="toc-number">1.2.4.</span> <span class="toc-text">执行当前cell，执行后不自动调转到下一个cell：Ctrl-Enter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#载入代码"><span class="toc-number">1.2.5.</span> <span class="toc-text">载入代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件"><span class="toc-number">1.3.</span> <span class="toc-text">插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jupyter-notebook-写代码自动补全"><span class="toc-number">1.3.1.</span> <span class="toc-text">jupyter notebook 写代码自动补全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tableof-Contents-目录索引"><span class="toc-number">1.3.2.</span> <span class="toc-text">Tableof Contents(目录索引)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hinterland-代码补全"><span class="toc-number">1.3.3.</span> <span class="toc-text">Hinterland(代码补全)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Snippets"><span class="toc-number">1.3.4.</span> <span class="toc-text">Snippets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Autopep8"><span class="toc-number">1.3.5.</span> <span class="toc-text">Autopep8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qgrid"><span class="toc-number">1.3.6.</span> <span class="toc-text">Qgrid</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题设置"><span class="toc-number">1.4.</span> <span class="toc-text">主题设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Available-Themes"><span class="toc-number">1.4.1.</span> <span class="toc-text">Available Themes:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令参数"><span class="toc-number">1.4.2.</span> <span class="toc-text">命令参数:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">1.5.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码补全-不使用额外插件"><span class="toc-number">1.5.1.</span> <span class="toc-text">代码补全,不使用额外插件:</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jupyter使用"><span class="toc-number">1.</span> <span class="toc-text"> Jupyter使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">1.1.</span> <span class="toc-text"> 准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础概念与操作"><span class="toc-number">1.2.</span> <span class="toc-text"> 基础概念与操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令模式快捷键"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 常用命令模式快捷键：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用编辑模式快捷键"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 常用编辑模式快捷键：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行当前cell并自动跳到下一个cellshift-enter"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 执行当前cell，并自动跳到下一个cell：Shift Enter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行当前cell执行后不自动调转到下一个cellctrl-enter"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 执行当前cell，执行后不自动调转到下一个cell：Ctrl-Enter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#载入代码"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 载入代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件"><span class="toc-number">1.3.</span> <span class="toc-text"> 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jupyter-notebook-写代码自动补全"><span class="toc-number">1.3.1.</span> <span class="toc-text"> jupyter notebook 写代码自动补全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tableof-contents目录索引"><span class="toc-number">1.3.2.</span> <span class="toc-text"> Tableof Contents(目录索引)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hinterland代码补全"><span class="toc-number">1.3.3.</span> <span class="toc-text"> Hinterland(代码补全)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#snippets"><span class="toc-number">1.3.4.</span> <span class="toc-text"> Snippets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#autopep8"><span class="toc-number">1.3.5.</span> <span class="toc-text"> Autopep8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#qgrid"><span class="toc-number">1.3.6.</span> <span class="toc-text"> Qgrid</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题设置"><span class="toc-number">1.4.</span> <span class="toc-text"> 主题设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#available-themes"><span class="toc-number">1.4.1.</span> <span class="toc-text"> Available Themes:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令参数"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 命令参数:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">1.5.</span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码补全不使用额外插件"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 代码补全,不使用额外插件:</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

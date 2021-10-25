@@ -1,4 +1,5 @@
 https://nymrli.top/2021/10/25/CICD-Jenkins与Travis/
+https://nymrli.top/2021/10/20/Java-Logger/
 https://nymrli.top/2021/10/17/javadoc——让大家更好写java项目/
 https://nymrli.top/2021/10/15/ZJU开学摸底考试——计算机网络复习/
 https://nymrli.top/2021/10/12/ZJU开学摸底考试——数据库概论复习/
@@ -14,6 +15,7 @@ https://nymrli.top/2021/08/24/学习画好架构图/
 https://nymrli.top/2021/08/19/AOP学习/
 https://nymrli.top/2021/08/11/JWT使用学习/
 https://nymrli.top/2021/08/11/Shiro使用学习/
+https://nymrli.top/2021/07/27/Go的配置和使用/
 https://nymrli.top/2021/03/03/天猫秒杀插件-Chrome插件编写/
 https://nymrli.top/2021/01/24/认真学次DP——动态规划/
 https://nymrli.top/2020/12/11/UML简单记录/
@@ -34,6 +36,7 @@ https://nymrli.top/2020/11/28/深度学习-Pytorch读书笔记/
 https://nymrli.top/2020/11/22/Linux服务器同步时钟/
 https://nymrli.top/2020/11/17/李宏毅机器学习-摘要/
 https://nymrli.top/2020/11/15/JupyterHub搭建/
+https://nymrli.top/2020/11/12/GithubAction/
 https://nymrli.top/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/
 https://nymrli.top/2020/11/09/scrcpy-AutoJS/
 https://nymrli.top/2020/10/27/粒子滤波Matlab代码解读/
@@ -45,6 +48,3 @@ https://nymrli.top/2020/09/21/手撕操作系统中的页面置换算法/
 https://nymrli.top/2020/09/15/docsify使用记录/
 https://nymrli.top/2020/09/08/数据结构——单调栈/
 https://nymrli.top/2020/09/06/扇区、块-簇/
-https://nymrli.top/2020/09/04/SQL练习/
-https://nymrli.top/2020/07/11/IDEA插件开发/
-https://nymrli.top/2020/05/24/getBargains的record和Solution/

@@ -115,7 +115,9 @@ crontab默认不开启日志，所以先开启定时任务的日志来查看
 开启本用户的定时任务,即创建以本用户名为文件名的定时任务文件，位置在/var/spool/cron/crontabs/。crontab -e
 定时任务语句格式为：执行周期+命令，周期有5个域，分别是
 
-M: 分（0-59 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/07/定时执行Python脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/04/高科GSWIFI江苏破解教程/">高科GSWIFI江苏破解教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-04T02:06:34.000Z">2018-11-04</time><i class="fa fa-edit"></i><time datetime="2018-11-04T02:06:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 1.重置路由器设置
+M: 分（0-59 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/07/定时执行Python脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/matplotlib-pyplot使用/">matplotlib.pyplot使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:58:51.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:58:51.000Z">2019-12-11</time></div><div class="recent-post-content"> matplotlib.pyplot使用
+ 注释
+1234567891011121314151617181920212223242526272829303132333435## 方法一####################for x_value,y_value in zip(x,y):    plt.text(x_value,y_value,y_value,fontsize= 15)	#文字标注(x,y,值)###################### 方法二####################for xy in zip(x, y):    plt.annotate("(%s,%s)"  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/10/matplotlib-pyplot使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/04/高科GSWIFI江苏破解教程/">高科GSWIFI江苏破解教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-04T02:06:34.000Z">2018-11-04</time><i class="fa fa-edit"></i><time datetime="2018-11-04T02:06:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 1.重置路由器设置
 
 为了以防之前其他人已经设置过某些东西,可能会影响到之后的使用，所以干脆直接重置。
 
@@ -227,20 +229,7 @@ Accept:请求报头域，用于指定客户端可接受 ...</div><div class="rec
 结合cookielib及urllib2，Python2时期比较常用的方法，年代比较久远了。个人觉得太麻烦，改用requests.
 ▲需要注意的是cookielib在python3中已经改成了http.cookiejar
 
-1234567891011121314151617181920212223242526272829303132333435#该方法本人未测试import urllib2import cookielib#将cookie保存在文件中def saveCookie():    #设置保存cookie的文件    filename = &apos;cooki ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/">Python爬虫知识点——爬虫的基本原理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:10.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:10.000Z">2019-09-15</time></div><div class="recent-post-content"> 爬虫的基本原理
-
-爬虫就是获取网页并提取和保存信息的自动化程序
-
- 获取网页：
-获取网页就是获取网页的源码，只要把源码获取下来，就可以从中提取想要的消息
-
-爬虫的流程：想网站的服务器发送一个请求，返回的响应体就是网页的源代码。
-​	&gt;1,构造请求发送给服务器=&gt;2.接受响应并解析
-
- 提取信息：
-通过分析网页结构，提取网页信息。通常使用的解析库有:BeautifulSoup、lxml、pyquery，也可以使用正则，但是构造正则表达式比较复杂且易错
- 保存数据：
-将提取的数据保存到某处以便后续利用。保存形式有：TXT、Json、数据库：MySQL、MongoDB、或远程服务器SF ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——响应/">Python爬虫知识点——响应</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:17.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:17.000Z">2019-09-15</time></div><div class="recent-post-content"> 响应：
+1234567891011121314151617181920212223242526272829303132333435#该方法本人未测试import urllib2import cookielib#将cookie保存在文件中def saveCookie():    #设置保存cookie的文件    filename = &apos;cooki ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——响应/">Python爬虫知识点——响应</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:17.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:17.000Z">2019-09-15</time></div><div class="recent-post-content"> 响应：
 响应状态码、响应头、响应体
  响应状态码：
 					表2-3常见的错误代码及错误原因
@@ -318,15 +307,7 @@ cookie与session相互配合，一个处于客户端，一个处于服务端，�
  1.正则对象及其属性
 首先正则对象是JS中内置的一个对象，好比Array以及Math一样，不需要第三方库的支持，通常我们采取两种方式来定义一个正则对象.
  1）构造函数方式
-12345var  reg=new RegExp('a ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="JavaScript"> JavaScript</a></div><div class="read-more"><a class="more" href="/2018/10/25/JS正则及常用方法函数总结/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/apt代理的设置/">apt代理的设置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:56:53.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:56:53.000Z">2019-09-15</time></div><div class="recent-post-content">
-原因是在apt-get update时遇到了Unable to connect to 代理，（由于apt-get update一直显示无法连接172.17.18.141百度后发现并不是个特殊的IP,）于是想到是否使用了代理。
-
- apt代理的设置：
- 临时方法
-export http_proxy=http://10.3.0.1:80
- 长久方法
-(1) 需要在/etc/apt/apt.conf中添加以下代码： (如果您希望apt-get(而不是其他应用程序)一直使用http代理,您可以使用这种方式。)
-Acquire::http::proxy &quot;http://用户名:密码@地址:端 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2018/11/10/apt代理的设置/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/apt-get-update无法连接/">apt-get update无法连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T05:21:45.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T05:21:45.000Z">2019-09-15</time></div><div class="recent-post-content"> 出现的问题
+12345var  reg=new RegExp('a ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="JavaScript"> JavaScript</a></div><div class="read-more"><a class="more" href="/2018/10/25/JS正则及常用方法函数总结/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/apt-get-update无法连接/">apt-get update无法连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T05:21:45.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T05:21:45.000Z">2019-09-15</time></div><div class="recent-post-content"> 出现的问题
 原因是在apt-get update时遇到了Unable to connect to 代理，（由于apt-get update一直显示无法连接172.17.18.141百度后发现这并不是个特殊的IP,而且也可以ping到百度）于是想到是否使用了代理。
 
 
@@ -336,4 +317,12 @@ Acquire::http::proxy &quot;http://用户名:密码@地址:端 ...</div><div clas
 export http_proxy=http://10.3.0.1:80
  长久方法
 (1) 需要在/etc/apt/apt.conf中添加以下代码： (如果您希望apt-get(而不是其他应用程序)一直使用http代理,您可以使用这种方式。)
-Acquire::http::proxy &qu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/02/apt-get-update无法连接/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/11/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/13/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+Acquire::http::proxy &qu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/02/apt-get-update无法连接/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/apt代理的设置/">apt代理的设置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:56:53.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:56:53.000Z">2019-09-15</time></div><div class="recent-post-content">
+原因是在apt-get update时遇到了Unable to connect to 代理，（由于apt-get update一直显示无法连接172.17.18.141百度后发现并不是个特殊的IP,）于是想到是否使用了代理。
+
+ apt代理的设置：
+ 临时方法
+export http_proxy=http://10.3.0.1:80
+ 长久方法
+(1) 需要在/etc/apt/apt.conf中添加以下代码： (如果您希望apt-get(而不是其他应用程序)一直使用http代理,您可以使用这种方式。)
+Acquire::http::proxy &quot;http://用户名:密码@地址:端 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2018/11/10/apt代理的设置/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/11/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/13/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

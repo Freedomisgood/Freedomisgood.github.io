@@ -101,14 +101,13 @@
 <p>防忘系列…</p>
 </blockquote>
 <p>Pycharm并没有IDEA一样可以设置<strong>对import进行排序</strong>以及<strong>自动消除没用到的库</strong>（要用快捷键Ctrl + Alt + O）， 并且如果导入方式不正确会 1.找不到自定义包 2.Pycharm对指定内容报错（下划线或红线）</p>
-<h2 id="python中模块包库概念"><a class="markdownIt-Anchor" href="#python中模块包库概念"></a> <a href="https://www.cnblogs.com/mlgjb/p/7875494.html" target="_blank" rel="noopener">Python中模块，包，库概念</a></h2>
-<p><strong>模块</strong>：就是<u>.py文件</u>，里面定义了一些函数和变量，需要的时候就可以导入这些模块。</p>
+<h2 id="Python中模块，包，库概念"><a href="#Python中模块，包，库概念" class="headerlink" title="Python中模块，包，库概念"></a><a href="https://www.cnblogs.com/mlgjb/p/7875494.html" target="_blank" rel="noopener">Python中模块，包，库概念</a></h2><p><strong>模块</strong>：就是<u>.py文件</u>，里面定义了一些函数和变量，需要的时候就可以导入这些模块。</p>
 <p><strong>包</strong>：在模块之上的概念，为了方便管理而将文件进行打包。包目录下第一个文件便是<code>__init__.py</code>，然后是一些模块文件和子目录，假如子目录中也有<code>__init__.py</code>，那么它就是这个包的<strong>子包</strong>了。</p>
 <p><strong>库</strong>：具有相关功能模块、包的集合。这也是Python的一大特色之一，即具有强大的标准库、第三方库以及自定义模块。</p>
 <p><strong>标准库</strong>：就是下载安装的python里那些自带的模块，要注意的是，里面有一些模块是看不到的比如像sys模块，这与linux下的cd命令看不到是一样的情况。</p>
 <p><strong>第三方库</strong>：就是由其他的第三方机构，发布的具有特定功能的模块。</p>
 <p><strong>自定义模块</strong>：用户自己可以自行编写模块，然后使用。</p>
-<p>总结: 我们<code>pip install &lt;package&gt;</code>安装的是库，库下有很多包，我们在自己的项目文件中import有以下几种用法:</p>
+<p>总结: 我们<code>pip install &lt;package&gt;</code>安装的是库，库下有很多包，我们在自己的项目文件中import有以下几种用法: </p>
 <ul>
 <li>import numpy as np</li>
 <li>import urllib.parse import urlencode</li>
@@ -126,16 +125,14 @@
 <li>packages是所有要打包的包（package），这里需要打包的是test_package包以及test_package包下的test_package。输入<code>python setup.py sdist</code>然后就能创建bricewulib库，使用test_package包</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setup(</span><br><span class="line">	name = &quot;bricewulib&quot;,</span><br><span class="line">	version = &quot;1.0&quot;,</span><br><span class="line">	packages=[&quot;test_package&quot;,&quot;test_package.test_package2&quot;]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h2 id="import推荐顺序"><a class="markdownIt-Anchor" href="#import推荐顺序"></a> import推荐顺序</h2>
-<p>我们推荐所有的模块在 Python 模块的开头部分导入。 而且最好按照这样的顺序:</p>
+<h2 id="import推荐顺序"><a href="#import推荐顺序" class="headerlink" title="import推荐顺序"></a>import推荐顺序</h2><p>我们推荐所有的模块在 Python 模块的开头部分导入。 而且最好按照这样的顺序:</p>
 <ol>
 <li>Python 标准库模块</li>
 <li>Python 第三方模块</li>
 <li>应用程序自定义模块</li>
 </ol>
 <p>通过空行来分割——<a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/background/" target="_blank" rel="noopener">(Python’s Style Guide)</a>, PEP8 。</p>
-<h2 id="import的搜索顺序"><a class="markdownIt-Anchor" href="#import的搜索顺序"></a> import的搜索顺序：</h2>
-<ol>
+<h2 id="import的搜索顺序："><a href="#import的搜索顺序：" class="headerlink" title="import的搜索顺序："></a>import的搜索顺序：</h2><ol>
 <li>首先判断这个module是不是built-in即内建模块，如果是则引入内建模块，如果不是则在一个称为sys.path的list中寻找</li>
 <li>sys.path在python脚本执行时动态生成，包括以下3个部分：</li>
 </ol>
@@ -144,17 +141,15 @@
 <li>环境变量中的PYTHONPATH, 即.bash_profilec.</li>
 <li>安装python时的依赖位置</li>
 </ul>
-<h2 id="python的import机制"><a class="markdownIt-Anchor" href="#python的import机制"></a> Python的import机制</h2>
-<p>运行、编写Python代码时，一定要注意的是脚本路径和脚本执行路径，以及相对路径和绝对路径</p>
+<h2 id="Python的import机制"><a href="#Python的import机制" class="headerlink" title="Python的import机制"></a>Python的import机制</h2><p>运行、编写Python代码时，一定要注意的是脚本路径和脚本执行路径，以及相对路径和绝对路径</p>
 <p><strong>如果在项目中运用了相对路径,则一定要注意脚本执行路径</strong></p>
 <p>假设A是B的父目录, 如我们想在A目录调用B中模块, 而B中模板是又import了A下模板, 如login: <code>from login import ftSession</code>。<strong>命令行</strong>在A路径下输入<code>python B/main.py</code>时, 会报错。因为import其实就是在搜索目录下按相对路径找的。</p>
-<h3 id="pycharm的坑"><a class="markdownIt-Anchor" href="#pycharm的坑"></a> <strong>Pycharm的坑:</strong></h3>
-<p>借鉴: <a href="https://zhuanlan.zhihu.com/p/109036573" target="_blank" rel="noopener">Python的import机制坑在哪？</a></p>
+<h3 id="Pycharm的坑"><a href="#Pycharm的坑" class="headerlink" title="Pycharm的坑:"></a><strong>Pycharm的坑:</strong></h3><p>借鉴: <a href="https://zhuanlan.zhihu.com/p/109036573" target="_blank" rel="noopener">Python的import机制坑在哪？</a></p>
 <blockquote>
-<p><strong>pycharm里打出来的路径是更多的，它把项目根目录加进去了。</strong>(也可以设置: 进入设置，找到Console下的Python Console，勾选选项**“Add source roots to PYTHONPAT”** )</p>
+<p><strong>pycharm里打出来的路径是更多的，它把项目根目录加进去了。</strong>(也可以设置: 进入设置，找到Console下的Python Console，勾选选项<strong>“Add source roots to PYTHONPAT”</strong> )</p>
 </blockquote>
 <p>查看搜索路径:<code>print(sys.path)</code></p>
-<p><img src="/2020/10/23/Python中import的细节/Python%E4%B8%ADimport%E7%9A%84%E7%BB%86%E8%8A%82%5Csettings.jpg" alt="settings"></p>
+<p><img src="/2020/10/23/Python中import的细节/settings.jpg" alt="settings"></p>
 <p>What’s resource root?</p>
 <p><img src="https://pic4.zhimg.com/80/v2-99d4cf12cb731bf457b3ee503dfd5d42_720w.jpg?source=1940ef5c" alt="img"></p>
 <p>以上导致的问题就是:</p>
@@ -172,8 +167,7 @@
 <blockquote>
 <p>解决方法: 右键将model所在的文件夹设置为source root</p>
 </blockquote>
-<h3 id="总结python该如何import"><a class="markdownIt-Anchor" href="#总结python该如何import"></a> 总结：python该如何import</h3>
-<p>需要明确的一点是：在运行Python脚本的时候，Python解释器会把脚本执行的位置，即当前路径加入到搜索路径中，而绝大多数情况main函数就在工程根目录，因此对于一个工程而言，最好的是从从project folder(工程根目录，即运行main函数的那个入口文件)开始<strong>相对导入</strong></p>
+<h3 id="总结：python该如何import"><a href="#总结：python该如何import" class="headerlink" title="总结：python该如何import"></a>总结：python该如何import</h3><p>需要明确的一点是：在运行Python脚本的时候，Python解释器会把脚本执行的位置，即当前路径加入到搜索路径中，而绝大多数情况main函数就在工程根目录，因此对于一个工程而言，最好的是从从project folder(工程根目录，即运行main函数的那个入口文件)开始<strong>相对导入</strong></p>
 <p>举个栗子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">G:.</span><br><span class="line">AI-for-Othello</span><br><span class="line">│  .gitignore</span><br><span class="line">│  board.py</span><br><span class="line">│  config.py</span><br><span class="line">│  game.py</span><br><span class="line">│  main.ipynb</span><br><span class="line">│  main.py</span><br><span class="line">│  README.md</span><br><span class="line">│  __init__.py</span><br><span class="line">│</span><br><span class="line">├─ai</span><br><span class="line">│  │  mcts.py</span><br><span class="line">│  │  randm.py</span><br><span class="line">│  │  __init__.py</span><br><span class="line">│  │</span><br><span class="line">│  ├─utils</span><br><span class="line">│  │  │  mct.py</span><br><span class="line">│  │  │  __init__.py</span><br></pre></td></tr></table></figure>
 <p>在这里ai/utils中mct.py需要import board.py中的Board对象等，mct.py中import具体写法为</p>
@@ -182,16 +176,13 @@
 <p>还有一个对于初学者可能会产生自我怀疑的点，我也顺便提一下好了</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> config <span class="keyword">import</span> *</span><br><span class="line">// 等价于</span><br><span class="line"><span class="keyword">from</span> .config <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="__init__文件作用"><a class="markdownIt-Anchor" href="#__init__文件作用"></a> <code>__init__</code>文件作用</h2>
-<p>在Python工程里，当python检测到一个目录下存在<code>__init__.py</code>文件时，python就会把这个目录当成一个包(package)。Module跟C＋＋的命名空间和Java的Package的概念很像，都是为了科学地组织化工程，管理命名空间。</p>
-<h3 id="__init__py的设计原则"><a class="markdownIt-Anchor" href="#__init__py的设计原则"></a> <strong><code>__init__.py</code>的设计原则</strong></h3>
-<p><code>__init__.py</code>的原始使命是声明一个模块，所以它可以是一个空文件。</p>
-<p>A、不要污染现有的<strong>命名空间</strong>。模块一个目的，是为了避免命名冲突，如果你在种用__init__.py时违背这个原则，是反其道而为之，就没有必要使用模块了。</p>
+<h2 id="init-文件作用"><a href="#init-文件作用" class="headerlink" title="__init__文件作用"></a><code>__init__</code>文件作用</h2><p>在Python工程里，当python检测到一个目录下存在<code>__init__.py</code>文件时，python就会把这个目录当成一个包(package)。Module跟C＋＋的命名空间和Java的Package的概念很像，都是为了科学地组织化工程，管理命名空间。</p>
+<h3 id="init-py的设计原则"><a href="#init-py的设计原则" class="headerlink" title="__init__.py的设计原则"></a><strong><code>__init__.py</code>的设计原则</strong></h3><p><code>__init__.py</code>的原始使命是声明一个模块，所以它可以是一个空文件。</p>
+<p>A、不要污染现有的<strong>命名空间</strong>。模块一个目的，是为了避免命名冲突，如果你在种用<strong>init</strong>.py时违背这个原则，是反其道而为之，就没有必要使用模块了。</p>
 <p>B、利用<code>__init__.py</code>对<strong>外提供类型、变量和接口，对用户隐藏各个子模块的实现</strong>。一个模块的实现可能非常复杂，你需要用很多个文件，甚至很多子模块来实现，但用户可能只需要知道一个类型和接口。就像我们的arithmetic例子中，用户只需要知道四则运算有add、sub、mul、dev四个接口，却并不需要知道它们是怎么实现的，也不想去了解arithmetic中是如何组织各个子模块的。由于各个子模块的实现有可能非常复杂，而对外提供的类型和接口有可能非常的简单，我们就可以通过这个方式来对用户隐藏实现，同时提供非常方便的使用。</p>
-<p>C、只在__init__.py中导入有必要的内容，不要做没必要的运算。像我们的例子，<strong>import</strong> arithmetic语句会<strong>执行</strong><code>__ini__.py</code>中的所有<strong>代码</strong>。如果我们在<code>__init__.py</code>中做太多事情，每次import都会有额外的运算，会造成没有必要的开销。一句话，<strong>init</strong>.py只是为了达到B中所表述的目的，其它事情就不要做啦。</p>
+<p>C、只在<strong>init</strong>.py中导入有必要的内容，不要做没必要的运算。像我们的例子，<strong>import</strong> arithmetic语句会<strong>执行</strong><code>__ini__.py</code>中的所有<strong>代码</strong>。如果我们在<code>__init__.py</code>中做太多事情，每次import都会有额外的运算，会造成没有必要的开销。一句话，<strong>init</strong>.py只是为了达到B中所表述的目的，其它事情就不要做啦。</p>
 <p>上述来自: <a href="https://zhuanlan.zhihu.com/p/115350758" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/115350758</a></p>
-<h3 id="__all__变量"><a class="markdownIt-Anchor" href="#__all__变量"></a> <code>__all__</code>变量</h3>
-<p><code>__all__</code>是一个字符串list；</p>
+<h3 id="all-变量"><a href="#all-变量" class="headerlink" title="__all__变量"></a><code>__all__</code>变量</h3><p><code>__all__</code>是一个字符串list；</p>
 <p>约束作用：用来定义模块中对于<code>from XXX import *</code>时要对外导出的符号，即要暴露的借口，但它只对<code>import *</code>起作用(即如果在使用脚本中对当前包使用import *，那么可以管理当前包下模块的导入情况)，对<code>from XXX import XXX</code>不起作用。</p>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/10/23/Python中import的细节/">https://nymrli.top/2020/10/23/Python中import的细节/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2020/10/27/范数的概念-MATLAB使用/" title="范数的概念_MATLAB使用"><span>< PreviousPost</span><br><span class="prevTitle">范数的概念_MATLAB使用</span></a><a class="nextSlogan" href="/2020/10/18/emplace-back与push-back/" title="emplace_back与push_back"><span>NextPost ></span><br><span class="nextTitle">emplace_back与push_back</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'Python中import的细节',
@@ -202,4 +193,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python中模块包库概念"><span class="toc-number">1.</span> <span class="toc-text"> Python中模块，包，库概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import推荐顺序"><span class="toc-number">2.</span> <span class="toc-text"> import推荐顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import的搜索顺序"><span class="toc-number">3.</span> <span class="toc-text"> import的搜索顺序：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python的import机制"><span class="toc-number">4.</span> <span class="toc-text"> Python的import机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pycharm的坑"><span class="toc-number">4.1.</span> <span class="toc-text"> Pycharm的坑:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结python该如何import"><span class="toc-number">4.2.</span> <span class="toc-text"> 总结：python该如何import</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#__init__文件作用"><span class="toc-number">5.</span> <span class="toc-text"> __init__文件作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#__init__py的设计原则"><span class="toc-number">5.1.</span> <span class="toc-text"> __init__.py的设计原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#__all__变量"><span class="toc-number">5.2.</span> <span class="toc-text"> __all__变量</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python中模块，包，库概念"><span class="toc-number">1.</span> <span class="toc-text">Python中模块，包，库概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import推荐顺序"><span class="toc-number">2.</span> <span class="toc-text">import推荐顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import的搜索顺序："><span class="toc-number">3.</span> <span class="toc-text">import的搜索顺序：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python的import机制"><span class="toc-number">4.</span> <span class="toc-text">Python的import机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Pycharm的坑"><span class="toc-number">4.1.</span> <span class="toc-text">Pycharm的坑:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结：python该如何import"><span class="toc-number">4.2.</span> <span class="toc-text">总结：python该如何import</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#init-文件作用"><span class="toc-number">5.</span> <span class="toc-text">__init__文件作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#init-py的设计原则"><span class="toc-number">5.1.</span> <span class="toc-text">__init__.py的设计原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#all-变量"><span class="toc-number">5.2.</span> <span class="toc-text">__all__变量</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -97,37 +97,28 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">数据结构——图</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/15</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="图论"> 图论</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">665</span> | Reading time: <span class="post-count">2</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="数据结构图"><a class="markdownIt-Anchor" href="#数据结构图"></a> 数据结构——图</h1>
-<h2 id="连通图"><a class="markdownIt-Anchor" href="#连通图"></a> 连通图</h2>
-<ul>
-<li>无向图
-<ul>
-<li><strong>连通图</strong> : 图中任意两点都连通</li>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">数据结构——图</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/15</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="图论"> 图论</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">665</span> | Reading time: <span class="post-count">2</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="数据结构——图"><a href="#数据结构——图" class="headerlink" title="数据结构——图"></a>数据结构——图</h1><h2 id="连通图"><a href="#连通图" class="headerlink" title="连通图"></a>连通图</h2><ul>
+<li>无向图<ul>
+<li><strong>连通图</strong> : 图中任意两点都连通 </li>
 <li><strong>连通</strong>:如果从v到w存在一条(无向)路径,则称v和w是连通的</li>
-<li>**路径:**V到w的路径是一系列顶点{V,v1,V2，vn,w}的集合,其中任一对相邻的顶点间都有图中的边。路径的长度是路径中的边数(如果带权,则是所有边的权重和)。如果v到w之间的所有顶点都不同,则称简单路径
-<ul>
+<li><strong>路径:</strong>V到w的路径是一系列顶点{V,v1,V2，vn,w}的集合,其中任一对相邻的顶点间都有图中的边。路径的长度是路径中的边数(如果带权,则是所有边的权重和)。如果v到w之间的所有顶点都不同,则称简单路径<ul>
 <li>▲路径是边的超集,一条路径中可以有多条边</li>
 </ul>
 </li>
 <li><strong>回路</strong>:起点等于终点的路径 ==&gt; 有回路的路径为非简单路径</li>
 </ul>
 </li>
-<li>有向图:
-<ul>
+<li>有向图:<ul>
 <li><strong>强连通</strong> : 有向图中顶点v和W之间存在双向路径,则称v和w是强连通的强连通图</li>
 <li><strong>强连通图</strong> : 有向图中任意两顶点均强连通强连通分量:有向图的极大强连通子图</li>
 <li><strong>弱连通图</strong> : 将有向图中边的方向擦去,能变成连通图的图叫 <strong>弱连通图</strong></li>
 </ul>
 </li>
 </ul>
-<h2 id="图不连通咋办"><a class="markdownIt-Anchor" href="#图不连通咋办"></a> 图不连通咋办?</h2>
-<ul>
-<li>非连通图
-<ul>
-<li>无向图
-<ul>
-<li>连通分量: 无向图的极大连通子图
-<ul>
+<h2 id="图不连通咋办"><a href="#图不连通咋办" class="headerlink" title="图不连通咋办?"></a>图不连通咋办?</h2><ul>
+<li>非连通图<ul>
+<li>无向图<ul>
+<li>连通分量: 无向图的极大连通子图<ul>
 <li>极大顶点数 : 再加1个顶点就不连通了</li>
 <li>极大边数 : 包含子图中所有顶点相连的所有边</li>
 </ul>
@@ -138,44 +129,34 @@
 </ul>
 </li>
 </ul>
-<p>图的边可以是具有<u>某种属性的对象</u>: 007案例中的岸边</p>
-<h2 id="最小代价生成树"><a class="markdownIt-Anchor" href="#最小代价生成树"></a> 最小代价生成树</h2>
-<h3 id="基础概念"><a class="markdownIt-Anchor" href="#基础概念"></a> 基础概念</h3>
-<blockquote>
-<p>最小生成树问题 : 村村通—&gt; 使图连通的( 最少的边 \ 花销最小的 )</p>
+<p>图的边可以是具有<u>某种属性的对象</u>: 007案例中的岸边 </p>
+<h2 id="最小代价生成树"><a href="#最小代价生成树" class="headerlink" title="最小代价生成树"></a>最小代价生成树</h2><h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><blockquote>
+<p> 最小生成树问题 : 村村通—-&gt; 使图连通的( 最少的边 \ 花销最小的 ) </p>
 </blockquote>
 <ul>
-<li>树
-<ul>
+<li>树<ul>
 <li>连通的</li>
 <li>无回路</li>
 <li>V个顶点 , v-1条边</li>
 </ul>
 </li>
-<li>生成
-<ul>
+<li>生成<ul>
 <li>包含所有的顶点</li>
 <li>V-1条边都在图里</li>
 <li>任意加一条边都会构成回路</li>
 </ul>
 </li>
-<li>最小
-<ul>
+<li>最小<ul>
 <li>边的权重和最小</li>
 </ul>
 </li>
 </ul>
-<p><strong>▲ 最小代价生成树不存在 &lt;----&gt; 图不连通</strong></p>
-<h4 id="贪心算法"><a class="markdownIt-Anchor" href="#贪心算法"></a> 贪心算法:</h4>
-<ul>
-<li>
-<p>贪: 每一步是最好的</p>
+<p><strong>▲ 最小代价生成树不存在 &lt;——&gt; 图不连通</strong></p>
+<h4 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法:"></a>贪心算法:</h4><ul>
+<li>贪: 每一步是最好的</li>
+<li><p>好: 权重是最小的</p>
 </li>
-<li>
-<p>好: 权重是最小的</p>
-</li>
-<li>
-<p>约束:</p>
+<li><p>约束: </p>
 <ul>
 <li>只能用图里有的边</li>
 <li>正好用掉 v-1条边</li>
@@ -183,33 +164,23 @@
 </ul>
 </li>
 </ul>
-<h3 id="算法实现"><a class="markdownIt-Anchor" href="#算法实现"></a> 算法实现:</h3>
-<h4 id="prim算法让小树成长"><a class="markdownIt-Anchor" href="#prim算法让小树成长"></a> Prim算法——让小树成长：</h4>
-<p><img src="/2018/12/16/数据结构——图/prim.jpg" alt="prim"></p>
-<h4 id="kruskal将森林合并成树"><a class="markdownIt-Anchor" href="#kruskal将森林合并成树"></a> kruskal——将森林合并成树:</h4>
-<blockquote>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现:"></a>算法实现:</h3><h4 id="Prim算法——让小树成长："><a href="#Prim算法——让小树成长：" class="headerlink" title="Prim算法——让小树成长："></a>Prim算法——让小树成长：</h4><p><img src="/2018/12/16/数据结构——图/prim.jpg" alt="prim"></p>
+<h4 id="kruskal——将森林合并成树"><a href="#kruskal——将森林合并成树" class="headerlink" title="kruskal——将森林合并成树:"></a>kruskal——将森林合并成树:</h4><blockquote>
 <p>更贪心,直接将权重最小的边收进来</p>
 </blockquote>
 <p><img src="/2018/12/16/数据结构——图/kru.jpg" alt="kru"></p>
-<h3 id="拓补排序"><a class="markdownIt-Anchor" href="#拓补排序"></a> 拓补排序</h3>
-<h4 id="aov"><a class="markdownIt-Anchor" href="#aov"></a> AOV</h4>
-<blockquote>
+<h3 id="拓补排序"><a href="#拓补排序" class="headerlink" title="拓补排序"></a>拓补排序</h3><h4 id="AOV"><a href="#AOV" class="headerlink" title="AOV"></a>AOV</h4><blockquote>
 <p>以顶点来表示活动。 一个活动是另一个活动的先决条件</p>
-</blockquote>
-<blockquote>
 <p>不断抹去 <strong>没有前驱顶点(入度为0)</strong> 的顶点</p>
 </blockquote>
 <p><img src="/2018/12/16/数据结构——图/tobo.jpg" alt="tobo"></p>
-<h5 id="提倡的做法-将入度为0的顶点放到容器中"><a class="markdownIt-Anchor" href="#提倡的做法-将入度为0的顶点放到容器中"></a> 提倡的做法: 将入度为0的顶点放到容器中</h5>
-<p><img src="/2018/12/16/数据结构——图/tobo2.jpg" alt="tobo2"></p>
+<h5 id="提倡的做法-将入度为0的顶点放到容器中"><a href="#提倡的做法-将入度为0的顶点放到容器中" class="headerlink" title="提倡的做法: 将入度为0的顶点放到容器中"></a>提倡的做法: 将入度为0的顶点放到容器中</h5><p><img src="/2018/12/16/数据结构——图/tobo2.jpg" alt="tobo2"></p>
 <p>▲.这种方法还可以用来检测是不是有向无环图(DAG)</p>
-<h3 id="关键路径"><a class="markdownIt-Anchor" href="#关键路径"></a> 关键路径</h3>
-<h4 id="aoe"><a class="markdownIt-Anchor" href="#aoe"></a> AOE:</h4>
-<blockquote>
+<h3 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h3><h4 id="AOE"><a href="#AOE" class="headerlink" title="AOE:"></a>AOE:</h4><blockquote>
 <p>一般用于安排项目的工序</p>
 <p>由绝不允许延误的活动组成的路径</p>
 </blockquote>
-<p><img src="/2018/12/16/数据结构——图/%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84.jpg" alt="关键路径"></p>
+<p><img src="/2018/12/16/数据结构——图/关键路径.jpg" alt="关键路径"></p>
 <p><strong>关键路径长度</strong>: <code>earliest(n)</code></p>
 <p><strong>没有机动时间的路径为关键路径</strong></p>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2018/12/16/数据结构——图/">https://nymrli.top/2018/12/16/数据结构——图/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2018/12/16/数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题/" title="数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题"><span>< PreviousPost</span><br><span class="prevTitle">数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题</span></a><a class="nextSlogan" href="/2018/12/16/win自带邮件使用/" title="win自带邮件使用"><span>NextPost ></span><br><span class="nextTitle">win自带邮件使用</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
@@ -221,4 +192,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构图"><span class="toc-number">1.</span> <span class="toc-text"> 数据结构——图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#连通图"><span class="toc-number">1.1.</span> <span class="toc-text"> 连通图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图不连通咋办"><span class="toc-number">1.2.</span> <span class="toc-text"> 图不连通咋办?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最小代价生成树"><span class="toc-number">1.3.</span> <span class="toc-text"> 最小代价生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基础概念"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#贪心算法"><span class="toc-number">1.3.1.1.</span> <span class="toc-text"> 贪心算法:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法实现"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 算法实现:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#prim算法让小树成长"><span class="toc-number">1.3.2.1.</span> <span class="toc-text"> Prim算法——让小树成长：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kruskal将森林合并成树"><span class="toc-number">1.3.2.2.</span> <span class="toc-text"> kruskal——将森林合并成树:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拓补排序"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 拓补排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#aov"><span class="toc-number">1.3.3.1.</span> <span class="toc-text"> AOV</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#提倡的做法-将入度为0的顶点放到容器中"><span class="toc-number">1.3.3.1.1.</span> <span class="toc-text"> 提倡的做法: 将入度为0的顶点放到容器中</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键路径"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 关键路径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#aoe"><span class="toc-number">1.3.4.1.</span> <span class="toc-text"> AOE:</span></a></li></ol></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构——图"><span class="toc-number">1.</span> <span class="toc-text">数据结构——图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#连通图"><span class="toc-number">1.1.</span> <span class="toc-text">连通图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图不连通咋办"><span class="toc-number">1.2.</span> <span class="toc-text">图不连通咋办?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最小代价生成树"><span class="toc-number">1.3.</span> <span class="toc-text">最小代价生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基础概念"><span class="toc-number">1.3.1.</span> <span class="toc-text">基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#贪心算法"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">贪心算法:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法实现"><span class="toc-number">1.3.2.</span> <span class="toc-text">算法实现:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Prim算法——让小树成长："><span class="toc-number">1.3.2.1.</span> <span class="toc-text">Prim算法——让小树成长：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kruskal——将森林合并成树"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">kruskal——将森林合并成树:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拓补排序"><span class="toc-number">1.3.3.</span> <span class="toc-text">拓补排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AOV"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">AOV</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#提倡的做法-将入度为0的顶点放到容器中"><span class="toc-number">1.3.3.1.1.</span> <span class="toc-text">提倡的做法: 将入度为0的顶点放到容器中</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键路径"><span class="toc-number">1.3.4.</span> <span class="toc-text">关键路径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AOE"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">AOE:</span></a></li></ol></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

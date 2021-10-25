@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Python中的正则匹配</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/08/19</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,198</span> | Reading time: <span class="post-count">12</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="python中的正则匹配"><a class="markdownIt-Anchor" href="#python中的正则匹配"></a> Python中的正则匹配</h1>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Python中的正则匹配</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/10/17</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,409</span> | Reading time: <span class="post-count">13</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="python中的正则匹配"><a class="markdownIt-Anchor" href="#python中的正则匹配"></a> Python中的正则匹配</h1>
 <blockquote>
 <p>虽然正则早就会用了,但是有些使用方法老是忘记,因此还是写篇记录一下</p>
 </blockquote>
@@ -362,6 +362,28 @@
 <li>一个月的31天(01～09和1～31)：^((0?[1-9])|((1|2)[0-9])|30|31)$</li>
 <li>匹配<code>{}</code>之内的内容: <code>\{([^}]+)\}</code> （匹配两个括号中没有}的地方）and <code>\{(?:.|\s)+\}</code>（匹配括号中所有字符）</li>
 </ul>
+<p>问题：</p>
+<ul>
+<li>
+<p>匹配换行符以外的元素： <code>var def = \{([^\n]+)\};</code></p>
+</li>
+<li>
+<p>大括号以内的元素：<code>new_info_tmp = re.findall(r'def = (\{.*?\});', html, re.S)[0]</code>，通过re.S</p>
+<ul>
+<li><code>\s</code>:默认情况下的圆点 <strong>.</strong> 是 匹配除换行符 <strong>\n</strong> 之外的任何字符，加上 <strong>s</strong> 修饰符之后, <strong>.</strong> 中包含换行符 \n。</li>
+<li>想使用正则表达式来获取一段文本中的任意字符,写出如下匹配规则：(.*)，因此会在换行符处断开。如果想要满足之前的需求可以写成<code>([\s\S]*)</code>，这个会包含<code>\n</code></li>
+</ul>
+</li>
+<li>
+<p>Python中的re.S</p>
+<ul>
+<li>
+<p>如果不使用re.S参数，则只在每一行内进行匹配，如果一行没有，就换下一行重新开始。</p>
+<p>而使用re.S参数以后，正则表达式会将这个字符串作为一个整体，在整体中进行匹配。</p>
+</li>
+</ul>
+</li>
+</ul>
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
@@ -371,7 +393,7 @@
 </li>
 </ol>
 </section>
-</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/07/25/Python中的正则匹配/">https://nymrli.top/2019/07/25/Python中的正则匹配/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/07/25/Docker使用/" title="Docker使用"><span>< PreviousPost</span><br><span class="prevTitle">Docker使用</span></a><a class="nextSlogan" href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/" title="利用wireshark抓取TCP的整个过程分析[转]"><span>NextPost ></span><br><span class="nextTitle">利用wireshark抓取TCP的整个过程分析[转]</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/07/25/Python中的正则匹配/">https://nymrli.top/2019/07/25/Python中的正则匹配/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/07/26/Vim记忆/" title="Vim记忆"><span>< PreviousPost</span><br><span class="prevTitle">Vim记忆</span></a><a class="nextSlogan" href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/" title="利用wireshark抓取TCP的整个过程分析[转]"><span>NextPost ></span><br><span class="nextTitle">利用wireshark抓取TCP的整个过程分析[转]</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'Python中的正则匹配',
   owner: 'Freedomisgood',
   repo: 'Freedomisgood.github.io',

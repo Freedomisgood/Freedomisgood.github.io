@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Makefile使用记录 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Makefile使用记录</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/10/09</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="配置"> 配置</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">4,346</span> | Reading time: <span class="post-count">17</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="Makefile使用记录"><a href="#Makefile使用记录" class="headerlink" title="Makefile使用记录"></a>Makefile使用记录</h1><blockquote>
+<p>Makefile 文件描述了 Linux 系统下 C/C++ 工程的<strong>编译规则</strong>，它用来自动化编译 C/C++ 项目。一旦写编写好 Makefile 文件，只需要一个 make 命令，整个工程就开始自动编译，不再需要手动执行 GCC 命令。===&gt;此外拓展功能不至于C++，其相当于组合一系列Linux命令，因此也可以用来编译其他工程。</p>
+</blockquote>
+<h2 id="什么是Makefile？"><a href="#什么是Makefile？" class="headerlink" title="什么是Makefile？"></a>什么是Makefile？</h2><p> Windows 下的集成开发环境（IDE）已经内置了 Makefile，或者说会自动生成 Makefile，因此windows下不用去手动编写makefile。但是在 Linux 下的C语言开发会碰到</p>
+<ul>
+<li>S：编译的时候需要链接库的的问题——编译的时候 gcc 只会默认链接一些基本的C语言标准库，很多源文件依赖的标准库都需要我们手动链接，因为有很多的文件，还要去链接很多的第三方库。所以在编译的时候命令会很长，并且在编译的时候我们可能会涉及到文件链接的顺序问题，所以手动编译会很麻烦。<ul>
+<li>A:把要链接的库文件放在 Makefile 中，制定相应的规则和对应的链接顺序。这样只需要执行 make 命令，工程就会自动编译。每次想要编译工程的时候就执行 make ，省略掉手动编译中的参数选项和命令，非常的方便。</li>
+</ul>
+</li>
+<li>S：编译大的工程会花费很长的时间<ul>
+<li>Makefile 支持多线程并发操作，会极大的缩短我们的编译时间，并且当我们修改了源文件之后，编译整个工程的时候，make 命令只会编译我们修改过的文件，没有修改的文件不用重新编译，也极大的解决了我们耗费时间的问题。</li>
+</ul>
+</li>
+</ul>
+<p>使用 Makefile 的方式：首先需要编写好 Makefile 文件，然后在 shell 中执行 make 命令，程序就会自动执行，得到最终的目标文件。</p>
+<h2 id="makefile规则是什么样的？"><a href="#makefile规则是什么样的？" class="headerlink" title="makefile规则是什么样的？"></a>makefile规则是什么样的？</h2><p>规则主要是两个部分组成，分别是依赖的关系和执行的命令，其结构如下所示：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">targets: prerequisites</span></span><br><span class="line">    command</span><br><span class="line"><span class="comment"># example:</span></span><br><span class="line"><span class="section">test: test.c</span></span><br><span class="line">&lt;tab&gt; gcc -o test test.c</span><br><span class="line"><span class="comment"># 编译 test.c 文件: test 是的目标文件，也是最终生成的可执行文件。依赖文件就是 test.c 源文件，重建目标文件需要执行的操作是gcc -o test test.c。这就是 Makefile 的基本的语法规则的使用。</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>targets：规则的目标，可以是 Object File（一般称它为中间文件），也可以是可执行文件，还可以是一个标签；</li>
+<li>prerequisites：是我们的依赖文件，要生成 targets 需要的文件或者是目标。可以是多个，也可以是没有；</li>
+<li>command：make 需要执行的命令（任意的 shell 命令）。可以有多条命令，每一条命令占一行。</li>
+</ul>
+<h2 id="makfile执行流程"><a href="#makfile执行流程" class="headerlink" title="makfile执行流程"></a>makfile执行流程</h2><p>在我们编译项目文件的时候，默认情况下，make 执行的是 Makefile 中的<strong>第一规则</strong>（Makefile 中出现的第一个依赖关系），此规则的第一目标称之为“最终目标”或者是“终极目标”。</p>
+<p>案例分析：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">main:main.o test1.o test2.o</span></span><br><span class="line">	gcc main.o test1.o test2.o -o main</span><br><span class="line"><span class="section">main.o: main.c test.h</span></span><br><span class="line">	gcc -c main.c -o main.o</span><br><span class="line"><span class="section">test1.o: test1.c test.h</span></span><br><span class="line">	gcc -c test1.c -o test1.o</span><br><span class="line"><span class="section">test2.o: test2.c test.h</span></span><br><span class="line">	gcc -c test2.c -o test2.o</span><br><span class="line"><span class="comment"># 通过 Makefile 我们可以发现，目标 main"在 Makefile 中是第一个目标，因此它就是 make 的终极目标</span></span><br></pre></td></tr></table></figure>
+<p>它的具体工作顺序是：当在 shell 提示符下输入 make 命令以后。 make 读取当前目录下的 Makefile 文件，并将 Makefile 文件中的第一个目标作为其执行的“终极目标”，开始处理第一个规则（终极目标所在的规则）。在我们的例子中，第一个规则就是目标 “main” 所在的规则。规则描述了 “main” 的依赖关系，并定义了链接 “.o” 文件生成目标 “main” 的命令；make 在执行这个规则所定义的命令之前，首先处理目标 “main” 的所有的依赖文件（例子中的那些 “.o” 文件）的更新规则（以这些 “.o” 文件为目标的规则）。</p>
+<p>对这些 “.o” 文件为目标的规则处理有下列三种情况：</p>
+<ul>
+<li>目标 “.o” 文件不存在，使用其描述规则创建它；</li>
+<li>目标 “.o” 文件存在，<del>目标 “.o” 文件所依赖的 “.c” 源文件和 “.h” 文件中的任何一个比目标 “.o” 文件<strong>“更新”</strong></del>（依赖的.h、.c在上一次 make 之后被修改）。则根据规<strong>则重新编译生成</strong>它；</li>
+<li>目标 “.o” 文件存在，<del>目标 “.o” 文件比它的任何一个依赖文件（”.c” 源文件、”.h” 文件）“更新”</del>（它的依赖文件.h、.c在上一次 make 之后没有被修改），则什么也不做。</li>
+</ul>
+<p>通过上面的更新规则我们可以了解到<strong>中间文件</strong>的作用，也就是编译时生成的 “.o” 文件。作用是<strong>检查某个源文件是不是进行过修改</strong>，最终目标文件是不是需要重建。我们执行 make 命令时，只有修改过的源文件或者是不存在的目标文件会进行重建，而那些没有改变的文件不用重新编译，这样在很大程度上节省时间，提高编程效率。小的工程项目可能体会不到，项目工程文件越大，效果才越明显。</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
+<li><strong>定义变量</strong>的基本语法如下：<code>变量的名称=值列表</code></li>
+<li>调用变量的时候可以用 <code>&quot;$(VALUE_LIST)&quot;</code>或者是<code>&quot;${VALUE_LIST}&quot;</code>来替换，这就是变量的引用。</li>
+</ul>
+<p>知道了如何定义，下面我们来说一下 Makefile 的变量的四种基本赋值方式：</p>
+<ul>
+<li>简单赋值 ( := ) 编程语言中常规理解的赋值方式，只对当前语句的变量有效。</li>
+<li>递归赋值 ( = ) 赋值语句可能影响多个变量，所有目标变量相关的其他变量都受影响。</li>
+<li>条件赋值 ( ?= ) 如果变量未定义，则使用符号中的值定义变量。如果该变量已经赋值，则该赋值语句无效。</li>
+<li>追加赋值 ( += ) 原变量用空格隔开的方式追加一个新值。</li>
+</ul>
+<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><p><strong>ifeq 和 ifneq</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ifeq (ARG1, ARG2)</span><br><span class="line">ifeq &apos;ARG1&apos; &apos;ARG2&apos;</span><br><span class="line">ifeq &quot;ARG1&quot; &quot;ARG2&quot;</span><br><span class="line">ifeq &quot;ARG1&quot; &apos;ARG2&apos;</span><br><span class="line">ifeq &apos;ARG1&apos; &quot;ARG2&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>ifdef 和 ifndef</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifdef VARIABLE-NAME</span><br></pre></td></tr></table></figure>
+<p><strong>伪目标</strong></p>
+<blockquote>
+<p>并不会创建目标文件，只是想去执行这个目标下面的命令。</p>
+<p>伪目标的存在可以帮助我们找到命令并执行。</p>
+</blockquote>
+<p>使用伪目标有两点原因：</p>
+<ul>
+<li>避免我们的 Makefile 中定义的只执行的命令的目标和工作目录下的实际文件出现名字冲突。</li>
+<li>提高执行 make 时的效率，特别是对于一个大型的工程来说，提高编译的效率也是我们所必需的。</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">clean:    </span></span><br><span class="line">	rm -rf *.o test</span><br></pre></td></tr></table></figure>
+<p>规则中 rm 命令不是创建文件 clean 的命令，而是执行删除任务，删除当前目录下的所有的 .o 结尾和文件名为 test 的文件。</p>
+<ul>
+<li><p>当工作目录下不存在以 clean 命令的文件时，在 shell 中输入 make clean 命令，命令 rm -rf *.o test 总会被执行 ，这也是我们期望的结果。</p>
+</li>
+<li><p>如果当前目录下存在文件名为 clean 的文件时情况就会不一样了，当我们在 shell 中执行命令 make clean，由于这个规则没有依赖文件，所以目标被认为是最新的而不去执行规则所定义的命令。因此命令 rm 将不会被执行。为了解决这个问题，删除 clean 文件或者是在 Makefile 中将目标 clean 声明为伪目标。将一个目标声明称伪目标的方法是将它作为特殊的目标<code>.PHONY</code>的依赖，如下：</p>
+<p>.PHONY:clean</p>
+<p>这样 clean 就被声明成一个伪目标，无论当前目录下是否存在 clean 这个文件，当我们执行 make clean 后 rm 都会被执行。而且当一个目标被声明为伪目标之后，make 在执行此规则时不会去试图去查找隐含的关系去创建它。这样同样提高了 make 的执行效率，同时也不用担心目标和文件名重名而使我们的编译失败。</p>
+</li>
+</ul>
+<h4 id="伪目标实现多文件编辑"><a href="#伪目标实现多文件编辑" class="headerlink" title="伪目标实现多文件编辑"></a>伪目标实现多文件编辑</h4><p>如果在一个文件里想要同时生成多个可执行文件，我们可以借助伪目标来实现。使用方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.PHONY:allall:test1 test2 test3test1:test1.o    gcc -o $@ $^test2:test2.o    gcc -o $@ $^test3:test3.o    gcc -o $@ $^</span><br></pre></td></tr></table></figure>
+<p>我们在当前目录下创建了三个源文件，目的是把这三个源文件编译成为三个可执行文件。将重建的规则放到 Makefile 中，约定使用 “all” 的伪目标来作为最终目标，它的依赖文件就是要生成的可执行文件。这样的话只需要一个 make 命令，就会同时生成三个可执行文件。</p>
+<p>之所以这样写，是因为伪目标的特性，它总会被执行，所以它依赖的三个文件的目标就不如 “all” 这个目标新，所以，其他的三个目标的规则总是被执行，这也就达到了我们一口气生成多个目标的目的。我们也可以实现单独的编译这三个中的任意一个源文件（我们想去重建 test1，我们可以执行命令<code>make test1</code> 来实现 ）。 </p>
+<h2 id="l参数和-L参数"><a href="#l参数和-L参数" class="headerlink" title="-l参数和-L参数"></a><a href="https://blog.csdn.net/dingzuoer/article/details/44650941" target="_blank" rel="noopener">-l参数和-L参数</a></h2><p><strong><code>-l</code></strong>参数就是用来指定程序要链接的库，-l参数紧接着就是库名(<code>-l&lt;packageName&gt;</code>)，那么库名跟真正的库文 件名有什么关系呢？A: 就拿数学库来说，他的库名是m，他的库文件名是libm.so，很容易看出，把库文件名的 头lib和尾.so去掉就是库名了。</p>
+<p>好了现在我们知道怎么得到库名了，比如我们自已要用到一个第三方提供的库名字叫<strong>libtest.so</strong>，那么我们只要①把 libtest.so拷贝到/usr/lib 里，②编译时加上-ltest参数，我们就能用上libtest.so库了（当然要用libtest.so库里的函数，我们还需要与libtest.so配套的头文件）。 </p>
+<p>注：放在 /lib 和 /usr/lib 和 /usr/local/lib 里的库直接用-l参数就能链接了，但如果库文件如果没有放在这三个目录里，而是放在其他目录里，这时我们只用-l参数的话，链接还是会出错，出错信息大概是：“/usr/bin/ld: cannot find -lxxx”，也就是提醒开发人员：链接程序ld在那3个目录里找不到libxxx.so。</p>
+<p>这时另外一个参数<strong><code>-L</code></strong>就派上用场了，比如常用的X11的库，它放在/usr/X11R 6/lib目录下，我们编译时就要用<code>-L/usr/X11R6/lib - lX11</code>参数，-L参数跟着的是库文件所在的目录名(<code>-L &lt;packagePath&gt;</code>)。比如我们把libtest.so在/aaa/bb b/ccc目录下，那链接参数就是<code>-L /aaa/bbb/ccc -ltest</code>， <strong>注意需要加上<code>-ltest</code></strong>（RFID工程代码中的makefile就是因为没有加上这个导致的）</p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="通用范式"><a href="#通用范式" class="headerlink" title="通用范式"></a>通用范式</h2><h3 id="清除工作目录中的过程文件"><a href="#清除工作目录中的过程文件" class="headerlink" title="清除工作目录中的过程文件"></a>清除工作目录中的过程文件</h3><p>我们在使用的时候会产生中间文件会让整个文件看起来很乱，所以在编写 Makefile 文件的时候会在末尾加上这样的规则语句来<u>清除工作目录中的过程文件</u>：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>:clean</span></span><br><span class="line"><span class="section">clean:    </span></span><br><span class="line">	rm -rf *.o test</span><br><span class="line"><span class="comment"># 其中 "*.o" 是执行过程中产生的中间文件，"test" 是最终生成的执行文件。我们可以看到 clean 是独立的，它只是一个*伪目标*，不是具体的文件。不会与第一个目标文件相关联，所以我们在执行 make 的时候也不会执行下面的命令。在shell 中执行 "make clean" 命令，编译时的中间文件和生成的最终目标文件都会被清除，方便我们下次的使用。</span></span><br></pre></td></tr></table></figure>
+<p>完整范式</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">OBJS =  base64.o faceSearch.o camera.o CRC.o cQueue.o myQueue.o myUart.o info.o mcuio.o global.o print.o myMQTT.o rfid.o serialscreen.o sscreenupdate.o hmiFSM.o main.o</span><br><span class="line">INCLUDES = -I ./<span class="keyword">include</span>/ 		<span class="comment"># 指定头文件</span></span><br><span class="line">CC = arm-linux-gcc			    <span class="comment"># 指定gcc编译期</span></span><br><span class="line">CXX = arm-linux-g++				<span class="comment"># 指定g++编译期</span></span><br><span class="line">CFLAGS = -g -Wall -c <span class="variable">$(INCLUDES)</span> <span class="comment"># 指定C编译参数</span></span><br><span class="line">LIBS = -L ./lib -L./org.eclipse.mosquitto/lib -L /usr/local/arm/4.4.3/arm-none-linux-gnueabi/sys-root/lib/ 			</span><br><span class="line"></span><br><span class="line"><span class="comment">#arm-linux-gcc test.c -I./org.eclipse.mosquitto/lib/ -L./org.eclipse.mosquitto/lib -lmosquitto -lpthread -lrt</span></span><br><span class="line"><span class="section">mes:clean <span class="variable">$(OBJS)</span> </span></span><br><span class="line">	<span class="variable">$(CXX)</span> -o mes <span class="variable">$(OBJS)</span> <span class="variable">$(LIBS)</span> -lpthread -lsqlite3 -lrt -lmosquitto -lcjson -lstdc++ -lcurl</span><br><span class="line">main.o : main.c  </span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> main.c  </span><br><span class="line">hmiFSM.o : hmiFSM.c</span><br><span class="line">	<span class="variable">$(CXX)</span> <span class="variable">$(CFLAGS)</span> hmiFSM.c  </span><br><span class="line">serialscreen.o : serialscreen.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> serialscreen.c  </span><br><span class="line">sscreenupdate.o : </span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> sscreenupdate.c</span><br><span class="line">rfid.o : rfid.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> rfid.c  </span><br><span class="line">myMQTT.o : myMQTT.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> myMQTT.c  </span><br><span class="line">myQueue.o : myQueue.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> myQueue.c   </span><br><span class="line">cQueue.o : cQueue.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> cQueue.c   </span><br><span class="line">myUart.o : myUart.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> myUart.c</span><br><span class="line">myUart485.o : myUart485.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> myUart485.c</span><br><span class="line">CRC.o : CRC.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> CRC.c</span><br><span class="line">info.o : info.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> info.c</span><br><span class="line">mcuio.o : mcuio.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> mcuio.c</span><br><span class="line">global.o : global.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> global.c</span><br><span class="line">print.o : print.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> print.c</span><br><span class="line">faceSearch.o : faceSearch.cpp</span><br><span class="line">	<span class="variable">$(CXX)</span> <span class="variable">$(CFLAGS)</span> -c faceSearch.cpp -o faceSearch.o</span><br><span class="line">base64.o : base64.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -c base64.c -o base64.o</span><br><span class="line"><span class="section">monitor:</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> smartlibdaemon.c -o monitor1</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">clean :</span><br><span class="line">	rm <span class="variable">$(OBJS)</span>  mes monitor -rf</span><br><span class="line"><span class="section">update:</span></span><br><span class="line">	scp ./smartlib root@10.82.80.234:/var/www/smartlibrary-update/</span><br></pre></td></tr></table></figure>
+<h2 id="Gcc-CFLAGs"><a href="#Gcc-CFLAGs" class="headerlink" title="Gcc CFLAGs"></a>Gcc CFLAGs</h2><ul>
+<li>-I: (include)包含.h头文件</li>
+<li>-o：(output) 指定输出文件名<ul>
+<li><code>gcc -o app test.c</code>将生成可执行程序exe</li>
+</ul>
+</li>
+<li>-c: (compile) 只编译不链接：产生.o文件，就是obj文件，不产生执行文件<ul>
+<li><code>gcc -c test.c</code>将生成test.o的目标文件</li>
+</ul>
+</li>
+</ul>
+<p>▲.<code>gcc -c a.c -o a.o</code>表示把源文件a.c编译成指定文件名a.o的中间目标文件(其实在这里，把-o a.o省掉，效果是一样的，因为中间文件默认与源文件同名，只是后缀变化)。</p>
+<ol>
+<li>如果GCC不带-C参数，编译一个源代码文件（test.c)。那么会自动将编译和链接一步完成，并生成可执行文件。可执行文件可以有-o参数指定（test.o)</li>
+<li>如果是多个文件，则需要先编译成中间目标文件(一般是.o文件），在链接成可执行文件，一般习惯目标文件都是以.o后缀，也没有硬性规定可执行文件不能用.o文件。</li>
+</ol>
+<h1 id="嵌入式编程："><a href="#嵌入式编程：" class="headerlink" title="嵌入式编程："></a>嵌入式编程：</h1><p><strong>全局变量</strong></p>
+<ul>
+<li><p>如果是main中声明的全局变量，工程中的其他文件都不需要引入”main.c” or “main.h”就可以直接使用</p>
+</li>
+<li><p>如果不是，则最好的方式还是用一个源文件里（如global.c）声明全局变量，其他cpp若使用某个全局变量，在相应的头文件中包含该头文件(global.h)即可。</p>
+<ul>
+<li>Q: 为什么不直接在global.h头文件里定义全局变量？</li>
+<li>A: 由于全局变量的定义有且只能有一次，如果是在头文件中定义了，那么就会导致重复定义。===&gt;因此头文件只能用来声明，不能用来定义。</li>
+</ul>
+</li>
+<li><p><strong>声明与定义</strong></p>
+<ul>
+<li><p>函数或变量在声明时，并没有给它实际的物理内存空间，它有时候可保证你的程序编译通过；</p>
+</li>
+<li><p>函数或变量在定义时，它就在内存中有了实际的物理空间。</p>
+<p>如果你在编译单元中引用的外部变量<strong>没有</strong>在整个工程中任何一个地方<strong>定义</strong>的话，那么即使它在编译时可以通过，在连接时也会报错，因为<strong>程序在内存中找不到这个变量</strong>。</p>
+<p> 函数或变量可以声明多次，但定义有且只能有一次。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>sprintf</strong></p>
+<blockquote>
+<p>C函数：将格式化的数据写入字符串， 原型为：`int sprintf(char <em>dest_str, char </em> format [, argument, …]);</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sprintf()最常见的应用之一莫过于把整数打印到字符串中，如：</span></span><br><span class="line"><span class="built_in">sprintf</span>(s, <span class="string">"%d"</span>, <span class="number">123</span>);  <span class="comment">//把整数123打印成一个字符串保存在s中</span></span><br><span class="line"><span class="built_in">sprintf</span>(s, <span class="string">"%8x"</span>, <span class="number">4567</span>);  <span class="comment">//小写16进制，宽度占8个位置，右对齐</span></span><br><span class="line"><span class="comment">// 拓展demo</span></span><br><span class="line"><span class="built_in">sprintf</span>(mr-&gt;taskId, <span class="string">"%s"</span>, cJSON_GetObjectItem(root, <span class="string">"taskId"</span>)-&gt;valuestring);</span><br><span class="line"><span class="built_in">sprintf</span>(mr-&gt;printData, <span class="string">"%s"</span>, cJSON_GetObjectItem(root, <span class="string">"data"</span>)-&gt;valuestring);</span><br></pre></td></tr></table></figure>
+<p><strong>sscanf</strong></p>
+<p>C 库函数 : 从字符串读取格式化输入。原型为：<code>int sscanf(const char *str, const char *format, ...)</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// example: 1</span></span><br><span class="line"><span class="built_in">sscanf</span>(buf,<span class="string">"#####%d+%[a-zA-Z]+%d#####"</span>,&amp;sid,cmdid,&amp;id);</span><br><span class="line"><span class="comment">// example: 2</span></span><br><span class="line"><span class="keyword">if</span>(cJSON_GetObjectItem(root, <span class="string">"status"</span>) != <span class="literal">NULL</span>)	&#123;</span><br><span class="line">    <span class="built_in">sscanf</span>( cJSON_GetObjectItem(root, <span class="string">"status"</span>)-&gt;valuestring,<span class="string">"%d"</span>,&amp;(mr-&gt;status));</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">sprintf</span>((mr-&gt;sequence), <span class="string">"%s"</span>, cJSON_GetObjectItem(root, <span class="string">"sequence"</span>)-&gt;valuestring);</span><br></pre></td></tr></table></figure>
+<p><strong>memcpy</strong></p>
+<blockquote>
+<p>C 库函数: 从存储区 <strong>str2</strong> 复制 <strong>n</strong> 个字节到存储区 <strong>str1</strong>。原型为：<code>void memcpy(void str1, const void str2, size_t n)</code></p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getUser</span><span class="params">(<span class="keyword">char</span> *cmd,<span class="keyword">char</span> *user)</span></span>&#123;</span><br><span class="line">	<span class="built_in">memcpy</span>(user,cmd+POS_USER,iv-POS_USER );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>memset()</strong></p>
+<blockquote>
+<p>C 库函数：复制字符 <strong>c</strong>（一个无符号字符）到参数 <strong>str</strong> 所指向的字符串的前 <strong>n</strong> 个字符。原型为：<code>void *memset(void *str, int c, size_t n)</code></p>
+</blockquote>
+<p><strong>strcpy()</strong></p>
+<blockquote>
+<p>C 库函数：把 <strong>src</strong> 所指向的字符串复制到 <strong>dest</strong>。原型:<code>char *strcpy(char *dest, const char *src)</code></p>
+</blockquote>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/09/30/makefile使用记录/">https://nymrli.top/2021/09/30/makefile使用记录/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/10/09/XML语法规则笔记/" title="XML语法规则笔记"><span>< PreviousPost</span><br><span class="prevTitle">XML语法规则笔记</span></a><a class="nextSlogan" href="/2021/09/27/物联网基础与应用-课程笔记/" title="物联网基础与应用-课程笔记"><span>NextPost ></span><br><span class="nextTitle">物联网基础与应用-课程笔记</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Makefile使用记录',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Makefile使用记录"><span class="toc-number">1.</span> <span class="toc-text">Makefile使用记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Makefile？"><span class="toc-number">1.1.</span> <span class="toc-text">什么是Makefile？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#makefile规则是什么样的？"><span class="toc-number">1.2.</span> <span class="toc-text">makefile规则是什么样的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#makfile执行流程"><span class="toc-number">1.3.</span> <span class="toc-text">makfile执行流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-number">1.4.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#条件判断"><span class="toc-number">1.5.</span> <span class="toc-text">条件判断</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#伪目标实现多文件编辑"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">伪目标实现多文件编辑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#l参数和-L参数"><span class="toc-number">1.6.</span> <span class="toc-text">-l参数和-L参数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number">2.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#通用范式"><span class="toc-number">2.1.</span> <span class="toc-text">通用范式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#清除工作目录中的过程文件"><span class="toc-number">2.1.1.</span> <span class="toc-text">清除工作目录中的过程文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gcc-CFLAGs"><span class="toc-number">2.2.</span> <span class="toc-text">Gcc CFLAGs</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#嵌入式编程："><span class="toc-number">3.</span> <span class="toc-text">嵌入式编程：</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

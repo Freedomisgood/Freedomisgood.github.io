@@ -1,0 +1,1382 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>ZJU开学摸底考试——操作系统复习 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">ZJU开学摸底考试——操作系统复习</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/10/25</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">18,832</span> | Reading time: <span class="post-count">64</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="操作系统"><a class="markdownIt-Anchor" href="#操作系统"></a> 操作系统</h1>
+<h2 id="特性"><a class="markdownIt-Anchor" href="#特性"></a> 特性：</h2>
+<ul>
+<li>并发：
+<ul>
+<li>▲理解并发和并行的区别</li>
+</ul>
+</li>
+<li>共享
+<ul>
+<li>互斥共享方式（摄像头设备的共享使用）</li>
+<li>同时共享方式（硬盘访问）——宏观的同时，微观上进程还是交替访问的（分时共享）</li>
+</ul>
+</li>
+<li>虚拟：
+<ul>
+<li>虚拟存储器：
+<ul>
+<li>空分复用</li>
+</ul>
+</li>
+<li>虚拟处理器：
+<ul>
+<li>时分复用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>异步
+<ul>
+<li>只有系统具有并发性，才可能导致异步性</li>
+</ul>
+</li>
+</ul>
+<p>注： 并发与共享互为存在条件</p>
+<h2 id="操作系统发展"><a class="markdownIt-Anchor" href="#操作系统发展"></a> 操作系统发展</h2>
+<p>单道批处理系统</p>
+<ul>
+<li>主要优点：缓解了一定程度的人机速度矛盾，资源利用率有所提升。</li>
+<li>主要缺点：内存中仅能有一道程序运行，只有该程序运行结束之后才能调入下一道程序。CPU有大量的时间是在空闲等待/0完成。资源利用率依然很低。</li>
+</ul>
+<p>多道批处理系统：</p>
+<ul>
+<li>主要优点：多道程序并发执行，共享计算机资源。资源利用率大幅提升，CPU和其他资源保持“忙碌”状态，系统吞吐量增大。</li>
+<li>主要缺点：用户响应时间长，没有人机交互功能（用户提交自己的作业之后就只能等待计算机处理完成，中间不能控制自己的作业执行）</li>
+</ul>
+<p>分时操作系统：</p>
+<blockquote>
+<p>计算机以时间片为单位轮流为各个用户/作业服务，各个用户可通过终端与计算机进行交互。</p>
+</blockquote>
+<ul>
+<li>主要优点：用户请求可以被即时响应，解决了人机交互问题。允许多个用户同时使用一台计算机，并且用户对计算机的操作相互独立，感受不到别人的存在。</li>
+<li>主要缺点：不能优先处理一些紧急任务。操作系统对各个用户/作业都是完全公平的，循环地为每个用户/作业服务一个时间片，不区分任务的紧急性。</li>
+</ul>
+<p>实时操作系统：</p>
+<ul>
+<li>主要优点：能够优先响应一些紧急任务，某些紧急任务不需时间片排队。<br>
+在实时操作系统的控制下，计算机系统接收到外部信号后及时进行处理，并且要在严格的时限内处理完事件。实时操作系统的主要特点是<strong>及时性</strong>和<strong>可靠性</strong></li>
+</ul>
+<h2 id="os的运行机制和体系结构"><a class="markdownIt-Anchor" href="#os的运行机制和体系结构"></a> OS的运行机制和体系结构</h2>
+<p>运行机制：</p>
+<blockquote>
+<p>指令：“指令”就是处理器（CPU）能识别、执行的最基本命令。而OS运行过程就是CPU不断执行指令的过程</p>
+<ul>
+<li>特权指令： 内存清零指令</li>
+<li>非特权指令：普通加减乘除指令</li>
+</ul>
+</blockquote>
+<p>处理器状态：</p>
+<ul>
+<li>内核态（管态）：既可以执行特权指令也可执行非特权指令</li>
+<li>用户态（目态）：此时CPU只能执行非特权指令</li>
+</ul>
+<p>▲：“用户态-&gt;核心态”是通过<strong>中断</strong>实现的并且中断是<strong>唯一途径</strong>。而“核心态-&gt;用户态”的切换是通过执行一个特权指令，将程序状态字（PSW）的标志位设置为“用户态”</p>
+<p>内核：</p>
+<blockquote>
+<p>内核是计算机上配置的底层软件，是操作系统最基本、最核心的部分。<br>
+实现操作系统内核功能的那些程序就是内核程序。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/09/09/kavtqJc1nPNrls2.png" alt=""></p>
+<p>体系结构</p>
+<p><img src="/2021/09/09/ZJU开学摸底考试——操作系统复习/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" alt="体系结构"></p>
+<h2 id="中断"><a class="markdownIt-Anchor" href="#中断"></a> 中断：</h2>
+<blockquote>
+<p>为了解决最初各个程序只能串行执行，人们发明了操作系统（作为计算机的管理者），引入中断机制，从而实现了多道程序并发执行</p>
+<p>本质：发生中断就意味着需要操作系统介入，开展管理工作</p>
+</blockquote>
+<p>▲：“用户态-&gt;核心态”是通过<strong>中断</strong>实现的并且中断是<strong>唯一途径</strong>。而“核心态-&gt;用户态”的切换是通过执行一个特权指令，将程序状态字（PSW）的标志位设置为“用户态”</p>
+<p>中断分类：</p>
+<ul>
+<li>内中断（与CPU当前执行指令有关）
+<ul>
+<li>自愿中断——指令中断</li>
+<li>强迫中断——硬件故障（缺页）、软件中断（除零）</li>
+</ul>
+</li>
+<li>外中断（与CPU当前执行指令无关）
+<ul>
+<li>外设请求（IO操作完成发出中断信号）</li>
+<li>人工干涉（用户强行关闭进程）</li>
+</ul>
+</li>
+</ul>
+<h2 id="系统调用"><a class="markdownIt-Anchor" href="#系统调用"></a> 系统调用</h2>
+<p>操作系统作为用户和计算机硬件之间的接口，需要向上提供一些简单易用的服务。主要包括<u>命令接口</u>和程序接口。其中，程序接口由一组系统调用组成。</p>
+<p>“系统调用”是操作系统提供给应用程序（程序员/编程人员）使用的接口，可以理解为一种可供应用程序调用的特殊函数，应用程序可以发出系统调用请求来获得操作系统的服务。</p>
+<h2 id="进程"><a class="markdownIt-Anchor" href="#进程"></a> 进程</h2>
+<p><strong>定义</strong></p>
+<p><strong>程序段</strong>、<strong>数据段</strong>、<strong>PCB</strong>三部分组成了<strong>进程实体</strong>（进程映像）。一般情况下，我们把进程实体就简称为进程，例如，所谓创建进程，实质上是创建进程实体中的PCB；而撤销进程，实质上是撤销进程实体中的PCB。<br>
+注意：PCB是进程存在的唯一标志！</p>
+<p>从不同的角度，进程可以有不同的定义，比较传统典型的定义有：<br>
+1.<strong>进程</strong>是<strong>程序</strong>的一次执行过程。<br>
+2.进程是一个程序及其数据在处理机上顺序执行时所发生的活动。<br>
+3.进程是具有独立功能的程序在数据集合上运行的过程，它是系统进行资源分配和调度的一个独立单位</p>
+<p>▲它是一个动态的过程。</p>
+<p>引入进程实体的概念后，可把进程定义为：<strong>进程</strong>是进程实体的**运行过程，**是系统进行资源分配和调度的一个独立单位。</p>
+<p>注：严格来说，进程实体和进程并不一样，进程实体是静态的，进程则是动态的。不过，除非题目专门考察二者区别，否则可以认为避程实体就是进程。因此我们也可以说“进程由程序段、数据段、PCB三部分组成”</p>
+<p><strong>组织形式</strong></p>
+<p>链接方式：按照进程状态将PCB分成多个队列，操作系统持有指向各个队列的指针</p>
+<p>索引方式：根据进程状态不同建立多张索引表，操作系统持有指向各个索引表的指针</p>
+<p><strong>进程特性</strong></p>
+<p><img src="/2021/09/09/ZJU开学摸底考试——操作系统复习/%E8%BF%9B%E7%A8%8B%E7%89%B9%E6%80%A7.png" alt="进程特性"></p>
+<p><strong>进程状态：</strong></p>
+<ul>
+<li>创建态：进程正在被创建，操作系统为进程分配资源、初始化PCB</li>
+<li>运行态</li>
+<li>阻塞态</li>
+<li>就绪态</li>
+<li>终止态： 进程从系统中撤销，操作系统回收进程拥有的资源、撤销PCB</li>
+</ul>
+<p><img src="/2021/09/09/ZJU开学摸底考试——操作系统复习/%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2.png" alt="进程状态转换"></p>
+<p>进程控制：</p>
+<p>用原语实现进程控制。原语的特点是执行期间不允许中断，只能一气呵成。<br>
+这种不可被中断的操作即原子操作<br>
+原语采用“关中断指令”和“开中断指令”实现</p>
+<p>注：显然，关/开中断指令的权限非常大，必然是只允许在<strong>核心态</strong>下执行的<strong>特权指令</strong></p>
+<p>创建原语：无-&gt;创建态-&gt;就绪态</p>
+<ul>
+<li>申请空白PcB</li>
+<li>为新进程分配所需资源</li>
+<li>初始化PCB</li>
+<li>将PcB插入就绪队列</li>
+</ul>
+<p>撤销原语：就绪态/阻塞态/运行态→终止态→无</p>
+<ul>
+<li>从PcB集合中找到终止进程的PCB</li>
+<li>若进程正在运行，立即剥夺CPU，将CPU分配给其他进程</li>
+<li>终止其所有子进程</li>
+<li>将该进程拥有的所有资源归还给父进程或操作系统</li>
+<li>删除PcB</li>
+</ul>
+<p>阻塞原语：</p>
+<ul>
+<li>找到要阻塞的进程对应的PcB</li>
+<li>保护进程运行现场，将PcB状态信息设置为阻塞态&quot;，暂时停止进程运行</li>
+<li>将PcB插入相应事件的等待队列</li>
+</ul>
+<p>唤醒原语：</p>
+<ul>
+<li>在事件等待队列中找到PcB</li>
+<li>将PcB从等待队列移除，设置进程为就绪态</li>
+<li>将pcB插入就绪队列，等待被调度</li>
+</ul>
+<p><strong>通信</strong></p>
+<blockquote>
+<p>各进程拥有的内存地址空间相互独立</p>
+</blockquote>
+<p>方式：</p>
+<blockquote>
+<p>都需要<strong>互斥</strong></p>
+</blockquote>
+<ul>
+<li>
+<p>共享存储</p>
+<ul>
+<li>基于数据结构：速度慢，是一种低级的通信方式</li>
+<li>基于存储区:存放位置都由进程控制，而不是操作系统。相比之下，这种共享方式速度更快，是一种高级通信方式</li>
+</ul>
+</li>
+<li>
+<p>管道通信</p>
+<blockquote>
+<p>“管道”是指用于连接读写进程的一个共享文件，又名pipe文件。其实就是在内存中开辟一个大小固定的缓冲区</p>
+<p>数据以字符流的形式写入管道，当管道写满时，写进程的write（）系统调用将被阻塞，等待读进程将数据取走。当读进程将数据全部取走后，管道变空，此时读进程的read（）系统调用将被阻塞。</p>
+</blockquote>
+<ul>
+<li>半双工管道，如果全双工需要设置两个管道</li>
+<li>需要互斥访问</li>
+<li>读进程最多只能有一个——否则可能有读错数据的情况</li>
+</ul>
+</li>
+<li>
+<p>消息传递</p>
+<blockquote>
+<p>进程间的数据交换以<strong>格式化的消息</strong>（Message）为单位。进程通过操作系统提供的“发送消息/接收消息”两个原语进行数据交换。</p>
+</blockquote>
+<ul>
+<li>直接通信方式: 消息直接挂到接收进程的消息缓冲队列上</li>
+<li>间接通信方式：消息先发送到中间实体（信箱）中，因此也成为信箱通信方式</li>
+</ul>
+</li>
+</ul>
+<p>进程互斥原则：</p>
+<p>为了实现对临界资源的互斥访问，同时保证系统整体性能，需要遵循以下原则：</p>
+<p>1.空闲让进。临界区空闲时，可以允许一个请求进入临界区的进程立即进入临界区<br>
+2.忙则等待。当已有进程进入临界区时，其他试图进入临界区的进程必须等待；<br>
+3.有限等待。对请求访问的进程，应保证能在有限时间内进入临界区（保证不会饥饿）；<br>
+4.让权等待。当进程不能进入临界区时，应立即释放处理机，防止进程忙等待。</p>
+<p><strong>进程互斥软件实现：</strong></p>
+<ul>
+<li>单标志法：算法思想：两个进程在访问完临界区后会把使用临界区的权限转交给另一个进程。也就是说每个进程进入临界区的权限只能被另一个进程赋予
+<ul>
+<li>单标志法存在的主要问题是：违背“空闲让进”原则。</li>
+</ul>
+</li>
+<li>双标志先检查：算法思想：设置一个布尔型数组flag囗，数组中各个元素用来标记各进程想进入临界区的意愿，比如flag=ture”意味着0号进程P0现在想要进入临界区。每个进程在进入临界区之前先检査当前有没有别的进程想进入临界区，如果没有，则把自身对应的标志fa】设为true，之后开始访问临界区。
+<ul>
+<li>双标志先检查法的主要问题是：违反“忙则等待”原则。</li>
+</ul>
+</li>
+<li>双标志后检查:算法思想：双标志先检査法的改版。前一个算法的问题是先“检査”后“上锁”，但是这两个操作又无法一气呵成，因此导致了两个进程同时进入临界区的问题。因此，人们又想到先“上锁”后“检查”的方法，来避免上述问题。
+<ul>
+<li>双标志后检査法虽然解决了“忙则等待”的问题，但是又违背了“空闲让进”和“有限等待”原则，会因各进程都长期无法访问临界资源而产生“饥饿”现象。</li>
+</ul>
+</li>
+<li>Peterson算法——三标志：算法思想：双标志后检査法中，两个进程都争着想进入临界区，但是谁也不让谁，最后谁都无法进入临界区。 Gary L. Peterson想到了一种方法，如果双方都争着想进入临界区，那可以让进程尝试“孔融让梨”，主动让对方先使用临界区。
+<ul>
+<li>Peterson算法用软件方法解决了进程互斥问题，遵循了空闲让进、忙则等待、有限等待三个原则，但是依然未遵循让权等待的原则。</li>
+</ul>
+</li>
+</ul>
+<p>进程互斥硬件实现：</p>
+<ul>
+<li>中断屏蔽方法</li>
+<li>TestAndSet</li>
+<li>Swap指令</li>
+</ul>
+<h2 id="信号量"><a class="markdownIt-Anchor" href="#信号量"></a> 信号量</h2>
+<p>用户进程可以通过使用操作系统提供的一对原语来对信号量进行操作，从而很方便的实现了进程互斥、进程同步</p>
+<p>信号量其实就是一个变量（可以是一个整数，也可以是更复杂的记录型变量），可以用一个信号量来表示系统中某种资源的数量，比如：系统中只有一台打印机，就可以设置一个初值为1的信号量。</p>
+<p>wait、 signal原语常简称为ρ、V操作（来自荷兰语 proberen和 verhogen）。因此，做题的时候常把Wait（S）、 sIgna|（S）两个操作分别写为P（S）、V（S）</p>
+<ul>
+<li>整形信号量：用一个整数型的变量作为信号量，用来表示系统中某种资源的数量
+<ul>
+<li>存在的问题：不满足“让权等待”原则，会发生“忙等”</li>
+</ul>
+</li>
+<li>整型信号量的缺陷是存在“忙等”问题，因此人们又提岀了“记录型信号量”，即用记录型数据结构表示的信号量。</li>
+</ul>
+<p>操作方式：</p>
+<ul>
+<li>S value的初值表示系统中某种资源的数目</li>
+<li>对信号量S的一次P操作意味着进程请求一个单位的该类资源，因此需要执行va|ue-，表示资源数减1，当S value&lt;0时表示该类资源已分配完毕，因此进程应调用 block原语进行自我阻塞（当前运行的进程从运行态→阻塞态），主动放弃处理机，并插入该类资源的等待队列SL中。可见，该机制遵循了“让权等待”原则，不会出现“忙等”现象。</li>
+<li>对信号量S的一次∨操作意味着进程释放一个单位的该类资源，因此需要执行 S value++，表示资源数加1，若加1后仍是 S value&lt;=0，表示依然有进程在等待该类资源，因此应调用 wakeup原语唤醒等待队列中的第个进程（被唤醒进程从阻塞态→就绪态）。</li>
+</ul>
+<p><img src="/2021/09/09/ZJU开学摸底考试——操作系统复习/%E4%BF%A1%E5%8F%B7%E9%87%8F.png" alt="信号量"></p>
+<p>技巧总结：</p>
+<p>基础</p>
+<ul>
+<li>互斥问题，将信号量初值设置为1</li>
+<li>同步问题，将信号量初值设置为0——一前一后问题，进程执行有先后顺序需要同步协调</li>
+<li>除了互斥、同步问题外还会考察有多个资源的问题，有多少资源就把信号量初值设为多少。申请资源时进行P操作，释放资源时进行V操作即可
+<ul>
+<li>设置一个信号量，初始值即为资源的数量（本质上也属于“同步问题”，若无空闲资源，则申请资源的进程需要等待别的进程释放资源后才能继续往下执行）</li>
+</ul>
+</li>
+</ul>
+<p>进阶</p>
+<ul>
+<li>实现互斥是在同一进程中进行一对PV操作</li>
+<li>实现两进程的同步关系，是在其中个进程中执行P，另进程中执行V</li>
+<li>**实现互斥的P操作一定要在实现同步的P操作之后。**V操作不会导致进程阻塞，因此两个V操作顺序可以交换。</li>
+</ul>
+<h3 id="生产消费者问题"><a class="markdownIt-Anchor" href="#生产消费者问题"></a> 生产消费者问题</h3>
+<h3 id="读者和写者问题"><a class="markdownIt-Anchor" href="#读者和写者问题"></a> 读者和写者问题</h3>
+<p>有读者和写者两组并发进程，共享一个文件，当两个或两个以上的读进程同时访问共享数据时不会产生副作用，但若某个写进程和其他进程（读进程或写进程）同时访问共享数据时则可能导致数据不一致的错误。因此要求：</p>
+<ol>
+<li>允许多个读者可以同时对文件执行读操作；</li>
+<li>只允许一个写者往文件中写信息；</li>
+<li>任一写者在完成写操作之前不允许其他读者或写者工作；</li>
+<li>写者执行写操作前，应计口有的读者和写者全部退出</li>
+</ol>
+<p>管程：信号量机制存在的问题：编写程序困难、易出错，能不能设计一种机制，让程序员写程序时不需要再关注复杂的PV操作，让写代码更轻松呢？——管程，一种高级同步机制</p>
+<p>管程是一种特殊的软件模块，有这些部分组成：<br>
+1.局部于管程的共享数据结构说明<br>
+2.对该数据结构进行操作的1组过程（函数）；<br>
+3.对局部于管程的共享数据设置初始值的语句；<br>
+4.管程有一个名字。</p>
+<p>管程的基本特征：<br>
+1.局部于管程的数据只能被局部于管程的过程所访问；<br>
+2.一个进程只有通过调用管程内的过程才能进入管程访问共享数据；<br>
+3.每次仅允许一个进程在管程内执行某个内部过程。</p>
+<h2 id="死锁"><a class="markdownIt-Anchor" href="#死锁"></a> 死锁</h2>
+<p>什么是死锁<br>
+进程死锁、饥饿、死循环的区别</p>
+<ul>
+<li>死锁：各进程互相等待对方手里的资源，导致各进程都阻塞，无法向前推进的现象。</li>
+<li>饥饿：由于长期得不到想要的资源，某进程无法向前推进的现象。比如：在短进程优先（sPF）算法<br>
+中，若有源源不断的短进程到来，则长进程将一直得不到处理机，从而发生长进程“饥饿”</li>
+<li>死循环：某进程执行过程中一直跳不出某个循环的现象。有时是因为程序逻辑bug导致的，有时是<br>
+程序员故意设计的。</li>
+</ul>
+<p>死锁产生的必要条件</p>
+<ul>
+<li><strong>互斥条件</strong>：只有对必须互斥使用的资源的争抢才会导致死锁（如哲学家的筷子、打印机设备）。像内存、扬声器这样可以同时让多个进程使用的资源是不会导致死锁的（因为进程不用阻塞等待这种资源）。</li>
+<li><strong>不剥夺条件</strong>：进程所获得的资源在未使用完之前，不能由其他进程强行夺走，只能主动释放。</li>
+<li><strong>请求和保持条件</strong>：进程已经保持了至少一个资源，但又提出了新的资源请求，而该资源又被其他进程占有，此时请求进程被阻塞，但又对自己已有的资源保持不放。</li>
+<li><strong>循环等待条件</strong>：存在一种进程资源的循环等待链，链中的每一个进程已获得的资源同时被下一个进程所请求。</li>
+</ul>
+<p>什么时候会发生死锁</p>
+<ul>
+<li>对系统资源的竞争。各进程对不可剥夺的资源（如打印机）的竞争可能引起死锁，对可剥夺的资源（CPU）的竞争是不会引起死锁的</li>
+<li>进程推进顺序非法。请求和释放资源的顺序不当，也同样会导致死锁。例如，并发执行的进程P1、<br>
+分别申请并占有了资源R1、R2，之后进程P1又紧接着申请资源R2，而进程P2又申请资源R1，两者会因为申请的资源被对方占有而阻塞，从而发生死锁</li>
+<li>信号量的使用不当也会造成死锁。如生产者-消费者问题中，如果实现互斥的P操作在实现同步的操作之前，就有可能导致死锁。（可以把互斥信号量、同步信号量也看做是一种抽象的系统资源）</li>
+</ul>
+<p>死锁的处理策略</p>
+<ul>
+<li>死锁忽略</li>
+<li>预防死锁。破坏死锁产生的四令必要条件中的一个或几个。</li>
+<li>避免死锁。用某种方法防止系统进入不安全状态，从而避免死锁（银行家算法）</li>
+<li>死锁的检测和解除。允许死锁的发生，不过操作系统会负责检测出死锁的发生，然后采取某种措施解除死锁。
+<ul>
+<li>检测
+<ul>
+<li>资源分配图</li>
+<li>死锁检测算法</li>
+</ul>
+</li>
+<li>接触：
+<ul>
+<li>资源剥夺法：</li>
+<li>撤销（终止）进程法：</li>
+<li>进程回退法：</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="线程"><a class="markdownIt-Anchor" href="#线程"></a> 线程</h2>
+<blockquote>
+<p>在没有引入进程之前，程序都是串行执行的。引入进程后计算机可以同时执行多个程序，但进程是程序的一次执行，比如QQ拥有视频、发丧图片等功能，程序的多个功能是不可能顺序执行就实现的，因此引出了线程。为此，引入了线程来增加并发性</p>
+</blockquote>
+<p>▲传统的进程是程序执行流的最小单位 ===&gt; 引入线程后，线程成了程序执行流的最小单位  ==&gt; 可以吧线程理解为轻量级进程</p>
+<p><strong>线程是一个基本的CPU执行单元也是程序执行流的最小单位。</strong></p>
+<ul>
+<li>引入线程之后，不仅是进程之间可以并发，进程内的各线程之间也可以并发，从而进一步提升了系统的并发度，使得一个进程内也可以并发处理各种任务（如QQ视频、文字聊天、传文件）</li>
+<li>引入线程后，进程只作为除CPU之外的系统资源的分配单元（如打印机、内存地址空间等都是分配给进程的）==&gt; 引入线程后，进程是资源分配的基本单位，线程是调度的基本单位</li>
+</ul>
+<p>理解类比：</p>
+<blockquote>
+<p>引人线程后，并及所带来的系统开销，比如去图书馆看书。</p>
+<ul>
+<li>切换进程运行环境=有一个不认识的人要用桌子，你需要你的书收走，他把自己的书放到桌上</li>
+<li>同一进程内的线程切换=你的舍友要用这张书桌，可以不把桌子上的书收走</li>
+</ul>
+</blockquote>
+<p><img src="/2021/09/09/ZJU开学摸底考试——操作系统复习/%E7%BA%BF%E7%A8%8B%E5%B1%9E%E6%80%A7.jpg" alt="线程属性"></p>
+<ul>
+<li>
+<p>用户级线程(ULT: User-Level Thread)</p>
+<ul>
+<li>
+<p>用户级线程由应用程序通过<strong>线程库</strong>实现。<br>
+所有的线程管理工作都由应用程序负责（包括线程切换）<br>
+用户级线程中，线程切换可以在<strong>用户态</strong>下即可完成，无需操作系统干预。<br>
+在用户看来，是有多个线程。但是在<strong>操作系统内核看来，并意识不到线程的存在</strong>。（用户级线程对用户不透明，对操作系统透明）</p>
+<p>==&gt; 用户线程就是从用户视角能看到的线程</p>
+</li>
+</ul>
+</li>
+<li>
+<p>内核级线程(KLT: Kernel-Level Thread)</p>
+<ul>
+<li>
+<p>内核级线程的管理工作由操作系统内核完成。<br>
+线程调度、切换等工作都由内核负责，因此内核级线程的切换必然需要在<strong>核心态</strong>下才能完成。</p>
+<p>==&gt; 可以这样理解，“内核级线程”就是“从操作系统内核视角看能看到的线程”</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>组合方式： KLT(m个)与ULT混合(n个)共同使用， n&gt;=m</p>
+<p><img src="/2021/09/09/ZJU开学摸底考试——操作系统复习/%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.jpg" alt="线程实现方式"></p>
+<p><strong>多线程模型：</strong></p>
+<ul>
+<li>多对一模型：多个用户及线程映射到一个内核级线程。每个用户进程只对应一个内核级线程。
+<ul>
+<li>优点：用户级线程的切换在用户空间即可完成，不需要切换到核心态，<strong>线程管理的系统开销小，效率高</strong></li>
+<li>缺点：当一个用户级线程被阻塞后，整个进程都会被阻塞，<strong>并发度不高</strong>。多个线程不可在多核处理机上并行运行</li>
+</ul>
+</li>
+<li>一对一模型：一个用户及线程映射到一个内核级线程。每个用户进程有与用户级线程同数量的内核级线程
+<ul>
+<li>优点：当一个线程被阻塞后，别的线程还可以继续执行，并发能力强。多线程可在多核处理机上并行执行。</li>
+<li>缺点：一个用户进程会占用多个内核级线程，线程切换由操作系统内核完成，需要切换到核心态，因此线程管理的成本高，开销大。</li>
+</ul>
+</li>
+<li>★多对多模型：用户及线程映射到m个内核级线程（n&gt;=m）。每个用户进程对应m个内核级线程。
+<ul>
+<li>克服了多对一模型并发度不高的缺点，又克服了一对一模型中一个用户进程占用太多内核级线程，开销太大的缺点。</li>
+</ul>
+</li>
+</ul>
+<p><strong>处理机调度</strong></p>
+<blockquote>
+<p>调度：当有一堆仼务要处理，但由于资源有限，这些事情没法同时处理。这就需要确定某种规则来决定处理这些任务的顺序(按某种算法选择一个进程将处理机分配给它)，这就是“调度”研究的问题。</p>
+</blockquote>
+<p>三个层次：</p>
+<ul>
+<li>
+<p>作业调度（高级调度）</p>
+<ul>
+<li>高级调度是辅存（外存）与内存之间的调度。每个作业只调入一次，调出一次。作业调入时会建立相应的PCB，作业调出时才撤销PCB。</li>
+<li><strong>高级调度主要是指调入的问题</strong>，因为只有调入的时机需要操作系统来确定，但调出的时机必然是作业运行结束才调出。</li>
+</ul>
+</li>
+<li>
+<p>内存调度（中级调度）——比作业调度多了挂起队列</p>
+<ul>
+<li>引入了虚拟存储技术之后，可将暂时不能运行的进程调至外存等待。等它重新具备了运行条件且内存又稍有空闲时，再重新调入内存。==&gt;从而提高了内存利用率和系统吞吐量</li>
+<li><strong>中级调度（内存调度），就是要决定将哪个处于挂起状态的进程重新调入内存。</strong></li>
+</ul>
+<p><img src="/2021/09/09/ZJU开学摸底考试——操作系统复习/%E4%B8%83%E7%8A%B6%E6%80%81%E6%A8%A1%E5%9E%8B.jpg" alt="七状态模型"></p>
+</li>
+<li>
+<p>进程调度（低级调度）</p>
+<ul>
+<li>主要任务是按照<strong>某种方法和策略从<u><em>就绪队列</em></u>中选取一个进程，将处理机分配给它</strong>。</li>
+<li>进程调度是操作系统中最基本的一种调度，在一般的操作系统中都必须配置进程调度。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/09/09/ZJU开学摸底考试——操作系统复习/%E8%B0%83%E5%BA%A6%E5%AF%B9%E6%AF%94.jpg" alt="调度对比"></p>
+<p>不能进行进程切换的情况：</p>
+<ul>
+<li>
+<p>在处理中断的过程中。中断处理过程复杂，与硬件密切相关，很难做到在中断处理过程中进行进程切换。</p>
+</li>
+<li>
+<p>进程在操作系统内核程序临界区中</p>
+<ul>
+<li>进程在<strong>操作系统内核程序临界区</strong>中不能进行调度与切换  √</li>
+<li>（2012年联考真题）进程处于<strong>临界区</strong>时不能进行处理机调度（X</li>
+</ul>
+<p>临界资源：一个时间段内只允许一个进程使用的资源。各进程需要互斥地访问临界资源。</p>
+<p>临界区：访问临界资源的那段代码。<br>
+内核程序临界区一般是用来访问某种<strong>内核数据结构</strong>的，比如进程的就绪队列（由各就绪进程的PcB组成）</p>
+</li>
+<li>
+<p>在原子操作过程中（原语）。原子操作不可中断，要一气呵成（如之前讲过的修改PCB中进程状态标志，并把PCB放到相应队列）</p>
+</li>
+</ul>
+<p><strong>调度算法评价指标</strong></p>
+<ul>
+<li>CPU利用率：指CPU“忙碌”的时间占总时间的比例。</li>
+<li>系统吞吐量：单位时间内完成作业的数量</li>
+<li>周转时间：是指从作业被提交给系统开始，到作业完成为止的这段时间间隔。
+<ul>
+<li>它包括四个部分：作业在外存后备队列上等待作业调度（高级调度）的时间、进程在就绪队列上等<br>
+待进程调度（低级调度）的时间、进程在CPU上执行的时间、进程等待O操作完成的时间。后三项<br>
+在一个作业的整个处理过程中，可能发生多次。</li>
+</ul>
+</li>
+<li>等待时间：进程作业等待被服务的时间之和</li>
+<li>响应时间：指从用户提交请求到首次产生响应所用的时间。</li>
+</ul>
+<p>调度算法：</p>
+<ul>
+<li>先来先服务
+<ul>
+<li>非抢占式</li>
+</ul>
+</li>
+<li>短作业优先
+<ul>
+<li>非抢占式、抢占式（最短剩余时间）</li>
+</ul>
+</li>
+<li>高响应比优先
+<ul>
+<li>非抢占式</li>
+</ul>
+</li>
+<li>时间片轮转调度算法RR
+<ul>
+<li>抢占式</li>
+<li>如果时间片太大，使得每个进程都可以在一个时间片内就完成，则时间片轮转调度算法退化为先来先服务调度算法，并且会增大进程响应时间。因此时间片不能太大。</li>
+<li>另一方面，进程调度、切换是有时间代价的（保存、恢复运行环境），因此如果时间片太小，会导致进程切换过于频繁，系统会花大量的时间来处理进程切换，从而导致实际用于进程执行的时间比例减少。可见时间片也不能太小。</li>
+</ul>
+</li>
+<li>优先级调度算法
+<ul>
+<li>抢占式+非抢占式</li>
+</ul>
+</li>
+<li>多级反馈队列调度算法
+<ul>
+<li>抢占式</li>
+</ul>
+</li>
+</ul>
+<h2 id="内存管理"><a class="markdownIt-Anchor" href="#内存管理"></a> 内存管理</h2>
+<blockquote>
+<p>内存是用于存放数据的<strong>硬件</strong>。<mark>程序执行前需要先放到内存中才能被CPU处理</mark>。</p>
+<p>内存的每个存储单元都会进行编址：①按字节编址、②按字编址</p>
+</blockquote>
+<ul>
+<li>
+<p>我们写的代码要翻译成CPU能识别的指令。这些指令会告诉CPU应该去内存的哪个地址存/取数据。但实际在生成机器指令的时候并不知道该进程的数据会被放到什么位置。所以编译生成的指令中一般是使用<strong>逻辑地址</strong>（相对地址）</p>
+</li>
+<li>
+<p>相对地址又称逻辑地址，绝对地址又称物理地址。</p>
+</li>
+<li>
+<p>编译：由编译程序将用户源代码编译成若干个目标模块（编译就是把高级语言翻译为机器语言）</p>
+</li>
+<li>
+<p>链接：由链接程序将编译后形成的一组目标模块，以及所需库函数链接在一起，形成一个<strong>完整的装入模块</strong></p>
+<ol>
+<li>静态链接.a：<strong>在程序运行之前</strong>，先将各目标模块及它们所需的库函数连接成一个完整的可执行文件（装入模块），之后不再拆开。</li>
+<li><a href="http://xn--y5qq4a560asqdwsdt19e64r.so" target="_blank" rel="noopener">装入时动态链接.so</a>：将各目标模块装入内存时，<strong>边装入边链接</strong>的链接方式。</li>
+<li>运行时动态链接.dll：<strong>在程序执行中需要该目标模块时</strong>，才对它进行链接。其优点是便于修改和更新，便于实现对目标模块的共享。</li>
+</ol>
+</li>
+<li>
+<p>装入（装载）：由装入程序将<strong>装入模块</strong>装入<strong>内存</strong>运行</p>
+<p>装入的三种方式（用三种不同的方法完成逻辑地址到物理地址的转换）：</p>
+<ol>
+<li>
+<p>绝对装入</p>
+<ul>
+<li>绝对装入只适用于<strong>单道程序环境</strong>。程序中使用的绝对地址，可在<strong>编译或汇编</strong>时给出，也可由程序员直接赋予。通常情况下都是编译或汇编时再转换为绝对地址。</li>
+</ul>
+</li>
+<li>
+<p>静态重定位（可重定位装入）</p>
+<ul>
+<li>
+<p>编译、链接后的装入模块的地址都是从0开始的，指令中使用的地址、数据存放的地址都是相对于起始地址而言的逻辑地址。可根据内存的当前情况，将装入模块装入到内存的适当位置。<strong>装入时</strong>对地址进行“重定位”，将逻辑地址变换为物理地址（地址变换是在装入时一次完成的）。</p>
+</li>
+<li>
+<p>静态重定位的特点是在一个作业装入内存时，必须分配其要求的全部内存空间，如果没有足够的内存，就不能装入该作业。作业一旦进入内存后，<strong>在运行期间就不能再移动</strong>，也不能再申请内存空间。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>动态重定位（又称动态运行时装入，目前采用的方式）</p>
+<ul>
+<li>编译、链接后的装入模块的地址都是从0开始的。装入程序把裝入模块装入内存后，并不会立即把逻辑地址转换为物理地址，而是把地址转换推迟到<strong>程序真正要执行时</strong>才进行。因此装入内存后所有的地址依然是逻辑地址。这种方式需要一个<strong>重定位寄存器</strong>（存放装入模块存放的起始位置）的支持。</li>
+<li>采用动态重定位时允许程序在内存中发生移动。</li>
+<li>★并且可将程序分配到<strong>不连续的存储区</strong>中；<strong>在程序运行前只需装入它的部分代码</strong>即可投入运行，然后在程序运行期间，根据需要动态申请分配内存；便于程序段的共享，可以向用户提供一个比存储空间大得多的地址空间。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="操作系统需要做的事"><a class="markdownIt-Anchor" href="#操作系统需要做的事"></a> 操作系统需要做的事？</h3>
+<p>1.操作系统负责内存空间的分配与回收<br>
+2.操作系统需要提供某种技术从逻辑上对内存空间进行扩充<br>
+3.操作系统需要提供地址转换功能，负责程序的逻辑地址与物理地址的转换</p>
+<p>内存保护：</p>
+<blockquote>
+<p>保证各进程在自己的内存空间内运行，不会越界访问</p>
+</blockquote>
+<ul>
+<li>方法一：在CPU中设置一对上、下限寄存器，存放进程的上、下限地址。进程的指令要访问某个地址时，CPU检查是否越界</li>
+<li>方法二：采用<strong>重定位寄存器</strong>（又称基址寄存器）和<strong>界地址寄存器</strong>（又称<strong>限长寄存器</strong>）进行越界检査。重定位寄存器中存放的是进程的起始物理地址。界地址寄存器中存放的是进程的最大逻辑地址</li>
+</ul>
+<p>内存空间扩充：</p>
+<ul>
+<li>覆盖技术（弃用）：将程序分为多个段（多个模块）。常用的段常驻内存，不常用的段在需要时调入内存。
+<ul>
+<li>内存中分为一个“固定区”和若干个“覆盖区”。</li>
+<li>需要常驻内存的段放在“固定区”中，调入后就不再调出（除非运行结束）</li>
+<li>不常用的段放在“覆盖区”，需要用到时调入内存，用不到时调出内存</li>
+<li>必须由程序员声明覆盖结构，操作索统完成自动覆盖。缺点：对用户不透明，增加了用户编程负担。</li>
+</ul>
+</li>
+<li>交换技术：内存空间紧张时，系统将内存中某些进程暂时换出外存，把外存中某些已具备运行条件的进程换入内存（进程在内存与磁盘间动态调度）、
+<ul>
+<li>交换（对换）技术的设计思想：内存空间紧张时，系统将内存中某些进程暂时换出外存，把外存中某些已具备运行条件的进程换入内存（进程在内存与磁盘间动态调度）</li>
+<li>暂时换出外存等待的进程状态为挂起状态（挂起态， suspend）</li>
+<li>挂起态又可以进一步细分为就绪挂起、阻塞挂起两种状态</li>
+<li>覆盖与交换的区别
+<ul>
+<li>覆盖是在同一个程序或进程中的</li>
+<li>交换是在不同进程（或作业）之间的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>虚拟存储技术
+<ul>
+<li>基于局部性原理，在程序装入时，可以将程序中很快会用到的部分装入内存，暂时用不到的部分留在外存，就可以让程序开始执行在程序执行过程中，当所访问的信息不在内存时，由操作系统负责将所需信息从外存调入内存，然后继续执行程序。<br>
+若内存空间不够，由操作系统负责将内存中暂时用不到的信息换出到外存在操作系统的管理下，在用户看来似乎有一个比实际内存大得多的内存，这就是虚拟内存</li>
+<li>传统存储管理方式的特征、缺点：
+<ul>
+<li><strong>一次性</strong>：作业必须一次性全部装入内存后才能开始运行。这会造成两个问题：①作业很大时，不能全部装入内存，导致大作业无法运行；②当大量作业要求运行时，由于内存无法容纳所有作业，因此只有少量作业能运行，导致多道程序并发度下降</li>
+<li><strong>驻留性</strong>：一旦作业被装入内存，就会一直驻留在内存中，直至作业运行结束。事实上，在一个时间段内，只需要访问作业的一小部分数据即可正常运行，这就导致了内存中会驻留大量的、暂时用不到的数据，浪费了宝贵的内存资源。</li>
+</ul>
+</li>
+<li><strong>多次性</strong>：无需在作业运行时一次性全部装入内存，而是允许被分成多次调入内存。<br>
+<strong>对换性</strong>：在作业运行时无需一直常驻内存，而是允许在作业运行过程中，将作业换入、换出。<br>
+<strong>虚拟性</strong>：从逻辑上扩充了内存的容量，使用户看到的内存容量，远大于实际的容量。</li>
+<li>请求分页存储管理<br>
+请求分段存储管理<br>
+请求段页式存储管理</li>
+</ul>
+</li>
+</ul>
+<h3 id="内存空间的分配与回收"><a class="markdownIt-Anchor" href="#内存空间的分配与回收"></a> 内存空间的分配与回收：</h3>
+<ul>
+<li>
+<p>连续分配管理方式：为用户进程分配的必须是一个连续的内存空间</p>
+<ul>
+<li>单一连续分配：在单一连续分配方式中，内存被分为系统区和用户区。系统区通常位于内存的低地址部分，用于存放操作系统相关数据；用户区用于存放用户进程相关数据。<strong>内存中只能有一道用户程序</strong>，用户程序独占整个用户区空间。
+<ul>
+<li>优点：实现简单；<strong>无外部碎片</strong>；可以采用覆盖技术扩充内存；不一定需要采取内存保护（eg：早期的PC操侬系统 MS-DOS）。</li>
+<li>缺点：只能用于单用户、单任务的操作系统中；<strong>有内部碎片</strong>；存储器利用率极低。</li>
+</ul>
+</li>
+<li>固定分区分配：将整个用户空间划分为若干个固定大小的分区，在每个分区中只装入一道作业，这样就形成了最早的、最简单的一种可运行多道程序的内存管理方式。
+<ul>
+<li>优点：实现简单，<strong>无外部碎片</strong>。</li>
+<li>缺点：a.当用户程序太大时，可能所有的分区都不能满足需求，此时不得不采用覆盖技术来解决，但这又会降低性能；b.会产生<strong>内部碎片</strong>，内存利用率低。</li>
+</ul>
+</li>
+<li>动态分区分配：动态分区分配又称为可变分区分配。这种分配方式不会预先划分内存分区，而是在进程装入内存时根据进程的大小动态地建立分区，并使分区的大小正好适合进程的需要。因此系统分区的大小和数目是可变的。（eg：假设某计算机内存大小为64MB，系统区8MB，用户区共56MB.）
+<ul>
+<li>空闲分区链：每个分区的起始部分和末尾部分分别设置前向指针和后向指针。起始部分处还可记录分区大小等信息</li>
+<li>空闲分区表：每个空闲分区对应个表项。表项中包含分区号分区大小、分区起始地址等信息</li>
+<li>动态分区分配<strong>没有内部碎片</strong>，但是<strong>有外部碎片</strong>。内部碎片，分配给某进程的内存区域中，如果有些部分没有用上外部碎片，是指内存中的某些空闲分区由于太小而难以利用。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>非连续分配管理方式（离散分配方式）：为用户进程分配的可以是一些分散的内存空间。</p>
+<ul>
+<li>
+<p>基本分页存储管理</p>
+<ul>
+<li>把“固定分区分配”改造为“非连续分配版本”，将内存空间分为一个个大小相等的分区（比如：每个分区4KB），每个分区就是一个“<strong>页框</strong>”，或称“页帧”、“内存块”、“物理块”。每个页框有一个编号，即“<strong>页框号</strong>”（或者“内存块号”、“页帧号”、“物理块号”）页框号从0开始。</li>
+<li>将<strong>用户进程的地址空间</strong>也分为与页框大小相等的一个个区域，称为“页”或“页面”。每个页面也有一个编号，即“页号页号也是从0开始。（注：进程的最后一个页面可能没有一个页框那么大。因此，页框不能太大，否则可能产生过大的内部碎片）</li>
+<li>操作系统以页框为单位为各个进程分配内存空间。进程的每个页面分别放入一个页框中。也就是说，<strong>进程的页面与内存的页框有一一对应的关系</strong></li>
+<li>为了方便计算页号、页内偏移量，页面大小一般设为2的整数幂</li>
+<li>如果有K位表示“页内偏移量”，则说明该系统中一个页面的大小是2K个内存单元<br>
+如果有M位表示“页号”，则说明在该系统中，一个进程最多允许有2M个页面</li>
+<li>个进程对应一张页表<br>
+▲进程的每一页对应一个页表项，每个页表项由“页号”和“块号”组成<br>
+页表记录进程页面和实际存放的内存块之间的对应关系</li>
+<li>优点：内存空间利用率高，不会产生外部碎片，只会有少量的<strong>页内碎片</strong></li>
+<li>缺点：不方便按照逻辑模块实现信息的共享和保护</li>
+<li>单级列表：
+<ul>
+<li>问题一：页表必须连续存放，因此当页表很大时，需要占用很多连续的页框。
+<ul>
+<li>多级，顶级页表</li>
+</ul>
+</li>
+<li>问题二：没有必要让整个页表常驻内存，因为进程在一段时间内可能只需要访问某几个特定的页面。
+<ul>
+<li>可以在需要访问页面时才把页面调入内存（虚拟存储技术）。可以在页表项中增加一个标志位，用于表示该页面是否已经调入内存</li>
+<li>若想访问的页面不在内存中，则产生缺页中断（内中断），然后将目标页面从外存调入内存</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>基本分段存储管理</p>
+<ul>
+<li>优点：很方便按照逻辑模块实现信息的共享和保护</li>
+<li>缺点：如果段长过大，为其分配很大的连续空间会很不方便。另外，段式管理会产生<strong>外部碎片</strong></li>
+<li>段号的位数决定了每个进程最多可以分几个段<br>
+段内地址位数决定了每个段的最大长度是多少</li>
+</ul>
+<p>对比：</p>
+<ul>
+<li>页是信息的物理单位。分页的主要目的是为了实现离散分配，提高内存利用率。分页仅仅是系统管理上的需要，完全是系统行为，对用户是不可见的。</li>
+<li>段是信息的逻辑单位。分段的主要目的是更好地满足用户需求。一个段通常包含着一组属于一个逻辑模块的信息。分段对用户是可见的，用户编程时需要显式地给出段名</li>
+<li>页的大小固定且由系统决定。段的长度却不固定，决定于用户编写的程序。</li>
+<li>分页的用户进程地址空间是一维的，程序员只需给出一个记忆符即可表示一个地址。</li>
+<li>分段的用户进程地址空间是二维的，程序员在标识一个地址时，既要给出段名，也要给出段内地址</li>
+<li>分段比分页更容易实现信息的共享和保护。</li>
+</ul>
+</li>
+<li>
+<p>段页式存储管理</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>局部性原理</p>
+<p>时间局部性<br>
+空间局部性<br>
+高速缓存技术</p>
+<p>页面置换算法：</p>
+<ul>
+<li>OPT</li>
+<li>FIFO</li>
+<li>LRU</li>
+<li>CLOCK （NRU）</li>
+<li>改进型 CLOCK（改进型NRU）</li>
+</ul>
+<h2 id="文件系统"><a class="markdownIt-Anchor" href="#文件系统"></a> 文件系统</h2>
+<ul>
+<li>
+<p>无结构文件（流式文件）</p>
+</li>
+<li>
+<p>有结构文件（记录式文件）</p>
+<ul>
+<li>
+<p>每条<strong>记录</strong>由多个<strong>数据项</strong>组成，而每条记录的单个数据项都通过<strong>关键字</strong>表达具体含义，如名字。</p>
+</li>
+<li>
+<p>逻辑结构：</p>
+<ul>
+<li>顺序文件： 链式存储（不可随机读取）、顺序存储（可变长记录不可随机读取、定长记录可以）</li>
+<li>索引文件</li>
+<li>索引顺序文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>注：</p>
+<ul>
+<li>逻辑结构：就是指在用户看来，文件内部的数据应该是如何组织起来的。</li>
+<li>物理结构：是在操作系统看来，文件的数据是如何存放在外存中的。</li>
+</ul>
+<p>注：一般来说，考试题目中所说的顺序文件”指的是物理上顺序存储的顺序文件。之后的讲解中提到的顺序文件也默认如此。</p>
+<h3 id="文件目录"><a class="markdownIt-Anchor" href="#文件目录"></a> 文件目录</h3>
+<ul>
+<li>
+<p>文件控制块(FCB)： <code>文件名、类型、读写权限、...、物理位置</code>，包含逻辑结构、物理结构，存取控制信息、使用信息</p>
+</li>
+<li>
+<p>目录结构</p>
+<ul>
+<li>
+<p>单级目录结构</p>
+</li>
+<li>
+<p>两级目录结构：MFD主文件目录、用户文件目录UFD</p>
+</li>
+<li>
+<p>多级目录结构（树形目录结构）：</p>
+<ul>
+<li>不同目录下的文件可以重名，可以对文件进行分关不方便文件共享</li>
+<li>系统根据“文件路径&quot;找到目标文件</li>
+<li>从根目录出发的路径是“绝对路径（“照片/201508/自拍jpg”）</li>
+<li>从当前目录出发的路径是相对路径（照片12015-08/自拍jpg&quot;
+<ul>
+<li>相对路径减少磁盘IO：是因为内存中存储了当前目录表，因此当用户想访问当前目录的某个文件的时候，就可以直接从内存中直接通过相对路径来找，自然搜索效率更高些</li>
+</ul>
+</li>
+</ul>
+<p>树形目录结构可以方便的对文件进行分类，层次结构清晰；但是不便于实现文件的共享==&gt;无环图目录结构，在树形目录的基础上，增加指向同一节点的有向边，使得整个目录成了有向无环图</p>
+</li>
+<li>
+<p>无环图目录结构——方便文件共享</p>
+</li>
+</ul>
+</li>
+<li>
+<p>索引结点（对文件控制块的优化）</p>
+<ul>
+<li>将FCB中除了文件名以外的信息放在索引节点上，而取而代之的将其内容换成2B的索引节点地址，从而大大减小了FCB大小，从而相同的记录项能够使用更少的磁盘块，从而加快了磁盘搜索的速度</li>
+</ul>
+</li>
+</ul>
+<p>目录文件中的一条记录就是一个FCB，FCB的有序集合称为“文件目录”，一个FCB就是一个文件目录项。</p>
+<h3 id="文件物理结构管理非空闲磁盘块"><a class="markdownIt-Anchor" href="#文件物理结构管理非空闲磁盘块"></a> 文件物理结构——管理非空闲磁盘块</h3>
+<blockquote>
+<p>文件数据怎样存放在外存中？</p>
+<ul>
+<li>类似于内存分页，磁盘中的存储单元是“块or磁盘块or物理块”，内存与磁盘之间数据交互是以块为单位的。</li>
+<li>文件的逻辑地址空间也被分成了一个个文件“块”==&gt; 文件的逻辑地址形式：(逻辑块号, 块内地址)</li>
+<li>用户通过逻辑地址来操作自己的文件，操作系统负责从逻辑地址到物理地址的映射</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>连续分配</p>
+<ul>
+<li>连续分配方式要求每个文件在磁盘上占有一组连续的块。</li>
+<li><strong>优点</strong>：支持顺序访问和直接访问（即随机访问）；连续分配的文件在顺序访问时速度最快</li>
+<li><strong>缺点</strong>：不方便文件拓展；存储空间利用率低，会产生磁盘碎片</li>
+</ul>
+</li>
+<li>
+<p>链接分配</p>
+<ul>
+<li>隐式链接（题目默认指的是隐式链接）
+<ul>
+<li>隐式链接——除文件的最后一个盘块之外，每个盘块中都存有指向下一个盘块的指针。文件目录包括文件第一块的指针和最后一块的指针。</li>
+<li>优点：很方便文件拓展，不会有碎片问题，外存利用率高。</li>
+<li>缺点：只支持顺序访问，不支持随机访问，查找效率低，指向下一个盘块的指针也需要耗费少量的存储空间。</li>
+</ul>
+</li>
+<li>显式链接
+<ul>
+<li>显式链接——把用于链接文件各物理块的指针显式地存放在一张表中，即文件分配表（FAT，File Allocation Table）。一个磁盘只会建立一张文件分配表。开机时文件分配表放入内存，并常驻内存</li>
+<li>优点：很方便文件拓展，不会有碎片问题，外存利用率高，并且支持随机访问。相比于隐式链接来说，地址转换时不需要访问磁盘，因此文件的访问效率更高。</li>
+<li>缺点：文件分配表的需要占用一定的存储空间。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>索引分配</p>
+<ul>
+<li>索引分配允许文件离散地分配在各个磁盘块中，系统会为每个文件建立一张<strong>索引表</strong>，索引表中文<br>
+件的各个逻辑块对应的物理块（索引表的功能类似于内存管理中的页表一一建立逻辑页面到物理页之间<br>
+的映射关系）。索引表存放的磁盘块称为<u>索引块</u>。文件数据存放的磁盘块称为<u>数据块</u>。</li>
+<li>可见，索引分配方式可以支持随机访问文件拓展也很容易实现（只需要给文件分配个空闲块，并增加一个索引表项即可）<strong>但是索引表需要占用一定的存储空间</strong></li>
+<li>Q:这种存储方式会带来一个问题，由于一个索引项占4B，一个磁盘块大小为1KB，那么最多存储256(1024/4)个索引项，也就是说存储文件最大为256*1KB=256KB。但是如果一个文件大小超过了256块，一个磁盘块装不下所有的索引表该怎么办呢？
+<ul>
+<li>链接方案： 索引块的最后一个索引项存储下一个索引块的地址。
+<ul>
+<li>需要顺序读取每个索引块，无法根据逻辑块号随机访问，磁盘IO次数多</li>
+</ul>
+</li>
+<li>多层索引：建立多层索引（类似多级页表）。使第一层索引表指向第二层索引表，还可以根据文件大小建立第三层、第四层
+<ul>
+<li>若采用多层索引，则各层的索引表大小不能超过一个磁盘块；</li>
+<li>二层索引，文件最大大小：<code>256*256*1KB</code>=64MB</li>
+<li>可根据逻辑块号算出应该查找索引表中的哪个表项。如：要访问1026号逻辑块，则<code>1026/256=4,1026%256=2</code></li>
+<li>采用K层索引结构，且顶级索引表未调入内存，则访问一个数据块只需要K+1次读磁盘操作</li>
+</ul>
+</li>
+<li>混合索引：多种索引分配方式的结合。例如，一个文件的顶级索引表中，既包含<strong>直接地址索引</strong>（直接指向数据块），又包含<strong>一级间接索引</strong>（指向单层索引表）、还包含两<strong>级间接索引</strong>（指向两层索引表）。
+<ul>
+<li>题型：根据顶级索引表的结构，计算能够存储文件的最大长度</li>
+<li>对于小文件，只需较少的读磁盘次数就可以访问目标数据块。（一般计算机中小文件更多）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>超级超级超级重要考点：①要会根据多层索引、混合索引的结构计算出文件的最大长度（Key：各级索引表最大不能超过一个块）；②要能自己分析访问某个数据块所需要的读磁盘次数（Key:FCB中会存有指向顶级索引块的指针，因此可以根据FCB读入顶级索引块。每次读入下一级的索引块都需要一次读磁盘操作。另外，要注意题目条件一一顶级索引块是否已调入内存）</p>
+</li>
+</ul>
+<h3 id="存储空间管理管理空闲磁盘块"><a class="markdownIt-Anchor" href="#存储空间管理管理空闲磁盘块"></a> 存储空间管理——管理空闲磁盘块</h3>
+<p><strong>划分与初始化</strong></p>
+<ul>
+<li>将物理磁盘分成一个个文件卷（逻辑卷、逻辑盘）</li>
+<li>初始化：将各个文件卷划分为目录区（文件目录信息FCB、磁盘储存空间管理的信息）、文件区（存放文件数据）</li>
+<li>一个物理磁盘可以划分成多个逻辑磁盘；也可以将多个物理磁盘合并成一个逻辑磁盘</li>
+</ul>
+<p><strong>管理方法</strong></p>
+<ul>
+<li>
+<p>空闲表法： 适用于连续分配方式</p>
+<ul>
+<li>
+<table>
+<thead>
+<tr>
+<th>第一个空闲盘块号</th>
+<th>空闲磁盘数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>与内存管理中的动态分区分配很类似，当回收某个存储区时需要有四种情况一一</p>
+<ol>
+<li>回收区的前后都没有相邻空闲区；</li>
+<li>回收区的前后都是空闲区；</li>
+<li>回收区前面是空闲区；</li>
+<li>回收区后面是空闲区。</li>
+</ol>
+</li>
+</ul>
+<p>总之，回收时需要注意表项的合并问题。</p>
+</li>
+<li>
+<p>空闲链表法：</p>
+<ul>
+<li>空闲盘块链：以盘块为单位组成一条空闲链
+<ul>
+<li>适用于离散分配的物理结构。为文件分配多个盘块时可能要重复多次操作</li>
+<li>分配：如果申请K个盘块，则从链头开始依次摘下K个盘块进行分配，并修改空闲链的链头指针</li>
+<li>回收：将回收的盘块依次挂到链尾，并修改空闲链的链尾指针</li>
+</ul>
+</li>
+<li>空闲盘区链：以盘区为单位组成一条空闲链
+<ul>
+<li>操作系统保存着链头、链尾指针。</li>
+<li>如何分配：若某文件申请K个盘块，则可以采用首次适应、最佳适应等算法，从链头开始检索，按照算法规则找到一个大小符合要求的空闲盘区分配给文件。若没有合适的连续空闲块，也可以将不同盘区的盘块同时分配给一个文件，注意分配后可能要修改相应的链指针、盘区大小等数据。</li>
+<li>如何回收：若回收区和某个空闲盘区相邻，则需要将回收区合并到空闲盘区中。若回收区没有和任何空闲区相邻，将回收区作为单独的一个空闲盘区挂到链尾。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>位示图法：</p>
+<ul>
+<li>
+<p>每个二进制位对应一个盘块。在本例中，“0”代表盘块空闲，“1”代表盘块已分配。位示图一般用连续的“字”来表示，如本例中个字的字长是16位，字中的每一位对应一个盘块。因此可以用**（字号，位号）<strong>对应一个盘块号。当然有的题目中也描述为</strong>（行号，列号）**</p>
+</li>
+<li>
+<p>重要重要重要：要能自己推出盘块号与（字号位号）相互转换的公式注意题目条件：盘块号、字号、位号到底是从0开始还是从1开始</p>
+<p>如本例中盘块号、字号、位号从0开始，若n表示字长，则（字号，位号）=（i，j)的二进制位对应的盘块号<code>b=n*i+j</code>， b号盘块对应的字号i=b/n取整数部分，位号j=b%n</p>
+</li>
+<li>
+<p>如何分配：若文件需要κ个块，①顺序扫描位示图，找到K个相邻或不相邻的“0”；②根据字号、位号算出对应的盘块号，将相应盘块分配给文件；<br>
+③将相应位设置为“1</p>
+</li>
+<li>
+<p>如何回收：①根据回收的盘块号计算出对应的字号、位号；②将相应二进制位设为“0</p>
+</li>
+</ul>
+</li>
+<li>
+<p>成组链接法：</p>
+<blockquote>
+<p>前两者不适用于大型文件系统，因为空闲表或者空闲链表可能会太大。Unix中采用了成组链接法对磁盘空闲块进行管理</p>
+</blockquote>
+<p>文件卷的目录区中专门用一个磁盘块作为“超级块”，当系统启动时需要将超级块读入內存。并且要保证<strong>内存</strong>与<strong>外存</strong>中的“超级块”<strong>数据一致</strong>。</p>
+<p><img src="/2021/09/09/ZJU开学摸底考试——操作系统复习/%E6%88%90%E7%BB%84%E9%93%BE%E6%8E%A5%E6%B3%95-%E8%B6%85%E7%BA%A7%E5%9D%97.png" alt="成组链接法-超级块"></p>
+<ul>
+<li>一个分组中的块号不需要连续</li>
+<li>当前组的空闲盘块数有上限大小</li>
+<li>超级块记录着当前组空闲块的信息： 空闲盘块数、空闲块号（地址）</li>
+</ul>
+<p>分配过程：</p>
+<ul>
+<li>Eg：需要1个空闲块<br>
+①检查第一个分组的块数是否足够。1&lt;10，因此是足够的。</li>
+<li>Eg：需要100个空闲块<br>
+①检查第一个分组的块数是否足够。100=100，是足够的。<br>
+②分配第一个分组中的100个空闲块。但是由于300号块内存放了再下一组的信息，因此300号块的数据需要复制到超级块（超级块相当于是个链头）中。</li>
+</ul>
+<p>回收过程：</p>
+<ul>
+<li>Eg：假设每个分组最多为100个空闲块，此时第一个分组已有99个块，还要再回收一块</li>
+<li>Eg：假设每个分组最多为100个空闲块，此时第一个分组已有100个块，还要再回收一块。需要将超级块中的数据复制到新回收的块中，并修改超级块的内容，让新回收的块成为第个分组</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件操作"><a class="markdownIt-Anchor" href="#文件操作"></a> 文件操作</h3>
+<p><strong>创建文件</strong></p>
+<p>参数：</p>
+<ul>
+<li>文件大小</li>
+<li>存放路径</li>
+<li>文件名</li>
+</ul>
+<p>操作系统的过程</p>
+<p>在外存中找到文件所需的空间–&gt;根据文件存放信息找到该目录对应的目录信息（在目录中创建该文件对应的目录项）</p>
+<p><strong>删除文件</strong></p>
+<p>参数：</p>
+<ul>
+<li>文件存放路径</li>
+<li>文件名</li>
+</ul>
+<p>根据文件存放路径找到相应的目录文件，从目录中找到文件名对应的目录项–&gt;根据目录项记录的外存位置、文件大小等信息，回收文件占用的磁盘块–&gt;从目录表中删除文件对应的目录项</p>
+<p><strong>打开文件</strong></p>
+<p>参数：</p>
+<ul>
+<li>文件存放路径</li>
+<li>文件名</li>
+<li>对文件的操作类型</li>
+</ul>
+<p>操作系统：</p>
+<p>根据文件存放路径找到相应的目录文件，从目录中找到文件名对应的的目录项，并<strong>检查</strong>该用户是否有指定的<strong>操作权限</strong>-----&gt;将目录项复制到内存中的“打开文件表”中。并将对应表目的编号返回给用户。之后用户使用打开文表的编号来指明要操作的文件。</p>
+<ul>
+<li>系统的“打开文件表”
+<ul>
+<li>编号（索引号也叫文件描述符）、文件名、外存地址、打开计数器</li>
+</ul>
+</li>
+<li>用户进程A的“打开文件表”
+<ul>
+<li>编号， 文件名， 读写指针， 访问权限， 系统表索引号</li>
+</ul>
+</li>
+</ul>
+<p><strong>关闭文件</strong></p>
+<p>进程使用完文件后，要“关闭文件”操作系统在处理Cose系统调用时，主要做了几件事：</p>
+<ol>
+<li>将<strong>进程的打开文件表</strong>相应表项删除</li>
+<li>回收分配给该文件的内存空间等资源</li>
+<li><strong>系统打开文件表</strong>的打开计数器 count减1，若 count=0，则删除对应表项</li>
+</ol>
+<h3 id="文件共享"><a class="markdownIt-Anchor" href="#文件共享"></a> 文件共享</h3>
+<blockquote>
+<p>多个用户共享同一个文件，意味着系统中**只有“一份”**文件数据。并且只要某个用户修改了该文件的数据，其他用户也可以看到文件数据的变化。</p>
+<p>与“复制”区分：如果是多个用户都“复制”了同一个文件，那么系统中会有“好几份文件数据。其中一个用户修改了自己的那份文件数据，对其他用户的文件数据并没有影响。</p>
+</blockquote>
+<ul>
+<li>基于索引结点的共享方式（硬链接）
+<ul>
+<li>索引节点记录cnt：用于表示链接到本索引结点上的用户目录项数</li>
+<li>不同用户对于该共享文件的命名可以是不同的</li>
+<li>索引节点指向的是真实地文件</li>
+</ul>
+</li>
+<li>基于符号链的共享方式（软链接）
+<ul>
+<li>索引节点指向地是Link类型地文件，它记录了真实文件的存放路径（相当于windows的快捷方式）——比硬链接经历的磁盘IO更多</li>
+<li>即使软链接指向的共享文件已被删除，Link型文件依然存在，只是通过Link型文件中的路径去查找共享文件会失败（找不到对应目录项）</li>
+</ul>
+</li>
+</ul>
+<p><strong>文件保护</strong></p>
+<ul>
+<li>口令保护
+<ul>
+<li>优点：保存口令的空间开销不多，验证口令的时间开销也很小。<br>
+缺点：正确的“口令”存放在系统内部，不够安全。</li>
+</ul>
+</li>
+<li>加密保护
+<ul>
+<li>优点：保密性强，不需要在系统中存储“密码”<br>
+缺点：编码/译码，或者说加密/解密要花费一定时间。</li>
+</ul>
+</li>
+<li>访问控制：ACL访问控制列表
+<ul>
+<li>读、写、执行、添加、删除、列表文件夹内容</li>
+<li>精简的访问列表——组：完全控制：执行、修改、读、写（2^4=0-7）</li>
+</ul>
+</li>
+</ul>
+<h2 id="磁盘"><a class="markdownIt-Anchor" href="#磁盘"></a> 磁盘</h2>
+<h3 id="结构"><a class="markdownIt-Anchor" href="#结构"></a> 结构</h3>
+<ul>
+<li>磁盘：磁盘的表面由一些磁性物质组成，可以用这些磁性物质来记录二进制数据</li>
+<li>磁道：磁盘的盘面被划分成一个个磁道这样的一个“圈”就是一个磁道</li>
+<li>扇区：一个磁道又被划分成一个个扇区，每个扇区就是一个“磁盘块”。<strong>各个扇区存放的数据量相同</strong>（如1KB）
+<ul>
+<li>最内侧的扇区面积最小，因此数据密度最大</li>
+</ul>
+</li>
+<li>盘面：一个盘片会有多个盘面</li>
+<li>柱面：所有盘面中相对位置相同的磁道组成柱面</li>
+</ul>
+<p>磁盘的物理地址：可用（柱面号，盘面号，扇区号）来定位任意一个“磁盘块”。在“文件的物理结构”小节中，我们经常提到文件数据存放在外存中的几号块，这个块号就可以转换成**（柱面号，盘面号，扇区号）**的地址形式。</p>
+<p>如何读取数据：磁盘转起来，让磁头从目标扇区上划过，才能完成对扇区的读写操作：</p>
+<ul>
+<li>可根据该地址读取一个“块”<br>
+①根据“柱面号”移动磁臂，让磁头指向指定柱面；<br>
+②激活指定盘面对应的磁头；<br>
+③磁盘旋转的过程中，指定的扇区会从磁头下面划过，这样就完成了对指定扇区的读/写。</li>
+</ul>
+<p>分类：</p>
+<ul>
+<li>固定头磁盘（每个磁道都有一个固定的磁头）</li>
+<li>移动头磁盘（一个盘面就只有一个可移动的磁头）</li>
+<li>固定盘磁盘</li>
+<li>可换盘磁盘</li>
+</ul>
+<h3 id="磁盘调度"><a class="markdownIt-Anchor" href="#磁盘调度"></a> 磁盘调度</h3>
+<p><strong>一次磁盘读/写操作需要的时间</strong></p>
+<ul>
+<li>寻找（磁道）时间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">T_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：在读/写数据前，将磁头移动到指定磁道所花的时间：Ts=启动磁头臂s+n条磁道*跨越每个磁道耗时m</li>
+<li>延迟时间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">T_R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：磁盘旋转，等磁头转到目标扇区所需要的时间。平均所需延迟时间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>R</mi></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>∗</mo><mfrac><mn>1</mn><mi>r</mi></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>r</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">T_R=\frac{1}{2}*\frac{1}{r}=\frac{1}{2r}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，r为转速（r/s,r/min），1/r是转一圈所需要的时间，1/2是找到目标扇区平均需要转半圈。</li>
+<li>传输时间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">T_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：从磁盘读出或向磁盘写入数据所经历的时间，假设磁盘转速为r，此次读/写的字节数为b，每个磁道上的字节数为N，b个字节需要b/N个磁道储存则：传输时间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>t</mi></msub><mo>=</mo><mfrac><mn>1</mn><mi>r</mi></mfrac><mo>∗</mo><mfrac><mi>b</mi><mi>N</mi></mfrac><mo>=</mo><mfrac><mi>b</mi><mrow><mi>r</mi><mi>N</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">T_t=\frac{1}{r}*\frac{b}{N}=\frac{b}{rN}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.2251079999999999em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.2251079999999999em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，</li>
+</ul>
+<p>总的平均存取时间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>a</mi></msub><mo>=</mo><msub><mi>T</mi><mi>s</mi></msub><mo>+</mo><msub><mi>T</mi><mi>R</mi></msub><mo>+</mo><msub><mi>T</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">T_a=T_s+T_R+T_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>注：延迟时间和传输时间都与<strong>磁盘转速</strong>相关，且为线性相关。而转速是硬件的固有属性，因此操作系统也无法优化延迟时间和传输时间。而可以控制的时间为寻道时间Ts，这个与磁盘调度算法直接相关</p>
+<p><strong>算法</strong></p>
+<ul>
+<li>
+<p>先来先服务（FCFS）</p>
+<ul>
+<li>优点：公平；如果请求访问的磁道比较集中的话，算法性能还算过的去</li>
+<li>缺点：如果有大量进程竞争使用磁盘，请求访问的磁道很分散，则FCFS在性能上很差，寻道时间长。</li>
+</ul>
+</li>
+<li>
+<p>最短寻找时间优先（SSTF）</p>
+<ul>
+<li>
+<p>优点：性能较好，平均寻道时间短</p>
+</li>
+<li>
+<p>缺点：可能产生“饥饿”现象</p>
+<p>Ｅg：本例中，如果在处理18号磁道的访问请求时又来了一个38号磁道的访问请求，处理38号磁道的访问请求时又来了一个18号磁道的访问请求。如果有源源不断的18号、38号磁道的访问请求到来的话，150、160、184号磁道的访问请求就永远得不到满足，从而产生“饥饿”现象。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>扫描算法（SCAN）</p>
+<ul>
+<li>SSTF算法会产生饥饿的原因在于：磁头有可能在一个小区域内来回来去地移动。为了防止这个问题，可以规定，只有磁头移动到最外侧磁道的时候才能往内移动，移动到最内侧磁道的时候才能往外移动。这就是扫描算法（SCAN）的思想。由于磁头移动的方式很像电梯，因此也叫<strong>电梯算法</strong>。</li>
+<li>优点：性能较好，平均寻道时间较短，不会产生饥饿现象</li>
+<li>缺点：①只有到达最边上的磁道时才能改变磁头移动方向，事实上，处理了184号磁道的访问请求之后就不需要再往右移动磁头了。②SCAN算法对于<strong>各个位置磁道的响应频率不平均</strong>（如：假设此时磁头正在往右移动，且刚处理过90号磁道，那么下次处理90号磁道的请求就需要等磁头移动很长一段距离；而响应了184号磁道的请求之后，很快又可以再次响应184号磁道的请求了）</li>
+</ul>
+</li>
+<li>
+<p>循环扫描算法（C-SCAN）</p>
+<ul>
+<li>扫描算法（<strong>SCAN</strong>）中，只有到达最边上的磁道时才能改变磁头移动方向，事实上，处理了184号磁道的访问请求之后就不需要再往右移动磁头了。LoOK调度算法就是为了解决这个问题，如果<strong>在磁头移动方向上已经没有别的请求，就可以立即改变磁头移动方向</strong>。（边移动边观察，因此叫LOOK）
+<ul>
+<li>优点：比起SCAN算法来，不需要每次都移动到最外侧或最内侧才改变磁头方向，使寻道时间进步缩短</li>
+</ul>
+</li>
+<li>SCAN算法对于各个位置磁道的响应频率不平均，而 <strong>C-SCAN</strong>算法就是为了解决这个问题。规定只有磁头朝某个特定方向移动时才处理磁道访问请求，而返回时直接快速移动至起始端而不处理任何请求
+<ul>
+<li>优点：比起SCAN来，对于各个位置磁道的响应频率很平均</li>
+<li>缺点：只有到达最边上的磁道时才能改变磁头移动方向，事实上，处理了184号磁道的访问请求之后就不需要再往右移动磁头了；并且，磁头返回时其实只需要返回到18号磁道即可，不需要返回到最边缘的磁道。另外，比起SCAN算法来，平均寻道时间更长。</li>
+</ul>
+</li>
+<li>CLOOK算法:结合LOOK和C-SCAN</li>
+</ul>
+</li>
+</ul>
+<p>若题目中无特别说明，则sCAN就是LoOK, C-SCAN就是 C-LOOK</p>
+<h3 id="磁盘管理"><a class="markdownIt-Anchor" href="#磁盘管理"></a> 磁盘管理</h3>
+<p><strong>磁盘初始化：</strong></p>
+<p>step1：进行低级格式化（物理格式化），将磁盘的各个磁道划分为扇区。一个扇区通常可分为头、数据区域（如512B大小）、尾三个部分组成。管理扇区所需要的各种数据结构一般存放在头、尾两个部分，包括扇区校验码（如奇偶校验、CRC循环冗余校验码等，校验码用于校验扇区中的数据是否发生错误）<br>
+Step2：将磁盘分区，每个分区由若干柱面组成（即分为我们熟悉的C盘、D盘、E盘）<br>
+Step3：进行逻辑格式化，创建文件系统。包括创建文件系统的根目录、初始化存储空间管理所用的数据结构（如位示图、空闲分区表）</p>
+<p><strong>引导块：</strong></p>
+<blockquote>
+<p>计算机开机时需要进行一系列初始化的工作，这些初始化工作是通过执行初始化程序（自举程序）完成的</p>
+</blockquote>
+<p>初始化程序可以放在ROM（只读存储器）中。ROM中的数据在出厂时就写入了，并且以后不能再修改注：ROM一般是出厂时就集成在主板上的===&gt; 现在的做法是：ROM只存放很小的“自举装入程序”，完整的自举程序放在磁盘的启动块（即引导块/启动分区上），启动块位于磁盘的固定位置。<strong>拥有启动分区的磁盘成为启动磁盘或系统磁盘</strong></p>
+<p><strong>IO设备</strong></p>
+<p><strong>使用特性进行分类</strong></p>
+<ul>
+<li>人机交互类外部设备</li>
+<li>存储设备</li>
+<li>网络通信设备</li>
+</ul>
+<p><strong>按信息交换的单位分类</strong></p>
+<ul>
+<li>块设备：传输速率较高，可寻址，即对它可随机地读/写任一块，如磁盘</li>
+<li>字符设备：传输速率较慢，不可寻址，在输入/输出时常采用中断驱动方式，如键盘和鼠标、串口</li>
+</ul>
+<h2 id="io控制器"><a class="markdownIt-Anchor" href="#io控制器"></a> IO控制器</h2>
+<p>功能</p>
+<ul>
+<li>接受和识别CPU发出的命令</li>
+<li>向CPU报告设备的状态</li>
+<li>数据交换</li>
+<li>地址识别</li>
+</ul>
+<p>寄存器的地址</p>
+<ul>
+<li>内存映像I/O：控制器中的寄存器与内存地址统编址</li>
+<li>寄存器独立编址：控制器中的寄存器使用单独的地址</li>
+</ul>
+<p>IO控制方式：</p>
+<ul>
+<li>
+<p>程序直接控制方式：</p>
+<ol>
+<li>完成一次读/写操作的流程（见右图， Key word：轮询）</li>
+<li>CPU干预的频率：很频繁，O操作开始之前、完成之后需要CPU介入，并且在等待/O完成的过程中CpU需要不断地轮询检查。</li>
+<li>数据传送的单位：每次读/写一个<strong>字</strong></li>
+<li>数据的流向<br>
+读操作（数据输入）：I/O设备→CPU→内存<br>
+写操作（数据输出）：内存→CPU→I/O设备<br>
+每个字的读/写都需要CPU的帮助读入下个字</li>
+<li>主要缺点和主要优点<br>
+优点：实现简单。在读/写指令之后，加上实现循环检查的<br>
+系列指令即可（因此才称为“程序直接控制方式”）<br>
+缺点：CPU和i/o设备只能串行工作，CPU需要一直轮询检查，<br>
+长期处于“忙等”状态，CPU利用率低。</li>
+</ol>
+</li>
+<li>
+<p>中断驱动方式</p>
+<ul>
+<li>①CPU会在每个<strong>指令周期的末尾</strong>检查中断；<br>
+②中断处理过程中需要保存、恢复逑程的运行环境，这个过程是需要一定时间开销的。可见，如果中断发的频率太高，也会降低系统性能。</li>
+</ul>
+<ol>
+<li>完成一次读/写操作的流程（见右图， Key word：中断）</li>
+<li>CPU干预的频率<br>
+每次o操作开始之前、完成之后需要CPU介入<br>
+等待0完成的过程中CPU可以切换到别的进程执行。</li>
+<li>数据传送的单位<br>
+每次读/写一个字</li>
+<li>数据的流向<br>
+读操作（数据输入）：V/O设备→CPU→内存<br>
+写操作（数据输出）：内存→CPU→1/O设备</li>
+<li>主要缺点和主要优点<br>
+优点：与“程序直接控制方式”相比，在“中断驱动方式”中，Ⅵo控制器会通过中断信号主动报告O已完成，CPU不再需要不停地轮询<strong>CPU和i/o设备可并行工作</strong>，CPU利用率得到明显提升。<br>
+缺点：每个字在O设备与内存之间的传输，都需要经过cPU。而频繁的中断处理会消耗较多的CPU时间</li>
+</ol>
+</li>
+<li>
+<p>DMA方式：直接存储器存取</p>
+<ul>
+<li>
+<p>①数据的传送单位是“块”，不再是一个字、一个字的传送（写入内存时是一块写入的，但从设备到DMA控制器读取数据时仍然是一个字一个字读取or写入的）；每次读写<br>
+②数据的流向是从设备直接放入内存，或者从内存直接到设备。不再需要CPU作为“快递小哥”<br>
+③仅在传送一个或多个数据块的开始和结束时，才需要CPU干预。</p>
+</li>
+<li>
+<p><img src="/2021/09/09/ZJU开学摸底考试——操作系统复习/DMA.png" alt="DMA"></p>
+</li>
+<li>
+<p>DR（ Data Register，数据寄存器）：暂存从设备到内存，或从内存到设备的数据。</p>
+</li>
+<li>
+<p>MAR（ Memory Address Register，内存地址寄存器）：在输入时，MAR表示数据应放到内存中的什么位置；输出时MAR表示要输出的数据放在内存中的什么位置。</p>
+</li>
+<li>
+<p>DC（ Data Counter，数据计数器）：表示剩余要读/写的字节数。</p>
+</li>
+<li>
+<p>CR（ Command Register，命令/态寄存器）：用于存放CPU发来的/O命令，或设备的状态信息。</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>CPU干预的频率:仅在传送一个或多个数据块的开始和结束时，才需要CPU干预。</p>
+</li>
+<li>
+<p>数据传送的单位:每次读/写一个或多个块（注意：每次读写的只能是连续的多个块，且这些块读入内存后在内存中也必须是连续的）</p>
+</li>
+<li>
+<p>数据的流向（不再需要经过cPU）<br>
+读操作（数据输入）：U/O设备→内存<br>
+写操作（数据输出）：内存→/O设备</p>
+</li>
+<li>
+<p>主要缺点和主要优点优点：数据传输以“块”为单位，<strong>CPU介入频率</strong>进一步降低。数据的传输<strong>不再需要先经过Cpu再写入内存</strong>，数据传输效率进一步增加。CPU和/O设备的并行性得到提升。</p>
+<p>缺点：cPU每发出一条IO指令，只能读/写一个或多个连续的数据块如果要读/写多个离散存储的数据块，或者要将数据分别写到不同的内存区域时，CPU要分别发出多条IO指令，进行多次中断处理才能完成。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>通道控制方式</p>
+<ul>
+<li>通道：一种硬件，可以理解为是“弱鸡版的CpU”。通道可以识别并执行一系列通道指令</li>
+<li>相比DMA，通道可以识别指令</li>
+</ul>
+<ol>
+<li><strong>CPU干预的频极低</strong>，通道会根据CPU的指示执行相应的通道程序，只有完成一组数据块的读/写后才需要发出中断信号，请求CPU干预。</li>
+<li>数据传送的单位每次读/写<strong>一组数据块</strong></li>
+<li>数据的流向（在通道的控制下进行）读操作（数据输入）：1/O设备→内存写操作（数据输出）：内存IO设备</li>
+<li>主要缺点和主要优点缺点：实现复杂，需要专门的通道硬件支持</li>
+<li>优点：CPU、通道、1/O设备可并行工作，资源利用率很高。</li>
+</ol>
+</li>
+</ul>
+<h2 id="缓冲区"><a class="markdownIt-Anchor" href="#缓冲区"></a> 缓冲区</h2>
+<ul>
+<li>缓和CPU与IO设备之间速度不匹配的矛盾</li>
+<li>减少对CPU的中断频率，放宽对CPU中断相应时间的限制</li>
+<li>解决数据粒度不匹配的问题</li>
+<li>提高CPU与IO设备之间的并行性</li>
+</ul>
+<p><strong>缓冲策略</strong></p>
+<ul>
+<li>单缓冲：假设某用户进程请求某种块设备读入若干块的数据。若采用单缓冲的策略，操作系统会在主存中为其分配一个缓冲区（若题目中没有特别说明，一个缓冲区的大小就是一个块）</li>
+<li>双缓冲：</li>
+<li>循环缓冲</li>
+<li>缓冲池</li>
+</ul>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<p>Q: 显示器和<strong>键盘</strong>是终端TTY设备</p>
+<p>Q:解决临界区问题要满足三个条件：<strong>互斥（Mutual Exclusion）</strong>、<strong>空闲让进/前进（Progress）</strong>、<strong>有限等待（Bounded Waiting）</strong></p>
+<p><a href="https://blog.csdn.net/tugouxp/article/details/116379389" target="_blank" rel="noopener">最短任务优先(SJF)调度策略平均周转时间最优性</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/09/09/ZJU开学摸底考试——操作系统复习/">https://nymrli.top/2021/09/09/ZJU开学摸底考试——操作系统复习/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/09/13/学点Kotlin/" title="学点Kotlin"><span>< PreviousPost</span><br><span class="prevTitle">学点Kotlin</span></a><a class="nextSlogan" href="/2021/08/24/学习画好架构图/" title="学习画好架构图"><span>NextPost ></span><br><span class="nextTitle">学习画好架构图</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'ZJU开学摸底考试——操作系统复习',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#操作系统"><span class="toc-number">1.</span> <span class="toc-text"> 操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#特性"><span class="toc-number">1.1.</span> <span class="toc-text"> 特性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统发展"><span class="toc-number">1.2.</span> <span class="toc-text"> 操作系统发展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#os的运行机制和体系结构"><span class="toc-number">1.3.</span> <span class="toc-text"> OS的运行机制和体系结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中断"><span class="toc-number">1.4.</span> <span class="toc-text"> 中断：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统调用"><span class="toc-number">1.5.</span> <span class="toc-text"> 系统调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程"><span class="toc-number">1.6.</span> <span class="toc-text"> 进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#信号量"><span class="toc-number">1.7.</span> <span class="toc-text"> 信号量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生产消费者问题"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 生产消费者问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读者和写者问题"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 读者和写者问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#死锁"><span class="toc-number">1.8.</span> <span class="toc-text"> 死锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程"><span class="toc-number">1.9.</span> <span class="toc-text"> 线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存管理"><span class="toc-number">1.10.</span> <span class="toc-text"> 内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统需要做的事"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 操作系统需要做的事？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存空间的分配与回收"><span class="toc-number">1.10.2.</span> <span class="toc-text"> 内存空间的分配与回收：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件系统"><span class="toc-number">1.11.</span> <span class="toc-text"> 文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件目录"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 文件目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件物理结构管理非空闲磁盘块"><span class="toc-number">1.11.2.</span> <span class="toc-text"> 文件物理结构——管理非空闲磁盘块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储空间管理管理空闲磁盘块"><span class="toc-number">1.11.3.</span> <span class="toc-text"> 存储空间管理——管理空闲磁盘块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件操作"><span class="toc-number">1.11.4.</span> <span class="toc-text"> 文件操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件共享"><span class="toc-number">1.11.5.</span> <span class="toc-text"> 文件共享</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘"><span class="toc-number">1.12.</span> <span class="toc-text"> 磁盘</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#结构"><span class="toc-number">1.12.1.</span> <span class="toc-text"> 结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#磁盘调度"><span class="toc-number">1.12.2.</span> <span class="toc-text"> 磁盘调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#磁盘管理"><span class="toc-number">1.12.3.</span> <span class="toc-text"> 磁盘管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#io控制器"><span class="toc-number">1.13.</span> <span class="toc-text"> IO控制器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓冲区"><span class="toc-number">1.14.</span> <span class="toc-text"> 缓冲区</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number">2.</span> <span class="toc-text"> 附录</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

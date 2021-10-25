@@ -97,93 +97,69 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Oauth2原理、使用</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/15</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,334</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="oauth2原理-使用"><a class="markdownIt-Anchor" href="#oauth2原理-使用"></a> Oauth2原理、使用</h1>
-<h1 id="原理"><a class="markdownIt-Anchor" href="#原理"></a> 原理</h1>
-<p>快递员–&gt;门禁–&gt;小区–&gt;我家    &lt;=====&gt; 第三方应用 --&gt; 微信墙 —&gt;账号–&gt;个人数据</p>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Oauth2原理、使用</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/15</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,335</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="Oauth2原理、使用"><a href="#Oauth2原理、使用" class="headerlink" title="Oauth2原理、使用"></a>Oauth2原理、使用</h1><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>快递员—&gt;门禁—&gt;小区—&gt;我家    &lt;=====&gt; 第三方应用 —&gt; 微信墙 —-&gt;账号—&gt;个人数据</p>
 <blockquote>
 <p>简单说，<em>OAuth</em> 就是一种授权机制。数据的所有者告诉系统，同意授权第三方应用进入系统，获取这些数据。系统从而产生一个<strong>短期的进入令牌</strong>（token），用来<u>代替密码</u>，供第三方应用使用。</p>
 </blockquote>
-<h2 id="oauth-的核心就是向第三方应用颁发令牌"><a class="markdownIt-Anchor" href="#oauth-的核心就是向第三方应用颁发令牌"></a> <strong>OAuth 的核心就是向第三方应用颁发令牌</strong></h2>
-<h3 id="令牌特点"><a class="markdownIt-Anchor" href="#令牌特点"></a> 令牌特点：</h3>
-<p>（1）令牌是短期的，到期会自动失效，用户自己无法修改。密码一般长期有效，用户不修改，就不会发生变化。</p>
+<h2 id="OAuth-的核心就是向第三方应用颁发令牌"><a href="#OAuth-的核心就是向第三方应用颁发令牌" class="headerlink" title="OAuth 的核心就是向第三方应用颁发令牌"></a><strong>OAuth 的核心就是向第三方应用颁发令牌</strong></h2><h3 id="令牌特点："><a href="#令牌特点：" class="headerlink" title="令牌特点："></a>令牌特点：</h3><p>（1）令牌是短期的，到期会自动失效，用户自己无法修改。密码一般长期有效，用户不修改，就不会发生变化。</p>
 <p>（2）令牌可以被数据所有者撤销，会立即失效。以上例而言，屋主可以随时取消快递员的令牌。密码一般不允许被他人撤销。</p>
 <p>（3）令牌有权限范围（scope），比如只能进小区的二号门。对于网络服务来说，只读令牌就比读写令牌更安全。密码一般是完整权限。</p>
-<h2 id="oauth是什么"><a class="markdownIt-Anchor" href="#oauth是什么"></a> OAuth是什么？</h2>
-<p>引入了一个授权层，用来分离两种不同的角色：客户端和资源所有者。…资源所有者同意以后，资源服务器可以向客户端颁发令牌。客户端通过令牌，去请求数据。</p>
-<h2 id="四种获得令牌的流程"><a class="markdownIt-Anchor" href="#四种获得令牌的流程"></a> <strong>四种获得令牌的流程</strong>:</h2>
+<h2 id="OAuth是什么？"><a href="#OAuth是什么？" class="headerlink" title="OAuth是什么？"></a>OAuth是什么？</h2><p> 引入了一个授权层，用来分离两种不同的角色：客户端和资源所有者。……资源所有者同意以后，资源服务器可以向客户端颁发令牌。客户端通过令牌，去请求数据。</p>
+<h2 id="四种获得令牌的流程"><a href="#四种获得令牌的流程" class="headerlink" title="四种获得令牌的流程:"></a><strong>四种获得令牌的流程</strong>:</h2><ul>
+<li><p>授权码（authorization-code）</p>
 <ul>
-<li>
-<p>授权码（authorization-code）</p>
+<li><p>1.发送请求A-&gt;B</p>
 <ul>
-<li>
-<p>1.发送请求A-&gt;B</p>
-<ul>
-<li>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https://b.com/oauth/authorize?</span><br><span class="line">  response_type=code&amp;</span><br><span class="line">  client_id=CLIENT_ID&amp;</span><br><span class="line">  redirect_uri=CALLBACK_URL&amp;</span><br><span class="line">  scope=read</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https://b.com/oauth/authorize?</span><br><span class="line">  response_type=code&amp;</span><br><span class="line">  client_id=CLIENT_ID&amp;</span><br><span class="line">  redirect_uri=CALLBACK_URL&amp;</span><br><span class="line">  scope=read</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>A（客户端）-&gt;B（）<code>response_type</code>参数表示要求返回授权码（<code>code</code>），<code>client_id</code>参数让 B 知道是谁在请求，<code>redirect_uri</code>参数是 B 接受或拒绝请求后的跳转网址，<code>scope</code>参数表示要求的授权范围（这里是只读）。</p>
+<li><p>A（客户端）-&gt;B（）<code>response_type</code>参数表示要求返回授权码（<code>code</code>），<code>client_id</code>参数让 B 知道是谁在请求，<code>redirect_uri</code>参数是 B 接受或拒绝请求后的跳转网址，<code>scope</code>参数表示要求的授权范围（这里是只读）。</p>
 </li>
 </ul>
 </li>
-<li>
-<p>第二步，用户跳转后，B 网站会要求用户登录，然后询问是否同意给予 A 网站授权。用户表示同意，这时 B 网站就会跳回<code>redirect_uri</code>参数指定的网址。跳转时，会传回一个授权码，就像<code>https://a.com/callback?code=AUTHORIZATION_CODE</code></p>
+<li><p>第二步，用户跳转后，B 网站会要求用户登录，然后询问是否同意给予 A 网站授权。用户表示同意，这时 B 网站就会跳回<code>redirect_uri</code>参数指定的网址。跳转时，会传回一个授权码，就像<code>https://a.com/callback?code=AUTHORIZATION_CODE</code></p>
 </li>
-<li>
-<p>第三步，A 网站拿到授权码以后，就可以在后端，向 B 网站请求令牌。</p>
+<li><p>第三步，A 网站拿到授权码以后，就可以在后端，向 B 网站请求令牌。</p>
 <ul>
-<li>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">https://b.com/oauth/token?</span><br><span class="line"> client_id=CLIENT_ID&amp;</span><br><span class="line"> client_secret=CLIENT_SECRET&amp;</span><br><span class="line"> grant_type=authorization_code&amp;</span><br><span class="line"> code=AUTHORIZATION_CODE&amp;</span><br><span class="line"> redirect_uri=CALLBACK_URL</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">https://b.com/oauth/token?</span><br><span class="line"> client_id=CLIENT_ID&amp;</span><br><span class="line"> client_secret=CLIENT_SECRET&amp;</span><br><span class="line"> grant_type=authorization_code&amp;</span><br><span class="line"> code=AUTHORIZATION_CODE&amp;</span><br><span class="line"> redirect_uri=CALLBACK_URL</span><br></pre></td></tr></table></figure>
 <p>上面 URL 中，<code>client_id</code>参数和<code>client_secret</code>参数用来让 B 确认 A 的身份（<code>client_secret</code>参数是保密的，因此只能在后端发请求），<code>grant_type</code>参数的值是<code>AUTHORIZATION_CODE</code>，表示采用的授权方式是授权码，<code>code</code>参数是上一步拿到的授权码，<code>redirect_uri</code>参数是令牌颁发后的回调网址。</p>
 </li>
 </ul>
 </li>
-<li>
-<p>第四步，B 网站收到请求以后，就会颁发令牌。具体做法是向<code>redirect_uri</code>指定的网址，发送一段 JSON 数据。</p>
+<li><p>第四步，B 网站收到请求以后，就会颁发令牌。具体做法是向<code>redirect_uri</code>指定的网址，发送一段 JSON 数据。</p>
 <ul>
-<li>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;    </span><br><span class="line">  <span class="attr">"access_token"</span>:<span class="string">"ACCESS_TOKEN"</span>,</span><br><span class="line">  <span class="attr">"token_type"</span>:<span class="string">"bearer"</span>,</span><br><span class="line">  <span class="attr">"expires_in"</span>:<span class="number">2592000</span>,</span><br><span class="line">  <span class="attr">"refresh_token"</span>:<span class="string">"REFRESH_TOKEN"</span>,</span><br><span class="line">  <span class="attr">"scope"</span>:<span class="string">"read"</span>,</span><br><span class="line">  <span class="attr">"uid"</span>:<span class="number">100101</span>,</span><br><span class="line">  "info":&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;    </span><br><span class="line">  <span class="attr">"access_token"</span>:<span class="string">"ACCESS_TOKEN"</span>,</span><br><span class="line">  <span class="attr">"token_type"</span>:<span class="string">"bearer"</span>,</span><br><span class="line">  <span class="attr">"expires_in"</span>:<span class="number">2592000</span>,</span><br><span class="line">  <span class="attr">"refresh_token"</span>:<span class="string">"REFRESH_TOKEN"</span>,</span><br><span class="line">  <span class="attr">"scope"</span>:<span class="string">"read"</span>,</span><br><span class="line">  <span class="attr">"uid"</span>:<span class="number">100101</span>,</span><br><span class="line">  "info":&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面 JSON 数据中，<code>access_token</code>字段就是令牌，A 网站在后端拿到了。</p>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<p>隐藏式（implicit）</p>
+<li><p>隐藏式（implicit）</p>
 <ul>
-<li>
-<blockquote>
+<li><blockquote>
 <p>有些 Web 应用是纯前端应用，没有后端。这时就不能用上面的方式了，必须将令牌储存在前端。</p>
 </blockquote>
 </li>
-<li>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https://b.com/oauth/authorize?</span><br><span class="line">  response_type=token&amp;</span><br><span class="line">  client_id=CLIENT_ID&amp;</span><br><span class="line">  redirect_uri=CALLBACK_URL&amp;</span><br><span class="line">  scope=read</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https://b.com/oauth/authorize?</span><br><span class="line">  response_type=token&amp;</span><br><span class="line">  client_id=CLIENT_ID&amp;</span><br><span class="line">  redirect_uri=CALLBACK_URL&amp;</span><br><span class="line">  scope=read</span><br></pre></td></tr></table></figure>
 <p><code>response_type</code>参数为<code>token</code>，表示要求直接返回令牌。</p>
 </li>
-<li>
-<p><code>https://a.com/callback#token=ACCESS_TOKEN``token</code>参数就是令牌，A 网站因此直接在前端拿到令牌。</p>
+<li><p><code>https://a.com/callback#token=ACCESS_TOKEN``token</code>参数就是令牌，A 网站因此直接在前端拿到令牌。</p>
 </li>
-<li>
-<p>▲注意，令牌的位置是 URL 锚点（fragment），而不是查询字符串（querystring），这是因为 OAuth 2.0 允许跳转网址是 HTTP 协议，因此存在&quot;中间人攻击&quot;的风险，而浏览器跳转时，锚点不会发到服务器，就减少了泄漏令牌的风险。</p>
+<li><p>▲注意，令牌的位置是 URL 锚点（fragment），而不是查询字符串（querystring），这是因为 OAuth 2.0 允许跳转网址是 HTTP 协议，因此存在”中间人攻击”的风险，而浏览器跳转时，锚点不会发到服务器，就减少了泄漏令牌的风险。</p>
 </li>
 </ul>
 </li>
-<li>
-<p>密码式（password）：</p>
+<li><p>密码式（password）：</p>
 <ul>
-<li>
-<blockquote>
-<p>如果你高度信任某个应用，RFC 6749 也允许用户把用户名和密码，直接告诉该应用。该应用就使用你的密码，申请令牌，这种方式称为&quot;密码式&quot;（password）。</p>
+<li><blockquote>
+<p>如果你高度信任某个应用，RFC 6749 也允许用户把用户名和密码，直接告诉该应用。该应用就使用你的密码，申请令牌，这种方式称为”密码式”（password）。</p>
 </blockquote>
 </li>
 </ul>
 </li>
-<li>
-<p>客户端凭证（client credentials）</p>
+<li><p>客户端凭证（client credentials）</p>
 <ul>
-<li>
-<blockquote>
+<li><blockquote>
 <p>适用于没有前端的命令行应用，即在命令行下请求令牌。</p>
 </blockquote>
 </li>
@@ -192,19 +168,15 @@
 </ul>
 <p>clientID和ClientSecret均是App需要申请的API密钥</p>
 <p><img src="/2019/06/03/Oauth2原理、使用/Oauth_ClientID.png" alt="Oauth_ClientID"></p>
-<h1 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 使用</h1>
-<h2 id="github-oauth"><a class="markdownIt-Anchor" href="#github-oauth"></a> Github Oauth</h2>
-<h2 id="qq-oauth"><a class="markdownIt-Anchor" href="#qq-oauth"></a> QQ Oauth</h2>
-<p>本地测试QQ的写法</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="Github-Oauth"><a href="#Github-Oauth" class="headerlink" title="Github Oauth"></a>Github Oauth</h2><h2 id="QQ-Oauth"><a href="#QQ-Oauth" class="headerlink" title="QQ Oauth"></a>QQ Oauth</h2><p>本地测试QQ的写法</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># 方法一：在hosts中将nymrli.top修改到<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">@app.route('/login')</span><br><span class="line">def login():</span><br><span class="line">	params = &#123;</span><br><span class="line">		'response_type' : 'code',</span><br><span class="line">		'client_id' : '101568872',</span><br><span class="line">		'redirect_uri' : 'http://beta.nymrli.top/oauth/qq',</span><br><span class="line">		'state' : '1',</span><br><span class="line">	&#125;</span><br><span class="line">	url = 'https://graph.qq.com/oauth2.0/authorize?'</span><br><span class="line">	urlParams = urlencode(params)</span><br><span class="line">    # ▲需要url编码</span><br><span class="line">	comleteUrl = url + urlParams</span><br><span class="line">	# <span class="keyword">return</span> url_for( )</span><br><span class="line">    <span class="string">'''</span></span><br><span class="line">    ▲应该用redirect，而不是requests.get的text内容或者是url_for</span><br><span class="line">    <span class="string">'''</span></span><br><span class="line">	<span class="keyword">return</span> redirect( comleteUrl)</span><br><span class="line">        </span><br><span class="line">@app.route('/oauth/qq')</span><br><span class="line">def getCode():</span><br><span class="line">	return request.args.get('code')</span><br><span class="line">        </span><br><span class="line"># 方法二：随便申请一个应用</span><br><span class="line">@app.route('/login')</span><br><span class="line">def login():</span><br><span class="line">	params = &#123;</span><br><span class="line">		'response_type' : 'code',</span><br><span class="line">		'client_id' : '101584056',</span><br><span class="line">		# 'redirect_uri' : 'http://beta.nymrli.top/oauth/qq',</span><br><span class="line">		'redirect_uri' : 'http://127.0.0.1:8000/oauth/redirect',</span><br><span class="line">		'state' : 'test'</span><br><span class="line">	&#125;</span><br><span class="line">	url = 'https://graph.qq.com/oauth2.0/authorize?'</span><br><span class="line">	urlParams = urlencode(params)</span><br><span class="line">	comleteUrl = url + urlParams</span><br><span class="line">	<span class="keyword">return</span> redirect( comleteUrl)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route('/oauth/redirect')</span><br><span class="line">def getCode():</span><br><span class="line">	print(request.args)</span><br><span class="line">	return 'hello'</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/06/03/Oauth2原理、使用/QQoauth_test.png" alt="QQoauth_test"></p>
-<h3 id="坑点记录部署"><a class="markdownIt-Anchor" href="#坑点记录部署"></a> 坑点记录：部署</h3>
-<blockquote>
-<p>经过调试发现部署上去后，在<a href="http://beta.nymrli.top/info" target="_blank" rel="noopener">http://beta.nymrli.top/info</a>页面下获得不到	<code>access_token = session.get('access_token')</code>于是猜想session设置有问题。果然linux下<code>os.urandom(24)</code>有问题， 结果是无法获得到信息。经修改后能正常获得结果</p>
+<h3 id="坑点记录：部署"><a href="#坑点记录：部署" class="headerlink" title="坑点记录：部署"></a>坑点记录：部署</h3><blockquote>
+<p>经过调试发现部署上去后，在<a href="http://beta.nymrli.top/info" target="_blank" rel="noopener">http://beta.nymrli.top/info</a>页面下获得不到    <code>access_token = session.get(&#39;access_token&#39;)</code>于是猜想session设置有问题。果然linux下<code>os.urandom(24)</code>有问题， 结果是无法获得到信息。经修改后能正常获得结果</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SECRET_KEY= os.urandom(<span class="number">24</span>)  <span class="comment"># 设置为24位的字符,每次运行服务器都是不同的，所以服务器启动一次上次的session就清除。</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2019/06/03/Oauth2原理、使用/no.png" alt="no"></p>
-<p>改成随便的SECRET_KEY的就行了，比如<code>SECRET_KEY='asdzxcqwe'</code></p>
+<p>改成随便的SECRET_KEY的就行了，比如<code>SECRET_KEY=&#39;asdzxcqwe&#39;</code></p>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2019/06/03/Oauth2原理、使用/">https://nymrli.top/2019/06/03/Oauth2原理、使用/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2019/06/15/Python的构建工具setup-py/" title="Python的构建工具setup.py"><span>< PreviousPost</span><br><span class="prevTitle">Python的构建工具setup.py</span></a><a class="nextSlogan" href="/2019/06/03/lua学习/" title="lua学习"><span>NextPost ></span><br><span class="nextTitle">lua学习</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: 'Oauth2原理、使用',
   owner: 'Freedomisgood',
@@ -214,4 +186,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#oauth2原理-使用"><span class="toc-number">1.</span> <span class="toc-text"> Oauth2原理、使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原理"><span class="toc-number">2.</span> <span class="toc-text"> 原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#oauth-的核心就是向第三方应用颁发令牌"><span class="toc-number">2.1.</span> <span class="toc-text"> OAuth 的核心就是向第三方应用颁发令牌</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#令牌特点"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 令牌特点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oauth是什么"><span class="toc-number">2.2.</span> <span class="toc-text"> OAuth是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四种获得令牌的流程"><span class="toc-number">2.3.</span> <span class="toc-text"> 四种获得令牌的流程:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">3.</span> <span class="toc-text"> 使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#github-oauth"><span class="toc-number">3.1.</span> <span class="toc-text"> Github Oauth</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#qq-oauth"><span class="toc-number">3.2.</span> <span class="toc-text"> QQ Oauth</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#坑点记录部署"><span class="toc-number">3.2.1.</span> <span class="toc-text"> 坑点记录：部署</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Oauth2原理、使用"><span class="toc-number">1.</span> <span class="toc-text">Oauth2原理、使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原理"><span class="toc-number">2.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OAuth-的核心就是向第三方应用颁发令牌"><span class="toc-number">2.1.</span> <span class="toc-text">OAuth 的核心就是向第三方应用颁发令牌</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#令牌特点："><span class="toc-number">2.1.1.</span> <span class="toc-text">令牌特点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OAuth是什么？"><span class="toc-number">2.2.</span> <span class="toc-text">OAuth是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四种获得令牌的流程"><span class="toc-number">2.3.</span> <span class="toc-text">四种获得令牌的流程:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github-Oauth"><span class="toc-number">3.1.</span> <span class="toc-text">Github Oauth</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#QQ-Oauth"><span class="toc-number">3.2.</span> <span class="toc-text">QQ Oauth</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#坑点记录：部署"><span class="toc-number">3.2.1.</span> <span class="toc-text">坑点记录：部署</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>学点Gradle · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">学点Gradle</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/09/27</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,736</span> | Reading time: <span class="post-count">8</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="Gradle学习"><a href="#Gradle学习" class="headerlink" title="Gradle学习"></a>Gradle学习</h1><p>在kotlin中使用mapstruct出现了些问题， 网上搜寻后得到结论：需要使用kapt(Kotlin annotation processing tool 即kotlin注解处理工具)， 但给出的大多都是通过Gradle来进行配置的。因此借此机会学习了下Gradle：</p>
+<h2 id="plugins和apply-plugin"><a href="#plugins和apply-plugin" class="headerlink" title="plugins和apply plugin:"></a>plugins和apply plugin:</h2><blockquote>
+<p>由于文档写到了， 由于不清楚这些在哪些位置加入， 因此查看了plugins和<code>apply plugin:</code>的区别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; 添加 kapt 插件</span><br><span class="line">&gt; apply plugin: &apos;kotlin-kapt&apos;</span><br><span class="line">&gt; </span><br><span class="line">&gt; 然后在项目中添加如下依赖：</span><br><span class="line">&gt; api(&quot;com.github.pozo:mapstruct-kotlin:1.3.1.2&quot;)</span><br><span class="line">&gt; kapt(&quot;com.github.pozo:mapstruct-kotlin-processor:1.3.1.2&quot;)</span><br><span class="line">&gt; </span><br><span class="line">&gt; 另外，还需要添加如下依赖：</span><br><span class="line">&gt; api(&quot;org.mapstruct:mapstruct:1.4.0.Beta3&quot;)</span><br><span class="line">&gt; kapt(&quot;org.mapstruct:mapstruct-processor:1.4.0.Beta3&quot;)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>“plugins {}”块导入的是<a href="https://link.zhihu.com/?target=https%3A//plugins.gradle.org/" target="_blank" rel="noopener">Gradle官方插件仓库</a>里的插件。如果使用“buildscript {}”块指定第三方库作为Gradle插件的话，指定插件就需要使用“apply plugin”了。</p>
+<p>刚刚翻了翻文档，“apply plugin”本身似乎还有更多的用途，而“plugins {}”块似乎是一个新引入的还不足够稳定的特性。题主想要知道更多的话直接看看文档就行了。</p>
+<p>最终的Plain项目的依赖如下所示：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">'java'</span></span><br><span class="line">    id <span class="string">'org.jetbrains.kotlin.jvm'</span> version <span class="string">'1.4.10'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">group</span> <span class="string">'org.example'</span></span><br><span class="line">version <span class="string">'1.0-SNAPSHOT'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">repositories</span> &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">apply plugin: <span class="string">'kotlin-kapt'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    implementation <span class="string">"org.jetbrains.kotlin:kotlin-stdlib"</span></span><br><span class="line">    testImplementation <span class="string">'org.junit.jupiter:junit-jupiter-api:5.6.0'</span></span><br><span class="line">    testRuntimeOnly <span class="string">'org.junit.jupiter:junit-jupiter-engine'</span></span><br><span class="line"></span><br><span class="line">    api(<span class="string">"com.github.pozo:mapstruct-kotlin:1.3.1.2"</span>)</span><br><span class="line">    kapt(<span class="string">"com.github.pozo:mapstruct-kotlin-processor:1.3.1.2"</span>)</span><br><span class="line">    api(<span class="string">"org.mapstruct:mapstruct:1.4.0.Beta3"</span>)</span><br><span class="line">    kapt(<span class="string">"org.mapstruct:mapstruct-processor:1.4.0.Beta3"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test &#123;</span><br><span class="line">    useJUnitPlatform()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="maven使用kapt"><a href="#maven使用kapt" class="headerlink" title="maven使用kapt"></a>maven使用kapt</h2><p>在 kotlin-maven-plugin 中的在<code>compile</code> 之前添加 <code>kapt</code> 目标的执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;execution&gt;</span><br><span class="line">    &lt;id&gt;kapt&lt;/id&gt;</span><br><span class="line">    &lt;goals&gt;</span><br><span class="line">        &lt;goal&gt;kapt&lt;/goal&gt;</span><br><span class="line">    &lt;/goals&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">        &lt;sourceDirs&gt;</span><br><span class="line">            &lt;sourceDir&gt;src/main/kotlin&lt;/sourceDir&gt;</span><br><span class="line">            &lt;sourceDir&gt;src/main/java&lt;/sourceDir&gt;</span><br><span class="line">        &lt;/sourceDirs&gt;</span><br><span class="line">        &lt;annotationProcessorPaths&gt;</span><br><span class="line">            &lt;!-- 在此处指定你的注解处理器。 --&gt;</span><br><span class="line">            &lt;annotationProcessorPath&gt;</span><br><span class="line">                &lt;groupId&gt;com.google.dagger&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;dagger-compiler&lt;/artifactId&gt;</span><br><span class="line">                &lt;version&gt;2.9&lt;/version&gt;</span><br><span class="line">            &lt;/annotationProcessorPath&gt;</span><br><span class="line">        &lt;/annotationProcessorPaths&gt;</span><br><span class="line">    &lt;/configuration&gt;</span><br><span class="line">&lt;/execution&gt;</span><br></pre></td></tr></table></figure>
+<p>请注意，IntelliJ IDEA 自身的构建系统目前还不支持 kapt。当你想要重新运行注解处理时，请从“Maven Projects”工具栏启动构建。</p>
+<p>from: <a href="https://www.kancloud.cn/alex_wsc/android_kotlin/1318386#_Maven__110" target="_blank" rel="noopener">https://www.kancloud.cn/alex_wsc/android_kotlin/1318386#_Maven__110</a></p>
+<p><strong>各种依赖方式说明</strong></p>
+<ul>
+<li><p>implementation<br>这个指令的特点就是，对于使用了该命令编译的依赖，对该项目有依赖的项目将无法访问到使用该命令编译的依赖中的任何程序，也就是将该依赖隐藏在内部，而不对外部公开。</p>
+</li>
+<li><p>api<br>完全等同于compile指令。</p>
+</li>
+<li><p>compile<br>这种是我们最常用的方式，使用该方式依赖的库将会参与编译和打包。</p>
+</li>
+<li><p>testCompile<br>testCompile 只在单元测试代码的编译以及最终打包测试apk时有效。</p>
+</li>
+<li><p>debugCompile<br>debugCompile 只在debug模式的编译和最终的debug apk打包时有效。</p>
+</li>
+<li><p>releaseCompile<br>releaseCompile 仅仅针对Release模式的编译和最终的Release apk打包。这里比如</p>
+</li>
+</ul>
+<h2 id="gradle中api、implementation和compile的区别"><a href="#gradle中api、implementation和compile的区别" class="headerlink" title="gradle中api、implementation和compile的区别"></a>gradle中api、implementation和compile的区别</h2><blockquote>
+<p>我们在gradle中引用第三方maven库时，一般通过下面的语句去引用:<code>compile &#39;com.android.support:appcompat-v7:26.1.0&#39;</code> , 然后sync project，就能成功引用对应的包到项目之中了，十分方便。除了使用compile关键字，使用implementation和api也能将包引用到项目中</p>
+</blockquote>
+<p>api和compile关键字作用效果是一样的，使用时可以互相替换。实际上，api关键字是用来替代compile关键字的，因为compile关键字将来会被弃用。在高版本的gradle，使用compile关键字会报错并提示使用api关键字代替。 </p>
+<p>Q：看起来这三个关键字的作用是一样的，那么，他们到底有什么区别呢？</p>
+<p>A：在同一个module下，implementation和compile的使用效果相同，但是在不同module下，就会有所区别了。</p>
+<p><strong>api或compile关键字引用的包对于其他module来说是可见的，而implementation关键字引用的包对于其他module来说是不可见的。</strong></p>
+<h2 id="Maven仓库列表"><a href="#Maven仓库列表" class="headerlink" title="Maven仓库列表"></a>Maven仓库列表</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>仓库名</th>
+<th>简介</th>
+<th>实际地址</th>
+<th>使用地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jcenter</td>
+<td>JFrog公司提供的仓库</td>
+<td><a href="http://jcenter.bintray.com" target="_blank" rel="noopener">http://jcenter.bintray.com</a></td>
+<td><a href="https://maven.aliyun.com/repository/jcenter" target="_blank" rel="noopener">https://maven.aliyun.com/repository/jcenter</a> <a href="https://maven.aliyun.com/nexus/content/repositories/jcenter" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/repositories/jcenter</a></td>
+</tr>
+<tr>
+<td>mavenLocal</td>
+<td>本台电脑上的仓库</td>
+<td>{USER_HOME}/.m2/repository</td>
+<td>C:/Users/liyujiang/.m2/repository (Windows) /home/liyujiang/.m2/repository (Linux)</td>
+</tr>
+<tr>
+<td>mavenCentral</td>
+<td>Sonatype公司提供的中央库</td>
+<td><a href="http://central.maven.org/maven2" target="_blank" rel="noopener">http://central.maven.org/maven2</a></td>
+<td><a href="https://maven.aliyun.com/repository/central" target="_blank" rel="noopener">https://maven.aliyun.com/repository/central</a> <a href="https://maven.aliyun.com/nexus/content/repositories/central" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/repositories/central</a></td>
+</tr>
+<tr>
+<td>google</td>
+<td>Google公司提供的仓库</td>
+<td><a href="https://maven.google.com" target="_blank" rel="noopener">https://maven.google.com</a></td>
+<td><a href="https://maven.aliyun.com/repository/google" target="_blank" rel="noopener">https://maven.aliyun.com/repository/google</a> <a href="https://maven.aliyun.com/nexus/content/repositories/google" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/repositories/google</a> <a href="https://dl.google.com/dl/android/maven2" target="_blank" rel="noopener">https://dl.google.com/dl/android/maven2</a></td>
+</tr>
+<tr>
+<td>jitpack</td>
+<td>JitPack提供的仓库</td>
+<td><a href="https://jitpack.io" target="_blank" rel="noopener">https://jitpack.io</a></td>
+<td><a href="https://jitpack.io" target="_blank" rel="noopener">https://jitpack.io</a></td>
+</tr>
+<tr>
+<td>public</td>
+<td>jcenter和mavenCentral的聚合仓库</td>
+<td><a href="https://maven.aliyun.com/repository/public" target="_blank" rel="noopener">https://maven.aliyun.com/repository/public</a> <a href="https://maven.aliyun.com/nexus/content/groups/public" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/groups/public</a></td>
+<td></td>
+</tr>
+<tr>
+<td>gradle-plugin</td>
+<td>Gradle插件仓库</td>
+<td><a href="https://plugins.gradle.org/m2" target="_blank" rel="noopener">https://plugins.gradle.org/m2</a></td>
+<td><a href="https://maven.aliyun.com/repository/gradle-plugin" target="_blank" rel="noopener">https://maven.aliyun.com/repository/gradle-plugin</a> <a href="https://maven.aliyun.com/nexus/content/repositories/gradle-plugin" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/repositories/gradle-plugin</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    maven&#123; url &apos;https://maven.aliyun.com/nexus/content/groups/public/&apos;&#125;</span><br><span class="line">    maven&#123; url &apos;https://maven.aliyun.com/nexus/content/repositories/jcenter&apos;&#125;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="gradle全局换源"><a href="#gradle全局换源" class="headerlink" title="gradle全局换源"></a>gradle全局换源</h3><p>在<code>C:\Users\mrli\.gradle</code>文件夹下修改init.gradle文件（如果没有则新建），写下如下内容:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">allprojects</span>&#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        <span class="keyword">def</span> ALIYUN_REPOSITORY_URL = <span class="string">'https://maven.aliyun.com/repository/public/'</span></span><br><span class="line">        <span class="keyword">def</span> ALIYUN_JCENTER_URL = <span class="string">'https://maven.aliyun.com/repository/jcenter/'</span></span><br><span class="line">        <span class="keyword">def</span> ALIYUN_GOOGLE_URL = <span class="string">'https://maven.aliyun.com/repository/google/'</span></span><br><span class="line">        <span class="keyword">def</span> ALIYUN_GRADLE_PLUGIN_URL = <span class="string">'https://maven.aliyun.com/repository/gradle-plugin/'</span></span><br><span class="line">        all &#123; ArtifactRepository repo -&gt;</span><br><span class="line">            <span class="keyword">if</span>(repo <span class="keyword">instanceof</span> MavenArtifactRepository)&#123;</span><br><span class="line">                <span class="keyword">def</span> url = repo.url.toString()</span><br><span class="line">                <span class="keyword">if</span> (url.startsWith(<span class="string">'https://repo1.maven.org/maven2/'</span>)) &#123;</span><br><span class="line">                    <span class="keyword">project</span>.logger.lifecycle <span class="string">"Repository $&#123;repo.url&#125; replaced by $ALIYUN_REPOSITORY_URL."</span></span><br><span class="line">                    remove repo</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (url.startsWith(<span class="string">'https://jcenter.bintray.com/'</span>)) &#123;</span><br><span class="line">                    <span class="keyword">project</span>.logger.lifecycle <span class="string">"Repository $&#123;repo.url&#125; replaced by $ALIYUN_JCENTER_URL."</span></span><br><span class="line">                    remove repo</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (url.startsWith(<span class="string">'https://dl.google.com/dl/android/maven2/'</span>)) &#123;</span><br><span class="line">                    <span class="keyword">project</span>.logger.lifecycle <span class="string">"Repository $&#123;repo.url&#125; replaced by $ALIYUN_GOOGLE_URL."</span></span><br><span class="line">                    remove repo</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (url.startsWith(<span class="string">'https://plugins.gradle.org/m2/'</span>)) &#123;</span><br><span class="line">                    <span class="keyword">project</span>.logger.lifecycle <span class="string">"Repository $&#123;repo.url&#125; replaced by $ALIYUN_GRADLE_PLUGIN_URL."</span></span><br><span class="line">                    remove repo</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        maven &#123; url ALIYUN_REPOSITORY_URL &#125;</span><br><span class="line">        maven &#123; url ALIYUN_JCENTER_URL &#125;</span><br><span class="line">        maven &#123; url ALIYUN_GOOGLE_URL &#125;</span><br><span class="line">        maven &#123; url ALIYUN_GRADLE_PLUGIN_URL &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：阿里源的URL使用https而不是http，否则会出现以下报错:<code>Gradle报错Could not resolve all dependencies for configuration ‘:detachedConfiguration7‘.</code></p>
+<p>参考：</p>
+<ul>
+<li><a href="https://blog.csdn.net/qq_41053520/article/details/118244668" target="_blank" rel="noopener">https://blog.csdn.net/qq_41053520/article/details/118244668</a></li>
+<li><a href="https://www.cnblogs.com/huiyi0521/p/10997152.html——gradle中执行函数" target="_blank" rel="noopener">https://www.cnblogs.com/huiyi0521/p/10997152.html——gradle中执行函数</a></li>
+<li><a href="https://blog.csdn.net/qq32933432/article/details/108906687——work" target="_blank" rel="noopener">https://blog.csdn.net/qq32933432/article/details/108906687——work</a></li>
+</ul>
+<h2 id="buildscript"><a href="#buildscript" class="headerlink" title="buildscript"></a>buildscript</h2><blockquote>
+<p> buildscript中的声明是gradle脚本自身需要使用的资源</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;java&apos; // java项目</span><br><span class="line">apply plugin: &apos;eclipse&apos; // eclipse开发环境构建，生成所需要的.project,.classpath等文件</span><br><span class="line">apply plugin: &apos;org.springframework.boot&apos;</span><br><span class="line">jar &#123;</span><br><span class="line">    baseName = &apos;shop-supplier&apos;</span><br><span class="line">    version =  &apos;1.0.0-SNAPSHOT&apos;</span><br><span class="line">&#125;</span><br><span class="line">version = &apos;1.0.0-SNAPSHOT&apos;</span><br><span class="line">sourceCompatibility = 1.8</span><br><span class="line">targetCompatibility = 1.8</span><br><span class="line"></span><br><span class="line">repositories &#123; // maven仓库地址</span><br><span class="line">   maven&#123;url &apos;私服地址&apos;&#125;</span><br><span class="line">   mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123; // 依赖项</span><br><span class="line">   // web thymeleaf</span><br><span class="line">   compile(&apos;org.springframework.boot:spring-boot-starter-web&apos;)</span><br><span class="line">   compile(&apos;org.springframework.boot:spring-boot-starter-thymeleaf&apos;)</span><br><span class="line"></span><br><span class="line">   // test</span><br><span class="line">   testCompile(&apos;org.springframework.boot:spring-boot-starter-test&apos;)</span><br><span class="line"></span><br><span class="line">   //添加 google二维码</span><br><span class="line">   compile &apos;com.google.zxing:core:3.2.0&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="gradle-工程使用mybatis"><a href="#gradle-工程使用mybatis" class="headerlink" title="gradle 工程使用mybatis"></a><a href="https://my.oschina.net/u/3574106/blog/2222889" target="_blank" rel="noopener">gradle 工程使用mybatis</a></h2><p>正常情况下是在src/main/java/**/xxx.xml 文件是不会被打包的，需要我们队gradle做一些特别的配置</p>
+<p>①，build.gradle</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sourceSets.main.resources.srcDirs = [<span class="string">"src/main/java"</span>,<span class="string">"src/main/resources"</span>]</span><br></pre></td></tr></table></figure>
+<p>②，指定mapper.xml 文件所在路径，这里我用的是mp</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mybatis-plus.mapper-locations=com/mp/test/mapper/xml<span class="comment">/*Mapper.xml</span></span><br></pre></td></tr></table></figure>
+<p>③，指定mapper接口所在路径</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.mp.test.mapper"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="gradle中使用docker"><a href="#gradle中使用docker" class="headerlink" title="gradle中使用docker"></a>gradle中使用docker</h2></article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/09/26/学点Gradle/">https://nymrli.top/2021/09/26/学点Gradle/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/09/27/物联网基础与应用-课程笔记/" title="物联网基础与应用-课程笔记"><span>< PreviousPost</span><br><span class="prevTitle">物联网基础与应用-课程笔记</span></a><a class="nextSlogan" href="/2021/09/25/ZJU云原生技术及应用-课程笔记/" title="ZJU云原生技术及应用-课程笔记"><span>NextPost ></span><br><span class="nextTitle">ZJU云原生技术及应用-课程笔记</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '学点Gradle',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Gradle学习"><span class="toc-number">1.</span> <span class="toc-text">Gradle学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#plugins和apply-plugin"><span class="toc-number">1.1.</span> <span class="toc-text">plugins和apply plugin:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maven使用kapt"><span class="toc-number">1.2.</span> <span class="toc-text">maven使用kapt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle中api、implementation和compile的区别"><span class="toc-number">1.3.</span> <span class="toc-text">gradle中api、implementation和compile的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven仓库列表"><span class="toc-number">1.4.</span> <span class="toc-text">Maven仓库列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gradle全局换源"><span class="toc-number">1.4.1.</span> <span class="toc-text">gradle全局换源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#buildscript"><span class="toc-number">1.5.</span> <span class="toc-text">buildscript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-工程使用mybatis"><span class="toc-number">1.6.</span> <span class="toc-text">gradle 工程使用mybatis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle中使用docker"><span class="toc-number">1.7.</span> <span class="toc-text">gradle中使用docker</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

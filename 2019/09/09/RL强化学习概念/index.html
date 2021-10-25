@@ -97,10 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">RL强化学习概念</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/15</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">435</span> | Reading time: <span class="post-count">2</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="rl强化学习概念"><a class="markdownIt-Anchor" href="#rl强化学习概念"></a> RL强化学习概念</h1>
-<h2 id="方法汇总"><a class="markdownIt-Anchor" href="#方法汇总"></a> 方法汇总</h2>
-<h3 id="价值-直接-想象"><a class="markdownIt-Anchor" href="#价值-直接-想象"></a> 价值-直接-想象</h3>
-<p>通过价值选择行为：</p>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">RL强化学习概念</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/15</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">433</span> | Reading time: <span class="post-count">2</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="RL强化学习概念"><a href="#RL强化学习概念" class="headerlink" title="RL强化学习概念"></a>RL强化学习概念</h1><h2 id="方法汇总"><a href="#方法汇总" class="headerlink" title="方法汇总"></a>方法汇总</h2><h3 id="价值-直接-想象"><a href="#价值-直接-想象" class="headerlink" title="价值-直接-想象"></a>价值-直接-想象</h3><p>通过价值选择行为：</p>
 <ul>
 <li>Q Learning</li>
 <li>Sarsa</li>
@@ -114,42 +111,39 @@
 <ul>
 <li>Model Based RL</li>
 </ul>
-<h3 id="基于模型"><a class="markdownIt-Anchor" href="#基于模型"></a> 基于模型</h3>
-<ul>
-<li>
-<p>Model-Free RL（无模型）不需要去理解环境的含义</p>
+<h3 id="基于模型"><a href="#基于模型" class="headerlink" title="基于模型"></a>基于模型</h3><ul>
+<li><p>Model-Free RL（无模型）不需要去理解环境的含义</p>
 <ul>
 <li>Q Learning</li>
 <li>Sarsa</li>
 <li>Policy Gradients</li>
 </ul>
 </li>
-<li>
-<p>Model-Based RL（有环境）需要去理解环境的含义，在&quot;脑子&quot;中模拟虚拟环境</p>
+</ul>
+<ul>
+<li><p>Model-Based RL（有环境）需要去理解环境的含义，在”脑子”中模拟虚拟环境</p>
 <ul>
 <li>Q Learning</li>
 <li>Sarsa</li>
 <li>Policy Gradient</li>
 </ul>
-<p>前者需要一步一步得到环境的反馈后才能进行下一步；而后者通过想象来预判断接下来会发生的情况。</p>
-<p><img src="/2019/09/09/RL强化学习概念/Users/10630/Documents/20190831224947.png" alt="20190831224947"></p>
 </li>
 </ul>
-<h3 id="基于概率-价值"><a class="markdownIt-Anchor" href="#基于概率-价值"></a> 基于概率-价值</h3>
-<p>基于概率（Policy Based RL）：</p>
+<p>  前者需要一步一步得到环境的反馈后才能进行下一步；而后者通过想象来预判断接下来会发生的情况。</p>
+<p>  <img src="/2019/09/09/RL强化学习概念/Users/10630/Documents/20190831224947.png" alt="20190831224947"></p>
+<h3 id="基于概率-价值"><a href="#基于概率-价值" class="headerlink" title="基于概率-价值"></a>基于概率-价值</h3><p>基于概率（Policy Based RL）：</p>
 <ul>
 <li>Policy Gradients</li>
 </ul>
 <p>即使是概率最高的也不一定能被选择到，因此基于价值的结果更为铁定</p>
 <p>基于价值（Value Based RL）：</p>
 <ul>
-<li>Q Learning</li>
+<li>Q Learning </li>
 <li>Sarsa</li>
 </ul>
 <p>不能用于连续动作，但基于概率能使用概率分布在连续动作中选择一个动作</p>
 <p>两者的统一体：Actor-Critic</p>
-<h3 id="回合-单步"><a class="markdownIt-Anchor" href="#回合-单步"></a> 回合-单步</h3>
-<p>回合更新（Monte-Carlo update）</p>
+<h3 id="回合-单步"><a href="#回合-单步" class="headerlink" title="回合-单步"></a>回合-单步</h3><p>回合更新（Monte-Carlo update）</p>
 <ul>
 <li>基础版Policy Gradients</li>
 <li>Monte-Carlo Learning</li>
@@ -164,14 +158,13 @@
 <p>不需要等待回合结束，边玩边学习</p>
 <p>更多的情况下单步更新效率更高，但围棋游戏一般采用的都是回合更新</p>
 <p><img src="/2019/09/09/RL强化学习概念/Users/10630/Documents/setp.png" alt="setp"></p>
-<h3 id="在线-离线"><a class="markdownIt-Anchor" href="#在线-离线"></a> 在线-离线</h3>
-<p>在线学习（online ）</p>
+<h3 id="在线-离线"><a href="#在线-离线" class="headerlink" title="在线-离线"></a>在线-离线</h3><p>在线学习（online ）</p>
 <blockquote>
 <p>本人在场，本人边玩边学习。</p>
 </blockquote>
 <ul>
 <li>Sarsa</li>
-<li>Sarsa(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">/</mi><mi>l</mi><mi>a</mi><mi>m</mi><mi>b</mi><mi>d</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">/lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord mathdefault">d</span><span class="mord mathdefault">a</span></span></span></span>)</li>
+<li>Sarsa($/lambda$)</li>
 </ul>
 <p>离散学习（offline）</p>
 <blockquote>
@@ -181,8 +174,7 @@
 <li>Q Learning</li>
 <li>Deep Q Network</li>
 </ul>
-<h3 id="onpolicy-offpolicy"><a class="markdownIt-Anchor" href="#onpolicy-offpolicy"></a> onPolicy-offPolicy</h3>
-<p>on-policy</p>
+<h3 id="onPolicy-offPolicy"><a href="#onPolicy-offPolicy" class="headerlink" title="onPolicy-offPolicy"></a>onPolicy-offPolicy</h3><p>on-policy</p>
 <blockquote>
 <p>Agent必然执行使Q函数最大的动作MAX_ACTION</p>
 </blockquote>
@@ -205,4 +197,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#rl强化学习概念"><span class="toc-number">1.</span> <span class="toc-text"> RL强化学习概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法汇总"><span class="toc-number">1.1.</span> <span class="toc-text"> 方法汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#价值-直接-想象"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 价值-直接-想象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于模型"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 基于模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于概率-价值"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 基于概率-价值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回合-单步"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 回合-单步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在线-离线"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 在线-离线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#onpolicy-offpolicy"><span class="toc-number">1.1.6.</span> <span class="toc-text"> onPolicy-offPolicy</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RL强化学习概念"><span class="toc-number">1.</span> <span class="toc-text">RL强化学习概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法汇总"><span class="toc-number">1.1.</span> <span class="toc-text">方法汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#价值-直接-想象"><span class="toc-number">1.1.1.</span> <span class="toc-text">价值-直接-想象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于模型"><span class="toc-number">1.1.2.</span> <span class="toc-text">基于模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于概率-价值"><span class="toc-number">1.1.3.</span> <span class="toc-text">基于概率-价值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回合-单步"><span class="toc-number">1.1.4.</span> <span class="toc-text">回合-单步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在线-离线"><span class="toc-number">1.1.5.</span> <span class="toc-text">在线-离线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#onPolicy-offPolicy"><span class="toc-number">1.1.6.</span> <span class="toc-text">onPolicy-offPolicy</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>XML语法规则笔记 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">XML语法规则笔记</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/10/09</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="学习笔记"> 学习笔记</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,404</span> | Reading time: <span class="post-count">10</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介：</h2>
+<ul>
+<li>XML 指可扩展标记语言（EXtensible Markup Language）。</li>
+<li>XML 是一种很像HTML的标记语言。</li>
+<li>XML 的设计宗旨是传输数据，而不是显示数据。</li>
+<li>XML 标签没有被预定义。您需要自行定义标签。</li>
+<li>XML 被设计为具有自我描述性。</li>
+<li>XML 是 W3C 的推荐标准。</li>
+</ul>
+<h2 id="特点"><a class="markdownIt-Anchor" href="#特点"></a> 特点：</h2>
+<ul>
+<li>所有 XML 元素都须有关闭标签</li>
+<li>XML 标签对大小写敏感</li>
+<li>XML 文档必须有根元素</li>
+<li>XML 的属性值须加引号，双引号、单引号都可以</li>
+<li>实体引用：<code>&amp;lt;</code>, <code>&amp;gt;</code>, <code>&amp;amp</code>, <code>&amp;apos</code>, <code>&amp;quot</code></li>
+<li>在 XML 中，空格会被保留， 但多余的空格会被合并成一个</li>
+<li>XML 以 LF 存储换行</li>
+</ul>
+<h2 id="用途"><a class="markdownIt-Anchor" href="#用途"></a> 用途：</h2>
+<ul>
+<li>XML 把数据从 HTML 分离： 改变数据时不需要对HTML进行改变</li>
+<li>XML 简化数据共享</li>
+<li>XML 简化数据传输：通过 XML，可以在不兼容的系统之间轻松地交换数据。</li>
+<li>XML 简化平台的变更</li>
+<li>XML 使您的数据更有用</li>
+</ul>
+<h2 id="xml-元素"><a class="markdownIt-Anchor" href="#xml-元素"></a> XML 元素</h2>
+<p>指的是从（且包括）开始标签直到（且包括）结束标签的部分。</p>
+<p>元素可包含其他元素、文本或者两者的混合物。元素也可以拥有<u>属性</u>。</p>
+<p><strong>XML 命名规则</strong></p>
+<p>XML 元素必须遵循以下命名规则：</p>
+<ul>
+<li>名称可以含字母、数字以及其他的字符</li>
+<li>名称不能以数字或者标点符号开始</li>
+<li>名称不能以字符 “xml”（或者 XML、Xml）开始</li>
+<li>名称不能包含空格</li>
+</ul>
+<p>可使用任何名称，没有保留的字词。</p>
+<p><strong>最佳命名习惯</strong></p>
+<p>使名称具有描述性。使用下划线的名称也很不错。</p>
+<p>名称应当比较简短，比如：<code>&lt;book_title&gt;</code>，而不是：<code>&lt;the_title_of_the_book&gt;</code>。</p>
+<ul>
+<li>避免 “-” 字符。如果您按照这样的方式进行命名：“first-name”，一些软件会认为你需要提取第一个单词。</li>
+<li>避免 “.” 字符。如果您按照这样的方式进行命名：“<a href="http://first.name" target="_blank" rel="noopener">first.name</a>”，一些软件会认为 “name” 是对象 “first” 的属性。</li>
+<li>避免 “:” 字符。冒号会被转换为命名空间来使用。</li>
+</ul>
+<h2 id="xml-命名空间xml-namespaces"><a class="markdownIt-Anchor" href="#xml-命名空间xml-namespaces"></a> XML 命名空间（XML Namespaces）</h2>
+<blockquote>
+<p>在 XML 中，元素名称是由开发者定义的，当<strong>两个不同的文档</strong>使用<strong>相同的元素名</strong>时，就会发生命名冲突。</p>
+</blockquote>
+<p>使用命名空间案例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">rtdBusConfig</span></span></span><br><span class="line"><span class="tag">  	<span class="attr">xmlns</span>=<span class="string">"http://com.cgs/rtd-bus.xsd"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://com.cgs/rtd-bus.xsd rtd-bus.xsd"</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">  <span class="attr">id</span>=<span class="string">"producer"</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">persistentPath</span>=<span class="string">"./rtdcache/producer"</span> </span></span><br><span class="line"><span class="tag">  &gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">rtdBusConfig</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>w3c案例: <a href="https://www.w3school.com.cn/xml/xml_namespaces.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/xml/xml_namespaces.asp</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">f:table</span> <span class="attr">xmlns:f</span>=<span class="string">"http://www.w3school.com.cn/furniture"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">f:name</span>&gt;</span>African Coffee Table<span class="tag">&lt;/<span class="name">f:name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">f:width</span>&gt;</span>80<span class="tag">&lt;/<span class="name">f:width</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">f:length</span>&gt;</span>120<span class="tag">&lt;/<span class="name">f:length</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">f:table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们在根标签中添加了一个 xmlns:f 属性，xmlns 代表的是 xml namespace，f是我们声明的命名空间前缀，f本身并没有意义，可以将它理解为是 <a href="http://www.atguigu.com/xml/b" target="_blank" rel="noopener">http://www.atguigu.com/xml/b</a> 的一个别名，我们在标签中使用 f，就相当于使用这个 uri 地址。一旦使用了f 这个前缀，就代表这个标签是属于 <a href="http://www.atguigu.com/xml/b" target="_blank" rel="noopener">http://www.atguigu.com/xml/b</a> 这个唯一标识命名空间下的元素。</p>
+<p>我们还可以在一个文档中定义多个命名空间，如下的语法也是没有问题的：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">b:book</span> <span class="attr">xmlns:b</span>=<span class="string">"http://www.atguigu.com/xml/b"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:a</span>=<span class="string">"http://www.atguigu.com/xml/a"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>more: <a href="https://www.cnblogs.com/xiaomaomao/p/13968976.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaomaomao/p/13968976.html</a></p>
+<p><strong>XML Namespace (xmlns) 属性</strong></p>
+<p>XML 命名空间属性被放置于元素的开始标签之中，并使用以下的语法：<code>xmlns&lt;:namespace-prefix&gt;=&quot;namespaceURI&quot;</code></p>
+<p>当命名空间被定义在<strong>元素的开始标签</strong>中时，所有带有相同前缀的子元素都会与同一个命名空间相关联。</p>
+<p>如果没有<code>:namespace-prefix</code>，为<code>xmlns=&quot;namespaceURI&quot;</code>，则采用的是默认的命名空间（Default Namespaces）</p>
+<p><strong>命名空间的实际应用</strong></p>
+<p>当开始使用 XSL 时，您不久就会看到实际使用中的命名空间。XSL 样式表用于将 XML 文档转换为其他格式，比如 HTML。</p>
+<p>如果您仔细观察下面的这个 XSL 文档，就会看到大多数的标签是HTML标签。非 HTML 的标签都有前缀 xsl，并由此命名空间标示：“<a href="http://www.w3.org/1999/XSL/Transform" target="_blank" rel="noopener">http://www.w3.org/1999/XSL/Transform</a>”：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"ISO-8859-1"</span><span class="meta">?&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">xsl:stylesheet</span> <span class="attr">version</span>=<span class="string">"1.0"</span> <span class="attr">xmlns:xsl</span>=<span class="string">"http://www.w3.org/1999/XSL/Transform"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">xsl:template</span> <span class="attr">match</span>=<span class="string">"/"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>My CD Collection<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>Artist<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">xsl:for-each</span> <span class="attr">select</span>=<span class="string">"catalog/cd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">xsl:value-of</span> <span class="attr">select</span>=<span class="string">"title"</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">xsl:value-of</span> <span class="attr">select</span>=<span class="string">"artist"</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">xsl:for-each</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xsl:template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">xsl:stylesheet</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="xml语法-处理指令"><a class="markdownIt-Anchor" href="#xml语法-处理指令"></a> XML语法－处理指令</h2>
+<blockquote>
+<p><strong>处理指令，简称PI （processing instruction）。处理指令用来指挥解析引擎如何解析XML文档内容</strong>。例如，在XML文档中可以使用xml-stylesheet指令，通知XML解析引擎，应用css文件显示xml文档内容，标签名为中文时，css不起作用。</p>
+</blockquote>
+<p>如<code>&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;css文件名.css&quot;?&gt;*</code></p>
+<p><strong>处理指令必须以&quot;<code>&lt;?&quot;作为开头，以&quot;?&gt;</code>&quot;作为结尾</strong>，XML声明语句(<code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</code>)就是最常见的一种处理指令。</p>
+<h3 id="xml报文头"><a class="markdownIt-Anchor" href="#xml报文头"></a> XML报文头</h3>
+<p><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code></p>
+<ul>
+<li>第一个是XML的声明，其中version属性是必须写的。</li>
+<li>encoding属性的值表示用于读取文档的字符集，第二个是一个文档定义的描述。</li>
+</ul>
+<h2 id="xml-cdata"><a class="markdownIt-Anchor" href="#xml-cdata"></a> XML CDATA</h2>
+<blockquote>
+<p>由于<strong>所有 XML 文档中的文本均会被解析器解析</strong>，而**只有 CDATA 区段（CDATA section）中的文本会被解析器忽略。**因此对某些不希望被解析的文本时，需要用CDATA嵌套起来。<strong>对于CDATA区域内的内容，XML解析程序不会处理，而是直接原封不动的输出</strong></p>
+</blockquote>
+<blockquote>
+<ul>
+<li>术语 CDATA 指的是不应由 XML 解析器进行解析的文本数据（Unparsed Character Data）。</li>
+<li>CDATA 部分中的所有内容都会被解析器忽略。</li>
+<li>CDATA 部分由<code>&quot;&lt;![CDATA[&quot;</code> 开始，由<code>&quot;]]&gt;&quot;</code>结束：</li>
+</ul>
+</blockquote>
+<p>在 XML 元素中，&quot;&lt;&quot; 和 “&amp;” 是非法的。</p>
+<ul>
+<li>“&lt;” 会产生错误，因为解析器会把该字符解释为新元素的开始。</li>
+<li>“&amp;” 也会产生错误，因为解析器会把该字符解释为字符实体的开始。</li>
+</ul>
+<p>某些文本，比如 JavaScript 代码，包含大量 “&lt;” 或 “&amp;” 字符。为了避免错误，可以将脚本代码定义为 CDATA。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">&lt;![CDATA[</span></span><br><span class="line"><span class="actionscript"><span class="function"><span class="keyword">function</span> <span class="title">matchwo</span><span class="params">(a,b)</span></span></span></span><br><span class="line"><span class="undefined">&#123;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">if</span> (a &lt; b &amp;&amp; a &lt; <span class="number">0</span>) then</span></span><br><span class="line"><span class="undefined">  &#123;</span></span><br><span class="line"><span class="actionscript">  <span class="keyword">return</span> <span class="number">1</span>;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">else</span></span></span><br><span class="line"><span class="undefined">  &#123;</span></span><br><span class="line"><span class="actionscript">  <span class="keyword">return</span> <span class="number">0</span>;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined">]]&gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="xml-dom"><a class="markdownIt-Anchor" href="#xml-dom"></a> XML DOM</h2>
+<p>DOM 把 XML 文档视为一种树结构。通过这个 DOM 树，可以访问所有的元素。可以修改它们的内容（文本以及属性），而且可以创建新的元素。元素，以及它们的文本和属性，均被视为节点。</p>
+<h2 id="xmlns-xmlnsxsi和xsischemalocation"><a class="markdownIt-Anchor" href="#xmlns-xmlnsxsi和xsischemalocation"></a> xmlns、xmlns:xsi和xsi:schemaLocation</h2>
+<p>POM 文件头示例</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> 		</span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>初学者看到如上的内容应当有如下困惑点：</p>
+<ul>
+<li>xmlns:xsi , xmlns, xsi:schmeLocation 这些看上去相近的属性是什么含义， 为什么他们的值是不一样的 URL</li>
+<li>这些 URL 是否对应一些可以访问的资源，对于该文件的解析是否会需要下载这些 URL 对应的资源</li>
+</ul>
+<h3 id="xmlnsxsi有什么作用"><a class="markdownIt-Anchor" href="#xmlnsxsi有什么作用"></a> <strong>xmlns:xsi有什么作用？</strong></h3>
+<p>按命名空间的概念来说，<code>xmlns:xsi</code>就是定义了一个命名空间前缀 xsi ，其对应的唯一字符串为 <a href="http://www.w3.org/2001/XMLSchema-instance%E3%80%82" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance。</a> 但是读者会发现， 这个 xmlns:xsi 在不同的 xml 文档中似乎都会出现。 这是因为， xsi 已经成为了一个业界默认的用于 XSD(（XML Schema Definition) 文件的命名空间。 而 XSD 文件（也常常称为 Schema 文件）是用来定义 xml 文档结构的。</p>
+<ul>
+<li>注解： XML 解析器可以根据 一个 XSD 文件的内容来解析另一个 XML 文件， 判断该文件的结构是否和 XSD 文件中定义的一致。 XSD 文件 可以理解为 XML 文档可以自定义的语法或格式检查器。</li>
+</ul>
+<h3 id="xsischemalocation有何作用"><a class="markdownIt-Anchor" href="#xsischemalocation有何作用"></a> xsi:schemaLocation有何作用？</h3>
+<p>xsi:schemaLocation其实是Namespace为http://www.w3.org/2001/XMLSchema-instance里的schemaLocation属性，因为我们一开始声明了<code>xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</code>，然后再看xsi:schemaLocation的使用：<code>xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</code>,上面这行的语法其实是<code>xsi:schemaLocation = &quot;键&quot; &quot;值&quot;</code><br>
+即 xsi 命名空间下 schemaLocation 元素的值为一个由空格分开的键值对。</p>
+<p>这里的xsi:schemaLocation（当然一般都使用这个前缀）。它定义了<strong>XML Namespace</strong>和对应的<strong>XSD（Xml Schema Definition）文档的位置</strong>的关系，他们总是成对出现的，通常为两个URI引用对组成，<em>两个URI之间以空白符分隔（空格和换行均可）</em>。</p>
+<ul>
+<li>前一个“键” <a href="http://maven.apache.org/POM/4.0.0" target="_blank" rel="noopener">http://maven.apache.org/POM/4.0.0</a> 指代 【命名空间】， 只是一个全局唯一字符串而已</li>
+<li>后一个值指代 【XSD location URI】 , 这个值指示了前一个命名空间所对应的 XSD 文件的位置， XML Schema Parser处理器可以利用这个信息获取到 XSD 文件， 从而通过 XSD 文件对所有属于 命名空间 <a href="http://maven.apache.org/POM/4.0.0" target="_blank" rel="noopener">http://maven.apache.org/POM/4.0.0</a> 的元素结构进行校验， 因此这个值<strong>必然是可以访问</strong>的， 且<strong>访问到的内容是一个 XSD 文件</strong>的内容</li>
+</ul>
+<p>现在概念懂了，来看个spring的xml例子把</p>
+<p><img src="/2021/10/09/XML语法规则笔记/xsi_schemaLocation.png" alt="xsi_schemaLocation"></p>
+<p>参考：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/osttwz/p/6892999.html" target="_blank" rel="noopener">我来说说XML文件中的xmlns、xmlns:xsi和xsi:schemaLocation、dtd文件的具体含义</a></li>
+<li><a href="https://blog.csdn.net/lengxiao1993/article/details/77914155" target="_blank" rel="noopener">详解 xml 文件头部的 xmlns:xsi</a></li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/10/09/XML语法规则笔记/">https://nymrli.top/2021/10/09/XML语法规则笔记/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/10/12/ZJU开学摸底考试——数据库概论复习/" title="ZJU开学摸底考试——数据库概论复习"><span>< PreviousPost</span><br><span class="prevTitle">ZJU开学摸底考试——数据库概论复习</span></a><a class="nextSlogan" href="/2021/09/30/makefile使用记录/" title="Makefile使用记录"><span>NextPost ></span><br><span class="nextTitle">Makefile使用记录</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'XML语法规则笔记',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text"> 简介：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特点"><span class="toc-number">2.</span> <span class="toc-text"> 特点：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用途"><span class="toc-number">3.</span> <span class="toc-text"> 用途：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xml-元素"><span class="toc-number">4.</span> <span class="toc-text"> XML 元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xml-命名空间xml-namespaces"><span class="toc-number">5.</span> <span class="toc-text"> XML 命名空间（XML Namespaces）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xml语法-处理指令"><span class="toc-number">6.</span> <span class="toc-text"> XML语法－处理指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xml报文头"><span class="toc-number">6.1.</span> <span class="toc-text"> XML报文头</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xml-cdata"><span class="toc-number">7.</span> <span class="toc-text"> XML CDATA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xml-dom"><span class="toc-number">8.</span> <span class="toc-text"> XML DOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xmlns-xmlnsxsi和xsischemalocation"><span class="toc-number">9.</span> <span class="toc-text"> xmlns、xmlns:xsi和xsi:schemaLocation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xmlnsxsi有什么作用"><span class="toc-number">9.1.</span> <span class="toc-text"> xmlns:xsi有什么作用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xsischemalocation有何作用"><span class="toc-number">9.2.</span> <span class="toc-text"> xsi:schemaLocation有何作用？</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

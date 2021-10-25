@@ -100,19 +100,15 @@
   .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Lets learn 设计模式</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2020/12/11</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,980</span> | Reading time: <span class="post-count">13</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
 <p>《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记</p>
 </blockquote>
-<h2 id="设计模式是什么"><a class="markdownIt-Anchor" href="#设计模式是什么"></a> 设计模式是什么？</h2>
-<p>模式：从字面上理解，模，就是<u>模型、模板</u>的意思；式，就是方式、方法的意思。综合起来，所谓模式就是：可以作为模型或模板的方式或方法。再简单点说就是可以用来作为样板的方式或方法，类似于大家所熟悉的范例。</p>
+<h2 id="设计模式是什么？"><a href="#设计模式是什么？" class="headerlink" title="设计模式是什么？"></a>设计模式是什么？</h2><p>模式：从字面上理解，模，就是<u>模型、模板</u>的意思；式，就是方式、方法的意思。综合起来，所谓模式就是：可以作为模型或模板的方式或方法。再简单点说就是可以用来作为样板的方式或方法，类似于大家所熟悉的范例。</p>
 <p>所以设计模式就是设计方面的模板，具体定义为：是指在软件开发中，<strong>经过验证的</strong>，用于解决在<strong>特定环境</strong>下、<strong>重复出现</strong>的、特定问题的<strong>解决方案</strong>。</p>
-<h3 id="每个设计模式的构成如下"><a class="markdownIt-Anchor" href="#每个设计模式的构成如下"></a> 每个设计模式的构成如下：</h3>
-<p>1、模式名称：模式的一个好记的名字</p>
-<p>2、环境和问题：描述在什么环境下，出现什么特定的问题</p>
-<p>3、解决方案：描述如何解决问题</p>
-<p>4、效果：描述应用模式后的效果，以及可能带来的问题</p>
-<h2 id="设计模式分类"><a class="markdownIt-Anchor" href="#设计模式分类"></a> 设计模式分类：</h2>
-<p>为了缩小范围，我们仅讨论Java设计模式，也就是GoF著作中的23种设计模式，对于这23种设计模式，GoF把它们分为三类。</p>
+<h3 id="每个设计模式的构成如下："><a href="#每个设计模式的构成如下：" class="headerlink" title="　　每个设计模式的构成如下："></a>　　每个设计模式的构成如下：</h3><p>　　　　1、模式名称：模式的一个好记的名字</p>
+<p>　　　　2、环境和问题：描述在什么环境下，出现什么特定的问题</p>
+<p>　　　　3、解决方案：描述如何解决问题</p>
+<p>　　　　4、效果：描述应用模式后的效果，以及可能带来的问题</p>
+<h2 id="设计模式分类："><a href="#设计模式分类：" class="headerlink" title="设计模式分类："></a>设计模式分类：</h2><p>为了缩小范围，我们仅讨论Java设计模式，也就是GoF著作中的23种设计模式，对于这23种设计模式，GoF把它们分为三类。</p>
 <ul>
-<li>创建型模式：抽象了对象实例化过程，用来帮助创建对象的实例。
-<ul>
+<li>创建型模式：抽象了对象实例化过程，用来帮助创建对象的实例。<ul>
 <li>简单工厂模式</li>
 <li>单例模式</li>
 <li>工厂方法模式</li>
@@ -121,8 +117,7 @@
 <li>原型模式</li>
 </ul>
 </li>
-<li>结构型模式：描述如何组合类和对象以获得更大的结构。
-<ul>
+<li>结构型模式：描述如何组合类和对象以获得更大的结构。<ul>
 <li>外观模式</li>
 <li>适配器模式</li>
 <li>代理模式</li>
@@ -132,8 +127,7 @@
 <li>桥接模式</li>
 </ul>
 </li>
-<li>行为型模式：描述算法和对象间职责的分配。
-<ul>
+<li>行为型模式：描述算法和对象间职责的分配。<ul>
 <li>中介模式</li>
 <li>观察者模式</li>
 <li>命令模式</li>
@@ -155,53 +149,33 @@
 <li>空对象模式</li>
 <li>雇工模式</li>
 </ul>
-<h2 id="java中的面向接口编程"><a class="markdownIt-Anchor" href="#java中的面向接口编程"></a> JAVA中的面向接口编程</h2>
-<h3 id="1java中接口的概念"><a class="markdownIt-Anchor" href="#1java中接口的概念"></a> 1.Java中接口的概念</h3>
-<p>在Java中接口是一种特殊的抽象类，跟一般的抽象类相比，接口里面的所有方法都是抽象方法，接口里面的所有属性都是常量。也就是说，接口里面只有方法定义而没有任何方法实现。</p>
-<h3 id="2接口用来干什么"><a class="markdownIt-Anchor" href="#2接口用来干什么"></a> 2.接口用来干什么</h3>
-<p>通常用接口来定义实现类的外观，也就是实现类的行为定义，用来约束实现类的行为。接口就相当于一份契约，根据外部应用需要的功能，约定了实现类应该要实现的功能，但是具体的实现类除了实现接口约定的功能外，还可以根据需要实现其他一些功能，这是允许的，也就是说实现类的功能包含但不仅限于接口约束的功能。<br>
-通过使用接口，可以实现不相关类的相同行为，而不需考虑这些类之间的层次关系，接口就是实现类对外的外观。</p>
-<h3 id="3接口的思想"><a class="markdownIt-Anchor" href="#3接口的思想"></a> 3.接口的思想</h3>
-<p>根据接口的作用和用途，浓缩下来，<strong>接口的思想就是“封装隔离”</strong>。<br>
-通常提到的封装是指对数据的封装，但是这里的封装是指“对被隔离体的行为的封装”，或者是“对被隔离体的职责的封装”；而隔离指的是外部调用和内部实现，外部调用只能通过接口进行调用，外部调用是不知道内部具体实现的，也就是说外部调用和内部实现是被接口隔离开的。</p>
-<h3 id="4使用接口的好处"><a class="markdownIt-Anchor" href="#4使用接口的好处"></a> 4.使用接口的好处</h3>
-<p>由于外部调用和内部实现被接口隔离开了，那么只要接口不变，内部实现的变化就不会影响到外部应用，从而使得系统更灵活，具有更好的扩展性和可维护性，这也就是所谓“接口是系统可插拔性的保证”这句话的意思。</p>
-<h3 id="5接口和抽象类的选择"><a class="markdownIt-Anchor" href="#5接口和抽象类的选择"></a> 5.接口和抽象类的选择</h3>
-<p>既然接口是一种特殊的抽象类，那么在开发中，何时选用接口？何时选用抽象类呢？<br>
-对于它们的选择，在开发中是一个很重要的问题，特别总结两句话给大家：</p>
+<h2 id="JAVA中的面向接口编程"><a href="#JAVA中的面向接口编程" class="headerlink" title="JAVA中的面向接口编程"></a>JAVA中的面向接口编程</h2><h3 id="1-Java中接口的概念"><a href="#1-Java中接口的概念" class="headerlink" title="1.Java中接口的概念"></a>1.Java中接口的概念</h3><p>在Java中接口是一种特殊的抽象类，跟一般的抽象类相比，接口里面的所有方法都是抽象方法，接口里面的所有属性都是常量。也就是说，接口里面只有方法定义而没有任何方法实现。</p>
+<h3 id="2-接口用来干什么"><a href="#2-接口用来干什么" class="headerlink" title="2.接口用来干什么"></a>2.接口用来干什么</h3><p>通常用接口来定义实现类的外观，也就是实现类的行为定义，用来约束实现类的行为。接口就相当于一份契约，根据外部应用需要的功能，约定了实现类应该要实现的功能，但是具体的实现类除了实现接口约定的功能外，还可以根据需要实现其他一些功能，这是允许的，也就是说实现类的功能包含但不仅限于接口约束的功能。<br>通过使用接口，可以实现不相关类的相同行为，而不需考虑这些类之间的层次关系，接口就是实现类对外的外观。</p>
+<h3 id="3-接口的思想"><a href="#3-接口的思想" class="headerlink" title="3.接口的思想"></a>3.接口的思想</h3><p>根据接口的作用和用途，浓缩下来，<strong>接口的思想就是“封装隔离”</strong>。<br>通常提到的封装是指对数据的封装，但是这里的封装是指“对被隔离体的行为的封装”，或者是“对被隔离体的职责的封装”；而隔离指的是外部调用和内部实现，外部调用只能通过接口进行调用，外部调用是不知道内部具体实现的，也就是说外部调用和内部实现是被接口隔离开的。</p>
+<h3 id="4-使用接口的好处"><a href="#4-使用接口的好处" class="headerlink" title="4.使用接口的好处"></a>4.使用接口的好处</h3><p>由于外部调用和内部实现被接口隔离开了，那么只要接口不变，内部实现的变化就不会影响到外部应用，从而使得系统更灵活，具有更好的扩展性和可维护性，这也就是所谓“接口是系统可插拔性的保证”这句话的意思。</p>
+<h3 id="5-接口和抽象类的选择"><a href="#5-接口和抽象类的选择" class="headerlink" title="5.接口和抽象类的选择"></a>5.接口和抽象类的选择</h3><p>既然接口是一种特殊的抽象类，那么在开发中，何时选用接口？何时选用抽象类呢？<br>对于它们的选择，在开发中是一个很重要的问题，特别总结两句话给大家：</p>
 <ul>
 <li>优先选用接口</li>
 <li>在既要定义子类的行为，又要为子类提供公共的功能时应选择抽象类。</li>
 </ul>
-<h2 id="设计原则"><a class="markdownIt-Anchor" href="#设计原则"></a> 设计原则</h2>
-<blockquote>
+<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><blockquote>
 <p>面向对象的分析设计有很多原则，这些原则大多从<u>思想层面</u>给我们指出了面向对象分析设计的正确<u>方向</u>，是我们进行面向对象分析设计时应该尽力遵守的<u>准则</u>。而设计模式已经是针对某个场景下某些问题的某个解决方案。也就是说这些设计原则是思想上的指导，而<u>设计模式</u>是<u>实现上的手段</u>，因此设计模式也应该遵守这些原则，换句话说，设计模式就是这些设计原则的一些具体体现。</p>
 </blockquote>
-<h3 id="常见的面向对象设计原则solid原则"><a class="markdownIt-Anchor" href="#常见的面向对象设计原则solid原则"></a> 常见的面向对象设计原则——SOLID原则</h3>
-<h4 id="单一职责原则srpsingle-responsibility-principle"><a class="markdownIt-Anchor" href="#单一职责原则srpsingle-responsibility-principle"></a> 单一职责原则SRP（Single Responsibility Principle）</h4>
-<p>所谓单一职责原则，指的是，一个类应该仅有一个引起它变化的原因。总体来说就是一个class、interface、method只负责一项职责。<br>
-这里变化的原因就是所说的“职责”，如果一个类有多个引起它变化的原因，那么也就意味着这个类有多个职责，再进一步说，就是把多个职责耦合在一起了。<br>
-这会造成职责的相互影响，可能一个职责的变化，会影响到其他职责的实现，甚至引起其他职责随着变化，这种设计是很脆弱的。<br>
-这个原则看起来是最简单和最好理解的，但是实际上是很难完全做到的，难点在于如何区分“职责”。这是个没有标准量化的东西，哪些算职责、到底这个职责有多大的粒度、这个职责如何细化等。<em>因此，在实际开发中，这个原则也是最容易违反的</em>。</p>
+<h3 id="常见的面向对象设计原则——SOLID原则"><a href="#常见的面向对象设计原则——SOLID原则" class="headerlink" title="常见的面向对象设计原则——SOLID原则"></a>常见的面向对象设计原则——SOLID原则</h3><h4 id="单一职责原则SRP（Single-Responsibility-Principle）"><a href="#单一职责原则SRP（Single-Responsibility-Principle）" class="headerlink" title="单一职责原则SRP（Single Responsibility Principle）"></a>单一职责原则SRP（Single Responsibility Principle）</h4><p>所谓单一职责原则，指的是，一个类应该仅有一个引起它变化的原因。总体来说就是一个class、interface、method只负责一项职责。<br>这里变化的原因就是所说的“职责”，如果一个类有多个引起它变化的原因，那么也就意味着这个类有多个职责，再进一步说，就是把多个职责耦合在一起了。<br>这会造成职责的相互影响，可能一个职责的变化，会影响到其他职责的实现，甚至引起其他职责随着变化，这种设计是很脆弱的。<br>这个原则看起来是最简单和最好理解的，但是实际上是很难完全做到的，难点在于如何区分“职责”。这是个没有标准量化的东西，哪些算职责、到底这个职责有多大的粒度、这个职责如何细化等。<em>因此，在实际开发中，这个原则也是最容易违反的</em>。</p>
 <p><strong>▲一句话总结</strong>：一个类只干一件事，从而便于立即额，提高代码可读性</p>
-<h4 id="开放-关闭原则ocpopen-closed-principle"><a class="markdownIt-Anchor" href="#开放-关闭原则ocpopen-closed-principle"></a> 开放-关闭原则OCP（Open-Closed Principle）</h4>
-<blockquote>
+<h4 id="开放-关闭原则OCP（Open-Closed-Principle）"><a href="#开放-关闭原则OCP（Open-Closed-Principle）" class="headerlink" title="开放-关闭原则OCP（Open-Closed Principle）"></a>开放-关闭原则OCP（Open-Closed Principle）</h4><blockquote>
 <p>所谓开放-关闭原则，指的是，一个类应该对扩展开放，对修改关闭。一般也被简称为开闭原则，开闭原则是设计中非常核心的一个原则。</p>
 <p>OCP的核心思想是面对抽象编程，强调用抽象构建框架，用实现拓展细节，从而额提高软件系统的可复用性和可维护性。</p>
 </blockquote>
-<p>开闭原则要求的是，类的行为是可以扩展的，而且是在不修改已有代码的情况下进行扩展，也不必改动已有的源代码或者二进制代码。<br>
-看起来好像是矛盾的，怎么样才能实现呢？<br>
-实现开闭原则的关键就在于合理地抽象、分离出变化与不变化的部分，为<u>变化的部分预留下可扩展的方式</u>，比如，<u>钩子方法或是动态组合对象</u>等。</p>
+<p>开闭原则要求的是，类的行为是可以扩展的，而且是在不修改已有代码的情况下进行扩展，也不必改动已有的源代码或者二进制代码。<br>看起来好像是矛盾的，怎么样才能实现呢？<br>实现开闭原则的关键就在于合理地抽象、分离出变化与不变化的部分，为<u>变化的部分预留下可扩展的方式</u>，比如，<u>钩子方法或是动态组合对象</u>等。</p>
 <p>这个原则看起来也很简单。但事实上，一个系统要全部做到遵守开闭原则，几乎是不可能的，也没这个必要。适度的抽象可以提高系统的灵活性，使其可扩展、可维护，但是过度地抽象，会大大增加系统的复杂程度。应该在需要改变的地方应用开闭原则就可以了，而不用到处使用，从而陷入过度设计。</p>
 <p><strong>▲一句话总结</strong>：对扩展开放，对修改关闭，从而降低维护带来的新风险</p>
-<h4 id="里氏替换原则lspliskov-substitution-principle"><a class="markdownIt-Anchor" href="#里氏替换原则lspliskov-substitution-principle"></a> 里氏替换原则LSP（Liskov Substitution Principle）</h4>
-<p>所谓里氏替换原则，指的是，子类型<strong>必须能够</strong>替换掉它们的父类型。这很明显是一种多态的使用情况，它可以避免在多态的应用中，出现某些隐蔽的错误。</p>
+<h4 id="里氏替换原则LSP（Liskov-Substitution-Principle）"><a href="#里氏替换原则LSP（Liskov-Substitution-Principle）" class="headerlink" title="里氏替换原则LSP（Liskov Substitution Principle）"></a>里氏替换原则LSP（Liskov Substitution Principle）</h4><p>所谓里氏替换原则，指的是，子类型<strong>必须能够</strong>替换掉它们的父类型。这很明显是一种多态的使用情况，它可以避免在多态的应用中，出现某些隐蔽的错误。</p>
 <blockquote>
 <p>这条原则的定义是比较抽象的，可以理解为</p>
 <ol>
 <li>一个软件实体如果使用一个父类，则一定适用于其子类，即要求所有引用父类的地方必须能透明地使用子类对象，子类能够代替父类对象，而程序逻辑不变。</li>
-<li>子类可以拓展父类的功能，但不能改变父类原有的功能，根据这个理解，我们可以将DIP定义总结如下：
-<ol>
+<li>子类可以拓展父类的功能，但不能改变父类原有的功能，根据这个理解，我们可以将DIP定义总结如下：<ol>
 <li>子类可以实现父类的抽象方法，但不能覆盖父类的非抽象方法</li>
 <li>子类可以增加自己特有的方法</li>
 <li>当子类的方法重载父类的方法时，方法的前置条件（入参）要比父类的更宽松</li>
@@ -211,18 +185,14 @@
 </ol>
 </blockquote>
 <p><strong>▲一句话总结</strong>：子类重写方法功能改变，不应该影响父类方法的含义，从而防止继承泛滥</p>
-<h4 id="依赖倒置原则dipdependence-inversion-principle"><a class="markdownIt-Anchor" href="#依赖倒置原则dipdependence-inversion-principle"></a> 依赖倒置原则DIP（Dependence Inversion Principle）</h4>
-<p>所谓依赖倒置原则，指的是，要依赖于抽象，不要依赖于具体类。要做到依赖倒置，典型的应该做到：</p>
+<h4 id="依赖倒置原则DIP（Dependence-Inversion-Principle）"><a href="#依赖倒置原则DIP（Dependence-Inversion-Principle）" class="headerlink" title="依赖倒置原则DIP（Dependence Inversion Principle）"></a>依赖倒置原则DIP（Dependence Inversion Principle）</h4><p>所谓依赖倒置原则，指的是，要依赖于抽象，不要依赖于具体类。要做到依赖倒置，典型的应该做到：</p>
 <ul>
 <li>高层模块不应该依赖于底层模块，二者都应该依赖于抽象。</li>
 <li>抽象不应该依赖于具体实现，具体实现应该依赖于抽象。</li>
 </ul>
-<p>很多人觉得，层次化调用的时候，应该是高层调用“底层所拥有的接口”，这是一种典型的误解。事实上，一般高层模块包含对业务功能的处理和业务策略选择，应该被重用，是高层模块去影响底层的具体实现。<br>
-因此，这个底层的接口应该是由高层提出的，然后由底层实现的。也就是说底层的接口的所有权在高层模块，因此是一种所有权的倒置。<br>
-倒置接口所有权，这就是著名的Hollywood（好莱坞）原则：不要找我们，我们会联系你。</p>
+<p>很多人觉得，层次化调用的时候，应该是高层调用“底层所拥有的接口”，这是一种典型的误解。事实上，一般高层模块包含对业务功能的处理和业务策略选择，应该被重用，是高层模块去影响底层的具体实现。<br>因此，这个底层的接口应该是由高层提出的，然后由底层实现的。也就是说底层的接口的所有权在高层模块，因此是一种所有权的倒置。<br>倒置接口所有权，这就是著名的Hollywood（好莱坞）原则：不要找我们，我们会联系你。</p>
 <p><strong>一句话总结</strong>：高层不应该依赖底层，从而更利用代码结构的省级扩展</p>
-<h4 id="接口隔离原则ispinterface-segregation-principle"><a class="markdownIt-Anchor" href="#接口隔离原则ispinterface-segregation-principle"></a> 接口隔离原则ISP（Interface Segregation Principle）</h4>
-<blockquote>
+<h4 id="接口隔离原则ISP（Interface-Segregation-Principle）"><a href="#接口隔离原则ISP（Interface-Segregation-Principle）" class="headerlink" title="接口隔离原则ISP（Interface Segregation Principle）"></a>接口隔离原则ISP（Interface Segregation Principle）</h4><blockquote>
 <p>指用多个专门的接口，而不使用单一的总接口，客户端不应该依赖它不需要的接口（不需要的接口对客户来说不可见）。</p>
 <p>这个原则告诉我们的注意点为：</p>
 <ul>
@@ -232,17 +202,13 @@
 </ul>
 <p>这些“高聚合、低耦合”要求的设计思想，使得类具有很好的可读性、可扩展性和可维护性。</p>
 </blockquote>
-<p>所谓接口隔离原则，指的是，不应该强迫客户依赖于他们不用的方法。<br>
-这个原则用来处理那些比较“庞大”的接口，这种接口通常会有较多的操作声明，涉及到很多的职责。客户在使用这样的接口的时候，通常会有很多他不需要的方法，这些方法对于客户来讲，就是一种接口污染，相当于强迫用户在一大堆“垃圾方法”中去寻找他需要的方法。<br>
-因此，这样的接口应该被分离，应该按照不同的客户需要来分离成为针对客户的接口。<u>这样的接口中，只包含客户需要的操作声明</u>，这样既方便了客户的使用，也可以避免因误用接口而导致的错误。</p>
+<p>所谓接口隔离原则，指的是，不应该强迫客户依赖于他们不用的方法。<br>这个原则用来处理那些比较“庞大”的接口，这种接口通常会有较多的操作声明，涉及到很多的职责。客户在使用这样的接口的时候，通常会有很多他不需要的方法，这些方法对于客户来讲，就是一种接口污染，相当于强迫用户在一大堆“垃圾方法”中去寻找他需要的方法。<br>因此，这样的接口应该被分离，应该按照不同的客户需要来分离成为针对客户的接口。<u>这样的接口中，只包含客户需要的操作声明</u>，这样既方便了客户的使用，也可以避免因误用接口而导致的错误。</p>
 <p>分离接口的方式，除了直接进行代码分离之外，还可以使用委托来分离接口，在能够支持多重继承的语言中，还可以采用多重继承的方式进行分离。</p>
 <p><strong>▲一句话总结</strong>：一个接口只干一件事，从而功能解耦，高聚合、低耦合</p>
 <hr>
 <p>demo：针对动物Animal接口，显然需要将飞的、游的隔离开，因此需要针对不同动物的行为来设计不同的接口。</p>
 <p><img src="/2020/12/03/Lets-learn-设计模式/ISP.jpg" alt="ISP"></p>
-<h3 id="其他一些设计原则"><a class="markdownIt-Anchor" href="#其他一些设计原则"></a> 其他一些设计原则</h3>
-<h4 id="最少知道原则lkpleast-knowledge-principle迪米特原则lod"><a class="markdownIt-Anchor" href="#最少知道原则lkpleast-knowledge-principle迪米特原则lod"></a> 最少知道原则LKP（Least Knowledge Principle）——迪米特原则LoD</h4>
-<blockquote>
+<h3 id="其他一些设计原则"><a href="#其他一些设计原则" class="headerlink" title="其他一些设计原则"></a>其他一些设计原则</h3><h4 id="最少知道原则LKP（Least-Knowledge-Principle）——迪米特原则LoD"><a href="#最少知道原则LKP（Least-Knowledge-Principle）——迪米特原则LoD" class="headerlink" title="最少知道原则LKP（Least Knowledge Principle）——迪米特原则LoD"></a>最少知道原则LKP（Least Knowledge Principle）——迪米特原则LoD</h4><blockquote>
 <p>指一个对象应该对其他对象保持最少的了解，尽量降低类与类之间的耦合。强调之和朋友交流、不和陌生人说话，出现在成员变量、方法的输入、输出参数中的类可以被称为成员朋友类，出现在方法体内部的类不属于朋友类。</p>
 </blockquote>
 <p>这个原则用来指导我们在设计系统的时候，应该尽量减少对象之间的交互，对象只和自己的朋友谈话，<u>也就是只和自己的朋友交互</u>，从而松散类之间的耦合。通过松散类之间的耦合来降低类之间的相互依赖，这样在修改系统的某一个部分的时候，就不会影响其他的部分，从而使得系统具有更好的可维护性。</p>
@@ -252,17 +218,13 @@
 <li>通过方法的参数传递进来的对象。</li>
 <li>当前对象所创建的对象。——成员变量</li>
 <li>当前对象的实例变量所引用的对象。——成员变量</li>
-<li>方法内所创建或实例化的对象。 —&gt; ???</li>
+<li>方法内所创建或实例化的对象。 —-&gt; ???</li>
 </ul>
-<p>请注意！！！1-5条的意思是，<mark>如果某对象是调用其他方法的返回结果，不要调用该对象的方法！</mark>即要求我们只调用以下范围的方法：</p>
-<p>（1）该对象本身；<br>
-（2）被当作方法的<strong>参数</strong>而传递进来的对象；<br>
-（3）此方法所<strong>创建或实例化</strong>的任何对象；<br>
-（4）对象的任何组件；</p>
+<p>请注意！！！1-5条的意思是，<mark>如果某对象是调用其他方法的返回结果，不要调用该对象的方法！</mark>即要求我们只调用以下范围的方法： </p>
+<p>（1）该对象本身；<br>（2）被当作方法的<strong>参数</strong>而传递进来的对象；<br>（3）此方法所<strong>创建或实例化</strong>的任何对象；<br>（4）对象的任何组件； </p>
 <p>总之，最少知识原则要求我们的方法调用必须保持在一定的界限范围之内，尽量减少对象的依赖关系。</p>
 <p><strong>▲一句话总结</strong>：不该知道的不要知道，从而减少代码臃肿</p>
-<h4 id="合成复用原则"><a class="markdownIt-Anchor" href="#合成复用原则"></a> 合成复用原则</h4>
-<blockquote>
+<h4 id="合成复用原则"><a href="#合成复用原则" class="headerlink" title="合成复用原则"></a>合成复用原则</h4><blockquote>
 <p>尽量使用对象组合或对象聚合的方式来实现代码复用，而不是继承关系达到代码复用的目的。</p>
 </blockquote>
 <p><strong>▲一句话总结</strong>：尽量使用组合实现代码复用而不是用继承，从而降低代码耦合</p>
@@ -277,8 +239,7 @@
 <li>类之间应该零耦合，或者只有传导耦合，换句话说，类之间要么没有关系，要么只使用另一个类的接口提供的操作；</li>
 <li>在水平方向上尽可能统一地分布系统功能；</li>
 </ul>
-<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
-<p>Github图说设计模式: <a href="https://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/simple_factory.html" target="_blank" rel="noopener">https://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/simple_factory.html</a></p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>Github图说设计模式: <a href="https://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/simple_factory.html" target="_blank" rel="noopener">https://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/simple_factory.html</a></p>
 <p><a href="http://www.cnblogs.com/zishengY/p/8869823.html" target="_blank" rel="noopener">设计模式就该这么学：以微信订阅号来讲观察者模式(第三篇)</a></p>
 <p><a href="http://www.cnblogs.com/zishengY/p/7056948.html" target="_blank" rel="noopener">观察者模式实际应用：监听线程，意外退出线程后自动重启</a></p>
 </article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2020/12/03/Lets-learn-设计模式/">https://nymrli.top/2020/12/03/Lets-learn-设计模式/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2020/12/05/理解科学计算中的dim参数/" title="理解科学计算(numpy,pytorch)中的dim参数"><span>< PreviousPost</span><br><span class="prevTitle">理解科学计算(numpy,pytorch)中的dim参数</span></a><a class="nextSlogan" href="/2020/12/01/玩玩油猴脚本/" title="玩玩油猴脚本Tampermonkey"><span>NextPost ></span><br><span class="nextTitle">玩玩油猴脚本Tampermonkey</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
@@ -290,4 +251,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式是什么"><span class="toc-number">1.</span> <span class="toc-text"> 设计模式是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#每个设计模式的构成如下"><span class="toc-number">1.1.</span> <span class="toc-text"> 每个设计模式的构成如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式分类"><span class="toc-number">2.</span> <span class="toc-text"> 设计模式分类：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java中的面向接口编程"><span class="toc-number">3.</span> <span class="toc-text"> JAVA中的面向接口编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1java中接口的概念"><span class="toc-number">3.1.</span> <span class="toc-text"> 1.Java中接口的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2接口用来干什么"><span class="toc-number">3.2.</span> <span class="toc-text"> 2.接口用来干什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3接口的思想"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.接口的思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4使用接口的好处"><span class="toc-number">3.4.</span> <span class="toc-text"> 4.使用接口的好处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5接口和抽象类的选择"><span class="toc-number">3.5.</span> <span class="toc-text"> 5.接口和抽象类的选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计原则"><span class="toc-number">4.</span> <span class="toc-text"> 设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的面向对象设计原则solid原则"><span class="toc-number">4.1.</span> <span class="toc-text"> 常见的面向对象设计原则——SOLID原则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#单一职责原则srpsingle-responsibility-principle"><span class="toc-number">4.1.1.</span> <span class="toc-text"> 单一职责原则SRP（Single Responsibility Principle）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开放-关闭原则ocpopen-closed-principle"><span class="toc-number">4.1.2.</span> <span class="toc-text"> 开放-关闭原则OCP（Open-Closed Principle）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#里氏替换原则lspliskov-substitution-principle"><span class="toc-number">4.1.3.</span> <span class="toc-text"> 里氏替换原则LSP（Liskov Substitution Principle）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#依赖倒置原则dipdependence-inversion-principle"><span class="toc-number">4.1.4.</span> <span class="toc-text"> 依赖倒置原则DIP（Dependence Inversion Principle）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接口隔离原则ispinterface-segregation-principle"><span class="toc-number">4.1.5.</span> <span class="toc-text"> 接口隔离原则ISP（Interface Segregation Principle）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他一些设计原则"><span class="toc-number">4.2.</span> <span class="toc-text"> 其他一些设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#最少知道原则lkpleast-knowledge-principle迪米特原则lod"><span class="toc-number">4.2.1.</span> <span class="toc-text"> 最少知道原则LKP（Least Knowledge Principle）——迪米特原则LoD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合成复用原则"><span class="toc-number">4.2.2.</span> <span class="toc-text"> 合成复用原则</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number"></span> <span class="toc-text"> 附录</span></a></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式是什么？"><span class="toc-number">1.</span> <span class="toc-text">设计模式是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#每个设计模式的构成如下："><span class="toc-number">1.1.</span> <span class="toc-text">　　每个设计模式的构成如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式分类："><span class="toc-number">2.</span> <span class="toc-text">设计模式分类：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA中的面向接口编程"><span class="toc-number">3.</span> <span class="toc-text">JAVA中的面向接口编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Java中接口的概念"><span class="toc-number">3.1.</span> <span class="toc-text">1.Java中接口的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-接口用来干什么"><span class="toc-number">3.2.</span> <span class="toc-text">2.接口用来干什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-接口的思想"><span class="toc-number">3.3.</span> <span class="toc-text">3.接口的思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-使用接口的好处"><span class="toc-number">3.4.</span> <span class="toc-text">4.使用接口的好处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-接口和抽象类的选择"><span class="toc-number">3.5.</span> <span class="toc-text">5.接口和抽象类的选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计原则"><span class="toc-number">4.</span> <span class="toc-text">设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的面向对象设计原则——SOLID原则"><span class="toc-number">4.1.</span> <span class="toc-text">常见的面向对象设计原则——SOLID原则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#单一职责原则SRP（Single-Responsibility-Principle）"><span class="toc-number">4.1.1.</span> <span class="toc-text">单一职责原则SRP（Single Responsibility Principle）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开放-关闭原则OCP（Open-Closed-Principle）"><span class="toc-number">4.1.2.</span> <span class="toc-text">开放-关闭原则OCP（Open-Closed Principle）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#里氏替换原则LSP（Liskov-Substitution-Principle）"><span class="toc-number">4.1.3.</span> <span class="toc-text">里氏替换原则LSP（Liskov Substitution Principle）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#依赖倒置原则DIP（Dependence-Inversion-Principle）"><span class="toc-number">4.1.4.</span> <span class="toc-text">依赖倒置原则DIP（Dependence Inversion Principle）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接口隔离原则ISP（Interface-Segregation-Principle）"><span class="toc-number">4.1.5.</span> <span class="toc-text">接口隔离原则ISP（Interface Segregation Principle）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他一些设计原则"><span class="toc-number">4.2.</span> <span class="toc-text">其他一些设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#最少知道原则LKP（Least-Knowledge-Principle）——迪米特原则LoD"><span class="toc-number">4.2.1.</span> <span class="toc-text">最少知道原则LKP（Least Knowledge Principle）——迪米特原则LoD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合成复用原则"><span class="toc-number">4.2.2.</span> <span class="toc-text">合成复用原则</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number"></span> <span class="toc-text">附录</span></a></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

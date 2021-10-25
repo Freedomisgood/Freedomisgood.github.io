@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux三剑客</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2019/09/15</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,340</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="linux三剑客"><a class="markdownIt-Anchor" href="#linux三剑客"></a> Linux三剑客</h1>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux三剑客</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/10/19</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,418</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="linux三剑客"><a class="markdownIt-Anchor" href="#linux三剑客"></a> Linux三剑客</h1>
 <h2 id="bash命令执行顺序"><a class="markdownIt-Anchor" href="#bash命令执行顺序"></a> bash命令执行顺序</h2>
 <ol>
 <li>把命令行分成单个命令词</li>
@@ -126,9 +126,10 @@
 </blockquote>
 <h2 id="sedstream-editor"><a class="markdownIt-Anchor" href="#sedstream-editor"></a> sed(Stream EDitor):</h2>
 <blockquote>
-<p>sed使用单引号</p>
+<p>sed后字符使用单引号</p>
 </blockquote>
-<p><code>sed -n '22,$p' test</code></p>
+<p>语法：<code>sed [-hnV][-e&lt;script&gt;][-f&lt;script文件&gt;][文本文件]</code></p>
+<p>demo: <code>sed -n '22,$p' test</code></p>
 <p>指令解释:常用选项[-n]，‘地址定界[22,$],编辑命令[p]’</p>
 <p>地址定界:</p>
 <ul>
@@ -210,7 +211,7 @@
 </ul>
 </li>
 </ul>
-<p>常用选项</p>
+<h3 id="常用选项"><a class="markdownIt-Anchor" href="#常用选项"></a> 常用选项</h3>
 <ul>
 <li>
 <p><code>-n</code>不自动打印</p>
@@ -241,8 +242,14 @@
 <li>
 <p><code>-e</code>多点编辑,即多次处理文件</p>
 </li>
+<li>
+<p><code>-e &lt;script&gt;</code>或<code>--expression=&lt;script&gt;</code> 以选项中指定的script来处理输入的文本文件。</p>
+</li>
+<li>
+<p><code>-E</code>是与BSD sed兼容的未记录的选项，在BSD中sed用于支持扩展的正则表达式。</p>
+</li>
 </ul>
-<p>编辑命令</p>
+<h3 id="编辑动作命令"><a class="markdownIt-Anchor" href="#编辑动作命令"></a> 编辑动作命令</h3>
 <ul>
 <li>
 <p>d删除末世空间匹配的行,并启用下一轮循环</p>
@@ -299,7 +306,15 @@ W/PATH/TO/SOMEFILE：将替换成功的行保存至文件中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/^aaa/#&amp;/'</span> zimu.txt      <span class="comment"># &amp;的意思是匹配任意字符（就是说未知数，啥都行）  这条命令是 替换以aaa开头的</span></span><br></pre></td></tr></table></figure>
 <p><strong>用sed取消bbb前面的注释</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/^#(bbb)//1/'</span> zimu.txt    <span class="comment">#/1的意思 就类似于   前面的 (bbb/） /1就是复制这个位置的内容  如果有 第二个 那么久/2就是复制第二个位置的内容</span></span><br><span class="line">sed <span class="string">'s/^#bbb/bbb/'</span> zimu.txt</span><br></pre></td></tr></table></figure>
-<p>上面那条命令等同于</p>
+<p>附录：</p>
+<ul>
+<li><code>&lt;&lt;&lt;</code>:
+<ul>
+<li><code>sed 's/g/dddd/' &lt;&lt;&lt; &quot;ghhhg&quot;</code>-&gt;ddddhhhg</li>
+<li><code>var=hello</code>, <code>sed 's/e/dddd/' &lt;&lt;&lt; &quot;$var&quot;</code> -&gt; hddddllo</li>
+</ul>
+</li>
+</ul>
 <h2 id="awk"><a class="markdownIt-Anchor" href="#awk"></a> awk</h2>
 <blockquote>
 <p>优良的文本处理工具，Linux及Unix环境中现有的功能最强大的数据处理引擎之一</p>
@@ -343,4 +358,4 @@ W/PATH/TO/SOMEFILE：将替换成功的行保存至文件中</p>
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#linux三剑客"><span class="toc-number">1.</span> <span class="toc-text"> Linux三剑客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#bash命令执行顺序"><span class="toc-number">1.1.</span> <span class="toc-text"> bash命令执行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sedstream-editor"><span class="toc-number">1.2.</span> <span class="toc-text"> sed(Stream EDitor):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk"><span class="toc-number">1.3.</span> <span class="toc-text"> awk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux单双引号区别"><span class="toc-number">1.3.1.</span> <span class="toc-text"> linux单双引号区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grepglobally-search-a-regular-expression-and-print"><span class="toc-number">1.4.</span> <span class="toc-text"> grep(Globally search a Regular Expression and Print)</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#linux三剑客"><span class="toc-number">1.</span> <span class="toc-text"> Linux三剑客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#bash命令执行顺序"><span class="toc-number">1.1.</span> <span class="toc-text"> bash命令执行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sedstream-editor"><span class="toc-number">1.2.</span> <span class="toc-text"> sed(Stream EDitor):</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用选项"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 常用选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑动作命令"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 编辑动作命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk"><span class="toc-number">1.3.</span> <span class="toc-text"> awk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux单双引号区别"><span class="toc-number">1.3.1.</span> <span class="toc-text"> linux单双引号区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grepglobally-search-a-regular-expression-and-print"><span class="toc-number">1.4.</span> <span class="toc-text"> grep(Globally search a Regular Expression and Print)</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

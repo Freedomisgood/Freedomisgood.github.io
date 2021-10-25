@@ -1,0 +1,1093 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>ZJU开学摸底考试——数据库概论复习 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">ZJU开学摸底考试——数据库概论复习</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/10/19</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">10,727</span> | Reading time: <span class="post-count">38</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="数据库概论"><a class="markdownIt-Anchor" href="#数据库概论"></a> 数据库概论</h1>
+<h2 id="数据库的4个基本概念"><a class="markdownIt-Anchor" href="#数据库的4个基本概念"></a> <strong>数据库的4个基本概念</strong></h2>
+<ol>
+<li>
+<p>数据（Data）</p>
+<ul>
+<li>定义：描述事物的符号记录。</li>
+<li>数据的含义称为数据的语义，数据的语义是指对具体数值进行的解释说明。数据与其语义是不可分的。</li>
+<li>数据是数据库中存储的基本对象。</li>
+</ul>
+</li>
+<li>
+<p>数据库（Database，DB）</p>
+<ul>
+<li>定义：数据库是<strong>长期储存</strong>在计算机内、<strong>有组织的</strong>、<strong>可共享</strong>的大量数据的集合。</li>
+</ul>
+<p>数据厍的基本特征</p>
+<ul>
+<li>数据按一定的数据模型组织、描述和储存</li>
+<li>可为各种用户共享、冗余度较小、易扩展</li>
+<li>数据独立性较高</li>
+</ul>
+</li>
+<li>
+<p>数据库管理系统（DataBase Management System，DBMS)</p>
+<ul>
+<li>位于用户应用与操作系统之间的一层数据管理软件；</li>
+<li>跟操作系统一样是计算机的基础软件，是一个大型复杂的软件系统。</li>
+</ul>
+<p>主要功能：</p>
+<ul>
+<li><strong>数据定义功能</strong>：提供数据定义语言（DDL）；定义数据库中的数据对象；</li>
+<li><strong>数据组织、存储和管理</strong>：分类组织、存储和管理各种数据；确定数据在存储级别上的结构和存储方式；实现数据之间的练习；提供多种存取方法提高存取效率；</li>
+<li><strong>数据操纵功能</strong>：提供数据操纵语言（DML）；实现对数据库的基本操作（查询、插入、删除和修改）；</li>
+<li><strong>数据库的事务管理和运行管理</strong>：数据的安全性、完整性、多种对用户数据的并发使用；发生故障后的系统恢复数据库；</li>
+<li><strong>数据库的建立和维护功能</strong>：提供实用程序工具，完成数据库数据批量装载，数据库转储，介质故障恢复，数据库的重组织和性能监视等。</li>
+</ul>
+</li>
+<li>
+<p>数据库系统（DataBase System，DBS）</p>
+<ul>
+<li>是由<strong>数据库</strong>、<strong>数据库管理系统</strong>（及其应用开发工具）、<strong>应用程序</strong>和**数据库管理员（DBA）**组成的存储、管理、处理和维护数据的系统。</li>
+<li>Q: 什么是数据库系统？
+<ul>
+<li>是指在计算机系统中引入数据库后的系统构成；</li>
+<li>在不引起混淆的情况下常常把数据库系统简称为数据库。</li>
+</ul>
+</li>
+<li>数据库系统的特点？
+<ul>
+<li>数据结构化；</li>
+<li>数据的共享性高，冗余度小且易扩充；</li>
+<li>数据独立性高；</li>
+<li>数据由数据库管理系统统一管理和控制；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>数据库的发展阶段</strong></p>
+<ul>
+<li>人工管理阶段：数据不保存、不共享，不具有独立性。</li>
+<li>文件系统阶段：可保存，但共享性差，冗余度大，独立性差</li>
+<li>数据库管理系统：数据库系统的出现使信息系统从以 加工数据的程序 为中心转向围绕 共享的数据库 为中心的新阶段
+<ul>
+<li>数据的共享性高、冗余度低且易扩充：数据共享可以大大减少数据冗余，节约存储空间数据独立性高</li>
+<li>物理独立性：是指用户的应用程序与数据库中数据的物理存储是相互独立的。<br>
+逻辑独立性：是指用户的应用程序与数据库的逻辑结构是相互独立的。</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据模型"><a class="markdownIt-Anchor" href="#数据模型"></a> 数据模型</h2>
+<blockquote>
+<p>数据模型是对现实世界数据特征的抽象。</p>
+</blockquote>
+<p>数据模型分为两类（两个不同的层次）</p>
+<ul>
+<li>
+<p>概念模型，也称信息模型；</p>
+<blockquote>
+<p>它是按用户的观点来对数据和信息建模，用于数据库设计</p>
+</blockquote>
+<ul>
+<li>实体Entity：客观存在并相互区别的事物称为实体。</li>
+<li>属性：实体所具有的某一特性称为属性。一个实体可以由若干个属性来刻画。</li>
+<li>码：唯一标识实体的属性集称为码。</li>
+<li>实体型：用实体名及其属性名集合来抽象和刻画同类实体称为实体型。</li>
+<li>实体集：同一类型实体的集合称为实体集</li>
+<li>联系Relation：现实世界中事物内部以及事物之间的联系在信息世界中反映为<strong>实体（型）内部的联系</strong>和<strong>实体（型）之间的联系</strong>；
+<ul>
+<li>实体内部的联系：是指组成实体的各属性之间的联系；</li>
+<li>实体之间的联系：通常是指不同实体集之间的联系；实体之间的联系有一对一（1：1），一对多（1：n），多对多（m：n）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>逻辑模型和物理模型。</p>
+<ul>
+<li>
+<p>逻辑模型∶它是按<strong>计算机系統</strong>的观点对数据建模，主要用于数据库管理系统的实现。主要包括网状模型、层次模型、关系模型、面向对象数据模型、对象关系数据模型、半结构化数据模型等</p>
+<blockquote>
+<p>按计算机系统的观点对数据建模，用于DBMS实现。</p>
+</blockquote>
+</li>
+<li>
+<p>物理模型：是对数据最底层的抽象，它描述数据在系统內部的表示方法和存取方法，或在磁盘或磁带上的存储方式和存取方法，是面向<strong>计算机系统</strong>的。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>数据模型由三部分组成:</p>
+<ol>
+<li>
+<p>数据结构–描述系统的静态特征；</p>
+</li>
+<li>
+<p>数据操作–描述系统的动态特征；</p>
+</li>
+<li>
+<p>完整性约束。</p>
+<p>完整性规则：给定的数据模型中数据及其联系所具有的制约和依存规则。</p>
+</li>
+</ol>
+<h3 id="层次模型网状模型"><a class="markdownIt-Anchor" href="#层次模型网状模型"></a> 层次模型，网状模型</h3>
+<p>常用的数据模型：</p>
+<ul>
+<li>格式化模型：层次模型，网状模型。</li>
+<li>关系模型：最常用的模型。</li>
+<li>对象模型：面向对象数据模型，对象关系数据模型。</li>
+</ul>
+<p><strong>层次模型</strong></p>
+<blockquote>
+<p>用树形结构来表示各类实体以及实体间的联系。</p>
+</blockquote>
+<p>表示方式：</p>
+<ol>
+<li>实体型：用记录类型描述每个结点表示一个记录类型（实体）；</li>
+<li>属性：用字段描述每个记录类型可包含若干个字段；</li>
+<li>联系：用结点之间的连线表示记录类型之间的一对多的父子联系</li>
+</ol>
+<p>层次模型的优缺点</p>
+<p>1）优点</p>
+<p>层次模型的数据结构比较简单清晰；<br>
+查询效率高，性能优于关系模型，不低于网状模型；<br>
+层次数据模型提供了良好的完整性支持；<br>
+2）缺点</p>
+<p>结点之间的多对多联系表示不自然；<br>
+对插入和删除操作的限制多，应用程序的编写比较复杂；<br>
+查询子女结点必须通过双亲结点；<br>
+层次数据库的命令趋于程序化。</p>
+<h3 id="关系模型"><a class="markdownIt-Anchor" href="#关系模型"></a> 关系模型</h3>
+<ul>
+<li>在<strong>用户的观点</strong>下，关系模型中数据的逻辑结构是一张二维表。</li>
+<li>关系必须是规范化的，满足一定的规范条件。</li>
+<li>最基本的规范条件是关系的每一个分量必须是一个不可再分的数据项，不允许表中还有表。</li>
+</ul>
+<p>注：关系数据模型是目前最重要的一种数据模型，它的三个要素分别是数据结构、关系操作、完整性约束</p>
+<p><strong>数据结构</strong></p>
+<p>关系：一个关系对应通常说的一张表。<br>
+元组：表中的一行。<br>
+属性：表中的一列。<br>
+码：也称码键，表中的某个属性组<br>
+域：是一组具有相同数据类型的<strong>值的集合</strong>：学生年龄属性的域（15-45岁）、性别的域（男、女）<br>
+分量：元组中的一个属性。<br>
+关系模式：对关系的描述</p>
+<p><img src="/2021/10/12/ZJU开学摸底考试——数据库概论复习/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B.png" alt="关系模型"></p>
+<p>注：**关系数据模型的基本数据结构是？**A:关系</p>
+<p>关系必须是规范化的，满足一定的规范条件。最基本的规范条件：关系的每一个 分量必须是一个不可分的数据项，<strong>不允许表中还有表</strong>。</p>
+<p><strong>关系模型的操纵与完整性约束</strong></p>
+<p>（1）数据结构是集合操作集合操作，操作对象和操作结果都是关系。<br>
+（2）提高了数据的独立性，提高了用户生产率。<br>
+（3）关系的完整性约束条件？<br>
+实体完整性，参照完整性；（前两者为关系的两个不变性）用户定义的完整性。</p>
+<p><strong>关系模型的优缺点</strong></p>
+<p>（1）优点</p>
+<ul>
+<li>建立在严格的数学概念的基础上；</li>
+<li>概念单一；
+<ul>
+<li>实体和各类联系都用关系来表示</li>
+<li>对数据的检索结果也是关系</li>
+</ul>
+</li>
+<li>关系模型的存取路径对用户透明；
+<ul>
+<li>具有更高的数据独立性，更好的安全保密性</li>
+<li>简化了程序员的工作和数据库开发建立的工作</li>
+</ul>
+</li>
+</ul>
+<p>（2）缺点</p>
+<ul>
+<li>存取路径对用户透明，查询效率往往不如格式化数据模型；</li>
+<li>为提高性能，必须对用户的查询请求进行优化，增加了开发数据库管理系统的复杂性。</li>
+</ul>
+<h2 id="数据库系统的结构"><a class="markdownIt-Anchor" href="#数据库系统的结构"></a> 数据库系统的结构</h2>
+<p>从数据库应用开发人员角度看：数据库系统采用<strong>三级模式</strong>结构，是数据库系统内部的系统结构<br>
+从数据库最终用户角度看：数据库系统的结构有：</p>
+<ul>
+<li>单用户结构</li>
+<li>主从式结构</li>
+<li>分布式结构</li>
+<li>客户-服务器</li>
+<li>浏览器-应用服务器/数据服务器</li>
+</ul>
+<p><strong>三级模式-二级映像</strong></p>
+<p>模式(Schema):</p>
+<ul>
+<li>是对数据库逻辑结构和特征的描述</li>
+<li>是型的描述，不涉及具体值</li>
+<li>模式是相对稳定的</li>
+</ul>
+<p>实例（Instance）</p>
+<ul>
+<li>数据库某一时刻的状态——<strong>模式的一个具体值</strong></li>
+<li>同一个模式可以有很多实例</li>
+<li>实例随数据库中的数据的更新而变动</li>
+</ul>
+<p>三级模式：</p>
+<ul>
+<li>外模式（子模式or用户模式）
+<ul>
+<li>数据库用户使用的<strong>局部数据的逻辑结构</strong>和特征的描述<br>
+<strong>数据库用户</strong>的数据视图，是与某一应用有关的数据的逻辑表示</li>
+<li><img src="/2021/10/12/ZJU开学摸底考试——数据库概论复习/%E5%A4%96%E6%A8%A1%E5%BC%8F.png" alt="外模式"></li>
+</ul>
+</li>
+<li>模式（逻辑模式）
+<ul>
+<li>数据库中<strong>全体数据的逻辑结构</strong>和特征的描述<br>
+<strong>所有用户</strong>的公共数据视图</li>
+<li><img src="/2021/10/12/ZJU开学摸底考试——数据库概论复习/%E6%A8%A1%E5%BC%8F.png" alt="模式"></li>
+</ul>
+</li>
+<li>内模式（存储模式）
+<ul>
+<li>是数据物理结构和存储方式的描述</li>
+<li>是数据在数据库内部的表示方式</li>
+</ul>
+</li>
+</ul>
+<p>二级映射</p>
+<ul>
+<li>
+<p>外模式/模式 映射：保证数据的逻辑独立性</p>
+<ul>
+<li>当模式改变时，数据库管理员对外模式/模式映像作相应改变，使外模式保持不变</li>
+<li>应用程序是依据数据的外模式编写的，应用程序不必修，保证了数据与程序的逻辑独立性，简称<strong>数据的逻辑独立性</strong></li>
+</ul>
+</li>
+<li>
+<p>模式/内模式 映射：保证数据的物理独立性</p>
+<ul>
+<li>
+<p>定义了数据全局逻辑结构与存储结构之间的对应关系。<br>
+如，说明某个逻辑记录对应何种存储结构。</p>
+</li>
+<li>
+<p>数据库中模式/内模式映象是唯一的。</p>
+</li>
+<li>
+<p>保证<strong>数据的物理独立性</strong><br>
+当数据库的存储结构改变了（例如选用了另一种存储结构），数据库管理员修改模式/内模式映象，使模式保持不变。</p>
+<p>模式不变，则应用程序不变。保证了数据与程序的物理独立性，简称数据的物理独立性。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="码"><a class="markdownIt-Anchor" href="#码"></a> 码</h2>
+<ul>
+<li>候选码（超级码）就就是可以区别一个元组（即表中的一行数据）的属性或属性的集合。候选码是最小的超码
+<ul>
+<li>如何选出候选码？
+<ol>
+<li>只出现在左边的一定是候选码</li>
+<li>只出现在右边的一定不是候选码</li>
+<li>左右都出现的不一定</li>
+<li>左右都不出现的一定是候选码</li>
+<li>再求确定的候选码的闭包，如果可以推出全部，那么当前确定的就是候逐码，否则你要吧每一个可能的值放进当前确定的候选码里面进行求闭包</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>主码：从候选码里面任意跳出一个作为主码</li>
+<li>主属性：包含在所有候选码的属性比如 ABCDE</li>
+<li>非主属性：不包含在候选码中的属性，上题为G</li>
+<li>全码：所有的属性都是主码</li>
+</ul>
+<h2 id="范式"><a class="markdownIt-Anchor" href="#范式"></a> 范式</h2>
+<p>Q:为什么要引入范式？</p>
+<p>1数据冗余<br>
+2更新异常<br>
+3插入异常<br>
+4删除异常</p>
+<p>A: 设计关系数据库时，遵从不同的规范要求，这些不同的规范要求被称为不同的范式，各种范式呈递次规范，越高的范式<strong>数据库冗余越小</strong>。</p>
+<p>目前关系数据库有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、巴斯-科德范式（BCNF）、第四范式（4NF）和第五范式（5NF，又称完美范式）。<br>
+一般来说，数据库只需满足第三范式（3NF）就行了。</p>
+<ul>
+<li>1NF:所有字段值都是不可分解的原子值</li>
+<li>2NF:不包含非主属性对码的部分函数依赖：一个表中只能保存一种数据，不可以把多种数据保存在同一张数据库表中</li>
+<li>3NF:不包含非主属性对码的传递函数依赖确保数据表中的每一列数据都和主键直接相关，而不能间接相关。</li>
+<li>BCNF:消除每一属性对候选键的传递依赖，BCNF是修正的第三范式</li>
+</ul>
+<p>函数依赖简单点说就是：某个属性集决定另一个属性集时，称另一属性集依赖于该属性集。</p>
+<h2 id="公理系统"><a class="markdownIt-Anchor" href="#公理系统"></a> 公理系统</h2>
+<p>Armstrong公理系统（ Armstrongs axiom）设U为属性集总体，F是U上的一组函数依赖，于是有关系模式R(U,F)，对R&lt;U,F&gt;来说有以下的推理规则</p>
+<ul>
+<li>A1自反律（ reflexivity rule）：若 Y∈X∈U，则X→Y为F所蕴涵。</li>
+<li>A2增广律（ augmentation rule）：若X→y为F所蕴涵，且Z∈U，则XZ→Yz为F所蕴涵。</li>
+<li>A3传递律（ transitivity rule）：若X→Y及P→z为F所蕴涵，则X→Z为F所蕴涵</li>
+</ul>
+<p>根据A1、A2、A3这三条推理规则可以得到下面三条很有用的推理规则。</p>
+<ul>
+<li>合并规则（ union rule）：由X→Y,X→Z，有X→YZ</li>
+<li>伪传递规则（ pseudo transitivity rule）：由X→Y,WY→Z，有X→乙</li>
+<li>分解规则（ decomposition rule）：由X→Y及Z∈Y，有X→Z。</li>
+</ul>
+<p><strong>依赖</strong></p>
+<p>Q：什么是依赖？<br>
+A：依赖是指关系中一个或一组属性的值可以决定其它属性的值比如A→&gt;B这就是一个依赖<br>
+Q: 如何求最小依赖集？<br>
+1）拆右边为多个元素的比如A-&gt;BCH拆为A&gt;B和A-&gt;C<br>
+2）出去当前元素，求它的闭包，把集合里面所有元素都弄完<br>
+3）左边最小化（通过遮住元素来看能不能退岀其他元素）比如BCD，遮住B看能退出CD吗，遮住C能退出BD吗遮住D看能退出BC吗</p>
+<h1 id="关系型数据库"><a class="markdownIt-Anchor" href="#关系型数据库"></a> 关系型数据库</h1>
+<h2 id="关系模型-2"><a class="markdownIt-Anchor" href="#关系模型-2"></a> 关系模型</h2>
+<p><strong>关系数据结构</strong></p>
+<p><img src="/2021/10/12/ZJU开学摸底考试——数据库概论复习/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png" alt="关系数据结构"></p>
+<p>关系模式（ Relation Schema）是型；关系是值</p>
+<p>关系模式是对关系的描述</p>
+<ul>
+<li>元组集合的结构<br>
+●属性构成<br>
+●属性来自的域<br>
+●属性与域之间的映象关系</li>
+<li>完整性约束条件</li>
+</ul>
+<p>关系模式可以形式化地表示为：R（U, D, DOM, F）</p>
+<table>
+<thead>
+<tr>
+<th>R</th>
+<th>关系名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U</td>
+<td>组成该关系的属性名集合</td>
+</tr>
+<tr>
+<td>D</td>
+<td>U中属性所来自的域</td>
+</tr>
+<tr>
+<td>DOM</td>
+<td>属性向域的映象集合</td>
+</tr>
+<tr>
+<td>F</td>
+<td>属性间数据的依赖关系的集合</td>
+</tr>
+</tbody>
+</table>
+<p>关系模式<br>
+■对关系的描述<br>
+■静态的、稳定的<br>
+关系<br>
+■关系模式在某一时刻的状态或内容<br>
+■动态的、随时间不断变化的</p>
+<p><strong>关系完整性约束</strong></p>
+<ul>
+<li>实体完整性和参照完整性<br>
+关系模型<strong>必须满足</strong>的完整性约束条件称为关系的两个不变性，应该由关系系统自动支持
+<ul>
+<li>实体完整性（ Entity Integrity）
+<ul>
+<li>关系的主属性不能取空值</li>
+</ul>
+</li>
+<li>参照完整性：
+<ul>
+<li>若属性（或属性组）F是基本关系R的外码，他与基本关系S的主码K相对应（基本关系R和S也可以是同一个关系），则对于R中每个元组在F上的取值必须为：或取空值（F的每个属性值均为空值）；或者等于S中某个元组的主码值。</li>
+<li>案例
+<ul>
+<li>1:学生(学号，姓名，性别，年龄，系号)<br>
+2:系(系号，系名，系主任)<br>
+学生关系的属性“系号”与系关系的主码“系号”相对应，因此，“系号”属性是学生<br>
+关系的外码。这里系关系是被参照关系，学生关系为参照关系；学生关系中的每个元组的“系号”属性只能取下面两类值：<strong>空值</strong>或<strong>系关系中“系号”已经存在的值。</strong></li>
+<li>1.学生(学号，姓名，性别，年龄，系号，班长学号)<br>
+学生关系的“班长学号”与其主码“学号”形成参照和被参照的<strong>自身参照</strong>关系，即“班<br>
+长学号”为学生关系的外码。学生关系中的每个组的“班长学号”属性只能取下面两类值：<br>
+<strong>空值</strong>或<strong>学生关系中“学号”已经存在的值</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>用户定义的完整性
+<ul>
+<li>应用领域需要遵循的约束条件，体现了具体领域中的语义约束</li>
+<li>用户对数据自定义的域约束值，如“学分”属性只能取值{1,2,3,4}</li>
+</ul>
+</li>
+</ul>
+<p><strong>域–&gt;笛卡尔积</strong></p>
+<p>所有域的所有取值的任意组合<br>
+笛卡尔积可以看着是关系的“域”。</p>
+<p>笛卡尔积的表示方法</p>
+<ul>
+<li>笛卡尔积可表示为一张二维表</li>
+<li>表中的每行对应一个元组，表中的每列对应一个域</li>
+</ul>
+<h2 id="关系代数"><a class="markdownIt-Anchor" href="#关系代数"></a> 关系代数</h2>
+<p><strong>关系代数语言</strong>:用对关系的运算来表达查询要求</p>
+<p><strong>关系演算语言</strong>：用谓词来表达查询要求</p>
+<ul>
+<li>元组关系演算语言<br>
+●谓词变元的基本对象是元组变量<br>
+●代表：APLHA,QUEL</li>
+<li>域关系演算语言<br>
+●谓词变元的基本对象是域变量<br>
+●代表：QBE</li>
+</ul>
+<p><strong>具有关系代数和关系演算双重特点的语言</strong><br>
+■代表：SQL（ Structured Query Language）</p>
+<blockquote>
+<p>关系代数是一种抽象的查询语言，它用对关系的运算来表达查询</p>
+</blockquote>
+<p>运算对象是关系<br>
+运算结果亦为关系<br>
+关系代数的运算符有两类：集合运算符和专门的关系<br>
+运算符</p>
+<h3 id="关系操作关系代数运算"><a class="markdownIt-Anchor" href="#关系操作关系代数运算"></a> 关系操作(关系代数运算)</h3>
+<blockquote>
+<p>插入、查询、删除、修改<br>
+其中查询操作分为：选择、投影、连接、除法、并、差、交、笛卡尔积<br>
+五种基本关系代数运算：<strong>选择、投影、并、差、笛卡尔积</strong></p>
+</blockquote>
+<ul>
+<li>∪</li>
+<li>∩</li>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<p>以上三个都需要具有相同的属性（相同目），结果的属性也是一样的</p>
+<ul>
+<li>笛卡尔积</li>
+</ul>
+<p>两个分别为n目和m目的关系R和S的笛卡尔积是一个（n + m）列的元组的集合。若R有k1个元组，S有k2个元组，则R和S的笛卡尔积有k1 * k2个元组。</p>
+<p><strong>选择和投影的区别</strong></p>
+<p>选择的是一行记录，投影是你所需的某个字段，两者相结合为最终结果.</p>
+<p>选择是从行的角度进行的运算；投影操作是从列的角度进行的运算。选择是在关系R中选择满足给定条件的诸元组，投影是从R中选择出若干属性列组成新的关系。</p>
+<p><strong>连接：</strong></p>
+<ul>
+<li>自然连接：把共同的属性进行等值连接。
+<ul>
+<li>★先把所有属性去重列出来，将等值的共同属性填入后，补充其他属性值</li>
+<li>悬浮元组（ Dangling tuple）：两个关系R和S在做自然连接时，关系R中某些元组有可能在S中不存在公共属性上值相等的元组，从而造成R中这些元组在操作时被舍弃了，这些被舍弃的元组称为悬浮元组。</li>
+</ul>
+</li>
+<li>外连接（ Outer Join）：如果把悬浮元组也保存在结果关系中，而在其他属性上填空值（Nu1U），就叫做外连接</li>
+<li>左外连接（ LEFT OUTER J0IN或 LEFT J0IN）：只保留左边关系R中的悬浮元组</li>
+<li>右外连接（ RIGHT0 DUTER J0IN或 RIGHT J0IN）：只保留右边关系S中的悬浮元组</li>
+</ul>
+<p><strong>除</strong></p>
+<p>保留R中满足S的，而且R中列要去掉S的列</p>
+<p>注：</p>
+<ul>
+<li>关系中，属性个数称为「度」或「目」，3度表示这个表有3列。</li>
+<li>关系中元组的个数称为「基数」。</li>
+</ul>
+<p><strong>关系完整性</strong></p>
+<ol>
+<li>实体完整性：主码唯一且非空</li>
+<li>参照完整性：外码要么为空，要么对应另一表的主码</li>
+<li>用户定义完整性：你自己写的要完整比如学号多少姓名班级专业之类</li>
+</ol>
+<p><strong>关系代数</strong></p>
+<blockquote>
+<p>是一种抽象的查询语言，它用对关系的运算来表达查询。<br>
+三大要素：运算对象（关系）、运算符（集合运算符和专门的关系运算符）和运算结果（关系）</p>
+</blockquote>
+<h2 id="sql语言"><a class="markdownIt-Anchor" href="#sql语言"></a> SQL语言</h2>
+<blockquote>
+<p>Structure Query Language，结构化查询语言，</p>
+</blockquote>
+<ul>
+<li>数据定义语言DDL（ Data Ddefinition Language）sQL数据定义语言主要用来定义逻辑结构，包括定义基表，视图和索引。<br>
+删除表、定义表、修改表</li>
+<li>数据查询语言DQL（ Data Query Language）：s0L的数据查询语言主要用来对数据库中的各种数据对象进行<strong>查询</strong>。</li>
+<li>数据操纵语言DML（ Data Manipulation Language）：s0L的数据操纵语言，用于改变数据库中的数据，包括<strong>插入，删除，修改</strong></li>
+<li>数据控制功能DCL（ Data Control Language）：s0L的数据控制语言，对表和视图的授权，完整性规则的描述以及<strong>事务</strong>开始和结束等控制语句。</li>
+</ul>
+<p><strong>SQL语言特点</strong></p>
+<ul>
+<li>综合统一（独立完成数据库生命周期中的全部活动，包括定义关系模式、录入数据、建立数据库、査询、更新、维护、数据库重构、数据库安全）</li>
+<li>高度非过程化（用户只需提出“做什么”，而不必指明“怎么做”。）
+<ul>
+<li>非关系数据模型的数据操纵语言“面向过程”，必须指定存取路径。</li>
+<li>SQL只要提出“做什么”，无须了解存取路径</li>
+<li>存取路径的选择以及SQL的操作过程由系统自动完成</li>
+</ul>
+</li>
+<li>面向集合的操作方式（SQL采用集合操作方式）
+<ul>
+<li>非关系数据模型采用面向记录的操作方式，操作对象是一条记录</li>
+<li>SQL采用集合操作方式</li>
+<li>操作对象、查找结果可以是元组的集合</li>
+<li>一次插入、删除、更新操作的对象可以是元组的集合</li>
+</ul>
+</li>
+<li>以同一种语法结构提供两种使用方式（S0L既是自含式（独立的）语言，又是嵌入式语言。SQ语句能够嵌入到高级语言程序中，）</li>
+<li>语言简洁，易学易用（s0L语言语法简单，接近英语口语，因此容易学习，也容易使用。）
+<ul>
+<li>SQL功能性极强，完成核心功能只用了9个动词：SELECT（数据查询）；CREATE、ALERT、INSERT（数据定义）；DROP、UPDATE、DELETE（数据操纵）；GRANT、REVOKE(数据控制)</li>
+</ul>
+</li>
+</ul>
+<h2 id="sql的基本概念"><a class="markdownIt-Anchor" href="#sql的基本概念"></a> SQL的基本概念</h2>
+<p><img src="/2021/10/12/ZJU开学摸底考试——数据库概论复习/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%BC%8F.png" alt="关系型数据库模式"></p>
+<p><strong>基本表</strong></p>
+<ul>
+<li>本身独立存在的表</li>
+<li>SQL中一个关系就对应一个基本表</li>
+<li>一个（或多个）基木表对应一个存储文件</li>
+<li>一个表可以带若干索引</li>
+</ul>
+<p><strong>视图</strong></p>
+<p>概念</p>
+<ul>
+<li>从一个或几个基本表导出的表</li>
+<li>数据库中只存放视图的定义而不存放视图对应的数据</li>
+<li>视图是一个虚表</li>
+<li>用户可以在视图上再定义视图</li>
+</ul>
+<h1 id="数据库安全性"><a class="markdownIt-Anchor" href="#数据库安全性"></a> 数据库安全性</h1>
+<h2 id="数据库的不安全因素"><a class="markdownIt-Anchor" href="#数据库的不安全因素"></a> 数据库的不安全因素</h2>
+<ul>
+<li>非授权用户对数据库的恶意存取和破坏
+<ul>
+<li>一些黑客（ Hacker）和犯罪分子在用户存取数据库时猎取用户名和用户口令，然后假冒合法用户偷取、修改甚至破坏用户数据。</li>
+<li>数据库管理系统提供的安全措施主要包括用户身份鉴别、存取控制和视图等技术。</li>
+</ul>
+</li>
+<li>数据库中重要或敏感的数据被泄露
+<ul>
+<li>黑客和敌对分子千方百计盗窃数据库中的重要数据，些机密信息被暴露</li>
+<li>数据库管理系统提供的主要技术有强制存取控制、数据加密存储和加密传输等。</li>
+<li>审计日志分析</li>
+</ul>
+</li>
+<li>安全环境的脆弱性</li>
+</ul>
+<h2 id="安全性控制"><a class="markdownIt-Anchor" href="#安全性控制"></a> 安全性控制</h2>
+<h3 id="用户身份鉴别"><a class="markdownIt-Anchor" href="#用户身份鉴别"></a> 用户身份鉴别</h3>
+<ul>
+<li>静态口令</li>
+<li>动态口令</li>
+<li>智能卡鉴别</li>
+<li>生物特征鉴别</li>
+</ul>
+<h3 id="存取控制"><a class="markdownIt-Anchor" href="#存取控制"></a> 存取控制</h3>
+<p>机制组成</p>
+<ul>
+<li>定义用户权限</li>
+<li>合法权限检查</li>
+</ul>
+<h4 id="自主存取控制dac"><a class="markdownIt-Anchor" href="#自主存取控制dac"></a> 自主存取控制（DAC）：</h4>
+<ul>
+<li>用户对不同的数据对象有不同的存取权限</li>
+<li>不同的用户对同一对象也有不同的权限</li>
+<li>用户还可将其拥有的存取权限转授给其他用户</li>
+</ul>
+<p>通过SQL的 GRANT语句（权限授予）和 REVOKE语句（权限回收）实现</p>
+<ul>
+<li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span>语句的一般格式</span><br><span class="line"><span class="keyword">GRANT</span>&lt;权限&gt;[&lt;权限&gt;]</span><br><span class="line"><span class="keyword">ON</span>&lt;对象类型&gt;&lt;对象名&gt;&lt;对象类型&gt;&lt;对象名</span><br><span class="line"><span class="keyword">To</span>&lt;用户&gt;,【&lt;用户&gt;】</span><br><span class="line">【<span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>】；		<span class="comment">/** 指定该语句表示可以再转授权限*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span></span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">TABLE</span> Student Course</span><br><span class="line"><span class="keyword">TO</span> U2. U3</span><br><span class="line"></span><br><span class="line"><span class="keyword">REVOKE</span>语句的一般格式为：</span><br><span class="line"><span class="keyword">REVOKE</span>&lt;权限&gt;[,&lt;权限&gt;]</span><br><span class="line"><span class="keyword">ON</span>&lt;对象类型&gt;&lt;对象名&gt;【&lt;对象类型&gt;&lt;对象名&gt;】</span><br><span class="line"><span class="keyword">FROM</span>&lt;用户&gt;【&lt;用户&gt;】. [<span class="keyword">CASCADE</span>| RESTRICT]；	</span><br><span class="line"></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">UPDATE</span>（Sno）</span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">TABLE</span> Student</span><br><span class="line"><span class="keyword">FROM</span> U4</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/2021/10/12/ZJU开学摸底考试——数据库概论复习/%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6%E5%AF%B9%E8%B1%A1.png" alt="存取控制对象"></p>
+<p>数据库角色：被命名的一组与数据库操作相关的权限</p>
+<ul>
+<li>角色是权限的集合</li>
+<li>可以为一组具有相同权限的用户创建一个角色</li>
+<li>简化授权的过程</li>
+</ul>
+<p>使用角色管理数据库权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** S1.角色创建*/</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">ROLE</span> &lt;角色名&gt;</span><br><span class="line"><span class="comment">/** S2.对角色授权*/</span></span><br><span class="line"><span class="keyword">GRANT</span>&lt;权限&gt;[&lt;权限&gt;]</span><br><span class="line"><span class="keyword">ON</span>&lt;对象类型&gt;对象名</span><br><span class="line"><span class="keyword">To</span>&lt;角色&gt;【&lt;角色&gt;】</span><br><span class="line"><span class="comment">/** 将一个角色授予其他的角色或用户*/</span></span><br><span class="line"><span class="keyword">GRANT</span>&lt;角色<span class="number">1</span>&gt;[&lt;角色<span class="number">2</span>&gt;]</span><br><span class="line"><span class="keyword">To</span>&lt;角色<span class="number">3</span>&gt;【&lt;用户<span class="number">1</span>&gt;]</span><br><span class="line">&lt;<span class="keyword">WITH</span> <span class="keyword">ADMIN</span> <span class="keyword">OPTION</span>]</span><br><span class="line"><span class="comment">/** 角色权限的收回*/</span></span><br><span class="line"><span class="keyword">REVOKE</span>&lt;权限&gt;&lt;权限习</span><br><span class="line"><span class="keyword">ON</span>≤对象类型&gt;&lt;对象名</span><br><span class="line"><span class="keyword">FROM</span>&lt;角色&lt;角色&gt;</span><br></pre></td></tr></table></figure>
+<p>存在的缺点：可能存在数据的无意泄露：自主存取控制仅仅通过对数据的存取权限来进行安全控制，而数据本身并无安全性标记</p>
+<h4 id="强制存取控制mac"><a class="markdownIt-Anchor" href="#强制存取控制mac"></a> 强制存取控制（MAC）：</h4>
+<ul>
+<li>保证更高程度的安全性</li>
+<li>用户不能直接感知或进行控制</li>
+<li>适用于对数据有严格而固定密级分类的部门
+<ul>
+<li>军事部门</li>
+<li>政府部门</li>
+</ul>
+</li>
+</ul>
+<p>在强制存取控制中，数据库管理系统所管理的全部实体被分为主体和客体两大类</p>
+<ul>
+<li>主体是系统中的活动实体<br>
+■数据库管理系统所管理的实际用户<br>
+■代表用户的各进程</li>
+<li>客体是系统中的被动实体，受主体操纵<br>
+■文件、基本表、索引、视图</li>
+</ul>
+<p>敏感度标记（ Label）<br>
+■对于主体和客体，DBMS为它们每个实例（值）指派一个敏感度标记（Labe）<br>
+■敏感度标记分成若干级别<br>
+●绝密（ Top Secret,Ts）<br>
+●机密（ Secret,S）<br>
+●可信（ Confidential,C）<br>
+●公开（ Public,P）<br>
+●Ts&gt;=S&gt;=C&gt;=P</p>
+<h3 id="数据库安全性机制视图机制"><a class="markdownIt-Anchor" href="#数据库安全性机制视图机制"></a> <strong>数据库安全性机制——视图机制</strong></h3>
+<p>授予用户查询某些行的权限？</p>
+<ul>
+<li>
+<p>需要用存取谓词来定义用户权限</p>
+</li>
+<li>
+<p>无法直接用 GRANT语句实现</p>
+</li>
+<li>
+<p><strong>可以用视图机制间接地实现</strong></p>
+<ul>
+<li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 授予用户查询整个表的权限 */</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span></span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">TABLE</span> Student</span><br><span class="line"><span class="keyword">TO</span> U1</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 授予用户查询某些列的权限 */</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>（Sno, Sname）</span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">TABLE</span> Student</span><br><span class="line"><span class="keyword">TO</span> U2</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Step1. 从基本表上导出数据建立视图 */</span></span><br><span class="line">先建立计算机系学生的视图 Cs Student</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> CS_Student</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> Sdept=<span class="string">'CS'</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> </span><br><span class="line"><span class="keyword">ON</span> CS_STUDENT <span class="keyword">TO</span> U1</span><br><span class="line"><span class="comment">/** Step2. 在视图上进一步定义存取权限 */</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span></span><br><span class="line"><span class="keyword">oN</span> CS_Student</span><br><span class="line"><span class="keyword">To</span> 王平</span><br><span class="line"><span class="keyword">GRANT</span> ALL PRIVILIGES		</span><br><span class="line"><span class="keyword">oN</span> CS Student</span><br><span class="line"><span class="keyword">To</span>张明；</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="审计"><a class="markdownIt-Anchor" href="#审计"></a> <strong>审计</strong></h3>
+<ul>
+<li>用一个专用的审计日志（ Audit Log）<br>
+将用户对数据库的所有操作记录在上面</li>
+<li>审计员利用审计日志<br>
+监控数据库中的各种行为<br>
+发现非法存取，发现潜在威胁</li>
+<li>C2以上安全级别的DBMS必须具有审计功能</li>
+</ul>
+<p>可以被审计的事件：</p>
+<ul>
+<li>服务器事件</li>
+<li>系统权限
+<ul>
+<li>对系统拥有的结构或模式对象进行操作的审计</li>
+<li>要求该操作的权限是通过系统权限获得的</li>
+</ul>
+</li>
+<li>语句事件<br>
+●对SQL语句，如DDL、DML、DQL及DCL语句的审计</li>
+<li>模式对象事件<br>
+●对特定模式对象上进行的 SELECT或DML操作的审计</li>
+</ul>
+<p>审计功能的可选性</p>
+<p>■审计很费时间和空间<br>
+■DBA可以根据应用对安全性的要求，灵活地打开或关<br>
+闭审计功能<br>
+■审计功能主要用于安全性要求较高的部门</p>
+<p>demo</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 对修改SC表结构或修改SC表数据的操作进行审计</span><br><span class="line">AUDIT <span class="keyword">ALTER</span>, <span class="keyword">UPDATE</span></span><br><span class="line"><span class="keyword">ON</span> SC</span><br><span class="line">// 取消对SC表的一切审计</span><br><span class="line"><span class="keyword">NOAUDIT</span> <span class="keyword">ALTER</span>, <span class="keyword">UPDATE</span></span><br><span class="line"><span class="keyword">ON</span> SC：</span><br></pre></td></tr></table></figure>
+<h3 id="数据加密"><a class="markdownIt-Anchor" href="#数据加密"></a> <strong>数据加密</strong></h3>
+<p>加密方法</p>
+<ul>
+<li>存储加密
+<ul>
+<li>透明存储加密： 内核级加密保护方式（性能好，安全完备性高），对用户完全透明</li>
+<li>非透明存储加密：通过多个加密函数实现</li>
+</ul>
+</li>
+<li>传输加密
+<ul>
+<li>链路加密：报文、报头都加密</li>
+<li>端到端加密：只加密报文</li>
+</ul>
+</li>
+</ul>
+<p>其他安全性保护</p>
+<ul>
+<li>推理控制、</li>
+<li>隐蔽信道</li>
+</ul>
+<h2 id="数据定义"><a class="markdownIt-Anchor" href="#数据定义"></a> 数据定义</h2>
+<blockquote>
+<p>定义数据库的各种“对象”</p>
+</blockquote>
+<ul>
+<li>
+<p>模式定义</p>
+<ul>
+<li>
+<p>定义模式实际上定义了一个命名空间（或者说目录）</p>
+</li>
+<li>
+<p>在这个空间中可以定义该模式包含的数据库对象，例如基本表、视图、索引等。</p>
+</li>
+<li>
+<p>在 CREATE SCHEMA中可以接受 CREATE TABLE，CREATE VIEW和 GRANT子句。</p>
+</li>
+<li>
+<p>创建：<code>CREATE SCHEMA&lt;模式名&gt; AUTHORIZATION&lt;用户名&gt;【&lt;表定义子句&gt;|&lt;视图定义子句&gt;|&lt;授权定义子句&gt;</code></p>
+</li>
+<li>
+<p>删除：<code>DROP SCHEMA&lt;模式名&gt;&lt; CASCADE | RESTRICT&gt;</code><br>
+■ CASCADE（级联）</p>
+<ul>
+<li>删除模式的同时把该模式中所有的数据库对象全部删除</li>
+</ul>
+<p>■ RESTRICT（限制）</p>
+<ul>
+<li>如果该模式中定义了下属的数据库对象（如表、视图等），则拒绝该删除语句的执行。</li>
+<li>仅当该模式中没有任何下属的对象时才能执行。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>表定义</p>
+<ul>
+<li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE&lt;表名&gt;				/*基本表的名称*/</span><br><span class="line">(&lt;列名&gt;&lt;数据类型&gt;【&lt;列级完整性约束条件&gt;】/*组成该表的列*/</span><br><span class="line">【，&lt;列名&gt;&lt;数据类型【&lt;列级完整性约束条件】】</span><br><span class="line">...</span><br><span class="line">【，&lt;表级完整性约束条件&gt;】)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>&lt;列级完整性约束条件&gt;：涉及相应<strong>属性列</strong>的完整性约束条件<br>
+&lt;表级完整性约束条件&gt;：涉及<strong>一个或多个属性列</strong>的完整性约束条件<br>
+如果完整性约束条件涉及到该表的多个属性列，则必须定义在表级上。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>视图定义</p>
+</li>
+<li>
+<p>索引定义</p>
+<ul>
+<li>
+<p>建立索引的目的：加快查询速度</p>
+</li>
+<li>
+<p>关系数据库管理系统中常见索引</p>
+<ul>
+<li>
+<p>顺序文件上的索引</p>
+</li>
+<li>
+<p>B+树索引（参见爱课程网3.2节动画《B+树的增删改》）</p>
+</li>
+<li>
+<p>散列（hash）索引</p>
+</li>
+<li>
+<p>位图索引</p>
+</li>
+</ul>
+</li>
+<li>
+<p>特点</p>
+<ul>
+<li>B+树索引具有动态平衡的优点</li>
+<li>HASH索引具有查找速度快的特点</li>
+</ul>
+</li>
+<li>
+<p>关系数据库管理系统自动选择合适的索引作为存取路径，用户不必也不能显式地选择索引</p>
+</li>
+<li>
+<p><code>CREATE[UNIQUE] |[CLUSTER] INDEX &lt;索引名&gt; ON &lt;表名&gt;（&lt;列名&gt;【&lt;次序&gt;】【列名&gt;【&lt;次序】】）</code></p>
+<ul>
+<li>&lt;表名&gt;：要建索引的基本表的名字</li>
+<li>索引：可以建立在该表的一列或多列上，各列名之间用逗号分隔</li>
+<li>次序&gt;：指定索引值的排列次序，升序：ASC，降序：DESC。缺省值：AsC</li>
+<li>UNIQUE：此索引的每一个索引值只对应唯一的数据记录</li>
+<li>CLUSTER：表示要建立的索引是聚簇索引</li>
+</ul>
+</li>
+<li>
+<p><code>ALTER INDEX&lt;旧索引名&gt; RENAME TO&lt;新索引名&gt;</code></p>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<p><strong>数据字典</strong></p>
+<blockquote>
+<p>数据字典是关系数据库管理系统内部的一组系统表，它记录了数据库中所有对象的定义信息以及一些统计信息</p>
+<p>关系数据库管理系统在执行SQL的数据定义语句时，实际上就是在更新数据字典表中的相应信息。</p>
+</blockquote>
+<h1 id="数据库的完整性"><a class="markdownIt-Anchor" href="#数据库的完整性"></a> 数据库的完整性</h1>
+<p><strong>实体完整性</strong></p>
+<p><strong>参照完整性</strong></p>
+<p><strong>用户定义的完整性</strong></p>
+<h2 id="完整性约束命名字句"><a class="markdownIt-Anchor" href="#完整性约束命名字句"></a> 完整性约束命名字句</h2>
+<ul>
+<li><code>CONSTRAINT&lt;完整性约束条件名&gt;&lt;完整性约束条件&gt;</code>
+<ul>
+<li>&lt;完整性约束条件&gt;包括 NOT NULL、 UNIQUE、PRIMARY KEY短语、 FOREIGN KEY短语、 CHECK短语等</li>
+<li>删除：<code>ALTER TABLE Student DROP CONSTRAINT C1</code></li>
+<li>增加:<code>ALTER TABLE Student ADD CONSTRAINT C1 CHECK（Sno BETWEEN 900000 AND 999999</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>域中的完整性限制</strong></p>
+<h2 id="断言"><a class="markdownIt-Anchor" href="#断言"></a> 断言</h2>
+<ul>
+<li>sQL中，可以使用 CREATE ASSERTION语句，通过声明性断言来指定更具一般性的约束。</li>
+<li>可以定义涉及多个表的或聚集操作的比较复杂的完整性约束。</li>
+<li>断言创建以后，任何对断言中所涉及的关系的操作都会触发关系数据库管理系统对断言的检查，任何使断言不为真值的操作都会被拒绝执行</li>
+<li><code>CREATE ASSERTION&lt;断言名&gt;&lt; CHECK子句&gt;</code></li>
+</ul>
+<h2 id="触发器"><a class="markdownIt-Anchor" href="#触发器"></a> <strong>触发器</strong></h2>
+<ul>
+<li>是用户定义在<strong>关系表</strong>上的一类由事件驱动的特殊过程</li>
+<li>任何用户对表的增、删、改操作均由服务器自动激活相应的触发器</li>
+<li>触发器可以实施更为复杂的检查和操作，具有更精细和更强大的数据控制能力</li>
+</ul>
+<p>定义：</p>
+<ul>
+<li>当特定的系统事件发生时，对规则的条件进行检查，如果条件成立则执行规则中的动作，否则不执行该动作。规则中的动作体可以很复杂，通常是一段SQL存储过程。</li>
+<li>触发器又叫做事件-条件-动作（ event-condition-action）规则</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span>&lt;触发器名&gt; &#123;<span class="keyword">BEFORE</span>| <span class="keyword">AFTER</span>&#125; &lt;触发事件&gt;<span class="keyword">ON</span>&lt;表名&gt;</span><br><span class="line"><span class="keyword">REFERENCING</span> <span class="keyword">NEW</span>|<span class="keyword">OLD</span> <span class="keyword">ROW</span> <span class="keyword">AS</span>&lt;变量&gt;</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> &#123;<span class="keyword">ROW</span> | <span class="keyword">STATEMENT</span>&#125;				<span class="comment">/** 触发器类型：行级、语句级 */</span></span><br><span class="line">[<span class="keyword">WHEN</span>&lt;触发条件&gt;] &lt;触发动作体&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>只有表的拥有者才能在表上创建触发器</li>
+<li>触发事件：INSERT、UPDATE、DELETE； 或者以上操作的组合； UPDATE OF&lt;触发列&gt;</li>
+<li>触发器类型
+<ul>
+<li>行级触发器（ FOR EACH ROW）</li>
+<li>语句级触发器（ FOR EACH STATEMENT）</li>
+<li>例子：UPDATE TEACHER SET Deptno=5，假设表 TEACHER有1000行。如果是语句级触发器，那么执行完该语句后，触发动作只发生一次；如果是行级触发器，触发动作将执行1000次</li>
+</ul>
+</li>
+<li>触发条件：
+<ul>
+<li>触发器被激活时，只有当触发条件为真时触发动作体才执行；否则触发动作体不执行。</li>
+<li>如果省略WHEN触发条件，则触发动作体在触发器激活后立即无条件执行】、</li>
+</ul>
+</li>
+<li>触发动作体：
+<ul>
+<li>触发动作体可以是一个匿名 PL/SQL过程块，也可以是对已创建存储过程的调用</li>
+<li>如果是行级触发器，用户都可以在过程体中使用NEW和OLD引用事件之后的新值和事件之前的旧值如果是语句级触发器，则不能在触发动作体中使用NEW或OLD进行引用</li>
+<li>如果触发动作体执行失败，激活触发器的事件就会终止执行，触发器的目标表或触发器可能影响的其他对象不发生任何变化</li>
+</ul>
+</li>
+</ul>
+<p>Demo Code:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 当对表Sc的 Grade属性进行修改时，若分数增加了10%则将此次操作记录到下面表中：*/</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> SC T</span><br><span class="line"><span class="keyword">AFTER</span> <span class="keyword">UPDATE</span> <span class="keyword">OF</span> Grade <span class="keyword">ON</span> SC</span><br><span class="line"><span class="keyword">REFERENCING</span></span><br><span class="line">	<span class="keyword">OLD</span> <span class="keyword">row</span> <span class="keyword">As</span> OldTuple</span><br><span class="line">	<span class="keyword">NEW</span> <span class="keyword">row</span> <span class="keyword">As</span> NewTuple</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span></span><br><span class="line">	<span class="keyword">WHEN</span>（NewTuple Grade &gt;=<span class="number">1.1</span>*<span class="keyword">Old</span> Tuple Grade)</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTo</span> Sc_U（Sno, Cno, OldGrade, NewGrade） <span class="keyword">VALUES</span>（OIdTuple.Sno, OldTuple.Cno, oldTuple.Grade, NewTuple.Grade)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**【例522】将每次对表 Student的插入操作所增加的学生个数记录到表 StudentInsertLog中。*/</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> Student <span class="keyword">Count</span></span><br><span class="line">	AETER <span class="keyword">INSERT</span> <span class="keyword">ON</span> Student</span><br><span class="line"><span class="keyword">REFERENCING</span></span><br><span class="line">	<span class="keyword">NEW</span> <span class="keyword">TABLE</span> <span class="keyword">AS</span> DELTA</span><br><span class="line">	<span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">STATEMENT</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> StudentinsertLog（Numbers） <span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> DELTA</span><br></pre></td></tr></table></figure>
+<h1 id="数据查询语句"><a class="markdownIt-Anchor" href="#数据查询语句"></a> 数据查询语句</h1>
+<h2 id="连接"><a class="markdownIt-Anchor" href="#连接"></a> <strong>连接</strong></h2>
+<blockquote>
+<p>自然连接的结果：是采用SELECT去掉重复字段的方式实施的</p>
+</blockquote>
+<ul>
+<li>嵌套循环法：</li>
+<li>排序合并法：</li>
+<li>索引连接（嵌套循环的一个变种）</li>
+</ul>
+<p>外连接与普通连接的区别</p>
+<ul>
+<li>普通连接操作只输出满足连接条件的元组</li>
+<li>外连接操作以指定表为连接主体，将主体表中<strong>不满足连接条件的元组一并输出</strong>
+<ul>
+<li>左外连接<br>
+●列出左边关系中所有的元组</li>
+<li>右外连接<br>
+●列出右边关系中所有的元组</li>
+</ul>
+</li>
+</ul>
+<h2 id="嵌套查询"><a class="markdownIt-Anchor" href="#嵌套查询"></a> 嵌套查询</h2>
+<blockquote>
+<p>一个 SELECT-FROM-WHERE语句称为一个查询块</p>
+<p>将一个查询块嵌套在另一个查询块的 WHERE子句或 HAVING短语的条件中的查询称为嵌套查询</p>
+</blockquote>
+<p>子查询的限制<br>
+●不能使用 ORDER BY子句</p>
+<p>嵌套查询求解方法：</p>
+<ul>
+<li>不相关子查询：子查询的查询条件不依赖于父查询
+<ul>
+<li>由里向外逐层处理。即每个子查询在上一级查询处理之前求解，子查询的结果用于建立其父查询的查找条件</li>
+</ul>
+</li>
+<li>相关子查询：子查询的查询条件依赖于父查询 （嵌套循环依次从外解决）：<a href="https://www.icourse163.org/learn/RUC-488001?tid=1463039460#/learn/content?type=detail&amp;id=1240163703&amp;sm=1" target="_blank" rel="noopener">demo讲解</a>
+<ul>
+<li><strong>首先取外层查询中表的第一个元组</strong>，根据它与内层查询相关的属性值处理内层査询，若 WHERE子句返回值为真，则取此元组放入结果表</li>
+<li>然后再取外层表的下一个元组</li>
+<li>重复这一过程，直至外层表全部检查完为止</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>带有N谓词的子查询</li>
+<li>带有比较运算符的子查询</li>
+<li>带有ANY或ALL谓词的子查询</li>
+<li>带有 EXISTS谓词的子查询</li>
+</ol>
+<p>数据更新语句</p>
+<ul>
+<li>
+<p>插入 : INSERT INTO &lt;Table_name&gt;[&lt;属性名&gt;, &lt;属性名&gt;…] VALUES(&lt;常量1&gt;, …)</p>
+<ul>
+<li>指定要插入数据的<strong>表名</strong>及<strong>属性列</strong>
+<ul>
+<li>属性列的顺序可与表定义中的顺序不一致</li>
+</ul>
+</li>
+<li>没有指定属性列：表示要插入的是一条完整的元组，且属性列属性与表定义中的<strong>顺序一致</strong></li>
+<li>只指定部分属性列：插入的元组在其余属性列上取空值</li>
+</ul>
+</li>
+<li>
+<p>更新：UPDATE&lt;表名&gt;SET&lt;列名&gt;=&lt;表达式&gt;【&lt;列名&gt;=&lt;表达式&gt;】 【WHERE&lt;条件习】；</p>
+<p>■修改指定表中满足 WHERE子句条件的元组<br>
+■SET子句给出&lt;表达式&gt;的值用于取代相应的属性列<br>
+■如果省略 WHERE子句，表示要修改表中的所有元组</p>
+<p>关系数据库管理系统在执行修改语句时会检查修改操作是否破坏表上已定义的完整性规则<br>
+■实体完整性<br>
+■主码不允许修改<br>
+■用户定义的完整性</p>
+<ul>
+<li>NOT NULL约束</li>
+<li>UNIQUE约束</li>
+<li>值域约束</li>
+</ul>
+</li>
+<li>
+<p>删除: DELETE FROM &lt;表名&gt; [WHERE&lt;条件&gt;]；<br>
+■删除指定表中满足 WHERE子句条件的元组WHERE子句<br>
+■指定要删除的元组<br>
+■无该子句将会删除表中的全部元组</p>
+</li>
+</ul>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<p>HAVING短语与 WHERE子句的区别：</p>
+<ul>
+<li>作用对象不同</li>
+<li>WHERE子句作用于基表或视图，从中选择满足条件的元组</li>
+<li>HAVING短语作用于组，从中选择满足条件的组。、</li>
+</ul>
+<p>Q:怎么理解“自然连接”，它与等值连接有什么不同？</p>
+<p>1、自然连接一定是等值连接，但等值连接不一定是自然连接。<br>
+2、等值连接要求相等的分量，不一定是公共属性；而自然连接要求相等的分量必须是公共属性。<br>
+3、等值连接不把重复的属性除去；而自然连接要把重复的属性除去。</p>
+<p>Q:嵌套查询瑞和转换为连接查询？</p>
+<p>不相关子查询，内查询不依赖于外层。执行过程中，首先执行内查询，内查询得到结果不被显示出来，而是传递给外层查询作为外层查询的条件来使用，然后执行外层查询，并显示查询结果。 转为连接查询就是把子查询内表和外部表连接。</p>
+<p>Q:两个查询在什么情况下可以自行UNION操作？</p>
+<p>UNION 内部的 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条 SELECT 语句中的列的顺序必须相同。 该命令连接的结果集中有重复的值不会被显示。想忽略重复值，可以使用 union all</p>
+<p>Q:‏关系R中能唯一标识一个元组的是它的</p>
+<ul>
+<li>A.主码</li>
+<li>B.候选码</li>
+<li>D.全码</li>
+</ul>
+<p>Q‍:实体完整性规则检查的内容包括</p>
+<ul>
+<li>检查主码的各个属性值是否为空，只要有一个为空就拒绝插入或修改</li>
+<li>检查主码值是否唯一，如果不唯一就拒绝插入或修改</li>
+</ul>
+<p>在关系数据库中，模式对应的是___C___。</p>
+<p>A.视图和所有基本表 B.视图和部分基本表 C.基本表 D.索引 7 在数据</p>
+<p>数据库常见的四种故障</p>
+<p>(1) 事务内部的故障：事务内部故障可分为预期的和非预期的，其中大部分的故障都是非预期的。预期的事务内部故障是指可以通过事务程序本身发现的事务内部故障; 非预期的事务内部故障是不能由事务程序处理的，如运算溢出故障、并发事务死锁故障、违反了某些完整性限制而导致的故障等。</p>
+<p>(2) 系统故障：系统故障也称为软故障，是指数据库在运行过程中，由于硬件故障、数据库软件及操作系统的漏洞、突然停电灯情况，导致系统停止运转，所有正在运行的事务以非正常方式终止，需要系统重新启动的一类故障。这类事务不破坏数据库，但是影响正在运行的所有事务。</p>
+<p>(3) 介质故障：介质故障也称为硬故障，主要指数据库在运行过程中，由于磁头碰撞、磁盘损坏、强磁干扰、天灾人祸等情况，使得数据库中的数据部分或全部丢失的一类故障。</p>
+<p>(4) 计算机病毒故障：计算机病毒故障是一种恶意的计算机程序，它可以像病毒一样繁殖和传播，在对计算机系统造成破坏的同时也可能对数据库系统造成破坏(破坏方式以数据库文件为主) 。</p>
+<p>Q:要实现记录的物理顺序与索引项次序一致，应选择的索引类型是（）。<br>
+A.HASH 索引<br>
+B.聚簇索引<br>
+C.B+树索引<br>
+D.单一索引</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/10/12/ZJU开学摸底考试——数据库概论复习/">https://nymrli.top/2021/10/12/ZJU开学摸底考试——数据库概论复习/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/10/15/ZJU开学摸底考试——计算机网络复习/" title="ZJU开学摸底考试——计算机网络复习"><span>< PreviousPost</span><br><span class="prevTitle">ZJU开学摸底考试——计算机网络复习</span></a><a class="nextSlogan" href="/2021/10/09/XML语法规则笔记/" title="XML语法规则笔记"><span>NextPost ></span><br><span class="nextTitle">XML语法规则笔记</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'ZJU开学摸底考试——数据库概论复习',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库概论"><span class="toc-number">1.</span> <span class="toc-text"> 数据库概论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库的4个基本概念"><span class="toc-number">1.1.</span> <span class="toc-text"> 数据库的4个基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据模型"><span class="toc-number">1.2.</span> <span class="toc-text"> 数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#层次模型网状模型"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 层次模型，网状模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关系模型"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 关系模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库系统的结构"><span class="toc-number">1.3.</span> <span class="toc-text"> 数据库系统的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#码"><span class="toc-number">1.4.</span> <span class="toc-text"> 码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#范式"><span class="toc-number">1.5.</span> <span class="toc-text"> 范式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公理系统"><span class="toc-number">1.6.</span> <span class="toc-text"> 公理系统</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关系型数据库"><span class="toc-number">2.</span> <span class="toc-text"> 关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关系模型-2"><span class="toc-number">2.1.</span> <span class="toc-text"> 关系模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关系代数"><span class="toc-number">2.2.</span> <span class="toc-text"> 关系代数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关系操作关系代数运算"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 关系操作(关系代数运算)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql语言"><span class="toc-number">2.3.</span> <span class="toc-text"> SQL语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql的基本概念"><span class="toc-number">2.4.</span> <span class="toc-text"> SQL的基本概念</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库安全性"><span class="toc-number">3.</span> <span class="toc-text"> 数据库安全性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库的不安全因素"><span class="toc-number">3.1.</span> <span class="toc-text"> 数据库的不安全因素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全性控制"><span class="toc-number">3.2.</span> <span class="toc-text"> 安全性控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用户身份鉴别"><span class="toc-number">3.2.1.</span> <span class="toc-text"> 用户身份鉴别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存取控制"><span class="toc-number">3.2.2.</span> <span class="toc-text"> 存取控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#自主存取控制dac"><span class="toc-number">3.2.2.1.</span> <span class="toc-text"> 自主存取控制（DAC）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#强制存取控制mac"><span class="toc-number">3.2.2.2.</span> <span class="toc-text"> 强制存取控制（MAC）：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库安全性机制视图机制"><span class="toc-number">3.2.3.</span> <span class="toc-text"> 数据库安全性机制——视图机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#审计"><span class="toc-number">3.2.4.</span> <span class="toc-text"> 审计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据加密"><span class="toc-number">3.2.5.</span> <span class="toc-text"> 数据加密</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据定义"><span class="toc-number">3.3.</span> <span class="toc-text"> 数据定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库的完整性"><span class="toc-number">4.</span> <span class="toc-text"> 数据库的完整性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#完整性约束命名字句"><span class="toc-number">4.1.</span> <span class="toc-text"> 完整性约束命名字句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#断言"><span class="toc-number">4.2.</span> <span class="toc-text"> 断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#触发器"><span class="toc-number">4.3.</span> <span class="toc-text"> 触发器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据查询语句"><span class="toc-number">5.</span> <span class="toc-text"> 数据查询语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#连接"><span class="toc-number">5.1.</span> <span class="toc-text"> 连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#嵌套查询"><span class="toc-number">5.2.</span> <span class="toc-text"> 嵌套查询</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number">6.</span> <span class="toc-text"> 附录</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

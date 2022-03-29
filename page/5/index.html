@@ -119,7 +119,19 @@
 因为有段时间写SpringBoot被依赖给坑过，所以把Maven换源写在最前面。
 
 IDEA是会有默认的Maven工具的， 因此之前如果修改过Maven配置， 还需要在IDEA中指定具体使用的是哪一个MAVEN，使用哪一个配置文件。
-▲(Ctrl + Alt + S修改的是当前工程)， 如果需要对新工程进行修改， 则点击File-&gt;New Projects Setting ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2020/05/15/IDEA配置——自定义快捷键、生成注释/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/07/11/IDEA插件开发/">IDEA插件开发</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-07-11T07:50:42.000Z">2020-07-11</time><i class="fa fa-edit"></i><time datetime="2020-07-11T07:50:42.000Z">2021-09-22</time></div><div class="recent-post-content">
+▲(Ctrl + Alt + S修改的是当前工程)， 如果需要对新工程进行修改， 则点击File-&gt;New Projects Setting ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2020/05/15/IDEA配置——自定义快捷键、生成注释/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/15/重拾Java笔记/">重拾Java笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-15T02:22:04.000Z">2020-05-15</time><i class="fa fa-edit"></i><time datetime="2020-05-15T02:22:04.000Z">2021-12-01</time></div><div class="recent-post-content"> 重拾Java笔记
+
+工作主要用Java, 因此开始准备Java基础再补补。根据小猴子1024-JAVA基础整理笔记
+
+ 命名规范:
+
+没怎么写， 所以一直忘， 这次写在最前面， 便于翻阅。
+
+大驼峰命名（UpperCamelCase）：每个单词的第一个字母大写，其他字母小写。e.g.MyException
+小驼峰命名（lowerCamelCase）：如果仅有一个单词，那么所有字母全部小写，如果是两个及以上的单词组成的名称，那么除了第一个单词是全部小写外，其他都是的首字母大写，其他字母小写。e.g.getMyName
+
+1.1 包的命名
+包的命名由全部小写的单词组成。一般使用公司的域名的作为自 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a></div><div class="read-more"><a class="more" href="/2020/05/15/重拾Java笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/07/11/IDEA插件开发/">IDEA插件开发</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-07-11T07:50:42.000Z">2020-07-11</time><i class="fa fa-edit"></i><time datetime="2020-07-11T07:50:42.000Z">2021-09-22</time></div><div class="recent-post-content">
 目的是想将类方法和成员方法区分开来， 想设计这么一个插件
 
  新建IDEA 插件工程
@@ -253,24 +265,4 @@ ssh登陆不能在命令行中指定密码。sshpass的出现，解决了这一�
 sshpass允许用-p参数指定明文密码，然后直接登录远程服务器。(支持密码从命令行、文件、环境变量中读取)
 1.安装sudo apt install sshpass
 2.使用说明
-12345678910111213141516171819# -p 直接指定密码sshpass -p '123456' ssh user_name@host_ip# -f: -f filename #后跟保存密码的文件名，密码是文件内容 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/12/25/sshpass——shell脚本实现SSH连接其他主机并执行终端命令/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/12/树莓派初始化操作/">树莓派初始化操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-12T10:59:06.000Z">2019-12-12</time><i class="fa fa-edit"></i><time datetime="2019-12-12T10:59:06.000Z">2019-12-12</time></div><div class="recent-post-content">安装系统镜像:
-官网下载镜像，解压下载好的Zip文件会得到.img镜像文件。下载win32DiskImage
-方式:
-
-SSH
-VNC
-Xrdp
-
-系统设置:
-$ sudo raspi-reconfig
-1.安装字体
-
-默认安装的是英文字体，如果时区选择中文，将会乱码，因此需要安装中文字体进行汉化。
-
-sudo apt-get install ttf-wqy-zenhei
-2.安装中文输入发
-3.修改键盘布局
-
-键盘布局默认是英标的，需要将其改成美标
-
-输入sudo dpkg-reconfigure keyboard-configuration后选择通用的104键PC键盘(Generic 10 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/12/12/树莓派初始化操作/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/4/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+12345678910111213141516171819# -p 直接指定密码sshpass -p '123456' ssh user_name@host_ip# -f: -f filename #后跟保存密码的文件名，密码是文件内容 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/12/25/sshpass——shell脚本实现SSH连接其他主机并执行终端命令/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/4/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

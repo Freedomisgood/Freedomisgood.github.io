@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>NodeJS包管理工具 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">NodeJS包管理工具</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/12/08</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">988</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="包管理工具"><a class="markdownIt-Anchor" href="#包管理工具"></a> 包管理工具</h2>
+<ul>
+<li>npm
+<ul>
+<li><code>npm install &lt;package_name&gt; --dev</code></li>
+<li><code>npm init</code>然后根据交互信息创建工程</li>
+<li><code>npm install</code> 根据目录下<code>package.json</code>安装依赖</li>
+<li><code>npm run dev</code>执行package.json中定义的scripts.dev指令</li>
+</ul>
+</li>
+<li>yarn
+<ul>
+<li><code>yarn add &lt;package_name&gt; --dev</code></li>
+<li><code>yarn init</code>然后根据交互信息创建工程</li>
+<li><code>yarn</code> 根据目录下<code>package.json</code>安装依赖</li>
+<li><code>yarn run dev</code>执行package.json中定义的scripts.dev指令</li>
+</ul>
+</li>
+</ul>
+<p><strong>共同点</strong>：</p>
+<ul>
+<li>两个在init创建好后，都会生成一个配置文件package.json</li>
+<li>安装依赖后都会生成依赖管理文件夹：<code>node_module/</code></li>
+</ul>
+<p><strong>不同点</strong>：安装依赖后，npm生成的依赖管理文件为<code>package-lock.json</code>；yarn的为<code>package.lock</code></p>
+<h2 id="npm参数区别"><a class="markdownIt-Anchor" href="#npm参数区别"></a> npm参数区别</h2>
+<ul>
+<li>npm install moduleName 命令</li>
+</ul>
+<ol>
+<li>安装模块到项目node_modules目录下。</li>
+<li>不会将模块依赖写入devDependencies或dependencies 节点。</li>
+<li>运行 npm install 初始化项目时不会下载模块。</li>
+</ol>
+<ul>
+<li>npm install -g moduleName 命令</li>
+</ul>
+<ol>
+<li>安装模块到全局，不会在项目node_modules目录中保存模块包。</li>
+<li>不会将模块依赖写入devDependencies或dependencies 节点。</li>
+<li>运行 npm install 初始化项目时不会下载模块。</li>
+</ol>
+<ul>
+<li>npm install --save moduleName 命令</li>
+</ul>
+<ol>
+<li>安装模块到项目node_modules目录下。</li>
+<li>会将模块依赖写入dependencies 节点。</li>
+<li>运行 npm install 初始化项目时，会将模块下载到项目目录下。</li>
+<li>运行npm install --production或者注明NODE_ENV变量值为production时，会自动下载模块到node_modules目录中。</li>
+</ol>
+<ul>
+<li>npm install --save-dev moduleName 命令</li>
+</ul>
+<ol>
+<li>安装模块到项目node_modules目录下。</li>
+<li>会将模块依赖写入devDependencies 节点。</li>
+<li>运行 npm install 初始化项目时，会将模块下载到项目目录下。</li>
+<li>运行npm install --production或者注明NODE_ENV变量值为production时，不会自动下载模块到node_modules目录中。</li>
+</ol>
+<p>注： <code>npm install packageName --save</code>、<code>yarn add packageName --dev</code></p>
+<p><strong>npm 与 yarn 命令比较：</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>NPM</strong></th>
+<th><strong>YARN</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>npm init</td>
+<td>yarn init</td>
+<td>初始化某个项目</td>
+</tr>
+<tr>
+<td>npm install / link</td>
+<td>yarn install/link</td>
+<td>默认的安装依赖操作</td>
+</tr>
+<tr>
+<td>npm install taco --save</td>
+<td>yarn add taco</td>
+<td>安装某个依赖，并且默认保存到package</td>
+</tr>
+<tr>
+<td>npm uninstall taco --save</td>
+<td>yarn remove taco</td>
+<td>移除某个依赖项目</td>
+</tr>
+<tr>
+<td>npm install taco --save-dev</td>
+<td>yarn add taco --dev</td>
+<td>安装某个开发时依赖项目</td>
+</tr>
+<tr>
+<td>npm update taco --save</td>
+<td>yarn upgrade taco</td>
+<td>更新某个依赖项目</td>
+</tr>
+<tr>
+<td>npm install taco --global</td>
+<td>yarn global add taco</td>
+<td>安装某个全局依赖项目</td>
+</tr>
+<tr>
+<td>npm publish/login/logout</td>
+<td>yarn publish/login/logout</td>
+<td>发布/登录/登出，一系列NPM Registry操作</td>
+</tr>
+<tr>
+<td>npm run/test</td>
+<td>yarn run/test</td>
+<td>运行某个命令</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vue中public和assets文件夹"><a class="markdownIt-Anchor" href="#vue中public和assets文件夹"></a> Vue中public和assets文件夹</h2>
+<blockquote>
+<p>两者都是<a href="https://so.csdn.net/so/search?from=pc_blog_highlight&amp;q=vue" target="_blank" rel="noopener">vue</a>-cli3.0的放置静态资源的目录。</p>
+<p>public处于工程根目录下；assets处于根目录src下，即src/assets</p>
+</blockquote>
+<ul>
+<li>
+<p>public放<strong>不会改动的文件</strong>，这里面的内容可以使引用的，不是由自己编写的内容（即<strong>第三方的</strong>）。基本不会改动的内容（参考vue-cli2.x中的static）</p>
+</li>
+<li>
+<p>public/ 目录下的文件并<strong>不会被Webpack处理</strong>，它们会<u>直接被复制到最终的打包目录</u>（默认是dist/static）下，所以必须使用<strong>绝对路径</strong>引用这些文件。当然这个取决于你vue.config.js中publicPath的配置，默认的是/，（你可以自己去vue.config.js 中修改你的publicPath配置，建议不要修改。）</p>
+</li>
+<li>
+<p>assets放<strong>可能会变动的文件</strong>（自己的静态文件js、png，自己写的js文件等等可能需要改动的文件）</p>
+</li>
+<li>
+<p>assets目录中的文件<strong>会被webpack处理</strong>解析为模块依赖，只支持<strong>相对路径</strong>形式。</p>
+</li>
+</ul>
+<h2 id="nodejs版本管理工具nvm"><a class="markdownIt-Anchor" href="#nodejs版本管理工具nvm"></a> nodejs版本管理工具——nvm</h2>
+<blockquote>
+<p><a href="https://github.com/nvm-sh/nvm#installing-and-updating" target="_blank" rel="noopener">https://github.com/nvm-sh/nvm#installing-and-updating</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Step1</span></span><br><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash</span><br><span class="line"><span class="comment"># Step2</span></span><br><span class="line">~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>如果下载不下来，可以在windows上用dev-sidecar访问网页，然后ctrl+s保存发给服务器，再<code>./install.sh</code>运行，把仓库clone到<code>~/.nvm</code>下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2082  2021-12-08 00:05:30 nvm list</span><br><span class="line">2085  2021-12-08 00:06:36 nvm ls-remote</span><br><span class="line"><span class="comment"># 安装最新的LTS版本Nodejs</span></span><br><span class="line">2086  2021-12-08 00:07:13 nvm install --lts</span><br><span class="line">$ node -v</span><br><span class="line">$ nvm current</span><br><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
+<p>[nvm命令及解释](</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/12/08/NodeJS包管理工具/">https://nymrli.top/2021/12/08/NodeJS包管理工具/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/" title="创建Vue工程（包含Vue2和Vue3）"><span>< PreviousPost</span><br><span class="prevTitle">创建Vue工程（包含Vue2和Vue3）</span></a><a class="nextSlogan" href="/2021/12/07/Js-ShortCode/" title="Js-ShortCode"><span>NextPost ></span><br><span class="nextTitle">Js-ShortCode</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'NodeJS包管理工具',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#包管理工具"><span class="toc-number">1.</span> <span class="toc-text"> 包管理工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm参数区别"><span class="toc-number">2.</span> <span class="toc-text"> npm参数区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue中public和assets文件夹"><span class="toc-number">3.</span> <span class="toc-text"> Vue中public和assets文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nodejs版本管理工具nvm"><span class="toc-number">4.</span> <span class="toc-text"> nodejs版本管理工具——nvm</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

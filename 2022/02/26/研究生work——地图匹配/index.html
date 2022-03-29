@@ -1,0 +1,466 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>研究生work——地图匹配 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">研究生work——地图匹配</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/03/09</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">6,231</span> | Reading time: <span class="post-count">24</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="地图匹配"><a class="markdownIt-Anchor" href="#地图匹配"></a> 地图匹配</h1>
+<p>概念：</p>
+<blockquote>
+<ul>
+<li>地图匹配（Map-Matching）是将运营车辆的有序的GPS位置关联到电子地图的路网上，将GPS坐标下采样序列转换为数字路网坐标序列的过程；本质上是平面线段序列的模式匹配问题（ Alt等，2003）</li>
+<li>地图匹配是一种将原始GPS位置映射到路网上的路段的过程，以创建对车辆所走路线的估算。</li>
+</ul>
+</blockquote>
+<p>两个主要的地图匹配用例</p>
+<ul>
+<li>乘车结束时，计算驾驶员行进的距离，以计算票价。——路线图匹配(EORMM)</li>
+<li><strong>实时</strong> ，为ETA团队提供准确的位置并做出<strong>调度</strong>决策，并在rider应用程序上<strong>显示</strong>驾驶员的汽车。——实时地图匹配(RTMM)</li>
+</ul>
+<p>不同点在于，<em>实时地图匹配</em>的要求比较高，必须低延时，因此相比之下，<em>路线图匹配</em>对等待时间的要求不那么严格，并且可以使用乘车的全部历史记录</p>
+<h3 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考：</h3>
+<ul>
+<li>
+<p><a href="https://zhuanlan.zhihu.com/p/83039334" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/83039334</a></p>
+</li>
+<li>
+<p><a href="https://blog.csdn.net/weixin_26713521/article/details/108134220" target="_blank" rel="noopener">Lyft的地图匹配算法论文翻译</a></p>
+<ul>
+<li>
+<p>地图匹配算法的性能取决于<strong>道路网络数据</strong>的<strong>质量</strong></p>
+</li>
+<li>
+<p>解决问题的一种好的方法是使用<strong>状态空间模型</strong> 。 状态空间模型是时间序列模型，其中系统具有“隐藏”状态，这些状态无法直接观察到，但会引起可见的观察。 在这里，我们的隐藏状态是我们要估算的汽车在道路网络上的实际位置。 我们仅观察到隐藏状态的修改版本：观察值(原始位置数据)。 我们假设系统的状态以仅取决于当前状态的方式演化(马尔可夫假设)，并进一步定义了从隐藏状态到隐藏状态的转移密度和从隐藏状态到观察的密度。</p>
+<p>常用的地图匹配状态空间模型是离散状态<strong>隐马尔可夫模型</strong> (Newson＆Krumm [2]，DiDi的IJCAI-19教程[3]，Uber的Map Matching [4])。 在该系统中，我们通过查看路段上的最近点来生成候选对象，并使用<a href="https://en.wikipedia.org/wiki/Viterbi_algorithm" target="_blank" rel="noopener">维特比算法</a>查找最可能的隐藏状态序列。</p>
+<ul>
+<li>对于不同的建模选择和输入数据而言，它相对不灵活</li>
+<li>它缩放严重(O(N²)，其中N是每个状态下可能的候选数)</li>
+<li>它不能很好地应对高频观测(请参阅Newson＆Krumm [2])。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="http://qikan.cqvip.com/Qikan/Article/Detail?id=1000359922&amp;from=Qikan_Search_Index" target="_blank" rel="noopener">GPS定位与地图匹配方法研究</a></p>
+<ul>
+<li>地图匹配算法从原理上可以解释为两个独立的过程：（1）找到车辆当前行使的道路——确定候选路段（2）将当前GPS定位点投影到车辆行使的道路上——候选路段匹配规则
+<ul>
+<li>圆心拓展半径找到最近的路段（唯一）——构建第一条边的算法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>[1]苏洁, 周东方, 岳春生. GPS车辆导航中的实时地图匹配算法[J]. 测绘学报, 2001, 30(3):5.</p>
+<ul>
+<li>另外，为了提高算法的鲁棒性，对于误差引起 的速度异常，我们利用推测航位法和线性插值来 进行 GPS数据补偿，以消除部分GPS接收外部 粗差</li>
+</ul>
+</li>
+<li>
+<p>[1]李清泉, 黄练. 基于GPS轨迹数据的地图匹配算法[J]. 测绘学报, 2010(2):6.</p>
+<ul>
+<li>针对传统导航系统的地图匹配方法的研究较多。其中点到线的匹配由于缺乏对整体轨迹趋势的考虑，在复杂的道路网环境下的匹配易导致误匹配。也有方法使用DR、差分GPS等辅助设备，采用滤波、模糊逻辑、证据理论等方法提高地图匹配的准确率。GPS浮动车轨迹数据提供了整体曲线的变化趋势，可以采用全局整体匹配的思想，保证轨迹的完整性和准确性14？。基于曲线相似度的算法一般 较为复杂，但匹配精度高，利于轨迹的直接恢复，适合进行数据的后处理</li>
+<li>与整个轨迹相对 应的路径必然是连通 的路段集 ，可以基于道路拓扑与连通性设计地图匹配算法</li>
+<li>key：除了道路的几何连通性，实际行车还会受到交通规则的限制，本文基于道路网的行车限制信息提出了一种GPS浮动车轨迹数据的全局地图匹配算法，综合考虑备选路段的几何连通性与交通网络条件约束构建整体备选路径，然后使用<strong>改进的扫描线法</strong>判断全局轨迹曲线与备选路径的相似度，完成地图匹配 。
+<ul>
+<li>一句话概括算法：通过行车限制将候选线段找出来后，选择曲线相似度最高的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>[1]陈滨, 王平, 施文灶,等. GPS轨迹数据的综合地图匹配算法研究[J]. 电子科技, 2014, 27(12):4.</p>
+<ul>
+<li>从实际的匹配效果来看，此匹配算法在交叉路口等路段较复杂的地方可有较高地匹配准确率，但该方法依赖于前后GPS定位点匹配准确度，若前一定位点匹配错误就会出现连锁反应，从而导致后面一系列点匹配错误；且历史轨迹推算匹配法计算量较大，匹配速度较慢，不利于高速实时定位。因此，需和其他地图匹配方法相结合使用才能取得较好的匹配效果。</li>
+</ul>
+</li>
+<li>
+<p>智能交通系统中GPS地图匹配算法设计与实现_罗杰涛</p>
+<ul>
+<li>模糊逻辑： 效率高，实时性好，对绝大多数的路段状况都适用。不过在车俩拐弯处以及车速较慢的情况下匹配效果不尽如人意，且不同路段建模的系数凭靠经验值，没有相应的缺乏理论依据。——01、06、08论文</li>
+</ul>
+</li>
+<li>
+<p>高级地图匹配算法：研究现状和趋势[2021]</p>
+<ul>
+<li>
+<p>从实现技术或模型角度对近十年提出的算法进行分类，箭头标记算法间的继承关系。从图2可见，HMM模型是主流，其次是基于最大权重的模型.HMM-News-on、ST-Matching2 3IVMM3和HRIS8被引用对比最多，是具有开创性的工作。另外，从2019年开始，有研究采用深度学习技术来解决地图匹配问题。</p>
+<p><img src="/2022/02/26/研究生work——地图匹配/E:%5Chexo%5Csource_posts%5C%E7%A0%94%E7%A9%B6%E7%94%9Fwork%E2%80%94%E2%80%94%E5%9C%B0%E5%9B%BE%E5%8C%B9%E9%85%8D%5C09-20%E5%B9%B4%E5%9C%B0%E5%9B%BE%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B.jpg" alt="09-20年地图匹配算法发展历程"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="points"><a class="markdownIt-Anchor" href="#points"></a> Points:</h3>
+<ul>
+<li>
+<p>另外，一个重要的实际问题是，即使车辆定位精度可以保证在10米以内，当电子地图缩放到较大的比例尺时，也会<br>
+出现车辆偏离行使的道路而造成的视觉混乱现象.</p>
+</li>
+<li>
+<p>由于城区内地物特征复杂，受密集的高大建筑物、隧道、立交桥、树木等地物的反射和遮蔽等影响，车栽GPS接收机接收到的卫星信号存在严重的多径效应，在某些区域内甚至会形成GPS定位育区，解决GPS盲区问题，一种方法是采用航位推算法（DR-Dead Reckoning），这种方法需要将DR设备装在车辆前端，一般在GPS接收机卫星信号受阻时一样可以得到正确的用户位置，但这种方法需要附加设备。另一种方法是在记忆正确GPS位置信息的基础上在一段时间内预测车辆位置，这种方法的优点是易于实现，缺点是精度不够（没有，作者使用卡尔曼滤波进行位置预测，预测结果如图所示。在规则行进时，预测效果较好，见图3、图4.但是当车辆转弯时，效果很差，见图5、图6</p>
+</li>
+<li>
+<p>到折线的距离定义为点到折线上所有直线段的最短距离：点到线段的距离定义为如果点到直线段所在直线的投影在直线段上，则为垂线长度，否则为其到两个端点的最短距离。</p>
+</li>
+<li>
+<p>定位误差： GPS误差、电子地图库误差、坐标投影变换投影</p>
+</li>
+<li>
+<p>难点：</p>
+<ul>
+<li><a href="http://qikan.cqvip.com/Qikan/Article/ReadIndex?id=33650279&amp;info=X19Wa%2bQedw8TOqUh1eM7U0SrEn1nIM08tSny4w0YhPo%3d" target="_blank" rel="noopener">Y-junction问题</a>——点到线的匹配方式，没有考虑全局匹配</li>
+<li>平行双线路</li>
+</ul>
+</li>
+<li>
+<p>MapMatching实现的思路</p>
+<ul>
+<li><strong>离散点集匹配</strong>：相对简单，随机离散点没有形状和拓扑关系，用欧氏距离作吸附即可，典型应用如离散热力图。</li>
+<li><strong>曲线拟合</strong>： 实际中更有应用价值的是曲线拟合匹配关系，比如轨迹和路网，GPS序列和导航路的相似性。</li>
+</ul>
+</li>
+<li>
+<p>MapMatching算法的分类：</p>
+<p><strong>以使用到的信息来划分</strong></p>
+<p>现有的算法可被分成四类：几何、拓扑、概率、高级。</p>
+<p>a）基于几何的算法考虑GPS点与道路的几何信息，如距离、角度等；</p>
+<p>b）基于拓扑的算法使用道路拓扑信息来控制；</p>
+<p>c）概率方法通过考虑GPS点的概率；</p>
+<p>d）高级的算法往往综合考虑使用全面信息，有卡尔曼滤波、模糊逻辑模型、隐式马尔可夫模型等等。</p>
+<p><strong>2.2 以考虑采样点的范围来划分</strong></p>
+<p>根据考虑采样点的范围，可分成局部/增量算法、全局算法。</p>
+<p>a）局部/增量算法是贪婪算法，每次确定一个匹配点，下个点从已经确定的匹配点开始。这些方法根据距离和方向相似性来找到局部最优点或边。（在线匹配）</p>
+<p>b）全局算法是要从路网中找到一条与采样轨迹最接近的匹配轨迹。为了测量采样轨迹和匹配轨迹的相似性，大多数算法使用“Frechet距离”或者是“弱Frechet距离”。还有时空匹配算法、投票算法等。（离线匹配）</p>
+<p><strong>以采样点的频率来划分</strong></p>
+<p>根据轨迹数据的采样频率，现有的地图匹配算法可分成：</p>
+<p>a）高频采样算法（所有局部算法、部分全局算法如Frechet距离判别法等）</p>
+<p>b）低频采样算法（ST-matching算法、IVVM算法）</p>
+<p>一般认为30s及其以上为低频采样，1s～10s为高频采样。</p>
+<p><a href="https://www.cnblogs.com/LBSer/p/4612031.html#!comments" target="_blank" rel="noopener">https://www.cnblogs.com/LBSer/p/4612031.html#!comments</a></p>
+</li>
+<li>
+<p>智能交通系统中GPS地图匹配算法设计与实现</p>
+<p><img src="/2022/02/26/研究生work——地图匹配/E:%5Chexo%5Csource_posts%5C%E7%A0%94%E7%A9%B6%E7%94%9Fwork%E2%80%94%E2%80%94%E5%9C%B0%E5%9B%BE%E5%8C%B9%E9%85%8D%5C%E5%9C%B0%E5%9B%BE%E5%8C%B9%E9%85%8D%E7%BB%84%E4%BB%B6.jpg" alt="地图匹配组件"></p>
+</li>
+</ul>
+<h3 id="算法评估的标准"><a class="markdownIt-Anchor" href="#算法评估的标准"></a> 算法评估的标准</h3>
+<ul>
+<li>实时性</li>
+<li>可靠性(鲁棒性)</li>
+<li>匹配的精度</li>
+</ul>
+<h2 id="朴素算法"><a class="markdownIt-Anchor" href="#朴素算法"></a> 朴素算法：</h2>
+<p>快速匹配算法的执行步骤如下：</p>
+<ol>
+<li>步1接收GPS定位数据；</li>
+<li>步2判断定位数据是否无效，若无效，则根据历史定位数据进行推测匹配，然后转（8）；</li>
+<li>步3判断车辆当前是否处于停止或低速滑行状态，若是，对其作相应处理，然后转（8）；</li>
+<li>步4由车辆当前位置点计算其对应的候选网格，进而获取其中的路段；</li>
+<li>步5对步4得到的路段进行<strong>连接性拓扑检查</strong>，将通过拓扑检查的路段作为匹配候选路段；</li>
+<li>步6判断匹配候选路段数目，若唯一，则直接将其作为匹配路段，并由定位点向其作投影，然后转（8）；否则，计算所有候选路段的匹配度度量值f，（i=1,2，…，N），从中选出最大值fm和次大值fm；</li>
+<li>步7判断最大值fm和次大值fm之差是否大于阈值fh，且最大值fm是否大于阈值fh，如果大于，则将路段m作为匹配路段，并由定位点向其作投影；否则，暂不对本次定位结果进行匹配，待后面对其进行延时匹配处理；</li>
+<li>步8结束本次匹配</li>
+</ol>
+<p>from : <a href="https://wenku.baidu.com/view/14551bfcfab069dc50220144.html?fr=xueshu_top" target="_blank" rel="noopener">一种适于车辆导航系统的快速地图匹配算法</a>——2003</p>
+<h2 id="key"><a class="markdownIt-Anchor" href="#key"></a> Key:</h2>
+<ul>
+<li>
+<p>出行数据：采用GPS定位，那么是否是WGS-84数据，但是GIS部门的路网数据坐标是什么坐标系下的</p>
+</li>
+<li>
+<p>双线路：</p>
+</li>
+<li>
+<p>当下，现在很多用于MapMatching的方法，大多来自于推理、预测的数学方法，如隐马尔可夫链、贝叶斯模型、神经网络模型等，但在数据结构上的创新比较少，GIS算法，更多要在计算机的基础上，结合比如时空观念、数据特征、拓扑关系等对于GIS相关的基础理论</p>
+</li>
+</ul>
+<h2 id="软件"><a class="markdownIt-Anchor" href="#软件"></a> 软件</h2>
+<ul>
+<li>mapinfo: 当今世界上流行的桌面地理信息系统</li>
+<li>graphhopper: 路径规划库</li>
+<li>arcgis</li>
+<li>openstreetmap——开源地图，简称为OSM</li>
+</ul>
+<p>线要素的匹配，主要通过几何、拓扑或语义相似度来进行识别，其中通过空间距离来进行要素匹配的常用方式有：</p>
+<ul>
+<li>闵可夫斯基距离(Minkowski Distance)</li>
+<li>欧氏距离(Euclidean Distance)</li>
+<li>曼哈顿距离(Manhattan Distance)</li>
+<li>切比雪夫距离(Chebyshev Distance)</li>
+<li>汉明距离(Hamming distance)</li>
+<li>杰卡德相似系数(Jaccard similarity coefficient)</li>
+<li>豪斯多夫距离(Hausdorff Distance)</li>
+<li>弗雷歇距离(Fréchet距离)</li>
+</ul>
+<p>from：<a href="http://www.biaozhu.net/9224.html" target="_blank" rel="noopener">高德地图：地图数据处理之道路匹配篇</a></p>
+<h1 id="隐马尔科夫hmm"><a class="markdownIt-Anchor" href="#隐马尔科夫hmm"></a> 隐马尔科夫HMM</h1>
+<p><strong>HMM有三个典型(canonical)问题</strong>:</p>
+<ul>
+<li><strong>概率计算问题</strong>：已知模型参数，计算某一特定输出序列的概率.通常使用**<a href="http://en.wikipedia.org/wiki/Forward_algorithm" target="_blank" rel="noopener">Forward</a>算法**解决；</li>
+<li><strong>预测问题或者解码（decoding）问题</strong>：已知模型参数，寻找最可能的能产生某一特定输出序列的<strong>隐含状态</strong>的序列。通常使用**<a href="http://en.wikipedia.org/wiki/Viterbi_algorithm" target="_blank" rel="noopener">Viterbi</a>算法**解决；</li>
+<li><strong>学习问题</strong>：已知输出序列，寻找最可能的状态转移以及输出概率。通常使用**<a href="http://en.wikipedia.org/wiki/Baum-Welch_algorithm" target="_blank" rel="noopener">Baum-Welch</a>算法**。</li>
+</ul>
+<h2 id="hmm的几个重要元素"><a class="markdownIt-Anchor" href="#hmm的几个重要元素"></a> HMM的几个重要元素：</h2>
+<ul>
+<li>
+<p>π(startprob_): 隐藏状态初始向量</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>π</mi><mo>=</mo><mrow><mo fence="true">(</mo><msub><mi>π</mi><mi>i</mi></msub><mo fence="true">)</mo></mrow><mo>:</mo><msub><mi>π</mi><mi>i</mi></msub><mo>=</mo><mi>P</mi><mrow><mo fence="true">(</mo><msub><mi>q</mi><mn>1</mn></msub><mo>=</mo><mi>i</mi><mo fence="true">)</mo></mrow><mo separator="true">,</mo><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">\pi=\left(\pi_{i}\right): \pi_{i}=P\left(q_{1}=i\right), 1 \leq i \leq N
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">i</span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.79549em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span></span></p>
+</li>
+<li>
+<p>A(transmat_):  状态转移概率矩阵:</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>=</mo><msub><mrow><mo fence="true">[</mo><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo fence="true">]</mo></mrow><mrow><mi>N</mi><mo>×</mo><mi>N</mi></mrow></msub><mtext>, 其中 </mtext><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mi>P</mi><mrow><mo fence="true">(</mo><msub><mi>q</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>j</mi><mo>∣</mo><msub><mi>q</mi><mi>t</mi></msub><mo>=</mo><mi>i</mi><mo fence="true">)</mo></mrow><mo separator="true">,</mo><mn>1</mn><mo>≤</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>≤</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">A=\left[a_{i j}\right]_{N \times N} \text {, 其中 } a_{i j}=P\left(q_{t+1}=j \mid q_{t}=i\right), 1 \leq i, j \leq N
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.144139em;vertical-align:-0.394139em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;">[</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">]</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.14252299999999996em;"><span style="top:-2.364192em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span><span class="mbin mtight">×</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.394139em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord text"><span class="mord">, </span><span class="mord cjk_fallback">其中</span><span class="mord"> </span></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">i</span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span></span></p>
+</li>
+<li>
+<p>B(emissionprob_): 观测状态概率矩阵</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mo>=</mo><msub><mrow><mo fence="true">[</mo><msub><mi>b</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo><mo fence="true">]</mo></mrow><mrow><mi>N</mi><mo>×</mo><mi>M</mi></mrow></msub><mi mathvariant="normal">，</mi><mtext> 其中 </mtext><msub><mi>b</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo><mo>=</mo><mi>P</mi><mrow><mo fence="true">(</mo><msub><mi>o</mi><mi>t</mi></msub><mo>=</mo><msub><mi>o</mi><mi>k</mi></msub><mo>∣</mo><msub><mi>q</mi><mi>t</mi></msub><mo>=</mo><mi>j</mi><mo fence="true">)</mo></mrow><mo separator="true">,</mo><mn>1</mn><mo>≤</mo><mi>j</mi><mo>≤</mo><mi>N</mi><mo separator="true">,</mo><mn>1</mn><mo>≤</mo><mi>k</mi><mo>≤</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">B=\left[b_{j}(k)\right]_{N \times M} ， \text { 其中 } b_{j}(k)=P\left(o_{t}=o_{k} \mid q_{t}=j\right), 1 \leq j \leq N, 1 \leq k \leq M
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.144139em;vertical-align:-0.394139em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;">[</span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mclose delimcenter" style="top:0em;">]</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.14252299999999996em;"><span style="top:-2.364192em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span><span class="mbin mtight">×</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.394139em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">，</span><span class="mord text"><span class="mord"> </span><span class="mord cjk_fallback">其中</span><span class="mord"> </span></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83041em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span></span></p>
+</li>
+<li>
+<p>HMM的状态变量数目：N</p>
+</li>
+<li>
+<p>HMM的观察变量数目：M</p>
+</li>
+</ul>
+<p>如果观测序列是一维的，则观测状态的概率密度函数是一维的普通高斯分布。如果观测序列是N维的，则隐藏状态对应的观测状态的概率密度函数是N维高斯分布。高斯分布的概率密度函数参数可以用μμ表示高斯分布的期望向量，Σ表示高斯分布的协方差矩阵。在GaussianHMM类中，“means”用来表示各个隐藏状态对应的高斯分布期望向量μ形成的矩阵，而“covars”用来表示各个隐藏状态对应的高斯分布协方差矩阵Σ形成的三维张量。</p>
+<p>from :<a href="https://www.cnblogs.com/pinard/p/7001397.html" target="_blank" rel="noopener">用hmmlearn学习隐马尔科夫模型HMM</a></p>
+<h2 id="mapmatching与hmm"><a class="markdownIt-Anchor" href="#mapmatching与hmm"></a> MapMatching与Hmm</h2>
+<ul>
+<li>观察变量：从GPS设备中得到的位置信息（经度，纬度）</li>
+<li>隐藏状态：拥有GPS设备的物体（车，人等）实际所在的位置路段。</li>
+<li>观测概率：例如，现测的GPS点离旁边路段上的位置越近，那么这个真实点在这个路段上的概率越大状态。</li>
+<li>状态转移概率：例如，前后两个真实的位置点的距离越近，那么状态转移的概率越大</li>
+</ul>
+<p>在下面相关论文工作中会说明在这几篇论文中其实只用到了预测问题的<a href="http://en.wikipedia.org/wiki/Viterbi_algorithm" target="_blank" rel="noopener">Viterbi</a>算法,下面也会另开一小节具体描述下<a href="http://en.wikipedia.org/wiki/Viterbi_algorithm" target="_blank" rel="noopener">Viterbi</a>算法。</p>
+<p><strong>Map-Matching的两个变量</strong>：</p>
+<ul>
+<li>从GPS设备中得到的位置信息（经度，纬度）：HMM中观察变量；</li>
+<li>拥有GPS设备的物体（车，人等）实际所在的位置：HMM中的隐藏状态变量，实际地图是不知道GPS设备的准确位置的。</li>
+</ul>
+<p>这样就把Map-Matching问题与HMM结合起来了。三个问题在Map-Matching中有用的是两个问题：（1）预测问题；（2）学习问题。</p>
+<p>在论文中，定义的规则要满足人的直观上的感觉，即人的先验知识，主要有以下两种：</p>
+<ul>
+<li>观测概率：观测的GPS点离旁边路段上的位置越近，那么这个真实点在这个路段上的概率越大。</li>
+<li>状态转移概率：这里有两种解决思路：（1）前后两个真实的位置点的距离越近，那么状态转移的概率越大；或者（2）真实路段上的前后两个点的距离与GPS观测的前后两个点的距离越接近，状态转移概率越大。</li>
+</ul>
+<p>from: <a href="https://www.cnblogs.com/mindpuzzle/p/3653043.html" target="_blank" rel="noopener">基于隐马尔科夫模型(HMM)的地图匹配(Map-Matching)算法</a></p>
+<h3 id="barefoot"><a class="markdownIt-Anchor" href="#barefoot"></a> <a href="https://github.com/bmwcarit/barefoot/wiki#stand-alone-servers" target="_blank" rel="noopener">barefoot</a></h3>
+<ul>
+<li>观测概率: 测量位置与其真实位置之间的距离，用于对测量误差进行建模，测量误差用具有一些标准偏差<em>σ</em>的高斯分布来描述（默认为<em>σ = 5 米</em>）。</li>
+<li>转移概率: 用各个位置测量之间的路由距离和视线距离的差异来量化的。转移概率呈负指数分布，速率参数<em>λ</em>（默认为<em>λ = 0.1</em>）是均值的倒数</li>
+</ul>
+<p>==&gt;</p>
+<ul>
+<li>
+<p><em><strong>序列概率</strong></em>： 定义<em>p(s 0 … s t |z 0 … z t )<em>为最可能的序列到达匹配候选</em>s t</em>的概率，称为 s t 的序列概率， 可以通过递归确定</p>
+</li>
+<li>
+<p><em><strong>过滤概率</strong></em>：我们的 HMM 滤波器确定对象当前位置的估计值<em>s̅ t</em>，它是最可能匹配的候选对象<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>s</mi><mi>t</mi></msub><mo>∈</mo><msub><mi>S</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">s_t ∈ S_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 给定测量值<code>z0 ... zt</code>，其定义为：<code>s̅t = argmax(st ∈ St) p(st|z0 ... zt)</code>, <code>p(st|z0 ... zt)</code>称为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>s</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">s_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的过滤概率***，可以递归确定：</p>
+<p><code>p(st|z0...zt) = p(st|zt) · Σ(st-1 ∈ St-1) p(st|st-1) · p(st-1|z0 ... zt-1)</code>。</p>
+</li>
+</ul>
+<p>from: <a href="https://github.com/bmwcarit/barefoot/wiki#stand-alone-servers" target="_blank" rel="noopener">https://github.com/bmwcarit/barefoot/wiki#stand-alone-servers</a></p>
+<h2 id="coding"><a class="markdownIt-Anchor" href="#coding"></a> Coding</h2>
+<blockquote>
+<p>在之前的<a href="http://www.cnblogs.com/pinard/p/6945257.html" target="_blank" rel="noopener">HMM系列</a>中，我们对隐马尔科夫模型HMM的原理以及三个问题的求解方法做了总结。本文我们就从实践的角度用Python的<a href="https://hmmlearn.readthedocs.io/en/latest/api.html#hmmlearn-hmm" target="_blank" rel="noopener">hmmlearn</a>库来学习HMM的使用。sklearn库中将HMM弃用了，新开了一个<code>hmmlearn</code>的新库，安装命令为：<code>pip install hmmlearn</code>，关于hmmlearn的更多资料在<a href="http://hmmlearn.readthedocs.io/" target="_blank" rel="noopener">官方文档</a>有介绍。</p>
+</blockquote>
+<p>hmmlearn实现了三种HMM模型类，按照观测状态是连续状态还是离散状态，可以分为两类。</p>
+<ol>
+<li>GaussianHMM 观测状态连续型且符合高斯分布</li>
+<li>GMMHMM 观测状态连续型且符合混合高斯分布</li>
+<li>MultinomialHMM 观测状态离散型</li>
+</ol>
+<p><strong>HMM主要解决的三个问题</strong><br>
+假设隐藏状态序列和观测状态序列分别使用Z和X表示，则解决的3个问题可表示为:<br>
+1.解码问题：已知模型参数和X，估计最可能的Z；维特比算法<br>
+2.概率问题：已知模型参数和X，估计X出现的概率；向前-向后算法<br>
+3.学习问题：仅给出X和隐藏层个数，估计模型参数。 B-W算法，通常是经过一定数量的训练以后，得到模型，然后解决问题1和2。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">Created on 2017-12-4</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">解码问题：本例为天气和行为的关系</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="comment"># hmmlearn可以在安装numpy以后，再使用pip install hmmlearn安装</span></span><br><span class="line"><span class="keyword">from</span> hmmlearn <span class="keyword">import</span> hmm</span><br><span class="line"></span><br><span class="line">states = [<span class="string">"Rainy"</span>, <span class="string">"Sunny"</span>]<span class="comment">##隐藏状态</span></span><br><span class="line">n_states = len(states)<span class="comment">##隐藏状态长度</span></span><br><span class="line"></span><br><span class="line">observations = [<span class="string">"walk"</span>, <span class="string">"shop"</span>, <span class="string">"clean"</span>]<span class="comment">##可观察的状态</span></span><br><span class="line">n_observations = len(observations)<span class="comment">##可观察序列的长度</span></span><br><span class="line"></span><br><span class="line">start_probability = np.array([<span class="number">0.6</span>, <span class="number">0.4</span>])<span class="comment">##开始转移概率，即开始是Rainy和Sunny的概率</span></span><br><span class="line"><span class="comment">##隐藏间天气转移混淆矩阵，即Rainy和Sunny之间的转换关系，例如[0,0]表示今天Rainy，明天Rainy的概率</span></span><br><span class="line">transition_probability = np.array([</span><br><span class="line">  [<span class="number">0.7</span>, <span class="number">0.3</span>],</span><br><span class="line">  [<span class="number">0.4</span>, <span class="number">0.6</span>]</span><br><span class="line">])</span><br><span class="line"><span class="comment">##隐藏状态天气和可视行为混淆矩阵，例如[0,0]表示今天Rainy，walk行为的概率为0.1</span></span><br><span class="line">emission_probability = np.array([</span><br><span class="line">  [<span class="number">0.1</span>, <span class="number">0.4</span>, <span class="number">0.5</span>],</span><br><span class="line">  [<span class="number">0.6</span>, <span class="number">0.3</span>, <span class="number">0.1</span>]</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment">#构建了一个MultinomialHMM模型，这模型包括开始的转移概率，隐藏间天气转换混淆矩阵（transmat），隐藏状态天气和可视行为混淆矩阵emissionprob，对模型参数初始化</span></span><br><span class="line">model = hmm.MultinomialHMM(n_components=n_states)</span><br><span class="line">model.startprob_= start_probability</span><br><span class="line">model.transmat_ = transition_probability</span><br><span class="line">model.emissionprob_ = emission_probability</span><br><span class="line"></span><br><span class="line"><span class="comment">#给出一个可见序列</span></span><br><span class="line">bob_Actions = np.array([[<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>]]).T</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解决问题1,解码问题,已知模型参数和X，估计最可能的Z； 维特比算法 </span></span><br><span class="line">logprob, weathers = model.decode(bob_Actions, algorithm=<span class="string">"viterbi"</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Bob Actions:"</span>, <span class="string">", "</span>.join(map(<span class="keyword">lambda</span> x: observations[x], bob_Actions))</span><br><span class="line"><span class="keyword">print</span> <span class="string">"weathers:"</span>, <span class="string">", "</span>.join(map(<span class="keyword">lambda</span> x: states[x], weathers))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">解码问题： 盒子</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> hmmlearn <span class="keyword">import</span> hmm</span><br><span class="line"></span><br><span class="line">states = [<span class="string">"box 1"</span>, <span class="string">"box 2"</span>, <span class="string">"box3"</span>]</span><br><span class="line">n_states = len(states)</span><br><span class="line"></span><br><span class="line">observations = [<span class="string">"red"</span>, <span class="string">"white"</span>]</span><br><span class="line">n_observations = len(observations)</span><br><span class="line"></span><br><span class="line">start_probability = np.array([<span class="number">0.2</span>, <span class="number">0.4</span>, <span class="number">0.4</span>])</span><br><span class="line"></span><br><span class="line">transition_probability = np.array([</span><br><span class="line">  [<span class="number">0.5</span>, <span class="number">0.2</span>, <span class="number">0.3</span>],</span><br><span class="line">  [<span class="number">0.3</span>, <span class="number">0.5</span>, <span class="number">0.2</span>],</span><br><span class="line">  [<span class="number">0.2</span>, <span class="number">0.3</span>, <span class="number">0.5</span>]</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">emission_probability = np.array([</span><br><span class="line">  [<span class="number">0.5</span>, <span class="number">0.5</span>],</span><br><span class="line">  [<span class="number">0.4</span>, <span class="number">0.6</span>],</span><br><span class="line">  [<span class="number">0.7</span>, <span class="number">0.3</span>]</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">model = hmm.MultinomialHMM(n_components=n_states)</span><br><span class="line">model.startprob_=start_probability</span><br><span class="line">model.transmat_=transition_probability</span><br><span class="line">model.emissionprob_=emission_probability</span><br><span class="line"></span><br><span class="line">seen = np.array([[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>]]).T</span><br><span class="line">logprob, box = model.decode(seen, algorithm=<span class="string">"viterbi"</span>)</span><br><span class="line">print(<span class="string">"The ball picked:"</span>, <span class="string">", "</span>.join(map(<span class="keyword">lambda</span> x: observations[x], seen)))</span><br><span class="line">print(<span class="string">"The hidden box"</span>, <span class="string">", "</span>.join(map(<span class="keyword">lambda</span> x: states[x], box)))</span><br><span class="line">(<span class="string">'The ball picked:'</span>, <span class="string">'red, white, red'</span>)</span><br><span class="line">(<span class="string">'The hidden box'</span>, <span class="string">'box3, box3, box3'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="限制"><a class="markdownIt-Anchor" href="#限制"></a> 限制</h2>
+<ul>
+<li>对于不同的建模选择和输入数据而言，它相对不灵活</li>
+<li>它缩放严重(O(N²)，其中N是每个状态下可能的候选数)</li>
+<li>它不能很好地应对高频观测(请参阅Newson＆Krumm [2])。</li>
+</ul>
+<p>基于(无味)卡尔曼滤波器的新模型——<a href="https://blog.csdn.net/weixin_26713521/article/details/108134220" target="_blank" rel="noopener">https://blog.csdn.net/weixin_26713521/article/details/108134220</a></p>
+<h1 id="help-code"><a class="markdownIt-Anchor" href="#help-code"></a> help Code:</h1>
+<ul>
+<li><a href="https://github.com/bmwcarit/barefoot" target="_blank" rel="noopener">https://github.com/bmwcarit/barefoot</a></li>
+<li><a href="https://github.com/oldrev/mapmatchingkit" target="_blank" rel="noopener">https://github.com/oldrev/mapmatchingkit</a></li>
+</ul>
+<h1 id="网络文章"><a class="markdownIt-Anchor" href="#网络文章"></a> 网络文章</h1>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_42599077/article/details/114801735" target="_blank" rel="noopener">地图匹配实例-几何匹配</a>——效果图</li>
+<li><a href="https://blog.csdn.net/weixin_26713521/article/details/108134220" target="_blank" rel="noopener">定位匹配 模板匹配 地图_什么是地图匹配？</a></li>
+<li><a href="https://blog.csdn.net/Feng512275/article/details/96199675?spm=1001.2014.3001.5502" target="_blank" rel="noopener">出租车轨迹点地图匹配研究</a></li>
+<li><a href="https://blog.csdn.net/yixianfeng41/article/details/73010792" target="_blank" rel="noopener">地图匹配小结</a></li>
+<li><a href="https://www.cnblogs.com/mindpuzzle/p/3653043.html" target="_blank" rel="noopener">基于隐马尔科夫模型(HMM)的地图匹配(Map-Matching)算法</a></li>
+</ul>
+<h1 id="工作安排"><a class="markdownIt-Anchor" href="#工作安排"></a> 工作安排</h1>
+<p>你的工作主要完成什么（概括说明就行），分为那几步，每一步完成什么（概括说明就行），每一步的工作量（预计完成这步工作需要多少个小时），每一步工作预计在什么时候完成（比如 3.5）</p>
+<ul>
+<li>工作包含：地图匹配，将车辆的有序GPS位置数据关联到电子地图的路网上，将GPS坐标下采样序列转换为数字路网路径序列的过程。工作内容：解析过滤点并进行坐标转换-&gt;点过滤(点稀疏)-&gt;地图匹配算法-&gt;点映射</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>预估时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查阅地图匹配算法相关的论文-&gt;找到解决方案(16小时)</td>
+<td>2022年2月28日</td>
+</tr>
+<tr>
+<td>学习隐马尔科夫模型相关理论知识 (6小时)</td>
+<td>2022年3月2日</td>
+</tr>
+<tr>
+<td>找寻隐马尔科夫模型资料、代码(8小时)——barefoot、graphhopper</td>
+<td>2022年3月4日</td>
+</tr>
+<tr>
+<td>熟悉项目中有关地图对象的代码（4小时）</td>
+<td>2022年3月5日</td>
+</tr>
+<tr>
+<td>移植隐马尔科夫模型到项目中，目前参考：开源<a href="https://github.com/bmwcarit/barefoot/wiki#stand-alone-servers" target="_blank" rel="noopener">barefoot</a>实现：熟悉代码(16小时)、坐标转换（3小时）、输入输出数据格式改造(10小时)、适配类(56小时)、效果检验（10小时）</td>
+<td>2022年3月20日</td>
+</tr>
+<tr>
+<td>点过滤（24小时）: 栅格化（16小时） + 双队列（8小时）</td>
+<td>2022年3月24日</td>
+</tr>
+<tr>
+<td>点映射（6小时）</td>
+<td>2022年3月25日</td>
+</tr>
+</tbody>
+</table>
+<h1 id="库"><a class="markdownIt-Anchor" href="#库"></a> 库：</h1>
+<ul>
+<li><a href="https://developers.arcgis.com/javascript/latest/api-reference/esri-geometry-geometryEngine.html" target="_blank" rel="noopener">geometryEngine</a></li>
+<li>net.sf.geographiclib</li>
+<li>com.esri.core.geometry——QuadTree</li>
+<li>graphhopper——org.locationtech.jts.geom  ==&gt; Envelope --&gt; findCandidateSnapsInBBox</li>
+</ul>
+<hr>
+<h1 id="简单版实现思路"><a class="markdownIt-Anchor" href="#简单版实现思路"></a> 简单版实现思路</h1>
+<ol>
+<li>找到起始点O和终点D，以两点为半径画圆，把所有范围内的NormalEdge全部加入List（只要起始点or终止点有一个在范围内）</li>
+<li>确定第一条===&gt; 找离第一个GPS点最近的边</li>
+<li>likelyRoute.forEach从上一条的lowerNormalEdge中(保证拓扑可达连接)，从中选择得分最高（距离和方向）的边作为后续边 。  如果没有lowerNormalEdge（如果所有剩余的点都能映射到最后的这条边上，则认为是终点，此时不在意死路）， 平常如果是死路，则放弃这条序列路径。TODO：没有后续路径时是否要考虑增加可能边集？</li>
+<li>到达终点边结束</li>
+<li>从likelyRoute中选择得分最高的路径</li>
+</ol>
+<p>用到的结构：</p>
+<ul>
+<li><code>likelyRoute: list[list]</code>, 存放多条可能</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/02/26/研究生work——地图匹配/">https://nymrli.top/2022/02/26/研究生work——地图匹配/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/02/27/深入学习使用Spring/" title="深入学习使用Spring"><span>< PreviousPost</span><br><span class="prevTitle">深入学习使用Spring</span></a><a class="nextSlogan" href="/2022/02/25/私有Gitlab配置SSH连接/" title="私有Gitlab配置SSH连接"><span>NextPost ></span><br><span class="nextTitle">私有Gitlab配置SSH连接</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '研究生work——地图匹配',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#地图匹配"><span class="toc-number">1.</span> <span class="toc-text"> 地图匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 参考：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#points"><span class="toc-number">1.0.2.</span> <span class="toc-text"> Points:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法评估的标准"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 算法评估的标准</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#朴素算法"><span class="toc-number">1.1.</span> <span class="toc-text"> 朴素算法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#key"><span class="toc-number">1.2.</span> <span class="toc-text"> Key:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件"><span class="toc-number">1.3.</span> <span class="toc-text"> 软件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#隐马尔科夫hmm"><span class="toc-number">2.</span> <span class="toc-text"> 隐马尔科夫HMM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hmm的几个重要元素"><span class="toc-number">2.1.</span> <span class="toc-text"> HMM的几个重要元素：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mapmatching与hmm"><span class="toc-number">2.2.</span> <span class="toc-text"> MapMatching与Hmm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#barefoot"><span class="toc-number">2.2.1.</span> <span class="toc-text"> barefoot</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#coding"><span class="toc-number">2.3.</span> <span class="toc-text"> Coding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#限制"><span class="toc-number">2.4.</span> <span class="toc-text"> 限制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#help-code"><span class="toc-number">3.</span> <span class="toc-text"> help Code:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络文章"><span class="toc-number">4.</span> <span class="toc-text"> 网络文章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#工作安排"><span class="toc-number">5.</span> <span class="toc-text"> 工作安排</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#库"><span class="toc-number">6.</span> <span class="toc-text"> 库：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单版实现思路"><span class="toc-number">7.</span> <span class="toc-text"> 简单版实现思路</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

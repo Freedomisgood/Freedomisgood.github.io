@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>私有Gitlab配置SSH连接 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">私有Gitlab配置SSH连接</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/02/25</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">768</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
+<p>SSH连接并不是像<a href="https://so.csdn.net/so/search?q=http&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener">http</a>连接一样，输入用户名和密码就可以了。SSH连接需要一些额外的配置</p>
+</blockquote>
+<h1 id="生成ssh秘钥和公钥"><a class="markdownIt-Anchor" href="#生成ssh秘钥和公钥"></a> 生成SSH秘钥和公钥</h1>
+<h2 id="查询有效邮箱"><a class="markdownIt-Anchor" href="#查询有效邮箱"></a> 查询有效邮箱</h2>
+<p>首先要确定使用的邮箱，是不是自己认为的邮箱，比如我以为是<code>chenli@sucsoft.com</code>结果，却发现是<code>399-chenli@sucsoft.com</code>，那么按照自认为的邮箱申请的keys那自然不会work。——一般情况不会有歧义邮箱出现，但我这边确实跟想的不太一样</p>
+<h3 id="查询方法一新建项目"><a class="markdownIt-Anchor" href="#查询方法一新建项目"></a> 查询方法(一)——新建项目</h3>
+<p>创建空的仓库，提示中提及的邮箱就是有效邮箱</p>
+<p><img src="/2022/02/25/私有Gitlab配置SSH连接/gitlab-ssh.jpg" alt="gitlab-ssh"></p>
+<h3 id="查询方法二个人preference"><a class="markdownIt-Anchor" href="#查询方法二个人preference"></a> 查询方法(二)——个人Preference</h3>
+<ol>
+<li>打开<code>User Settings-&gt;Profile</code>，其中有<code>Email</code>、<code>public email</code>和<code>commit email</code>三个邮箱，其中跟我们开发命令比较有关的就是这个Commit Email，之前我的默认是<code>399-chenli@sucsoft.com</code>，这边要设置自己想要的，比如<code>chenli@sucsoft.com</code></li>
+</ol>
+<p><img src="/2022/02/25/私有Gitlab配置SSH连接/email_settings.jpg" alt="email_settings"></p>
+<p>▲选择完成后，滑到最下面选择Update profile settings</p>
+<ol start="2">
+<li>打开<code>User Settings-&gt;Emails</code>可以看到，<code>chenli@sucsoft@sucsoft.com</code>的标签中有commit email，即设置成功</li>
+</ol>
+<p><img src="/2022/02/25/私有Gitlab配置SSH连接/preference_email.jpg" alt="preference_email"></p>
+<h2 id="gitlab设置公钥"><a class="markdownIt-Anchor" href="#gitlab设置公钥"></a> Gitlab设置公钥</h2>
+<p>确保邮箱是有效的后就可以生成秘钥了。</p>
+<ol>
+<li>设置git信息</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 设置git信息</span></span><br><span class="line">git config --global user.name <span class="string">"chenli"</span></span><br><span class="line">git config --global user.email <span class="string">"chenli@sucsoft.com"</span></span><br><span class="line"><span class="comment"># 2. 生成秘钥和公钥</span></span><br><span class="line">$ ssh-keygen -t rsa -C chenli@sucsoft.com</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/c/Users/mrli/.ssh/id_rsa):</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> /c/Users/mrli/.ssh/id_rsa</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /c/Users/mrli/.ssh/id_rsa.pub</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:zKPeKkm0bNzDqZcHUEDcvvDqPG2znRqDrD30yoBb8MM chenli@sucsoft.com</span><br><span class="line">The key<span class="string">'s randomart image is:</span></span><br><span class="line"><span class="string">+---[RSA 3072]----+</span></span><br><span class="line"><span class="string">|   ooo           |</span></span><br><span class="line"><span class="string">|    . o          |</span></span><br><span class="line"><span class="string">|     o           |</span></span><br><span class="line"><span class="string">|    + .o         |</span></span><br><span class="line"><span class="string">|.  + B oS        |</span></span><br><span class="line"><span class="string">| = .B.O. .       |</span></span><br><span class="line"><span class="string">|. E+o*++         |</span></span><br><span class="line"><span class="string">| o BB.B=..       |</span></span><br><span class="line"><span class="string">|. ..*B=*+        |</span></span><br><span class="line"><span class="string">+----[SHA256]-----+</span></span><br></pre></td></tr></table></figure>
+<p>根据命令输出结果可以看到，生成的结果在<code>C:\Users\mrli\.ssh</code>路径下，有<code>id_rsa</code>、<code>id_rsa.pub</code>，其中<code>id_rsa.pub</code>为公钥。</p>
+<ol start="2">
+<li>
+<p>将SSH公钥添加到GitHub账户</p>
+<ol>
+<li>复制文件路径内.pub后缀里的内容</li>
+<li>进入SSH Keys的设置页面（登录GitHub，在右上角头像点击设置）</li>
+</ol>
+<p><img src="/2022/02/25/私有Gitlab配置SSH连接/add_ssh.jpg" alt="add_ssh"></p>
+<ol start="3">
+<li>粘贴后，Title会自动提取生成，点击<code>Add key</code>则完成添加</li>
+</ol>
+</li>
+</ol>
+<h2 id="测试"><a class="markdownIt-Anchor" href="#测试"></a> 测试</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@gitlab.sucsoft.com</span><br><span class="line">Welcome to GitLab, @chenli!</span><br></pre></td></tr></table></figure>
+<h1 id="more"><a class="markdownIt-Anchor" href="#more"></a> More</h1>
+<h2 id="配置多个git信息"><a class="markdownIt-Anchor" href="#配置多个git信息"></a> 配置多个Git信息</h2>
+<ol>
+<li>将默认的<code>id_rsa</code>和<code>id_rsa.pub</code>改成指定的如<code>id_rsa_sucsoft.pub</code></li>
+<li><code>.ssh/</code>路径下添加<code>config</code>配置文件，对应填写</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Host github.com                 </span><br><span class="line">    HostName github.com</span><br><span class="line">    IdentityFile C:\\Users\\mrli\\.ssh\\id_rsa_github</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    User Freedomisgood</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Host gitlab.sucsoft.com</span><br><span class="line">    HostName gitlab.sucsoft.com</span><br><span class="line">    IdentityFile C:\\Users\\mrli\\.ssh\\id_rsa_sucsoft</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    User chenli</span><br></pre></td></tr></table></figure>
+<p>注意：Host后写的就是<code>ssh -T git@gitlab.sucsoft.com</code>中@后面的内容，如果写的是<code>sucsoft</code>，则写成<code>ssh -T git@sucsoft</code>，但是这样其实跟Gitlab页面中直接提供的不一样: <code>git@gitlab.sucsoft.com:suc-frame/xxxx.git</code>，所以最好还是规范的写<code>gitlab.sucsoft.com</code></p>
+<p>★配置完成后最终文件夹中的内容：</p>
+<p><img src="/2022/02/25/私有Gitlab配置SSH连接/more-1.jpg" alt="more-1"></p>
+<p>注： known_host是自动生成的，如果第一次SSH连接网站，则会将host添加到这个文件中</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/02/25/私有Gitlab配置SSH连接/">https://nymrli.top/2022/02/25/私有Gitlab配置SSH连接/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/02/26/研究生work——地图匹配/" title="研究生work——地图匹配"><span>< PreviousPost</span><br><span class="prevTitle">研究生work——地图匹配</span></a><a class="nextSlogan" href="/2022/02/22/protoc的使用/" title="Golang protoc的使用"><span>NextPost ></span><br><span class="nextTitle">Golang protoc的使用</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '私有Gitlab配置SSH连接',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#生成ssh秘钥和公钥"><span class="toc-number">1.</span> <span class="toc-text"> 生成SSH秘钥和公钥</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#查询有效邮箱"><span class="toc-number">1.1.</span> <span class="toc-text"> 查询有效邮箱</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询方法一新建项目"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 查询方法(一)——新建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询方法二个人preference"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 查询方法(二)——个人Preference</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitlab设置公钥"><span class="toc-number">1.2.</span> <span class="toc-text"> Gitlab设置公钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">1.3.</span> <span class="toc-text"> 测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#more"><span class="toc-number">2.</span> <span class="toc-text"> More</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置多个git信息"><span class="toc-number">2.1.</span> <span class="toc-text"> 配置多个Git信息</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

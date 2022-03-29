@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Python进阶 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Python进阶</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/03/28</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,550</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="setattr"><a class="markdownIt-Anchor" href="#setattr"></a> setattr</h2>
+<p><strong>setattr()</strong> 函数对应函数 <a href="https://www.runoob.com/python/python-func-getattr.html" target="_blank" rel="noopener">getattr()</a>，用于设置属性值，该属性不一定是存在的。如果属性不存在会创建一个新的对象属性，并对属性进行赋值。</p>
+<p>setattr() 语法：<code>setattr(object, name, value)</code></p>
+<h2 id="getattr"><a class="markdownIt-Anchor" href="#getattr"></a> getattr()</h2>
+<p><strong>getattr()</strong> 函数用于返回一个对象<strong>属性值</strong>。<code>getattr(object, name[, default])</code></p>
+<ul>
+<li>object – 对象。</li>
+<li>name – 字符串，对象属性。</li>
+<li>default – 默认返回值，如果不提供该参数，在没有对应属性时，将触发 <u>AttributeError</u>。</li>
+</ul>
+<h2 id="__get____getattr____getattribute__"><a class="markdownIt-Anchor" href="#__get____getattr____getattribute__"></a> <a href="https://www.cnblogs.com/pyhai/p/9243551.html" target="_blank" rel="noopener"><code>__get__,__getattr__,__getattribute__</code>及区别</a></h2>
+<h3 id="1object__getattribute__self-name"><a class="markdownIt-Anchor" href="#1object__getattribute__self-name"></a> <strong>1.<code>object.__getattribute__(self, name)</code></strong></h3>
+<p>无条件被调用，通过实例访问属性、函数（点和getattr函数都会触发）。如果class中定义了<code>__getattribute__()</code>和<code>__getattr__()</code>，则只有在显式调用或引发AttributeError异常才会调用<code>__getattr__()</code></p>
+<p>注：</p>
+<ul>
+<li>只要定义了<code>__getattribute__</code>方法，不管你访问一个存在的还是不存在的属性，都由这个方法返回，比如访问<code>t.a</code>，虽然a存在，但是只要定义了这个访问，那么就不是访问最开始的a了</li>
+<li>如果<code>__getattribute__</code>抛出了<code>AttributeError</code>异常，并且定了了<code><strong>getattr</strong></code>函数，那么会调用<code><strong>getattr</strong></code>这个函数并返回getattr函数的返回值</li>
+<li>属性访问的一个大致优先级是：<code>__getattribute__</code> &gt; <code>__getattr__</code> &gt; <code>__dict__</code></li>
+</ul>
+<h3 id="2object__getattr__self-name"><a class="markdownIt-Anchor" href="#2object__getattr__self-name"></a> <strong>2.<code>object.__getattr__(self, name)</code></strong></h3>
+<p>为内置方法，当使用点号获取实例属性时，如果<u>属性不存在</u>(找不到attribute)的时候，会调用<code>__getattr__</code>，返回一个值或AttributeError异常。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">p</span><span class="params">()</span>:</span></span><br><span class="line">    s = <span class="number">2</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello"</span></span><br><span class="line">d = p()</span><br><span class="line">print(d.s)	<span class="comment"># ==&gt; 2</span></span><br><span class="line">print(d.p)  <span class="comment"># ==&gt; hello</span></span><br></pre></td></tr></table></figure>
+<p>注：如果属性不存在，则不管是否有<code>__getattribute__</code>，都会调用<code>__getattr__</code></p>
+<h3 id="3object__get__self-instance-owner"><a class="markdownIt-Anchor" href="#3object__get__self-instance-owner"></a> <strong>3.<code>object.__get__(self, instance, owner)</code></strong></h3>
+<blockquote>
+<p>方法的第一个参数是实际拥有者的实例，如果没有则为<code>None</code>，第二个参数是实际所属的类。</p>
+</blockquote>
+<p>一个类只要实现了<code>__get__、 __set__,__delete__</code>中任意一个方法，我们就可以叫它描述器（descriptor）。如果只定义了<code>__get__</code>我们叫非资料描述器（non-data descriptor），如果<code>__set__、 __delete__</code>：任意一个或者同时出现，叫资料描述器（data descriptor）。</p>
+<p>首先明确一点，拥有这个方法的类，应该（也可以说是必须）产生一个实例，并且这个实例是另外一个类的<strong>类属性</strong>（注意一定是类属性，通过self的方式产生就不属于<code>__get__</code>范畴了）。<br>
+也就是说拥有这个方法的类，那么它的实例应该属于另外一个类/对象的一个属性。直接看代码吧：</p>
+<p>owner是所有者的类，instance是访问descriptor的实例，如果不是通过实例访问，而是通过类访问的话，instance则为None。（descriptor的实例自己访问自己是不会触发<code>__get__</code>，而会触发<code>__call__</code>，只有descriptor作为其它类的属性才有意义。）（所以下文的d是作为C2的一个属性被调用）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestDes</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner)</span>:</span></span><br><span class="line">        print(instance, owner)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'TestDes:__get__'</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestMain</span>:</span></span><br><span class="line">    des = TestDes()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    t = TestMain()</span><br><span class="line">    print(t.des)</span><br><span class="line">    print(TestMain.des)</span><br><span class="line"><span class="comment"># 其中TestDes定义了__get__方法，在TestMain中，定义了一个类属性des，是TestDes的一个实例，我们访问t.des或者TestMain.des的时候访问的就是访问了TestDes的__get__方法。</span></span><br></pre></td></tr></table></figure>
+<p>至于区别，首先关注：a.x时发生了什么?=&gt;属性的lookup顺序如下:</p>
+<ul>
+<li>如果重载了<code>__getattribute__</code>,则调用.</li>
+<li><code>a.__dict__</code>, 实例中是不允许有descriptor的,所以不会遇到descriptor</li>
+<li><code>A.__dict__</code>, 也即<code>a.__class__.__dict__</code>.如果遇到了descriptor,优先调用descriptor.</li>
+<li>沿着继承链搜索父类.搜索<code>a.__class__.__bases__</code>中的所有<code>__dict__</code>. 如果有多重继承且是菱形继承的情况,按MRO(Method Resolution Order)顺序搜索.</li>
+</ul>
+<p>针对描述器的说明： 描述器是被<code>__getattribute__</code>调用的，如果重写了这个方法，将会阻止自动调用描述器，资料描述器总是覆盖了实例的<code>__dict__</code>， 非资料描述器可能覆盖实例的<code>__dict__</code>。</p>
+<p>小结：访问存在的属性，如果是描述器，描述器生效</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestDes</span>:</span></span><br><span class="line">    <span class="comment"># 方法的第一个参数是实际拥有者的实例，如果没有则为None，第二个参数是实际所属的类。</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner)</span>:</span></span><br><span class="line">        print(instance, owner)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'TestDes:__get__'</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestMain</span>:</span></span><br><span class="line">    des = TestDes()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    t = TestMain()</span><br><span class="line">    print(t.des)</span><br><span class="line">    print(TestMain.des)	<span class="comment"># 调用时instance输出None</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>非资料描述器，也就是只有<code>__get__</code>，不管是类还是实例去访问，默认都获得的是<code>__get__</code>的返回值，但是，如果中间有任何一次重新赋值<code>(t.des = 1)</code>，那么，这个实例获得的是新的值(对象)，已经和原来的描述器完全脱离了关系(描述器<code>__get__</code>函数失效)</li>
+<li>资料描述器，比如有<code>__set__</code>方法，后期通过实例对描述器进行赋值，那么访问的是<code>__set__</code>，并且永远关联起来==&gt;针对上述问题的修复。但是如果通过修改类属性的方式复制(TestMain.des = 1)，那么也会被重新获取新的值(对象)，即<code>__set__</code>函数失效。</li>
+</ul>
+<p><strong>总结：</strong></p>
+<ul>
+<li>可以看出，每次通过实例访问属性，都会经过<code>__getattribute__</code>函数。而当属性不存在时，仍然需要访问<code>__getattribute__</code>，不过接着要访问<code>__getattr__</code>，就好像是一个异常处理函数。</li>
+<li>每次访问descriptor（即实现了<code>__get__</code>的类），都会先经过<code>__get__</code>函数。</li>
+<li>需要注意的是，当使用类访问不存在的变量是，不会经过<code>__getattr__</code>函数。而descriptor不存在此问题，只是把instance标识为none而已。</li>
+</ul>
+<p>参考：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/andy1031/p/10923834.html" target="_blank" rel="noopener">python的__get__方法看这一篇就足够了</a></li>
+<li>more：<a href="https://www.cnblogs.com/Meanwey/p/9898222.html" target="_blank" rel="noopener">Python进阶-----描述符(<strong>get</strong>(),<strong>set</strong>(),<strong>delete</strong>())</a></li>
+</ul>
+<h2 id="__dict__"><a class="markdownIt-Anchor" href="#__dict__"></a> <code>__dict__</code></h2>
+<blockquote>
+<p>Python中大多以对象的形式存在，而对象的属性则是存在<code>__dict__</code>属性中</p>
+</blockquote>
+<ul>
+<li>类的静态函数、类函数、普通函数、全局变量以及一些内置的属性都是放在**类<code>__dict__</code>**里的</li>
+<li><strong>对象</strong>的<code>__dict__</code>中存储了一些self.xxx的一些东西</li>
+</ul>
+<p>注意</p>
+<ul>
+<li>内置的数据类型没有<code>__dict__</code>属性，如list、dict、int</li>
+<li>每个类有自己的<code>__dict__</code>属性，就算存着继承关系，父类的<code>__dict__</code> 并不会影响子类的<code>__dict__</code></li>
+<li>对象也有自己的<code>__dict__</code>属性， <a href="http://xn--self-p07f497c.xxx" target="_blank" rel="noopener">存储self.xxx</a> 信息，父子类对象公用<code>__dict__</code></li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/03/27/Python进阶/">https://nymrli.top/2022/03/27/Python进阶/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/03/29/开源项目代码阅读记录/" title="开源项目代码阅读记录"><span>< PreviousPost</span><br><span class="prevTitle">开源项目代码阅读记录</span></a><a class="nextSlogan" href="/2022/03/23/JS逆向-webpack打包网站实战/" title="JS逆向-webpack打包网站实战"><span>NextPost ></span><br><span class="nextTitle">JS逆向-webpack打包网站实战</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Python进阶',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#setattr"><span class="toc-number">1.</span> <span class="toc-text"> setattr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#getattr"><span class="toc-number">2.</span> <span class="toc-text"> getattr()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#__get____getattr____getattribute__"><span class="toc-number">3.</span> <span class="toc-text"> __get__,__getattr__,__getattribute__及区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1object__getattribute__self-name"><span class="toc-number">3.1.</span> <span class="toc-text"> 1.object.__getattribute__(self, name)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2object__getattr__self-name"><span class="toc-number">3.2.</span> <span class="toc-text"> 2.object.__getattr__(self, name)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3object__get__self-instance-owner"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.object.__get__(self, instance, owner)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#__dict__"><span class="toc-number">4.</span> <span class="toc-text"> __dict__</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

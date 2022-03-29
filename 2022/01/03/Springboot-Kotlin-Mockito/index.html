@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Springboot-Kotlin-Mockito · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Springboot-Kotlin-Mockito</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/01/03</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,373</span> | Reading time: <span class="post-count">6</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><p>初识 Mockito 这个测试框架后，我们要使用 Mock 的属性创建一个被测试类实例时，大概会下面这么纯手工来打造。</p>
+<p>手工过程见: <a href="https://www.jianshu.com/p/bb705a56f620" target="_blank" rel="noopener">https://www.jianshu.com/p/bb705a56f620</a></p>
+<p>如果所有的 Mock 对象全部通过手工来创建，那就不容易体现出 Mockito 的优越性出来。因此对于被测试对象的创建，Mock 属性的注入应该让 @Mock 和 @InjectMocks这两个注解大显身手了。</p>
+<h2 id="mockito能力"><a class="markdownIt-Anchor" href="#mockito能力"></a> Mockito能力</h2>
+<ul>
+<li>@Mock：对函数的调用均执行mock（即虚假函数），不执行真正部分。</li>
+<li>@Spy：对函数的调用均执行真正部分。</li>
+<li>@InjectMocks：创建一个实例，其余用@Mock（或@Spy）注解创建的mock将被注入到用该实例中。</li>
+</ul>
+<p>@Autowird 方式是基于Springboot框架启动的自动注入。在单元测试中，如果没有启动 spring 框架，此时就需要通过 @ InjectMocks完成依赖注入： @InjectMocks会将带有@Spy 和@Mock 注解的对象尝试注入到被 测试的目标类中。记住下面这两句话即可：</p>
+<ul>
+<li>Usually when you are unit testing, you shouldn’t initialize Spring context. So remove Autowiring.</li>
+<li>Usually when you do integration testing, you should use real dependencies. So remove mocking.</li>
+</ul>
+<p>这边也解释了，<code>@RunWith(MockitoJUnitRunner::class)</code>的含义，其实是给下面Mockito注入的成员提供一个运行环境，为什么不直接使用<code>@SpringBootTest</code>的原因主要还是启动太多，运行太重的考虑。那什么时候得用<code>@SpringBootTest</code>呢？——最简单的情况，即要注入controller又要注入service，同时需要<code>@mock</code>存储层的repository，由于controller和service都需要标注<code>@InjectMocks</code>, 但<strong>InjectMocks字段是无法注入其他InjectMocks字段的</strong>。所以我们可以考虑使用Spring来做容器管理。</p>
+<h2 id="mock和mockbean区别"><a class="markdownIt-Anchor" href="#mock和mockbean区别"></a> <code>@Mock</code>和<code>@MockBean</code>区别</h2>
+<p><strong>MockBean</strong>的介绍：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在做单元测试时，如果想要 mock UserRepository 的逻辑，只需要声明一个变量并在上面加上 @MockBean 的注释即可，</span><br><span class="line">之后使用 when().thenReturn() 来设定 mock UserRepository 的行为。</span><br><span class="line">在运行时 SpringBoot 会扫描到你注释的 mock ，并自动装配到被测试的 controller 里面。</span><br><span class="line">这也是和 @Mock 注释不同的地方，后者只能生成一个 Mock 类，但是并不能自动装配到其它类里面。</span><br></pre></td></tr></table></figure>
+<p>因此，<code>@Mock</code>方便来做单元测试，<code>@MockBean</code>大多用来做有依赖关系的集成测试</p>
+<h2 id="vertify"><a class="markdownIt-Anchor" href="#vertify"></a> vertify</h2>
+<blockquote>
+<p>验证行为是否发生</p>
+</blockquote>
+<p><strong>verify方法用于验证 mock bean 的方法调用，要求必须是mock对象</strong></p>
+<ul>
+<li><code>Mockito . *verify* (mockBean ).someMethod();</code>表示：someMethod方法调用了一次，相当于times(1)</li>
+<li><code>Mockito . *verify* (mock Bean, Mockito.times(n) ).someMethod();</code>表示：someMethod方法调用了n次</li>
+<li><code>Mockito . *verify* (mock Bean, Mockito.never() ).someMethod();</code>表示：someMethod方法未执行</li>
+<li><code>Mockito . *verify* (mock Bean, Mockito. atLeastOnce() ).someMethod();</code>表示：someMethod方法至少执行过一次,相当于atLeast(1)</li>
+</ul>
+<p><strong>需要注意的：</strong><code>Mockito.*verify* (mock Bean, Mockito.only() ).someMethod();</code>表示： <strong>仅有someMethod方法执行，且只有一次，不能有其他方法执行</strong></p>
+<p>more: <a href="https://www.jianshu.com/p/0e6a868b9da0" target="_blank" rel="noopener">https://www.jianshu.com/p/0e6a868b9da0</a></p>
+<h2 id="常用的-mockito-方法"><a class="markdownIt-Anchor" href="#常用的-mockito-方法"></a> 常用的 Mockito 方法：</h2>
+<p>Mockito的使用，一般有以下几种组合：参考链接</p>
+<p>do/when：包括doThrow(…).when(…)/doReturn(…).when(…)/doAnswer(…).when(…)<br>
+given/will：包括given(…).willReturn(…)/given(…).willAnswer(…)<br>
+when/then: 包括when(…).thenReturn(…)/when(…).thenAnswer(…)</p>
+<table>
+<thead>
+<tr>
+<th><strong>方法名</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mockito.mock(classToMock)</td>
+<td>模拟对象</td>
+</tr>
+<tr>
+<td>Mockito.verify(mock)</td>
+<td>验证行为是否发生</td>
+</tr>
+<tr>
+<td>Mockito.when(methodCall).thenReturn(value1).thenReturn(value2)</td>
+<td>触发时第一次返回value1，第n次都返回value2</td>
+</tr>
+<tr>
+<td>Mockito.doThrow(toBeThrown).when(mock).[method]</td>
+<td>模拟抛出异常。</td>
+</tr>
+<tr>
+<td>Mockito.mock(classToMock,defaultAnswer)</td>
+<td>使用默认Answer模拟对象</td>
+</tr>
+<tr>
+<td>Mockito.when(methodCall).thenReturn(value)</td>
+<td>参数匹配</td>
+</tr>
+<tr>
+<td>Mockito.doReturn(toBeReturned).when(mock).[method]</td>
+<td>参数匹配（直接执行不判断）</td>
+</tr>
+<tr>
+<td>Mockito.when(methodCall).thenAnswer(answer))</td>
+<td>预期回调接口生成期望值</td>
+</tr>
+<tr>
+<td>Mockito.doAnswer(answer).when(methodCall).[method]</td>
+<td>预期回调接口生成期望值（直接执行不判断）</td>
+</tr>
+<tr>
+<td>Mockito.spy(Object)</td>
+<td>用spy监控真实对象,设置真实对象行为</td>
+</tr>
+<tr>
+<td>Mockito.doNothing().when(mock).[method]</td>
+<td>不做任何返回</td>
+</tr>
+<tr>
+<td>Mockito.doCallRealMethod().when(mock).[method] <a href="//xn--Mockito-lr4ko4ay553a.when">//等价于Mockito.when</a>(mock.[method]).thenCallRealMethod();</td>
+<td>调用真实的方法</td>
+</tr>
+<tr>
+<td>reset(mock)</td>
+<td>重置mock</td>
+</tr>
+</tbody>
+</table>
+<h2 id="matchers"><a class="markdownIt-Anchor" href="#matchers"></a> Matchers</h2>
+<ul>
+<li>
+<p>匹配任意参数</p>
+</li>
+<li>
+<p><code>Mockito.anyInt()</code> 任何 int 值 ；</p>
+</li>
+<li>
+<p><code>Mockito.anyLong()</code> 任何 long 值 ；</p>
+</li>
+<li>
+<p><code>Mockito.anyString()</code> 任何 String 值 ；</p>
+</li>
+<li>
+<p><code>Mockito.any(XXX.class)</code> 任何 XXX 类型的值 等等。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">with_unspecified_arguments</span><span class="params">()</span></span>&#123;</span><br><span class="line">    List list = Mockito.mock(List.class);</span><br><span class="line">    <span class="comment">//匹配任意参数</span></span><br><span class="line">    Mockito.when(list.get(Mockito.anyInt())).thenReturn(<span class="number">1</span>);</span><br><span class="line">    Mockito.when(list.contains(Mockito.argThat(<span class="keyword">new</span> IsValid()))).thenReturn(<span class="keyword">true</span>);</span><br><span class="line">    Assert.assertEquals(<span class="number">1</span>,list.get(<span class="number">1</span>));</span><br><span class="line">    Assert.assertEquals(<span class="number">1</span>,list.get(<span class="number">999</span>));</span><br><span class="line">    Assert.assertTrue(list.contains(<span class="number">1</span>));</span><br><span class="line">    Assert.assertTrue(!list.contains(<span class="number">3</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IsValid</span> <span class="keyword">extends</span> <span class="title">ArgumentMatcher</span>&lt;<span class="title">List</span>&gt;</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> obj.equals(<span class="number">1</span>) || obj.equals(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>More：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数名</th>
+<th style="text-align:left">匹配类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">any()</td>
+<td style="text-align:left">所有对象类型</td>
+</tr>
+<tr>
+<td style="text-align:left">anyInt()</td>
+<td style="text-align:left">基本类型 int、非 null 的 Integer 类型</td>
+</tr>
+<tr>
+<td style="text-align:left">anyChar()</td>
+<td style="text-align:left">基本类型 char、非 null 的 Character 类型</td>
+</tr>
+<tr>
+<td style="text-align:left">anyShort()</td>
+<td style="text-align:left">基本类型 short、非 null 的 Short 类型</td>
+</tr>
+<tr>
+<td style="text-align:left">anyBoolean()</td>
+<td style="text-align:left">基本类型 boolean、非 null 的 Boolean 类型</td>
+</tr>
+<tr>
+<td style="text-align:left">anyDouble()</td>
+<td style="text-align:left">基本类型 double、非 null 的 Double 类型</td>
+</tr>
+<tr>
+<td style="text-align:left">anyFloat()</td>
+<td style="text-align:left">基本类型 float、非 null 的 Float 类型</td>
+</tr>
+<tr>
+<td style="text-align:left">anyLong()</td>
+<td style="text-align:left">基本类型 long、非 null 的 Long 类型</td>
+</tr>
+<tr>
+<td style="text-align:left">anyByte()</td>
+<td style="text-align:left">基本类型 byte、非 null 的 Byte 类型</td>
+</tr>
+<tr>
+<td style="text-align:left">anyString()</td>
+<td style="text-align:left">String 类型(不能是 null)</td>
+</tr>
+<tr>
+<td style="text-align:left">anyList()</td>
+<td style="text-align:left">List<t> 类型(不能是 null)</t></td>
+</tr>
+<tr>
+<td style="text-align:left">anyMap()</td>
+<td style="text-align:left">Map&lt;K, V&gt;类型(不能是 null)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<h2 id="junit中的基本注解"><a class="markdownIt-Anchor" href="#junit中的基本注解"></a> Junit中的基本注解：</h2>
+<p>@Test：使用该注解标注的public void方法会表示为一个测试方法；<br>
+@BeforeClass：表示在类中的任意public static void方法执行之前执行；<br>
+@AfterClass：表示在类中的任意public static void方法之后执行；<br>
+@Before：表示在任意使用@Test注解标注的public void方法执行之前执行；<br>
+@After：表示在任意使用@Test注解标注的public void方法执行之后执行；</p>
+<p>demo：</p>
+<ul>
+<li><a href="https://github.com/enesacikoglu/SpringBootKotlinApi/blob/master/src/test/kotlin/com/cengenes/kotlin/api/service/HotelServiceManagerTest.kt" target="_blank" rel="noopener">https://github.com/enesacikoglu/SpringBootKotlinApi/blob/master/src/test/kotlin/com/cengenes/kotlin/api/service/HotelServiceManagerTest.kt</a></li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/01/03/Springboot-Kotlin-Mockito/">https://nymrli.top/2022/01/03/Springboot-Kotlin-Mockito/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/01/26/语义化的版本控制/" title="语义化的版本控制"><span>< PreviousPost</span><br><span class="prevTitle">语义化的版本控制</span></a><a class="nextSlogan" href="/2021/12/30/理解SpringBoot注解s/" title="理解SpringBoot注解s"><span>NextPost ></span><br><span class="nextTitle">理解SpringBoot注解s</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Springboot-Kotlin-Mockito',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mockito能力"><span class="toc-number">1.</span> <span class="toc-text"> Mockito能力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mock和mockbean区别"><span class="toc-number">2.</span> <span class="toc-text"> @Mock和@MockBean区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vertify"><span class="toc-number">3.</span> <span class="toc-text"> vertify</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用的-mockito-方法"><span class="toc-number">4.</span> <span class="toc-text"> 常用的 Mockito 方法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#matchers"><span class="toc-number">5.</span> <span class="toc-text"> Matchers</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number"></span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#junit中的基本注解"><span class="toc-number">1.</span> <span class="toc-text"> Junit中的基本注解：</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

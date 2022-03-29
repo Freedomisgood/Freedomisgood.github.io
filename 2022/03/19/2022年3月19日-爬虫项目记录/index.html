@@ -1,0 +1,421 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>2022年3月19~20日-爬虫项目记录 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">2022年3月19~20日-爬虫项目记录</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/03/21</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">6,975</span> | Reading time: <span class="post-count">29</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="2022年3月20日公告存网站页面到数据库"><a class="markdownIt-Anchor" href="#2022年3月20日公告存网站页面到数据库"></a> 2022年3月20日——公告存网站页面到数据库</h1>
+<h2 id="文件存储"><a class="markdownIt-Anchor" href="#文件存储"></a> 文件存储</h2>
+<ol>
+<li>文件夹不允许出现<code>/\:*?|&lt;&gt;&quot;</code></li>
+<li>a标签中href不能有, 因为通过etree.tostring会被转义成%5C===&gt;进行了str.replace(&quot;\&quot;, “/”)</li>
+<li>windows下路径分隔符是<code>\\</code>, 所以save_path中会有<code>\\</code>, 因此使用<code>save_path.replace(&quot;\\&quot;, &quot;/&quot;)</code>可以解决</li>
+<li>多级创建文件夹<code>os.makedirs()</code>、单层创建<code>os.mkdir()</code><br>
+5文件名称问题: 乱码太长报错, 将其取a标签中内容解决</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 乱码太长报错</span></span><br><span class="line">s = <span class="string">".\\attaches\\11963218-2021年09月22日华能能源交通产业控股有限公司集团物资供应中心（甘肃区域）07月份集中物资供应--八零三电厂阀门询价采购（包093）询价书询价公告\\������������������������������������������07������������������������--���������������������������������������093���.wps"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(s, <span class="string">"wb"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">b"ggg"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="数据库表"><a class="markdownIt-Anchor" href="#数据库表"></a> 数据库表</h2>
+<p><strong>varchar能存多少汉字、数字？</strong></p>
+<p>具体还是要看版本的，一个字符占用3个字节  ，一个汉字（包括数字）占用3个字节=一个字符</p>
+<ul>
+<li><strong>4.0版本以下</strong>，varchar(100)，指的是<strong>100字节</strong>，如果存放UTF8汉字时，只能存33个（每个汉字3字节）</li>
+<li><strong>5.0版本以上</strong>**，varchar(100)，指的是<strong>100字符</strong>，⭐️无论存放的是数字、字母还是UTF8汉字（每个汉字3字节），都可以存放100个。</li>
+<li><strong>UTF8编码中一个汉字（包括数字）占用3个字节</strong></li>
+<li><em>GBK编码中一个汉字（包括数字）占用2个字节</em>*</li>
+</ul>
+<p><strong>varchar的最大长度是多少呢？</strong></p>
+<p>mysql的vachar字段的类型虽然最大长度是65535，但是并不是能存这么多数据，最大可以到65533，其中需要1到2个字节来存储数据长度（如果列声明的长度超过255，则使用两个字节来存储长度，否则1个）字节，当不允许非空字段的时候（因为要用一个字节来存储不可为空的标识），当允许非空字段的时候只能到65532(省下了存储非空的那个字节)。</p>
+<h3 id="mysql字段类型存储需要多少字节"><a class="markdownIt-Anchor" href="#mysql字段类型存储需要多少字节"></a> mysql字段类型存储需要多少字节？</h3>
+<p><strong>数字类型</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">列类型</th>
+<th style="text-align:left">需要的存储量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">TINYINT</td>
+<td style="text-align:left">1 字节</td>
+</tr>
+<tr>
+<td style="text-align:left">SMALLINT</td>
+<td style="text-align:left">2 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMINT</td>
+<td style="text-align:left">3 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">INT</td>
+<td style="text-align:left">4 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">INTEGER</td>
+<td style="text-align:left">4 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">BIGINT</td>
+<td style="text-align:left">8 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">FLOAT(X)</td>
+<td style="text-align:left">4 如果 X &lt; = 24 或 8 如果 25 &lt; = X &lt; = 53</td>
+</tr>
+<tr>
+<td style="text-align:left">FLOAT</td>
+<td style="text-align:left">4 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">DOUBLE</td>
+<td style="text-align:left">8 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">DOUBLE PRECISION</td>
+<td style="text-align:left">8 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">REAL</td>
+<td style="text-align:left">8 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">DECIMAL(M,D)</td>
+<td style="text-align:left">M字节(D+2 , 如果M &lt; D)</td>
+</tr>
+<tr>
+<td style="text-align:left">NUMERIC(M,D)</td>
+<td style="text-align:left">M字节(D+2 , 如果M &lt; D)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>日期和时间类型</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">列类型</th>
+<th style="text-align:left">需要的存储量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">DATE</td>
+<td style="text-align:left">3 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">DATETIME</td>
+<td style="text-align:left">8 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">TIMESTAMP</td>
+<td style="text-align:left">4 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">TIME</td>
+<td style="text-align:left">3 个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">YEAR</td>
+<td style="text-align:left">1 字节</td>
+</tr>
+</tbody>
+</table>
+<p><strong>串类型</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">列类型</th>
+<th style="text-align:left">需要的存储量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CHAR(M)</td>
+<td style="text-align:left">M字节，1 &lt;= M &lt;= 255</td>
+</tr>
+<tr>
+<td style="text-align:left">VARCHAR(M)</td>
+<td style="text-align:left">L+1 字节, 在此L &lt;= M和1 &lt;= M &lt;= 255</td>
+</tr>
+<tr>
+<td style="text-align:left">TINYBLOB, TINYTEXT</td>
+<td style="text-align:left">L+1 字节, 在此L&lt; 2 ^ 8</td>
+</tr>
+<tr>
+<td style="text-align:left">BLOB, TEXT</td>
+<td style="text-align:left">L+2 字节, 在此L&lt; 2 ^ 16</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMBLOB, MEDIUMTEXT</td>
+<td style="text-align:left">L+3 字节, 在此L&lt; 2 ^ 24</td>
+</tr>
+<tr>
+<td style="text-align:left">LONGBLOB, LONGTEXT</td>
+<td style="text-align:left">L+4 字节, 在此L&lt; 2 ^ 32</td>
+</tr>
+<tr>
+<td style="text-align:left">ENUM(‘value1’,‘value2’,…)</td>
+<td style="text-align:left">1 或 2 个字节, 取决于枚举值的数目(最大值65535）</td>
+</tr>
+<tr>
+<td style="text-align:left">SET(‘value1’,‘value2’,…)</td>
+<td style="text-align:left">1，2，3，4或8个字节, 取决于集合成员的数量(最多64个成员）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mysql中类型后面的数字含义"><a class="markdownIt-Anchor" href="#mysql中类型后面的数字含义"></a> <a href="https://www.itdaan.com/blog/2019/04/08/7762d501e9d5c7cc0316743eaaab6b54.html" target="_blank" rel="noopener">MySQL中类型后面的数字含义</a></h3>
+<p>形式：类型(m)</p>
+<ol>
+<li>整数型的<strong>数值类型</strong>已经<strong>限制了取值范围</strong>，有符号整型和无符号整型都有，而M值并不代表可以存储的数值字符长度，它代表的是<strong>数据在显示时显示的最小长度</strong>，当存储的字符长度超过M值时，没有任何的影响，只要不超过数值类型限制的范围。当存储的字符长度小于M值时，<u>只有在设置了zerofill用0来填充，才能够看到效果，换句话就是说，没有zerofill，M值就是无用的</u>。</li>
+<li>字符型如varchar(50) 可以储存50个字符，表示的是可变不定长的。</li>
+</ol>
+<h3 id="mysql默认字符集"><a class="markdownIt-Anchor" href="#mysql默认字符集"></a> mySQL默认字符集</h3>
+<blockquote>
+<p>MySQL对于字符集的指定可以细化到一个数据库，一张表，一列，应该用什么字符集。 但是，传统的程序在创建数据库和数据表时并没有使用那么复杂的配置，它们用的是默认的配置，那么，默认的配置从何而来呢？</p>
+</blockquote>
+<ol>
+<li>编译MySQL 时，指定了一个默认的字符集，这个字符集是 latin1；</li>
+<li>安装MySQL 时，可以在配置文件 (my.ini) 中指定一个默认的的字符集，如果没指定，这个值继承自编译时指定的；</li>
+<li>启动mysqld 时，可以在命令行参数中指定一个默认的的字符集，如果没指定，这个值继承自配置文件中的配置,此时 character_set_server 被设定为这个默认的字符集；</li>
+<li>当创建一个新的数据库时，除非明确指定，这个数据库的字符集被缺省设定为character_set_server；</li>
+<li>当选定了一个数据库时，character_set_database被设定为这个数据库默认的字符集；</li>
+<li>在这个数据库里创建一张表时，表默认的字符集被设定为 character_set_database，也就是这个数据库默认的字符集；</li>
+<li>当在表内设置一栏时，除非明确指定，否则此栏缺省的字符集就是表默认的字符集；</li>
+</ol>
+<h3 id="最终createsql文件"><a class="markdownIt-Anchor" href="#最终createsql文件"></a> 最终create.sql文件</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">NAMES</span> utf8mb4;</span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">EXISTS</span>  <span class="string">`huaneng`</span> ;</span><br><span class="line"><span class="keyword">use</span> <span class="string">`huaneng`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for quotation_inone</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`quotation_inone`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`quotation_inone`</span>  (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`title`</span> <span class="built_in">varchar</span>(<span class="number">128</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`date`</span> <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`content`</span> LONGTEXT <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">   <span class="string">`proclamation_url`</span> <span class="built_in">VARCHAR</span>(<span class="number">512</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">UNIQUE</span> <span class="keyword">INDEX</span> (<span class="string">`proclamation_url`</span>),</span><br><span class="line"></span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>) <span class="keyword">USING</span> BTREE</span><br><span class="line">) <span class="keyword">ENGINE</span> = <span class="keyword">InnoDB</span> AUTO_INCREMENT = <span class="number">1</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> = utf8mb4_general_ci ROW_FORMAT = Dynamic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="2022年3月20日-护士题目下载存word"><a class="markdownIt-Anchor" href="#2022年3月20日-护士题目下载存word"></a> 2022年3月20日-护士题目下载存Word</h1>
+<h3 id="索引报错"><a class="markdownIt-Anchor" href="#索引报错"></a> 索引报错</h3>
+<ul>
+<li>MySQL 添加索引报错：<code>BLOB/TEXT column used in key specification without a key length</code>
+<ol>
+<li>当我们对一个名称为platform的字段，类型为 text 添加unique唯一性约束和索引约束时，会报错。 原因：MySQL只能将BLOB/TEXT类型字段设置索引数据的前N个字符，因此，只需要通过sql在增加索引时指定对应字段的长度即可，如：<br>
+<code>ALTER TABLE hello_world ADD INDEX key1(platform(250), platform2(250), type);</code>, 其中，platform 和 platform2 就是 text 类型的数据
+<ul>
+<li>more: <a href="https://www.cnblogs.com/wqbin/p/11903878.html" target="_blank" rel="noopener">https://www.cnblogs.com/wqbin/p/11903878.html</a></li>
+</ul>
+</li>
+<li>根本原因： 错误发生的原因是因为MySQL只能将BLOB/TEXT类型字段设置索引为BLOB/TEXT数据的前N个字符，因此错误常常发生在字段被定义为TEXT/BLOB类型或者和TEXT/BLOB同质的数据类型，如TINYTEXT,MEDIUMTEXT,LONGTEXT ,TINYBLOB,MEDIUMBLOB 和LONGBLOB，并且当前操作是将这个字段设置成主键或者是索引的操作。在未指定TEXT/BLOB‘键长’的情况下，字段是变动的并且是动态的大小所以MySQL不能够保证字段的唯一性。因此当使用TEXT/BLOB类型字段做为索引时，N的值必须提供出来才可以让MySQL决定键长，但是MySQL不支持在TEXT/BLOB限制，TEXT(88)是不行的。
+<ul>
+<li>解决方案是<strong>将unique限制和索引从TEXT/BLOB字段中移除</strong>，或者是<strong>设置另一个字段为主键</strong>，如果你不愿意这样做并且想在TEXT/BLOB上加限制，那么你可以尝试将这个字段更改为VARCHAR类型，同时给他一个限制长度，默认VARCHAR最多可以限定在255个字符，并且限制要在声明类型的右边指明，如VARCHAR(200)将会限制仅仅200个字符.(注: 但是mysql不支持对TEXT/BLOB长度的限制。)</li>
+<li><a href="https://blog.csdn.net/u012069924/article/details/28858337" target="_blank" rel="noopener">https://blog.csdn.net/u012069924/article/details/28858337</a><br>
+▲. 在 varchar 字段上建立索引时，必须指定索引长度，没必要对全字段建立索引，根据 实际文本区分度决定索引长度即可。Java 开发手册 33/44 说明：索引的长度与区分度是一对矛盾体，一般对字符串类型数据，长度为 20 的索引，区分度会高达 90%以上，可以使用 count(distinct left(列名, 索引长度))/count(*)的区分度来确定。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="数据库插入数据"><a class="markdownIt-Anchor" href="#数据库插入数据"></a> 数据库插入数据</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- \\表示一个\</span></span><br><span class="line"><span class="keyword">use</span> xian_nurse;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="string">`question`</span> (<span class="string">`path`</span>) <span class="keyword">VALUES</span> (<span class="string">'书籍\\C-《传染病护理学习指导与习题集》-选择题'</span>), (<span class="string">'书籍\\C-《传染病护理技术学习指导与习题集》-选择题'</span>), (<span class="string">'书籍\\C-《传染病护理技术学习指导与习题集》-题干题'</span>), (<span class="string">'书籍\\C-《成人护理学学习指导与习题集-人民卫生出版社》-选择题'</span>), (<span class="string">'书籍\\C-《成人护理学学习指导与习题集-人民卫生出版社》-题干题'</span>), (<span class="string">'书籍\\E -《儿科护理学实践与学习指导（十三五）》—选择题'</span>), (<span class="string">'书籍\\E -《儿科护理学实践与学习指导（十三五）》—题干题'</span>), (<span class="string">'书籍\\E-《2020年（护理学专业）副主任、主任护师职称考试习题集》-选择题'</span>), (<span class="string">'书籍\\E-《2020年（护理学专业）副主任、主任护师职称考试习题集》-题干题'</span>), (<span class="string">'书籍\\E-《2020康复医学与医疗技术精选习题集-人民卫生出版社》-选择题'</span>), (<span class="string">'书籍\\E-《2020康复医学与医疗技术精选习题集-人民卫生出版社》-题干题'</span>), (<span class="string">'书籍\\E-《2021年护士资格考试指导》-选择题'</span>), (<span class="string">'书籍\\E-《2021年护士资格考试指导》-题干题'</span>), (<span class="string">'书籍\\E-《2021年护理学同步练习题集（中级）》-选择题'</span>), (<span class="string">'书籍\\E-《2021年护理学同步练习题集（中级）》-题干题'</span>), (<span class="string">'书籍\\E-《2021年护理学（师）练习题集》-选择题'</span>), (<span class="string">'书籍\\E-《2021年护理学（师）练习题集》-题干题'</span>), (<span class="string">'书籍\\E-《2021护师精选习题解析》-选择题'</span>), (<span class="string">'书籍\\E-《2021护师精选习题解析》-题干题'</span>), (<span class="string">'书籍\\E-《2021护理儿科学（中级）精选习题》-选择题'</span>), (<span class="string">'书籍\\E-《2021护理儿科学（中级）精选习题》-题干题'</span>), (<span class="string">'书籍\\E-《2021护理内科学（中级）精选练习题》-选择题'</span>), (<span class="string">'书籍\\E-《2021护理内科学（中级）精选练习题》-题干题'</span>), (<span class="string">'书籍\\E-《2021护理外科学（中级）精选练习题》-选择题'</span>), (<span class="string">'书籍\\E-《2021护理外科学（中级）精选练习题》-题干题'</span>), (<span class="string">'书籍\\E-《2021护理妇产科学（中级）精选练习题》-选择题'</span>), (<span class="string">'书籍\\E-《2021护理妇产科学（中级）精选练习题》-题干题'</span>), (<span class="string">'书籍\\E-《2021护理学（中级）练习题集》-选择题'</span>), (<span class="string">'书籍\\E-《2021护理学（中级）练习题集》-题干题'</span>), (<span class="string">'书籍\\E-《2022年护理学（中级）同步练习题集》-选择题'</span>), (<span class="string">'书籍\\E-《2022年护理学（中级）同步练习题集》-题干题'</span>), (<span class="string">'书籍\\E-《2022年护理学（师）精选习题集》-选择题'</span>), (<span class="string">'书籍\\E-《2022年护理学（师）精选习题集》-题干题'</span>), (<span class="string">'书籍\\E-《2022护理学（师）同步练习题集》-选择题'</span>), (<span class="string">'书籍\\E-《2022护理学（师）同步练习题集》-题干题'</span>), (<span class="string">'书籍\\E-《儿科护理学实践与学习指导（十二五）》—名词解释、简答（规01）非考试题型'</span>), (<span class="string">'书籍\\E-《儿科护理学实践与学习指导（十二五）》—选择题（规01）'</span>), (<span class="string">'书籍\\E-《儿科护理学实践与学习指导（十二五）》—题干题（规01）'</span>), (<span class="string">'书籍\\E-《儿童护理学实践与学习指导(十三五）》-题干题'</span>), (<span class="string">'书籍\\E-《儿童护理学实践与学习指导（十三五）》-选择题'</span>), (<span class="string">'书籍\\F-《妇产科和儿科护理技术》-选择题'</span>), (<span class="string">'书籍\\F-《妇产科护理学-副主任护师、主任护师-职称考试习题集》-选择题'</span>), (<span class="string">'书籍\\F-《妇产科护理学-副主任护师、主任护师-职称考试习题集》-题干题'</span>), (<span class="string">'书籍\\F-《妇产科护理学实践与学习指导（十三五）》—名词解释、简答—非考试题型'</span>), (<span class="string">'书籍\\F-《妇产科护理学实践与学习指导（十三五）》—选择题'</span>), (<span class="string">'书籍\\F-《妇产科护理学实践与学习指导（十三五）》—题干题'</span>), (<span class="string">'书籍\\F-《妇产科护理学实践与学习指导（十二五）》—名词解释、简答（规01）非考试题型'</span>), (<span class="string">'书籍\\F-《妇产科护理学实践与学习指导（十二五）》—选择题（规01）'</span>), (<span class="string">'书籍\\F-《妇产科护理学实践与学习指导（十二五）》—题干题（规01）'</span>), (<span class="string">'书籍\\F-《妇幼保健机构医务人员“三基”训练复习题解护理分册》—名词解释简答-非考试题型'</span>), (<span class="string">'书籍\\F-《妇幼保健机构医务人员“三基”训练复习题解护理分册》—选择题'</span>), (<span class="string">'书籍\\F-《方剂学-易考易错练习题》-选择题'</span>), (<span class="string">'书籍\\H-《护士“三基”训练试题精集》-选择题'</span>), (<span class="string">'书籍\\H-《护士三基三严训练试题手册》-选择题'</span>), (<span class="string">'书籍\\H-《护士临床“三基”实践指南测试题集》-选择题'</span>), (<span class="string">'书籍\\H-《护理“三基”训练分册第2版》-选择题'</span>), (<span class="string">'书籍\\H-《护理“三基”训练分册第2版》-题干题'</span>), (<span class="string">'书籍\\H-《护理伦理与法律法规》-选择题'</span>), (<span class="string">'书籍\\H-《护理伦理与法律法规》-题干题'</span>), (<span class="string">'书籍\\H-《护理岗位技能训练50项考评指导（第4版）》——选择题'</span>), (<span class="string">'书籍\\H-《护理核心制度学习与考核》—选择题'</span>), (<span class="string">'书籍\\H-《护理法律法规-李洪峰-郑州大学出版社》-选择题'</span>), (<span class="string">'书籍\\H-《护理管理学学习指导及习题集》—选择题'</span>), (<span class="string">'书籍\\H-《新编护理学基础实训与实习指导（十三五）》-选择题'</span>), (<span class="string">'书籍\\J-《健康管理师—模拟试题与精解释》-选择题'</span>), (<span class="string">'书籍\\J-《健康管理师—模拟试题与精解释》-题干题'</span>), (<span class="string">'书籍\\J-《健康评估实践与学习指导（十三五）》-选择题'</span>), (<span class="string">'书籍\\J-《健康评估实践与学习指导（十三五）》-题干题'</span>), (<span class="string">'书籍\\J-《基础护理学学习指导及习题集（十二五）》-选择题'</span>), (<span class="string">'书籍\\J-《基础护理学实践与学习指导（十三五）》—选择题'</span>), (<span class="string">'书籍\\J-《基础护理学实践与学习指导（十三五）》—题干题'</span>), (<span class="string">'书籍\\J-《急危重症护理学实践与学习指导（十三五）》—选择题'</span>), (<span class="string">'书籍\\J-《急危重症护理学实践与学习指导（十三五）》—题干题'</span>), (<span class="string">'书籍\\J-《急危重症护理学实践与学习指导（十二五）》—名词解释、简答（规01）非考试题型'</span>), (<span class="string">'书籍\\J-《急危重症护理学实践与学习指导（十二五）》—选择题（规01）'</span>), (<span class="string">'书籍\\J-《急危重症护理学实践与学习指导（十二五）》—题干题（规01）'</span>), (<span class="string">'书籍\\J-《精神科临床护理实践能力测试题库》—选择题'</span>), (<span class="string">'书籍\\J-《精神科护理学学习指南与习题集（高职）》-选择题'</span>), (<span class="string">'书籍\\J-《精神科护理学学习指南与习题集（高职）》-题干题'</span>), (<span class="string">'书籍\\J-《精神科护理学实践与学习指导（十二五）》—选择题'</span>), (<span class="string">'书籍\\J-《精神科护理学实践与学习指导（十二五）》—题干题'</span>), (<span class="string">'书籍\\J-《经络腧穴学》-选择题'</span>), (<span class="string">'书籍\\J-《静脉知识习题指导-人民卫生出版社》——选择题'</span>), (<span class="string">'书籍\\K-《口腔护理学学习指导与习题集第三版》-选择题'</span>), (<span class="string">'书籍\\K-《康复护理学实践与学习指导（十三五）》-选择题'</span>), (<span class="string">'书籍\\K-《康复护理学实践与学习指导（十三五）》-题干题'</span>), (<span class="string">'书籍\\K_《口腔科学学习指导与习题集》-选择题'</span>), (<span class="string">'书籍\\L-《临床“三基”训练指南与习题集丛书(护理分册)》-选择题'</span>), (<span class="string">'书籍\\L-《临床“三基”训练指南与习题集丛书(护理分册)》-题干题'</span>), (<span class="string">'书籍\\L-《临床护理实践指南（2011年版）配套试题与解析》—选择题'</span>), (<span class="string">'书籍\\L-《老年康复学学习指导及习题集》-选择题'</span>), (<span class="string">'书籍\\L-《老年护理同步辅导习题》-选择题'</span>), (<span class="string">'书籍\\L-《老年护理学学习指南与习题集（高职）》-选择题'</span>), (<span class="string">'书籍\\L-《老年护理学学习指南与习题集（高职）》-题干题'</span>), (<span class="string">'书籍\\L-《老年护理自考题》-选择题'</span>), (<span class="string">'书籍\\M-《母婴护理学实践与学习指导（十三五）》—名词解释、简答题-非考试题型'</span>), (<span class="string">'书籍\\M-《母婴护理学实践与学习指导（十三五）》—选择题'</span>), (<span class="string">'书籍\\N-《内科护理学实践与学习指导（十三五）-尤黎明-吴瑛-人民卫生出版社》—选择题'</span>), (<span class="string">'书籍\\N-《内科护理学实践与学习指导（十三五）-尤黎明-吴瑛-人民卫生出版社》—题干题'</span>), (<span class="string">'书籍\\N-《内科护理学实践与学习指导（十二五)》—选择题（规01）'</span>), (<span class="string">'书籍\\N-《内科护理学实践与学习指导（十二五）》—题干题（规01）'</span>), (<span class="string">'书籍\\Q-《全国临床护理“三基”训练指南》-填空题'</span>), (<span class="string">'书籍\\Q-《全国临床护理“三基”训练指南》-选择题'</span>), (<span class="string">'书籍\\Q-《全国临床护理“三基”训练指南》-题干题'</span>), (<span class="string">'书籍\\S-《实用中医护理学习题集》—选择题'</span>), (<span class="string">'书籍\\S-《实用临床三基“理论篇”》—名词解释、简答题（规02）非考试题型'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="操作word"><a class="markdownIt-Anchor" href="#操作word"></a> 操作word</h2>
+<blockquote>
+<p>使用<code>python-docx</code>: <code>python -m pip install python-docx</code>， <a href="https://python-docx.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://python-docx.readthedocs.io/en/latest/</a></p>
+</blockquote>
+<ol>
+<li>添加1-9级标题</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> docx <span class="keyword">import</span> Document</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建新的docx文件</span></span><br><span class="line">document = Document()</span><br><span class="line">document.add_heading(<span class="string">'1级标题'</span>, <span class="number">1</span>)  <span class="comment"># 添加1级标题</span></span><br><span class="line">document.add_heading(<span class="string">'2级标题'</span>, <span class="number">2</span>)  <span class="comment"># 添加2级标题</span></span><br><span class="line">document.add_heading(<span class="string">'3级标题'</span>, <span class="number">3</span>)  <span class="comment"># 添加3级标题</span></span><br><span class="line">document.add_heading(<span class="string">'4级标题'</span>, <span class="number">4</span>)  <span class="comment"># 添加4级标题</span></span><br><span class="line">document.add_heading(<span class="string">'5级标题'</span>, <span class="number">5</span>)  <span class="comment"># 添加5级标题</span></span><br><span class="line">document.add_heading(<span class="string">'6级标题'</span>, <span class="number">6</span>)  <span class="comment"># 添加6级标题</span></span><br><span class="line">document.add_heading(<span class="string">'7级标题'</span>, <span class="number">7</span>)  <span class="comment"># 添加7级标题</span></span><br><span class="line">document.add_heading(<span class="string">'8级标题'</span>, <span class="number">8</span>)  <span class="comment"># 添加8级标题</span></span><br><span class="line">document.add_heading(<span class="string">'9级标题'</span>, <span class="number">9</span>)  <span class="comment"># 添加9级标题</span></span><br><span class="line">document.save(<span class="string">'&#123;&#125;.docx'</span>.format(datetime.now().strftime(<span class="string">'%Y%m%d%H%M%S'</span>)))</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>添加段落</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> docx <span class="keyword">import</span> Document</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建新的docx文件</span></span><br><span class="line">document = Document()</span><br><span class="line">paragraph = <span class="string">"""这是一个段落</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">paragraph2 = <span class="string">"""这是一个新的段落"""</span></span><br><span class="line">paragraph3 = <span class="string">"""这是一个新的段落。</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">document.add_paragraph(paragraph)</span><br><span class="line">document.add_paragraph(paragraph2)</span><br><span class="line">document.add_paragraph(paragraph3)</span><br><span class="line">document.save(<span class="string">'&#123;&#125;.docx'</span>.format(datetime.now().strftime(<span class="string">'%Y%m%d%H%M%S'</span>)))</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>设置字体大小和样式</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> docx <span class="keyword">import</span> Document</span><br><span class="line"><span class="comment"># 创建新的docx文件</span></span><br><span class="line"><span class="keyword">from</span> docx.shared <span class="keyword">import</span> Pt</span><br><span class="line"></span><br><span class="line">document = Document()</span><br><span class="line">document.add_paragraph(<span class="string">"这是一个段落"</span>)  <span class="comment"># 添加段落</span></span><br><span class="line">paragraph = document.add_paragraph(<span class="string">"这是一个段落,"</span>)  <span class="comment"># 添加段落</span></span><br><span class="line">run = paragraph.add_run(<span class="string">'设置了字体的段落'</span>)  <span class="comment"># 在同一段添加内容, 即为了操作段落或单词的子字符串. 概念上讲，您需要为段落/文本的run每个部分创建一个实例。</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Append a run to this paragraph containing *text* and having character</span></span><br><span class="line"><span class="string">style identified by style ID *style*. *text* can contain tab</span></span><br><span class="line"><span class="string">(``\\t``) characters, which are converted to the appropriate XML form</span></span><br><span class="line"><span class="string">for a tab. *text* can also include newline (``\\n``) or carriage</span></span><br><span class="line"><span class="string">return (``\\r``) characters, each of which is converted to a line</span></span><br><span class="line"><span class="string">break.</span></span><br><span class="line"><span class="string">大概意思就是追加一个段落, 包含text, 且设置了格式, 我感觉是这样</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">run.font.name = <span class="string">u'宋体'</span>  <span class="comment"># 设置字体</span></span><br><span class="line">run.font.size = Pt(<span class="number">20</span>)  <span class="comment"># 设置字号</span></span><br><span class="line"><span class="comment"># run.font.color.rgb = RGBColor(255, 0, 0)	# 设置红色</span></span><br><span class="line">run.font.underline = <span class="keyword">True</span>	<span class="comment"># 设置下划线</span></span><br><span class="line"></span><br><span class="line">run1 = paragraph.add_run(<span class="string">'\t粗体'</span>)</span><br><span class="line">run1.bold = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">run2 = paragraph.add_run(<span class="string">'\t斜体'</span>)</span><br><span class="line">run2.italic = <span class="keyword">True</span></span><br><span class="line"> <span class="comment">#图片居中设置</span></span><br><span class="line">paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Doc = Document() </span><br><span class="line">Doc.styles[<span class="string">'Normal'</span>].font.name = <span class="string">u'宋体'</span></span><br><span class="line">Doc.styles[<span class="string">'Normal'</span>]._element.rPr.rFonts.set(qn(<span class="string">'w:eastAsia'</span>), <span class="string">u'宋体'</span>)</span><br><span class="line">Doc.styles[<span class="string">'Normal'</span>].font.size = Pt(<span class="number">10.5</span>)</span><br><span class="line">Doc.styles[<span class="string">'Normal'</span>].font.color.rgb = RGBColor(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">Head = Doc.add_heading(<span class="string">""</span>,level=<span class="number">1</span>)<span class="comment"># 这里不填标题内容</span></span><br><span class="line">run  = Head.add_run(<span class="string">"刚来csdn，这就是博客么，I了"</span>)</span><br><span class="line">run.font.name=<span class="string">u'Cambria'</span></span><br><span class="line">run.font.color.rgb = RGBColor(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">run._element.rPr.rFonts.set(qn(<span class="string">'w:eastAsia'</span>), <span class="string">u'Cambria'</span>)</span><br><span class="line">Doc.add_paragraph(<span class="string">"Python "</span>)</span><br><span class="line">Doc.add_paragraph(<span class="string">"Python 对word进行操作"</span>)</span><br><span class="line">Doc.save(<span class="string">"Python_word.docx"</span>)</span><br></pre></td></tr></table></figure>
+<p>from : <a href="https://www.pythonheidong.com/blog/article/692569/99875f167810b45f17e8/" target="_blank" rel="noopener">https://www.pythonheidong.com/blog/article/692569/99875f167810b45f17e8/</a></p>
+<ol start="4">
+<li>有序(无序)列表和引用</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 增加引用</span></span><br><span class="line">document.add_paragraph(<span class="string">'123'</span>, style=<span class="string">'Intense Quote'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加有序列表</span></span><br><span class="line">document.add_paragraph(<span class="string">u'有序列表元素1'</span>, style=<span class="string">'List Number'</span>)</span><br><span class="line">document.add_paragraph(<span class="string">u'有序列别元素2'</span>, style=<span class="string">'List Number'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加无序列表</span></span><br><span class="line">document.add_paragraph(<span class="string">u'无序列表元素1'</span>, style=<span class="string">'List Bullet'</span>)</span><br><span class="line">document.add_paragraph(<span class="string">u'无序列表元素2'</span>, style=<span class="string">'List Bullet'</span>)</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>表格和分页</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 增加图片（此处使用相对位置）</span></span><br><span class="line"><span class="comment"># document.add_picture('jdb.jpg', width=Inches(1.25))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加表格</span></span><br><span class="line">table = document.add_table(rows=<span class="number">3</span>, cols=<span class="number">3</span>)  <span class="comment"># 3行3列</span></span><br><span class="line">hdr_cells1 = table.rows[<span class="number">0</span>].cells  <span class="comment"># 第一行</span></span><br><span class="line">hdr_cells1[<span class="number">0</span>].text = <span class="string">"第一行,第一列"</span></span><br><span class="line">hdr_cells1[<span class="number">1</span>].text = <span class="string">"第一行,第二列"</span></span><br><span class="line">hdr_cells1[<span class="number">2</span>].text = <span class="string">"第一行,第三列"</span></span><br><span class="line"></span><br><span class="line">hdr_cells2 = table.rows[<span class="number">1</span>].cells  <span class="comment"># 第二行</span></span><br><span class="line">hdr_cells2[<span class="number">0</span>].text = <span class="string">"第二行,第一列"</span></span><br><span class="line">hdr_cells2[<span class="number">1</span>].text = <span class="string">"第二行,第二列"</span></span><br><span class="line">hdr_cells2[<span class="number">2</span>].text = <span class="string">"第二行,第三列"</span></span><br><span class="line"></span><br><span class="line">hdr_cells3 = table.rows[<span class="number">2</span>].cells  <span class="comment"># 第三行</span></span><br><span class="line">hdr_cells3[<span class="number">0</span>].text = <span class="string">"第三行,第一列"</span></span><br><span class="line">hdr_cells3[<span class="number">1</span>].text = <span class="string">"第三行,第二列"</span></span><br><span class="line">hdr_cells3[<span class="number">2</span>].text = <span class="string">"第三行,第三列"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加分页</span></span><br><span class="line">document.add_page_break()</span><br></pre></td></tr></table></figure>
+<h3 id="提取文字"><a class="markdownIt-Anchor" href="#提取文字"></a> 提取文字</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docx <span class="keyword">import</span> Document</span><br><span class="line"></span><br><span class="line">path = <span class="string">'/media/bobo/自动化办公/wordOperation/wordDemo/test2.docx'</span></span><br><span class="line"></span><br><span class="line">doc = Document(path)</span><br><span class="line">print(doc.paragraphs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出的是列表，列表中一共有4份内容</span></span><br><span class="line"><span class="comment"># [&lt;docx.text.paragraph.Paragraph object at 0x7fca95f0aba8&gt;,</span></span><br><span class="line"><span class="comment"># &lt;docx.text.paragraph.Paragraph object at 0x7fca95f0abe0&gt;,</span></span><br><span class="line"><span class="comment"># &lt;docx.text.paragraph.Paragraph object at 0x7fca95f0ab70&gt;, </span></span><br><span class="line"><span class="comment">#&lt;docx.text.paragraph.Paragraph object at 0x7fca95f0ac50&gt;,]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> paragraph <span class="keyword">in</span> doc.paragraphs:</span><br><span class="line">	print(paragraph.text)</span><br></pre></td></tr></table></figure>
+<p>from :</p>
+<ul>
+<li><a href="https://www.cnblogs.com/rainbow-tan/p/14981998.html" target="_blank" rel="noopener">https://www.cnblogs.com/rainbow-tan/p/14981998.html</a></li>
+<li><a href="https://www.cnblogs.com/wenshi-jj/p/15388808.html" target="_blank" rel="noopener">https://www.cnblogs.com/wenshi-jj/p/15388808.html</a></li>
+<li><a href="https://www.cnblogs.com/rencm/p/6285304.html" target="_blank" rel="noopener">https://www.cnblogs.com/rencm/p/6285304.html</a></li>
+<li><a href="https://blog.csdn.net/weixin_44576802/article/details/86552550%E2%80%94%E2%80%94%E9%A2%9C%E8%89%B2" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44576802/article/details/86552550——颜色</a></li>
+<li>参考：<a href="https://www.cnblogs.com/wenshi-jj/p/15388808.html%E2%80%94%E2%80%94%E9%A1%B5%E8%BE%B9%E8%B7%9D%E3%80%81%E9%A1%B5%E7%9C%89%E5%92%8C%E9%A1%B5%E8%84%9A%E3%80%81%E5%88%86%E6%A0%8F" target="_blank" rel="noopener">https://www.cnblogs.com/wenshi-jj/p/15388808.html——页边距、页眉和页脚、分栏</a></li>
+</ul>
+<h1 id="共同点处理"><a class="markdownIt-Anchor" href="#共同点处理"></a> 共同点处理</h1>
+<h2 id="文件保存"><a class="markdownIt-Anchor" href="#文件保存"></a> 文件保存</h2>
+<blockquote>
+<p>由于文件夹、文件名不允许有<code>/\:*?|&lt;&gt;&quot;</code>，因此需要保存时如果出现这些字符得特别处理。</p>
+</blockquote>
+<ol>
+<li>项目一：<code>xxxx阻垢剂\反渗透阻垢剂\25KG询价书询价公告\zxc.doc</code> ==&gt; <code>xxx阻垢剂、反渗透阻垢剂、25KG询价书询价公告\zxc.doc</code>，存储在<code>attaches\xxx阻垢剂、反渗透阻垢剂、25KG询价书询价公告\zxc.doc</code></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">format_name</span><span class="params">(name: str)</span> -&gt; [bool, str]:</span></span><br><span class="line">       <span class="string">"""</span></span><br><span class="line"><span class="string">       文件和文件夹名规范化</span></span><br><span class="line"><span class="string">       :param name:</span></span><br><span class="line"><span class="string">       :return:</span></span><br><span class="line"><span class="string">       """</span></span><br><span class="line">   	invalid_char = [<span class="string">"/"</span>, <span class="string">"\\"</span>, <span class="string">":"</span>, <span class="string">"*"</span>, <span class="string">"?"</span>, <span class="string">"|"</span>, <span class="string">"&lt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"\""</span>]</span><br><span class="line">       rename = name</span><br><span class="line">       valid = <span class="keyword">True</span></span><br><span class="line">       <span class="keyword">for</span> ch <span class="keyword">in</span> invalid_char:</span><br><span class="line">           <span class="keyword">if</span> ch <span class="keyword">in</span> rename:</span><br><span class="line">               <span class="keyword">if</span> ch == <span class="string">"?"</span>:</span><br><span class="line">                   rename = rename.replace(<span class="string">"?"</span>, <span class="string">"？"</span>)</span><br><span class="line">               <span class="keyword">elif</span> ch == <span class="string">"&lt;"</span>:</span><br><span class="line">                   rename = rename.replace(<span class="string">"&lt;"</span>, <span class="string">"["</span>)</span><br><span class="line">               <span class="keyword">elif</span> ch == <span class="string">"&gt;"</span>:</span><br><span class="line">                   rename = rename.replace(<span class="string">"&gt;"</span>, <span class="string">"]"</span>)</span><br><span class="line">               <span class="keyword">else</span>:</span><br><span class="line">                   rename = rename.replace(ch, <span class="string">"、"</span>)</span><br><span class="line">               valid = <span class="keyword">False</span></span><br><span class="line">       <span class="keyword">return</span> valid, rename</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>项目二：<code>'.\\docx/专科题库\\儿科\\[书籍]\\S-《实用临床护理三基-&quot;应知应会&quot;》—名词解释、简答(规02）\\something.docx'</code>===&gt;<code>'.\\docx/专科题库\\儿科\\[书籍]\\S-《实用临床护理三基-'应知应会'》—名词解释、简答(规02）\\something.docx'</code></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">format_file_path</span><span class="params">(path: str)</span> -&gt; [bool, str]:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    文件和文件夹名规范化</span></span><br><span class="line"><span class="string">    :param name:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    invalid_char = [<span class="string">"/"</span>, <span class="string">"\\"</span>, <span class="string">":"</span>, <span class="string">"*"</span>, <span class="string">"?"</span>, <span class="string">"|"</span>, <span class="string">"&lt;"</span>, <span class="string">"&gt;"</span>, <span class="string">"\""</span>]</span><br><span class="line">    rename = path</span><br><span class="line">    valid = <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> invalid_char:</span><br><span class="line">        <span class="keyword">if</span> ch <span class="keyword">in</span> rename:</span><br><span class="line">            <span class="keyword">if</span> ch == <span class="string">"?"</span>:</span><br><span class="line">                rename = rename.replace(<span class="string">"?"</span>, <span class="string">"？"</span>)</span><br><span class="line">            <span class="keyword">elif</span> ch == <span class="string">"&lt;"</span>:</span><br><span class="line">                rename = rename.replace(<span class="string">"&lt;"</span>, <span class="string">"["</span>)</span><br><span class="line">            <span class="keyword">elif</span> ch == <span class="string">"&gt;"</span>:</span><br><span class="line">                rename = rename.replace(<span class="string">"&gt;"</span>, <span class="string">"]"</span>)</span><br><span class="line">            <span class="keyword">elif</span> ch == <span class="string">'"'</span>:</span><br><span class="line">                rename = rename.replace(<span class="string">"\""</span>, <span class="string">"\'"</span>)</span><br><span class="line">            <span class="keyword">elif</span> ch == <span class="string">"\\"</span> <span class="keyword">or</span> ch == <span class="string">"/"</span>:</span><br><span class="line">                <span class="comment"># 注意跟 上一个的区别， 由于上一个项目中的/和\都是分隔符，而不是真实的分隔目录，因此需要替换，但本项目是真实路径分隔符，所以不需要转换</span></span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                rename = rename.replace(ch, <span class="string">"、"</span>)</span><br><span class="line">            valid = <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">return</span> valid, rename</span><br></pre></td></tr></table></figure>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<h3 id="lxml库的使用"><a class="markdownIt-Anchor" href="#lxml库的使用"></a> lxml库的使用</h3>
+<ul>
+<li>
+<p>提取Element中最近标签中的文本(不包含标签本身): <code>ele.xpath('//*[@id=&quot;xxx&quot;]/text()')</code></p>
+</li>
+<li>
+<p>提取Element中所有标签(标签嵌套)中的文本(不包含标签本身): <code>ele.xpath('//*[@id=&quot;xxx&quot;]/string(.)')</code></p>
+<ul>
+<li>注：跟<code>//text()</code>区别在于，<code>string(.)</code>的结果为合并后的str，<code>//text()</code>为未合并的list</li>
+</ul>
+</li>
+<li>
+<p>提取Element中所有内容(标签本身): <code>etree.tostring(ele, method=&quot;html&quot;)</code></p>
+</li>
+<li>
+<p>修改Element某一属性:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">appendixs = html_content.xpath(<span class="string">'/html/body/div[4]/div/div[4]/div/div/div[1]/div[4]/p/a'</span>)</span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> appendixs:</span><br><span class="line">    href = a.xpath(<span class="string">"@href"</span>)[<span class="number">0</span>]</span><br><span class="line">    save_path = self.download_file(ReUtil.extra_announcement_id(detail_article_url), href, title)</span><br><span class="line">    <span class="comment"># html中会对\进行转义</span></span><br><span class="line">    a.attrib[<span class="string">"href"</span>] = save_path</span><br></pre></td></tr></table></figure>
+<p>注: 修改子element的某属性后，root节点tostring的结果中element也会被修改。(root抱有element的引用)</p>
+</li>
+<li>
+<p>Element的XML标记名通过对象的属性访问</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = &apos;&lt;a href=&quot;http://baidu.com&quot;&gt;hh&lt;span&gt;gg&lt;/span&gt;&lt;/a&gt;&apos;</span><br><span class="line">res = &#123;_Element: 1&#125; &lt;Element html at 0x1de3a6b9800&gt;</span><br><span class="line">     attrib = &#123;_Attrib: 0&#125; &#123;&#125;</span><br><span class="line">     base = &#123;NoneType&#125; None</span><br><span class="line">     nsmap = &#123;dict: 0&#125; &#123;&#125;</span><br><span class="line">     prefix = &#123;NoneType&#125; None</span><br><span class="line">     sourceline = &#123;int&#125; 1</span><br><span class="line">     tag = &#123;str&#125; &apos;html&apos;</span><br><span class="line">     tail = &#123;NoneType&#125; None</span><br><span class="line">     text = &#123;NoneType&#125; None</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Element被组织在XML树结构中。增加子Element并指定它们的父Element，使用append方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 法一</span></span><br><span class="line">root = etree.Element(<span class="string">"root"</span>)</span><br><span class="line">root.append(etree.Element(<span class="string">"child1"</span>))</span><br><span class="line"><span class="comment"># 法二</span></span><br><span class="line">childNode = etree.SubElement(root, <span class="string">"child"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>删除Element下某一节点内容，与添加相同，也有实例方法和工厂方法两种</p>
+<ul>
+<li>
+<p><code>parentnode.remove(node)</code></p>
+</li>
+<li>
+<p><code>etree.strip_elements(html, 'element_name', with_tag=True/False)</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="timeit模块使用"><a class="markdownIt-Anchor" href="#timeit模块使用"></a> <code>timeit</code>模块使用</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">spider = HuaNengSpider(ifend=<span class="string">"in"</span>)</span><br><span class="line"><span class="comment"># 记得setup导入 </span></span><br><span class="line">run_time = timeit.timeit(<span class="string">"spider.run_parallelly()"</span>, <span class="string">"from __main__ import spider"</span>, number=<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 输出的单位为s </span></span><br><span class="line">print(<span class="string">"耗时: &#123;&#125;s"</span>.format(run_time))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">run_time = timeit.timeit(<span class="string">'HuaNengSpider(ifend="notin", is_in_one=True).run_with_concurrent()'</span>,</span><br><span class="line">                         <span class="string">"from __main__ import HuaNengSpider"</span>, number=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="python中操作sqlalchemysqlalchemy中文技术文档"><a class="markdownIt-Anchor" href="#python中操作sqlalchemysqlalchemy中文技术文档"></a> Python中操作SQLAlchemy,SQLAlchemy中文技术文档</h3>
+<p>参考：<a href="https://www.jianshu.com/p/0ad18fdd7eed%E3%80%81" target="_blank" rel="noopener">https://www.jianshu.com/p/0ad18fdd7eed、</a><a href="https://www.cnblogs.com/yc-c/p/9627968.html" target="_blank" rel="noopener">python3 SQLAlchemy模块使用</a></p>
+<h3 id="argumentparser使用"><a class="markdownIt-Anchor" href="#argumentparser使用"></a> <code>ArgumentParser</code>使用</h3>
+<ul>
+<li>
+<p><code>parser.add_argument(&quot;-o&quot;, &quot;--is_in_one&quot;, action=&quot;store_true&quot;, help=&quot;数据存放在一张表中&quot;)</code>, 其中action的<code>store_true</code>表示，如果出现–is_in_one(action)则设置未true, 所以默认为False</p>
+<ul>
+<li>参数设置为True、False的最好不使用choice参数：因为</li>
+<li><code>parser.add_argument(&quot;-o&quot;, &quot;--is_in_one&quot;, choices=[True, False], help=&quot;数据存放在一张表中&quot;)</code>, choice中为True、False时， 可以选择不填，此时is_in_one为None， 如果必须要这两个则选一个则加上<code>required=True</code>选项</li>
+<li>加上required效果===&gt;<code>爬虫脚本: error: argument -o/--is_in_one: invalid choice: 'q' (choose from True, False)</code>， 但是如果输入True同样会报错: 爬虫脚本: error: argument -o/–is_in_one: invalid choice: ‘True’ (choose from True, False)</li>
+</ul>
+<p>所以只有<code>choices=[&quot;True&quot;, &quot;False&quot;]</code>才能生效， 好在的是Python中对true判断比较宽容，下面三种都可以，因此使得choice传str类型的True也可以成功判定，即能实现相同效果，但是还是存在些歧义的，得谨慎使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">"true"</span></span><br><span class="line">b = <span class="keyword">True</span></span><br><span class="line">c = <span class="string">"True"</span></span><br><span class="line"><span class="keyword">if</span> a:</span><br><span class="line">    print(<span class="string">"a yes"</span>)</span><br><span class="line"><span class="keyword">if</span> b:</span><br><span class="line">    print(<span class="string">"b yes"</span>)</span><br><span class="line"><span class="keyword">if</span> c:</span><br><span class="line">    print(<span class="string">"c yes"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="其他sql文件"><a class="markdownIt-Anchor" href="#其他sql文件"></a> 其他SQL文件</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`auto_bilibili`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`userid`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`name`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'创建的任务名'</span>,</span><br><span class="line">  <span class="string">`sessdata`</span> longtext <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`bili_jct`</span> longtext <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`dedeuserid`</span> longtext <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`taskIntervalTime`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'10'</span> <span class="keyword">COMMENT</span> <span class="string">'任务之间的执行间隔'</span>,</span><br><span class="line">  <span class="string">`numberOfCoins`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'5'</span> <span class="keyword">COMMENT</span> <span class="string">'每日投币数量'</span>,</span><br><span class="line">  <span class="string">`reserveCoins`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'50'</span> <span class="keyword">COMMENT</span> <span class="string">'预留的硬币数'</span>,</span><br><span class="line">  <span class="string">`selectLike`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'投币时是否点赞，默认 0, 0：否 1：是'</span>,</span><br><span class="line">  <span class="string">`monthEndAutoCharge`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'true'</span> <span class="keyword">COMMENT</span> <span class="string">'年度大会员月底是否用 B 币券给自己充电，默认 true，即充电对象是你本人。'</span>,</span><br><span class="line">  <span class="string">`giveGift`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'true'</span> <span class="keyword">COMMENT</span> <span class="string">'直播送出即将过期的礼物，默认开启'</span>,</span><br><span class="line">  <span class="string">`upLive`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'直播送出即将过期的礼物，指定 up 主，为 0 时则随随机选取一个 up 主'</span>,</span><br><span class="line">  <span class="string">`chargeForLove`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'给指定 up 主充电，值为 0 或者充电对象的 uid，默认为 0，即给自己充电'</span>,</span><br><span class="line">  <span class="string">`devicePlatform`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'ios'</span> <span class="keyword">COMMENT</span> <span class="string">'手机端漫画签到时的平台，建议选择你设备的平台 ，默认 ios'</span>,</span><br><span class="line">  <span class="string">`coinAddPriority`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'1'</span> <span class="keyword">COMMENT</span> <span class="string">'0：优先给热榜视频投币，1：优先给关注的 up 投币'</span>,</span><br><span class="line">  <span class="string">`userAgent`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36 Edg/86.0.622.69'</span> <span class="keyword">COMMENT</span> <span class="string">'浏览器 UA'</span>,</span><br><span class="line">  <span class="string">`skipDailyTask`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'false'</span> <span class="keyword">COMMENT</span> <span class="string">'是否跳过每日任务'</span>,</span><br><span class="line">  <span class="string">`webhook`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'推送地址'</span>,</span><br><span class="line">  <span class="string">`enddate`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`match_enable`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'false'</span> <span class="keyword">COMMENT</span> <span class="string">'预测是否开启'</span>,</span><br><span class="line">  <span class="string">`match_predictNumberOfCoins`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'10'</span> <span class="keyword">COMMENT</span> <span class="string">'单次预测投注硬币'</span>,</span><br><span class="line">  <span class="string">`match_minimumNumberOfCoins`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'200'</span> <span class="keyword">COMMENT</span> <span class="string">'预测保留硬币'</span>,</span><br><span class="line">  <span class="string">`match_showHandModel`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'false'</span> <span class="keyword">COMMENT</span> <span class="string">'押注形式'</span>,</span><br><span class="line">  <span class="string">`other`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>) <span class="keyword">USING</span> BTREE,</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`userid`</span> (<span class="string">`userid`</span>) <span class="keyword">USING</span> BTREE</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> AUTO_INCREMENT=<span class="number">7</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8mb4 ROW_FORMAT=DYNAMIC</span><br></pre></td></tr></table></figure>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/03/19/2022年3月19日-爬虫项目记录/">https://nymrli.top/2022/03/19/2022年3月19日-爬虫项目记录/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/03/23/JS逆向-webpack打包网站实战/" title="JS逆向-webpack打包网站实战"><span>< PreviousPost</span><br><span class="prevTitle">JS逆向-webpack打包网站实战</span></a><a class="nextSlogan" href="/2022/02/27/深入学习使用Spring/" title="深入学习使用Spring"><span>NextPost ></span><br><span class="nextTitle">深入学习使用Spring</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '2022年3月19~20日-爬虫项目记录',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2022年3月20日公告存网站页面到数据库"><span class="toc-number">1.</span> <span class="toc-text"> 2022年3月20日——公告存网站页面到数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件存储"><span class="toc-number">1.1.</span> <span class="toc-text"> 文件存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库表"><span class="toc-number">1.2.</span> <span class="toc-text"> 数据库表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql字段类型存储需要多少字节"><span class="toc-number">1.2.1.</span> <span class="toc-text"> mysql字段类型存储需要多少字节？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql中类型后面的数字含义"><span class="toc-number">1.2.2.</span> <span class="toc-text"> MySQL中类型后面的数字含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql默认字符集"><span class="toc-number">1.2.3.</span> <span class="toc-text"> mySQL默认字符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最终createsql文件"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 最终create.sql文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2022年3月20日-护士题目下载存word"><span class="toc-number">2.</span> <span class="toc-text"> 2022年3月20日-护士题目下载存Word</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引报错"><span class="toc-number">2.0.1.</span> <span class="toc-text"> 索引报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库插入数据"><span class="toc-number">2.0.2.</span> <span class="toc-text"> 数据库插入数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作word"><span class="toc-number">2.1.</span> <span class="toc-text"> 操作word</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#提取文字"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 提取文字</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#共同点处理"><span class="toc-number">3.</span> <span class="toc-text"> 共同点处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件保存"><span class="toc-number">3.1.</span> <span class="toc-text"> 文件保存</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number">4.</span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lxml库的使用"><span class="toc-number">4.0.1.</span> <span class="toc-text"> lxml库的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timeit模块使用"><span class="toc-number">4.0.2.</span> <span class="toc-text"> timeit模块使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python中操作sqlalchemysqlalchemy中文技术文档"><span class="toc-number">4.0.3.</span> <span class="toc-text"> Python中操作SQLAlchemy,SQLAlchemy中文技术文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#argumentparser使用"><span class="toc-number">4.0.4.</span> <span class="toc-text"> ArgumentParser使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他sql文件"><span class="toc-number">4.0.5.</span> <span class="toc-text"> 其他SQL文件</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

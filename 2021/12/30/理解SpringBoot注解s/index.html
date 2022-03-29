@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>理解SpringBoot注解s · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">理解SpringBoot注解s</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/12/30</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,307</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="reuqestbody和requestparam"><a class="markdownIt-Anchor" href="#reuqestbody和requestparam"></a> @ReuqestBody和@RequestParam</h2>
+<p>这两个注解都是在Controller某个Mapping函数的形参前加上的，但两个具体有什么区别呢？在使用的时候我们该如何选择呢? 这跟我们希望用户以什么形式来请求接口有关。</p>
+<p>众所周知，请求头的Content-type有多个，如</p>
+<p>常见的媒体格式类型如下：</p>
+<ul>
+<li>text/html ： HTML格式</li>
+<li>text/plain ：纯文本格式</li>
+<li>text/xml ： XML格式</li>
+<li>image/gif ：gif图片格式</li>
+<li>image/jpeg ：jpg图片格式</li>
+<li>image/png：png图片格式</li>
+</ul>
+<p>以application开头的媒体格式类型：</p>
+<ul>
+<li>application/xhtml+xml ：XHTML格式</li>
+<li>application/xml： XML数据格式</li>
+<li>application/atom+xml ：Atom XML聚合格式</li>
+<li>⭐️application/json： JSON数据格式</li>
+<li>application/pdf：pdf格式</li>
+<li>application/msword ： Word文档格式</li>
+<li>application/octet-stream ： 二进制流数据（如常见的文件下载）</li>
+<li>⭐️application/x-www-form-urlencoded ：<code>&lt;form encType=&quot;&quot;&gt;</code>中默认的encType，form表单数据被编码为key/value格式发送到服务器（表单默认的提交数据的格式）</li>
+</ul>
+<p>另外一种常见的媒体格式是上传文件之时使用的：</p>
+<ul>
+<li>multipart/form-data ： 需要在表单中进行文件上传时，就需要使用该格式</li>
+</ul>
+<p>其中，POST请求最常用的是<code>application/x-www-form-urlencoded</code>,浏览器的原生 form 表单，如果不设置 enctype 属性，那么最终就会以 application/x-www-form-urlencoded 方式提交数据。数据按照 key1=val1&amp;key2=val2 的方式进行编码，key 和 val 都进行了 URL 转码。请求类似于下面这样</p>
+<p><img src="/2021/12/30/理解SpringBoot注解s/E:%5Chexo%5Csource_posts%5C%E7%90%86%E8%A7%A3SpringBoot%E6%B3%A8%E8%A7%A3s%5Cpost-www.png" alt="post-www"></p>
+<p>此外，<code>application/json</code>也是POST比较常用的一种形式，也是目前比较推荐的，用来告诉服务端消息主体是序列化后的 JSON 字符串。在这种编码方式下，请求内容如下：</p>
+<p><img src="/2021/12/30/理解SpringBoot注解s/E:%5Chexo%5Csource_posts%5C%E7%90%86%E8%A7%A3SpringBoot%E6%B3%A8%E8%A7%A3s%5Cpost-json.png" alt="post-json"></p>
+<p>可以看出，无论是哪种编码，POST基本上都是从请求体中取数据解析的。而<code>@RequestBody</code>正是对应的请求体；<code>@RequestParam</code>呢，接收的参数是<strong>来自requestHeader</strong>中，即<strong>请求头</strong>。<strong>通常用于GET请求</strong>，功能是<em>从URL中提取请求参数</em>。比如常见的url：<code>http://localhost:8081/spring-boot-study/novel/findByAuthorAndType?author=唐家三少&amp;type=已完结</code>。对应的接口为<code>public List&lt;NovelEntity&gt; findByAuthorAndType(@RequestParam(value=&quot;author&quot;, required=false,defaultValue=&quot;天蚕土豆&quot;) String author, @RequestParam(value=&quot;type&quot;) String type)</code></p>
+<p>@RequestParam有三个配置参数：</p>
+<ul>
+<li><code>required</code> 表示是否必须，默认为 <code>true</code>，必须。</li>
+<li><code>defaultValue</code> 可设置请求参数的默认值。</li>
+<li><code>value</code> 为接收url参数的参数名（相当于key值）。</li>
+</ul>
+<p><strong>@RequestParam用来处理 <code>Content-Type</code> 为 <code>application/x-www-form-urlencoded</code> 编码的内容，<code>Content-Type</code>默认为该属性。</strong></p>
+<p><strong>@RequestParam也可用于其它类型的请求，例如：GET、POST、DELETE等请求</strong>。比如向表中插入单条数据，<code>Controller</code> 层的写法如下图所示：</p>
+<p>但是，这样不支持批量插入数据，相对之下，json来表达的优势就很明显，但是@RequestParam没办法处理<code>application/json</code>，点击发送的话，会报错后台接收不到值，为 <code>null</code>。</p>
+<p>此时就需要使用对应的<code>@RequestBody</code>，它一般用于处理非 <code>Content-Type: application/x-www-form-urlencoded</code>编码格式的数据，比如：<code>application/json</code>、<code>application/xml</code>等类型的数据。就<code>application/json</code>类型的数据而言，使用注解@RequestBody可以将body里面所有的json数据传到后端，后端再进行解析。如<code>public Map&lt;String, Boolean&gt; saveBatchNovel(@RequestBody List&lt;NovelEntity&gt; novelEntityList)</code></p>
+<p>此外，针对希望用户传入的为指定参数的话，有相应的Entity，使用@RequestBody会根据请求主体中的参数名与对象的属性名进行匹配并绑定值，自动将参数封装成该对象，并且还可以通过@Valid注解对请求主体中的参数进行校验。</p>
+<p>总结：</p>
+<ul>
+<li><code>@RequestParam</code>的核心功能是<em>从URL中提取请求参数</em>，即接收的参数是来自HTTP请求头的QueryString中。</li>
+<li><code>@RequestBody</code>功能是从请求体重提取参数，并封装成对象</li>
+</ul>
+<p>额外经验总结：</p>
+<blockquote>
+<p>标准协议下，通常认为GET请求是没有请求体的，只有POST请求有请求体</p>
+</blockquote>
+<ul>
+<li>
+<p>get请求只能传query参数，query参数都是拼在请求地址上的</p>
+</li>
+<li>
+<p>post可以同时传body和query两种形式的参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/post/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, String&gt; <span class="title">postHello</span><span class="params">(@PathVariable Long id,</span></span></span><br><span class="line"><span class="function"><span class="params">                                         @RequestParam(value = <span class="string">"name"</span>, required = <span class="keyword">false</span>, defaultValue = <span class="string">"CL"</span>)</span> String name,</span></span><br><span class="line"><span class="function">                                         @RequestBody User user</span></span><br><span class="line"><span class="function">    ) </span>&#123;</span><br><span class="line">        System.out.println(user);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HashMap&lt;String, String&gt;() &#123;&#123;</span><br><span class="line">            put(<span class="string">"name"</span>, name);</span><br><span class="line">            put(<span class="string">"id"</span>, String.valueOf(id));</span><br><span class="line">        &#125;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>talent-API</p>
+<p><img src="/2021/12/30/理解SpringBoot注解s/E:%5Chexo%5Csource_posts%5C%E7%90%86%E8%A7%A3SpringBoot%E6%B3%A8%E8%A7%A3s%5Cpost-query+body.png" alt="post-query+body"></p>
+<p>postman-web</p>
+<p><img src="/2021/12/30/理解SpringBoot注解s/E:%5Chexo%5Csource_posts%5C%E7%90%86%E8%A7%A3SpringBoot%E6%B3%A8%E8%A7%A3s%5Cpost+body+query2.png" alt="post+body+query2"></p>
+<p>针对接口的测试，最好还是手动设置Content-type比较好</p>
+</li>
+</ul>
+<p><strong>@PathVariable</strong></p>
+<blockquote>
+<p>承接上文，同样作为参数传入的还有@PathVariable，它可以从URL中提取变量</p>
+</blockquote>
+<p><code>@PathVariable</code>注解是将方法中的参数绑定到请求URI中的模板变量上。可以通过<code>@RequestMapping</code>注解来指定URI的模板变量，然后使用<code>@PathVariable</code>注解将方法中的参数绑定到模板变量上。特别地，<code>@PathVariable</code>注解允许我们使用value或name属性来给参数取一个别名。下面是使用此注解的一个示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/users/&#123;id&#125;/roles/&#123;roleId&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Role <span class="title">getUserRole</span><span class="params">(@PathVariable <span class="keyword">long</span> id, @PathVariable <span class="keyword">long</span> roleId)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>模板变量名需要使用<code>{ }</code>进行包裹，如果方法的参数名与URI模板变量名一致，则在<code>@PathVariable</code>中就可以省略别名的定义。</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/12/30/理解SpringBoot注解s/">https://nymrli.top/2021/12/30/理解SpringBoot注解s/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/01/03/Springboot-Kotlin-Mockito/" title="Springboot-Kotlin-Mockito"><span>< PreviousPost</span><br><span class="prevTitle">Springboot-Kotlin-Mockito</span></a><a class="nextSlogan" href="/2021/12/30/Spring中的Bean/" title="Spring中的Bean"><span>NextPost ></span><br><span class="nextTitle">Spring中的Bean</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '理解SpringBoot注解s',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#reuqestbody和requestparam"><span class="toc-number">1.</span> <span class="toc-text"> @ReuqestBody和@RequestParam</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

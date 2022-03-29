@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>深入学习使用Spring · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">深入学习使用Spring</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/02/27</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Spring"> Spring</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,516</span> | Reading time: <span class="post-count">14</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
+<p>From : <a href="https://www.bilibili.com/video/BV1fr4y1Y7UH?p=6" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1fr4y1Y7UH?p=6</a></p>
+</blockquote>
+<h2 id="创建bean的方式"><a class="markdownIt-Anchor" href="#创建bean的方式"></a> 创建bean的方式：</h2>
+<h3 id="声明式"><a class="markdownIt-Anchor" href="#声明式"></a> 声明式</h3>
+<h4 id="beanbean"><a class="markdownIt-Anchor" href="#beanbean"></a> <code>&lt;bean&gt;&lt;/bean&gt;</code></h4>
+<ul>
+<li>
+<p><code>&lt;bean&gt;&lt;/bean&gt;</code>： 通过xml来配置bean</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/tx</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/context/spring-context-3.0.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/aop</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"p1"</span> <span class="attr">class</span>=<span class="string">"top.nymrli.tryboot.po.User"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"张三"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">value</span>=<span class="string">"18"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testPerson()</span><br><span class="line">    &#123;</span><br><span class="line"> ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");</span><br><span class="line"></span><br><span class="line">        User user = annotationConfigApplicationContext.getBean("p1", User.class);</span><br><span class="line">        System.out.println(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="bean"><a class="markdownIt-Anchor" href="#bean"></a> <code>@Bean</code></h4>
+<ul>
+<li>
+<p><code>@Bean</code>: 通过注解来标注SpringBean对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span>(<span class="string">"user"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> User(<span class="string">"name"</span>, <span class="number">20</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPerson</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        AnnotationConfigApplicationContext ctx = <span class="keyword">new</span> AnnotationConfigApplicationContext();</span><br><span class="line">        ctx.register(Config.class);</span><br><span class="line">        <span class="comment">// 或者 AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(Config.class);</span></span><br><span class="line"></span><br><span class="line">        ctx.refresh();</span><br><span class="line"></span><br><span class="line">        User user = ctx.getBean(<span class="string">"user"</span>, User.class);</span><br><span class="line">        System.out.println(user);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><code>AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(Config.class);</code>与<code>ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</code>一样，都是指定bean的配置路径后解析，获得bean的配置。</p>
+</li>
+</ul>
+<h4 id="component"><a class="markdownIt-Anchor" href="#component"></a> <code>@Component</code></h4>
+<ul>
+<li>
+<p><code>@Component</code>: 通过标注来创建一个组件SpringBean对象，如下的User。 ==&gt; 等价于<code>ctx.registerBean(User.class)</code>，registerBean方法的实现最终也是调用了registerBeanDefinition</p>
+<p>而Config不是一个bean，他的作用跟applicationContext.xml一样，他是存放bean定义路径的一个配置文件，在这里是通过ComponentScan让Spring能够找到top.nymrli.tryboot.po下的所有Bean并解析成SpringBean</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ComponentScan</span>(<span class="string">"top.nymrli.tryboot.po"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@Component</span>		<span class="comment">// ==&gt; beanName为user, 类名小写</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPerson</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    AnnotationConfigApplicationContext ctx = <span class="keyword">new</span> AnnotationConfigApplicationContext(Config.class);</span><br><span class="line"></span><br><span class="line">    User user = ctx.getBean(User.class);</span><br><span class="line">    System.out.println(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>会自动调用User的无参构造方式来创建JavaBean， 因此得到的User是<code>User(name=null, age=0)</code></p>
+</li>
+</ul>
+<p>▲.上述三种创建方式本质上都是创建了BeanDefinition，只不过Spring进行了封装，因此使用起来比较简单直观</p>
+<h4 id="import"><a class="markdownIt-Anchor" href="#import"></a> @Import</h4>
+<blockquote>
+<p>spring4.2之后<code>@Import</code>注解可以实例化普通类的bean实例</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Role</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Import</span>(Role.class)		<span class="comment">// @Import(&#123;Role.class, User.class&#125;)</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyConfig</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> Role role;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(role);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"test"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Spring在创建MyConfig的时候，会根据@Import将Role也实例化成一个Bean</p>
+<h3 id="编程式"><a class="markdownIt-Anchor" href="#编程式"></a> 编程式</h3>
+<h4 id="beandefinition"><a class="markdownIt-Anchor" href="#beandefinition"></a> BeanDefinition</h4>
+<blockquote>
+<p>通过创建并配置 BeanDefinition 来创建一个Bean</p>
+<p>Q: 什么是BeanDefinition?</p>
+<p>A: BeanDefinition表示Bean的定义信息， Spring会根据BeanDefinition来创建Bean对象。BeanDefinition有很多的属性用来描述Bean， BeanDefinition是Spring中非常核心的概念。</p>
+<ul>
+<li>beanClass: 表示Bean对象的类类型， Spring在创建Bean的过程中根据此属性来判断实例化对象具体的类类型</li>
+<li>scope：作用域，[singleton、prototype]，单例或者原型bean</li>
+<li>isLazy：是否需要懒加载，原型Bean的懒加载不奏效。懒加载的单例bean，会在第一次getBean的时候生成该bean，非懒加载的单例bean，则会在Spring.启动过程中直接生成好。</li>
+<li>dependsOn：表示一个bean在创建之前所依颗的其他bean，在一个bean创建之前，它所依赖的这些bean得先全部创建好。</li>
+<li>primary：表示一个bean是主bean，在Spring中一个类型可以有多个bean对象，在进行依赖注入时，如果根据类型找到了多个b©an，此时会判断这些bean中是否存在一个主bean，如果存在，则直接将这个bean注入给属性。</li>
+<li>initMethodName： 表示一个bean的初始化方法，一个bean的生命周期过程中有一个步骤叫初始化，Spring会在这个步骤中去调用bean的初始化方法。初始化逻辑由程序员自己控制，使得程序员可以自定义逻辑对bean进行加工。</li>
+</ul>
+<p>通过<code>&lt;bean&gt;&lt;/bean&gt;</code>、<code>@Bean</code>、<code>@Component</code>标注的类都会解析为BeanDefinition，供Spring创建（实例化）具体的Bean。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPerson</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    AnnotationConfigApplicationContext ctx = <span class="keyword">new</span> AnnotationConfigApplicationContext(Config.class);</span><br><span class="line">    AbstractBeanDefinition bd = BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();</span><br><span class="line">    bd.setBeanClass(User.class);</span><br><span class="line">    <span class="comment">// 将BeanDefinition注册到上下文中</span></span><br><span class="line">    ctx.registerBeanDefinition(<span class="string">"user"</span>, bd);</span><br><span class="line">    <span class="comment">// 获得Bean对象</span></span><br><span class="line">    User user = (User)ctx.getBean(<span class="string">"user"</span>);</span><br><span class="line">    System.out.println(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="factorybean"><a class="markdownIt-Anchor" href="#factorybean"></a> FactoryBean</h4>
+<blockquote>
+<p>FactoryBean是Spring.所提供的一种较灵活的创建Bean的方式，可以通过实现FactoryBean：接口中的getObject()方法来返回一个对象，这个对象就是最终的Bean对象。</p>
+</blockquote>
+<p>FactoryBean接口中的方法</p>
+<ul>
+<li>Object getObject()：返回的是Bean对象</li>
+<li>boolean isSingleton()：返回的是否是单例Bean对象</li>
+<li>Class getObjectType()：返回的是Bean对象的类型</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(<span class="string">"zhouyu"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZhouyuFactoryBean</span> <span class="keyword">implements</span> <span class="title">FactoryBean</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getObject</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> User(<span class="string">"cl"</span>, <span class="number">18</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Class&lt;?&gt; getObjectType() &#123;</span><br><span class="line">        <span class="keyword">return</span> User.class;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码，实际上对应了两个Bean对象：<br>
+1、beanName为&quot;zhouyu’，bean对象为getObject方法所返回的User对象。=&gt;<code>applicationcontext.getBean(name：&quot;zhouyu&quot;，ZhouyuFactory.class);</code><br>
+2、beanName为&quot;&amp;zhouyu’，bean对象为ZhouyuFactoryBean类的实例对象。=&gt;<code>applicationcontext.getBean(name：&quot;&amp;zhouyu&quot;，ZhouyuFactoryBean.class);</code></p>
+<p>与BeanFactory的区别：</p>
+<ul>
+<li>FactoryBean对象本身也是一个Bean，同时它相当于一个小型工厂，可以生产出<strong>另外</strong>的Bean。==》指定类型的Bean对象
+<ul>
+<li>FactoryBean机制被广泛的应用在Spring内部和Spring-与第三方框架或组件的整合过程中。</li>
+</ul>
+</li>
+<li>BeanFactory是一个Spring容器，是一个大型工厂，它可以生产出<strong>各种各样</strong>的Beano</li>
+</ul>
+<h4 id="supplier"><a class="markdownIt-Anchor" href="#supplier"></a> Supplier</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPerson</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        AnnotationConfigApplicationContext ctx = <span class="keyword">new</span> AnnotationConfigApplicationContext(Config.class);</span><br><span class="line">        ctx.registerBean(User.class, <span class="keyword">new</span> Supplier&lt;User&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> User <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                User userx = <span class="keyword">new</span> User();</span><br><span class="line">                userx.setAge(<span class="number">222</span>);</span><br><span class="line">                userx.setName(<span class="string">"supplier"</span>);</span><br><span class="line">                <span class="keyword">return</span> userx;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        User user = (User)ctx.getBean(<span class="string">"user"</span>);</span><br><span class="line">        System.out.println(user);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="beanfactory"><a class="markdownIt-Anchor" href="#beanfactory"></a> BeanFactory</h2>
+<p>BeanFactory是一种“Spring容器”， BeanFactory翻译过来就是Bean工厂，顾名思义，它可以用来创建Bean、获取Bean。</p>
+<p>概念区分：</p>
+<ul>
+<li>BeanFactory将利用BeanDefinition：来生成Bean对象</li>
+<li>BeanDefinition相当于BeanFactory的原材料</li>
+<li>Bean对象就相当于BeanFactory）所生产出来的产品</li>
+</ul>
+<p>BeanFactory的核心子接口和实现类：</p>
+<ul>
+<li>ListableBeanFactory</li>
+<li>ConfigurableBeanFactory</li>
+<li>AutowireCapableBeanFactory</li>
+<li>AbstractBeanFactory</li>
+<li>DefaultListableBeanFactory</li>
+</ul>
+<p>···</p>
+<h2 id="bean生命周期"><a class="markdownIt-Anchor" href="#bean生命周期"></a> Bean生命周期</h2>
+<blockquote>
+<p>Bean生命周期描述的是Spring中一个Bean创建过程和销毁过程中所经历的步骤，其中Bean创建过程是重点。程序员可以利用Bean生命周期机制对Bean进行自定义加工。</p>
+</blockquote>
+<ul>
+<li>Bean定义：通过xml或者编写类的形式来创建BeanDefinition</li>
+<li>构造方法推断：从bean的多个构造方法中选出一个构造方法</li>
+<li>实例化：通过构造方法反射获得对象，在Spring中可以通过BeanPostProcessor机制对实例化进行干预</li>
+<li>属性填充(自动注入、依赖注入)：给属性进行自动填充，比如@Value，@AutoWired</li>
+<li>初始化：在一个对象的属性填充之后，Spring提供了初始化机制，让程序员可以对其他属性进行赋值、校验等自定义加工(利用InitializingBean接口)</li>
+<li>初始化后：Aop、生成代理对象。常说的Aop机制就是在这个步骤中通过BeanPostProcessor机制实现的，这步之后获得的对象才是真正的Bean对象</li>
+</ul>
+<p>创建过程：</p>
+<p><img src="/2022/02/27/深入学习使用Spring/E:%5Chexo%5Csource_posts%5C%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8Spring%5Cbean%E5%88%9B%E5%BB%BA%E8%BF%87%E7%A8%8B.jpg" alt="bean创建过程"></p>
+<p>生命周期图：</p>
+<p><img src="/2022/02/27/深入学习使用Spring/E:%5Chexo%5Csource_posts%5C%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8Spring%5Cbean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-1.jpg" alt="bean生命周期-1"></p>
+<h2 id="属性填充注解autowired-resource-value"><a class="markdownIt-Anchor" href="#属性填充注解autowired-resource-value"></a> 属性填充注解：@Autowired、@Resource、@Value</h2>
+<h3 id="autowired"><a class="markdownIt-Anchor" href="#autowired"></a> @Autowired.</h3>
+<p>表示某个属性是否需要进行依赖注入，可以写在属性和方法上。注解中的required属性默认为ture，表示如果没有对象可以注入给属性则抛异常。</p>
+<ul>
+<li>
+<p>@Autowired：加在某个<strong>属性</strong>上，Spring在进行Bean的生命周期过程中，在<strong>属性填充</strong>这一步会基于实例化出来的对象，对该对象中加了@Autowired的属性自动给属性赋值。具体实现为： Spring会先根据属性的类型去Spring容器中找出该类型所有的Bean对象，如果找出来多个，则再根据属性的名字从多个中再确定一个。如果required属性为true，并且根据属性信息找不到对象，则直接抛异常。</p>
+</li>
+<li>
+<p>当@Autowired注解写在<strong>某个方法</strong>上时，Spring在B ean生命周期的属性填充阶段，会根据方法的参数类型、参数名字从Spring容器找到对象当做方法入参，自动反射调用该方法。</p>
+</li>
+<li>
+<p>@Autowired加在<strong>构造方法</strong>上时，Spring会在<strong>推断构造方法阶段</strong>，<u>选择该构造方法来进行实例化</u>，在反射调用构造方法之前，会先根据构造方法参数类型、参数名从Spring容器中找到Bean对象，当做构造方法入参。</p>
+</li>
+</ul>
+<h3 id="resource"><a class="markdownIt-Anchor" href="#resource"></a> @Resource</h3>
+<p>@Resource注解与@Autowired类似，也是用来进行依赖注入的，@Resource是<strong>Java层面</strong>所提供的注解，@Autowired.是<strong>Spring</strong>所提供的注解，它们依赖注入的底层实现逻辑也不同。</p>
+<p>@Resource：注解中有一个name属性，针对na me属性是否有值，@Resource的依赖注入底层流程是不同的。</p>
+<ul>
+<li>@Reousrce：如果name属性有值，那么Spring会直接根据所指定的name值去Spring容器找Bean对象，如果找到了则成功，如果没有找到，则报错。</li>
+<li>如果@Resource中的name属性没有值，则：
+<ol>
+<li>先判断该属性名字在Spring容器中是否存在Bean对象。</li>
+<li>如果存在，则成功找到Bean对象进行注入。</li>
+<li>如果不存在，则根据属性类型去Spring容器找Bean对象，找到一个则进行注入。</li>
+</ol>
+</li>
+</ul>
+<h3 id="value"><a class="markdownIt-Anchor" href="#value"></a> @Value</h3>
+<p>@Value注解和@Resource、@Autowired类似，也是用来对属性进行依赖注入的，只不过@Value是用来从<strong>Properties.文件中</strong>来获取<strong>值</strong>的，并且@Value可以解析SpEL（Spring表达式）。</p>
+<ul>
+<li>
+<p><code>@Value(&quot;yuzhou&quot;)</code>: 直接将字符串“zhouyu”赋值给属性，如果属性类型不是String，或无法进行类型转化，则报错。</p>
+</li>
+<li>
+<p><code>@Value(${&quot;yuzhou&quot;})</code>： 将会把<code>${}</code>中的字符串当做key，从Properties文件中找出对应的value赋值给属性，如果没找到，则会把<code>${zhouyu}</code>当做普通字符串注入给属性。</p>
+</li>
+<li>
+<p><code>@Value(#{&quot;yuzhou&quot;})</code>:会将<code>#{}</code>中的字符串当做Spring表达式进行解析，Spring会把&quot;zhouyu&quot;当做beanName，并从Spring容器中找对应bean，如果找到则进行属性注入，没找到则报错。</p>
+</li>
+<li></li>
+</ul>
+<h2 id="applicationcontext"><a class="markdownIt-Anchor" href="#applicationcontext"></a> ApplicationContext</h2>
+<p>ApplicationContext是比BeanFactory更加强大的Spring容器，它既可以创建bean、获取bean，还支持国际化、事件广播、获取资源等BeanFactor y不具备的功能。</p>
+<p>Application Context，所继承的接口</p>
+<ul>
+<li>EnvironmentCapable：拥有获取环境变量的能力：操作系统环境变量和Jvm环境变量</li>
+<li>ListableBeanFactory：拥有了获取所有beanNames、判断某个bean Name是否存在peanDefinition对象、统计Be anDefinition个数、获取某个类型对应的所有beanNames等功能。</li>
+<li>HierarchicalBeanFactory：拥有了获取父BeanFactory、。判断某个name是否存在bean对象的功能。</li>
+<li>MessageSource：拥有了国际化功能，比如可以直接利用Messa geSource对象获取某个国际化资源（比如不同国家语言所对应的字符）</li>
+<li>ApplicationEventPublisher： 拥有了事件发布功能，可以发布事件，这是Application Context相对于BeanFactory比较突出、常用的功能。</li>
+<li>ResourcePatternResolver: 拥有了加载并获取资源的功能，这里的资源可以是文件，图片等某个URL资源都可以。</li>
+</ul>
+<h3 id="获得bean的方式"><a class="markdownIt-Anchor" href="#获得bean的方式"></a> 获得bean的方式：</h3>
+<blockquote>
+<p><em>getBean() API</em></p>
+</blockquote>
+<ul>
+<li>
+<p>按名称获取Bean</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object lion = context.getBean(<span class="string">"lion"</span>);</span><br><span class="line"> </span><br><span class="line">assertEquals(Lion.class, lion.getClass());</span><br></pre></td></tr></table></figure>
+<p>根据bean名称获取bean，如果在spring ico容器中存在和bean，则返回<em>Object</em> 类的实例。否则，抛出如下异常NoSuchBeanDefinitionException。</p>
+<p>▲: 主要的缺点是，在获取bean之后，我们<strong>必须将它指定转换为所需的类型</strong>。如果返回的bean的类型与我们期望的不同，则可能会产生异常。</p>
+</li>
+<li>
+<p>通过名称和类型获取Bean</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Lion lion = context.getBean(<span class="string">"lion"</span>, Lion.class);</span><br><span class="line"><span class="comment">// 与按名称获取Bean相比，此方法更安全，因为我们可以编译阶段就发现错误而不是在运行阶段。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">assertThrows(BeanNotOfRequiredTypeException.class, () -&gt; </span><br><span class="line">    context.getBean(<span class="string">"lion"</span>, Tiger.class));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>按类型获取Bean</p>
+</li>
+</ul>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// right</span></span><br><span class="line">Lion lion = context.getBean(Lion.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意: 在下面的情况下，需要特别注意可能存在的歧义：</span></span><br><span class="line">assertThrows(NoUniqueBeanDefinitionException.class, () -&gt; </span><br><span class="line">    context.getBean(Animal.class));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于<em>Lion</em>和<em>Tiger都</em>实现了<em>Animal</em>接口，因此仅指定类型不足以明确确定结果。因此，我们会得到一个*<code>NoUniqueBeanDefinitionException</code>*。即在<strong>同一个IOC 容器中，如果<u>有相同类型的多个bean</u>，则不能通过类型获取bean</strong>。</p>
+<ul>
+<li>按名称和构造函数参数对Bean进行筛选</li>
+</ul>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Tiger tiger = (Tiger) context.getBean(<span class="string">"tiger"</span>, <span class="string">"Siberian"</span>);</span><br><span class="line">Tiger secondTiger = (Tiger) context.getBean(<span class="string">"tiger"</span>, <span class="string">"Striped"</span>);</span><br><span class="line"> </span><br><span class="line">assertEquals(<span class="string">"Siberian"</span>, tiger.getName());</span><br><span class="line">assertEquals(<span class="string">"Striped"</span>, secondTiger.getName());</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>按类型和构造函数参数对Bean进行筛选</p>
+<blockquote>
+<p>▲: 这个方法有点不同，因为它<strong>只适用于具有原型作用域</strong>的bean。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Tiger tiger = context.getBean(Tiger.class, <span class="string">"Shere Khan"</span>);</span><br><span class="line">assertEquals(<span class="string">"Shere Khan"</span>, tiger.getName());</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="beanpostprocessor机制"><a class="markdownIt-Anchor" href="#beanpostprocessor机制"></a> BeanPostProcessor机制</h2>
+<p>BeanPostProcessor是Spring所提供的一种扩展机制，可以利用该机制对Bean进行定制化加工，在Spring底层源码实现中，也广泛的用到了该机制，BeanPostProcessor通常也叫做<strong>Bean后置处理器</strong>。</p>
+<p>BeanPostProcessor在Spring中是一个接口，我们定义一个后置处理器，就是提供一个类实现该接口，在Spring中还存在一些接口继承了BeanPostProcessor，这些子接口是在BeanPostProcessor的基础上增加了一些其他的功能。</p>
+<p>BeanPostProcessori中的方法</p>
+<ul>
+<li>postProcessBeforelnitialization()：初始化前方法，表示可以利用这个方法来对Bean在初始化前进行自定义加工。</li>
+<li>postProcessAfterInitialization()：初始化后方法，表示可以利用这个方法来对Bean在初始化后进行自定义加工。</li>
+</ul>
+<h3 id="instantiationawarebeanpostprocessor"><a class="markdownIt-Anchor" href="#instantiationawarebeanpostprocessor"></a> InstantiationAwareBeanPostProcessor</h3>
+<blockquote>
+<p>BeanPostProcessor的一个子接口</p>
+</blockquote>
+<ul>
+<li>postProcessBeforelnstantiation()：实例化前</li>
+<li>postProcessAfterInstantiation()：实例化后</li>
+<li>postProcessProperties()：属性注入后</li>
+</ul>
+<h2 id="aop是什么"><a class="markdownIt-Anchor" href="#aop是什么"></a> AOP是什么？</h2>
+<p>AOP就是面向切面编程，是一种非常适合在<strong>无需修改业务代码的前提</strong>下，对<u>某个或某些业务增加统一的功能</u>（横向增加功能），比如日志记录、权限控制、事务管理等，能很好的使得代码解耦，提高开发效率。</p>
+<ul>
+<li></li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/02/27/深入学习使用Spring/">https://nymrli.top/2022/02/27/深入学习使用Spring/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/03/19/2022年3月19日-爬虫项目记录/" title="2022年3月19~20日-爬虫项目记录"><span>< PreviousPost</span><br><span class="prevTitle">2022年3月19~20日-爬虫项目记录</span></a><a class="nextSlogan" href="/2022/02/26/研究生work——地图匹配/" title="研究生work——地图匹配"><span>NextPost ></span><br><span class="nextTitle">研究生work——地图匹配</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '深入学习使用Spring',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建bean的方式"><span class="toc-number">1.</span> <span class="toc-text"> 创建bean的方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#声明式"><span class="toc-number">1.1.</span> <span class="toc-text"> 声明式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#beanbean"><span class="toc-number">1.1.1.</span> <span class="toc-text"> &lt;bean&gt;&lt;/bean&gt;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bean"><span class="toc-number">1.1.2.</span> <span class="toc-text"> @Bean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#component"><span class="toc-number">1.1.3.</span> <span class="toc-text"> @Component</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#import"><span class="toc-number">1.1.4.</span> <span class="toc-text"> @Import</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程式"><span class="toc-number">1.2.</span> <span class="toc-text"> 编程式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#beandefinition"><span class="toc-number">1.2.1.</span> <span class="toc-text"> BeanDefinition</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#factorybean"><span class="toc-number">1.2.2.</span> <span class="toc-text"> FactoryBean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#supplier"><span class="toc-number">1.2.3.</span> <span class="toc-text"> Supplier</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#beanfactory"><span class="toc-number">2.</span> <span class="toc-text"> BeanFactory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bean生命周期"><span class="toc-number">3.</span> <span class="toc-text"> Bean生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性填充注解autowired-resource-value"><span class="toc-number">4.</span> <span class="toc-text"> 属性填充注解：@Autowired、@Resource、@Value</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#autowired"><span class="toc-number">4.1.</span> <span class="toc-text"> @Autowired.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#resource"><span class="toc-number">4.2.</span> <span class="toc-text"> @Resource</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#value"><span class="toc-number">4.3.</span> <span class="toc-text"> @Value</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#applicationcontext"><span class="toc-number">5.</span> <span class="toc-text"> ApplicationContext</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获得bean的方式"><span class="toc-number">5.1.</span> <span class="toc-text"> 获得bean的方式：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#beanpostprocessor机制"><span class="toc-number">6.</span> <span class="toc-text"> BeanPostProcessor机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#instantiationawarebeanpostprocessor"><span class="toc-number">6.1.</span> <span class="toc-text"> InstantiationAwareBeanPostProcessor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aop是什么"><span class="toc-number">7.</span> <span class="toc-text"> AOP是什么？</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

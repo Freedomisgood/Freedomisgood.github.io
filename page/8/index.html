@@ -97,216 +97,253 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/Linux下开机启动Python脚本/">Linux下开机启动Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:48:46.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:48:46.000Z">2021-10-22</time></div><div class="recent-post-content"> /etc/rc.local
-将脚本写在/etc/rc.local文件
-输入命令：sudo vi /etc/rc.local
-在exit 0上一行输入：python /usr/bin/python /home/pi/test.py
-重启就可以看效果sudo reboot
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/07/25/Docker使用/">Docker使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-25T02:58:19.000Z">2019-07-25</time><i class="fa fa-edit"></i><time datetime="2019-07-25T02:58:19.000Z">2022-03-29</time></div><div class="recent-post-content"> Docker学习
 
-当然，rc.local 文件需要有执行权限（默认没有）
-$ sudo chmod +x /etc/rc.local
-对于命令，最好是先which python查出命令路径，写命令时写绝对路径
+轻部署,省成本,易迁移
 
- /etc/init.d
-写一个服务放到linux的/etc/init.d目录中
-并且授权bash脚本chmod 755 /etc/ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/03/Linux下开机启动Python脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/">frp结合nginx实现内网web服务和tcp的转发</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-02T10:48:23.000Z">2019-03-02</time><i class="fa fa-edit"></i><time datetime="2019-03-02T10:48:23.000Z">2021-03-20</time></div><div class="recent-post-content">
-服务端 - 阿里云服务器: Ubuntu 16.04
-客户端 - 活动室电脑 : Ubuntu 16.04
+ docker和虚拟机VM的区别
+ 一、本质上的区别：
 
- 配置server端
-1$ sudo vim frps.ini
-1234[common]                 #必须有的配置段，在frpc.ini和frps.ini中都必须要有bind_port = 7000         #服务端服务的监听端口vhost_http_port = 16666  #自己设定的http访问端口vhost_https_port = 17777 #自己设定的https访问端口
-保存并且退出，使用如下服务命令启动frps服务
-1$ nohup . ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2019/03/02/frp结合nginx实现内网web服务和tcp的转发/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-DFS、BFS/">ACM-DFS、BFS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:55:03.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:55:03.000Z">2020-11-05</time></div><div class="recent-post-content"> 深度优先搜索(DFS)
+VM(VMware)在宿主机器、宿主机器操作系统的基础上创建虚拟层、虚拟化的操作系统、虚拟化的仓库，然后再安装应用；
+Container(Docker容器)，在宿主机器、宿主机器操作系统上创建Docker引擎，在引擎的基础上再安装应用。
+那么问题来了，没有操作系统，怎么运行程序？
+可以在Docker中创建一个ubuntu的镜像文件，这样就能将ubuntu系统集成到Docker中，运行的应用就都是ubuntu的应用。
+ 二、使用上的区别：
 
-从某个状态,不断转移状态直到无法转移,然后回退到前一步的状态,继续转移到其他状态,如此不断重复,直到找到最终解. ====&gt; 递归函数
-隐式的用到了栈(stack)
+Size:
 
-123456789101112131415161718192021222324252627//[部分和问题]#include &lt;iostream&gt;#define MAXN 10000int n,k;int s[MAXN];using namespace std;bool dfs(int i,int sum)&#123;    if( i == n ) return sum == k; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-DFS、BFS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/蓝桥杯突击训练/">蓝桥杯突击训练</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T02:35:12.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T02:35:12.000Z">2020-09-17</time></div><div class="recent-post-content"> ACM 3-20笔记
- 3部排序
+虚拟机ubuntu大小为:24.1G ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2019/07/25/Docker使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/25/Python中的正则匹配/">Python中的正则匹配</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-25T01:50:19.000Z">2019-07-25</time><i class="fa fa-edit"></i><time datetime="2019-07-25T01:50:19.000Z">2022-03-18</time></div><div class="recent-post-content"> Python中的正则匹配
 
-左指针，右指针， 探路指针–&gt;链表的pq
+虽然正则早就会用了,但是有些使用方法老是忘记,因此还是写篇记录一下
 
- 马虎的算式
+ 特殊字符
 
-枚举（五重循环，注意条件）
-内存1000ms大约运行10^8的指令
 
- 大数除法
 
-减法
-除法
+特别字符
+描述
 
- 39级阶梯
 
-斐波那契
-简化模型后再加上考虑条件
 
- 错误票据
 
+$
+匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n’ 或 ‘\r’。要匹配 $ 字符本身，请使用 $。
 
-获得一行内容：getline()前要用getchar()吃掉换行符
 
+( )
+标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 ( 和 )。
 
-分割一行以空格分隔的元素
 
+*
+匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 *。
 
-12345string s;getline(cin,s);stringstream ss(s);string tmp;while( getline(ss,tmp," ") )
 
++
+匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 +。
 
 
+.
+匹配除换行符 \n 之外的任何单 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/25/Python中的正则匹配/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/傅里叶变换-小波变化/">傅里叶变换-&gt;小波变化</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T01:51:32.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T01:51:32.000Z">2021-10-25</time></div><div class="recent-post-content"> 傅里叶变换-&gt;小波变化
 
- ▲翻硬币
+声明:文中大多数内容来自(知乎1335)[https://www.zhihu.com/people/zhi-yuan-ya-77],matlab源代码:1368069096/From_FT_to_WT_examples-,部分为个人理解阐明
 
- ACM 3-21笔记 （2 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/03/28/蓝桥杯突击训练/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-并查集/">ACM-并查集</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T01:21:30.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T01:21:30.000Z">2020-06-03</time></div><div class="recent-post-content"> 并查集
+ 一.傅里叶变换FT
+ 基础知识
 
-ACM竞赛中，并查集（DisjointSets）这个数据结构经常使用。顾名思义，并查集即表示集合，并且支持快速查找、合并操作。
-用于高效的查找某两个元素是否属于同一个集合；
+（FOURIER TRANSFORM，简称FT）
 
-并查集如何表示一个集合？它借助树的思想，将一个集合看成一棵有根树。那又如何表示一棵树？初始状态下，一个元素即一棵树，根即是元素本身。
- 合并
-并查集如何支持合并操作？不难发现，按照树的思想，在同一棵树中的所有元素，根都是相同的。也就是说，合并两个不同的集合，只需要将其中一个集合的根设置为另一个集合的根即可，而需要改变根的那个集合，其实只需要改变根节点的父节点即可。
- 如何支持快速查找操作
-如果完全按照上面的合 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-并查集/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-大数定理（高精度）/">ACM-大数定理（高精度）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T00:53:27.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T00:53:27.000Z">2020-05-28</time></div><div class="recent-post-content"> ACM-大数定理（高精度）
+ 为什么傅里叶变换可以把一个信号从时域变换到频域?
+先给出公式，傅里叶变换的形式为：X(w)=∫−∞+∞x(t)e−jwtdtX(w)=\int_{-\infty}^{+\infty} x(t) e^{-j w t} d tX(w)= ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/傅里叶变换-小波变化/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Linux三剑客/">Linux三剑客</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:37:36.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:37:36.000Z">2021-10-19</time></div><div class="recent-post-content"> Linux三剑客
+ bash命令执行顺序
 
-由于c/c++中数据类型的范围比较固定，因此有些题目的数据范围正好卡在这些正常范围之外，此时就需要自己实现大数加减乘除的运算。
-c/c++需要自己手写
-java中有BigInteger类
+把命令行分成单个命令词
+展开别名
+展开大括号的声明（{}）
+展开波浪符声明（~）
+命令替换$0和&quot;)
+再次把命令行分成命令词
+展开文件通配（*、？、[abc]等等）
+准备I/0重导向（&lt;、&gt;）
+运行命令
 
- C++ 加法实现
-123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &lt;iostream&gt;#include &lt;string&gt;#include &lt;algorithm&gt;using namespace std;type ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-大数定理（高精度）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/14/搭建Gitlab服务器/">搭建Gitlab服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-14T10:32:26.000Z">2019-03-14</time><i class="fa fa-edit"></i><time datetime="2019-03-14T10:32:26.000Z">2019-12-12</time></div><div class="recent-post-content"> 搭建Gitlab服务器
- 下载安装Gitlab
-由于直接下载Gitlab会很慢(被墙的缘故) ， 于是选择清华的镜像安装，清华源
- Ubuntu 16.04 用户
+文件查找
+非实时搜索locate
 
-Linux其他版本或者不是Ubuntu 16.04 见官网修改方式
+速度快
 
 
-首先信任 GitLab 的 GPG 公钥:
+更新updatabase
 
-1curl https://packages.gitlab.com/gpg.key 2&gt; /dev/null | sudo apt-key add - &amp;&gt;/dev/null
-▲如果这步不行，先进行下一步
+实时搜索工具find
 
-文本框中内容写进 /etc/apt/sources.list.d/gitlab-ce. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/14/搭建Gitlab服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/15/Linux命令手册/">Linux命令手册</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-15T14:33:26.000Z">2019-03-15</time><i class="fa fa-edit"></i><time datetime="2019-03-15T14:33:26.000Z">2019-12-11</time></div><div class="recent-post-content"> scp
-1、从服务器上下载文件
-1scp username@servername:/path/filename /var/www/local_dir（本地目录）
-例如scp root@192.168.0.101:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）
-2、上传本地文件到服务器
-1scp /path/filename username@servername:/path
-例如scp /var/www/test.php  root@192.168.0.101:/var/w ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/15/Linux命令手册/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/ACM-线性筛/">ACM_线性筛</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T08:57:36.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T08:57:36.000Z">2019-10-29</time></div><div class="recent-post-content"> 什么是线性筛?
+搜索速度略慢
+精确查找
+只能搜索用户具备读取和执行权限的目录
 
-筛素数是为了求得一个区间内的所有素数，而把不是素数的筛去。
+ sed(Stream EDitor):
 
-最普通的办法——判断一个数是不是素数
-123456789101112131415161718#define SIZE 1000000int main()&#123;    int check[SIZE];    int prime[SIZE] = &#123;0&#125;;    int pos;    int flag;    for (int i = 2 ; i &lt; SIZE ; i++)&#123;        flag = 1;        for (int j = 2 ; j &lt; sq ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="线性筛"> 线性筛</a></div><div class="read-more"><a class="more" href="/2019/03/03/ACM-线性筛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/程序设计周cpp学习笔记/">程序设计周cpp学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:56:14.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:56:14.000Z">2019-09-15</time></div><div class="recent-post-content"> 文件名传参
-123456789101112131415using namespace std;#define FILENAME "data.csv"void readfile(string file)&#123;	ifstream inFile;	inFile.open(file.c_str(), ios::out); // 打开模式可省略	string lineStr;	while (getline(inFile, lineStr) )		// 打印整行字符串		cout &lt;&lt; lineStr  &lt;&lt; '-'&lt;&lt; endl; &#125;  int ma ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="程序设计"> 程序设计</a></div><div class="read-more"><a class="more" href="/2019/03/07/程序设计周cpp学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/学会Pull-request/">学会Pull request</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T11:18:14.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T11:18:14.000Z">2019-09-15</time></div><div class="recent-post-content"> GitHub中发起PR(pull Request)
+sed后字符使用单引号
 
-PR是为了贡献代码:
-​	贡献代码，通俗的说，就是自己修改了代码，希望合并到别人的Repository(仓库)中。将自己的智慧贡献给开源社区。
+语法：sed [-hnV][-e&lt;script&gt;][-f&lt;script文件 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/08/30/Linux三剑客/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/机器学习——决策树/">机器学习——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:44:35.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:44:35.000Z">2021-05-30</time></div><div class="recent-post-content"> 机器学习——决策树
+ 决策树基础概念
 
- 一.贡献代码:
- 1.第一步:Fork
-在GitHub社区闲逛时，看中了某个项目代码，如：spring-projects/spring-framework，点击页面Fork按钮，会生成一个自己的Repository(仓库：thinkingfioa/spring-framework),如下图：
+决策树分为分类树和回归树两种，分类树对离散变量做决策树，回归树对连续变量做决策树。
+每个内部节点（非叶子节点）表示一个属性上的测试条件，每个分支代表一个测试输出结果，每个叶节点代表一种类别
 
- 2.第二步：修改
-Fork成功后，通过git clone、修改、commit、push等操作后，将 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/03/28/学会Pull-request/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/17/南京邮电大学java程序设计作业在线编程第六次作业/">南京邮电大学java程序设计作业在线编程第六次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-17T05:29:36.000Z">2019-03-17</time><i class="fa fa-edit"></i><time datetime="2019-03-17T05:29:36.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
- 选择题得分：40
+决策树分为分类树和回归树两种，分类树对离散变量做决策树，回归树对连续变量做决策树。
+决策树的构造过程就是找到这些具有决定性作用的特征，根据其决定性程度来构造一个倒立的树–决定性作用最大的那个特征作为根节点，然后递归找到各分支下子数据集中次大的决定性特征，直至子数据集中所有数据都属于同一类。
+特征：
 
-1.下列方法定义中，正确的是（）
-
-A.double me（int a，int b）{int r; r = ab}
-B.double me（a，b）{return b;}
-C.int me（int a，int b）{return（a-b）;}
-D.int me（inta，b）{return（a-b）;}
-正确答案是：C
-
-2.下列方法定义中，不正确的是（）
-
-A.float x（int a，int b）{return（ab）;}
-B.int x（int a，int b）{return ab;}
-C.int x（int a，int b）{return a * ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/17/南京邮电大学java程序设计作业在线编程第六次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/">南京邮电大学java程序设计作业在线编程第五次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-17T03:44:36.000Z">2019-03-17</time><i class="fa fa-edit"></i><time datetime="2019-03-17T03:44:36.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
- 选择题得分：50
-
-
-
-以下哪一个工具是Java的编译器？( )
-
-
-
-A.javac.exe
-B.java.exe
-C.javap.exe
-D.javadoc.exe
-正确答案是: A
-
-
-
-以下哪一个数据类型不属于Java的基本数据类型？( )
-
-
-
-A.boolean
-B.char
-C.int
-D.String
-正确答案是: D
-
-
-
-假设有如下类的定义： public class test{ public static void main(String[] args){ int a= 3, b = 4; swap(a,b); System.out.println(“a ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/南京邮电大学java程序设计作业在线编程第三次作业/">南京邮电大学java程序设计作业在线编程第三次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:12:47.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:12:47.000Z">2019-09-15</time></div><div class="recent-post-content"> 选择题得分：60
-\1. 设有如下定义语句： String s1=”My cat”; int m=s1.compareTo(“My a cat”); 语句被执行后m的值为（ ）
-A.2
-B.1
-C.0
-D.-2
-正确答案是: A
-\2. 语句 String s1=new String(“Hello”); String s2=new String(“Hello”); System.out.println(s1==s2); System.out.printlv(s1.equals(s2)); 执行后的输出结果是（ ）
-A.Hello false
-B.Hello true
-C.Hello Hell ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/07/南京邮电大学java程序设计作业在线编程第三次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/使用git将项目上传到github（最简单方法）/">使用git将项目上传到github（最简单方法）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T11:39:36.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T11:39:36.000Z">2019-09-15</time></div><div class="recent-post-content"> 使用git将项目上传到github（最简单方法）
-首先你需要一个github账号，所有还没有的话先去注册吧！ Github
-**我们使用git需要先安装git工具，这里给出下载地址，下载后一路直接安装即可：**https://git-for-windows.github.io/
- 1.进入Github首页，点击New repository新建一个项目
-
- 2.填写相应信息后点击create即可
-
-Repository name: 仓库名称
-Description(可选): 仓库描述介绍
-Public, Private : 仓库权限（公开共享，私有或指定合作者）
-Initialize this ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/03/28/使用git将项目上传到github（最简单方法）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/Java课程第二次实验报告/">Java课程第二次实验报告</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T00:58:21.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T00:58:21.000Z">2019-09-15</time></div><div class="recent-post-content"> Java课程第二次实验报告
- 1.寻找并输出11~999之间的数m，它满足m、m2、m3均为回文数。回文数是各位数字左右对称的整数。判断是否为回文要求通过编写方法来完成。
-123456789101112131415161718public class HelloWorld &#123;	public static boolean isPalindrome(int s) &#123;		String str = Integer.toString(s);		if( str.charAt(0) == str.charAt(str.length() - 1) )			return true;		el ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/04/25/Java课程第二次实验报告/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/02/flask-nginx如何获得真实IP/">flask+nginx如何获得真实IP</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-02T12:53:58.000Z">2019-03-02</time><i class="fa fa-edit"></i><time datetime="2019-03-02T12:53:58.000Z">2019-09-15</time></div><div class="recent-post-content">
-如果是通过 flask 的 request.remote_addr获取的 ip 都是 127.0.0.1
-
- 解决方案:
- nginx.conf中添加
-123# proxy_set_header Host $host:80; # proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-全文
-12345678910111213141516server &#123;    listen 8888;    server_name 0.0.0.0;    ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="nginx"> nginx</a></div><div class="read-more"><a class="more" href="/2019/03/02/flask-nginx如何获得真实IP/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/codeblocks中boost库安装/">codeblocks中boost库安装</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:04:59.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:04:59.000Z">2019-09-15</time></div><div class="recent-post-content">
-首先要提出的是，boost在VS中是可以直接导入的，但是在CB中是不行的，所以写了下这篇文章。
-
- 安装boost
-1.首先先去boost官网下载boost的源码 ， 选择你要下载的版本。
-2.解压（可能会耗费一段时间，小文件比较多）
-3.双击运行脚本文件bootstrap.bat（引导程序），之后就生成这两个可执行文件
-我们为了能直观的看到编译boost的细节信息，进入dos (win +ｒ快捷键　输入cmd )
-4.cd 到解压boost库的目录下
-5.命令执行bjam.exe
-4-5是没必要的，要是不想看输出的东西的话，其实双击bjam.exe即可
-
-▲.编译的时间略久（你可以干一会其 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/03/03/codeblocks中boost库安装/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/25/C++机器学习库MLPack/">C++机器学习库MLPack</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-25T09:44:11.000Z">2019-03-25</time><i class="fa fa-edit"></i><time datetime="2019-03-25T09:44:11.000Z">2019-09-15</time></div><div class="recent-post-content"> C++机器学习库MLPack
-
-mlpack: a scalable C++ machine learning library
-
-由于在网上查了一下发现安装这个库碰到了不少问题，所以还是记录一下安装过程。
- 安装
-
-列出两种安装教程吧，第一种实测可以。第二种在测试Armadillo的时候没通过，还是缺库，有兴趣的人可以通过给的Armadillo官网链接下载安装Armadillo再试试
-
- 安装方法一：
-Mlpack 官网 提供了下载的方法 ： sudo apt-get install libmlpack-dev ， 但貌似有博客指出目前国内源里是没有这个镜像的，所以采取的办法是直接从观望上下 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/03/25/C++机器学习库MLPack/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-快速幂/">ACM-快速幂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:54:05.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:54:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 简单位运算快速幂
-
-假设我们要求ab，那么其实b是可以拆成二进制的，该二进制数第i位的权为2(i-1)，例如当b==11时，a11=a(20+21+2^3)
-
-123456789int poww(int a,int b)&#123;    int ans=1,base=a;    while(b!)&#123;        if(b&amp;1) ans*=base;        base*=base;        b&gt;&gt;=1;　 &#125;    return ans;&#125;
-11的二进制是``1011，11 = 2³×1 + 2²×0 + 2¹×1 + 2º×1 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/03/07/ACM-快速幂/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/7/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/9/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+有监督的学习
+非参数学习算法
+自顶向下递归方式构造决策树
+在每一 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/08/30/机器学习——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Sklearn——决策树/">Sklearn——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:43:27.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:43:27.000Z">2021-05-30</time></div><div class="recent-post-content"> Sklearn——决策树
+
+注明：转载自Jack Gui的博客
+
+ 1、实战背景
+进入本文的正题：眼科医生是如何判断患者需要佩戴隐形眼镜的类型的？一旦理解了决策树的工作原理，我们甚至也可以帮助人们判断需要佩戴的镜片类型。
+隐形眼镜数据集是非常著名的数据集，它包含很多换着眼部状态的观察条件以及医生推荐的隐形眼镜类型。隐形眼镜类型包括硬材质(hard)、软材质(soft)以及不适合佩戴隐形眼镜(no lenses)。数据来源与UCI数据库，数据集下载地址：[lenses.txt)]([https://github.com/Jack-Cherish/Machine-Learning/blob/ma ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Pythton"> Pythton</a></div><div class="read-more"><a class="more" href="/2019/08/30/Sklearn——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Word2016配置使用MathType/">Word2016配置使用MathType</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T12:58:53.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T12:58:53.000Z">2021-01-03</time></div><div class="recent-post-content"> Word 2016 使用MathType
+据说MathType 6.9b后就能与Word 2016兼容了，所以不用特地去找7.0以上的版本，据说更新的功能差别也不是很大。只不过本人还是使用的7+版本，新一点功能会更全点嘛。
+ 闲谈
+
+这边的方法是我个人的操作过程，但是感觉应该不是这么搞得。
+
+安装好MathType后，打开word查看工具栏中是否有MathType工具，如果没有的话，则手动选择“插入-&gt;获得加载项-&gt;应用商店”搜索Mathtype。如果还是没有的话，然后在“选项-&gt;加载项-&gt;模板”然后指定MathType Commands 6 For Word2016 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/08/30/Word2016配置使用MathType/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/08/自动化运维工具Ansible/">自动化运维工具Ansible</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-08T06:45:45.000Z">2019-07-08</time><i class="fa fa-edit"></i><time datetime="2019-07-08T06:45:45.000Z">2019-12-16</time></div><div class="recent-post-content"> 简介
+​        ansible是新出现的自动化运维工具，基于Python开发，集合了众多运维工具（puppet、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。
+　　ansible是基于 paramiko 开发的,并且基于模块化工作，本身没有批量部署的能力。真正具有批量部署的是ansible所运行的模块，ansible只是提供一种框架。ansible不需要在远程主机上安装client/agents，因为它们是基于ssh来和远程主机通讯的。ansible目前已经已经被红帽官方收购，是自动化运维工具中大家认可度最高的，并且上手容易，学习简单 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/08/自动化运维工具Ansible/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/2019-6月编程笔记/">2019_6月编程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:26:03.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:26:03.000Z">2019-11-26</time></div><div class="recent-post-content"> 2019_6月编程笔记
+
+注，不少内容比较多，已单独分出去成为独立的文章，更详细的介绍可见这些文章
+
+ 硬盘格式
+fat32 单文件4G， 做引导分区
+系统引导程序能读fat32
+只能主引导记录，选择能找到efi程序
+exfat 支持更大空间，引导识别不了，做不了系统盘
+ Python
+ all
+
+__all__是一个字符串list；
+约束作用：用来定义模块中对于from XXX import *时要对外导出的符号，即要暴露的借口，但它只对import *起作用，对from XXX import XXX不起作用。
+
+from njupt.zhengfang import Zhengfang是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程日记"> 编程日记</a></div><div class="read-more"><a class="more" href="/2019/08/30/2019-6月编程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/">通过XDRP实现Windows远程访问ubuntu桌面</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T00:57:05.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T00:57:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 通过XDRP实现Windows远程访问
+1234567891011121314#安装xrdp $ sudo apt-get install xrdp #安装vnc4server $ sudo apt-get install vnc4server tightvncserver#安装xubuntu-desktop $ sudo apt-get install xubuntu-desktop #向xsession中写入xfce4-session $ echo “xfce4-session” &gt;~/.xsession #开启xrdp服务 $ sudo service xrdp restart
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/通信企业管理-线上考试/">通信企业管理_线上考试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:37:49.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:37:49.000Z">2019-09-15</time></div><div class="recent-post-content"> 通信企业管理
+
+看清题目和选项
+
+ 单选题
+1单选(2分)
+在总公司领导下设立多个分支，各分支有各自独立的产品和市场，实行独立核算，经营管理上拥有自主性和独立性。这是（ A   ）组织结构。
+
+A.事业部型
+B.矩阵型
+C.职能型
+D.直线型
+
+2单选(2分)
+按照最新版《中华人民共和国公司法》规定，股份有限公司的发起人最多不超过（    C ）。
+
+A.100人
+B.50人
+C.200人
+D.150人
+
+3单选(2分)
+工作或行动之前预先拟定具体的工作内容和步骤是管理的（  D  ）职能。
+
+A.组织职能
+B.控制职能
+C.领导职能
+D.计划职能
+
+4单选(2分)
+提出“14项管理原则”的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2019/08/22/通信企业管理-线上考试/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/算法设计与分析C-概念点区分/">算法设计与分析C_概念点区分</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:39:29.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:39:29.000Z">2019-09-15</time></div><div class="recent-post-content"> 算法设计与分析C
+ 算法5_分治法
+分治法——将一个复杂的问题分解成若干个规模较小、相互独立，但类型相同的子问题求解；然后再将各子问题的解组合成原始问题的一个完整答案，这样的问题求解策略就叫分治法。
+分治法所能解决的问题一般具有以下几个特征：
+该问题的规模缩小到一定的程度就可以容易地解决；
+该问题可以分解为若干个规模较小的相同问题；
+利用该问题分解出的子问题的解可以合并为该问题的解；
+该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子问题。
+反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。
+由分 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2019/08/22/算法设计与分析C-概念点区分/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/时间序列概念及主要模型/">时间序列概念及主要模型</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T11:05:18.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T11:05:18.000Z">2019-09-15</time></div><div class="recent-post-content"> 时间序列概念及主要模型
+Q:什么是时间序列分析?
+A:时间序列是按照时间顺序，按照一定时间间隔取得的一系列观测值
+Q:怎样做时间序列分析?
+A:时间序列分析尝试找出序列值在过去呈现的特征模式，假定这种模式在未来能够持续，进而对未来进行预测
+ 时间序列三大特征
+
+序列相关性：当期的序列值和前期某个或某些序列值线性相关
+√  自相关系数（全相关系数）（ACF）：用来度量同一事件在不同时期之间的相关程度。ρh=r(h)r(0)\rho_{h}=\frac{r(h)}{r(0)}ρh​=r(0)r(h)​，其中r（h）为h期协方差函数，r（0）为方差
+√  偏自相关系数（PACF）：度量去除中间变量 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数学建模"> 数学建模</a></div><div class="read-more"><a class="more" href="/2019/07/29/时间序列概念及主要模型/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/">基础知识补充——白噪声、高斯白噪声</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T10:47:04.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T10:47:04.000Z">2019-09-15</time></div><div class="recent-post-content"> 白噪声、高斯白噪声
+ 白噪声过程:
+对于一个随机变量X(t)（t=1，2，3……），如果是由一个不相关的随机变量的序列构成的，即对于所有s不等于t，随机变量X(t)和X(s)的协方差为零，则称其为纯随机过程。对于一个纯随机过程来说，若其期望为0，方差为常数，则称之为白噪声过程。
+ 白噪声:
+白噪声序列，是指白噪声过程的样本实称，简称白噪声[1]。白噪声是**在较宽的频率范围内，各等带宽的频带所含的噪声能量相等的噪声**[2]，是一种功率频谱密度为常数的随机信号或随机过程，也就是说，此信号在各个频段上的功率是一样的。
+理想的白噪声具有无限的带宽，因而其能量无限大，但这是不可能实际存在的，所以， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/">利用wireshark抓取TCP的整个过程分析[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-24T07:51:29.000Z">2019-07-24</time><i class="fa fa-edit"></i><time datetime="2019-07-24T07:51:29.000Z">2019-09-15</time></div><div class="recent-post-content">原文地址：https://www.cnblogs.com/NickQ/p/9226579.html
+最近，已经很久都没有更新博客了。看看时间，想想自己做了哪些事情，突然发现自己真的是太贪心，到头来却一个都没搞好。手头的嵌入式都还没学出名堂，竟然还想着学FPGA,物联网，机器学习。然而，遇到新奇的事物，就会控制不住的去想，去找资料，实际上只是逃避遇到的问题，不想去解决而已。。最后的结果就是手头的活堆起来了，然后花大把整块的时间解决。真的是讨厌现在的自己。
+以后还是慢慢记录吧，不管做了什么，都慢慢尝试积累。。其他的东西，像FPGA，机器学习什么的，让他随风去吧，用到啥学啥。其他的当看客，了解了解就 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/26/Vim记忆/">Vim记忆</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-26T02:34:34.000Z">2019-07-26</time><i class="fa fa-edit"></i><time datetime="2019-07-26T02:34:34.000Z">2019-09-15</time></div><div class="recent-post-content"> VIM记忆技巧
+ 增
+
+i(insert)
+I最前面insert
+a(append)
+A最后面append
+o(open a line)往下开启一行
+O往上开启一行
+
+ 删
+
+d（delete）
+dw（delet word）
+dd（删除一行）
+x（删除一个字符）
+
+ 拓展
+
+diw(delete inner word)
+daw(delete around word)
+
+ 改
+
+c（change）
+ciw（change inner word）
+ci&quot;(change inner &quot;)
+ct）修改到右括号
+
+ 查
+
+fs(find s) 跳到本行第一个s字符
+/往后查找,如/x ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/07/26/Vim记忆/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Python爬虫常规流程/">Python爬虫常规流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:07:05.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:07:05.000Z">2019-09-15</time></div><div class="recent-post-content"> Python爬虫常规流程
+以爬取有道翻译为例子。
+ 挖取可自用的API
+
+web 端的有道翻译，在之前是直接可以爬的。也就是说只要获取到了他的接口，你就可以肆无忌惮的使用他的接口进行翻译而不需要支付任何费用。那么自从有道翻译推出他的API服务的时候，就对这个接口做一个反爬虫机制（如果大家都能免费使用到他的翻译接口，那他的APl服务怎么赚钱）。这个反爬虫机制在爬虫领域算是一个非常经典的技术手段。
+
+1.查看要爬取的内容是否是静态加载的。
+比如在翻译输入框中输入apple，翻译输出框中会出现苹果，然后在``页面中右键-&gt;查看网页源代码，直接Ctrl+F搜索是否存在apple或者苹果`，如果 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/08/30/Python爬虫常规流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/">Let's Encrypt安装配置nginx的SSL证书教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:34:04.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:34:04.000Z">2019-09-15</time></div><div class="recent-post-content"> Let’s Encrypt 安装配置nginx的SSL证书教程
+ 使用cerbot生成证书
+ 安装Let’s Encrypt
+安装非常简单直接克隆就可以了
+1git clone https://github.com/letsencrypt/letsencrypt
+如果网速较慢（国外服务器应该快点）
+1.可以登录https://github.com/letsencrypt/letsencrypt，下载后通过lrzsz传到云服务器上，再解压
+2.修改hosts
+查找域名对应的ip地址，并修改hosts文件
+123456789101112131415linuxidc@linuxidc:~/linu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/C-学习笔记/">C++学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T01:00:50.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T01:00:50.000Z">2019-09-15</time></div><div class="recent-post-content"> C++学习笔记
+
+system（）就是调用（DOS）系统命令（和shell命令）。
+pause ，即DOS命令集合中的暂停命令；
+
+ sprintf
+123456789101112#include &lt;stdio.h&gt;int main( void )&#123;  char  buffer[200], s[] = &quot;computer&quot;, c = &apos;l&apos;;  int   i = 35, j;  float fp = 1.7320534f;  // 格式化并打印各种数据到buffer  j  = sprintf( buffer,    &quot ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/13/C-学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/ACM-博弈论/">ACM-博弈论</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:41:28.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:41:28.000Z">2019-09-15</time></div><div class="recent-post-content"> ACM-博弈论（gambling）
+
+博弈论：是二人或多人在平等的对局中各自利用对方的策略变换自己的对抗策略，达到取胜目标的理论。假设，双方每步都是最优决策
+
+博弈论是研究互动决策的理论。博弈可以分析自己与对手的利弊关系，从而确立自己在博弈中的优势，因此有不少博弈理论，可以帮助对弈者分析局势，从而采取相应策略，最终达到取胜的目的。
+ 巴什博弈
+
+只有一堆n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取m个。最后取光者得胜。
+
+显然，如果n=m+1，1那么由于一次最多只能取m个，所以，无论先取者拿走多少个，后取者都能够一次拿走剩余的物品，后者取胜。因此我们发现了先手如何取胜的法 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/08/30/ACM-博弈论/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/7/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

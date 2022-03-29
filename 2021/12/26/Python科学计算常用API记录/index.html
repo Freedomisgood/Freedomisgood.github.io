@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Python科学计算常用API记录 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Python科学计算常用API记录</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/12/28</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,091</span> | Reading time: <span class="post-count">10</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="pandas"><a class="markdownIt-Anchor" href="#pandas"></a> pandas</h2>
+<h3 id="to_numeric类别离散化"><a class="markdownIt-Anchor" href="#to_numeric类别离散化"></a> <strong>to_numeric</strong>：类别离散化</h3>
+<p>参数	描述<br>
+arg	scalar, list, tuple, 1-d array, or Series<br>
+errors	{‘ignore’, ‘raise’, ‘coerce’}, default ‘raise’<br>
+downcast	{‘integer’, ‘signed’, ‘unsigned’, ‘float’} , default None,指定转换的类型,默认返回float64或int64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = pd.Series([<span class="string">'1.0'</span>, <span class="string">'2'</span>, <span class="number">-3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pd.to_numeric(s)</span><br><span class="line"><span class="number">0</span>    <span class="number">1.0</span></span><br><span class="line"><span class="number">1</span>    <span class="number">2.0</span></span><br><span class="line"><span class="number">2</span>   <span class="number">-3.0</span></span><br><span class="line">dtype: float64</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pd.to_numeric(s, downcast=<span class="string">'float'</span>)</span><br><span class="line"><span class="number">0</span>    <span class="number">1.0</span></span><br><span class="line"><span class="number">1</span>    <span class="number">2.0</span></span><br><span class="line"><span class="number">2</span>   <span class="number">-3.0</span></span><br><span class="line">dtype: float32</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pd.to_numeric(s, downcast=<span class="string">'signed'</span>)</span><br><span class="line"><span class="number">0</span>    <span class="number">1</span></span><br><span class="line"><span class="number">1</span>    <span class="number">2</span></span><br><span class="line"><span class="number">2</span>   <span class="number">-3</span></span><br><span class="line">dtype: int8</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = pd.Series([<span class="string">'apple'</span>, <span class="string">'1.0'</span>, <span class="string">'2'</span>, <span class="number">-3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pd.to_numeric(s, errors=<span class="string">'ignore'</span>)</span><br><span class="line"><span class="number">0</span>    apple</span><br><span class="line"><span class="number">1</span>      <span class="number">1.0</span></span><br><span class="line"><span class="number">2</span>        <span class="number">2</span></span><br><span class="line"><span class="number">3</span>       <span class="number">-3</span></span><br><span class="line">dtype: object</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pd.to_numeric(s, errors=<span class="string">'coerce'</span>)</span><br><span class="line"><span class="number">0</span>    NaN</span><br><span class="line"><span class="number">1</span>    <span class="number">1.0</span></span><br><span class="line"><span class="number">2</span>    <span class="number">2.0</span></span><br><span class="line"><span class="number">3</span>   <span class="number">-3.0</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>总结： errors一般采用&quot;ignore&quot;或者&quot;coerce&quot;；downcast按照需求来填写</p>
+<h3 id="缺失值空值处理"><a class="markdownIt-Anchor" href="#缺失值空值处理"></a> 缺失值(空值)处理</h3>
+<p><strong>相关函数</strong></p>
+<ul>
+<li>df.dropna()</li>
+<li>df.fillna()</li>
+<li>df.isnull()</li>
+<li>df.isna()</li>
+</ul>
+<p><strong>相关概念</strong></p>
+<ul>
+<li>空值：在pandas中的空值是&quot;&quot;</li>
+<li>缺失值：在dataframe中为nan或者naT（缺失时间），在series中为none或者nan即可</li>
+</ul>
+<h4 id="dropna删除缺失数据"><a class="markdownIt-Anchor" href="#dropna删除缺失数据"></a> <strong>dropna</strong>删除缺失数据</h4>
+<p><code>DataFrame.dropna(axis=0, how='any', thresh=None, subset=None, inplace=False)</code>, 函数作用：删除含有空值的行或列</p>
+<ul>
+<li>how:&quot;all&quot;表示这一行或列中的元素全部缺失（为nan）才删除这一行或列，&quot;any&quot;表示这一行或列中只要有元素缺失，就删除这一行或列</li>
+<li>thresh:一行或一列中至少出现了thresh个才删除。</li>
+<li>subset：在某些列的子集中选择出现了缺失值的列删除，不在子集中的含有缺失值得列或行不会删除（有axis决定是行还是列）</li>
+<li>inplace：刷选过缺失值得新数据是存为副本还是直接在原数据上进行修改。</li>
+</ul>
+<p>默认参数：删除行，只要有空值就会删除，不替换。</p>
+<h4 id="fillna填充缺失数据"><a class="markdownIt-Anchor" href="#fillna填充缺失数据"></a> Fillna填充缺失数据</h4>
+<p><strong>处理Series对象</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> nan <span class="keyword">as</span> NaN</span><br><span class="line"></span><br><span class="line">s = [<span class="number">1</span>, NaN, <span class="number">2</span>, <span class="number">3</span>, NaN]</span><br><span class="line">df = pd.Series(s)</span><br><span class="line">df = df.fillna(<span class="number">5</span>)</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<p><strong>处理DataFrame对象</strong></p>
+<ol>
+<li>
+<p>为所有的NaN的位置填充一个确定值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> nan <span class="keyword">as</span> NaN</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame([[<span class="number">1</span>, NaN, <span class="number">2</span>, <span class="number">3</span>, NaN], [<span class="number">1</span>, <span class="number">2</span>, NaN, <span class="number">3</span>, NaN]])</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">"-"</span>*<span class="number">10</span>)</span><br><span class="line">df = df.fillna(<span class="number">5</span>)</span><br><span class="line">print(df)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">   0    1    2  3   4</span></span><br><span class="line"><span class="string">0  1  NaN  2.0  3 NaN</span></span><br><span class="line"><span class="string">1  1  2.0  NaN  3 NaN</span></span><br><span class="line"><span class="string">----------</span></span><br><span class="line"><span class="string">   0    1    2  3    4</span></span><br><span class="line"><span class="string">0  1  5.0  2.0  3  5.0</span></span><br><span class="line"><span class="string">1  1  2.0  5.0  3  5.0</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>通过字典为不同的列填充不同的常数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame([[<span class="number">1</span>, NaN, <span class="number">2</span>, <span class="number">3</span>, NaN], [<span class="number">1</span>, <span class="number">2</span>, NaN, <span class="number">3</span>, NaN]], columns=[<span class="string">"1st"</span>, <span class="string">"2nd"</span>, <span class="string">"3rd"</span>, <span class="string">"4th"</span>, <span class="string">"5th"</span>])</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">"-"</span>*<span class="number">10</span>)</span><br><span class="line">df = df.fillna(&#123;<span class="string">"5th"</span>: <span class="number">100</span>&#125;)</span><br><span class="line">print(df)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">   1st  2nd  3rd  4th  5th</span></span><br><span class="line"><span class="string">0    1  NaN  2.0    3  NaN</span></span><br><span class="line"><span class="string">1    1  2.0  NaN    3  NaN</span></span><br><span class="line"><span class="string">----------</span></span><br><span class="line"><span class="string">   1st  2nd  3rd  4th    5th</span></span><br><span class="line"><span class="string">0    1  NaN  2.0    3  100.0</span></span><br><span class="line"><span class="string">1    1  2.0  NaN    3  100.0</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>method参数：改变替代值的方式，当为’ffill’，表示用前面的值填充，当’bfill’表示用后面的值填充。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame([[<span class="number">1</span>, NaN, <span class="number">2</span>, <span class="number">3</span>, NaN], [<span class="number">1</span>, <span class="number">2</span>, NaN, <span class="number">3</span>, NaN]], columns=[<span class="string">"1st"</span>, <span class="string">"2nd"</span>, <span class="string">"3rd"</span>, <span class="string">"4th"</span>, <span class="string">"5th"</span>])</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">"-"</span>*<span class="number">10</span>)</span><br><span class="line">df = df.fillna(method=<span class="string">"ffill"</span>)  <span class="comment"># bfill</span></span><br><span class="line">print(df)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">   1st  2nd  3rd  4th  5th</span></span><br><span class="line"><span class="string">0    1  NaN  2.0    3  NaN</span></span><br><span class="line"><span class="string">1    1  2.0  NaN    3  NaN</span></span><br><span class="line"><span class="string">----------</span></span><br><span class="line"><span class="string">   1st  2nd  3rd  4th  5th</span></span><br><span class="line"><span class="string">0    1  NaN  2.0    3  NaN</span></span><br><span class="line"><span class="string">1    1  2.0  2.0    3  NaN</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line">df = pd.DataFrame([[<span class="number">1</span>, NaN, <span class="number">2</span>, <span class="number">3</span>, NaN], [<span class="number">1</span>, <span class="number">2</span>, NaN, <span class="number">3</span>, NaN]], columns=[<span class="string">"1st"</span>, <span class="string">"2nd"</span>, <span class="string">"3rd"</span>, <span class="string">"4th"</span>, <span class="string">"5th"</span>])</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">"-"</span>*<span class="number">10</span>)</span><br><span class="line">df = df.fillna(method=<span class="string">"bfill"</span>)  <span class="comment"># bfill</span></span><br><span class="line">print(df)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">   1st  2nd  3rd  4th  5th</span></span><br><span class="line"><span class="string">0    1  NaN  2.0    3  NaN</span></span><br><span class="line"><span class="string">1    1  2.0  NaN    3  NaN</span></span><br><span class="line"><span class="string">----------</span></span><br><span class="line"><span class="string">   1st  2nd  3rd  4th  5th</span></span><br><span class="line"><span class="string">0    1  2.0  2.0    3  NaN</span></span><br><span class="line"><span class="string">1    1  2.0  NaN    3  NaN</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li>method：FillnaOptions，ffill/forwardfill:用缺失值前面的一个值代替缺失值；bfill/backfill，缺失值后面的一个值代替前面的缺失值。注意这个参数不能与value同时出现（value:需要用什么值去填充缺失值）</li>
+<li>axis：参数默认为0，即沿着行填充，为1则沿着列填充</li>
+<li>limit：传入<code>limit</code>限制填充个数</li>
+<li>inplace：传入inplace参数:是否在原来的数据上操作，默认为False，表示重新拷贝了一份数据，然后在拷贝的数据上操作。</li>
+</ul>
+<h3 id="dateframe操作"><a class="markdownIt-Anchor" href="#dateframe操作"></a> DateFrame操作</h3>
+<h4 id="添加行"><a class="markdownIt-Anchor" href="#添加行"></a> 添加行</h4>
+<p>**添加一行：**采用<code>loc[]</code>方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构造一个空的dataframe</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.DataFrame(columns=[<span class="string">'name'</span>,<span class="string">'number'</span>])</span><br><span class="line"><span class="comment"># 采用.loc的方法进行</span></span><br><span class="line">df.loc[<span class="number">0</span>]=[<span class="string">'cat'</span>, <span class="number">3</span>]  <span class="comment"># 其中loc[]中需要加入的是插入地方dataframe的索引，默认是整数型</span></span><br><span class="line"><span class="comment"># 也可采用诸如df.loc['a'] = ['123',30]的形式</span></span><br></pre></td></tr></table></figure>
+<p><strong>添加多行</strong>==&gt;(合并另一个dateframe)：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 采用append方法合并两个dataframe</span></span><br><span class="line"><span class="comment"># 构造两个dataframe</span></span><br><span class="line">df = pd.DataFrame([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]], columns=<span class="keyword">list</span>(<span class="string">'AB'</span>))</span><br><span class="line">df2 = pd.DataFrame([[<span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>]], columns=<span class="keyword">list</span>(<span class="string">'AB'</span>))</span><br><span class="line"><span class="comment"># 合并  ignore_index设置为 True可以重新排列索引</span></span><br><span class="line">df.append(df2, ignore_index=<span class="keyword">True</span>)</span><br><span class="line">   A  B</span><br><span class="line"><span class="number">0</span>  <span class="number">1</span>  <span class="number">2</span></span><br><span class="line"><span class="number">1</span>  <span class="number">3</span>  <span class="number">4</span></span><br><span class="line"><span class="number">2</span>  <span class="number">5</span>  <span class="number">6</span></span><br><span class="line"><span class="number">3</span>  <span class="number">7</span>  <span class="number">8</span></span><br></pre></td></tr></table></figure>
+<h4 id="添加列"><a class="markdownIt-Anchor" href="#添加列"></a> 添加列</h4>
+<p>采用<code>df[]</code>方法直接在列上操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新建一个dataframe</span></span><br><span class="line">df = pd.DataFrame(columns=[<span class="string">'name'</span>,<span class="string">'number'</span>], data=[[<span class="string">'cat'</span>,<span class="number">3</span>]])</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">df</span></span><br><span class="line"><span class="string">  name  number</span></span><br><span class="line"><span class="string">0  cat       3</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># 添加一列，计算有多少条腿</span></span><br><span class="line">df[<span class="string">'leg'</span>] = df[<span class="string">'number'</span>] * <span class="number">4</span></span><br><span class="line"><span class="comment"># 添加一列，直接赋值有几个头</span></span><br><span class="line">df[<span class="string">'head'</span>] = <span class="number">1</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">df </span></span><br><span class="line"><span class="string">  name  number  leg  head</span></span><br><span class="line"><span class="string">0  cat       3   12     1</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>采用<code>insert()</code>方法(过时deprecated)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用方法是DataFrame.insert(loc, column, value, allow_duplicates=False)</span></span><br><span class="line"><span class="comment"># 即df.insert(添加列位置索引序号，添加列名，数值，是否允许列名重复)</span></span><br><span class="line">df.insert(<span class="number">1</span>, <span class="string">'tail'</span>, <span class="number">1</span>, allow_duplicates=<span class="keyword">False</span>)</span><br><span class="line">df</span><br><span class="line">  name  tail  number  leg  head</span><br><span class="line"><span class="number">0</span>  cat     <span class="number">1</span>       <span class="number">3</span>   <span class="number">12</span>     <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="合并多个dataframe"><a class="markdownIt-Anchor" href="#合并多个dataframe"></a> 合并多个DataFrame</h3>
+<p><a href="https://blog.csdn.net/milton2017/article/details/54406482/" target="_blank" rel="noopener">https://blog.csdn.net/milton2017/article/details/54406482/</a></p>
+<h4 id="获得满足条件的行或者列"><a class="markdownIt-Anchor" href="#获得满足条件的行或者列"></a> 获得满足条件的行或者列</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取DataFrame中numTest列的值大于2的行内容</span></span><br><span class="line">arr1 = arr[arr[<span class="string">'numTest'</span>]&gt;<span class="number">2</span>]</span><br><span class="line">print(arr1)</span><br><span class="line"><span class="comment"># 获取哪几行符合条件，也就是获取符合条件的行的索引值</span></span><br><span class="line">result = arr[arr[<span class="string">'numTest'</span>]&gt;<span class="number">2</span>].index.tolist()</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>直接筛选</p>
+<p>直接使用列需要满足的条件，如果需要多个列同时满足条件，使用’&amp;‘符号连接即可；如果只需要某一列满足条件，则使用’|'连接多个列的条件。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">some = all_data[(all_data[<span class="string">'User_id'</span>] == <span class="number">1439408</span>) &amp; (all_data[<span class="string">'Date'</span>].isna())]</span><br><span class="line">print(some)</span><br><span class="line"><span class="comment"># 得到了User_id=1439408和Date为空的数据项</span></span><br><span class="line">   User_id  Merchant_id  Coupon_id Discount_rate  Distance  Date_received  Date</span><br><span class="line"><span class="number">1</span>  <span class="number">1439408</span>         <span class="number">4663</span>    <span class="number">11002.0</span>        <span class="number">150</span>:<span class="number">20</span>       <span class="number">1.0</span>     <span class="number">20160528.0</span>   NaN</span><br><span class="line"><span class="number">2</span>  <span class="number">1439408</span>         <span class="number">2632</span>     <span class="number">8591.0</span>          <span class="number">20</span>:<span class="number">1</span>       <span class="number">0.0</span>     <span class="number">20160217.0</span>   NaN</span><br><span class="line"><span class="number">3</span>  <span class="number">1439408</span>         <span class="number">2632</span>     <span class="number">1078.0</span>          <span class="number">20</span>:<span class="number">1</span>       <span class="number">0.0</span>     <span class="number">20160319.0</span>   NaN</span><br><span class="line"><span class="number">4</span>  <span class="number">1439408</span>         <span class="number">2632</span>     <span class="number">8591.0</span>          <span class="number">20</span>:<span class="number">1</span>       <span class="number">0.0</span>     <span class="number">20160613.0</span>   NaN</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>基于map筛选</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">user_requried = all_data[<span class="string">'User_id'</span>].map(<span class="keyword">lambda</span> x : x==<span class="number">1439408</span>)</span><br><span class="line">date_requried = all_data[<span class="string">'Date'</span>].map(<span class="keyword">lambda</span> x : np.isnan(x))</span><br><span class="line">some = all_data[user_requried &amp; date_requried]</span><br><span class="line">print(some) </span><br><span class="line"><span class="comment"># 结果：其中map返回的值必须是bool类型，即某一个条件。然后使用直接筛选的方式，把条件合并，最终得出筛选的结果。我认为使用此种类型的方法更加的优美。</span></span><br><span class="line"></span><br><span class="line">   User_id  Merchant_id  Coupon_id Discount_rate  Distance  Date_received  Date</span><br><span class="line"><span class="number">1</span>  <span class="number">1439408</span>         <span class="number">4663</span>    <span class="number">11002.0</span>        <span class="number">150</span>:<span class="number">20</span>       <span class="number">1.0</span>     <span class="number">20160528.0</span>   NaN</span><br><span class="line"><span class="number">2</span>  <span class="number">1439408</span>         <span class="number">2632</span>     <span class="number">8591.0</span>          <span class="number">20</span>:<span class="number">1</span>       <span class="number">0.0</span>     <span class="number">20160217.0</span>   NaN</span><br><span class="line"><span class="number">3</span>  <span class="number">1439408</span>         <span class="number">2632</span>     <span class="number">1078.0</span>          <span class="number">20</span>:<span class="number">1</span>       <span class="number">0.0</span>     <span class="number">20160319.0</span>   NaN</span><br><span class="line"><span class="number">4</span>  <span class="number">1439408</span>         <span class="number">2632</span>     <span class="number">8591.0</span>          <span class="number">20</span>:<span class="number">1</span>       <span class="number">0.0</span>     <span class="number">20160613.0</span>   NaN</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>基于query方法筛选</p>
+<p>直接写表达式，得出想要筛选的结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">some = all_data.query(<span class="string">'(User_id == 1439408)'</span>)</span><br><span class="line">print(some)</span><br><span class="line"><span class="comment">#结果：直接写表达式容易触发一些不必要的问题（值的类型容易出错，一些特殊值的表达困难等），所以并不建议使用这样的方法。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>确定一个条件–&gt; df[‘money’]&gt;10000)</li>
+<li>确定满足条件的行–&gt; df[(df[‘money’]&gt;10000)]</li>
+<li>确定这些行的index–&gt; df[(df[‘money’]&gt;10000)].index.tolist()， 返回的是一个list</li>
+</ul>
+<h4 id="选取指定列展示"><a class="markdownIt-Anchor" href="#选取指定列展示"></a> 选取指定列展示</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#选取指定的列, 中间写的是条件， 类比 df = df[ df["sale"] &gt; 50 ]</span></span><br><span class="line">df = df[ [<span class="string">"sku"</span>,<span class="string">"ebayno"</span>,<span class="string">"sale"</span>] ]</span><br></pre></td></tr></table></figure>
+<h2 id="jieba"><a class="markdownIt-Anchor" href="#jieba"></a> Jieba</h2>
+<blockquote>
+<p>文本类的数据分析，一般都是分词+词云展示</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"></span><br><span class="line">data = pd.read_csv(data_path)</span><br><span class="line">all_content = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(data[<span class="string">'评论标题'</span>])):</span><br><span class="line">all_content = all_content + data[<span class="string">'评论标题'</span>][i]</span><br><span class="line">cut_text = <span class="string">" "</span>.join(jieba.cut(all_content))</span><br></pre></td></tr></table></figure>
+<h2 id="wordcloud"><a class="markdownIt-Anchor" href="#wordcloud"></a> WordCloud</h2>
+<blockquote>
+<p>将数据保存后就要进行可视化展示，一般文本类的都会采用词云</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line">wordcloud = WordCloud(font_path=ciyunfont_path, mask=background_image, background_color=<span class="string">'white'</span>).generate(cut_text)</span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">8</span>))</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(result_path):</span><br><span class="line">    os.makedirs(result_path)</span><br><span class="line"><span class="comment"># 保存生成图片</span></span><br><span class="line">plt.savefig(<span class="string">f'<span class="subst">&#123;result_path&#125;</span>/ciyun.png'</span>)</span><br><span class="line"><span class="comment"># 指定词云图为待显示的图片</span></span><br><span class="line">plt.imshow(wordcloud, interpolation=<span class="string">"bilinear"</span>)</span><br><span class="line">plt.axis(<span class="string">"off"</span>)</span><br><span class="line"><span class="comment"># 显示图片</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/12/26/Python科学计算常用API记录/">https://nymrli.top/2021/12/26/Python科学计算常用API记录/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/12/26/开发过程中Mysql-API记录/" title="开发过程中Mysql API记录"><span>< PreviousPost</span><br><span class="prevTitle">开发过程中Mysql API记录</span></a><a class="nextSlogan" href="/2021/12/26/Python中关于图片的读取/" title="Python中关于图片的操作"><span>NextPost ></span><br><span class="nextTitle">Python中关于图片的操作</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Python科学计算常用API记录',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pandas"><span class="toc-number">1.</span> <span class="toc-text"> pandas</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#to_numeric类别离散化"><span class="toc-number">1.1.</span> <span class="toc-text"> to_numeric：类别离散化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺失值空值处理"><span class="toc-number">1.2.</span> <span class="toc-text"> 缺失值(空值)处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dropna删除缺失数据"><span class="toc-number">1.2.1.</span> <span class="toc-text"> dropna删除缺失数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fillna填充缺失数据"><span class="toc-number">1.2.2.</span> <span class="toc-text"> Fillna填充缺失数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dateframe操作"><span class="toc-number">1.3.</span> <span class="toc-text"> DateFrame操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#添加行"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 添加行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加列"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 添加列</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并多个dataframe"><span class="toc-number">1.4.</span> <span class="toc-text"> 合并多个DataFrame</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#获得满足条件的行或者列"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 获得满足条件的行或者列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选取指定列展示"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 选取指定列展示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jieba"><span class="toc-number">2.</span> <span class="toc-text"> Jieba</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wordcloud"><span class="toc-number">3.</span> <span class="toc-text"> WordCloud</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

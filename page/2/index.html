@@ -97,185 +97,233 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/11/12/GithubAction/">GithubActions</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-12T08:20:54.000Z">2020-11-12</time><i class="fa fa-edit"></i><time datetime="2020-11-12T08:20:54.000Z">2021-10-25</time></div><div class="recent-post-content">
-GitHub Actions 是 GitHub 的持续集成服务，于2018年10月推出。
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2021/10/26/k8s之kube-proxy源码分析/">k8s之kube-proxy源码分析</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-26T12:15:52.000Z">2021-10-26</time><i class="fa fa-edit"></i><time datetime="2021-10-26T12:15:52.000Z">2022-03-29</time></div><div class="recent-post-content"> kubernetes 简单介绍
+ 背景介绍
+Kubernetes最初源于谷歌内部的Borg，提供了面向应用的容器集群部署和管理系统，目前为主流的微服务应用编排管理工具。
+Kubernetes的目标旨在消除编排物理/虚拟计算、网络和存储基础设施的负担，并使应用程序运营商和开发人员完全将重点放在以容器为中心的原理上进行自助运营。
+Kubernetes具备完善的集群管理能力，包括多层次的安全防护和准入机制、多租户应用支撑能力、透明的服务注册和服务发现机制、内建负载均衡器、故障发现和自我修复能力、服务滚动升级和在线扩容、可扩展的资源自动调度机制、多粒度的资源配额管理能力。
 
-GitHub Actions 是什么？大家知道，持续集成由很多操作组成，比如抓取代码、运行测试、登录远程服务器，发布到第三方服务等等。GitHub 把这些操作就称为 actions。
-很多操作在不同项目里面是类似的，完全可以共享。GitHub 注意到了这一点，想出了一个很妙的点子，允许开发者把每个操作写成独立的脚本文件，存放到代码仓库，使得其他开发者可以引用。
-如果你需要某个 action，不必自己写复杂的脚本，直接引用他人写好的 action 即可，整个持续集成过程，就变成了一个 actions 的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="小白文"> 小白文</a></div><div class="read-more"><a class="more" href="/2020/11/12/GithubAction/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/08/《人工智能-模型与算法——浙江大学公开课》笔记/">《人工智能:模型与算法——浙江大学公开课》笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-08T07:06:21.000Z">2020-12-08</time><i class="fa fa-edit"></i><time datetime="2020-12-08T07:06:21.000Z">2021-09-12</time></div><div class="recent-post-content">
-课程笔记来源：2020公开课【人工智能：模型与算法】-浙江大学
-
- P11.1可计算思想起源与发展
-智能： 从感知、到理解、到认知、到决策与行动
-计算的诞生：从可计算到不可计算-&gt;20世纪初，人们发现有许多问题无法找到解决的方法。于是开始怀疑，是否对这些问题来说，根本就不存在算法，即不可计算。
-人工智能：以机器为载体的人类智能或生物智能
-算术公理的相容性：
-
-完备性：所有能够从该形式化系统推导出来的命题，都可以从这个形式化系统推导出来。
-一致性：一个命题不可能同时为真或为假
-可判定性：算法在有限步内判定命题的真伪
-
-哥德尔不完全性定理：任何表达力足够强的（递归可枚举）形式系统都不可能同 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/08/《人工智能-模型与算法——浙江大学公开课》笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/熟悉Latex写作/">学会Latex写作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T11:55:06.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T11:55:06.000Z">2021-06-15</time></div><div class="recent-post-content">首先开始的便是文档定义:
-12345\documentclass[bachelor]&#123;njupthesis&#125;% \documentclass[option]&#123;class&#125;% class有article, proc, minimal, book, slides% option: a4paper(纸张大小)、10pt(字体大小)、fleqn(行间公式对齐方式)、leqno(行间公式的编号对齐方式)、onecolumn(单栏)、titlepage(文档标题后另起一页)\end&#123;document&#125;
-查看： https://blog.csdn. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/11/28/熟悉Latex写作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/UML简单记录/">UML简单记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T05:59:15.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T05:59:15.000Z">2020-12-22</time></div><div class="recent-post-content">
-要学习设计模式，首先绕不开的就是UML图，同时对于一名开发而言，开发文档中也必然会出现UML的身影。之前在实习的时候，其实已经学过不少了，但不用后又很容易忘记，(在阿里实习的时候就以为记得很熟了，结果现在又忘了)——因此这也是一个防忘系列
-
- UML
-
-UML(Unified Modeling Language)是一种标准的图形化建模语言，是一种为面对对象系统的产品进行说明、可视化、编制文档的标准语言，它是面向对象分析与设计的一种标准表示。
-
-（1）UML是一种语言。
-从上面的定义可以看出，就其本质，UML是一种语言，既然是语言，那就是用来交流的，UML用来在哪些人员之间进行交流呢？很明显， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/12/11/UML简单记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/17/李宏毅机器学习-摘要/">李宏毅机器学习_摘要</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-17T12:36:05.000Z">2020-11-17</time><i class="fa fa-edit"></i><time datetime="2020-11-17T12:36:05.000Z">2020-12-20</time></div><div class="recent-post-content"> P3Regression - Case Study
- regularization解决overfitting(L2正则化解决过拟合问题)
+Borg是谷歌内部的大规 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="源码解析"> 源码解析</a></div><div class="read-more"><a class="more" href="/2021/10/26/k8s之kube-proxy源码分析/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/28/Vue3初体验/">Vue3初体验</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-28T09:44:53.000Z">2021-11-28</time><i class="fa fa-edit"></i><time datetime="2021-11-28T09:44:53.000Z">2022-03-29</time></div><div class="recent-post-content">Vue3于2020年09月18日正式发布，映入我视野的新东西除了Vue3以外，还有yarn和vite。他们两个本身的功能并不是新东西，yarn对标的是npm包管理工具，vite对标的webpack包打包工具。
+与vue2不同的是，vue3工程中没有 build 文件， 相应的build/index.js的配置改由了项目根目录下vue.config.js承担
+ Vue3新特性
 
 
-regularization可以使曲线变得更加smooth，training data上的error变大，但是 testing data上的error变小。有关regularization的具体原理说明详见下一部分
-
-原来的loss function只考虑了prediction的error，即$$\sum_{i}{n}\left(\hat{y}{i}-\left(b+\sum_{j} w_{j} x_{j}\right)\right)^{2}$$；而r ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2020/11/17/李宏毅机器学习-摘要/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/29/github中各配置文件/">github中各配置文件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-29T10:10:04.000Z">2020-11-29</time><i class="fa fa-edit"></i><time datetime="2020-11-29T10:10:04.000Z">2020-12-19</time></div><div class="recent-post-content"> .pre-commit-config.yaml
-
-来源：easyquotation，项目中有makefile和.pre-commit-config.yaml、.coveragerc、.pylintrc三个比较新奇的。
+template标签下面可以有多个节点了，终于不用先写一个DIV了
 
 
-makefile一般都在c工程中看到， 这边作者使用是代替了一些编译工作，类似sh脚本的作用。跟setup区别：makefile提供给开发者提交代码时使用；setup当做三方库直接调用
-123456&gt;   init:&gt;   	pip install pipenv&gt;   	pipenv install --dev&gt;   	pipenv run pre- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2020/11/29/github中各配置文件/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/">浙大2020春夏-人工智能习题2——垃圾分类</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:45.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:45.000Z">2020-12-19</time></div><div class="recent-post-content">
-homework for ZJU: https://mo.zju.edu.cn/homework/zju_ai_2020_ss
-
- 1. 实验介绍
- 1.1 实验背景
-自今年 7 月 1 日起，上海市将正式实施 《上海市生活垃圾管理条例》。
-垃圾分类，看似是微不足道的“小事”，实则关系到13亿多人生活环境的改善，理应大力提倡。
-垃圾识别分类数据集中包括玻璃 (glass) 、硬纸板 (cardboard) 、金属 (metal) 、纸 (paper) 、塑料 (plastic) 、一般垃圾 (trash) ，共6个类别。
-生活垃圾由于种类繁多，具体分类缺乏统一标准，大多人在实际操作时会“选择 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/">浙大2020春夏-人工智能习题3——图像恢复</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-09T05:20:46.000Z">2020-12-09</time><i class="fa fa-edit"></i><time datetime="2020-12-09T05:20:46.000Z">2020-12-17</time></div><div class="recent-post-content"> 习题3 - 图像恢复
- 3.1 实验内容
-图像是一种非常常见的信息载体，但是在图像的获取、传输、存储的过程中可能由于各种原因使得图像受到噪声的影响——称为图像退化。图像复原就是重建退化的图像，使其最大限度恢复景物原貌的处理。如何去除噪声的影响，恢复图像原本的信息是计算机视觉中的重要研究问题。
-常见的图像恢复算法有基于空间域的中值滤波、基于小波域的小波去噪、基于偏微分方程的非线性扩散滤波等，在本次实验中，📌我们要对图像添加噪声，并对添加噪声的图像进行基于模型的去噪。
- 3.2 实验要求
-A. 生成受损图像。
-
-a) 受损图像是由原始图像添加了不同噪声遮罩（noise masks）得到的。
-b ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/深度学习-Pytorch读书笔记/">深度学习+Pytorch学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T03:24:12.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T03:24:12.000Z">2020-12-13</time></div><div class="recent-post-content">
-在课程设计实验周里总共读了3本书， 《深度学习算法实践》、《深度学习框架PyTorch快速开发与实战》、《PyTorch深度学习入门》。 其中《深度学习算法实践》、《深度学习框架PyTorch快速开发与实战》比较失望，质量比较差；《PyTorch深度学习入门》的代码质量高一点，但需要理论辅助，由于事先看了李宏毅老师的深度学习，因此还算容易入手。
-
- 《深度学习框架PyTorch快速开发与实战》
-网上关于《深度学习框架PyTorch快速开发与实战》的评价：
-
- 关于作者
-
-作者一共三个，在封面内侧有简单的介绍, 三个作者的简绍里没有“深度学习”相关的内容（请注意书名）.单从这本书的作者介绍来说 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2020/11/28/深度学习-Pytorch读书笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/细品单例模式/">细品单例模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time></div><div class="recent-post-content">虽然还没正式踏入开发就业浪潮中，但为了保证自己的代码质量，最近还是在学设计模式相关内容。以下为读《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记。
-
-GoF的《设计模式》就是设计模式的始祖、经典教科书。其描述严谨，举例恰当，分类组织，是应该反复细读的经典，两本书皆提及了GoF这本书，引用了GoF中的部分例子。
-
- 单例模式
- 虚拟场景：
-读取配置文件的内容（假设系统采用的是properties格式的配置文件）
-1234567891011121314151617181920212223242526272829303132333435363738394041424 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/11/细品单例模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/03/Lets-learn-设计模式/">Lets learn 设计模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-03</time><i class="fa fa-edit"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-11</time></div><div class="recent-post-content">
-《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记
-
- 设计模式是什么？
-模式：从字面上理解，模，就是模型、模板的意思；式，就是方式、方法的意思。综合起来，所谓模式就是：可以作为模型或模板的方式或方法。再简单点说就是可以用来作为样板的方式或方法，类似于大家所熟悉的范例。
-所以设计模式就是设计方面的模板，具体定义为：是指在软件开发中，经过验证的，用于解决在特定环境下、重复出现的、特定问题的解决方案。
- 每个设计模式的构成如下：
-1、模式名称：模式的一个好记的名字
-2、环境和问题：描述在什么环境下，出现什么特定的问题
-3、解决方案：描述如何解决问题
-4、效果：描述 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/03/Lets-learn-设计模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/浙大2020春夏-人工智能习题1——AIforOthello/">浙大2020春夏-人工智能习题3——AIforOthello</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T04:02:33.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T04:02:33.000Z">2020-12-11</time></div><div class="recent-post-content"> something about Othello
- 黑白棋规则
-传统的黑白棋棋盘由 8 x 8 方格组成。开局时，棋盘中央的4格先置黑白相间的4颗棋子 (详见下图)，并由黑子先行。
-首步由黑子先下；下子时；新子必须与棋盘上任一己方棋子形成一条或多条 (横、竖、斜) 直线，并夹着对方棋子；由新子及旧子连成的直线之间，必须存有一颗或以上对方的棋子。如图，黑子开局时之可行棋步有以下4格:
-双方交替下子；倘若任何一方没有棋步可行，则其必须将下子权利相认予对手；另在双方均无子可下的情况下，游戏自动结束。
-游戏结束后，拥子较多一方为胜；倘若双方棋数相同的，则为和局。
- 黑白棋基本策略
- 占角子及固定子
-
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/01/浙大2020春夏-人工智能习题1——AIforOthello/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/05/理解科学计算中的dim参数/">理解科学计算(numpy,pytorch)中的dim参数</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-05</time><i class="fa fa-edit"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-10</time></div><div class="recent-post-content">
-😄理解numpy中array和pytorch中tensor的操作是开始科学运算的第一步!
-
-首先明白维度的感念：
- 维度
-我们通常能听到的都是2D, 3D，其实这边的D就是dimension的含义即维度。2D，我们通常理解为是平面，如我们最熟悉的直角坐标系就是平面坐标系，还有极坐标系。而3D呢，就是在平面的基础上增加了一维——高度，从而使平面的物体立起来了，同样3D也有耳熟能详的坐标系——3维坐标系。
-更官方的解释呢：维度（Dimension），又称为维数，是数学中独立参数的数目。在物理学和哲学的领域内，指独立的时空坐标的数目。0维是一个无限小的点，没有长度。1维是一条无限长的线，只有长度 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/05/理解科学计算中的dim参数/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/05/枚举类的优雅写法Java-Python/">枚举类的优雅写法Java-&gt;Python</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-05T08:19:27.000Z">2020-12-05</time><i class="fa fa-edit"></i><time datetime="2020-12-05T08:19:27.000Z">2020-12-05</time></div><div class="recent-post-content">
-枚举类型作为与接口、类同一级别的存在，自然有它独特的用途。至于它性能上的优势暂且不谈，我们在这篇文章中只是考虑怎么把Enum写得更优雅
-
- Java
- Enum的写法
-
-在阿里实习的时候印象最深的就是学到了枚举的写法， 大致如下所示
-
-123456789101112131415161718192021222324252627282930313233343536373839404142public enum EnumOperationPermission implements IEnumBehaviour &#123;    // ----------------------- 实际的枚举对象 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/05/枚举类的优雅写法Java-Python/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/玩玩油猴脚本/">玩玩油猴脚本Tampermonkey</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time></div><div class="recent-post-content">
-由于在研究如何优化网盘直链下载助手**baidupan，如何将直链的结果提取出来供IDM批量下载。由于baidupan**是用油猴脚本写的，因此借机学习一下。
-
-
- Greasy Fork
-
-这里是一个提供用户脚本的网站。
-
- Tampermonkey
-
-其为浏览器插件，目前主流浏览器皆支持，油猴叫法来源：「油猴」是从「Greasemonkey」来的。「Greasemonkey」最初是运行在Firefox浏览器中的脚本，「Tampermonkey」在Google Chrome浏览器上实现了几乎相同的功能，所以也被中文用户称之为「油猴」。
-
- 新建：
-
-12345678910111213141 ...</div><div class="read-more"><a class="more" href="/2020/12/01/玩玩油猴脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/fork-curlconverter-for-Better/">fork curlconverter for Better</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T02:43:34.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T02:43:34.000Z">2020-12-01</time></div><div class="recent-post-content">
-终于12月了，又是一个月初，定个flag，pr一个Gitcode
-由于之前写Python爬虫的时候，从curlconverter受惠很多，并且看到issue #22: Add generator for Java中有Java版本的需求还未完成，所以目标就是完成JAVA for curl
-
-curlconverter提供了一个网页版： https://curl.trillworks.com/， 其实其本质上也是用js完成的，功能如README中所写：
- README
- Install
-1$ npm install --save curlconverter
- Usage
-123var curlc ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></div><div class="read-more"><a class="more" href="/2020/12/01/fork-curlconverter-for-Better/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/">《漫画机器学习入门》大关真之——读书笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T13:39:01.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T13:39:01.000Z">2020-11-28</time></div><div class="recent-post-content"> 《漫画机器学习入门》总结
-机器学习是指计算机通过不断地处理数据并修正算法和参数来学习各种规则， 从而不断改进模型而得到更优化的算法。书中主要讲解了玻尔兹曼机的机器学习
- 谁是世界上最美丽的人？
-
-
-****特征量****就是如每一个人的年龄，眼睛大小； 特征向量就是每个人的特征量放到一起，特征向量是表达特征的一个数组
-
-
-误差函数： 在美丽程度这个问题上， 误差函数就是—— 计算“美丽程度”的实际输出与给定的理想输出之间的差值
-
-
-最优化问题：  最小化误差函数，其实是一个求解最优化问题：我们的任务就是要找到没有误差或者误差小到满足要求的最适合的模型。这就要通过调节模型中的参数，使误差函数值 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/22/Linux服务器同步时钟/">Linux服务器同步时钟</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-22T04:49:35.000Z">2020-11-22</time><i class="fa fa-edit"></i><time datetime="2020-11-22T04:49:35.000Z">2020-11-22</time></div><div class="recent-post-content"> 
-
-因为今天在集群193跑程序的时候发现时间不同步, 因此想想把集群的时间全部同步一下
+setup函数可以代替之前的data，methods，computed，watch，Mounted等对象，但是props声明还是在外面。
 
 
 
-在Linux中设置系统时间，可以用date命令：
-1234# 查看时间$ date# 修改时间$ date -s "20140225 20:16:00"  #yyyymmdd hh:mm:ss
+相 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/11/28/Vue3初体验/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/25/CICD-Jenkins与Travis/">CICD-Jenkins与Travis</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-25T05:39:46.000Z">2021-10-25</time><i class="fa fa-edit"></i><time datetime="2021-10-25T05:39:46.000Z">2022-01-13</time></div><div class="recent-post-content"> Jenkins与travis使用
+Jenkins与Travis为CI、CD工具，其为Devops模式下的平台组件，能够让我们更好地进行开发测试与交付。由于最近云原生的课上在介绍DevOps和云监控，所以正好趁这个机会体验下Devops的交付流程，之前也有使用过Github Action作为CICD工具，但除了开源项目以外，Github使用比较少。这次呢就可以再熟悉下业内常用的CICD组件了：Jenkins or Travis
+ DevOps发展背景
+
+传统交付模式的串行及隔离化形成了部门壁垒，降低了工作效率
+通过“在云上创建资源”-&gt;实现“云服务器自动化管理”-&gt;“应用无状态上云 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2021/10/25/CICD-Jenkins与Travis/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/02/浙江大学期末考试——Go语言/">浙江大学期末考试——Go语言</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-02T13:52:53.000Z">2021-11-02</time><i class="fa fa-edit"></i><time datetime="2021-11-02T13:52:53.000Z">2021-12-30</time></div><div class="recent-post-content"> 浙江大学期末考试——Go语言
+
+期末复习对学习知识的帮助是巨大的，相比于看视频，本篇点到为止的知识点形的期末复习笔记，我相信更能让人学会。我相信，只要把本笔记全部看完了必然就会Go了。如果你做到了但还没有学会Go，那你大可来找我/doge。
+
+ 概论
+
+指令：计算机的一个最基本的功能，如实现一次加法运算或实现一次大小的判别
+计算机的指令系统：计算机所能实现的指令的集合
+程序：一系列计算机指令的有序组合
+
+ 算法：
+
+求解特定问题的一组有限的操作序列
 
 
-Linux硬件时间的设置
+目的性：算法有运算结果，程序强调过程性
+抽象性：算法独立于编程语言和指令系统
+研究性：算法是理论研究，载体可以是伪码，文字，图片等，载体为某 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="考试"> 考试</a></div><div class="read-more"><a class="more" href="/2021/11/02/浙江大学期末考试——Go语言/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/16/Unity游戏开发学习/">Unity游戏开发学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-16T08:23:47.000Z">2021-12-16</time><i class="fa fa-edit"></i><time datetime="2021-12-16T08:23:47.000Z">2021-12-25</time></div><div class="recent-post-content"> 组件
+ RigidBody
+
+刚体，会给物体增加重力
+
+ spring joint：
+
+弹簧关节，可以连接两个刚体，使得两个物体能够像弹簧一样运动。
+
+ Box Collision
+
+增加碰撞检测
+
+ 图片渲染器
+
+Sprite精灵，游戏开发中指一张图片
 
 
-硬件时间的设置，可以用hwclock或者clock命令。两者基本相同，只用一个就行，只不过clock命令除了支持x86硬件体系外，还支持Alpha硬件体系。
+Sprite Render 图片渲染器，是用来渲染图片的组件
 
-系统时间和硬件时间的同步
+1234567891011// 随机生成怪物头像void createMonster()&#123;    float x = Random.Range(-2, 2);    float y = 5;    GameObject monster = Instantiate( ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Unity"> Unity</a></div><div class="read-more"><a class="more" href="/2021/12/16/Unity游戏开发学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/02/Mongodb学习/">Mongodb学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-02T03:17:52.000Z">2021-12-02</time><i class="fa fa-edit"></i><time datetime="2021-12-02T03:17:52.000Z">2021-12-22</time></div><div class="recent-post-content"> Mongodb学习
+ 创建数据库-集合（表）
 
-同步系统时间和硬件时间，可以使用hwclock命令。
-4. 不同机器之间的时间同步
-为了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2020/11/22/Linux服务器同步时钟/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/15/JupyterHub搭建/">JupyterHub搭建</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-15T14:08:52.000Z">2020-11-15</time><i class="fa fa-edit"></i><time datetime="2020-11-15T14:08:52.000Z">2020-11-20</time></div><div class="recent-post-content">
-之前搭建的JupyterLab逐渐被使用起来了, 单用户的模式还是不太方便, 因此准备用JupyterHub来做下用户隔离
 
- 1. 安装nodejs和npm
-按照JupyterLab官方教程, 先是安装最新的nodejs和npm, 但是由于16.04的apt源安装的nodejs版本比较久, 因此在后面的安装中会有坑, 这边根据网上的教程手动安装最新的nodejs
-12$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -$ sudo apt-get install -y nodejs
-安装成功后输入node --v ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2020/11/15/JupyterHub搭建/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/">南邮校园网CSDN等部分网站图片无法加载解决方案</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-10T10:14:56.000Z">2020-11-10</time><i class="fa fa-edit"></i><time datetime="2020-11-10T10:14:56.000Z">2020-11-10</time></div><div class="recent-post-content"> 问题定位
-转自： https://blog.csdn.net/pamzerbhu/article/details/108549279
+使用指定数据库（没有会创建）: use DATABASE_NAME, 如果数据库不存在，则创建数据库，否则切换到指定数据库。
 
-用语言描述如下：
-打开页面后页面加载正常，但是图片完全没有加载。但是挂全局代理是可以看到图片的。挂代理后如下所示：
+如: use douban， 此时db就变成了douban，之后db.xxxx()都默认在这个数据库下操作
 
 
 
-开始定位问题：
-点击审查元素，接着找到我这张图的链接，直接用浏览器打开，报错**NET::ERR_CERT_COMMON_NAME_INVALID**
+查看所有数据库，可以使用 show dbs
+
+
+创建集合：db.createCollection(name, options)
+
+
+随意创建集合， db.createCollection(&quot;top250&quot;);
+
+
+options 可以是如下参数：
 
 
 
-然后点击 高级–继续访问 img-blog.csdn.net (不安全)
-图片成功加载：
+字段
+类型
+描述
 
 
-好了，找到了问题。接下来就是面向搜索引擎的找方法时间。
-经过查询发现是DNS的问题（或者 ...</div><div class="read-more"><a class="more" href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+
+
+cap ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a></div><div class="read-more"><a class="more" href="/2021/12/02/Mongodb学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/12/软件架构课程学习笔记/">软件架构课程学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-12</time><i class="fa fa-edit"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-13</time></div><div class="recent-post-content"> 术语
+–微服务
+–云化
+–分布式
+–高并发
+–高可用
+ 架构角色
+
+探索者
+设计师
+倡导人
+
+ 到底如何区分什么是架构、框架、模式和平台 ？
+设计模式&lt;框架&lt;架构&lt;平台，从复用角度讲，设计模式是代码级复用、框架是模块级复用、架构是系统级复用、平台是企业应用级复用。
+模式:分为代码模式、设计模式、框架模式这些
+
+设计模式有不同的分类，如下
+
+创建型设计模式，如工厂方法（Factory Method）模式、抽象工厂（Abstract Factory）模式、原型（Prototype）模式、单例（Singleton）模式，建造（Builder）模式等
+结构型设计模式，如合成（Com ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Zju"> Zju</a></div><div class="read-more"><a class="more" href="/2021/12/12/软件架构课程学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/26/前端-跨域/">前端-跨域</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-26T09:17:15.000Z">2021-11-26</time><i class="fa fa-edit"></i><time datetime="2021-11-26T09:17:15.000Z">2021-12-09</time></div><div class="recent-post-content"> 什么是跨域问题
+
+跨域问题的出现是因为浏览器的同源策略问题，所谓同源:就是两个页面具有相同的协议（protocol），主机（host）和端口号（port），即指协议，端口，域名。只要这个3个中有一个不同就是跨域。它是浏览器最核心也是最基本的功能，如果没有同源策略我们的浏览器将会十分的不安全，随时都可能受到攻击。
+当我们请求一个接口的时候，出现如：Access-Control-Allow-Origin 字眼的时候说明请求跨域了
+
+
+ 展示跨域问题
+前端请求后端8889端口开放的端口
+12345678this.$axios(&#123;    method:'get',    url:'http ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/11/26/前端-跨域/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/">创建Vue工程（包含Vue2和Vue3）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time><i class="fa fa-edit"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time></div><div class="recent-post-content"> @vue/cli-init
+
+vue init 是vue-cli2.x的初始化方式
+
+
+vue init ： 需要npm i -g @vue/cli-init
+
+vue init webpack [project-name], webpack为模板&lt;generate a project from a remote template&gt;，然后按照交互信息提示输入即可完成工程创建
+init创建工程时，交互信息中有一个比较有意思的是选择包管理工具： npm、yarn，两者见
+
+
+
+ @vue/cli
+
+会让选择Vue2还是Vue3
+
+
+vue create router_project: ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/30/Vue中使用axios/">Vue中使用axios</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-30T02:31:27.000Z">2021-11-30</time><i class="fa fa-edit"></i><time datetime="2021-11-30T02:31:27.000Z">2021-12-08</time></div><div class="recent-post-content"> axios请求
+
+官网网址
+
+
+从浏览器中创建 XMLHttpRequest
+从 node.js 发出 http 请求
+支持promise API
+拦截请求和响应
+转换请求数据和响应数据
+取消请求
+自动转换 JSON 数据
+客户端支持防御 XSRF
+
+ 直接每次从axios库中调用axios函数
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950&lt;template&gt;  &lt;div&gt;    &lt;div&gt;mmmm&lt;/div&gt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/11/30/Vue中使用axios/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/08/NodeJS包管理工具/">NodeJS包管理工具</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-08T08:25:47.000Z">2021-12-08</time><i class="fa fa-edit"></i><time datetime="2021-12-08T08:25:47.000Z">2021-12-08</time></div><div class="recent-post-content"> 包管理工具
+
+npm
+
+npm install &lt;package_name&gt; --dev
+npm init然后根据交互信息创建工程
+npm install 根据目录下package.json安装依赖
+npm run dev执行package.json中定义的scripts.dev指令
+
+
+yarn
+
+yarn add &lt;package_name&gt; --dev
+yarn init然后根据交互信息创建工程
+yarn 根据目录下package.json安装依赖
+yarn run dev执行package.json中定义的scripts.dev指令
+
+
+
+共同点：
+
+两个在i ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/08/NodeJS包管理工具/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/07/Js-ShortCode/">Js-ShortCode</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-07T11:18:50.000Z">2021-12-07</time><i class="fa fa-edit"></i><time datetime="2021-12-07T11:18:50.000Z">2021-12-07</time></div><div class="recent-post-content"> js判断字符串是否为空
+
+最近写了点前端代码，记录一下常用的shortCode
+
+12345678910111213// 方法一：直接使用条件语句if判断function isEmpty(str) &#123;    if(typeof str== null || str== "" || str== "undefined") &#123;        return true;    &#125; else &#123;        return false;    &#125;&#125;// 方法二：根据字符串的length来判断var strings = ''; if (string ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="js"> js</a></div><div class="read-more"><a class="more" href="/2021/12/07/Js-ShortCode/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/02/前端进行网络请求的三种方式/">前端进行网络请求的三种方式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-02T13:28:06.000Z">2021-12-02</time><i class="fa fa-edit"></i><time datetime="2021-12-02T13:28:06.000Z">2021-12-05</time></div><div class="recent-post-content"> 前端进行网络请求的三种方式
+ XHR技术
+基于XMLHTTPRequest技术实现的，通过调用原生的XML对象实现的，非常的冗余==&gt;ajax技术
+ ajax
+ Jquery.$ajax
+123456789101112131415161718192021222324// 有参数，则增加data字段，有请求头则增加headers字段，有错误处理增加error字段// 默认是按照表单提交post方法，data中虽然是json但是提交时转成表单$.ajax(&#123;    url:"demo_test.txt",    data:&#123;a:10&#125;,    success: ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/02/前端进行网络请求的三种方式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/05/前后端-实现上传和下载/">前后端-实现上传和下载</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-05T02:56:46.000Z">2021-12-05</time><i class="fa fa-edit"></i><time datetime="2021-12-05T02:56:46.000Z">2021-12-05</time></div><div class="recent-post-content"> 前端
+ 上传
+前端上传主要是把文件发送过去，一般采用表单的形式，或者也可以针对上传接口发送请求
+
+表单
+
+123456&lt;form action="http://127.0.0.1:5000/" enctype="multipart/form-data"&gt;    &lt;input type="file" name="toupdate"/&gt;		# file的input不允许设置value    &lt;input type="submit" value="上传咯" /&gt;	      # 按钮显示的文字&lt;/form&gt;# action为表单要提交到的路径, 必须 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/05/前后端-实现上传和下载/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/29/GoodCSS记录/">GoodCSS记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-29T07:03:44.000Z">2021-11-29</time><i class="fa fa-edit"></i><time datetime="2021-11-29T07:03:44.000Z">2021-12-04</time></div><div class="recent-post-content"> GoodCss记录
+ 图标四角反转：
+
+通过 @keyframes 规则，您能够创建动画。
+创建动画的原理是，将一套 CSS 样式逐渐变化为另一套样式。
+12&gt; @keyframes animationname &#123;keyframes-selector &#123;css-styles;&#125;&#125;&gt;
+
+
+
+animationname	必需。定义动画的名称。
+keyframes-selector	必需。动画时长的百分比。合法的值：
+
+0-100%
+from（与 0% 相同）
+to（与 100% 相同）
+
+
+css-styles: 必需。一个或多个合法的 CSS ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/11/29/GoodCSS记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/04/VBA学习——正则提取单元格指定内容并加粗/">VBA学习——正则提取单元格指定内容并加粗</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-04T03:15:12.000Z">2021-12-04</time><i class="fa fa-edit"></i><time datetime="2021-12-04T03:15:12.000Z">2021-12-04</time></div><div class="recent-post-content">
+今天又是女朋友打工人的一天，女朋友有需求，打excel打印出来。由于导出后行距太小，以及答案不明显，因此做了两个处理
+
+每两行之间插入一行
+将单元格内（A、xxx）的答案进行加粗
+
+
+Excel中的宏指的是一段操作过程
+VBA 中，过程是一切的开始，几乎所有的代码，都会被写在一个或多个过程里。实际开发中，通常一个过程，建议只完成一个特定的小目标。因此，我们的程序往往会包含多个过程。这就是 VBA 中过程概念存在的一个原因。
+VBA 过程以 Sub 语句开始，以 End Sub 语句结束，包含一个或多个语句，完成一个特定的目标。
+接受参数的过程基本语法如下：
+123456Sub [过程名]([ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/12/04/VBA学习——正则提取单元格指定内容并加粗/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/02/Gradle学习/">Gradle学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-02T03:16:31.000Z">2021-12-02</time><i class="fa fa-edit"></i><time datetime="2021-12-02T03:16:31.000Z">2021-12-02</time></div><div class="recent-post-content"> Gradle学习
+在kotlin中使用mapstruct出现了些问题， 网上搜寻后得到结论：需要使用kapt(Kotlin annotation processing tool 即kotlin注解处理工具)， 但给出的大多都是通过Gradle来进行配置的。因此借此机会学习了下Gradle：
+ plugins和apply plugin:
+
+由于文档写到了， 由于不清楚这些在哪些位置加入， 因此查看了plugins和apply plugin:的区别：
+1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2021/12/02/Gradle学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/01/Vue-Router细节记录/">Vue-Router细节记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-30T16:05:59.000Z">2021-12-01</time><i class="fa fa-edit"></i><time datetime="2021-11-30T16:05:59.000Z">2021-12-01</time></div><div class="recent-post-content"> vue-router使用
+yarn add vue-router@next --dev, 参数说明packageName@tagorpackageName@version
+创建router/index.js
+12345678910111213141516171819202122232425262728293031323334353637383940414243import &#123; createRouter, createWebHistory &#125; from "vue-router";import ShowList from "../components/ShowList.vue ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/01/Vue-Router细节记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/25/党员在线培训课程-免除暂停烦恼/">党员在线培训课程~免除暂停烦恼</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-25T02:48:17.000Z">2021-11-25</time><i class="fa fa-edit"></i><time datetime="2021-11-25T02:48:17.000Z">2021-11-25</time></div><div class="recent-post-content"> 党员在线培训课程~免除暂停烦恼
+
+女朋友反馈：刷党员在线培训课程得一直手动的解决暂停问题，无法单纯的挂机刷视频。作为一个程序猿，当然是帮她解决啦~
+
+首先分析页面中JS执行逻辑，如下所示
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041 ...</div><div class="read-more"><a class="more" href="/2021/11/25/党员在线培训课程-免除暂停烦恼/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/04/Linux-iptables学习/">Linux iptables学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-04T14:22:24.000Z">2021-11-04</time><i class="fa fa-edit"></i><time datetime="2021-11-04T14:22:24.000Z">2021-11-08</time></div><div class="recent-post-content"> iptables简介
+​    netfilter/iptables（简称为iptables）组成Linux平台下的包过滤防火墙，与大多数的Linux软件一样，这个包过滤防火墙是免费的，它可以代替昂贵的商业防火墙解决方案，完成封包过滤、封包重定向和网络地址转换（NAT）等功能。
+注：Iptables和netfilter的关系是一个很容易让人搞不清的问题。很多的知道iptables却不知道 netfilter。其实iptables只是Linux防火墙的管理工具而已，位于/sbin/iptables。真正实现防火墙功能的是 netfilter，它是Linux内核中实现包过滤的内部结构。
+ ipt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2021/11/04/Linux-iptables学习/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

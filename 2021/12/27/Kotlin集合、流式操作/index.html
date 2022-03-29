@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Kotlin集合、流式操作 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Kotlin集合、流式操作</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/01/03</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,198</span> | Reading time: <span class="post-count">15</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><p>除了最通用的Array以外，kotlin中还有一类容器统称为Colletion(集合)，他们有</p>
+<ul>
+<li>List
+<ul>
+<li><strong>List</strong>：继承Collection。一个范性有序的只读集合。因为有序，所以，我们可以使用get(position)等查询的方法</li>
+<li><strong>MutableList</strong>：继承List，MutableCollection。一个有序集合。并额外提供了add/remove元素的方法</li>
+</ul>
+</li>
+<li>Set
+<ul>
+<li><strong>Set</strong>：继承Collection。一个无序并不支持重复元素的集合</li>
+<li><strong>MutableSet</strong>：继承Set，MutableCollection，一个无序的集合并且不支持重复元素。但是，支持add/remove元素</li>
+</ul>
+</li>
+<li>Map
+<ul>
+<li><strong>Map</strong>：一个key-value的只读集合。并且key唯一。</li>
+<li><strong>MutableMap</strong>：继承Map。支持put/remove元素</li>
+</ul>
+</li>
+</ul>
+<h1 id="list"><a class="markdownIt-Anchor" href="#list"></a> List</h1>
+<ul>
+<li>
+<p><strong>any</strong>：如果至少有一个元素与判断条件相符，则 返回true</p>
+</li>
+<li>
+<p><strong>all</strong>：如果全部元素与判断条件相符，则 返回true</p>
+</li>
+<li>
+<p><strong>component1,…,component5</strong>：返回集合的第n个元素，越界返回ArrayIndexOutOfBoundsException</p>
+</li>
+<li>
+<p><strong>contain</strong>：如果指定元素可以在集合找到，则 返回true</p>
+</li>
+<li>
+<p><strong>containsAll</strong>：如果指定集合所有元素都可以在目标集合找到，则 返回true</p>
+</li>
+<li>
+<p><strong>count</strong>：返回与判断条件相符的元素个数</p>
+</li>
+<li>
+<p><strong>distinct</strong>：返回一个只包含不同元素的数组，即对列表内元素去重</p>
+</li>
+<li>
+<p><strong>distinctBy</strong>：返回集合元素<strong>执行指定条件后</strong>，不同元素的数组（原始数组元素）</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">1</span>,<span class="number">4</span>),list.distinctBy &#123; it%<span class="number">2</span> == <span class="number">0</span>&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>drop</strong>：返回所有元素的列表，但不包含前n个元素</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">3</span>,<span class="number">4</span>),list.drop(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>dropLast</strong>：返回所有元素的列表，但不包含最后n个元素</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">1</span>,<span class="number">2</span>),list.dropLast(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>dropWhile</strong>：返回所有元素的列表，但不包含满足判断条件的元素</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>),list.dropWhile&#123;it &lt;<span class="number">3</span>&#125;)</span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">3</span>,<span class="number">4</span>),list.dropWhile&#123;it &lt;<span class="number">3</span>&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>elementAt</strong>：返回指定索引的元素，如果索引越界，则抛出ArrayIndexOutOfBoundsException</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">4</span>,list.elementAt(<span class="number">3</span>))</span><br><span class="line"><span class="comment">// elementAtOrElse：返回指定索引的元素，如果索引越界，则返回指定的默认值</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">18</span>,list.elementAtOrElse(<span class="number">6</span>,&#123;it *<span class="number">3</span>&#125;))</span><br><span class="line"><span class="comment">// elementAtOrNull: 返回指定索引的元素，如果索引越界，则返回null</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="literal">null</span>,list.elementAtOrNull(<span class="number">6</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>filter</strong>:筛选出所有符合条件的元素</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">2</span>,<span class="number">3</span>),list.filter&#123; it <span class="keyword">in</span> <span class="number">2.</span><span class="number">.3</span> &#125;)</span><br><span class="line">filterIndexed</span><br><span class="line"><span class="comment">// filterIndexed筛选出所有符合条件的元素（条件多了一个索引参数）</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">4</span>),list.filterIndexed &#123; index, it -&gt; index&gt;<span class="number">0</span> &amp;&amp; it &gt;<span class="number">2</span>&#125; )</span><br><span class="line"><span class="comment">// filterNot: 筛选出所有不符合条件的元素</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">1</span>,<span class="number">4</span>),list.filterNot&#123; it <span class="keyword">in</span> <span class="number">2.</span><span class="number">.3</span> &#125;)</span><br><span class="line">filterNotNull</span><br><span class="line"><span class="comment">// filterNotNull: 筛选出所有不为null的元素</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="literal">null</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>),list.filterNotNull())</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>first</strong></p>
+<p>返回第一个满足条件的元素,没有则抛出NoSuchElementException</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">2</span>,list.first &#123; it &gt; <span class="number">1</span> &#125;)</span><br><span class="line"><span class="comment">// firstOrNull: 返回第一个满足条件的元素，没有，则 返回Null</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="literal">null</span>, list.firstOrNull &#123; it &gt; <span class="number">5</span> &#125;)</span><br><span class="line"><span class="comment">// find :同firstOrNull。返回第一个满足条件的元素，没有，则 返回Null</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">2</span>,list.find &#123; it &gt; <span class="number">1</span> &#125;)</span><br><span class="line"><span class="comment">// findLast: 返回最后一个满足条件的元素，没有，则 返回Null</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">4</span>,list.findLast &#123; it &gt; <span class="number">1</span> &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// last: 返回符合给定函数条件的最后一个元素，不存在则抛出NoSuchElementException</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">4</span>, list.last &#123; it % <span class="number">2</span> == <span class="number">0</span> &#125;)</span><br><span class="line"><span class="comment">// lastIndexOf: 返回指定元素的第一个索引位置，不存在返回-1</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">2</span>, list.lastIndexOf(<span class="number">2</span>) )</span><br><span class="line"><span class="comment">// lastOrNull: 返回符合给定函数条件的最后一个元素，不存在返回null</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertNull( list.lastOrNull&#123; it &gt;<span class="number">5</span>&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>single</strong>: 返回符合指定函数条件的单个元素，如果没有符合或者超过一个，则抛出异常。\</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">4</span>, list.single &#123; it == <span class="number">4</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// singleOrNull: 返回符合指定函数条件的单个元素，如果没有符合或者超过一个，则返回null</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="literal">null</span>, list.singleOrNull &#123; it == <span class="number">2</span> &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>flatMap</strong>: 遍历所有的元素，为每一个元素创建一个集合，最后把所有的集合放在<em>一个集合</em>中。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">4</span>),list.flatMap &#123; it -&gt; listOf(it,it*<span class="number">2</span>) &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>flatten</strong>: 遍历一个单独的集合，包含给定嵌套集合里面的所有元素。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(listOf(<span class="number">1</span>,<span class="number">2</span>), listOf(<span class="number">4</span>,<span class="number">2</span>), listOf(<span class="number">3</span>), listOf(<span class="number">4</span>))</span><br><span class="line">assertEquals(listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>), list.flatten())</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>fold</strong>： 将对集合从第一个到最后一个元素进行操作</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里是进行乘法操作</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">48</span>, list.fold(<span class="number">2</span>) &#123; total, next -&gt; total * next &#125;)</span><br><span class="line"><span class="comment">// foldRight: 跟fold操作一样，不过是从最后一个到到一个元素进行操作</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">48</span>, list.foldRight(<span class="number">2</span>) &#123; total, next -&gt; total * next &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>reduce</strong>： 与fold功能一样。但是，没有初始值。把集合从第一个到最后一个，按指定条件进行操作</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">-7</span>, list.reduce &#123; total, next -&gt; total -next &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>get</strong>:获取索引所在的元素，没有则返回ArrayIndexOutOfBoundsException</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// getOrElse: 获取索引所在的元素，没有就返回默认值</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">10</span>, list.getOrElse(<span class="number">8</span>, &#123; _ -&gt; <span class="number">10</span> &#125;))</span><br><span class="line">assertEquals(<span class="number">2</span>, list.getOrElse(<span class="number">1</span>, &#123; _ -&gt; <span class="number">10</span> &#125;))</span><br><span class="line"><span class="comment">// getOrNull: 获取索引所在的元素，没有就返回nul</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="literal">null</span>, list.getOrNull(<span class="number">8</span>))</span><br><span class="line">assertEquals(<span class="number">4</span>, list.getOrNull(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>map</strong>： 返回一个每个元素都根据给定函数条件转换的数组</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">2</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">8</span>), list.map&#123; it*<span class="number">2</span>&#125; )</span><br><span class="line"><span class="comment">// mapIndexed: 功能同map，比map多了一个索引</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">4</span>), list.mapIndexed &#123; index, it -&gt; <span class="keyword">if</span> (index % <span class="number">2</span> == <span class="number">0</span>) index * it <span class="keyword">else</span> it &#125;)</span><br><span class="line"><span class="comment">// mapNotNull: 同map。但是，元素转换不包含Null</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>,<span class="literal">null</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">2</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">8</span>), list.mapNotNull &#123; it?.times(<span class="number">2</span>) &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>max</strong>: 返回集合最大元素。不存在返回null</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">4</span>, list.max())</span><br><span class="line"><span class="keyword">val</span> list = emptyList&lt;<span class="built_in">Int</span>&gt;()</span><br><span class="line">assertEquals(<span class="literal">null</span>, list.max())</span><br><span class="line"></span><br><span class="line"><span class="comment">// maxBy:返回根据指定函数转换后，产生的最大值的原始元素（返回的还是原始元素）。如果没有元素，则返回null。</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">1</span>, list.maxBy &#123; -it &#125;)</span><br><span class="line"><span class="comment">// min:返回集合最小元素，不存在返回null</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">1</span>, list.min())</span><br><span class="line"><span class="comment">// minBy: 返回根据指定函数转换后，产生的最小值的原始元素（返回的还是原始元素）。如果没有元素，则返回null。</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(<span class="number">4</span>, list.minBy &#123; -it &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>none</strong>： 如果没有任何元素与指定的函数条件匹配，则返回true。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = mutableListOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertTrue(list.none &#123; it &gt; <span class="number">4</span> &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>orEmpty</strong>： 如果没有任何元素与指定的函数条件匹配，则返回true。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = mutableListOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertTrue(list.none &#123; it &gt; <span class="number">4</span> &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>sorted</strong>：返回所有元素分类排序列表。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>), list.sorted())</span><br><span class="line"></span><br><span class="line"><span class="comment">// sortBy:返回所有元素分类排序列表。顺序按照指定函数条件排列</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">4</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>), list.sortedBy &#123; -it &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// sortDescending:返回所有元素分类排序列表。顺序按降序排列</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">4</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>), list.sortedDescending())</span><br><span class="line"></span><br><span class="line"><span class="comment">// sortedByDescending:返回所有元素分类排序列表。顺序按指定函数条件的降序排列</span></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">4</span>), list.sortedByDescending&#123; -it &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>slice</strong>: 返回一个list中指定index的元素。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">4</span>,<span class="number">2</span>,<span class="number">2</span>), list.slice(<span class="number">1.</span><span class="number">.3</span>))</span><br><span class="line">assertEquals(listOf(<span class="number">1</span>,<span class="number">4</span>), list.slice(listOf(<span class="number">0</span>,<span class="number">1</span>)))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>take</strong>: 返回从第一个元素开始的n个元素。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">assertEquals(listOf(<span class="number">1</span>,<span class="number">4</span>), list.take(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>zip</strong>: 返回一个列表，该列表由两个集合中相同索引元素建立的元素对。这个列表长度为最短集合的长度。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val list = listOf(1, 4, 2, 2)</span><br><span class="line">assertEquals(listOf(Pair(1,10),Pair(4,20),Pair(2,30)), list.zip(listOf(10,20,30)))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>groupBy</strong></p>
+<p>返回一个根据给定函数分组后的map， value为list</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">assertEquals(mapOf(<span class="string">"error"</span> to listOf(<span class="number">1</span>), <span class="string">"right"</span> to listOf(<span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)), list.groupBy &#123; <span class="keyword">if</span> (it % <span class="number">2</span> == <span class="number">0</span>) <span class="string">"right"</span> <span class="keyword">else</span> <span class="string">"error"</span> &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>associateBy</strong></p>
+<p>通过指定的条件，把list转换成map，value为单元素</p>
+<p>2种，第一只转换map的key;第二map的key-value都转换</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">assertEquals(hashMapOf(<span class="string">"key1"</span> to <span class="number">1</span>, <span class="string">"key4"</span> to <span class="number">4</span>, <span class="string">"key2"</span> to <span class="number">2</span>), list.associateBy &#123; it -&gt; <span class="string">"key"</span> + it &#125;)</span><br><span class="line">assertEquals(hashMapOf(<span class="string">"key1"</span> to <span class="string">"value1"</span>, <span class="string">"key4"</span> to <span class="string">"value4"</span>, <span class="string">"key2"</span> to <span class="string">"value2"</span>), list.associateBy(&#123; it -&gt; <span class="string">"key"</span> + it &#125;, &#123; it -&gt; <span class="string">"value"</span> + it &#125;))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="associateby和groupby区别"><a class="markdownIt-Anchor" href="#associateby和groupby区别"></a> associateBy和groupBy区别</h2>
+<blockquote>
+<p>函数associateBy和groupBy构建来自由指定键索引的集合的元素的映射。key在keySelector参数中定义。</p>
+<p>还可以指定可选的valueSelector来再选择定义将存储在map元素值中的内容。</p>
+</blockquote>
+<p><strong>区别</strong></p>
+<p>associateBy和groupBy之间的区别在于它们如何使用相同的键处理对象：</p>
+<ul>
+<li>associateBy使用<strong>最后一个合适的<em>元素</em></strong>作为<strong>值</strong>。</li>
+<li>groupBy构建<strong>所有合适元素的<em>列表</em></strong>并将其放入<strong>值</strong>中。</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">StreamPractise</span></span>(</span><br><span class="line">    <span class="keyword">val</span> id: <span class="built_in">Int</span>,</span><br><span class="line">    <span class="keyword">val</span> name: String,</span><br><span class="line">    <span class="keyword">val</span> age: <span class="built_in">Int</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> l = listOf(StreamPractise(<span class="number">1</span>, <span class="string">"hello"</span>, <span class="number">19</span>), StreamPractise(<span class="number">1</span>, <span class="string">"cl"</span>, <span class="number">31</span>))</span><br><span class="line">    <span class="keyword">var</span> res = l.associateBy &#123;  it.id &#125;</span><br><span class="line">    println(res)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// &#123;1=StreamPractise(id=1, name=cl, age=31)&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> l = listOf(StreamPractise(<span class="number">1</span>, <span class="string">"hello"</span>, <span class="number">19</span>), StreamPractise(<span class="number">1</span>, <span class="string">"cl"</span>, <span class="number">31</span>))</span><br><span class="line">    <span class="keyword">var</span> res = l.groupBy &#123;  it.id &#125;</span><br><span class="line">    println(res)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// &#123;1=[StreamPractise(id=1, name=hello, age=19), StreamPractise(id=1, name=cl, age=31)]&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="map"><a class="markdownIt-Anchor" href="#map"></a> Map</h1>
+<ul>
+<li>
+<p><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fkotlinlang.org%2Fapi%2Flatest%2Fjvm%2Fstdlib%2Fkotlin.collections%2Fget-or-else.html" target="_blank" rel="noopener"><code>getOrElse()</code></a> 与 list 的工作方式相同：对于不存在的键，其值由给定的 lambda 表达式返回。</p>
+</li>
+<li>
+<p><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fkotlinlang.org%2Fapi%2Flatest%2Fjvm%2Fstdlib%2Fkotlin.collections%2Fget-or-default.html" target="_blank" rel="noopener"><code>getOrDefault()</code></a> 如果找不到键，则返回指定的默认值。</p>
+</li>
+<li>
+<p><code>filter</code>: 可以使用 <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fkotlinlang.org%2Fapi%2Flatest%2Fjvm%2Fstdlib%2Fkotlin.collections%2Ffilter.html" target="_blank" rel="noopener"><code>filter()</code></a> 函数来<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.kotlincn.net%2Fdocs%2Freference%2Fcollection-filtering.html" target="_blank" rel="noopener">过滤</a> map 或其他集合。 对 map 使用 <code>filter()</code> 函数时， <code>Pair</code> 将作为参数的谓词传递给它。 它将使用谓词同时过滤其中的键和值。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val numbersMap = mapOf(<span class="string">"key1"</span> to <span class="number">1</span>, <span class="string">"key2"</span> to <span class="number">2</span>, <span class="string">"key3"</span> to <span class="number">3</span>, <span class="string">"key11"</span> to <span class="number">11</span>)</span><br><span class="line">val filteredMap = numbersMap.filter &#123; (key, <span class="keyword">value</span>) -&gt; key.endsWith(<span class="string">"1"</span>) &amp;&amp; <span class="keyword">value</span> &gt; <span class="number">10</span>&#125;</span><br><span class="line">println(filteredMap)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>put()</code>添加新的kv</p>
+</li>
+<li>
+<p><code>putAll()</code>要一次添加多个条目，请使用 <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fkotlinlang.org%2Fapi%2Flatest%2Fjvm%2Fstdlib%2Fkotlin.collections%2Fput-all.html" target="_blank" rel="noopener"><code>putAll()</code></a> 。它的参数可以是 <code>Map</code> 或一组 <code>Pair</code> ： <code>Iterable</code> 、 <code>Sequence</code>或 <code>Array</code> 。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val numbersMap = mutableMapOf(<span class="string">"one"</span> to <span class="number">1</span>, <span class="string">"two"</span> to <span class="number">2</span>, <span class="string">"three"</span> to <span class="number">3</span>)</span><br><span class="line">numbersMap.putAll(setOf(<span class="string">"four"</span> to <span class="number">4</span>, <span class="string">"five"</span> to <span class="number">5</span>))</span><br><span class="line"><span class="built_in">println</span>(numbersMap)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>remove</code>: 要从可变 Map 中删除条目，请使用 <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fkotlinlang.org%2Fapi%2Flatest%2Fjvm%2Fstdlib%2Fkotlin.collections%2F-mutable-map%2Fremove.html" target="_blank" rel="noopener"><code>remove()</code></a> 函数。 调用 <code>remove()</code> 时，可以传递键或整个键值对。 如果同时指定键和值，则仅当键值都匹配时，才会删除此的元素。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val numbersMap = mutableMapOf(<span class="string">"one"</span> to <span class="number">1</span>, <span class="string">"two"</span> to <span class="number">2</span>, <span class="string">"three"</span> to <span class="number">3</span>)</span><br><span class="line">numbersMap.<span class="keyword">remove</span>(<span class="string">"one"</span>)</span><br><span class="line">println(numbersMap)</span><br><span class="line">numbersMap.<span class="keyword">remove</span>(<span class="string">"three"</span>, <span class="number">4</span>)            <span class="comment">//不会删除任何条目</span></span><br><span class="line">println(numbersMap)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>plus</code> 与 <code>minus</code> 操作</p>
+<p>由于需要访问元素的键，<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fkotlinlang.org%2Fapi%2Flatest%2Fjvm%2Fstdlib%2Fkotlin.collections%2Fplus.html" target="_blank" rel="noopener"><code>plus</code></a>（<code>+</code>）与 <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fkotlinlang.org%2Fapi%2Flatest%2Fjvm%2Fstdlib%2Fkotlin.collections%2Fminus.html" target="_blank" rel="noopener"><code>minus</code></a>（<code>-</code>）运算符对 map 的作用与其他集合不同。 <code>plus</code> 返回包含两个操作数元素的 <code>Map</code> ：左侧的 Map 与右侧的 Pair 或另一个 Map 。 当右侧操作数中有左侧 <code>Map</code> 中已存在的键时，该条目将使用右侧的值（覆盖）。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val numbersMap = mapOf(<span class="string">"one"</span> to <span class="number">1</span>, <span class="string">"two"</span> to <span class="number">2</span>, <span class="string">"three"</span> to <span class="number">3</span>)</span><br><span class="line"><span class="built_in">println</span>(numbersMap + Pair(<span class="string">"four"</span>, <span class="number">4</span>))</span><br><span class="line"><span class="built_in">println</span>(numbersMap + Pair(<span class="string">"one"</span>, <span class="number">10</span>))</span><br><span class="line"><span class="built_in">println</span>(numbersMap + mapOf(<span class="string">"five"</span> to <span class="number">5</span>, <span class="string">"one"</span> to <span class="number">11</span>))</span><br></pre></td></tr></table></figure>
+<p>minus 将根据左侧 Map 条目创建一个新 Map ，右侧操作数带有键的条目将被剔除。 因此，右侧操作数可以是单个键或键的集合： list 、 set 等。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val numbersMap = mapOf(<span class="string">"one"</span> to <span class="number">1</span>, <span class="string">"two"</span> to <span class="number">2</span>, <span class="string">"three"</span> to <span class="number">3</span>)</span><br><span class="line"><span class="built_in">println</span>(numbersMap - <span class="string">"one"</span>)</span><br><span class="line"><span class="built_in">println</span>(numbersMap - listOf(<span class="string">"two"</span>, <span class="string">"four"</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>containsKey, containsValue</code></p>
+</li>
+<li>
+<p><code>isNotEmpty</code></p>
+</li>
+<li>
+<p><code>sort map</code>:根据键或者值排序</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> mmp = mapOf(<span class="number">1</span> to <span class="string">"aone"</span>, <span class="number">3</span> to <span class="string">"three"</span>, <span class="number">2</span> to <span class="string">"two"</span>, <span class="number">4</span> to <span class="string">"four"</span>)</span><br><span class="line"><span class="keyword">val</span> sortedMap: SortedMap&lt;<span class="built_in">Int</span>, String&gt; = mmp.toSortedMap(Comparator &#123; o1, o2 -&gt;</span><br><span class="line">    println(<span class="string">"o1=<span class="variable">$o1</span>,o2=<span class="variable">$o2</span>"</span>)</span><br><span class="line">    <span class="keyword">if</span> (o1 &gt; o2) <span class="number">1</span> <span class="keyword">else</span> <span class="keyword">if</span> (o1 &lt; o2) <span class="number">-1</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">&#125;)</span><br><span class="line">  </span><br><span class="line">println(sortedMap) <span class="comment">//    &#123;1=aone, 2=two, 3=three, 4=four&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>⭐️<strong>Convert Map to List</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> keyList = ArrayList(mmp.keys)</span><br><span class="line"><span class="keyword">val</span> valueList = ArrayList(mmp.values)</span><br><span class="line"></span><br><span class="line">println(<span class="string">"Key List: <span class="variable">$keyList</span>"</span>) <span class="comment">//    Key List: [1, 3, 2, 4]</span></span><br><span class="line">println(<span class="string">"Value List: <span class="variable">$valueList</span>"</span>) <span class="comment">//    Value List: [aone, three, two, four]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> list = mmp.toList().map &#123; <span class="string">"<span class="subst">$&#123;it.first&#125;</span>_<span class="subst">$&#123;it.second&#125;</span>"</span> &#125;</span><br><span class="line">println(<span class="string">"list=<span class="variable">$list</span>"</span>) <span class="comment">// list=[1_aone, 3_three, 2_two, 4_four]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>⭐️<strong>Converting a List to Map in Kotlin</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">val</span> user1 = User(<span class="string">"John"</span>, <span class="number">18</span>, listOf(<span class="string">"Hiking"</span>, <span class="string">"Running"</span>, <span class="string">"Reading"</span>))</span><br><span class="line"> <span class="keyword">val</span> user2 = User(<span class="string">"Sara"</span>, <span class="number">25</span>, listOf(<span class="string">"Chess"</span>, <span class="string">"Music"</span>))</span><br><span class="line"> <span class="keyword">val</span> user3 = User(<span class="string">"Dave"</span>, <span class="number">34</span>, listOf(<span class="string">"Games"</span>, <span class="string">"Programming"</span>))</span><br><span class="line"> <span class="keyword">val</span> myList = listOf(user1, user2, user3)</span><br><span class="line">  </span><br><span class="line"> <span class="keyword">val</span> myMap = myList.map &#123; it.name to it &#125;.toMap()</span><br><span class="line"> println(myMap) <span class="comment">// &#123;John=User(name=John, age=18, hobbit=[Hiking, Running, Reading]), Sara=User(name=Sara, age=25, hobbit=[Chess, Music]), Dave=User(name=Dave, age=34, hobbit=[Games, Programming])&#125;</span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">val</span> amap = myList.associateBy &#123; it.age &#125;</span><br><span class="line"> println(amap) <span class="comment">// &#123;18=User(name=John, age=18, hobbit=[Hiking, Running, Reading]), 25=User(name=Sara, age=25, hobbit=[Chess, Music]), 34=User(name=Dave, age=34, hobbit=[Games, Programming])&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/12/27/Kotlin集合、流式操作/">https://nymrli.top/2021/12/27/Kotlin集合、流式操作/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/12/28/开发方向-技术栈/" title="开发方向-技术栈"><span>< PreviousPost</span><br><span class="prevTitle">开发方向-技术栈</span></a><a class="nextSlogan" href="/2021/12/26/开发过程中Mysql-API记录/" title="开发过程中Mysql API记录"><span>NextPost ></span><br><span class="nextTitle">开发过程中Mysql API记录</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Kotlin集合、流式操作',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#list"><span class="toc-number">1.</span> <span class="toc-text"> List</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#associateby和groupby区别"><span class="toc-number">1.1.</span> <span class="toc-text"> associateBy和groupBy区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#map"><span class="toc-number">2.</span> <span class="toc-text"> Map</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

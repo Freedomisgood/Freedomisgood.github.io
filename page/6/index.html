@@ -97,320 +97,203 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/傅里叶变换-小波变化/">傅里叶变换-&gt;小波变化</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T01:51:32.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T01:51:32.000Z">2021-10-25</time></div><div class="recent-post-content"> 傅里叶变换-&gt;小波变化
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/10/07/蒙特卡洛树搜索MCTS/">蒙特卡洛树搜索MCTS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-07T09:18:02.000Z">2019-10-07</time><i class="fa fa-edit"></i><time datetime="2019-10-07T09:18:02.000Z">2020-12-06</time></div><div class="recent-post-content">
+                            .mjpage .MJX-monospace {
+                            font-family: monospace
+                            }
 
-声明:文中大多数内容来自(知乎1335)[https://www.zhihu.com/people/zhi-yuan-ya-77],matlab源代码:1368069096/From_FT_to_WT_examples-,部分为个人理解阐明
+                            .mjpage .MJX-sans-serif {
+                            font-family: sans-serif
+                            }
 
- 一.傅里叶变换FT
- 基础知识
+                            ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/10/07/蒙特卡洛树搜索MCTS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/07/ACM-树状数组和线段树/">ACM-树状数组和线段树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-07T05:04:53.000Z">2019-12-07</time><i class="fa fa-edit"></i><time datetime="2019-12-07T05:04:53.000Z">2020-09-12</time></div><div class="recent-post-content">高性能问题：
+Q：需求：（老板给你分了台2GHz单核，内存500M的服务器然后让你写程序）程序每秒会收到一组数据，每组数据包含10万条命令，总共会有100万个仓库，每个仓库库存没有上限且可为负，库存初始为0。你需要在一秒内完成全部的命令，然后将查询结果按顺序得出后传回，命令如下：
 
-（FOURIER TRANSFORM，简称FT）
+Add i j，i和j为正整数，表示第i个仓库增加j个库存（j不超过220）
+Sub i j，i和j为正整数，表示第i个仓库减少个库存（j不超过220）
+Query i j，i和j为正整数，i&lt;=j，表示询问第i到第个仓库的总库存；End 表示结束，这条命令在每组数据最后出现；
 
- 为什么傅里叶变换可以把一个信号从时域变换到频域?
-先给出公式，傅里叶变换的形式为：X(w)=∫−∞+∞x(t)e−jwtdtX(w)=\int_{-\infty}^{+\infty} x(t) e^{-j w t} d tX(w)= ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/傅里叶变换-小波变化/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/25/Docker使用/">Docker使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-25T02:58:19.000Z">2019-07-25</time><i class="fa fa-edit"></i><time datetime="2019-07-25T02:58:19.000Z">2021-10-25</time></div><div class="recent-post-content"> Docker学习
+思路一：用array去存储每 ...</div><div class="read-more"><a class="more" href="/2019/12/07/ACM-树状数组和线段树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax-极小极大算法——2048/">MinMax-极小极大算法——2048</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:46:41.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:46:41.000Z">2020-02-04</time></div><div class="recent-post-content"> MinMax-极小极大算法——2048
+ 算法介绍
+ MinMax
 
-轻部署,省成本,易迁移
+大家在编程的时候应该或多或少都接触到过这样的写法:min(max(xxx,yyy))，MinMax算法的表达形式就是如此，不过其中的Min和Max都是具有对应含义的。
 
- docker和虚拟机VM的区别
- 一、本质上的区别：
+一般解决博弈类问题的自然想法是将格局组织成一棵），树的每一个节点表示一种格局，而父子关系表示由父格局经过一步可以到达子格局。Minimax也不例外，它通过对以当前格局为根的格局树搜索来确定下一步的选择。而一切格局树搜索算法的核心都是对每个格局价值的评价。Minimax算法基于以下朴素思想确定格局价值：
 
-VM(VMware)在宿主机器、宿主机器操作系统的基础上创建虚拟层、虚拟化的操作系统、虚拟化的仓库，然后再安装应用；
-Container(Docker容器)，在宿主机器、宿主机器操作系统上创建Docker引擎，在引擎的基础上再安装应用。
-那么问题来了，没有操作系统，怎么运行程序？
-可以在Docker中创建一个ubuntu的镜像文件，这样就能将ubuntu系统集成到Docker中，运行的应用就都是ubuntu的应用。
- 二、使用上的区别：
+Minimax是一种悲观算法，即假设对手每一步都会将 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/11/26/MinMax-极小极大算法——2048/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/Hungarian-algorithm匈牙利算法/">Hungarian algorithm匈牙利算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T05:08:11.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T05:08:11.000Z">2019-12-22</time></div><div class="recent-post-content"> Hungarian algorithm匈牙利算法
 
-Size:
+主要用来解决不带权的分配问题，O(V*E)
 
-虚拟机ubuntu大小为:24.1G ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2019/07/25/Docker使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Linux三剑客/">Linux三剑客</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:37:36.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:37:36.000Z">2021-10-19</time></div><div class="recent-post-content"> Linux三剑客
- bash命令执行顺序
+首先，需要明白二分图（又名二部图）的概念
+ 二分图Bipartite Graph
+二分图是图论中一种特殊模型。设G=(V,E)是一个无向图(当且仅当图中不存在长度为奇数的环。)，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（i，j）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。
+注意：如果一图是二分图，那么它一定没有奇环。如果一图没有奇环的话，那么它可以是二分图。(没有奇环是二分图的必要条件)
+▲通常被用来解决分配、匹配 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/12/05/Hungarian-algorithm匈牙利算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/29/git命令详解/">git命令详解</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-29T09:39:07.000Z">2019-09-29</time><i class="fa fa-edit"></i><time datetime="2019-09-29T09:39:07.000Z">2019-12-12</time></div><div class="recent-post-content"> git命令详解
+ 自己的仓库管理：
+git add &lt;filename&gt;
 
-把命令行分成单个命令词
-展开别名
-展开大括号的声明（{}）
-展开波浪符声明（~）
-命令替换$0和&quot;)
-再次把命令行分成命令词
-展开文件通配（*、？、[abc]等等）
-准备I/0重导向（&lt;、&gt;）
-运行命令
+将文件添加到暂存区中  (其中git add.可以将当前目录的子目录文件都添加到暂存区中)
 
-文件查找
-非实时搜索locate
+git commit -m &quot;...&quot;:
 
-速度快
+保存仓库的历史记录,其中 -m &quot;…&quot;提交信息(概述)
 
+git config --global user.name &quot;...&quot;、git config --global user.email &quot;...&quot;:
 
-更新updatabase
+配置提交作者信息
 
-实时搜索工具find
+git log:
 
-搜索速度略慢
-精确查找
-只能搜索用户具备读取和执行权限的目录
+查看提交日志(当前状态为终点) 会产生版本库 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/29/git命令详解/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/KM-Kuhn-Munkres-算法/">KM(Kuhn-Munkres)算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T13:52:58.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T13:52:58.000Z">2019-12-10</time></div><div class="recent-post-content"> KM(Kuhn-Munkres)算法
 
- sed(Stream EDitor):
+带权二分图最佳完美匹配，O(n^3)，（运用匈牙利算法辅助求解），同时也是完备匹配
 
-sed后字符使用单引号
 
-语法：sed [-hnV][-e&lt;script&gt;][-f&lt;script文件 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/08/30/Linux三剑客/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/25/Python中的正则匹配/">Python中的正则匹配</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-25T01:50:19.000Z">2019-07-25</time><i class="fa fa-edit"></i><time datetime="2019-07-25T01:50:19.000Z">2021-10-17</time></div><div class="recent-post-content"> Python中的正则匹配
+只适用于带权最大匹配一定是完备匹配的情况，实践中建议用费用流来解决。
+完全二分图一定是偶数个点
+可行顶标（Feasible Labeling）：结点函数（x），任意边（x，y）：1（x）+l（y）≥w（xiy）。
+相等子图：G的生成子图，包含所有点以及满足l（x）+I（y）=w（x，y）的边（x，y）
+如果EL有完美匹配为PM，则该M是原图的最大权匹配：
 
-虽然正则早就会用了,但是有些使用方法老是忘记,因此还是写篇记录一下
+PM的权和等于所有点的顶标之和SV。
+G的任一个最大权匹配M，边满足w（xy）≤l（x）+（y）→M边权和≤S ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/12/05/KM-Kuhn-Munkres-算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/05/ACM-二分图/">ACM-二分图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-05T09:45:57.000Z">2019-12-05</time><i class="fa fa-edit"></i><time datetime="2019-12-05T09:45:57.000Z">2019-12-08</time></div><div class="recent-post-content"> 二分图的判定：
+染色法1：假设DFS初始点A涂黑色，与它相邻的点就涂白色。如果搜到某一个点u的相邻点v已经涂色并且与u同色，就不可能是二分图啦~
+染色法2：就是给每个点进行标号，标为-1，1如果存在一条边连接的两个点标号相同，那么就是存在一个奇数环…
+热身题：
+ 判断无向图是否有环
 
- 特殊字符
+用DFS遍历图g，如果访问到已经访问过的顶点，那么有环
 
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/12/05/ACM-二分图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/08/ACM-网络流/">ACM-网络流</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-08T11:03:34.000Z">2019-12-08</time><i class="fa fa-edit"></i><time datetime="2019-12-08T11:03:34.000Z">2019-12-08</time></div><div class="recent-post-content"> 最大流
+ FF算法
 
+最基本找増广路的算法
 
-特别字符
-描述
+ dinic实现(基础的FF算法)
 
+反边：我们知道，当我们在寻找增广路的时候，在前面找出的不一定是最优解，如果我们在减去残量网络中正向边的同时将相对应的反向边加上对应的值，我们就相当于可以反悔从这条边流过。
 
+技巧：flow[u]正边，flow[u^1]反边
+建边的时候是同时建的，比如1的反边为2，2的反边为1，▲边不能从0开始
+主要思路：
 
+求增广路
+分层图
 
-$
-匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n’ 或 ‘\r’。要匹配 $ 字符本身，请使用 $。
+ dinic的优化
 
 
-( )
-标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 ( 和 )。
+当前弧优化(作用不明显)
+12345678910111213141516171819202122232425262728// 最原始int dfs(int no ...</div><div class="read-more"><a class="more" href="/2019/12/08/ACM-网络流/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/24/Python网络编程Websocket/">Python网络编程Websocket</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-24T02:17:11.000Z">2019-11-24</time><i class="fa fa-edit"></i><time datetime="2019-11-24T02:17:11.000Z">2019-11-28</time></div><div class="recent-post-content"> 网络知识——Websocket
 
 
-*
-匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 *。
+TCP ：面向连接—&gt; 打电话(相互回复,一来一回)，客户端向服务器端 拨号 , 三次握手 ,
 
 
-+
-匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 +。
+UDP : 面向无连接 --&gt; 寄快递(寄出去就不管了) e.g.直播
 
 
-.
-匹配除换行符 \n 之外的任何单 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/25/Python中的正则匹配/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/机器学习——决策树/">机器学习——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:44:35.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:44:35.000Z">2021-05-30</time></div><div class="recent-post-content"> 机器学习——决策树
- 决策树基础概念
+UDP四层结构
 
-决策树分为分类树和回归树两种，分类树对离散变量做决策树，回归树对连续变量做决策树。
-每个内部节点（非叶子节点）表示一个属性上的测试条件，每个分支代表一个测试输出结果，每个叶节点代表一种类别
+网络访问层(链路层):  物理连接设备(网线)、MAC地址（物理地址）
+互联网层： IP地址（定位设备）
+传输层： port (端口号) : 表示通信进程,将数据交给哪个应用处理
+应用层： 自己定义的协议（处理字符串消息的方法）
 
-决策树分为分类树和回归树两种，分类树对离散变量做决策树，回归树对连续变量做决策树。
-决策树的构造过程就是找到这些具有决定性作用的特征，根据其决定性程度来构造一个倒立的树–决定性作用最大的那个特征作为根节点，然后递归找到各分支下子数据集中次大的决定性特征，直至子数据集中所有数据都属于同一类。
-特征：
+套接字(socket) ： 特殊的设备文件 ， 写网络应用程序的接口，写入后就是发送，接收就是读取。 类似于 esp8266 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/11/24/Python网络编程Websocket/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/PIL的Image笔记/">PIL的Image笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T10:06:58.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T10:06:58.000Z">2019-11-26</time></div><div class="recent-post-content"> PIL的Image学习
+ transpose和rotate
 
-有监督的学习
-非参数学习算法
-自顶向下递归方式构造决策树
-在每一 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/08/30/机器学习——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Sklearn——决策树/">Sklearn——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:43:27.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:43:27.000Z">2021-05-30</time></div><div class="recent-post-content"> Sklearn——决策树
-
-注明：转载自Jack Gui的博客
-
- 1、实战背景
-进入本文的正题：眼科医生是如何判断患者需要佩戴隐形眼镜的类型的？一旦理解了决策树的工作原理，我们甚至也可以帮助人们判断需要佩戴的镜片类型。
-隐形眼镜数据集是非常著名的数据集，它包含很多换着眼部状态的观察条件以及医生推荐的隐形眼镜类型。隐形眼镜类型包括硬材质(hard)、软材质(soft)以及不适合佩戴隐形眼镜(no lenses)。数据来源与UCI数据库，数据集下载地址：[lenses.txt)]([https://github.com/Jack-Cherish/Machine-Learning/blob/ma ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Pythton"> Pythton</a></div><div class="read-more"><a class="more" href="/2019/08/30/Sklearn——决策树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Word2016配置使用MathType/">Word2016配置使用MathType</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T12:58:53.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T12:58:53.000Z">2021-01-03</time></div><div class="recent-post-content"> Word 2016 使用MathType
-据说MathType 6.9b后就能与Word 2016兼容了，所以不用特地去找7.0以上的版本，据说更新的功能差别也不是很大。只不过本人还是使用的7+版本，新一点功能会更全点嘛。
- 闲谈
-
-这边的方法是我个人的操作过程，但是感觉应该不是这么搞得。
-
-安装好MathType后，打开word查看工具栏中是否有MathType工具，如果没有的话，则手动选择“插入-&gt;获得加载项-&gt;应用商店”搜索Mathtype。如果还是没有的话，然后在“选项-&gt;加载项-&gt;模板”然后指定MathType Commands 6 For Word2016 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/08/30/Word2016配置使用MathType/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/2019-6月编程笔记/">2019_6月编程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:26:03.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:26:03.000Z">2019-11-26</time></div><div class="recent-post-content"> 2019_6月编程笔记
-
-注，不少内容比较多，已单独分出去成为独立的文章，更详细的介绍可见这些文章
-
- 硬盘格式
-fat32 单文件4G， 做引导分区
-系统引导程序能读fat32
-只能主引导记录，选择能找到efi程序
-exfat 支持更大空间，引导识别不了，做不了系统盘
- Python
- all
-
-__all__是一个字符串list；
-约束作用：用来定义模块中对于from XXX import *时要对外导出的符号，即要暴露的借口，但它只对import *起作用，对from XXX import XXX不起作用。
-
-from njupt.zhengfang import Zhengfang是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程日记"> 编程日记</a></div><div class="read-more"><a class="more" href="/2019/08/30/2019-6月编程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/通信企业管理-线上考试/">通信企业管理_线上考试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:37:49.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:37:49.000Z">2019-09-15</time></div><div class="recent-post-content"> 通信企业管理
-
-看清题目和选项
-
- 单选题
-1单选(2分)
-在总公司领导下设立多个分支，各分支有各自独立的产品和市场，实行独立核算，经营管理上拥有自主性和独立性。这是（ A   ）组织结构。
-
-A.事业部型
-B.矩阵型
-C.职能型
-D.直线型
+transpose
 
-2单选(2分)
-按照最新版《中华人民共和国公司法》规定，股份有限公司的发起人最多不超过（    C ）。
+1234from PIL import Imageimg = getCaptcha()# 对称反转img.transpose(Image.FLIP_LEFT_RIGHT)
 
-A.100人
-B.50人
-C.200人
-D.150人
+rotate
 
-3单选(2分)
-工作或行动之前预先拟定具体的工作内容和步骤是管理的（  D  ）职能。
+123456from PIL import Imageimg = getCaptcha()# expand默认为False时,超出原有尺寸的部分将用黑色填充,不会拓展尺寸img = img.rotate(45)# expand为True时,会根据图片大小,拓展尺寸img = img.rotate(45,expand=Tru ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程笔记"> 编程笔记</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="科学计算"> 科学计算</a></div><div class="read-more"><a class="more" href="/2019/11/26/PIL的Image笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/2019年8月23号运维笔记/">2019年8月23号运维笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:50:55.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:50:55.000Z">2019-11-26</time></div><div class="recent-post-content"> 2019年8月23号运维笔记
+ docker
+ docker stop containerID，以后再重新启动时报错
+1Error response from daemon: driver failed programming external connectivity on endpoint app (3c0c01ac6b42b7a420644fc2b4debfbbcc0e1d2e74e6294155c28aca82f794c4):  (iptables failed: iptables --wait -t nat -A DOCKER -p tcp -d 0/0 --dport 12345 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程笔记"> 编程笔记</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a></div><div class="read-more"><a class="more" href="/2019/11/26/2019年8月23号运维笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/app测试/">app测试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:49:58.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:49:58.000Z">2019-11-26</time></div><div class="recent-post-content"> app测试
+ 命令
+adb shell monkey 500随机执行500次
+adb shell pm list packages -3 查看第三方包
+adb shell monkey -p tv.danmaku.bili指定在某个软件中随机压力测试
+adb shell monkey -p tv.danmaku.bili -p com.umaman.laiyifen 500会先执行来伊份
+▲.在测试应用程序某些选项的同时，也会进行系统级功能的测试，如截图、调音量等
+adb shell monkey [-options] times
+ 参数说明
+1234567-s seed种子值：种子相同时， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="测试"> 测试</a></div><div class="read-more"><a class="more" href="/2019/11/26/app测试/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/2019-9月7号C-编程笔记/">2019-9月7号C++编程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:47:55.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:47:55.000Z">2019-11-26</time></div><div class="recent-post-content"> 2019-9月7号C++编程笔记
+ auto
+定义变量时放在变量前，无需知道具体变量类型，系统可自行推断类型，减少编程工作，特别是在模板使用时，使用更方便。
+123456789101112131415161718auto a=1;auto b='a';auto s="abdc";auto c;//这样使用时错误的，系统无法自动推断出变量类型//下面为迭代指针使用，很方便vector&lt;int&gt; vec;auto it=vec.begin();/**模板使用案例*/template&lt;typename InputIterator&gt;    TreeNode *creatTre ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程笔记"> 编程笔记</a></div><div class="read-more"><a class="more" href="/2019/11/26/2019-9月7号C-编程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax和Alpha-beta剪枝分析-转/">MinMax和Alpha-beta剪枝分析[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:45:45.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:45:45.000Z">2019-11-26</time></div><div class="recent-post-content"> MinMax和Alpha-beta剪枝分析[转]
 
-A.组织职能
-B.控制职能
-C.领导职能
-D.计划职能
+一般解决博弈类问题的自然想法是将格局组织成一棵），树的每一个节点表示一种格局，而父子关系表示由父格局经过一步可以到达子格局。Minimax也不例外，它通过对以当前格局为根的格局树搜索来确定下一步的选择。而一切格局树搜索算法的核心都是对每个格局价值的评价。Minimax算法基于以下朴素思想确定格局价值：
 
-4单选(2分)
-提出“14项管理原则”的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2019/08/22/通信企业管理-线上考试/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/算法设计与分析C-概念点区分/">算法设计与分析C_概念点区分</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:39:29.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:39:29.000Z">2019-09-15</time></div><div class="recent-post-content"> 算法设计与分析C
- 算法5_分治法
-分治法——将一个复杂的问题分解成若干个规模较小、相互独立，但类型相同的子问题求解；然后再将各子问题的解组合成原始问题的一个完整答案，这样的问题求解策略就叫分治法。
-分治法所能解决的问题一般具有以下几个特征：
-该问题的规模缩小到一定的程度就可以容易地解决；
-该问题可以分解为若干个规模较小的相同问题；
-利用该问题分解出的子问题的解可以合并为该问题的解；
-该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子问题。
-反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。
-由分 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2019/08/22/算法设计与分析C-概念点区分/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/时间序列概念及主要模型/">时间序列概念及主要模型</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T11:05:18.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T11:05:18.000Z">2019-09-15</time></div><div class="recent-post-content"> 时间序列概念及主要模型
-Q:什么是时间序列分析?
-A:时间序列是按照时间顺序，按照一定时间间隔取得的一系列观测值
-Q:怎样做时间序列分析?
-A:时间序列分析尝试找出序列值在过去呈现的特征模式，假定这种模式在未来能够持续，进而对未来进行预测
- 时间序列三大特征
+Minimax是一种悲观算法，即假设对手每一步都会将我方引入从当前看理论上价值最小的格局方向，即对手具有完美决策能力。因此我方的策略应该是选择那些对方所能达到的让我方最差情况中最好的，也就是让对方在完美决策下所对我造成的损失最小。
+Mini ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/11/26/MinMax和Alpha-beta剪枝分析-转/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/">第二十八届“和巨耀通杯”南京邮电大学在线测评系统程序设计邀请赛--</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-17T09:43:56.000Z">2019-11-17</time><i class="fa fa-edit"></i><time datetime="2019-11-17T09:43:56.000Z">2019-11-17</time></div><div class="recent-post-content"> 第二十八届“和巨耀通杯”NOJ邀请赛
 
-序列相关性：当期的序列值和前期某个或某些序列值线性相关
-√  自相关系数（全相关系数）（ACF）：用来度量同一事件在不同时期之间的相关程度。ρh=r(h)r(0)\rho_{h}=\frac{r(h)}{r(0)}ρh​=r(0)r(h)​，其中r（h）为h期协方差函数，r（0）为方差
-√  偏自相关系数（PACF）：度量去除中间变量 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数学建模"> 数学建模</a></div><div class="read-more"><a class="more" href="/2019/07/29/时间序列概念及主要模型/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/强化学习——QLearning/">强化学习——QLearning</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-15</time></div><div class="recent-post-content"> 强化学习——QLearning
-价值转移公式只有一条Q(s,a)&lt;=Q(s,a)+/alpha∗(reward−Q(s,a)+/gamma∗maxaQ(s′,a))=(1−/alpha)∗Q(s,a)+/alpha∗(reward+/gamma∗maxaQ(s′,a))Q(s,a) &lt;= Q(s,a) + /alpha*(reward - Q(s,a) + /gamma*max_aQ(s&#x27;,a)) = (1-/alpha)*Q(s,a) + /alpha*(reward + /gamma*max_aQ(s&#x27;,a))Q(s,a)&lt;=Q(s,a)+/alph ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/强化学习——QLearning/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/">基础知识补充——白噪声、高斯白噪声</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T10:47:04.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T10:47:04.000Z">2019-09-15</time></div><div class="recent-post-content"> 白噪声、高斯白噪声
- 白噪声过程:
-对于一个随机变量X(t)（t=1，2，3……），如果是由一个不相关的随机变量的序列构成的，即对于所有s不等于t，随机变量X(t)和X(s)的协方差为零，则称其为纯随机过程。对于一个纯随机过程来说，若其期望为0，方差为常数，则称之为白噪声过程。
- 白噪声:
-白噪声序列，是指白噪声过程的样本实称，简称白噪声[1]。白噪声是**在较宽的频率范围内，各等带宽的频带所含的噪声能量相等的噪声**[2]，是一种功率频谱密度为常数的随机信号或随机过程，也就是说，此信号在各个频段上的功率是一样的。
-理想的白噪声具有无限的带宽，因而其能量无限大，但这是不可能实际存在的，所以， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/">利用wireshark抓取TCP的整个过程分析[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-24T07:51:29.000Z">2019-07-24</time><i class="fa fa-edit"></i><time datetime="2019-07-24T07:51:29.000Z">2019-09-15</time></div><div class="recent-post-content">原文地址：https://www.cnblogs.com/NickQ/p/9226579.html
-最近，已经很久都没有更新博客了。看看时间，想想自己做了哪些事情，突然发现自己真的是太贪心，到头来却一个都没搞好。手头的嵌入式都还没学出名堂，竟然还想着学FPGA,物联网，机器学习。然而，遇到新奇的事物，就会控制不住的去想，去找资料，实际上只是逃避遇到的问题，不想去解决而已。。最后的结果就是手头的活堆起来了，然后花大把整块的时间解决。真的是讨厌现在的自己。
-以后还是慢慢记录吧，不管做了什么，都慢慢尝试积累。。其他的东西，像FPGA，机器学习什么的，让他随风去吧，用到啥学啥。其他的当看客，了解了解就 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/26/Vim记忆/">Vim记忆</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-26T02:34:34.000Z">2019-07-26</time><i class="fa fa-edit"></i><time datetime="2019-07-26T02:34:34.000Z">2019-09-15</time></div><div class="recent-post-content"> VIM记忆技巧
- 增
+三人团队赛， 正好最近在刷PTA， 于是一个人报名尝试了一下。
+一共AC了三题， Rank28
 
-i(insert)
-I最前面insert
-a(append)
-A最后面append
-o(open a line)往下开启一行
-O往上开启一行
+ C. Battle game
 
- 删
+签到题
 
-d（delete）
-dw（delet word）
-dd（删除一行）
-x（删除一个字符）
+Description:
+You are playing a game which you will battle with an enemy. As you don’t want to lose, your total power can’t be lower than your enemy’s. Your power is simply added by the power of your soldiers, ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/06/Openmv使用/">Openmv使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-06T01:45:28.000Z">2019-10-06</time><i class="fa fa-edit"></i><time datetime="2019-10-06T01:45:28.000Z">2019-11-07</time></div><div class="recent-post-content"> Openmv使用
+ 下载Openmv IDE
 
- 拓展
+Openmv官网
+中国代理——星瞳
+Github_release
 
-diw(delete inner word)
-daw(delete around word)
+推荐下载星瞳的，这个是中文版的，并且其他两个下载非常慢。
+ 捕捉图片设置：
+设置彩色／黑白
 
- 改
+sensor.set_pixformat() 设置像素模式。
 
-c（change）
-ciw（change inner word）
-ci&quot;(change inner &quot;)
-ct）修改到右括号
+sensor.GRAYSCALE: 灰度，每个像素8bit。
+sensor.RGB565: 彩色，每个像素16bit。
 
- 查
 
-fs(find s) 跳到本行第一个s字符
-/往后查找,如/x ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/07/26/Vim记忆/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/RL强化学习概念/">RL强化学习概念</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-15</time></div><div class="recent-post-content"> RL强化学习概念
- 方法汇总
- 价值-直接-想象
-通过价值选择行为：
 
-Q Learning
-Sarsa
-Deep Q Network
+设置图像大小
 
-直接选择行为：
 
-Policy Gradients
+sensor.set_framesize() 设置图像的大小
 
-想象环境并从中学习
+sensor.QQVGA: 160x120
+sensor.QQVGA2: 128x160 (用于 lcd 扩展板)
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/06/Openmv使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/18/软件测试笔记/">软件测试笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-18T13:03:29.000Z">2019-10-18</time><i class="fa fa-edit"></i><time datetime="2019-10-18T13:03:29.000Z">2019-11-02</time></div><div class="recent-post-content"> 软件测试笔记
+ 移动应用测试
+ appnium使用
 
-Model Based RL
+安装的是appnium-desktop,没有教程中所说的Appium/node_modules/.bin/路径，使用命令行输入appnium和appium-doctor也都没啥反应，后来索性没管，直接跑代码
 
- 基于模型
+ 真机测试
+使用的时候报错Build info: version: 'unknown', revision: 'unknown', time: 'unknown'，以为是appnium版本的问题，第一次安装的是1.13，后来换成了1.9，其实没多大区别，只不过据说要保证版本在1.6以上。
+更换版本后，发现还是Build info:  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></div><div class="read-more"><a class="more" href="/2019/10/18/软件测试笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/15/玩玩Stm32/">玩玩Stm32</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-15</time><i class="fa fa-edit"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-18</time></div><div class="recent-post-content"> 玩玩Stm32
+ 文件结构
+12345678910111213141516G:.├───CORE	# startup_stm32f10x_hd.s汇编编写的启动文件|			# core_cm3.c底层函数├───HARDWARE	# 相关外设的初始化代码├───OBJ├───STM32F10x_FWLib	# 固件库包: GPIO/i2c/...│   ├───inc│   └───src├───SYSTEM			# 正点原子提供的常用、通用模块│   ├───delay│   ├───sys│   └───usart└───USER # stm32f10x_it.c 中断管理文件    | ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/15/玩玩Stm32/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/06/Python多进程/">Python多进程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-06T12:17:44.000Z">2019-10-06</time><i class="fa fa-edit"></i><time datetime="2019-10-06T12:17:44.000Z">2019-10-07</time></div><div class="recent-post-content"> Python多进程
+ 守护进程
 
+守护进程其实就是**“子进程“是否伴随主进程一起结束**:守护==&gt;伴随，即守护进程会伴随主进程的代码运行完毕后而死掉
 
-Model-Free RL（无模型）不需要去理解环境的含义
+进程：当父进程需要将一个任务并发出去执行，需要将该任务放到以个子进程里
+守护：当该子进程内的代码在父进程代码运行完毕后就没有存在的意义了，就应该
+将该子进程设置为守护进程，会在父进程代码结束后死掉
+1234567891011121314151617181920212223from multiprocessing import Processimport timedef foo():    print(123)    time.sle ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/10/06/Python多进程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/03/TD-afterstate/">TD-afterstate</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-03T11:28:36.000Z">2019-10-03</time><i class="fa fa-edit"></i><time datetime="2019-10-03T11:28:36.000Z">2019-10-03</time></div><div class="recent-post-content"> TD-afterstate
 
-Q Learning
-Sarsa
-Policy Gradients
+afterstae: 当前执行一个动作后的状态，可以理解为中间态
+是处理问题的一个改动,一种思想
 
+以俄罗斯方块为例:
+状态是由当前的局面和一个随机方块组成，执行一个下落动作之后会产生一个局面就称为afterstate，即动作结束后不能进行新的动作（没有新方块）的状态。
+中间态和下一个随机方块构成了下一个状态
+对于没有这种随机性的问题，afterstate就是next state
+td做预测，afterstate做控制
 
-
-Model-Based RL（有环境）需要去理解环境的含义，在&quot;脑子&quot;中模拟虚拟环境
-
-Q Learning
-Sarsa
-Policy Gradient
-
-前者需要一步一步得到环境 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/RL强化学习概念/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Python爬虫常规流程/">Python爬虫常规流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:07:05.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:07:05.000Z">2019-09-15</time></div><div class="recent-post-content"> Python爬虫常规流程
-以爬取有道翻译为例子。
- 挖取可自用的API
-
-web 端的有道翻译，在之前是直接可以爬的。也就是说只要获取到了他的接口，你就可以肆无忌惮的使用他的接口进行翻译而不需要支付任何费用。那么自从有道翻译推出他的API服务的时候，就对这个接口做一个反爬虫机制（如果大家都能免费使用到他的翻译接口，那他的APl服务怎么赚钱）。这个反爬虫机制在爬虫领域算是一个非常经典的技术手段。
-
-1.查看要爬取的内容是否是静态加载的。
-比如在翻译输入框中输入apple，翻译输出框中会出现苹果，然后在``页面中右键-&gt;查看网页源代码，直接Ctrl+F搜索是否存在apple或者苹果`，如果 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/08/30/Python爬虫常规流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/">Let's Encrypt安装配置nginx的SSL证书教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:34:04.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:34:04.000Z">2019-09-15</time></div><div class="recent-post-content"> Let’s Encrypt 安装配置nginx的SSL证书教程
- 使用cerbot生成证书
- 安装Let’s Encrypt
-安装非常简单直接克隆就可以了
-1git clone https://github.com/letsencrypt/letsencrypt
-如果网速较慢（国外服务器应该快点）
-1.可以登录https://github.com/letsencrypt/letsencrypt，下载后通过lrzsz传到云服务器上，再解压
-2.修改hosts
-查找域名对应的ip地址，并修改hosts文件
-123456789101112131415linuxidc@linuxidc:~/linu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/CDN加速个人博客——又拍云/">CDN加速个人博客——又拍云</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-15</time></div><div class="recent-post-content"> CDN加速个人博客——又拍云
-
-CDN(Content Delivery Network)内容发布网络，基本思路就是将你网站放置在各地节点服务器，用户访问时找最近的节点服务器获取数据，达到加速的目的。
-
- 几大厂商的CDN方案
-
-
-
-资费介绍页面
-免费额度
-是否支持HTTPS
-额外限制
-注册邀请链接
-
-
-
-
-七牛云
-10GB/月
-按量付费支持
-/
-&gt;&gt;&gt; 点击注册
-
-
-腾讯云
-10GB/月
-免费支持
-加了腾讯云CDN没有感觉多大加速
-/
-
-
-百度云
-10GB/天
-年费付费支持
-巨贵…
-/
-
-
-又拍云
-15GB/月
-免费支持
-加入又拍云联盟，并在网站底部放置logo
-&gt; ...</div><div class="read-more"><a class="more" href="/2019/09/09/CDN加速个人博客——又拍云/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/ACM-博弈论/">ACM-博弈论</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:41:28.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:41:28.000Z">2019-09-15</time></div><div class="recent-post-content"> ACM-博弈论（gambling）
-
-博弈论：是二人或多人在平等的对局中各自利用对方的策略变换自己的对抗策略，达到取胜目标的理论。假设，双方每步都是最优决策
-
-博弈论是研究互动决策的理论。博弈可以分析自己与对手的利弊关系，从而确立自己在博弈中的优势，因此有不少博弈理论，可以帮助对弈者分析局势，从而采取相应策略，最终达到取胜的目的。
- 巴什博弈
-
-只有一堆n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取m个。最后取光者得胜。
-
-显然，如果n=m+1，1那么由于一次最多只能取m个，所以，无论先取者拿走多少个，后取者都能够一次拿走剩余的物品，后者取胜。因此我们发现了先手如何取胜的法 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/08/30/ACM-博弈论/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/5/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/7/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+ 更多:
+强化学习经典入门书的读书笔记系列–第六篇Temporal-Difference
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/10/03/TD-afterstate/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/5/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

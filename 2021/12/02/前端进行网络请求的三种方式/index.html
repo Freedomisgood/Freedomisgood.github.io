@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>前端进行网络请求的三种方式 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">前端进行网络请求的三种方式</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/12/05</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">921</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="前端进行网络请求的三种方式"><a class="markdownIt-Anchor" href="#前端进行网络请求的三种方式"></a> 前端进行网络请求的三种方式</h1>
+<h2 id="xhr技术"><a class="markdownIt-Anchor" href="#xhr技术"></a> XHR技术</h2>
+<p>基于XMLHTTPRequest技术实现的，通过调用原生的XML对象实现的，非常的冗余==&gt;ajax技术</p>
+<h3 id="ajax"><a class="markdownIt-Anchor" href="#ajax"></a> ajax</h3>
+<h4 id="jqueryajax"><a class="markdownIt-Anchor" href="#jqueryajax"></a> Jquery.$ajax</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 有参数，则增加data字段，有请求头则增加headers字段，有错误处理增加error字段</span></span><br><span class="line"><span class="comment">// 默认是按照表单提交post方法，data中虽然是json但是提交时转成表单</span></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url:<span class="string">"demo_test.txt"</span>,</span><br><span class="line">    data:&#123;<span class="attr">a</span>:<span class="number">10</span>&#125;,</span><br><span class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(result);</span><br><span class="line">    &#125;,</span><br><span class="line">    error:<span class="function"><span class="keyword">function</span>(<span class="params">xhr,status,error</span>)</span>&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// data在post下是表单格式，在get下是querystring格式</span></span><br><span class="line"><span class="comment">// 通过以下方法指定为json格式[json格式本质就是body里是json字符串，头里是application/json]</span></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">	method: <span class="string">"POST"</span>,</span><br><span class="line">	headers: &#123;<span class="string">"content-type"</span>: <span class="string">"application/json"</span>&#125;,</span><br><span class="line">	data: <span class="built_in">JSON</span>.stringify(&#123;<span class="attr">a</span>: <span class="number">10</span>&#125;),</span><br><span class="line">	url: <span class="string">"http://localhost:9090"</span></span><br><span class="line">	success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;<span class="built_in">console</span>.log(data)&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// JQuery的get和post可以简写：</span></span><br><span class="line">$.get(url,data,callback)  <span class="comment">// querystring格式</span></span><br><span class="line">$.post(url,data,callback) <span class="comment">// x-www-form-urlencoded格式</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Get: 参数放到querystring中</li>
+<li>Post：参数放到body中， 默认application/x-www-form-urlencoded</li>
+</ul>
+<h3 id="axios推荐"><a class="markdownIt-Anchor" href="#axios推荐"></a> axios（推荐）</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// axios默认是json类型的提交</span></span><br><span class="line">axios(&#123;</span><br><span class="line">	url: <span class="string">"http://localhost:9090"</span>,</span><br><span class="line">	method: <span class="string">"POST"</span>,</span><br><span class="line">	data: &#123;<span class="attr">a</span>: <span class="number">1</span>&#125; 		<span class="comment">// 这边可以直接传json data而不是字符串</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>POST默认的提交格式为json，而不是表单www-form-urlencode</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">	url: <span class="string">"http://localhost:9090"</span>,</span><br><span class="line">	method: <span class="string">"POST"</span>,</span><br><span class="line">	headers: &#123;<span class="string">"content-type"</span>: <span class="string">"application/www-form-urlencode"</span>&#125;</span><br><span class="line">	data: <span class="string">"a=3&amp;b=3"</span>		<span class="comment">// 这边可以直接传json data而不是字符串</span></span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>res.json())</span><br><span class="line">  .then(<span class="function"><span class="params">d</span>=&gt;</span><span class="built_in">console</span>.log(d))</span><br></pre></td></tr></table></figure>
+<p>axios的get/post/put/delete等等都可以简写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.post(url,data).then(callback)</span><br></pre></td></tr></table></figure>
+<h2 id="fetch"><a class="markdownIt-Anchor" href="#fetch"></a> fetch</h2>
+<ul>
+<li>目前主流浏览器都支持的技术，除了IE</li>
+<li>Network捕捉到的Type不再是XHR，而直接是fetch</li>
+<li>promise特性</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">"http://localhost:9090"</span>, &#123;</span><br><span class="line">    	method: <span class="string">"POST"</span>,</span><br><span class="line">    	headers: &#123;<span class="string">"content-type"</span>: <span class="string">"application/www-form-urlencode"</span>&#125;,</span><br><span class="line">    	body: <span class="string">"a=12&amp;b=11"</span>	<span class="comment">// 表单写这种形式</span></span><br><span class="line">	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="params">res</span>=&gt;</span>res.json())</span><br><span class="line">	.then(<span class="function"><span class="params">d</span>=&gt;</span><span class="built_in">console</span>.log(d))</span><br><span class="line"></span><br><span class="line">fetch(<span class="string">"http://localhost:9090"</span>, &#123;</span><br><span class="line">    	method: <span class="string">"POST"</span>,</span><br><span class="line">    	headers: &#123;<span class="string">"content-type"</span>: <span class="string">"application/json"</span>&#125;,</span><br><span class="line">    	body: <span class="built_in">JSON</span>.stringify(&#123;<span class="attr">a</span>:<span class="number">11</span>&#125;)			<span class="comment">// json写这种形式</span></span><br><span class="line">	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="params">res</span>=&gt;</span>res.json())</span><br><span class="line">	.then(<span class="function"><span class="params">d</span>=&gt;</span><span class="built_in">console</span>.log(d))</span><br><span class="line">	.catch(<span class="function"><span class="params">e</span>=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li>跟其他两个的参数为<code>({parmas})</code>不一样，<code>&lt;&quot;url&quot;, {params}&gt;</code></li>
+<li>参数不是通过data提交的，而是body，写data无效</li>
+</ul>
+<h2 id="请求的组成"><a class="markdownIt-Anchor" href="#请求的组成"></a> 请求的组成</h2>
+<ul>
+<li>请求头：
+<ul>
+<li>url: uri[+query]</li>
+<li>method：</li>
+<li>header：
+<ul>
+<li>Http Header里的Content-Type一般有这三种：
+<ul>
+<li><strong>application/x-www-form-urlencoded</strong>：数据被编码为名称/值对。这是标准的编码格式。(默认的)</li>
+<li><strong>multipart/form-data</strong>： 数据被编码为一条消息，页上的每个控件对应消息中的一个部分。</li>
+<li><strong>text/plain</strong>： 数据以纯文本形式(text/json/xml/html)进行编码，其中不含任何控件或格式字符。postman软件里标的是RAW。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>协议</li>
+</ul>
+</li>
+<li>请求体body
+<ul>
+<li>post请求时提交的数据</li>
+</ul>
+</li>
+</ul>
+<p>from:<a href="https://www.bilibili.com/video/BV14t411P7tc?spm_id_from=333.999.0.0" target="_blank" rel="noopener">【ajax科普】【前端】fetch、axios、jquery的ajax用法</a></p>
+<p>模拟服务器文件： 链接：<a href="https://pan.baidu.com/s/1nMZRcPYY4RIW_4Rvc2mDCw" target="_blank" rel="noopener">https://pan.baidu.com/s/1nMZRcPYY4RIW_4Rvc2mDCw</a> 提取码：wxw4</p>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<h2 id="测试所用express服务器代码"><a class="markdownIt-Anchor" href="#测试所用express服务器代码"></a> 测试所用express服务器代码</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"><span class="comment">// app.use(express.urlencoded(&#123; extended: false &#125;))</span></span><br><span class="line"><span class="comment">// 通过 express.json() 这个中间件，解析表单中的 JSON 格式的数据</span></span><br><span class="line"><span class="comment">// 在服务器，可以使用 req.body 这个属性，来接收客户端发送过来的请求体数据</span></span><br><span class="line"><span class="comment">// 默认情况下，如果不配置解析表单数据中间件，则 req.body 默认等于 undefined</span></span><br><span class="line">app.use(express.json())</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">"/"</span>, (req, res) =&gt; &#123;</span><br><span class="line">    res.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)</span><br><span class="line">    res.header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"*"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"url: "</span>, req.method, req.url);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"queryString: "</span>, req.query);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"headers: "</span>, req.headers);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"body: "</span>, req.body);</span><br><span class="line"></span><br><span class="line">    res.json(&#123; <span class="attr">code</span>: <span class="number">200</span>, <span class="attr">msg</span>: <span class="string">"OK"</span> &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="不写html代码直接在浏览器里运行测试"><a class="markdownIt-Anchor" href="#不写html代码直接在浏览器里运行测试"></a> 不写html代码，直接在浏览器里运行测试：</h2>
+<p>地址栏中输入：<code>data:text/html,</code>后跟内容，如</p>
+<ul>
+<li><code>data:text/html,&lt;h1&gt;hello&lt;/h1&gt;</code>会显示大的hello</li>
+<li><code>data:text/html, &lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code></li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/12/02/前端进行网络请求的三种方式/">https://nymrli.top/2021/12/02/前端进行网络请求的三种方式/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/12/04/VBA学习——正则提取单元格指定内容并加粗/" title="VBA学习——正则提取单元格指定内容并加粗"><span>< PreviousPost</span><br><span class="prevTitle">VBA学习——正则提取单元格指定内容并加粗</span></a><a class="nextSlogan" href="/2021/12/02/Mongodb学习/" title="Mongodb学习"><span>NextPost ></span><br><span class="nextTitle">Mongodb学习</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '前端进行网络请求的三种方式',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前端进行网络请求的三种方式"><span class="toc-number">1.</span> <span class="toc-text"> 前端进行网络请求的三种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#xhr技术"><span class="toc-number">1.1.</span> <span class="toc-text"> XHR技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ajax"><span class="toc-number">1.1.1.</span> <span class="toc-text"> ajax</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#jqueryajax"><span class="toc-number">1.1.1.1.</span> <span class="toc-text"> Jquery.$ajax</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#axios推荐"><span class="toc-number">1.1.2.</span> <span class="toc-text"> axios（推荐）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fetch"><span class="toc-number">1.2.</span> <span class="toc-text"> fetch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#请求的组成"><span class="toc-number">1.3.</span> <span class="toc-text"> 请求的组成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number">2.</span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试所用express服务器代码"><span class="toc-number">2.1.</span> <span class="toc-text"> 测试所用express服务器代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不写html代码直接在浏览器里运行测试"><span class="toc-number">2.2.</span> <span class="toc-text"> 不写html代码，直接在浏览器里运行测试：</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

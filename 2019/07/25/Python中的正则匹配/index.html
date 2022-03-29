@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Python中的正则匹配</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/10/17</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,409</span> | Reading time: <span class="post-count">13</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="python中的正则匹配"><a class="markdownIt-Anchor" href="#python中的正则匹配"></a> Python中的正则匹配</h1>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Python中的正则匹配</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/03/18</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">4,056</span> | Reading time: <span class="post-count">16</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="python中的正则匹配"><a class="markdownIt-Anchor" href="#python中的正则匹配"></a> Python中的正则匹配</h1>
 <blockquote>
 <p>虽然正则早就会用了,但是有些使用方法老是忘记,因此还是写篇记录一下</p>
 </blockquote>
@@ -284,14 +284,29 @@
 </tbody>
 </table>
 <h2 id="捕获与非捕获"><a class="markdownIt-Anchor" href="#捕获与非捕获"></a> 捕获与非捕获</h2>
-<h2 id="选择"><a class="markdownIt-Anchor" href="#选择"></a> 选择</h2>
 <p>用圆括号将所有选择项括起来，相邻的选择项之间用|分隔。但用圆括号会有一个副作用，使相关的匹配会被缓存，此时可用?:放在第一个选项前来消除这种副作用。</p>
 <p>其中 <strong>?:</strong> 是非捕获元之一，还有两个非捕获元是 <strong>?=</strong> 和 <strong>?!</strong>，这两个还有更多的含义，前者为正向预查，在任何开始匹配圆括号内的正则表达式模式的位置来匹配搜索字符串，后者为负向预查，在任何开始不匹配该正则表达式模式的位置来匹配搜索字符串。</p>
-<hr>
+<h2 id="选择"><a class="markdownIt-Anchor" href="#选择"></a> 选择</h2>
+<blockquote>
+<p><code>(?(id/name)yes|no)</code>的说明：“Matches yes pattern if the group with id/name matched,the (optional) no pattern otherwise.”，即如果前面的捕获组成功匹配，则执行yes的匹配，否则执行no的匹配</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">abcabc</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;print(re.search(r&apos;(\d)?abc(?(1)\d|abc)&apos;,&apos;abcabc&apos;))</span><br><span class="line">&lt;_sre.SRE_Match object; span=(0, 6), match=&apos;abcabc&apos;&gt;	#匹配成功</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;print(re.search(r&apos;(\d)+abc(?(1)\d|abc)&apos;,&apos;abcabc&apos;))</span><br><span class="line">None	#匹配失败</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;print(re.search(r&apos;(\d)*abc(?(1)\d|abc)&apos;,&apos;abcabc&apos;))</span><br><span class="line">&lt;_sre.SRE_Match object; span=(0, 6), match=&apos;abcabc&apos;&gt;	#匹配成功</span><br></pre></td></tr></table></figure>
+<p><code>(?(R)yes|no)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">If recursion of the whole pattern is successful, match the pattern before the | otherwise match the pattern after the |.</span><br></pre></td></tr></table></figure>
+<p><code>(?(?=...)yes|no)</code></p>
+<blockquote>
+<p>If the lookahead succeeds, matches the pattern before the vertical bar. Otherwise, matches the pattern after the vertical bar. The lookaround can be negative also. Global flag breaks conditionals.</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/(?(?=is)(is delicious)|(disgusting))/</span><br><span class="line">Candy is delicious or disgusting.</span><br><span class="line"><span class="comment">// 成功匹配is delicious</span></span><br></pre></td></tr></table></figure>
+<p><code>(?(?&lt;=...)yes|no)</code></p>
+<blockquote>
+<p>If the <strong>lookbehind</strong> succeeds, match the pattern before the vertical bar. Otherwise, matches the pattern after the vertical bar. The lookaround can be negative. Global flag, ‘g’, breaks conditionals.</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/(?(?<span class="xml"><span class="tag">&lt;<span class="name">=\s)(delish)|(ew))</span>/</span></span></span><br><span class="line"><span class="xml">Is candy delish or ew?</span></span><br><span class="line"><span class="xml">// 匹配delish</span></span><br></pre></td></tr></table></figure>
 <h2 id="反向引用"><a class="markdownIt-Anchor" href="#反向引用"></a> 反向引用</h2>
 <p>对一个正则表达式模式或部分模式两边添加圆括号将导致相关匹配存储到一个临时缓冲区中，所捕获的每个子匹配都按照在正则表达式模式中从左到右出现的顺序存储。缓冲区编号从 1 开始，最多可存储 99 个捕获的子表达式。每个缓冲区都可以使用 <strong>\n</strong> 访问，其中 n 为一个标识特定缓冲区的一位或两位十进制数。</p>
 <p>可以使用非捕获元字符 <strong>?:</strong>、<strong>?=</strong> 或 <strong>?!</strong> 来重写捕获，忽略对相关匹配的保存。</p>
-<p>反向引用的最简单的、最有用的应用之一，是提供查找文本中两个相同的相邻单词的匹配项的能力。以下面的句子为例：</p>
+<p>反向引用的最简单的、最有用的应用之一，是提供查找文本中两个相同的相邻单词的匹配项的能力。</p>
 <h2 id="正则-和-用法httpswwwcnblogscomwhaozlp5462865html"><a class="markdownIt-Anchor" href="#正则-和-用法httpswwwcnblogscomwhaozlp5462865html"></a> 正则 ?&lt;= 和 ?= 用法](<a href="https://www.cnblogs.com/whaozl/p/5462865.html" target="_blank" rel="noopener">https://www.cnblogs.com/whaozl/p/5462865.html</a>)</h2>
 <p><strong>方法1： 匹配，捕获(存储)</strong></p>
 <p>正则表达式：(?&lt;=(href=&quot;)).{1,200}(?=(&quot;&gt;))</p>
@@ -299,7 +314,7 @@
 <p>(?&lt;=(href=&quot;)) 表示 <strong>匹配</strong>以(href=&quot;)<strong>开头</strong>的字符串，并且**捕获(存储)**到分组中</p>
 <p>(?=(&quot;&gt;)) 表示 <strong>匹配</strong>以(&quot;&gt;)<strong>结尾</strong>的字符串，并且**捕获(存储)**到分组中</p>
 <p><strong>方法2： 匹配，不捕获(不存储)</strong></p>
-<p>正则表达式：(?&lt;=(<strong>?:<strong>href=&quot;)).{1,200}(?=(</strong>?:</strong>&quot;&gt;))</p>
+<p>正则表达式：<code>(?&lt;=(**?:**href=&quot;)).{1,200}(?=(**?:**&quot;&gt;))</code></p>
 <p>​       解释：(?&lt;=(**?:<strong>href=&quot;)) 表示 <strong>匹配</strong>以(href=&quot;)<strong>开头</strong>的字符串，并且</strong>不捕获(不存储)**到分组中</p>
 <p>​               (?=(<strong>?:</strong>&quot;&gt;)) 表示 <strong>匹配</strong>以(&quot;&gt;)<strong>结尾</strong>的字符串，并且**不捕获(不存储)**到分组中</p>
 <table>
@@ -329,15 +344,46 @@
 </tbody>
 </table>
 <p><strong>分组语法 捕获</strong><br>
-<strong>(exp)</strong> 匹配exp,并捕获文本到自动命名的组里<br>
-<strong>(?<name>exp)</name></strong> 匹配exp,并捕获文本到名称为name的组里，也可以写成(?'name’exp)<br>
-<strong>(?:exp)</strong> 匹配exp,不捕获匹配的文本<br>
-<strong>位置指定</strong><br>
-<strong>(?=exp)</strong> 匹配exp前面的位置<br>
-<strong>(?&lt;=exp)</strong> 匹配exp后面的位置<br>
-<strong>(?!exp)</strong> 匹配后面跟的不是exp的位置<br>
-<strong>(?&lt;!exp)</strong> 匹配前面不是exp的位置<br>
-<strong>注释</strong><br>
+<strong><code>(exp)</code></strong> 匹配exp,并捕获文本到自动命名的组里<br>
+<strong><code>(?&lt;name&gt;exp)</code></strong> 匹配exp,并捕获文本到名称为name的组里，也可以写成(?'name’exp)<br>
+<strong><code>(?:exp)</code></strong> 匹配exp,不捕获匹配的文本<br>
+<strong>位置指定</strong></p>
+<ul>
+<li>
+<p><strong><code>(?=exp)</code></strong> —— 前向肯定界定符： 匹配exp前面的位置</p>
+<ul>
+<li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/foo(?=bar)/</span><br><span class="line">foobar foobaz</span><br><span class="line">成功匹配foo</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>(?&lt;=exp)</code></strong> —— 后向肯定界定符：匹配exp后面的位置</p>
+<ul>
+<li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/(?&lt;=foo)bar/</span><br><span class="line">foobar fuubar</span><br><span class="line">成功匹配bar</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>(?!exp)</code></strong> —— 前向否定界定符：匹配后面跟的不是exp的位置</p>
+<ul>
+<li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/foo(?!bar)/</span><br><span class="line">foobar foobaz</span><br><span class="line">成功匹配后面的foo</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>(?&lt;!exp)</code></strong> —— 后向否定界定符：匹配前面不是exp的位置</p>
+<ul>
+<li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/(?&lt;!not )foo/</span><br><span class="line">not foo but foo</span><br><span class="line">成功匹配后面的foo</span><br></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<p><strong>注释</strong><br>
 <strong>(?#comment)</strong> 这种类型的组不对正则表达式的处理产生任何影响，只是为了提供让人阅读注释</p>
 <p>我们已经讨论了前两种语法。第三个(?:exp)不会改变正则表达式的处理方式，只是这样的组匹配的内容不会像前两种那样被捕获到某个组里面。</p>
 <p><strong>位置指定</strong><br>
@@ -345,7 +391,7 @@
 <p>(?=exp)也叫零宽先行断言，它匹配文本中的某些位置，这些位置的后面能匹配给定的后缀exp。比如\b\w+(?=ing\b)，匹配以ing结尾的单词的前面部分(除了ing以外的部分)，如果在查找I’m singing while you’re dancing.时，它会匹配sing和danc。</p>
 <p>(?&lt;=exp)也叫零宽后行断言，它匹配文本中的某些位置，这些位置的前面能给定的前缀匹配exp。比如(?&lt;=\bre)\w+\b会匹配以re开头的单词的后半部分(除了re以外的部分)，例如在查找reading a book时，它匹配ading。</p>
 <p>假如你想要给一个很长的数字中每三位间加一个逗号(当然是从右边加起了)，你可以这样查找需要在前面和里面添加逗号的部分：((?&lt;=\d)\d{3})*\b。请仔细分析这个表达式，它可能不像你第一眼看出来的那么简单。</p>
-<p>下面这个例子同时使用了前缀和后缀：(?&lt;=\s)\d+(?=\s)匹配以空白符间隔的数字(再次强调，不包括这些空白符)。</p>
+<p>下面这个例子同时使用了前缀和后缀：<code>(?&lt;=\s)\d+(?=\s)</code>匹配以空白符间隔的数字(再次强调，不包括这些空白符)。</p>
 <h2 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录:</h2>
 <h3 id="常见正则表达式"><a class="markdownIt-Anchor" href="#常见正则表达式"></a> 常见正则表达式</h3>
 <ul>
@@ -384,6 +430,18 @@
 </ul>
 </li>
 </ul>
+<h2 id="sub介绍"><a class="markdownIt-Anchor" href="#sub介绍"></a> <strong>sub介绍</strong></h2>
+<p>Python 的 re 模块提供了re.sub用于替换字符串中的匹配项，sub是substitute表示替换。</p>
+<ul>
+<li>pattern：该参数表示正则中的模式字符串；</li>
+<li>repl：repl可以是字符串，也可以是可调用的函数对象；如果是字符串，则处理其中的反斜杠转义。如果它是可调用的函数对象，则传递match对象，并且必须返回要使用的替换字符串</li>
+<li>string：该参数表示要被处理（查找替换）的原始字符串；</li>
+<li>count：可选参数，表示是要替换的最大次数，而且必须是非负整数，该参数默认为0，即所有的匹配都会被替换；</li>
+<li>flags：可选参数，表示编译时用的匹配模式（如忽略大小写、多行模式等），数字形式，默认为0。</li>
+</ul>
+<h1 id="repl传函数对象"><a class="markdownIt-Anchor" href="#repl传函数对象"></a> <strong>repl传函数对象</strong></h1>
+<p>匹配字符串中的数字加2</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">匹配字符串中的数字加2</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">addAge</span><span class="params">(match)</span> -&gt;str:</span></span><br><span class="line">    <span class="string">'''返回匹配的值加2'''</span></span><br><span class="line">    age = match.group()</span><br><span class="line">    <span class="keyword">return</span> str(int(age)+<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">s = <span class="string">'my age is 20'</span></span><br><span class="line"><span class="comment"># repl 如果它是可调用的函数对象，则传递match对象，并且必须返回要使用的替换字符串</span></span><br><span class="line">x = re.sub(<span class="string">r'[\d]+'</span>, addAge, s)</span><br><span class="line">print(x)</span><br><span class="line"><span class="comment"># my age is 22</span></span><br></pre></td></tr></table></figure>
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
@@ -402,4 +460,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python中的正则匹配"><span class="toc-number">1.</span> <span class="toc-text"> Python中的正则匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊字符"><span class="toc-number">1.1.</span> <span class="toc-text"> 特殊字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊字符-2"><span class="toc-number">1.2.</span> <span class="toc-text"> 特殊字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#限定符"><span class="toc-number">1.3.</span> <span class="toc-text"> 限定符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定位符"><span class="toc-number">1.4.</span> <span class="toc-text"> 定位符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#捕获与非捕获"><span class="toc-number">1.5.</span> <span class="toc-text"> 捕获与非捕获</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择"><span class="toc-number">1.6.</span> <span class="toc-text"> 选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反向引用"><span class="toc-number">1.7.</span> <span class="toc-text"> 反向引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则-和-用法httpswwwcnblogscomwhaozlp5462865html"><span class="toc-number">1.8.</span> <span class="toc-text"> 正则 ?&lt;= 和 ?= 用法](https://www.cnblogs.com/whaozl/p/5462865.html)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">1.9.</span> <span class="toc-text"> 附录:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见正则表达式"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 常见正则表达式</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python中的正则匹配"><span class="toc-number">1.</span> <span class="toc-text"> Python中的正则匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊字符"><span class="toc-number">1.1.</span> <span class="toc-text"> 特殊字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊字符-2"><span class="toc-number">1.2.</span> <span class="toc-text"> 特殊字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#限定符"><span class="toc-number">1.3.</span> <span class="toc-text"> 限定符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定位符"><span class="toc-number">1.4.</span> <span class="toc-text"> 定位符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#捕获与非捕获"><span class="toc-number">1.5.</span> <span class="toc-text"> 捕获与非捕获</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择"><span class="toc-number">1.6.</span> <span class="toc-text"> 选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反向引用"><span class="toc-number">1.7.</span> <span class="toc-text"> 反向引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则-和-用法httpswwwcnblogscomwhaozlp5462865html"><span class="toc-number">1.8.</span> <span class="toc-text"> 正则 ?&lt;= 和 ?= 用法](https://www.cnblogs.com/whaozl/p/5462865.html)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">1.9.</span> <span class="toc-text"> 附录:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见正则表达式"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 常见正则表达式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sub介绍"><span class="toc-number">1.10.</span> <span class="toc-text"> sub介绍</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#repl传函数对象"><span class="toc-number">2.</span> <span class="toc-text"> repl传函数对象</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

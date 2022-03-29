@@ -1,0 +1,421 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Linux iptables学习 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Linux iptables学习</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/11/08</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,644</span> | Reading time: <span class="post-count">9</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="iptables简介"><a class="markdownIt-Anchor" href="#iptables简介"></a> <strong>iptables简介</strong></h2>
+<p>​    netfilter/iptables（简称为iptables）组成Linux平台下的包过滤防火墙，与大多数的Linux软件一样，这个包过滤防火墙是免费的，它可以代替昂贵的商业防火墙解决方案，完成封包过滤、封包重定向和网络地址转换（NAT）等功能。</p>
+<p>注：Iptables和netfilter的关系是一个很容易让人搞不清的问题。很多的知道iptables却不知道 netfilter。其实iptables只是Linux防火墙的管理工具而已，位于/sbin/iptables。真正实现防火墙功能的是 netfilter，它是Linux内核中实现包过滤的内部结构。</p>
+<h2 id="iptables基础"><a class="markdownIt-Anchor" href="#iptables基础"></a> <strong>iptables基础</strong></h2>
+<p>规则（rules）其实就是网络管理员预定义的条件，规则一般的定义为“<strong>如果数据包头符合这样的条件，就这样处理这个数据包</strong>”。规则存储在内核空间的信息 包过滤表中，这些规则分别指定了<u>源地址、目的地址、传输协议（如TCP、UDP、ICMP）和服务类型（如HTTP、FTP和SMTP）</u>等。当数据包与规 则匹配时，iptables就根据规则所定义的方法来处理这些数据包，如**放行（accept）、拒绝（reject）和丢弃（drop）**等。配置防火墙的 主要工作就是添加、修改和删除这些规则。</p>
+<h3 id="链和表"><a class="markdownIt-Anchor" href="#链和表"></a> <strong>链和表</strong></h3>
+<p>Iptables采用“表”和“链”的分层结构。在REHL4中是三张表五个链。现在REHL5成了四张表五个链了，不过多出来的那个表用的也不太多，所以基本还是和以前一样。</p>
+<p>表（tables）：提供特定的功能，iptables内置了4个表，即filter表、nat表、mangle表和raw表，分别用于实现包过滤，网络地址转换、包重构(修改)和数据跟踪处理。</p>
+<p>链（chains）：是数据包传播的路径，每一条链其实就是众多规则中的一个检查清单，每一条链中可以有一 条或数条规则。当一个数据包到达一个链时，iptables就会从链中第一条规则开始检查，看该数据包是否满足规则所定义的条件。如果满足，系统就会根据 该条规则所定义的方法处理该数据包；否则iptables将继续检查下一条规则，如果该数据包不符合链中任一条规则，iptables就会根据该链预先定 义的默认策略来处理数据包。</p>
+<p>下面罗列一下这四张表和五个链。注意一定要明白这些表和链的关系及作用。</p>
+<h4 id="规则表"><a class="markdownIt-Anchor" href="#规则表"></a> <strong>规则表：</strong></h4>
+<ol>
+<li>filter表——三个链：INPUT、FORWARD、OUTPUT<br>
+作用：过滤数据包 内核模块：iptables_filter.</li>
+<li>Nat表——三个链：PREROUTING、POSTROUTING、OUTPUT<br>
+作用：用于网络地址转换（IP、端口） 内核模块：iptable_nat</li>
+<li>Mangle表——五个链：PREROUTING、POSTROUTING、INPUT、OUTPUT、FORWARD<br>
+作用：修改数据包的服务类型、TTL、并且可以配置路由实现QOS内核模块：iptable_mangle(别看这个表这么麻烦，咱们设置策略时几乎都不会用到它)</li>
+<li>Raw表——两个链：OUTPUT、PREROUTING<br>
+作用：决定数据包是否被状态跟踪机制处理 内核模块：iptable_raw<br>
+(这个是REHL4没有的，不过不用怕，用的不多)</li>
+</ol>
+<h4 id="规则链"><a class="markdownIt-Anchor" href="#规则链"></a> <strong>规则链：</strong></h4>
+<ol>
+<li>INPUT——进来的数据包应用此规则链中的策略</li>
+<li>OUTPUT——外出的数据包应用此规则链中的策略</li>
+<li>FORWARD——转发数据包时应用此规则链中的策略（传递数据包到后端的计算机中，与NAT的table相关性较高）</li>
+<li>PREROUTING——对数据包作路由选择前应用此链中的规则<br>
+（记住！所有的数据包进来的时侯都先由这个链处理）</li>
+<li>POSTROUTING——对数据包作路由选择后应用此链中的规则<br>
+（所有的数据包出来的时侯都先由这个链处理）</li>
+</ol>
+<h2 id="iptables的基本语法格式"><a class="markdownIt-Anchor" href="#iptables的基本语法格式"></a> <strong>iptables的基本语法格式</strong></h2>
+<p><code>iptables [-t 表名] 命令选项 ［链名］ ［条件匹配］ ［-j 目标动作或跳转］</code></p>
+<p>说明：<strong>表名、链名</strong>用于指定 iptables命令所操作的表和链；<strong>命令选项</strong>用于指定管理iptables规则的方式（比如：插入、增加、删除、查看等；条件匹配用于指定对符合什么样 条件的数据包进行处理；<strong>目标动作或跳转</strong>用于指定数据包的处理方式（比如允许通过、拒绝、丢弃、跳转（Jump）给其它链处理。</p>
+<ul>
+<li>链上规则常用命令选项：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选 项</th>
+<th style="text-align:left">功 能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-A</td>
+<td style="text-align:left">在链尾添加防火墙规则</td>
+</tr>
+<tr>
+<td style="text-align:left">-D</td>
+<td style="text-align:left">删除防火墙规则，默认第一条</td>
+</tr>
+<tr>
+<td style="text-align:left">-I</td>
+<td style="text-align:left">插入防火墙规则，默认插在链头</td>
+</tr>
+<tr>
+<td style="text-align:left">-F</td>
+<td style="text-align:left">清空防火墙规则</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>-L</strong></td>
+<td style="text-align:left"><strong>列出添加防火墙规则</strong>，按表分组</td>
+</tr>
+<tr>
+<td style="text-align:left">-S</td>
+<td style="text-align:left"><strong>列出添加防火墙规则</strong>，不分组</td>
+</tr>
+<tr>
+<td style="text-align:left">-R</td>
+<td style="text-align:left">替换防火墙规则</td>
+</tr>
+<tr>
+<td style="text-align:left">-Z</td>
+<td style="text-align:left">清空防火墙数据表统计信息</td>
+</tr>
+<tr>
+<td style="text-align:left">-P</td>
+<td style="text-align:left">设置链默认规则</td>
+</tr>
+<tr>
+<td style="text-align:left">-V</td>
+<td style="text-align:left">查看版本(version)</td>
+</tr>
+<tr>
+<td style="text-align:left">-Z</td>
+<td style="text-align:left">将所有表的所有链的字节和数据包计数器清零</td>
+</tr>
+</tbody>
+</table>
+<p>注：使用 -A 选项添加防火墙规则会将该规则追加到整个链的最后，而使用 -I 选项添加的防火墙规则则会默认插入到链中作为第一条规则。</p>
+<ul>
+<li>链操作相关命令选项</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选 项</th>
+<th>shortHand</th>
+<th style="text-align:left">功 能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">–new</td>
+<td>-N</td>
+<td style="text-align:left">创建用户自定义的链</td>
+</tr>
+<tr>
+<td style="text-align:left">–delete-chain</td>
+<td>-X</td>
+<td style="text-align:left">删除用户自定义的链</td>
+</tr>
+<tr>
+<td style="text-align:left">–rename-chain</td>
+<td>-E</td>
+<td style="text-align:left">修改链名</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>其他辅助功能命令选项</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选 项</th>
+<th style="text-align:left">功 能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-V</td>
+<td style="text-align:left">查看版本(version)</td>
+</tr>
+<tr>
+<td style="text-align:left">-Z</td>
+<td style="text-align:left">将所有表的所有链的字节和数据包计数器清零</td>
+</tr>
+</tbody>
+</table>
+<p>具体可以通过<code>iptables --help</code>查看</p>
+<h3 id="iptables-命令常用条件匹配参数"><a class="markdownIt-Anchor" href="#iptables-命令常用条件匹配参数"></a> iptables 命令常用条件匹配参数</h3>
+<p>及各自的功能如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">[!]-p</td>
+<td style="text-align:center">匹配协议，! 表示取反</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]-s</td>
+<td style="text-align:center">匹配源地址</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]-d</td>
+<td style="text-align:center">匹配目标地址</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]-i</td>
+<td style="text-align:center">匹配入站网卡接口</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]-o</td>
+<td style="text-align:center">匹配出站网卡接口</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]–sport</td>
+<td style="text-align:center">匹配源端口</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]–dport</td>
+<td style="text-align:center">匹配目标端口</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]–src-range</td>
+<td style="text-align:center">匹配源地址范围</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]–dst-range</td>
+<td style="text-align:center">匹配目标地址范围</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]–limit</td>
+<td style="text-align:center">四配数据表速率</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]–mac-source</td>
+<td style="text-align:center">匹配源MAC地址</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]–sports</td>
+<td style="text-align:center">匹配源端口</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]–dports</td>
+<td style="text-align:center">匹配目标端口</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]–stste</td>
+<td style="text-align:center">匹配状态（INVALID、ESTABLISHED、NEW、RELATED)</td>
+</tr>
+<tr>
+<td style="text-align:center">[!]–string</td>
+<td style="text-align:center">匹配应用层字串</td>
+</tr>
+<tr>
+<td style="text-align:center">-m</td>
+<td style="text-align:center">增加模块：<code>-m mac --mac-source</code>、<strong><code>iptables -m tcp</code></strong>：表示使用TCP模块的扩展功能（tcp扩展模块提供了 --dport, --tcp-flags, --sync等功能）</td>
+</tr>
+<tr>
+<td style="text-align:center">-n</td>
+<td style="text-align:center">使用数字形式（numeric）显示输出结果</td>
+</tr>
+<tr>
+<td style="text-align:center">-v</td>
+<td style="text-align:center">查看规则表详细信息（verbose）的信息</td>
+</tr>
+<tr>
+<td style="text-align:center">-h</td>
+<td style="text-align:center">获取帮助（help）</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2021/11/04/Linux-iptables学习/iptables.jpg" alt="iptables"></p>
+<h3 id="防火墙处理数据包的四种方式目标动作"><a class="markdownIt-Anchor" href="#防火墙处理数据包的四种方式目标动作"></a> <strong>防火墙处理数据包的四种方式</strong>(目标动作)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">触发动作</th>
+<th style="text-align:left">功 能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ACCEPT</td>
+<td style="text-align:left">允许数据包通过</td>
+</tr>
+<tr>
+<td style="text-align:left">DROP</td>
+<td style="text-align:left">直接丢弃数据包，不给任何回应信息</td>
+</tr>
+<tr>
+<td style="text-align:left">REJECT</td>
+<td style="text-align:left">拒绝数据包通过，必要时会给数据发送端一个响应的信息。</td>
+</tr>
+<tr>
+<td style="text-align:left">LOG</td>
+<td style="text-align:left">在/var/log/messages文件中记录日志信息，然后将数据包传递给下一条规则</td>
+</tr>
+<tr>
+<td style="text-align:left">DNAT</td>
+<td style="text-align:left">目标地址转换</td>
+</tr>
+<tr>
+<td style="text-align:left">SNAT</td>
+<td style="text-align:left">源地址转换</td>
+</tr>
+<tr>
+<td style="text-align:left">MASQUERADE</td>
+<td style="text-align:left">地址欺骗</td>
+</tr>
+<tr>
+<td style="text-align:left">REDIRECT</td>
+<td style="text-align:left">重定向</td>
+</tr>
+</tbody>
+</table>
+<h2 id="iptables传输数据包的过程"><a class="markdownIt-Anchor" href="#iptables传输数据包的过程"></a> <strong>iptables传输数据包的过程</strong></h2>
+<p>① 当一个数据包进入网卡时，它首先进入PREROUTING链，内核根据数据包目的IP判断是否需要转送出去。<br>
+② 如果数据包就是进入本机的，它就会沿着图向下移动，到达INPUT链。数据包到了INPUT链后，任何进程都会收到它。本机上运行的程序可以发送数据包，这些数据包会经过OUTPUT链，然后到达POSTROUTING链输出。<br>
+③ 如果数据包是要转发出去的，且内核允许转发，数据包就会如图所示向右移动，经过FORWARD链，然后到达POSTROUTING链输出。</p>
+<p><img src="/2021/11/04/Linux-iptables学习/%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B.png" alt="数据流程"></p>
+<h2 id="iptables防火墙规则的保存与恢复"><a class="markdownIt-Anchor" href="#iptables防火墙规则的保存与恢复"></a> <strong>iptables防火墙规则的保存与恢复</strong></h2>
+<blockquote>
+<p>iptables-save把规则保存到文件中，再由目录rc.d下的脚本（/etc/rc.d/init.d/iptables）自动装载</p>
+</blockquote>
+<p>使用命令iptables-save来保存规则。一般用: <code>iptables-save &gt; /etc/sysconfig/iptables</code>生成保存规则的文件 /etc/sysconfig/iptables，也可以用<code>service iptables save</code>它能把规则自动保存在/etc/sysconfig/iptables中。</p>
+<p>当计算机启动时，rc.d下的脚本将用命令iptables-restore调用这个文件，从而就自动恢复了规则。</p>
+<h2 id="dnat和snat"><a class="markdownIt-Anchor" href="#dnat和snat"></a> DNAT和SNAT</h2>
+<p><strong>区分SNAT和DNAT</strong></p>
+<p>从定义来讲它们一个是源地址转换，一个是目标地址转换。都是地址转换的功能（NAT），将私有地址转换为公网地址。<br>
+<strong>要区分这两个功能可以简单的由连接发起者是谁来区分：</strong></p>
+<ul>
+<li>内部地址要访问公网上的服务时（如web访问），内部地址会主动发起连接，由路由器或者防火墙上的网关对内部地址做个地址转换，将<u>内部地址的私有IP转换为公网的公有IP</u>，网关的这个地址转换称为SNAT，主要用于<strong>内部共享IP访问外部</strong>。<br>
+当内部需要提供对外服务时（如对外发布web网站），外部地址发起主动连接，由路由器或者防火墙上的网关接收这个连接，然后将连接转换到内部，此过程是由带有公网IP的网关替代内部服务来接收外部的连接，然后在内部做地址转换，此转换称为DNAT，主要用于内部服务对外发布，<strong>外网通过统一提供的外网IP来访问内网服务时，DNAT找到内网中具体的IP上的对应服务</strong>。</li>
+</ul>
+<p>**SNAT：**局域网共享一个公网IP接入lnternel，好处如下</p>
+<ol>
+<li>保护内网用户安全，因为公网地址总有一些人恶意扫描，而内网地址在公网没有路由所以无法被扫描，能被扫描的只有防火墙这一台，这样就减少了被攻击的可能。</li>
+<li>Ipv4地址匮乏，很多公司只有一个ipv4地址，但是却有几百个用户需要上网，这个时候就需要使用SNAT。</li>
+<li>省钱，公网地址付费，使用SNAT只需要一个公网ip就可以满足几百人同时上网。</li>
+</ol>
+<p>**DNAT：**向internel发布内网服务器</p>
+<p>在内网中有服务器，如果想让公网用户访问有有两种方法。</p>
+<ol>
+<li>配置双网卡，一网卡对内，一网卡对外；一般是高访问量的web服务器，为了避免占用网关的流量才这样做，使用不是很广泛。</li>
+<li>内网web服务器，或是ftp服务器，为了用户在公网也可以访问，有不想买公网ip地址，采用DNAT方案。见<a href="https://www.cnblogs.com/jjzd/p/6505871.html" target="_blank" rel="noopener">iptables进行DNAT（目标地址转换）</a></li>
+</ol>
+<h1 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考：</h1>
+<ul>
+<li><a href="https://www.cnblogs.com/metoy/p/4320813.html" target="_blank" rel="noopener">iptables详解</a></li>
+<li><a href="https://blog.csdn.net/daocaokafei/article/details/115091313" target="_blank" rel="noopener">Linux iptables命令详解</a></li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/11/04/Linux-iptables学习/">https://nymrli.top/2021/11/04/Linux-iptables学习/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/11/25/党员在线培训课程-免除暂停烦恼/" title="党员在线培训课程~免除暂停烦恼"><span>< PreviousPost</span><br><span class="prevTitle">党员在线培训课程~免除暂停烦恼</span></a><a class="nextSlogan" href="/2021/11/02/浙江大学期末考试——Go语言/" title="浙江大学期末考试——Go语言"><span>NextPost ></span><br><span class="nextTitle">浙江大学期末考试——Go语言</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Linux iptables学习',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#iptables简介"><span class="toc-number">1.</span> <span class="toc-text"> iptables简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iptables基础"><span class="toc-number">2.</span> <span class="toc-text"> iptables基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#链和表"><span class="toc-number">2.1.</span> <span class="toc-text"> 链和表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#规则表"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 规则表：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#规则链"><span class="toc-number">2.1.2.</span> <span class="toc-text"> 规则链：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iptables的基本语法格式"><span class="toc-number">3.</span> <span class="toc-text"> iptables的基本语法格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#iptables-命令常用条件匹配参数"><span class="toc-number">3.1.</span> <span class="toc-text"> iptables 命令常用条件匹配参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#防火墙处理数据包的四种方式目标动作"><span class="toc-number">3.2.</span> <span class="toc-text"> 防火墙处理数据包的四种方式(目标动作)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iptables传输数据包的过程"><span class="toc-number">4.</span> <span class="toc-text"> iptables传输数据包的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iptables防火墙规则的保存与恢复"><span class="toc-number">5.</span> <span class="toc-text"> iptables防火墙规则的保存与恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dnat和snat"><span class="toc-number">6.</span> <span class="toc-text"> DNAT和SNAT</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number"></span> <span class="toc-text"> 参考：</span></a></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Mongodb学习 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Mongodb学习</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2021/12/22</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">3,425</span> | Reading time: <span class="post-count">14</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="mongodb学习"><a class="markdownIt-Anchor" href="#mongodb学习"></a> Mongodb学习</h1>
+<h2 id="创建数据库-集合表"><a class="markdownIt-Anchor" href="#创建数据库-集合表"></a> 创建数据库-集合（表）</h2>
+<ul>
+<li>
+<p>使用指定数据库（没有会创建）: <code>use DATABASE_NAME</code>, 如果数据库不存在，则创建数据库，否则切换到指定数据库。</p>
+<ul>
+<li>如: <code>use douban</code>， 此时db就变成了douban，之后<code>db.xxxx()</code>都默认在这个数据库下操作</li>
+</ul>
+</li>
+<li>
+<p>查看所有数据库，可以使用 <code>show dbs</code></p>
+</li>
+<li>
+<p>创建集合：<code>db.createCollection(name, options)</code></p>
+<ul>
+<li>
+<p>随意创建集合， <code>db.createCollection(&quot;top250&quot;);</code></p>
+</li>
+<li>
+<p>options 可以是如下参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">capped</td>
+<td style="text-align:left">布尔</td>
+<td style="text-align:left">（可选）如果为 true，则创建固定集合。固定集合是指有着固定大小的集合，当达到最大值时，它会自动覆盖最早的文档。 <strong>当该值为 true 时，必须指定 size 参数。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">autoIndexId</td>
+<td style="text-align:left">布尔</td>
+<td style="text-align:left">3.2 之后不再支持该参数。（可选）如为 true，自动在 _id 字段创建索引。默认为 false。</td>
+</tr>
+<tr>
+<td style="text-align:left">size</td>
+<td style="text-align:left">数值</td>
+<td style="text-align:left">（可选）为固定集合指定一个最大值，即字节数。 <strong>如果 capped 为 true，也需要指定该字段。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">max</td>
+<td style="text-align:left">数值</td>
+<td style="text-align:left">（可选）指定固定集合中包含文档的最大数量。</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>创建固定集合: <code>db.createCollection(&quot;mycol&quot;, { capped : true, autoIndexId : true, size : 6142800, max : 10000 } )</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>查看已有集合，可以使用 <strong>show collections</strong> 或 <strong>show tables</strong> 命令：</p>
+</li>
+</ul>
+<h2 id="插入文档"><a class="markdownIt-Anchor" href="#插入文档"></a> 插入文档</h2>
+<ul>
+<li><code>db.COLLECTION_NAME.insert(document)</code>或<code>db.COLLECTION_NAME.save(document)</code>
+<ul>
+<li>save()：如果 _id 主键存在则更新数据，如果不存在就插入数据。该方法新版本中已废弃，可以使用 <strong>db.collection.insertOne()</strong> 或 <strong>db.collection.replaceOne()</strong> 来代替。</li>
+<li>insert(): 若插入的数据主键已经存在，则会抛 <strong>org.springframework.dao.DuplicateKeyException</strong> 异常，提示主键重复，不保存当前数据。</li>
+<li><strong>3.2 版本之后新增了 db.collection.insertOne() 和 db.collection.insertMany()。</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="查询find"><a class="markdownIt-Anchor" href="#查询find"></a> 查询find:</h2>
+<p>在MongoDB中可以使用find0函数查询文档。<br>
+语法格式为：<code>find(){查询条件(可选)}，{指定投影的键(可选)})</code>如果未给定参数则表示查询所有数据。 当查询所有，要制定投影键的时候得列出前面的大括号，如<code>find({键: {操作符: 条件}}, {投影键名: 1(显示该列)| 0(不显示该列), ..})</code>, 如果不想显示<code>_id</code>可以这么写: <code>find({},{_id: 0})</code><br>
+prettyO函数可以使用格式化的方式来显示所有文档。</p>
+<p><code>$and</code>和<code>$or</code>联合使用</p>
+<blockquote>
+<p>查询title为test5并且size等于500，或者size小于400的文档。</p>
+</blockquote>
+<p><code>db.dev.find({$or:[{$and:[{title:{$eq:&quot;test5&quot;}},{size:500}]},{size:{$Lt:409}}]})</code></p>
+<h2 id="聚合查询aggregate"><a class="markdownIt-Anchor" href="#聚合查询aggregate"></a> 聚合查询aggregate</h2>
+<ul>
+<li><a href="https://vimsky.com/examples/detail/java-method-org.springframework.data.mongodb.core.aggregation.Aggregation.match.html" target="_blank" rel="noopener">Java Aggregation.match</a></li>
+<li><a href="https://www.cnblogs.com/janson/p/6164775.html" target="_blank" rel="noopener">关于AGGREGATION 语法和表达式大全（最新3.4版）</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SQL操作函数</th>
+<th>mongodb聚合操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>where</td>
+<td><code>$match</code>   在<code>$groupby</code>前侧</td>
+</tr>
+<tr>
+<td>group</td>
+<td>$group</td>
+</tr>
+<tr>
+<td>having</td>
+<td><code>$match</code>   在<code>$groupby</code>后侧</td>
+</tr>
+<tr>
+<td>select</td>
+<td>$project</td>
+</tr>
+<tr>
+<td>order by</td>
+<td>$sort</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>$limit</td>
+</tr>
+<tr>
+<td>join</td>
+<td>$lookup</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// aggregate中一定是个数组格式</span><br><span class="line">db.COLLECTION_NAME.aggregate([</span><br><span class="line">&#123;$group:&#123;_id:&quot;$分组键名”，$分组键名”……，别名：&#123;聚合运算：&quot;$运算列”&#125;&#125;&#125;，		// 分组处理</span><br><span class="line">&#123;条件筛选：&#123;键名：&#123;运算条件：运算值&#125;&#125;&#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<p>例子： 求和</p>
+<p>查询dev集合中一共有多少个文档。<br>
+相当于sql语句：<code>SELECT count（*）AS count FROM dev</code></p>
+<p><code>db.dev.aggregate（[{$group:{_id:null.count:($sum：1}}}]）</code></p>
+<ul>
+<li>$group：分组，代表聚合的分组条件</li>
+<li>_id：分组的字段。相当于SQL分组语法group by column name中的column name部分。<br>
+如果根据某字段的值分组，则定义为id:’$字段名’。所以此案例中的null代表一个固定的字面值null，表示对所有列即整表。</li>
+<li>count：返回结果字段名。可以自定义，类似SQL中的字段别名。</li>
+<li>$sum：求和表达式。相当于SQL中的sumO。</li>
+<li>1：累加值。如果是对某列如size求值和，则1改为&quot;&quot;$size&quot;</li>
+</ul>
+<h3 id="管道"><a class="markdownIt-Anchor" href="#管道"></a> 管道</h3>
+<p>MongoDB的聚合管道将MongoDB文档在一个管道处理完毕后将结果传递给下一个管道处理。管道操作是可以重复的。<br>
+管道操作符是按照书写的顺序依次执行的，每个操作符都会接受一连串的文档，对这些文档做一些类型转换，最后将转换后的文档作为结果传递给下一个操作符（对于最后一个管道操作符，是将结果返回给客户端），称为流式工作方式。<br>
+管道操作符：<code>$match</code>、<code>$group</code>、<code>$sort</code>、<code>$limit</code>、<code>$skip</code>、<code>$unwind</code>， 管道操作符，只能用于计算当前聚合管道的文档，不能处理其它的文档。</p>
+<p>MongoDB 的 aggregate 是可以分为多个阶段的（pipeline）</p>
+<ul>
+<li>
+<p>第一阶段，$match，这里可以参考《MongoDB：查询和投影操作符》这篇文章，根据条件去查找。</p>
+</li>
+<li>
+<p>第二阶段，$project，表示要哪个域，不要哪个域，或者投影成别的一个域，这里表示 value 域保留，status 域，根据条件来转换成 “confirmed” 或者 “unconfirmed”，_id 不要。</p>
+</li>
+<li>
+<p>第三阶段，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mi>r</mi><mi>o</mi><mi>u</mi><mi>p</mi><msub><mi mathvariant="normal">，</mi><mi>i</mi></msub><mi>d</mi><mi mathvariant="normal">域</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">前</mi><mi mathvariant="normal">面</mi><mi mathvariant="normal">的</mi></mrow><annotation encoding="application/x-tex">group，_id 域用前面的</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">u</span><span class="mord mathdefault">p</span><span class="mord"><span class="mord cjk_fallback">，</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">d</span><span class="mord cjk_fallback">域</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">前</span><span class="mord cjk_fallback">面</span><span class="mord cjk_fallback">的</span></span></span></span>status来表示，balance 是对之前的$value进行求和。</p>
+</li>
+</ul>
+<p>常用命令：</p>
+<ul>
+<li>
+<p><code>$project</code>：使用<code>$project</code>操作符做聚合投影操作从而修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。如<code>db.dev.aggregate([{Sunwind:&quot;Stags&quot;},{Sproject:{id:0,Tags:&quot;$tags&quot;,Title:&quot;$title&quot;}}])</code>从而不显示id, 并且可以取别名</p>
+</li>
+<li>
+<p><code>$match</code>：用于过滤数据，只输出符合条件的文档。<code>$match</code>使用MongoDB的标准查询操作。</p>
+</li>
+<li>
+<p>$limit：用来限制MongoDB聚合管道返回的文档数。</p>
+</li>
+<li>
+<p>$skip：在聚合管道中跳过指定数量的文档，并返回余下的文档。</p>
+</li>
+<li>
+<p><a href="https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#pipe._S_lookup" target="_blank" rel="noopener">$lookup</a></p>
+<pre><code>// Aggregation.lookup(&quot;student&quot;, &quot;student_id&quot;, &quot;_id&quot;, &quot;student&quot;) 参数含义如下
+LookupOperation lookupOperation=LookupOperation.newLookup().
+           from(&quot;grade&quot;).  //关联从表名
+           localField(&quot;gradeId&quot;).     //主表关联字段
+           foreignField(&quot;_id&quot;).//从表关联的字段
+           as(&quot;GradeAndStu&quot;);   //查询结果名
+</code></pre>
+</li>
+<li>
+<p><a href="https://docs.mongodb.com/manual/reference/operator/aggregation/count/#pipe._S_count" target="_blank" rel="noopener">$count</a></p>
+</li>
+<li>
+<p><span class="katex-error" title="ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;EOF&#039; at end of input: …ev.aggregate([{">unwind：将文档中的某一个**数组类型字段拆分成多条**，每条包含数组中的一个值。如查询dev集合，将其中数组内的内容拆分显示(会生成多个id相同的查询结果)，`db.dev.aggregate([{</span>unwind:&quot;$tags&quot;}])`</p>
+</li>
+<li>
+<p>$group：将集合中的文档分组，可用于统计结果。</p>
+</li>
+</ul>
+<h2 id="操作内嵌文档"><a class="markdownIt-Anchor" href="#操作内嵌文档"></a> 操作内嵌文档</h2>
+<ul>
+<li><a href="https://www.cnblogs.com/ljhdo/p/5042931.html" target="_blank" rel="noopener">MongoDB 内嵌文档</a></li>
+<li><a href="https://blog.csdn.net/qq_32439101/article/details/86589905" target="_blank" rel="noopener">MongoDB 几种查询嵌套数据（Embedded）的方式</a></li>
+</ul>
+<h2 id="操作数组"><a class="markdownIt-Anchor" href="#操作数组"></a> 操作数组</h2>
+<h3 id="对数组根据条件查询"><a class="markdownIt-Anchor" href="#对数组根据条件查询"></a> 对数组根据条件查询</h3>
+<p><code>$all、$size、$slice、$elemMatch</code></p>
+<ul>
+<li>$all查找数组中包含指定的值的文档</li>
+<li>$size 查找数组大小等于指定值的文档</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>l</mi><mi>i</mi><mi>c</mi><mi>e</mi><mo separator="true">⋅</mo><mi mathvariant="normal">查</mi><mi mathvariant="normal">询</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">组</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">指</mi><mi mathvariant="normal">定</mi><mi mathvariant="normal">返</mi><mi mathvariant="normal">回</mi><mi mathvariant="normal">元</mi><mi mathvariant="normal">素</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">个</mi><mi mathvariant="normal">数</mi><mo separator="true">,</mo><mi mathvariant="normal">‘</mi></mrow><annotation encoding="application/x-tex">slice·查询数组中指定返回元素的个数, `</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">c</span><span class="mord mathdefault">e</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">查</span><span class="mord cjk_fallback">询</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">指</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">返</span><span class="mord cjk_fallback">回</span><span class="mord cjk_fallback">元</span><span class="mord cjk_fallback">素</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">数</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">‘</span></span></span></span>slice·可以查询数组中第几个到第几个</li>
+</ul>
+<h3 id="对数组内嵌文档查询"><a class="markdownIt-Anchor" href="#对数组内嵌文档查询"></a> 对数组内嵌文档查询</h3>
+<ul>
+<li><code>$elemMatch</code>文档包含有一个元素是数组，那么<code>$elemMatch</code>可以匹配内数组内的元素并返回文档数据<code>db.orders.find({&quot;items&quot;:{$elemMatch:{&quot;quantity&quot;:2}}})</code></li>
+<li><span class="katex-error" title="ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;EOF&#039; at end of input: …find({&quot;items&quot;:{">elemMatch可以带多个查询条件`db.orders.find({&quot;items&quot;:{</span>elemMatch:{“quantity”:4,“ino”:“002”}}}) `</li>
+<li><code>$elemMatch</code>同样可以用在find方法的第二个参数来限制返回数组内的元素，只返回我们需要的文档<code>db.orders.find({&quot;onumber&quot;:&quot;001&quot;},{&quot;items&quot;:{$elemMatch:{&quot;quantity&quot;:4,&quot;ino&quot;:&quot;002&quot;}},&quot;cname&quot;:1,&quot;date&quot;:1,&quot;onumber&quot;:1})</code></li>
+</ul>
+<p>from;</p>
+<ul>
+<li><a href="https://blog.csdn.net/zty1317313805/article/details/80224632" target="_blank" rel="noopener">MongoDB查询（数组、内嵌文档）（二）</a></li>
+<li><a href="https://blog.csdn.net/qq_32439101/article/details/86589905" target="_blank" rel="noopener">MongoDB 几种查询嵌套数据（Embedded）的方式</a>——<code>$</code> 映射操作符（Projection Operator）、<code>$elemMatch</code> 映射操作符（Projection Operator）</li>
+<li><a href="https://www.cnblogs.com/knowledgesea/p/4634464.html" target="_blank" rel="noopener">MongoDB高级查询详细</a></li>
+</ul>
+<p>完整demo:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> JobPositionDetailsVO <span class="title">getJobPositionDetails</span><span class="params">(String orgId, String jpId)</span> </span>&#123;</span><br><span class="line">        Organization org = orgService.findByOrgId(orgId);</span><br><span class="line">        RootOrg root = orgService.getRootOrgInfo();</span><br><span class="line">        <span class="comment">// 查询组织的岗位信息设置</span></span><br><span class="line">        List&lt;SystemFieldListDTO&gt; systemList;</span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; values;</span><br><span class="line">        List&lt;JobPosition&gt; allJobPosition = Lists.newArrayList();</span><br><span class="line">        JobPositionDetailsVO result = <span class="keyword">new</span> JobPositionDetailsVO();</span><br><span class="line">        <span class="keyword">if</span> (org == <span class="keyword">null</span> &amp;&amp; !orgId.equals(root.getOrgId())) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"orgId:"</span> + orgId + <span class="string">" 对应的组织信息不存在！"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (orgId.equals(root.getOrgId())) &#123;</span><br><span class="line">            <span class="comment">// 根组织读取所有职务</span></span><br><span class="line">            allJobPosition = jobPositionService.list();</span><br><span class="line">            <span class="comment">// 包装成List&lt;Map&gt;类型</span></span><br><span class="line">            values = getJobInfo(allJobPosition);</span><br><span class="line">            result.setOrgId(root.getOrgId());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 非根组织取系统字段内岗位数据</span></span><br><span class="line">            systemList = org.getSystemFieldList();</span><br><span class="line">            <span class="comment">// 校验下数据</span></span><br><span class="line">            SystemFieldListDTO dto = orgCommonService.getFirstRepeatFieldByCode(FieldConst.JOB_POSITION, systemList);</span><br><span class="line">            <span class="keyword">if</span> (dto == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"组织内岗位信息不能为空！"</span>);</span><br><span class="line">                <span class="comment">/*result.setPersonList(Lists.newArrayList());</span></span><br><span class="line"><span class="comment">                result.setSettingList(Lists.newArrayList());</span></span><br><span class="line"><span class="comment">                return result;*/</span></span><br><span class="line">            &#125;</span><br><span class="line">            values = dto.getValues();</span><br><span class="line">            result.setOrgId(orgId);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取组织配置中的所有职务id</span></span><br><span class="line">        Set&lt;String&gt; jpIds = Sets.newHashSet();</span><br><span class="line">        <span class="comment">// 用来记录组织内岗位的编制数量</span></span><br><span class="line">        Map&lt;String, Integer&gt; numMap = Maps.newHashMap();</span><br><span class="line">        <span class="comment">// 用来记录组织内岗位的数量范围</span></span><br><span class="line">        Map&lt;String, Integer&gt; rangeMap = Maps.newHashMap();</span><br><span class="line">        <span class="keyword">for</span> (Map&lt;String, Object&gt; value : values) &#123;</span><br><span class="line">            String curJpId = (String) ((Map&lt;String, Object&gt;) (value.get(FieldConst.VALUE))).get(FieldConst.JPID);</span><br><span class="line">            jpIds.add(curJpId);</span><br><span class="line">            numMap.put(curJpId, (Integer) ((Map&lt;String, Object&gt;)(value.get(FieldConst.VALUE))).get(FieldConst.NUM));</span><br><span class="line">            rangeMap.put(curJpId, (Integer) ((Map&lt;String, Object&gt;)(value.get(FieldConst.VALUE))).get(FieldConst.RANGE));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (CollectionUtils.isEmpty(jpIds)) &#123;</span><br><span class="line">            result.setPersonList(Lists.newArrayList());</span><br><span class="line">            result.setSettingList(Lists.newArrayList());</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 查询相关的所有职务信息</span></span><br><span class="line">        List&lt;JobPosition&gt; jobPositionList = jobPositionService.query()</span><br><span class="line">                .in(JobPosition::getJpId, jpIds).list();</span><br><span class="line">        <span class="comment">// 职务列表排序</span></span><br><span class="line">        Collections.sort(jobPositionList);</span><br><span class="line">        <span class="comment">// 如果对应的职务信息全部被删除了，而组织内设置的职务都没有对应删除，直接返回</span></span><br><span class="line">        <span class="keyword">if</span> (CollectionUtils.isEmpty(jobPositionList)) &#123;</span><br><span class="line">            result.setPersonList(Lists.newArrayList());</span><br><span class="line">            result.setSettingList(Lists.newArrayList());</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 查询在职信息中为 orgId 的人员</span></span><br><span class="line">        Criteria criteria = <span class="keyword">new</span> Criteria();</span><br><span class="line">        criteria.andOperator(</span><br><span class="line">                Criteria.where(<span class="string">"form.code"</span>).is(FieldConst.JOB_POSITION),</span><br><span class="line">                Criteria.where(<span class="string">"form.values.orgId"</span>).is(orgId)</span><br><span class="line">        );</span><br><span class="line">        List&lt;PersonInfo&gt; personInfoList = mongoTemplate.find(Query.query(criteria), PersonInfo.class);</span><br><span class="line">        <span class="comment">//排除离职人员</span></span><br><span class="line">        Set&lt;String&gt; userIds = personInfoList.stream().map(p -&gt; p.getUserId()).collect(Collectors.toSet());</span><br><span class="line">        Set&lt;String&gt; resignUserIds = employmentInfoService.getResignationByUserIds(userIds);</span><br><span class="line">        personInfoList = personInfoList.stream().filter(p -&gt; !resignUserIds.contains(p.getUserId())).collect(Collectors.toList());</span><br><span class="line">        <span class="comment">// 获取 key 为 职务id, value 为 用户id 的 map</span></span><br><span class="line">        Map&lt;String, Set&lt;String&gt;&gt; reverseMap = orgService</span><br><span class="line">                .reverseMapping(personInfoList, FieldConst.JOB_POSITION, FieldConst.JPID, <span class="keyword">false</span>, <span class="keyword">false</span>);</span><br><span class="line">        <span class="comment">// 获取 key 为 jpId, value 为 角色的 map</span></span><br><span class="line">        Map&lt;String, String&gt; roleMap;</span><br><span class="line">        <span class="keyword">if</span> (orgId.equals(root.getOrgId())) &#123;</span><br><span class="line">            <span class="comment">// 根节点的话roleMap取在职表内的role信息</span></span><br><span class="line">            roleMap = allJobPosition.stream().collect(Collectors.toMap(JobPosition::getJpId, JobPosition::getRole));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 非根节点取组织表内职务中的role信息</span></span><br><span class="line">            roleMap = orgService.getJobPositionRoleMap(orgId);</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;JobPositionSettingVO&gt; settingList = constructSettingList(jobPositionList, numMap,</span><br><span class="line">                reverseMap, roleMap, rangeMap);</span><br><span class="line">        List&lt;JobPositionPersonVO&gt; personList = constructPersonList(jpId, jobPositionList,</span><br><span class="line">                reverseMap, orgId);</span><br><span class="line">        result.setSettingList(settingList);</span><br><span class="line">        result.setPersonList(personList);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用mongorepository完成curd和复杂查询"><a class="markdownIt-Anchor" href="#使用mongorepository完成curd和复杂查询"></a> 使用MongoRepository完成CURD和复杂查询</h2>
+<p>与HibernateRepository类似，通过继承MongoRepository接口，我们可以非常方便地实现对一个对象的增删改查，要使用Repository的功能，先继承<code>MongoRepository&lt;T, TD&gt;</code>接口，其中<u>T为仓库保存的bean类，TD为该bean的唯一标识的类型</u>，一般为ObjectId。之后在service中注入该接口就可以使用，无需实现里面的方法，spring会根据定义的规则自动生成。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PersonRepository</span> <span class="keyword">extends</span> </span></span><br><span class="line"><span class="class"></span></span><br><span class="line">interface DictionaryInfoDao : MongoRepository&lt;DictionaryInfo?, String?&gt; &#123;</span><br><span class="line">    <span class="function">fun <span class="title">findByDictTypeCode</span><span class="params">(name: String)</span>: DictionaryInfo?</span></span><br><span class="line"><span class="function">	<span class="comment">//这里可以添加需要用到的查询方法、以及自定义额外的查询方法 </span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>但是MongoRepository实现了的只是最基本的增删改查的功能，要想增加额外的查询方法，可以按照以下规则定义接口的方法。自定义查询方法，格式为<code>findBy+字段名+方法后缀</code>，方法传进的参数即字段的值，此外还支持分页查询，通过传进一个Pageable对象，返回Page集合。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PersonRepository</span> <span class="keyword">extends</span> </span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">MongoRepository</span>&lt;<span class="title">Person</span>, <span class="title">ObjectId</span>&gt;</span>&#123; </span><br><span class="line">    <span class="comment">//查询大于age的数据 </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Page&lt;Product&gt; <span class="title">findByAgeGreaterThan</span><span class="params">(<span class="keyword">int</span> age,Pageable page)</span> </span>; </span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p>from : <a href="https://blog.csdn.net/xiaomisolo/article/details/101055644" target="_blank" rel="noopener">MongoRepository基本方法</a></p>
+<p>尽管以上查询功能已经很丰富，但如果还不能满足使用情况的话可以用一下方法——基于mongodb shell查询语句的查询方式，即在DAO接口中加入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Query</span>(<span class="string">"&#123; 'name':&#123;'$regex':?2,'$options':'i'&#125;, sales': &#123;'$gte':?1,'$lte':?2&#125;&#125;"</span>) </span><br><span class="line"><span class="function"><span class="keyword">public</span> Page&lt;Product&gt; <span class="title">findByNameAndAgeRange</span><span class="params">(String name,<span class="keyword">double</span> ageFrom,<span class="keyword">double</span> ageTo,Pageable page)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>注解Query里面的就是mongodb原来的查询语法，我们可以定义传进来的查询参数，通过坐标定义方法的参数。</p>
+<p>还可以在后面指定要返回的数据字段，如上面的例子修改如下，则只通过person表里面的name和age字段构建person对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Query</span>(value=<span class="string">"&#123; 'name':&#123;'$regex':?2,'$options':'i'&#125;, sales':&#123;'$gte':?1,'$lte':?2&#125;&#125;"</span>,fields=<span class="string">"&#123; 'name' : 1, 'age' : 1&#125;"</span>) </span><br><span class="line"><span class="function"><span class="keyword">public</span> Page&lt;Product&gt; <span class="title">findByNameAndAgeRange</span><span class="params">(String name,<span class="keyword">double</span> ageFrom,<span class="keyword">double</span> ageTo,Pageable page)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="对比mongotemplate和mongorepository"><a class="markdownIt-Anchor" href="#对比mongotemplate和mongorepository"></a> 对比mongotemplate和mongoRepository</h2>
+<h4 id="1mongotemplate"><a class="markdownIt-Anchor" href="#1mongotemplate"></a> 1MongoTemplate</h4>
+<p>MongoTemplate 遵循Spring中的标准模板模式，并为底层持久性引擎提供准备就绪的基本API。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 校验添加的物资类型是否存在</span></span><br><span class="line"><span class="keyword">val</span> exists = mongoTemplate.exists(</span><br><span class="line">    Query.query(</span><br><span class="line">        Criteria.where</span><br><span class="line">        (<span class="string">"materialTypeCode"</span>).`<span class="keyword">is</span>`(materialInfo.materialTypeCode)</span><br><span class="line">    ), DictionaryInfo::<span class="class"><span class="keyword">class</span>.<span class="title">java</span></span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> criteria = Criteria().andOperator(</span><br><span class="line">    Criteria.where(<span class="string">"parentId"</span>).`<span class="keyword">is</span>`(materialTypeId),</span><br><span class="line">    Criteria.where(<span class="string">"unitId"</span>).`<span class="keyword">is</span>`(unitId)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">val</span> query: Query = Query.query(criteria)</span><br><span class="line"><span class="keyword">val</span> list: MutableList&lt;MaterialType&gt; = mongoTemplate.find(query, MaterialType::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line"><span class="keyword">val</span> list2: MutableList&lt;MaterialInfo&gt;? = mutableListOf()</span><br><span class="line">list.forEach &#123;</span><br><span class="line">    <span class="keyword">val</span> query2: Query = Query.query(Criteria.where(<span class="string">"id"</span>).`<span class="keyword">is</span>`(it.itemId))</span><br><span class="line">    <span class="keyword">val</span> value = mongoTemplate.findOne(query2, MaterialInfo::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">    <span class="keyword">if</span> (value != <span class="literal">null</span>) &#123;</span><br><span class="line">        list2.add(value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2mongorepository"><a class="markdownIt-Anchor" href="#2mongorepository"></a> 2MongoRepository</h4>
+<p>以Spring Date为中心的方法，基于所有Spring数据项目中众所周知的访问模式，提供更加灵活和复杂的api操作。</p>
+<p><a href="https://blog.csdn.net/novodexx/article/details/79329431" target="_blank" rel="noopener">mongoRepository，MongoTemplate</a></p>
+<p><a href="https://blog.csdn.net/weixin_39214304/article/details/84791953" target="_blank" rel="noopener">Spring boot集成mongodb使用MongoRepository完成CURD和复杂查询</a></p>
+<p><a href="https://www.jianshu.com/p/1d6f27f675bb" target="_blank" rel="noopener">Spring Data JPA方法名命名规则</a></p>
+<ul>
+<li>
+<p>findByOrderByDictTypeCodeDescAndSortNumDesc失败</p>
+</li>
+<li>
+<p>findAllByOrderByIdDesc和findByOrderByIdDesc   效果一样</p>
+</li>
+<li>
+<p><code>dictionaryInfoDao.findAllByOrderByIdDesc(Sort.by(Sort.Direction.DESC,&quot;sortNum&quot;));</code>后面的排序无效</p>
+</li>
+<li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">findAllByOrderByIdDescAndOrderBySortNumDesc  </span><br><span class="line">findAllByOrderByIdDescAndSortNumDesc(Sort sort)</span><br><span class="line">dictionaryInfoDao.findAll(Sort.by(&quot;dictTypeCode&quot;), Sort.by(&quot;sortNum&quot;));</span><br><span class="line"></span><br><span class="line">失效</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="mybatis与jpa的区别是什么"><a class="markdownIt-Anchor" href="#mybatis与jpa的区别是什么"></a> <a href="https://www.cnblogs.com/llywy/p/10103136.html" target="_blank" rel="noopener">MyBatis与JPA的区别是什么</a></h2>
+<p>JPA是JAVA持久层API的规范， JPA仅仅定义了一些接口，而接口是需要实现才能工作的。 所以底层需要某种实现，而Hibernate就是实现了JPA接口的ORM框架。</p>
+<h3 id="mybatis优势"><a class="markdownIt-Anchor" href="#mybatis优势"></a> Mybatis优势</h3>
+<ul>
+<li>MyBatis可以进行更为细致的SQL优化，可以减少查询字段。</li>
+<li>MyBatis容易掌握，而Hibernate门槛较高。</li>
+</ul>
+<h3 id="hibernate优势"><a class="markdownIt-Anchor" href="#hibernate优势"></a> Hibernate优势</h3>
+<ul>
+<li>
+<p>Hibernate的DAO层开发比MyBatis简单，Mybatis需要维护SQL和结果映射。</p>
+</li>
+<li>
+<p>Hibernate对对象的维护和缓存要比MyBatis好，对增删改查的对象的维护要方便。</p>
+</li>
+<li>
+<p>Hibernate数据库移植性很好，MyBatis的数据库移植性不好，不同的数据库需要写不同SQL。</p>
+</li>
+<li>
+<p>Hibernate有更好的二级缓存机制，可以使用第三方缓存。MyBatis本身提供的缓存机制不佳</p>
+</li>
+<li>
+<p><code>fun findAllByDictTypeCode(dictTypeCode: String): List&lt;DictionaryInfo&gt;</code> 返回的是个List， 如果没有值则为空列表</p>
+</li>
+<li>
+<p>如果findById的结果是个Optional， 如果自定义<code>findByXxxx</code>方法时，返回值可以定义为<code>Optional&lt;XxxxDO&gt;</code>也可以直接定义成 <code>XxxxDO?</code></p>
+</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2021/12/02/Mongodb学习/">https://nymrli.top/2021/12/02/Mongodb学习/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/12/02/前端进行网络请求的三种方式/" title="前端进行网络请求的三种方式"><span>< PreviousPost</span><br><span class="prevTitle">前端进行网络请求的三种方式</span></a><a class="nextSlogan" href="/2021/12/02/Gradle学习/" title="Gradle学习"><span>NextPost ></span><br><span class="nextTitle">Gradle学习</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'Mongodb学习',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mongodb学习"><span class="toc-number">1.</span> <span class="toc-text"> Mongodb学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数据库-集合表"><span class="toc-number">1.1.</span> <span class="toc-text"> 创建数据库-集合（表）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入文档"><span class="toc-number">1.2.</span> <span class="toc-text"> 插入文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询find"><span class="toc-number">1.3.</span> <span class="toc-text"> 查询find:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚合查询aggregate"><span class="toc-number">1.4.</span> <span class="toc-text"> 聚合查询aggregate</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#管道"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 管道</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作内嵌文档"><span class="toc-number">1.5.</span> <span class="toc-text"> 操作内嵌文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作数组"><span class="toc-number">1.6.</span> <span class="toc-text"> 操作数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对数组根据条件查询"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 对数组根据条件查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对数组内嵌文档查询"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 对数组内嵌文档查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用mongorepository完成curd和复杂查询"><span class="toc-number">1.7.</span> <span class="toc-text"> 使用MongoRepository完成CURD和复杂查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对比mongotemplate和mongorepository"><span class="toc-number">1.8.</span> <span class="toc-text"> 对比mongotemplate和mongoRepository</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1mongotemplate"><span class="toc-number">1.8.0.1.</span> <span class="toc-text"> 1MongoTemplate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2mongorepository"><span class="toc-number">1.8.0.2.</span> <span class="toc-text"> 2MongoRepository</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mybatis与jpa的区别是什么"><span class="toc-number">1.9.</span> <span class="toc-text"> MyBatis与JPA的区别是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mybatis优势"><span class="toc-number">1.9.1.</span> <span class="toc-text"> Mybatis优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hibernate优势"><span class="toc-number">1.9.2.</span> <span class="toc-text"> Hibernate优势</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

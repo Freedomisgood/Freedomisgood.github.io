@@ -1,0 +1,501 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>JS逆向-webpack打包网站实战 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">JS逆向-webpack打包网站实战</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/03/28</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">4,441</span> | Reading time: <span class="post-count">19</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="webpack逆向"><a class="markdownIt-Anchor" href="#webpack逆向"></a> Webpack逆向</h1>
+<p><a href="https://so.csdn.net/so/search?q=webpack&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener">webpack</a>打包是前端js模块化压缩打包常用的手段，特征明显，比如下方的形式的代码就是webpack<strong>分发器</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 分发器</span></span><br><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">xx</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ..call(**.exports, ***, ***.exports, xx)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<p>又或者更直观的表现n[“xxx”]这种，你可以大概知道了这是调用了webpack打包的js模块代码。</p>
+<p><strong>webpack打包后JS依赖模块代码的固定结构</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">this</span>[<span class="string">"webpackJsonpzsgk-pc"</span>] = <span class="keyword">this</span>[<span class="string">"webpackJsonpzsgk-pc"</span>] || []).push([[<span class="number">15</span>], [<span class="function"><span class="keyword">function</span>(<span class="params">e, t, n</span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line">    e.exports = n(<span class="number">693</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 参数固定为e, t, n</span></span><br><span class="line">, <span class="function"><span class="keyword">function</span>(<span class="params">e, t, n</span>) </span>&#123;</span><br><span class="line">    e.exports = n(<span class="number">697</span>)()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>说个逆向webpack的通用方法：</p>
+<ol>
+<li>
+<p>先去找加密网站的<strong>加密入口</strong>。这应该是加密网站都必须要做的==&gt; 直接根据参数名搜索参数</p>
+</li>
+<li>
+<p>找到<strong>分发器的位置</strong>，或者说是加载器，n[“xxx”]这种的n就是分发器，就比如下方中的exports的位置，最后执行了d函数==&gt;一般是runtimexxx.js中(提供环境)；一般以<code>! function(e) {</code>的形式出现</p>
+<p><img src="/2022/03/23/JS逆向-webpack打包网站实战/E:%5Chexo%5Csource_posts%5CJS%E9%80%86%E5%90%91-webpack%E6%89%93%E5%8C%85%E7%BD%91%E7%AB%99%E5%AE%9E%E6%88%98%5C%E5%88%86%E5%8F%91%E5%99%A8.jpg" alt="分发器"></p>
+</li>
+<li>
+<p>寻找分发编号、加密使用模块（用到了哪些模块就导入哪些模块）==&gt;一般在chunk-lib.js，以<code>(window.webpackJsonp = window.webpackJsonp || []).push([</code>的形式出现</p>
+</li>
+<li>
+<p>将函数入口的地方返回全局变量，最终返回: <code>var sign; var window = global;!function(){... sign = d}</code>， 赋值为分发器返回的d</p>
+</li>
+<li>
+<p>使用自定义的sign代替webpack代码中的n进行加密</p>
+</li>
+</ol>
+<p>from: <a href="https://blog.csdn.https" target="_blank" rel="noopener">https://blog.csdn.https</a>😕/blog.csdn.net/weixin_41586984/article/details/116268341net/weixin_41586984/article/details/116268341</p>
+<h2 id="调试技巧"><a class="markdownIt-Anchor" href="#调试技巧"></a> 调试技巧</h2>
+<h3 id="定位请求参数"><a class="markdownIt-Anchor" href="#定位请求参数"></a> 定位请求参数</h3>
+<ol>
+<li>
+<p>打开开发者工具后，F5刷新后<code>Ctrl + Shift + F</code>搜索参数名，如signdata，会显示多个JS文件，选择后仔细查看(点击左下角<code>{}</code>美观格式化按钮)。</p>
+<p>more： 如果文件太多，则直接通过请求的链接去找，比如<code>user/login</code></p>
+</li>
+<li>
+<p>Network找到新发出的xhr条目后，查看Initiator里的调用栈信息，如Login；</p>
+</li>
+</ol>
+<p>注： 如果加密参数名称比较简单如s，比较难定位的话，可以借助请求的其他参数来查找，比如verificationCode</p>
+<h3 id="调试工具"><a class="markdownIt-Anchor" href="#调试工具"></a> 调试工具</h3>
+<ul>
+<li>断点调试breakpoints</li>
+<li>XHR断点： XHR/fetch breakpoints</li>
+</ul>
+<h2 id="附录-js记录"><a class="markdownIt-Anchor" href="#附录-js记录"></a> 附录-Js记录</h2>
+<ul>
+<li>
+<p>时间戳: <code>(new Date).getTime()</code></p>
+</li>
+<li>
+<p><code>var a = (f1(), f2(), f3())</code>后，f1、f2、f3函数都会执行，而a最后的结果为f3的返回值</p>
+</li>
+<li>
+<p>javascript:void(0):  <strong>void</strong> 是 JavaScript 中非常重要的关键字，该操作符指定要计算一个表达式但是不返回值。</p>
+</li>
+<li>
+<p><code>TypeError: window.btoa is not a function</code></p>
+<p>btoa-atob 模块没有输出一个编程接口，它只提供命令行工具。</p>
+<p>如果你需要转换为Base64，你可以用Buffer来完成。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Buffer.from(<span class="string">'Hello World!'</span>).toString(<span class="string">'base64'</span>));</span><br></pre></td></tr></table></figure>
+<p>相反的，假设你要解码的内容是一个base64编码过的字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Buffer.from(b64Encoded, <span class="string">'base64'</span>).toString());</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="做题记录"><a class="markdownIt-Anchor" href="#做题记录"></a> 做题记录</h1>
+<h2 id="nstr题型"><a class="markdownIt-Anchor" href="#nstr题型"></a> n[“str”]题型：</h2>
+<h3 id="天安财险"><a class="markdownIt-Anchor" href="#天安财险"></a> 天安财险</h3>
+<blockquote>
+<p><code>var m = this.newEncrypt(JSON.stringify(h));</code></p>
+</blockquote>
+<ul>
+<li>
+<p>需要对this.privaKey的值细化下，传入拿到固定的str</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//           , p = t("NFKh")          , s = t("cg2h")</span></span><br><span class="line">l.prototype.newEncrypt = <span class="function"><span class="keyword">function</span>(<span class="params">l</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> n = p.enc.Utf8.parse(<span class="keyword">this</span>.privaKey)</span><br><span class="line">                  , t = p.enc.Utf8.parse(<span class="keyword">this</span>.privaKey)</span><br><span class="line">                  , e = p.enc.Utf8.parse(l)</span><br><span class="line">                  , a = p.AES.encrypt(e, n, &#123;</span><br><span class="line">                    iv: t,</span><br><span class="line">                    mode: p.mode.CBC,</span><br><span class="line">                    padding: p.pad.Pkcs7</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="keyword">return</span> p.enc.Base64.stringify(a.ciphertext)</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="财新网"><a class="markdownIt-Anchor" href="#财新网"></a> 财新网</h3>
+<blockquote>
+<p><code>password: this.encode(this.encrypt(this.form.password)),</code></p>
+</blockquote>
+<ul>
+<li><code>c = a(&quot;3452&quot;)</code>、<code>n = a.n(c)</code>，看到需要依赖3452后立马Ctrl+shift+F全局搜3452，然后把整个webpack模块扒下来</li>
+</ul>
+<h3 id="中远海运"><a class="markdownIt-Anchor" href="#中远海运"></a> 中远海运</h3>
+<ul>
+<li>n(“MuMZ”)中又有<code>r = n(&quot;XBrZ&quot;);</code>，在另一个文件中，module需要放两个</li>
+</ul>
+<h3 id="天翼云"><a class="markdownIt-Anchor" href="#天翼云"></a> 天翼云：</h3>
+<blockquote>
+<p><code>var t = encodeURIComponent(c[&quot;c&quot;].Des.encrypt(this.form.email, this.form.pwd)),</code></p>
+</blockquote>
+<p>webpack实现</p>
+<p><code>c = (mycode(&quot;ac6a&quot;), mycode(&quot;b3ae&quot;))</code></p>
+<ul>
+<li>分发器和ac6a模块在同一个文件中、而ac6a模块依赖模块在另一个文件内；</li>
+<li>分发器()({})，无感叹号</li>
+<li>分发器()({})大括号中自带较多依赖模块</li>
+</ul>
+<p>自己实现：直接扒下来encrypt加密的JS内容</p>
+<h3 id="看准网"><a class="markdownIt-Anchor" href="#看准网"></a> 看准网</h3>
+<ul>
+<li>分发器n(“xxx”)定位后跟一般的固定格式返回a、n、r不同，写的是个函数==&gt;还是可以根据obj.Func来赋值<code>mycode = obj;</code></li>
+<li><a href="https://www.bilibili.com/video/BV1bb4y127bc?spm_id_from=333.999.0.0" target="_blank" rel="noopener">JS逆向实战分析–看准网webpack加解密分析</a>——Python中使用execjs示范</li>
+</ul>
+<h3 id="企名片"><a class="markdownIt-Anchor" href="#企名片"></a> <a href="https://www.qimingpian.cn/finosda/project/pinvestment" target="_blank" rel="noopener">企名片</a></h3>
+<blockquote>
+<ul>
+<li><code>u = i(&quot;x4Ab&quot;)</code></li>
+<li><code>return e.encrypt_data &amp;&amp; (e.data = Object(u.a)(e.encrypt_data)),</code></li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>x4Ab模块依赖aqBw，aqBw又依赖YuTi、yLpj，因此依赖项中放&quot;x4Ab&quot;、“aqBw”、“YuTi”、&quot;yLpj&quot;函数定义</p>
+</li>
+<li>
+<p>模拟解析函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">encrypt</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> data &amp;&amp; (<span class="built_in">Object</span>(u.a)(data))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="nnum题型"><a class="markdownIt-Anchor" href="#nnum题型"></a> n[num]题型：</h2>
+<h3 id="大麦"><a class="markdownIt-Anchor" href="#大麦"></a> 大麦</h3>
+<ul>
+<li>删除分发器多余代码</li>
+<li><code>var navigator = {}</code></li>
+</ul>
+<h3 id="掌上高考"><a class="markdownIt-Anchor" href="#掌上高考"></a> <a href="https://www.gaokao.cn/school/263/provinceline" target="_blank" rel="noopener">掌上高考</a>：</h3>
+<ol>
+<li>分发器在html文件内</li>
+<li><code>o = (u=a(42), a.n(u))</code>，使用到了<code>a.n(u)</code>即点n函数</li>
+<li>依赖函数的给出是以数组的形式，而不是字典的形式</li>
+<li>模块中依赖更多模块==&gt;引入整个模块文件，但是跟&quot;xxx&quot;模式不同的是，由于没有用字典<code>{&quot;xxx&quot;: function()}</code>的形式，因此直接require也没用<code>TypeError: Cannot read property '42' of undefined</code>，而是将依赖模块数组作为参数写入到分发器依赖函数中<code>!function(e){}([...])</code>即方括号中，从而才能找到42函数</li>
+</ol>
+<h3 id="酷我"><a class="markdownIt-Anchor" href="#酷我"></a> <a href="https://www.bilibili.com/video/BV1gq4y1D781?from=search&amp;seid=7720105602891609746&amp;spm_id_from=333.337.0.0" target="_blank" rel="noopener">酷我</a></h3>
+<blockquote>
+<p><code>t.data.reqId = n,</code></p>
+</blockquote>
+<ul>
+<li>
+<p>直接通过n(109)定位可能不那么准确(双击后定位的函数)，可以试着直接在分发器位置进行断点，然后console输出e[“109”]</p>
+</li>
+<li>
+<p>只要分发器定义部分(其他的删了，因为只用了<code>l=n(109)、c=n.n(l)</code>)+依赖模块中定义109函数(整个function而不是t.exports)，以及观察其中还依赖什么如n(202)、n(203)就补充拿什么</p>
+<ul>
+<li>n.n(l)是传入什么就返回什么:<a href="https://www.bilibili.com/video/BV1gq4y1D781?from=search&amp;seid=7720105602891609746&amp;spm_id_from=333.337.0.0" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1gq4y1D781?from=search&amp;seid=7720105602891609746&amp;spm_id_from=333.337.0.0</a></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果不删分发器中其他部分</span></span><br><span class="line">l = mycode(<span class="number">109</span>)</span><br><span class="line">c = mycode.n(l)	<span class="comment">// ==&gt;得到l</span></span><br><span class="line"><span class="keyword">var</span> r = c()();</span><br><span class="line"><span class="built_in">console</span>.log(r)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 由于只用到了n.n(l)，所以可以删分发器大代码中其他部分, 在使用时直接让c=l</span></span><br><span class="line">l = mycode(<span class="number">109</span>)</span><br><span class="line">c = l();</span><br><span class="line"><span class="built_in">console</span>.log(c)	<span class="comment">// 等价于 r = l(); console(r)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>文章: <a href="https://blog.csdn.net/weixin_43189702/article/details/119860838" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43189702/article/details/119860838</a></p>
+<h2 id="注意"><a class="markdownIt-Anchor" href="#注意"></a> 注意：</h2>
+<ul>
+<li>
+<p>require模块内容可以放在逆向JS文件里一起，而不是一定得创建新的JS文件导入</p>
+</li>
+<li>
+<p>先登录然后找到加密处加断点，这个断点会在发起登录请求时才触发；往上找分发器，加上断点，分发器位置的断点是在页面刷新时触发，因此要触发这个断点需要刷新页面</p>
+</li>
+<li>
+<p>找加密函数<code>c[&quot;c&quot;].Des.encrypt(this.form.email, this.form.pwd)</code>的时候，找完整的函数如c[“c”].Des.encrypt，而不是直接找c</p>
+</li>
+<li>
+<p>n(42), 或者n(“xxx”)，可以直接搜xxx，也可以在console里面输出后找到对应的FunctionLocation来快速定位</p>
+</li>
+<li>
+<p>如果依赖模块是字典的形式，则分发器依赖中写字典，如<code>!function(e){..}({ 32:function(){...}})</code>（一般情况<code>n(32)、n(&quot;ABCD&quot;)</code>）， 如果不是则需要传函数数组，如<code>n(42)</code>，此处42表示的是第42个函数，见掌上高考。</p>
+</li>
+<li>
+<p><code>var mycode;</code>后赋值的位置直接在分发器的下方即可，不用在最后面</p>
+</li>
+<li>
+<p>提示缺少<code>window</code>时，定义全局变量<code>var window = global;</code>，（JS逆向文件、依赖文件）</p>
+<ul>
+<li>
+<p>window表示<strong>浏览器</strong>打开的窗口，在客户端JavaScript中window对象是全局的对象，所有 JavaScript 全局对象、函数以及变量均自动成为 window 对象的成员。但在nodejs中直接调用window是不存在的，而代替的是global，所以要用nodejs运行时，得用<code>var window = global;</code></p>
+</li>
+<li>
+<p><code>var navigator = this</code>等价于<code>var navigator = {}</code>，因为在NodeJS文件中运行输出this后可以发现<code>this={}</code>，而在浏览器中this默认为window（函数或类作用域内为函数或者类实例）</p>
+</li>
+<li>
+<p>from：<a href="https://blog.csdn.net/mystric594/article/details/72519788" target="_blank" rel="noopener">JS中document和window的区别</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>心得</strong></p>
+<p>①所有webpack打包的的js都要先看懂打包后<strong>代码运行</strong>的顺序，找到加密处；②找到webpack对象，一般是 n(数字) 调用③确定分发器。④找依赖模块，有时候各包的依赖关系太多，可以直接把文件爬下来引入，如果各个包的依赖关系不多，就可以只把调用到的函数找出来放到依赖中。⑤最后剩下的就是找到你要的代码，慢慢复现调用加密/解密函数就好了。</p>
+<h2 id="做题案例学习视频"><a class="markdownIt-Anchor" href="#做题案例学习视频"></a> 做题案例学习视频</h2>
+<ul>
+<li>webpack师承：<a href="https://space.bilibili.com/453818250/video?tid=0&amp;page=1&amp;keyword=&amp;order=pubdate" target="_blank" rel="noopener">爬取webpack流程-视频</a>——大多都是n(“Xvmd”)</li>
+<li>而如果n中调用的不是字典的形式，而是列表的形式，则看<a href="https://www.cnblogs.com/Eeyhan/p/15562632.html" target="_blank" rel="noopener">js逆向安全指南（3）-- webpack解包指南</a>、<a href="https://www.bilibili.com/video/BV1gq4y1D781?from=search&amp;seid=7720105602891609746&amp;spm_id_from=333.337.0.0" target="_blank" rel="noopener">使用 webpack 的 js 加密参数的分析——酷我</a></li>
+</ul>
+<h2 id="进阶资料"><a class="markdownIt-Anchor" href="#进阶资料"></a> 进阶资料</h2>
+<ul>
+<li><a href="https://www.cnblogs.com/borntodie/p/15042669.html" target="_blank" rel="noopener">9-爬虫高级实战【js逆向】 </a></li>
+<li><a href="https://blog.csdn.net/Qiled/article/details/109610726" target="_blank" rel="noopener">JS逆向学习笔记 - 持续更新中</a></li>
+<li>webpack补充依赖项做法：
+<ul>
+<li><a href="https://www.jianshu.com/p/5c42730a4e84" target="_blank" rel="noopener">https://www.jianshu.com/p/5c42730a4e84</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/79706247" target="_blank" rel="noopener">webpack4之《模块运行机制原理》</a></li>
+</ul>
+</li>
+<li>JS逆向视频
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1wp4y1z7L6?p=42" target="_blank" rel="noopener">爬虫工程师进阶必会之JS逆向(反爬)</a></li>
+<li><a href="https://www.bilibili.com/video/BV1XR4y147fQ?p=85" target="_blank" rel="noopener">遇到网站加密爬不了？？这几个视频教你如何学会爬虫高阶内容js逆向，入狱必学！</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="掌上高考解密过程"><a class="markdownIt-Anchor" href="#掌上高考解密过程"></a> 掌上高考解密过程</h2>
+<h3 id="解析响应datatext"><a class="markdownIt-Anchor" href="#解析响应datatext"></a> 解析响应data.text</h3>
+<blockquote>
+<p>相应的data.text是加密的，页面通过JS解密后渲染</p>
+</blockquote>
+<ol>
+<li>
+<p>确定加密位置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="literal">null</span> != l &amp;&amp; <span class="literal">null</span> !== (a = l.data) &amp;&amp; <span class="keyword">void</span> <span class="number">0</span> !== a &amp;&amp; a.text &amp;&amp; (l.data = (n = (e = &#123;</span><br><span class="line">            iv: u.uri,</span><br><span class="line">            text: l.data.text,</span><br><span class="line">            SIGN: h</span><br><span class="line">        &#125;).iv,</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>确定分发器位置，在html内</p>
+<p>通过打断<code>o = (u=a(42), a.n(u))	// 等价于 o = a(42)</code></p>
+</li>
+<li>
+<p>确定依赖模块：给<code>return e[a].call(c.exports, c, c.exports, r),</code>打断点后console输出<code>e[&quot;42&quot;]</code>查看a(42)位置：</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">e, t, n</span>) </span>&#123;</span><br><span class="line">    e.exports = (e = n(<span class="number">21</span>),</span><br><span class="line">    n(<span class="number">201</span>),</span><br><span class="line">    n(<span class="number">825</span>),</span><br><span class="line">    ...</span><br><span class="line">    n(<span class="number">847</span>),	</span><br><span class="line">    e)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到需要依赖多个，因此直接把整个文件引入</p>
+<ol start="4">
+<li>扣解密函数：注意<code>return</code>表达式后是逗号的情况：会从左到右执行执行，并返回最后一个。注意：JS函数并<strong>不能返回多个返回值</strong></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">then((<span class="function"><span class="keyword">function</span>(<span class="params">l</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> e, a, t, b, n;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">null</span> != l &amp;&amp; <span class="literal">null</span> !== (a = l.data) &amp;&amp; <span class="keyword">void</span> <span class="number">0</span> !== a &amp;&amp; a.text &amp;&amp; (l.data = (n = (e = &#123;</span><br><span class="line">            iv: u.uri,</span><br><span class="line">            text: l.data.text,</span><br><span class="line">            SIGN: h</span><br><span class="line">        &#125;).iv,</span><br><span class="line">        a = e.text,</span><br><span class="line">        e = e.SIGN,</span><br><span class="line">        e = o.a.PBKDF2(e, <span class="string">"secret"</span>, &#123;</span><br><span class="line">            keySize: <span class="number">8</span>,</span><br><span class="line">            iterations: <span class="number">1e3</span>,</span><br><span class="line">            hasher: o.a.algo.SHA256</span><br><span class="line">        &#125;).toString(),</span><br><span class="line">        n = o.a.PBKDF2(n, <span class="string">"secret"</span>, &#123;</span><br><span class="line">            keySize: <span class="number">4</span>,</span><br><span class="line">            iterations: <span class="number">1e3</span>,</span><br><span class="line">            hasher: o.a.algo.SHA256</span><br><span class="line">        &#125;).toString(),</span><br><span class="line">        a = o.a.lib.CipherParams.create(&#123;</span><br><span class="line">            ciphertext: o.a.enc.Hex.parse(a)</span><br><span class="line">        &#125;),</span><br><span class="line">        n = o.a.AES.decrypt(a, o.a.enc.Hex.parse(e), &#123;</span><br><span class="line">            iv: o.a.enc.Hex.parse(n)</span><br><span class="line">        &#125;),</span><br><span class="line">		<span class="comment">// data.text解析结果</span></span><br><span class="line">        <span class="built_in">JSON</span>.parse(n.toString(o.a.enc.Utf8)))),</span><br><span class="line">    v &amp;&amp; (t = r,</span><br><span class="line">        b = l,</span><br><span class="line">        <span class="literal">null</span> !== (n = <span class="built_in">window</span>.apiConfig) &amp;&amp; <span class="keyword">void</span> <span class="number">0</span> !== n &amp;&amp; <span class="literal">null</span> !== (n = n.filterCacheList) &amp;&amp; <span class="keyword">void</span> <span class="number">0</span> !== n &amp;&amp; n.length ? <span class="built_in">window</span>.apiConfig.filterCacheList.forEach((<span class="function"><span class="keyword">function</span>(<span class="params">l</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">new</span> <span class="built_in">RegExp</span>(l).test(t) || d.set(t, b)</span><br><span class="line">        &#125;)) : d.set(t, b)),</span><br><span class="line">    l</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>难点：</p>
+<ul>
+<li>
+<p>跟&quot;xxx&quot;模式不同的是，由于没有用字典<code>{&quot;xxx&quot;: function()}</code>的形式，因此直接require也没用<code>TypeError: Cannot read property '42' of undefined</code>，而是将依赖模块函数数组作为参数写入到分发器依赖函数中<code>!function(e){}([...])</code>即方括号中，从而才能找到42函数</p>
+<ul>
+<li>
+<p>挑选push后第二个<code>[]</code>中的函数数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">this</span>[<span class="string">"webpackJsonpzsgk-pc"</span>] = <span class="keyword">this</span>[<span class="string">"webpackJsonpzsgk-pc"</span>] || []).push([[<span class="number">15</span>], [<span class="function"><span class="keyword">function</span>(<span class="params">e, t, n</span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line">    e.exports = n(<span class="number">693</span>)</span><br><span class="line">&#125;,</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br><span class="line">]]);	<span class="comment">// 第一个]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>理解了a.n的含义后，可以直接把<code>o = (u=a(42), a.n(u))</code>转化为<code>o=a(42)</code></p>
+</li>
+</ul>
+<h3 id="获得加密参数signsafe"><a class="markdownIt-Anchor" href="#获得加密参数signsafe"></a> 获得加密参数signsafe</h3>
+<blockquote>
+<p>大致流程跟data.text差不多，但是<code>p = c()(g)</code>执行时，会报错</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; Md5.prototype.update = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">&gt;     <span class="keyword">if</span> (!<span class="keyword">this</span>.finalized) &#123;</span><br><span class="line">&gt;         <span class="keyword">var</span> t, n = <span class="keyword">typeof</span> e;</span><br><span class="line">&gt;         <span class="keyword">if</span> (<span class="string">"string"</span> != n) &#123;</span><br><span class="line">&gt;             <span class="keyword">if</span> (<span class="string">"object"</span> != n)</span><br><span class="line">&gt;                 <span class="keyword">throw</span> ERROR;</span><br><span class="line">&gt;             <span class="keyword">if</span> (<span class="literal">null</span> === e)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>根据一步步调试之后发现，还是<code>c = (u=a(291),a.n(u))</code>直接替换出的问题</p>
+</blockquote>
+<ol>
+<li>
+<p>Ctrl + shift + F定位参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">g = <span class="keyword">void</span> <span class="number">0</span>,</span><br><span class="line">    g = (t = &#123;</span><br><span class="line">    SIGN: h,</span><br><span class="line">    str: f.replace(<span class="regexp">/^\/|https?:\/\/\/?/</span>, <span class="string">""</span>)</span><br><span class="line">&#125;).SIGN,</span><br><span class="line">    t = t.str,</span><br><span class="line">    g = o.a.HmacSHA1(o.a.enc.Utf8.parse(t), g),</span><br><span class="line">    g = o.a.enc.Base64.stringify(g).toString(),</span><br><span class="line">    p = c()(g),</span><br><span class="line">    u.signsafe = p,</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>往上找c和o.a: <code>o = (u = a(42),a.n(u))</code>, <code>c = (u = a(291),a.n(u))</code></p>
+</li>
+<li>
+<p>找到分发器扣出==&gt;这次不能删除分发器中多余的函数，比如r.a、r.d、r.n因为后面得用</p>
+</li>
+<li>
+<p>将依赖模块跟data.text一样，放入分发器依赖模块中</p>
+</li>
+<li>
+<p>扣加密函数</p>
+<blockquote>
+<p>网页上是return后多段内容，以及g变量不断被修改，因此通过一步步调试确定入参，以及分解return抽离出真正的加密参数signsafe</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">h = <span class="string">"D23ABC@#56"</span></span><br><span class="line"><span class="keyword">var</span> o = &#123;&#125;</span><br><span class="line"></span><br><span class="line">o.a = mycode(<span class="number">42</span>)</span><br><span class="line"><span class="comment">// ▲</span></span><br><span class="line">c = (u = mycode(<span class="number">291</span>), mycode.n(u))</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 对url进行加密</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">encrypt</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">    g = (t = &#123;</span><br><span class="line">            SIGN: h,</span><br><span class="line">            str: f.replace(<span class="regexp">/^\/|https?:\/\/\/?/</span>, <span class="string">""</span>)</span><br><span class="line">        &#125;).SIGN,</span><br><span class="line">        t = t.str;</span><br><span class="line">    <span class="comment">// console.log(t, g);</span></span><br><span class="line">    g = o.a.HmacSHA1(o.a.enc.Utf8.parse(t), g);</span><br><span class="line">    <span class="comment">// console.log(g)</span></span><br><span class="line">    g = o.a.enc.Base64.stringify(g).toString();</span><br><span class="line">    <span class="comment">// console.log(g)</span></span><br><span class="line">    p = c()(g);</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">res = encrypt(<span class="string">"https://api.eol.cn/web/api/counter?cid=1&amp;did=263"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(res)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>可以看到o.a和c的赋值是不一样的，虽然说大多数情况x = a.n(u)等价于x=u，但难免有时会有不一样，因此谨慎期间，还是还原到底最好。</p>
+<h4 id="python调用"><a class="markdownIt-Anchor" href="#python调用"></a> Python调用</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> execjs</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_signsafe_by_javascript</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="comment"># 两个 JavaScript 脚本，两种方法均可</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'gk_signsafe.js'</span>, <span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        exec_js = f.read()</span><br><span class="line">    signsafe = execjs.compile(exec_js).call(<span class="string">'encrypt'</span>, url)</span><br><span class="line">    <span class="keyword">return</span> signsafe</span><br><span class="line">signsafe = get_encrypted_password_by_javascript(<span class="string">"https://api.eol.cn/web/api/counter?cid=1&amp;did=263"</span>)</span><br><span class="line">print(signsafe)</span><br></pre></td></tr></table></figure>
+<h2 id="rsa的加密步骤"><a class="markdownIt-Anchor" href="#rsa的加密步骤"></a> RSA的加密步骤</h2>
+<ol>
+<li>获取公钥</li>
+<li>实例化  ===&gt; 扣出网站RSA实例化对象的代码</li>
+<li>设置公钥</li>
+<li>对文本进行加密 ==&gt; 扣出复现RSA加密的逻辑代码</li>
+</ol>
+<p>注： <code>var window=global</code>、<code>var navigator={}</code></p>
+<ul>
+<li>
+<p><a href="https://www.bilibili.com/video/BV1jB4y1K7uw?spm_id_from=333.999.0.0" target="_blank" rel="noopener">B站RSA</a>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// window.JSEncrypt is not a constructor 在抠出来的JS Encrypt代码中加上</span></span><br><span class="line"><span class="built_in">window</span>.JSEncrpt = ze</span><br><span class="line"><span class="comment">// 网页中位var n = new JSEncrypt ==&gt; JSEncrypt is not defined</span></span><br><span class="line"><span class="keyword">var</span> n = <span class="keyword">new</span> <span class="built_in">window</span>.JSEncrypt;</span><br><span class="line">n.setPublicKey...</span><br><span class="line"><span class="keyword">var</span> a = n.encrypt(t.data.hash + password);</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><a href="https://www.bilibili.com/video/BV1Qh411B77h?spm_id_from=333.999.0.0" target="_blank" rel="noopener">网易云爬评论</a>：python通过execjs来调用JS代码，代码中用到了<code>CryptoJS</code>库， 需要<code>os.environ[&quot;NODE_PATH&quot;]=&quot;F:/..../node_modules&quot;</code>把库导入</p>
+</li>
+<li>
+<p><a href="https://www.bilibili.com/video/BV1eQ4y1Q7RE?spm_id_from=333.999.0.0" target="_blank" rel="noopener">JS逆向实战分析–某铁网分析</a>：document返回类型，initiator是一条条文本(Other)，因为其没有用ajax(XHR)，而是通过原生的网页表单提交</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">loginForm.password.value = encryptByDES(loginForm.password.value), loginForm.publickey.value);</span><br><span class="line">loginForm.submit();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>直接require导入CryptoJS模块</p>
+</li>
+<li>
+<p>or直接扣encryptByDES的加密函数==&gt;出现<code>cannot read property 'createEncryptor' of undefined</code></p>
+</li>
+<li>
+<p>MD5加密：</p>
+<ul>
+<li>
+<p>JS: <code>const crypto = require(&quot;CryptoJS&quot;); crypto.MD5('待加密字符串').toString()</code></p>
+</li>
+<li>
+<p>Python: <a href="https://blog.csdn.net/weixin_44799217/article/details/112486097" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44799217/article/details/112486097</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 法一：创建md5对象</span></span><br><span class="line">hl = hashlib.md5()</span><br><span class="line"><span class="comment"># Tips</span></span><br><span class="line"><span class="comment"># 此处必须声明encode，若写法为hl.update(str) 报错为： Unicode-objects must be encoded before hashing</span></span><br><span class="line">hl.update(str.encode(encoding=<span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 法二：</span></span><br><span class="line">str_md5 = hashlib.md5(str.encode(encoding=<span class="string">'utf-8'</span>)).hexdigest()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>base64编码</p>
+<ul>
+<li>
+<p>JS: <code>CryptoJS.enc.Base64.parse(&quot;待解密字符串&quot;).toString(CryptoJS.enc.Utf8)</code></p>
+</li>
+<li>
+<p>Python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 字符串</span></span><br><span class="line">encode_str = base64.encodebytes(test_str.encode(<span class="string">'utf8'</span>))  <span class="comment"># b'aGVsbG8gd29ybGQh\n'</span></span><br><span class="line">print(encode_str.decode())  <span class="comment"># 默认以utf8解码，结果 aGVsbG8gd29ybGQh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 图片</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"D:\\redis.png"</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    encode_img = base64.b64encode(f.read())</span><br><span class="line">    file_ext = os.path.splitext(<span class="string">"D:\\redis.png"</span>)[<span class="number">1</span>]</span><br><span class="line">    print(<span class="string">'data:image/&#123;&#125;;base64,&#123;&#125;'</span>.format(file_ext[<span class="number">1</span>:], encode_img.decode()))</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="加密-摘要算法结果特征"><a class="markdownIt-Anchor" href="#加密-摘要算法结果特征"></a> 加密、摘要算法结果特征</h2>
+<h3 id="base64特征"><a class="markdownIt-Anchor" href="#base64特征"></a> Base64特征</h3>
+<blockquote>
+<p>最常见的用于传输8Bit<a href="https://baike.baidu.com/item/%E5%AD%97%E8%8A%82%E7%A0%81/9953683" target="_blank" rel="noopener">字节码</a>的<strong>编码方式</strong>之一</p>
+</blockquote>
+<ul>
+<li>相同内容，结果是相同的</li>
+<li>a-zA-Z,0-9,+/共64个字符进行编码；每3个字节编码成4个字节，不足的在<strong>结尾</strong>有无意义的**=**来填补
+<ul>
+<li>一般情况下结尾都会有1个或者2个等号，明文长度是3的倍数时没有=；</li>
+</ul>
+</li>
+<li>内容越长，结果越长</li>
+</ul>
+<p>注：跟下面的算法区分一下，base64是编码方式，并不能算加密算法。应用场景还有传输图片:<code>data:image/jpg;base64,/9j/4QMZRXhpZgAASUk...</code></p>
+<h3 id="md5特征"><a class="markdownIt-Anchor" href="#md5特征"></a> md5特征</h3>
+<blockquote>
+<p><strong>消息摘要算法</strong></p>
+</blockquote>
+<ul>
+<li>确定唯一性：相同内容，结果是相同的；但一般会有时间戳等参数，所以导致了每次不同</li>
+<li>不可逆性：有损的加密过程，理论上无法解密（逆向推出），除非暴力破解。安全，这也是其成为校验是否被修改的最关键的性质</li>
+<li>碰撞性：原始数据与其MD5值并不是一一对应的，有可能多个原始数据计算出来的MD5值是一样的，这就是碰撞。</li>
+<li>一般MD5值是32位，由数字“0-9”和字母“a-f”所组成的字符串；字母可以是全大写或者全小写
+<ul>
+<li>密文一般为 16 位或者 32 位，其中 16 位是取的 32 位第 9~25 位的值；</li>
+</ul>
+</li>
+<li>长度：32个<strong>十六进制</strong>字符组成的字符串 (128位)</li>
+</ul>
+<h3 id="rsa特征"><a class="markdownIt-Anchor" href="#rsa特征"></a> RSA特征</h3>
+<ul>
+<li>相同内容，结果也是不同的</li>
+<li>明文长度需要小于密钥长度，而密文长度则等于密钥长度。一般为1024、2048、3072、4096或512（低于1024的安全不建议）</li>
+<li>通过公钥加密结果，必须私钥解密。 同样私钥加密结果，公钥可以解密</li>
+</ul>
+<p>注：RSA加解密中必须考虑到的密钥长度、明文长度和密文长度问题；</p>
+<p>▲.一般会使用 JSEncrypt 库，会有 new 一个实例对象的操作；</p>
+<h3 id="sha-系列"><a class="markdownIt-Anchor" href="#sha-系列"></a> SHA 系列</h3>
+<blockquote>
+<p>SHA 是比 MD5 更安全一点的摘要算法，SHA 通常指 SHA 家族算法，</p>
+</blockquote>
+<p><strong>sha1</strong></p>
+<blockquote>
+<p>字母（a-f）和数字（0-9）混合</p>
+<p>密文特征跟MD5差不多，只不过数字是40位，bit位数（160）==&gt;4位<strong>十六进制</strong>表示一个数</p>
+</blockquote>
+<p><strong>Sha256</strong></p>
+<blockquote>
+<p>字母（a-f）和数字（0-9）混合</p>
+<p>对于任意长度的消息，SHA256都会产生一个256位的哈希值，即64位十六进制数，称作消息摘要。</p>
+</blockquote>
+<p><strong>HMAC</strong></p>
+<blockquote>
+<p>在md5和sha1加密的基础上引入了秘钥，而秘钥又只有传输双方才知道，所以基本上是破解不了的，常用于接口签名验证</p>
+</blockquote>
+<h3 id="aes-des-3des-rc4-rabbit-等"><a class="markdownIt-Anchor" href="#aes-des-3des-rc4-rabbit-等"></a> AES、DES、3DES、RC4、Rabbit 等</h3>
+<p>AES、DES、3DES、RC4、Rabbit 等加密算法的密文通常没有固定的长度，他们通常使用<code>crypto-js</code>库来实现</p>
+<p>参考：<a href="https://juejin.cn/post/7052978567390429215" target="_blank" rel="noopener">https://juejin.cn/post/7052978567390429215</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/03/23/JS逆向-webpack打包网站实战/">https://nymrli.top/2022/03/23/JS逆向-webpack打包网站实战/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/03/27/Python进阶/" title="Python进阶"><span>< PreviousPost</span><br><span class="prevTitle">Python进阶</span></a><a class="nextSlogan" href="/2022/03/19/2022年3月19日-爬虫项目记录/" title="2022年3月19~20日-爬虫项目记录"><span>NextPost ></span><br><span class="nextTitle">2022年3月19~20日-爬虫项目记录</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'JS逆向-webpack打包网站实战',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#webpack逆向"><span class="toc-number">1.</span> <span class="toc-text"> Webpack逆向</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#调试技巧"><span class="toc-number">1.1.</span> <span class="toc-text"> 调试技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定位请求参数"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 定位请求参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调试工具"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 调试工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录-js记录"><span class="toc-number">1.2.</span> <span class="toc-text"> 附录-Js记录</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#做题记录"><span class="toc-number">2.</span> <span class="toc-text"> 做题记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#nstr题型"><span class="toc-number">2.1.</span> <span class="toc-text"> n[“str”]题型：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#天安财险"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 天安财险</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#财新网"><span class="toc-number">2.1.2.</span> <span class="toc-text"> 财新网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中远海运"><span class="toc-number">2.1.3.</span> <span class="toc-text"> 中远海运</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#天翼云"><span class="toc-number">2.1.4.</span> <span class="toc-text"> 天翼云：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#看准网"><span class="toc-number">2.1.5.</span> <span class="toc-text"> 看准网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#企名片"><span class="toc-number">2.1.6.</span> <span class="toc-text"> 企名片</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nnum题型"><span class="toc-number">2.2.</span> <span class="toc-text"> n[num]题型：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#大麦"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 大麦</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#掌上高考"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 掌上高考：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#酷我"><span class="toc-number">2.2.3.</span> <span class="toc-text"> 酷我</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-number">2.3.</span> <span class="toc-text"> 注意：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#做题案例学习视频"><span class="toc-number">2.4.</span> <span class="toc-text"> 做题案例学习视频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶资料"><span class="toc-number">2.5.</span> <span class="toc-text"> 进阶资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#掌上高考解密过程"><span class="toc-number">2.6.</span> <span class="toc-text"> 掌上高考解密过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解析响应datatext"><span class="toc-number">2.6.1.</span> <span class="toc-text"> 解析响应data.text</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获得加密参数signsafe"><span class="toc-number">2.6.2.</span> <span class="toc-text"> 获得加密参数signsafe</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python调用"><span class="toc-number">2.6.2.1.</span> <span class="toc-text"> Python调用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rsa的加密步骤"><span class="toc-number">2.7.</span> <span class="toc-text"> RSA的加密步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加密-摘要算法结果特征"><span class="toc-number">2.8.</span> <span class="toc-text"> 加密、摘要算法结果特征</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#base64特征"><span class="toc-number">2.8.1.</span> <span class="toc-text"> Base64特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5特征"><span class="toc-number">2.8.2.</span> <span class="toc-text"> md5特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rsa特征"><span class="toc-number">2.8.3.</span> <span class="toc-text"> RSA特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sha-系列"><span class="toc-number">2.8.4.</span> <span class="toc-text"> SHA 系列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#aes-des-3des-rc4-rabbit-等"><span class="toc-number">2.8.5.</span> <span class="toc-text"> AES、DES、3DES、RC4、Rabbit 等</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

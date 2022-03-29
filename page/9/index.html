@@ -97,241 +97,166 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/02/24/搭建frp服务-阿里云服务器/">搭建frp服务--阿里云服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-24T06:56:27.000Z">2019-02-24</time><i class="fa fa-edit"></i><time datetime="2019-02-24T06:56:27.000Z">2021-10-08</time></div><div class="recent-post-content"> 搭建frp服务–阿里云服务器
-为了可以远程访问活动室的电脑，需要进行内网穿透。之前9块钱买了花生壳的服务，勉强用用还行，带宽很有限。听说了frp后,打算在阿里云上安个frp服务，充当中转服务器。
- 什么是frp
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/PyWinAuto使用/">PyWinAuto使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:54:45.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:54:45.000Z">2020-11-07</time></div><div class="recent-post-content"> PyWinAuto使用
+简单操作示例：
+12app = application.Application().start(r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')# app = application.Application().start('notepad.exe')
+ (一) 判断程序的backend
+注意，首先需要判断你要进行的程序是用什么语言写的，在实例化的时候会有区别，主要是判断backend是什么。
 
-frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。
+ (二)确定自动化入口点
+这里主要是限制自动化控制进程的范围。如一个程序有多个实例，自动化控制一 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/05/27/PyWinAuto使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-并查集/">ACM-并查集</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T01:21:30.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T01:21:30.000Z">2020-06-03</time></div><div class="recent-post-content"> 并查集
 
- 开始搭建
- 外网主机
-SSH连接上外网主机后，使用wget指令下载frp。
-wget https://github.com/fatedier/frp/releases/download/v0.20.0 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/02/24/搭建frp服务-阿里云服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/eclipse使用/">eclipse使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T05:18:25.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T05:18:25.000Z">2019-11-27</time></div><div class="recent-post-content"> Eclipse
- 选择工作路径
+ACM竞赛中，并查集（DisjointSets）这个数据结构经常使用。顾名思义，并查集即表示集合，并且支持快速查找、合并操作。
+用于高效的查找某两个元素是否属于同一个集合；
 
- 新建工程
- 一.选择File-&gt;New-&gt;Project
+并查集如何表示一个集合？它借助树的思想，将一个集合看成一棵有根树。那又如何表示一棵树？初始状态下，一个元素即一棵树，根即是元素本身。
+ 合并
+并查集如何支持合并操作？不难发现，按照树的思想，在同一棵树中的所有元素，根都是相同的。也就是说，合并两个不同的集合，只需要将其中一个集合的根设置为另一个集合的根即可，而需要改变根的那个集合，其实只需要改变根节点的父节点即可。
+ 如何支持快速查找操作
+如果完全按照上面的合 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-并查集/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-大数定理（高精度）/">ACM-大数定理（高精度）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T00:53:27.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T00:53:27.000Z">2020-05-28</time></div><div class="recent-post-content"> ACM-大数定理（高精度）
 
- 二.Java-&gt;Java Project
+由于c/c++中数据类型的范围比较固定，因此有些题目的数据范围正好卡在这些正常范围之外，此时就需要自己实现大数加减乘除的运算。
+c/c++需要自己手写
+java中有BigInteger类
 
- 三.工程配置
+ C++ 加法实现
+123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &lt;iostream&gt;#include &lt;string&gt;#include &lt;algorithm&gt;using namespace std;type ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-大数定理（高精度）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/DigitalOcean-VPS注册/">DigitalOcean VPS注册</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:57:56.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:57:56.000Z">2020-02-15</time></div><div class="recent-post-content"> DigitalOcean VPS搭梯子
+ DigitalOcean VPS注册
+首先通过 邀请链接(https://m.do.co/c/e89da76f57f2)点进去注册，双方都会获得$10奖励（注意是注册，我当时就没注意到，少了10$
+然后在Github Education申请学生优惠，注意这边的学生优惠邮箱是校园邮箱(xxxx@njupt.edu.cn)那个。我当时是将github账号与校园邮箱进行链接的。
+学生优惠申请到后，pack界面会变成这样
 
-这步可以选择创建或者不创建，目前都没有什么影响。（Java 9最大的特性——模块化）
+进入DO的页面后，用学校邮箱注册后，选用Paypal支付（先注册好Paypal），然后支付即可。
+▲由于一开始我并没有使用学校邮箱注册， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/05/27/DigitalOcean-VPS注册/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Google-Colab使用/">Google Colab使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:53:31.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:53:31.000Z">2019-09-15</time></div><div class="recent-post-content"> Google Colab使用
 
- 四.是否打开导航视图窗口
+Google colab(Colaboratory)在编辑时候和jupyter notebook类似，并且提供免费的GPU以供使用，这对于需要处理大量数据运算的机器项目来说再合适不过了。挺香的
 
-此类项目与Java透视图相关联。
-此透视图旨在支持Java开发。它提供了包资源管理器、类型层次结构和特定于java的导航操作。
-您现在想打开这个透视图吗?
+新建一个笔记本（.ipynb）后，选择&quot;修改-&gt;笔记本设置-&gt;硬件加速器-&gt;GPU&quot;就可以想要用英伟达Tesla K80 GPU啦(2599美元一块)
+ colab中文件交互
+文档里提供了四种方式，分别是：
+
+从本地直接上传
+连接Google Drive
+连接Google Sheet
+连接Google Cloud Storage
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图像处理"> 图像处理</a></div><div class="read-more"><a class="more" href="/2019/05/27/Google-Colab使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/微信公众号Pyhton/">微信公众号Pyhton</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T14:01:10.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T14:01:10.000Z">2019-09-15</time></div><div class="recent-post-content"> 微信公众号Pyhton开发
+ 编写上传代码到SAE
+1.申请SAE（sina application enginer），创建应用，SAE使用文档
+2.编写上传代码
+weixin.py
+12345678910111213141516171819202122232425262728#-*-coding:utf-8-*-import web import os import hashlib import time class WeixinInterface: 	def __init__(self):		self.app_root=os.path.dirname(__file__)		self.te ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/05/27/微信公众号Pyhton/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/南京邮电大学java程序设计作业在线编程第八次作业/">南京邮电大学java程序设计作业在线编程第八次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:20:12.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:20:12.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
+ 选择题得分：70
 
 
-如果按了create的话，就会产生该文件
 
-▲注意 一个工作空间中只能有一个工程有main
- 五.新建class
-
-
- 编写第一个程序
-123 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="IDE"> IDE</a></div><div class="read-more"><a class="more" href="/2019/02/26/eclipse使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/构造一个能发数据的POST请求头/">构造一个能发数据的POST请求头</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T14:23:52.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T14:23:52.000Z">2019-09-15</time></div><div class="recent-post-content">之前学请求、响应的时候只是过了一边，大致知道有这些东西。但这次真正要用的时候却又忘了到底该如何写，错误的请求头、请求体的格式导致esp8266一直发送不了数据到服务器上，又重新看了遍请求request的知识，才终于搞明白
- 请求
- 最初的写法:
-由于在esp8266上已经选择、连接好了了httpbin.org的穿透，就以为Host可以不用加了，于是产生了 最初的写法：
-1POST /post?= HTTP/1.1
-▲根据玩单片机的小伙伴说必须多出一行\r\n，所以这边是有一行空行的
- 结果： 400 BAD_REQUEST
-搜索过后得知 : 如果使用http 1.1协议的话主机名HOST字段是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/03/01/构造一个能发数据的POST请求头/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/24/学习nginx配置/">学习nginx配置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-24T08:45:40.000Z">2019-01-24</time><i class="fa fa-edit"></i><time datetime="2019-01-24T08:45:40.000Z">2019-09-15</time></div><div class="recent-post-content"> nginx配置
- 多台虚拟主机:
-1.分配IP地址
-2.新建、编写usr/local/nginx的conf配置文件
-12345678910111213http&#123;    sever&#123;        listen 192.168.1.17:80;				//监听 (IP地址:) 端口        server_name 192.168.1.17;			// 域名或者ip        access_log logs/server1.access.log conbined;//指定位置+使用日志文件默认格式        location /        &#123;    ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/01/24/学习nginx配置/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/南京邮电大学java程序设计作业在线编程第二次作业/">南京邮电大学java程序设计作业在线编程第二次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T04:52:41.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T04:52:41.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
- 选择题得分：60
-\1. 表达式9==8&amp;&amp;3&lt;7的运算结果是（ ）
-A.1
-B.0
-C.true
-D.false
-正确答案是: D
-\2. 表达式(3&gt;2)?8:9的运算结果是（ ）
-A.3
-B.2
-C.8
-D.9
-正确答案是: C
-\3. 表达式9-7&lt;0||11&gt;8的运算结果（ ）
-A.true
-B.false
-C.1
-D.0
-正确答案是: A
-\4. 表达式48%9+5*5-4的运算结果（ ）
-A.24
-B.26
-C.-30
-D.46
-正确答案是: A
-\5. 表达式2&gt;=5的运算结果是（ ）
+int[][] a=new int[2][3]，则该数组包含（ ）个数组元素。
 A.2
-B.5
-C.true ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/02/26/南京邮电大学java程序设计作业在线编程第二次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/南京邮电大学java程序设计作业在线编程第一次作业/">南京邮电大学java程序设计作业在线编程第一次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T04:50:14.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T04:50:14.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
- 选择题得分：40
-\1. Java语言中，基本数据类型一共有（ ）种。
-A.16
-B.2
-C.4
-D.8
-正确答案是: D
-\2. Java虚拟机的英文缩写是（ ）
-A.JRE
-B.ECLIPSE
-C.JVM
-D.JDK
+B.3
+C.6
+D.不确定
 正确答案是: C
-\3. Java程序中，最常见的对主方法的定义是（ ）。
-A.private static int main(String args[ ]){ }
-B.public static void main(String args[ ]){ }
-C.public static int main(char args[ ]){ }
-D.private  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/02/26/南京邮电大学java程序设计作业在线编程第一次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/01/为了不跑操而Excel——Orz/">为了不跑操而Excel——Orz</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-01T07:45:07.000Z">2019-03-01</time><i class="fa fa-edit"></i><time datetime="2019-03-01T07:45:07.000Z">2019-09-15</time></div><div class="recent-post-content"> 为了不跑操而Excel——Orz
- 3月1日
- Excel
-
-
-15、16、17、18级分类——筛选、开头是（?15通配符）、制不同表
-
-
-获得50m、800-1000m、身高、肺活量……各年级数据和总的平均值
-
-有的单元框内容虽然看上去像数字(数值靠右)，但其实是文本(文本靠左)，需要做处理后才能进行公示计算——分列
-复杂的重复公示最好还是指明地址
-翻到下一个非空单元格——Ctrl + ↓ 或 ↑
 
 
 
- 3月4日
-文字排版不支持竖版，所以弄成图片后发布的
 
- 4月28日
-图片排版,体育部的网站支持源代码修改,因此可以修改html代码.
-12345678910111213141516171 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/01/为了不跑操而Excel——Orz/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/中文Bois模式界面/">中文Bois模式界面</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T05:40:19.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T05:40:19.000Z">2019-09-15</time></div><div class="recent-post-content">暗夜精灵的Bois界面。觉得还挺友好的。
+已知类person是类student的父类，以下数组定义和赋值正确的是( )。
+A.person p[]=new person[3]; p[1]=new student();
+B.student s[]=new person[3]; s[1]=new person();
+C.person p[]= new student[3];p[1]= new person();
+D.student s[]=new stude ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/06/03/南京邮电大学java程序设计作业在线编程第八次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/yaml基础语法-spring-boot/">yaml基础语法_spring_boot</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:04:35.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:04:35.000Z">2019-09-15</time></div><div class="recent-post-content"> yaml基础语法_spring_boot
 
+yaml aren’t markup language 即yaml不是标语语言：
+xml（标记语言）:
+1234&gt; &lt;server&gt;&gt; 	&lt;port&gt;8888&lt;/port&gt;&gt; &lt;/server&gt;&gt;
 
-
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/01/23/中文Bois模式界面/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/Shell代码编写记录/">Shell代码编写记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T05:48:59.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T05:48:59.000Z">2019-09-15</time></div><div class="recent-post-content"> 随机选取端口
-12345# 随机设置代理和监控端口，允许每台机器有多个代理# 注意:$RANDOM返回一个从0到32767的值，端口&lt;= 1024保留给root用户# TODO:不是随机选择端口，而是绑定到可用端口export SPARK_SERVERPORT=$[$RANDOM + 1025]export SPARK_AGENTPORT=$[$RANDOM + 1025]
- 后台执行,获取其PID
-12345678rcssserver3d --agent-port $SPARK_AGENTPORT --server-port $SPARK_SERVERPORT &amp;# 将rcs ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Shell"> Shell</a></div><div class="read-more"><a class="more" href="/2019/01/23/Shell代码编写记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/24/Python任务调度模块APScheduler/">Python任务调度模块APScheduler</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-24T11:30:06.000Z">2019-02-24</time><i class="fa fa-edit"></i><time datetime="2019-02-24T11:30:06.000Z">2019-09-15</time></div><div class="recent-post-content"> Python任务调度模块APScheduler
-
-APScheduler是一个python的第三方库，用来提供python的后台程序。包含四个组件，分别是：
+java spring boot默认全局配置文件:
 
 
-triggers： 任务触发器组件，提供任务触发方式
-
-triggers（触发器）中包含调度逻辑，每个作业都由自己的触发器来决定下次运行时间。除了他们自己初始配置意外，触发器完全是无状态的。
+application.properties 使用的时 key=value
 
 
-job stores： 任务商店组件，提供任务保存方式
-
-job stores（作业存储器）存储被调度的作业，默认的作业存储器只是简单地把作业保存在内存中，其他的作业存储器则是将作业保存在数据库中。当作业被保存到一个持久化的作业存储器中的时 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/02/24/Python任务调度模块APScheduler/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/Python中对时间戳、时间的处理/">Python中对时间戳、时间的处理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T02:17:34.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T02:17:34.000Z">2019-09-15</time></div><div class="recent-post-content"> Python中对时间戳、时间的处理
- time模块
- 获得时间戳
-123timestmamp = time.time()&gt;&gt;&gt; # 1548208280.4581678
- 将时间戳转换成时间
-12345678import timetimestamp = 1462451334timeArr = time.localtime(timestamp) # 转换成时间数组print(timeArr)# &gt;&gt;&gt;time.struct_time(tm_year=2016, tm_mon=5, tm_mday=5, tm_hour=20, tm_min=28, tm_se ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/01/23/Python中对时间戳、时间的处理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/06/Python-adb操作手机/">Python+adb操作手机</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-06T05:00:09.000Z">2019-02-06</time><i class="fa fa-edit"></i><time datetime="2019-02-06T05:00:09.000Z">2019-09-15</time></div><div class="recent-post-content"> Adb
- wifi连接调试 adb connect {ip}
-如果你不想用usb连接调试，可以选择使用adb 连接调试，命令是 adb connect {ip} ，需要在同一个局域网内。这个功能也比较实用，但首次连接时，需要另外一些配置，建议可以网上搜索下adb wifi连接手机等关键字看看。
- 屏幕截屏 screencap -p {图片存储地址}
-这个其实直接通过手机截屏再发送到电脑就可以了，但我开发的是TV应用，在盒子上没法截屏，所以这个命令对我来说还是较实用的。
- 获取或推送文件 adb pull/push
-这个也挺实用的，获取手机指定位置的文件到电脑上，或者从电脑发送文件到手机上
-  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="模拟操作"> 模拟操作</a></div><div class="read-more"><a class="more" href="/2019/02/06/Python-adb操作手机/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/Matlab基础教程/">Matlab基础教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T05:43:34.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T05:43:34.000Z">2019-09-15</time></div><div class="recent-post-content"> Matlab学习
-1234A = [1 3 5];max(A)ans =     5
-如果存在多个输入参数，请使用逗号加以分隔：
-12345B = [10 6 4];max(A,B)ans =    10     6     5%A中列元素与B中列元素一一比较.
-clc 函数清除命令行窗口。
- 函数
-123disp(&apos;hello world&apos;)hello world要调用不需要任何输入且不会返回任何输出的函数，请只键入函数名称：
- 二维绘图
-
-r--' 字符串为线条设定。每个设定可包含表示线条颜色、样式和标记的字符。标记是在绘制的每个数据点上显示的符号，例如，+、o 或  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Matlab"> Matlab</a></div><div class="read-more"><a class="more" href="/2019/01/23/Matlab基础教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/28/Flask-本地局域网连接/">Flask 本地局域网连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-28T10:43:55.000Z">2019-02-28</time><i class="fa fa-edit"></i><time datetime="2019-02-28T10:43:55.000Z">2019-09-15</time></div><div class="recent-post-content"> Flask 本地局域网连接
-之前都是在活动室的电脑上配好web环境，但其实发现很多比赛只要截图就够了。所以这次看了下能不能用局域网访问。一查果然flask可以通过局域网进行访问
- 使用pycharm的朋友要这样设定
- 1.run-&gt;Edit Configurations
-
- 2.Additional options
-
- 3.运行run（Ctrl+shift+F10）即可
-注:如果没有这样设定   pycharm启动 是不会有作用的（就像这样）地址依旧会是127.0.0.1
- 查看自己的IP地址
- 1.命令行方式
-cmd-&gt;ipconfig-&gt;IPv4
- 2.查网络与共享中心 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/02/28/Flask-本地局域网连接/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/18/Cmake-入门/">Cmake 入门</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-18T08:42:36.000Z">2019-02-18</time><i class="fa fa-edit"></i><time datetime="2019-02-18T08:42:36.000Z">2019-09-15</time></div><div class="recent-post-content"> Cmake 入门
- 入门案例：单个源文件
-例如，假设现在我们的项目中只有一个源文件 main.cc ，该程序的用途是计算一个数的指数幂。
- 1.首先编写 CMakeLists.txt 文件，并保存在与 main.cc 源文件同个目录下
-123456# CMake 最低版本号要求cmake_minimum_required (VERSION 2.8)# 项目信息project (Demo1)# 指定生成目标add_executable(Demo main.cc)
-语法:
-由命令、注释和空格组成，其中命令是不区分大小写的。
+application.yaml:
 
 
-符号 # 后面的内容被认为是注释
+k:v
 
 
-命令由命令名称、小括号和参数组 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/02/18/Cmake-入门/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/Chrome开发者工具Network/">Chrome开发者工具Network</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T05:38:12.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T05:38:12.000Z">2019-09-15</time></div><div class="recent-post-content"> Chrome开发者工具中Network功能介绍
+通过缩进，垂直对齐指定层次关系
 
-第一列Name:请求的名称，一般会将URL的最后一 部分内容当作名称。
-第二列Status: 响应的状态码，这里显示为200，代表响应是正常的。通过状态码，我们可   以判断发送了请求之后是否得到了正常的响应。
-第三列Type: 请求的文档类型。这里为document, 代表我们这次请求的是一个HTML文档,内容就是一些HTML代码。
-第四列initiator: 请求源。用来标记请求是由哪个对象或进程发起的。
-第五列Size: 从服务器下载的文件和请求的资源大小。如果是从缓存中取得的资源，则该列会显示from cache。
-第六列Time:发 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/01/23/Chrome开发者工具Network/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/23/Charles配置/">Charles配置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-23T05:32:21.000Z">2019-01-23</time><i class="fa fa-edit"></i><time datetime="2019-01-23T05:32:21.000Z">2019-09-15</time></div><div class="recent-post-content"> Charles配置
+字符串可以默认不写引号，写引号中的转义符会被翻译：e.g.& ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/07/yaml基础语法-spring-boot/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/Windows下命令行神奇cmder/">Windows下命令行神器cmder</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:17:28.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:17:28.000Z">2019-09-15</time></div><div class="recent-post-content"> Cmder
+ 安装
+http://cmder.net/ 有两个版本，分别是mini与full版
 
- 下载SSL证书
+mini 没有内建msysgit工具，这是Git for Windows的标准配备；
+全安装版 cmder 自带了 msysgit, 压缩包 108M
+除了 git 本身这个命令之外, 里面可以使用大量的 linux 命令；比如 grep, curl(没有 wget)； 像vim, grep, tar, unzip, ssh, ls, bash, perl
+可以交叉使用 cygwin 的部分增强命令
+
+ 把 cmder 加到环境变量
+将解压后的文件夹路径加入到系统环境变量的Path中
+ 添加 c ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="安利"> 安利</a></div><div class="read-more"><a class="more" href="/2019/06/03/Windows下命令行神奇cmder/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/staticmethod和classmethod区别/">staticmethod和classmethod区别</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:06:00.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:06:00.000Z">2019-09-15</time></div><div class="recent-post-content"> staticmethod和classmethod
+
+类的实例化基本遵循创建实例对象、初始化实例对象、最后返回(产生)实例对象这么一个过程
+
+123456789101112131415161718class Test(object):    data = 'world' # 类对象的数据成员    def __init__(self, arg):        self.arg = arg    @staticmethod	# 静态方法，不能访问类数据成员    def func():        print("hello")    @classmethod	# 类方法,能访问类数据成员   ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/07/staticmethod和classmethod区别/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/Python类的继承-super-使用/">Python类的继承-super()使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:03:49.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:03:49.000Z">2019-09-15</time></div><div class="recent-post-content"> Python类的继承即super()使用
+ Super
+
+super() 函数是用于调用父类(超类)的一个方法，只有在新式类中可以使用
+super 是用来解决多重继承问题的，直接用类名调用父类方法在使用单继承的时候没问题，但是如果使用多继承，会涉及到查找顺序（MRO，Method Resolution Order，采用广度优先（区别于深度优先）的规则定义）、重复调用（钻石继承）等种种问题。
+MRO 就是类的方法解析顺序表, 其实也就是继承父类方法时的顺序表。
+
+语法
+以下是 super() 方法的语法:
+1234# 菜鸟教程super(type [, object-or-type])# 个人 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/07/Python类的继承-super-使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/15/Python的构建工具setup-py/">Python的构建工具setup.py</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-15T04:08:44.000Z">2019-06-15</time><i class="fa fa-edit"></i><time datetime="2019-06-15T04:08:44.000Z">2019-09-15</time></div><div class="recent-post-content"> Python的构建工具setup.py
+ setup.py各参数介绍：
+12345678910111213141516171819202122232425--name 库名称，▲需要注意的是不要大写，不然会有坑--version (-V) 包版本--author 程序的作者--author_email 程序的作者的邮箱地址--maintainer 维护者--maintainer_email 维护者的邮箱地址--url 程序的官网地址--license 程序的授权信息--description 程序的简单描述--long_description 程序的详细描述--platforms 程序适用的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/06/15/Python的构建工具setup-py/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Python机器学习及实践——从零开始通往Kaggle竞赛之路/">Python机器学习及实践——从零开始通往Kaggle竞赛之路</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:50:34.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:50:34.000Z">2019-09-15</time></div><div class="recent-post-content"> Python机器学习及实践——从零开始通往Kaggle竞赛之路
+ 监督学习模型
+ 分类
+ 线性模型
+ Logistic
+逻辑回归函数 ： $g(z)=\frac {1}{1+_e^{-z}} $
+逻辑回归模型hw,b(x)=g(f(w,x,b))=11+e−z=11+e−(wTx+b)h_{w,b}(x)=g(f(w,x,b)) = \frac{1}{1+e^{-z}} = \frac {1}{1+e^{-(w^{T}x+b)}}hw,b​(x)=g(f(w,x,b))=1+e−z1​=1+e−(wTx+b)1​
+ 处理缺省值的方法：
+1.缺省值较少时直接删除数据
+12data = data ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/05/27/Python机器学习及实践——从零开始通往Kaggle竞赛之路/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/Oauth2原理、使用/">Oauth2原理、使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:22:30.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:22:30.000Z">2019-09-15</time></div><div class="recent-post-content"> Oauth2原理、使用
+ 原理
+快递员–&gt;门禁–&gt;小区–&gt;我家    &lt;=====&gt; 第三方应用 --&gt; 微信墙 —&gt;账号–&gt;个人数据
+
+简单说，OAuth 就是一种授权机制。数据的所有者告诉系统，同意授权第三方应用进入系统，获取这些数据。系统从而产生一个短期的进入令牌（token），用来代替密码，供第三方应用使用。
+
+ OAuth 的核心就是向第三方应用颁发令牌
+ 令牌特点：
+（1）令牌是短期的，到期会自动失效，用户自己无法修改。密码一般长期有效，用户不修改，就不会发生变化。
+（2）令牌可以被数据所有者撤销，会立即失效。以上例而言，屋主可以随 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/06/03/Oauth2原理、使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/lua学习/">lua学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:22:03.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:22:03.000Z">2019-09-15</time></div><div class="recent-post-content"> lua学习
+
+动态脚本语言，可嵌入C和C++，Lua负责逻辑，C、C++负责功能
+C编译，跨平台性良好
+
+12345678910111213141516-- 循环结构 [1,10]for i=1,10 do	print(i)end-- 函数function function_name( ... )	-- bodyend-- 选择结构if	elseend
+ 表{} &lt;==&gt;字典
+12345678910Conftg=&#123; hello="Hello Lua", world="World"&#125;Config.words="Hello"Config.num=180Config ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="lua"> lua</a></div><div class="read-more"><a class="more" href="/2019/06/03/lua学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Keras使用——图像增强/">Keras使用——图像增强</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:52:14.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:52:14.000Z">2019-09-15</time></div><div class="recent-post-content"> Keras使用——图像增强
+ 使用Keras进行深度学习的图像增强（Image Augmentation）
+
+Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。
+Keras为支持快速实验而生，能够把你的idea迅速转换为结果，如果你有如下需求，请选择Keras：
+
+简易和快速的原型设计（keras具有高度模块化，极简，和可扩充特性）
+支持CNN和RNN，或二者的结合
+无缝CPU和GPU切换
 
 
- 设置SSL端口
+ ImageDataGenerator
+Keras提供了ImageDataGenerator类，定义关于图片准备和增强的配置 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图像处理"> 图像处理</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="深度学习"> 深度学习</a></div><div class="read-more"><a class="more" href="/2019/05/27/Keras使用——图像增强/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/Java课程第二次实验报告/">Java课程第二次实验报告</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T00:58:21.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T00:58:21.000Z">2019-09-15</time></div><div class="recent-post-content"> Java课程第二次实验报告
+ 1.寻找并输出11~999之间的数m，它满足m、m2、m3均为回文数。回文数是各位数字左右对称的整数。判断是否为回文要求通过编写方法来完成。
+123456789101112131415161718public class HelloWorld &#123;	public static boolean isPalindrome(int s) &#123;		String str = Integer.toString(s);		if( str.charAt(0) == str.charAt(str.length() - 1) )			return true;		el ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/04/25/Java课程第二次实验报告/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/Java课程第三次实验报告/">Java课程第三次实验报告</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:21:19.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:21:19.000Z">2019-09-15</time></div><div class="recent-post-content"> Java课程第三次实验报告
+\1. 在前面实验二已定义的学生类Student的基础上，以Student类为父类，为学生类派生出一个子类为大学生类（CollegeStudent）。
+CollegeStudent 类在学生类上增加一个专业（profession）数据属性；方法上增加获得专业和设置专业两个方法。并对超类中的toString( )方法进行重写，使得CollegeStudent类中的toString( )方法除了显示学生类的信息外，还要显示它的专业属性。
+编写测试程序的主类。在主类中创建一个Student对象和CollegeStudent对象，并显示或修改这两个对象的属性值。
+1234 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/06/03/Java课程第三次实验报告/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/15/Base64编码原理与应用[转]/">Base64编码原理与应用[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-15T04:08:53.000Z">2019-06-15</time><i class="fa fa-edit"></i><time datetime="2019-06-15T04:08:53.000Z">2019-09-15</time></div><div class="recent-post-content"> Base64编码原理与应用[转]
+2015年，我们在青云平台上实现了“百度云观测”应用。青云应用本质上是一个iframe，在向iframe服务方发送的请求中会携带一些数据，青云平台会使用Base64 URL对这些数据进行编码，其提供的编码解码算法示例如下：
+12345678// php版本function base64_URL_encode($data) &#123;  return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');&#125;function base64_URL_decode($data) &#123;  retur ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2019/06/15/Base64编码原理与应用[转]/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-强连通分量/">ACM-强连通分量</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T01:27:03.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T01:27:03.000Z">2019-09-15</time></div><div class="recent-post-content"> Tarjan 算法&amp;模板
 
-*为通配IP网址，一般SSL的端口都是443
-手机抓包
+Tarjan 算法一种由Robert Tarjan提出的求解有向图强连通分量的算法，它能做到线性时间的复杂度。
 
- 打开Charles代理
-
-具体配置，电脑端不用做任何配置，但是需要把防火墙关掉（这点很重要）！
-charles需要设置下代理端口：进入Proxy，点击Proxy Setting, 端口设置为8888（一般默认为这个）
- 配置手机SSL证书
-
-然后手机打开浏览器输入chls.pro/ssl下载证书
- 小米手机安装charles证书
-
-1.使用第三方浏览器下载.pem 格式的文件 （我使用的是QQ浏览器）
-2.将这个文件放入小米的 DownLoad 文件夹下 (这步也可以不 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2019/01/23/Charles配置/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/24/C++日期操作/">C++日期操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-24T07:00:56.000Z">2019-01-24</time><i class="fa fa-edit"></i><time datetime="2019-01-24T07:00:56.000Z">2019-09-15</time></div><div class="recent-post-content"> C++日期操作
-12345678910111213int main( )&#123;      time_t now = time(0);	// 基于当前系统的当前日期/时间 的时间戳   cout &lt;&lt; "1970 到目前经过秒数:" &lt;&lt; now &lt;&lt; endl;   tm *ltm = localtime(&amp;now);// 将时间戳转换为结构体,再输出 tm 结构的各个组成部分   cout &lt;&lt; "年: "&lt;&lt; 1900 + ltm-&gt;tm_year &lt;&lt; endl;   cout &lt;&lt; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="程序开发经验"> 程序开发经验</a></div><div class="read-more"><a class="more" href="/2019/01/24/C++日期操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/01/ACM-贪心专题/">ACM_贪心专题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-01T12:17:50.000Z">2019-02-01</time><i class="fa fa-edit"></i><time datetime="2019-02-01T12:17:50.000Z">2019-09-15</time></div><div class="recent-post-content"> 贪心专题
- 1.活动安排
-有若干个活动，第i个开始时间和结束时间是[Si,fi)，只有一个教室，活动之间不能交叠，求最多安排多少个活动？
-Input
-123第一行一个正整数n (n &lt;= 10000)代表活动的个数。第二行到第(n + 1)行包含n个开始时间和结束时间。开始时间严格小于结束时间，并且时间都是非负整数，小于1000000000
-Output
-1一行包含一个整数表示活动个数。
-Input示例
-123431 23 42 9
-Output示例
-12
-博主提供:
-1234567891011121314151617181920212223242526272829303132#inc ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="贪心"> 贪心</a></div><div class="read-more"><a class="more" href="/2019/02/01/ACM-贪心专题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/03/ACM-动态规划/">ACM_动态规划</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-03T07:49:10.000Z">2019-02-03</time><i class="fa fa-edit"></i><time datetime="2019-02-03T07:49:10.000Z">2019-09-15</time></div><div class="recent-post-content">图解动态规划 : http://www.sohu.com/a/153858619_466939
- 动态规划 :
-
-最优子结构
-边界
-状态转移方程式
-
- 题目二： 国王和金矿
-有一个国家发现了5座金矿，每座金矿的黄金储量不同，需要参与挖掘的工人数也不同。参与挖矿工人的总数是10人。每座金矿要么全挖，要么不挖，不能派出一半人挖取一半金矿。要求用程序求解出，要想得到尽可能多的黄金，应该选择挖取哪几座金矿？
-
- 解法一: 排列组合
-时间复杂度 : O(2^N)
- 解法二 : DP
- 1.找到最优子结构
-
-10人4金矿(有一个金矿没挖)
-10-3人4金矿(挖了一个金矿)
-
- 2.最优选择
-5个金矿的最优 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="DP"> DP</a></div><div class="read-more"><a class="more" href="/2019/02/03/ACM-动态规划/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/8/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/10/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+如果两个顶点可以相互通达，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly connected components)。
+1234567891011121314151617181920212223void Tarjan ( int x ) &#123;         dfn[ x ] = ++dfs_num ;       ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-强连通分量/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/8/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/10/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

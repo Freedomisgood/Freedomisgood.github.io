@@ -97,7 +97,11 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2021/12/27/Kotlin集合、流式操作/">Kotlin集合、流式操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-27T03:14:40.000Z">2021-12-27</time><i class="fa fa-edit"></i><time datetime="2021-12-27T03:14:40.000Z">2022-01-03</time></div><div class="recent-post-content">除了最通用的Array以外，kotlin中还有一类容器统称为Colletion(集合)，他们有
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2022/01/26/语义化的版本控制/">语义化的版本控制</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-01-26T14:30:00.000Z">2022-01-26</time><i class="fa fa-edit"></i><time datetime="2022-01-26T14:30:00.000Z">2022-01-26</time></div><div class="recent-post-content">语义化的版本控制： 用一组简单的规则及条件来约束版本号的配置和增长
+
+作为一位负责任的开发者，你理当确保每次包升级的运作与版本号的表述一致。现实世界是复杂的，我们除了提高警觉外能做的不多。你所能做的就是让语义化的版本控制为你提供一个健全的方式来发行以及升级包，而无需推出新的依赖包，节省你的时间及烦恼。
+如果没有某个正式的规范可循，版本号对于依赖的管理并无实质意义。将上述的想法命名并给予清楚的定义，让你对软件使用者传达意向变得容易。一旦这些意向变得清楚，弹性（但又不会太弹性）的依赖规范就能达成。
+如果你对此认同，希望立即开始使用语义化版本控制，你只需声明你的函数库正在使用它并遵循这些规则就可以了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2022/01/26/语义化的版本控制/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/27/Kotlin集合、流式操作/">Kotlin集合、流式操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-27T03:14:40.000Z">2021-12-27</time><i class="fa fa-edit"></i><time datetime="2021-12-27T03:14:40.000Z">2022-01-03</time></div><div class="recent-post-content">除了最通用的Array以外，kotlin中还有一类容器统称为Colletion(集合)，他们有
 
 List
 
@@ -111,7 +115,14 @@ Set：继承Collection。一个无序并不支持重复元素的集合
 MutableSet：继承Set，MutableCollection，一个无序的集合并且不支持重复元素。但是，支持add/remove元素
 
 
-Map ...</div><div class="read-more"><a class="more" href="/2021/12/27/Kotlin集合、流式操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/SpringCloud笔记/">SpringCloud笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T15:14:51.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T15:14:51.000Z">2021-12-30</time></div><div class="recent-post-content">
+Map ...</div><div class="read-more"><a class="more" href="/2021/12/27/Kotlin集合、流式操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/01/03/Springboot-Kotlin-Mockito/">Springboot-Kotlin-Mockito</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-01-03T09:19:10.000Z">2022-01-03</time><i class="fa fa-edit"></i><time datetime="2022-01-03T09:19:10.000Z">2022-01-03</time></div><div class="recent-post-content">初识 Mockito 这个测试框架后，我们要使用 Mock 的属性创建一个被测试类实例时，大概会下面这么纯手工来打造。
+手工过程见: https://www.jianshu.com/p/bb705a56f620
+如果所有的 Mock 对象全部通过手工来创建，那就不容易体现出 Mockito 的优越性出来。因此对于被测试对象的创建，Mock 属性的注入应该让 @Mock 和 @InjectMocks这两个注解大显身手了。
+ Mockito能力
+
+@Mock：对函数的调用均执行mock（即虚假函数），不执行真正部分。
+@Spy：对函数的调用均执行真正部分。
+@InjectMocks：创建一个实例， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2022/01/03/Springboot-Kotlin-Mockito/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/SpringCloud笔记/">SpringCloud笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T15:14:51.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T15:14:51.000Z">2021-12-30</time></div><div class="recent-post-content">
 笔记内容大多来自：尚硅谷SpringCloud框架开发教程
 跟做笔记：https://blog.csdn.net/MOKEXFDGH/article/details/107209899
 跟做工程代码： https://github.com/liusCoding/springcloud-2020、https://gitee.com/exclusiver/springcloud2020
@@ -218,37 +229,7 @@ Sprite精灵，游戏开发中指一张图片
 
 Sprite Render 图片渲染器，是用来渲染图片的组件
 
-1234567891011// 随机生成怪物头像void createMonster()&#123;    float x = Random.Range(-2, 2);    float y = 5;    GameObject monster = Instantiate( ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Unity"> Unity</a></div><div class="read-more"><a class="more" href="/2021/12/16/Unity游戏开发学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/02/Mongodb学习/">Mongodb学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-02T03:17:52.000Z">2021-12-02</time><i class="fa fa-edit"></i><time datetime="2021-12-02T03:17:52.000Z">2021-12-22</time></div><div class="recent-post-content"> Mongodb学习
- 创建数据库-集合（表）
-
-
-使用指定数据库（没有会创建）: use DATABASE_NAME, 如果数据库不存在，则创建数据库，否则切换到指定数据库。
-
-如: use douban， 此时db就变成了douban，之后db.xxxx()都默认在这个数据库下操作
-
-
-
-查看所有数据库，可以使用 show dbs
-
-
-创建集合：db.createCollection(name, options)
-
-
-随意创建集合， db.createCollection(&quot;top250&quot;);
-
-
-options 可以是如下参数：
-
-
-
-字段
-类型
-描述
-
-
-
-
-cap ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a></div><div class="read-more"><a class="more" href="/2021/12/02/Mongodb学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/12/软件架构课程学习笔记/">软件架构课程学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-12</time><i class="fa fa-edit"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-13</time></div><div class="recent-post-content"> 术语
+1234567891011// 随机生成怪物头像void createMonster()&#123;    float x = Random.Range(-2, 2);    float y = 5;    GameObject monster = Instantiate( ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Unity"> Unity</a></div><div class="read-more"><a class="more" href="/2021/12/16/Unity游戏开发学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/12/软件架构课程学习笔记/">软件架构课程学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-12</time><i class="fa fa-edit"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-13</time></div><div class="recent-post-content"> 术语
 –微服务
 –云化
 –分布式
@@ -331,9 +312,4 @@ Excel中的宏指的是一段操作过程
 VBA 中，过程是一切的开始，几乎所有的代码，都会被写在一个或多个过程里。实际开发中，通常一个过程，建议只完成一个特定的小目标。因此，我们的程序往往会包含多个过程。这就是 VBA 中过程概念存在的一个原因。
 VBA 过程以 Sub 语句开始，以 End Sub 语句结束，包含一个或多个语句，完成一个特定的目标。
 接受参数的过程基本语法如下：
-123456Sub [过程名]([ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/12/04/VBA学习——正则提取单元格指定内容并加粗/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/02/Gradle学习/">Gradle学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-02T03:16:31.000Z">2021-12-02</time><i class="fa fa-edit"></i><time datetime="2021-12-02T03:16:31.000Z">2021-12-02</time></div><div class="recent-post-content"> Gradle学习
-在kotlin中使用mapstruct出现了些问题， 网上搜寻后得到结论：需要使用kapt(Kotlin annotation processing tool 即kotlin注解处理工具)， 但给出的大多都是通过Gradle来进行配置的。因此借此机会学习了下Gradle：
- plugins和apply plugin:
-
-由于文档写到了， 由于不清楚这些在哪些位置加入， 因此查看了plugins和apply plugin:的区别：
-1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2021/12/02/Gradle学习/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+123456Sub [过程名]([ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/12/04/VBA学习——正则提取单元格指定内容并加粗/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

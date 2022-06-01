@@ -106,7 +106,31 @@
 
 
 
-使用browsercookie来管理浏览器cookies——从浏览器提取保存的cookies的工具。它是一个很有 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="代码阅读"> 代码阅读</a></div><div class="read-more"><a class="more" href="/2022/03/29/开源项目代码阅读记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/29/mitmproxy拦截代理——PC版HttpCanary/">mitmproxy拦截代理——PC版HttpCanary</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-29T12:52:09.000Z">2022-04-29</time><i class="fa fa-edit"></i><time datetime="2022-04-29T12:52:09.000Z">2022-05-23</time></div><div class="recent-post-content"> HttpCanary
+使用browsercookie来管理浏览器cookies——从浏览器提取保存的cookies的工具。它是一个很有 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="代码阅读"> 代码阅读</a></div><div class="read-more"><a class="more" href="/2022/03/29/开源项目代码阅读记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/03/23/JS逆向-webpack打包网站实战/">JS逆向-webpack打包网站实战</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-23T08:21:50.000Z">2022-03-23</time><i class="fa fa-edit"></i><time datetime="2022-03-23T08:21:50.000Z">2022-05-29</time></div><div class="recent-post-content">[TOC]
+ Webpack逆向
+webpack打包是前端js模块化压缩打包常用的手段，特征明显，比如下方的形式的代码就是webpack分发器
+123456// 分发器!function(x)&#123;    function xx(n)&#123;        return ..call(**.exports, ***, ***.exports, xx)    &#125;&#125;()
+又或者更直观的表现n[“xxx”]这种，你可以大概知道了这是调用了webpack打包的js模块代码。
+webpack打包后JS依赖模块代码的固定结构：
+12345678(this["webpackJs ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/03/23/JS逆向-webpack打包网站实战/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/03/27/Python进阶/">Python进阶</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-27T14:30:39.000Z">2022-03-27</time><i class="fa fa-edit"></i><time datetime="2022-03-27T14:30:39.000Z">2022-05-26</time></div><div class="recent-post-content"> xxxatrr家族
+ hasattr()
+
+用于判断对象是否包含对应的属性。
+
+hasattr 语法：hasattr(object, name)
+ setattr()
+
+setattr() 函数对应函数 getattr()，用于设置属性值，该属性不一定是存在的。如果属性不存在会创建一个新的对象属性，并对属性进行赋值。
+
+setattr() 语法：setattr(object, name, value)
+ getattr()
+
+getattr() 函数用于返回一个对象属性值。
+
+getattr(object, name[, default])
+
+object – 对象。
+name – 字符串， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2022/03/27/Python进阶/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/29/mitmproxy拦截代理——PC版HttpCanary/">mitmproxy拦截代理——PC版HttpCanary</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-29T12:52:09.000Z">2022-04-29</time><i class="fa fa-edit"></i><time datetime="2022-04-29T12:52:09.000Z">2022-05-23</time></div><div class="recent-post-content"> HttpCanary
 HttpCanary是Android系统下功能最强大的网络分析工具(IOS的是Thro)，支持TCP/UDP/HTTP/HTTPS/WebSocket等多种协议，可以视为Android平台下的Fiddler和Charles。
 ★强大的调试功能
 
@@ -242,15 +266,4 @@ SSH连接并不是像http连接一样，输入用户名和密码就可以了。S
 
 
 编写.proto文件， 如下所示
-1234567891011121314151617syntax = &quot;proto3&quot;;# 注意, 这边使用的是go_package, 类似的还有jav ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a></div><div class="read-more"><a class="more" href="/2022/02/22/protoc的使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/01/26/语义化的版本控制/">语义化的版本控制</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-01-26T14:30:00.000Z">2022-01-26</time><i class="fa fa-edit"></i><time datetime="2022-01-26T14:30:00.000Z">2022-01-26</time></div><div class="recent-post-content">语义化的版本控制： 用一组简单的规则及条件来约束版本号的配置和增长
-
-作为一位负责任的开发者，你理当确保每次包升级的运作与版本号的表述一致。现实世界是复杂的，我们除了提高警觉外能做的不多。你所能做的就是让语义化的版本控制为你提供一个健全的方式来发行以及升级包，而无需推出新的依赖包，节省你的时间及烦恼。
-如果没有某个正式的规范可循，版本号对于依赖的管理并无实质意义。将上述的想法命名并给予清楚的定义，让你对软件使用者传达意向变得容易。一旦这些意向变得清楚，弹性（但又不会太弹性）的依赖规范就能达成。
-如果你对此认同，希望立即开始使用语义化版本控制，你只需声明你的函数库正在使用它并遵循这些规则就可以了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2022/01/26/语义化的版本控制/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/01/03/Springboot-Kotlin-Mockito/">Springboot-Kotlin-Mockito</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-01-03T09:19:10.000Z">2022-01-03</time><i class="fa fa-edit"></i><time datetime="2022-01-03T09:19:10.000Z">2022-01-03</time></div><div class="recent-post-content">初识 Mockito 这个测试框架后，我们要使用 Mock 的属性创建一个被测试类实例时，大概会下面这么纯手工来打造。
-手工过程见: https://www.jianshu.com/p/bb705a56f620
-如果所有的 Mock 对象全部通过手工来创建，那就不容易体现出 Mockito 的优越性出来。因此对于被测试对象的创建，Mock 属性的注入应该让 @Mock 和 @InjectMocks这两个注解大显身手了。
- Mockito能力
-
-@Mock：对函数的调用均执行mock（即虚假函数），不执行真正部分。
-@Spy：对函数的调用均执行真正部分。
-@InjectMocks：创建一个实例， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2022/01/03/Springboot-Kotlin-Mockito/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+1234567891011121314151617syntax = &quot;proto3&quot;;# 注意, 这边使用的是go_package, 类似的还有jav ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a></div><div class="read-more"><a class="more" href="/2022/02/22/protoc的使用/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

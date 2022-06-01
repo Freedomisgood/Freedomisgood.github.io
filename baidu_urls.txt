@@ -11,6 +11,8 @@ https://nymrli.top/2022/04/05/翻译-设计Pastebin-com-or-Bit-ly-系统/
 https://nymrli.top/2022/04/05/理了一天彻底弄懂元类——分享给你一起弄懂/
 https://nymrli.top/2022/04/04/PlantUML作图/
 https://nymrli.top/2022/03/29/开源项目代码阅读记录/
+https://nymrli.top/2022/03/27/Python进阶/
+https://nymrli.top/2022/03/23/JS逆向-webpack打包网站实战/
 https://nymrli.top/2022/03/19/2022年3月19日-20日爬虫项目记录/
 https://nymrli.top/2022/02/27/深入学习使用Spring/
 https://nymrli.top/2022/02/26/研究生work——地图匹配/
@@ -46,5 +48,3 @@ https://nymrli.top/2021/11/26/前端-跨域/
 https://nymrli.top/2021/11/25/党员在线培训课程-免除暂停烦恼/
 https://nymrli.top/2021/11/04/Linux-iptables学习/
 https://nymrli.top/2021/11/02/浙江大学期末考试——Go语言/
-https://nymrli.top/2021/10/26/k8s之kube-proxy源码分析/
-https://nymrli.top/2021/10/25/CICD-Jenkins与Travis/

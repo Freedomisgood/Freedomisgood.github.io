@@ -244,7 +244,16 @@ Go 语言被设计成一门应用于搭载 Web 服务器，存储集群或类似
 
 由于将docker的构建放到了服务器上，因此这部分可以理解为是构建打包环境
 
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2021/09/21/docker部署springboot项目/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/08/《人工智能-模型与算法——浙江大学公开课》笔记/">《人工智能:模型与算法——浙江大学公开课》笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-08T07:06:21.000Z">2020-12-08</time><i class="fa fa-edit"></i><time datetime="2020-12-08T07:06:21.000Z">2021-09-12</time></div><div class="recent-post-content">
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2021/09/21/docker部署springboot项目/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/27/物联网基础与应用-课程笔记/">物联网基础与应用-课程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-27T15:44:21.000Z">2021-09-27</time><i class="fa fa-edit"></i><time datetime="2021-09-27T15:44:21.000Z">2021-10-11</time></div><div class="recent-post-content"> IOT课上实验
+ 交叉编译环境
+ 什么是交叉编译环境？
+交叉编译其实是相对于本地编译(native build)来说的，大家最开始学习 C/C++ 这些语言的时候，都是在自己的笔记本上写程序，然后在直接在电脑上编译生成可执行文件，最后在电脑上运行。整个流程为：程序的编辑-&gt;编译-&gt;运行，整个过程都是在一台 X86 电脑上。
+当我们开始接触嵌入式开发后，事情变的不一样了。你在电脑上写程序，在电脑上编译出可执行文件，最后这个可执行文件需要下载到你的开发板上运行。程序最后运行的环境变了，比如你的开发板是基于 Arm 的——程序在 X86 上编辑，编译，最终运行在另一个和 X86 完全不 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式开发"> 嵌入式开发</a></div><div class="read-more"><a class="more" href="/2021/09/27/物联网基础与应用-课程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/26/学点Gradle/">学点Gradle</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-26</time><i class="fa fa-edit"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-27</time></div><div class="recent-post-content"> Gradle学习
+在kotlin中使用mapstruct出现了些问题， 网上搜寻后得到结论：需要使用kapt(Kotlin annotation processing tool 即kotlin注解处理工具)， 但给出的大多都是通过Gradle来进行配置的。因此借此机会学习了下Gradle：
+ plugins和apply plugin:
+
+由于文档写到了， 由于不清楚这些在哪些位置加入， 因此查看了plugins和apply plugin:的区别：
+1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="read-more"><a class="more" href="/2021/09/26/学点Gradle/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/08/《人工智能-模型与算法——浙江大学公开课》笔记/">《人工智能:模型与算法——浙江大学公开课》笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-08T07:06:21.000Z">2020-12-08</time><i class="fa fa-edit"></i><time datetime="2020-12-08T07:06:21.000Z">2021-09-12</time></div><div class="recent-post-content">
                             .mjpage .MJX-monospace {
                             font-family: monospace
                             }
@@ -310,34 +319,10 @@ GoF的《设计模式》就是设计模式的始祖、经典教科书。其描�
  单例模式
  虚拟场景：
 读取配置文件的内容（假设系统采用的是properties格式的配置文件）
-1234567891011121314151617181920212223242526272829303132333435363738394041424 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/11/细品单例模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/03/Lets-learn-设计模式/">Lets learn 设计模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-03</time><i class="fa fa-edit"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-11</time></div><div class="recent-post-content">
-《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记
-
- 设计模式是什么？
-模式：从字面上理解，模，就是模型、模板的意思；式，就是方式、方法的意思。综合起来，所谓模式就是：可以作为模型或模板的方式或方法。再简单点说就是可以用来作为样板的方式或方法，类似于大家所熟悉的范例。
-所以设计模式就是设计方面的模板，具体定义为：是指在软件开发中，经过验证的，用于解决在特定环境下、重复出现的、特定问题的解决方案。
- 每个设计模式的构成如下：
-1、模式名称：模式的一个好记的名字
-2、环境和问题：描述在什么环境下，出现什么特定的问题
-3、解决方案：描述如何解决问题
-4、效果：描述 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/03/Lets-learn-设计模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/05/理解科学计算中的dim参数/">理解科学计算(numpy,pytorch)中的dim参数</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-05</time><i class="fa fa-edit"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-10</time></div><div class="recent-post-content">
+1234567891011121314151617181920212223242526272829303132333435363738394041424 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/11/细品单例模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/05/理解科学计算中的dim参数/">理解科学计算(numpy,pytorch)中的dim参数</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-05</time><i class="fa fa-edit"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-10</time></div><div class="recent-post-content">
 😄理解numpy中array和pytorch中tensor的操作是开始科学运算的第一步!
 
 首先明白维度的感念：
  维度
 我们通常能听到的都是2D, 3D，其实这边的D就是dimension的含义即维度。2D，我们通常理解为是平面，如我们最熟悉的直角坐标系就是平面坐标系，还有极坐标系。而3D呢，就是在平面的基础上增加了一维——高度，从而使平面的物体立起来了，同样3D也有耳熟能详的坐标系——3维坐标系。
-更官方的解释呢：维度（Dimension），又称为维数，是数学中独立参数的数目。在物理学和哲学的领域内，指独立的时空坐标的数目。0维是一个无限小的点，没有长度。1维是一条无限长的线，只有长度 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/05/理解科学计算中的dim参数/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/玩玩油猴脚本/">玩玩油猴脚本Tampermonkey</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time></div><div class="recent-post-content">
-由于在研究如何优化网盘直链下载助手**baidupan，如何将直链的结果提取出来供IDM批量下载。由于baidupan**是用油猴脚本写的，因此借机学习一下。
-
-
- Greasy Fork
-
-这里是一个提供用户脚本的网站。
-
- Tampermonkey
-
-其为浏览器插件，目前主流浏览器皆支持，油猴叫法来源：「油猴」是从「Greasemonkey」来的。「Greasemonkey」最初是运行在Firefox浏览器中的脚本，「Tampermonkey」在Google Chrome浏览器上实现了几乎相同的功能，所以也被中文用户称之为「油猴」。
-
- 新建：
-
-12345678910111213141 ...</div><div class="read-more"><a class="more" href="/2020/12/01/玩玩油猴脚本/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/3/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/5/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+更官方的解释呢：维度（Dimension），又称为维数，是数学中独立参数的数目。在物理学和哲学的领域内，指独立的时空坐标的数目。0维是一个无限小的点，没有长度。1维是一条无限长的线，只有长度 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/05/理解科学计算中的dim参数/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/3/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/5/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

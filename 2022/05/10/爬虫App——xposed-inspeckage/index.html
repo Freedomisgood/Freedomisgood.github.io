@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>爬虫App——夜神模拟器xposed+inspeckage · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">爬虫App——夜神模拟器xposed+inspeckage</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/05/10</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,207</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><p>头一次接触到App参数加密的，因此需要对加密参数进行反编译，了解到有工具inspeckage可以方便的来找寻加密参数。而其使用的条件为</p>
+<ul>
+<li>手机已ROOT</li>
+<li>在Xposed框架下运行</li>
+</ul>
+<p>于是开始在夜神模拟器上捣鼓安装xposed、inspeckage。</p>
+<h2 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h2>
+<h3 id="xposed框架"><a class="markdownIt-Anchor" href="#xposed框架"></a> xposed框架</h3>
+<p>在不少地方都下载了xposed框架，但都不太使用，后来了解到模拟器的xposed是专用的，根据夜神模拟器官网介绍的<a href="https://support.yeshen.com/zh-CN/qt/xp" target="_blank" rel="noopener">夜神模拟器如何安装xposed框架</a>后，决定还是在<strong>模拟器的应用商店</strong>进行安装xposed，下载安装后的名称为&quot;xposed 派大星&quot;。</p>
+<p>下载安装后立马打开还是会显示没安装，需要点击&quot;安装/更新&quot;下的选项进行安装才行。在安装完成后再选择<strong>重启模拟器</strong>。</p>
+<h3 id="inspeckage模块"><a class="markdownIt-Anchor" href="#inspeckage模块"></a> inspeckage模块</h3>
+<blockquote>
+<p>Inspeckage是一个用于提供Android应用程序动态分析的工具。通过对Android API的函数使用hook技术，帮助用户了解应用程序在运行时的行为——crypto菜单栏下会hook捕捉常见的加密，Hash菜单栏下会hook捕捉常见的hash。</p>
+</blockquote>
+<p>原以为需要额外去搜寻下载，后来发现推荐的都是安装好xposed软件后，在其菜单栏的&quot;下载&quot;中搜寻&quot;inspeckage&quot;模块使用（搜索结果为Inspeckage-Andriod package inspector）后安装，安装成功切换到菜单栏的&quot;模块&quot;中，勾选&quot;inspeckage&quot;后<strong>重启模拟器</strong>。</p>
+<p>注：xposed的作用只是为了给inspeckage提供运行环境。</p>
+<h2 id="启动inspeckage"><a class="markdownIt-Anchor" href="#启动inspeckage"></a> 启动inspeckage</h2>
+<blockquote>
+<p>参考：Inspeckage插件的运用</p>
+</blockquote>
+<ol>
+<li>
+<p>打开模拟器的inspeckage程序，<code>choose target</code>：选择目标app程序</p>
+<p><img src="/2022/05/10/爬虫App——xposed-inspeckage/E:%5Chexo%5Csource_posts%5C%E7%88%AC%E8%99%ABApp%E2%80%94%E2%80%94xposed-inspeckage%5C%E6%A8%A1%E6%8B%9F%E5%99%A8inspeckage.jpg" alt="模拟器inspeckage"></p>
+</li>
+<li>
+<p>点击&quot;Lauch APP&quot;打开要捕获程序</p>
+</li>
+<li>
+<p>在宿主机cmd里面输入命令<code>adb forward tcp:8008 tcp:8008</code>，然后在浏览器里输入http://127.0.0.1:8008 就会看到Inspeckage的界面</p>
+</li>
+</ol>
+<p><img src="/2022/05/10/爬虫App——xposed-inspeckage/E:%5Chexo%5Csource_posts%5C%E7%88%AC%E8%99%ABApp%E2%80%94%E2%80%94xposed-inspeckage%5Cinspeckage%E7%BD%91%E9%A1%B5.png" alt="inspeckage网页"></p>
+<p>注：得手动点击ON才能实时抓信息。</p>
+<p>更多介绍见：<a href="https://blog.csdn.net/tom__chen/article/details/78216732" target="_blank" rel="noopener">Inspeckage使用笔记（app安全检测工具）</a></p>
+<h2 id="使用inspeckage"><a class="markdownIt-Anchor" href="#使用inspeckage"></a> 使用inspeckage</h2>
+<p>菜单页说明</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">模块名</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Logcat</td>
+<td style="text-align:center">查看该app的logcat输出</td>
+</tr>
+<tr>
+<td style="text-align:center">Tree View</td>
+<td style="text-align:center">浏览app的数据目录并直接下载文件到本地</td>
+</tr>
+<tr>
+<td style="text-align:center">Package Information</td>
+<td style="text-align:center">应用基本信息（组件信息、权限信息、共享库信息）</td>
+</tr>
+<tr>
+<td style="text-align:center">Shared Preferences</td>
+<td style="text-align:center">LOG：app XML文件读写记录；Files：具体XML写入内容</td>
+</tr>
+<tr>
+<td style="text-align:center">Serialization</td>
+<td style="text-align:center">反序列化记录</td>
+</tr>
+<tr>
+<td style="text-align:center">Crypto</td>
+<td style="text-align:center">常见加解密记录，AES、DES、RSA（KEY、IV值）</td>
+</tr>
+<tr>
+<td style="text-align:center">Hash</td>
+<td style="text-align:center">常见的哈希算法记录</td>
+</tr>
+<tr>
+<td style="text-align:center">SQLite</td>
+<td style="text-align:center">SQLite数据库操作记录</td>
+</tr>
+<tr>
+<td style="text-align:center">HTTP</td>
+<td style="text-align:center">HTTP网络请求记录</td>
+</tr>
+<tr>
+<td style="text-align:center">File System</td>
+<td style="text-align:center">文件读写记录</td>
+</tr>
+<tr>
+<td style="text-align:center">Misc.</td>
+<td style="text-align:center">调用Clipboard,URL.Parse()记录</td>
+</tr>
+<tr>
+<td style="text-align:center">WebView</td>
+<td style="text-align:center">调用webview内容</td>
+</tr>
+<tr>
+<td style="text-align:center">IPC</td>
+<td style="text-align:center">进程之间通信记录</td>
+</tr>
+<tr>
+<td style="text-align:center">+Hooks</td>
+<td style="text-align:center">运行过程中用户自定义Hook记录</td>
+</tr>
+</tbody>
+</table>
+<p>注：inspeckage主要是用来hook加密的，对hash检测的效果可能不是很好——AXHC</p>
+<p><strong>使用说明</strong>：</p>
+<p>如果是要参看加密前的数据（解密数据），可以直接查看Crypto菜单栏下的内容，搜索你所需要找的加密参数就可以得到原文和使用的加密、Hash类型，直接秒杀！</p>
+<p>比如:<code>Algorithm( MD5 ) [eexssdsd : zxcxzc]</code>，说明使用的算法为MD5， <code>[plaintext : encrypted]</code></p>
+<p><strong>原理分析</strong>：那么这个效果是怎么做到的呢？其实很简单，就是直接将Java标准库中常见的被用于生成加密参数的方法给Hook了，监听它们的输入参数和返回值，这样就能直接得到加密、Hash前的原文、密钥、IV等内容了，怎么样？是不是很简单？——相对于反编译app，自己再看代码实现简单、快捷多了。</p>
+<p><strong>实战</strong>：</p>
+<ul>
+<li>解析sign参数的明文：<a href="https://blog.csdn.net/qq_38832624/article/details/100897605" target="_blank" rel="noopener">https://blog.csdn.net/qq_38832624/article/details/100897605</a></li>
+<li><a href="https://blog.csdn.net/fatesunlove/article/details/105146882" target="_blank" rel="noopener">inspeckage使用实战两例</a></li>
+<li><a href="https://blog.csdn.net/z434890/article/details/100528704" target="_blank" rel="noopener">app反编译实战三：工具inspeckage的使用</a>——识货MD5参数解析</li>
+<li>Jadx反编译：<a href="https://cloud.tencent.com/developer/article/1447630?from=article.detail.1548593" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1447630?from=article.detail.1548593</a></li>
+<li>视频教程：
+<ul>
+<li><a href="https://space.bilibili.com/175052335" target="_blank" rel="noopener">APP逆向解密 安卓HOOK</a>——恰恰小视频，复合加密: MD5(password, “saltA” + phoneNum + “saltB”)</li>
+<li><a href="https://www.bilibili.com/video/BV1Qa4y1J7bc?spm_id_from=333.337.search-card.all.click" target="_blank" rel="noopener">安卓逆向 HOOK APP加密字段sign解密</a>——众赢时空</li>
+</ul>
+</li>
+</ul>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<h2 id="mudule-disabled"><a class="markdownIt-Anchor" href="#mudule-disabled"></a> Mudule disabled</h2>
+<p><strong>Module disabled</strong>表明<a href="http://lib.csdn.net/base/softwaretest" target="_blank" rel="noopener">测试</a>环境中没有安装<em><strong>Xposed框架*</strong>，用户可以在没有Xposed的情况下运行</em><em>Inspeckage</em>*，但是绝大部分功能都要依赖Xposed框架，所以建议在测试环境中安装该框架。</p>
+<p>如果安装Xposed后，并且inspeckage就是通过对应的Xposed软件下载的，那么检查&quot;模块&quot;中是否将&quot;inspeckage&quot;勾选，然后重启。</p>
+<h2 id="手机目录"><a class="markdownIt-Anchor" href="#手机目录"></a> 手机目录</h2>
+<p>MT管理器能看到</p>
+<ul>
+<li><code>/data/data/</code> 下是手机系统文件和你安装软件的数据文件，不建议随便删除，或造成死机或开不了机。需要root</li>
+<li><code>/etc/data</code></li>
+</ul>
+<h2 id="反编译"><a class="markdownIt-Anchor" href="#反编译"></a> 反编译</h2>
+<blockquote>
+<p>如果程序被加固(加壳，腾讯乐固、360加固)，则需要去壳后反编译，比如脱壳工具FDex2，脱壳后得到多个dex文件，将其压缩成压缩包，再使用反编译如jadx导入分析。</p>
+</blockquote>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/05/10/爬虫App——xposed-inspeckage/">https://nymrli.top/2022/05/10/爬虫App——xposed-inspeckage/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/05/29/每周一个开源项目——ddt-sharp-shoote/" title="每周一个开源项目——ddt-sharp-shooter"><span>< PreviousPost</span><br><span class="prevTitle">每周一个开源项目——ddt-sharp-shooter</span></a><a class="nextSlogan" href="/2022/05/09/《代码整洁之道》——阅读笔记/" title="《代码整洁之道》——阅读笔记"><span>NextPost ></span><br><span class="nextTitle">《代码整洁之道》——阅读笔记</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '爬虫App——夜神模拟器xposed+inspeckage',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text"> 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xposed框架"><span class="toc-number">1.1.</span> <span class="toc-text"> xposed框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inspeckage模块"><span class="toc-number">1.2.</span> <span class="toc-text"> inspeckage模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动inspeckage"><span class="toc-number">2.</span> <span class="toc-text"> 启动inspeckage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用inspeckage"><span class="toc-number">3.</span> <span class="toc-text"> 使用inspeckage</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number"></span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#mudule-disabled"><span class="toc-number">1.</span> <span class="toc-text"> Mudule disabled</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#手机目录"><span class="toc-number">2.</span> <span class="toc-text"> 手机目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反编译"><span class="toc-number">3.</span> <span class="toc-text"> 反编译</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

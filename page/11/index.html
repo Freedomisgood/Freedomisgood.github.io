@@ -106,7 +106,13 @@ frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内�
  开始搭建
  外网主机
 SSH连接上外网主机后，使用wget指令下载frp。
-wget https://github.com/fatedier/frp/releases/download/v0.20.0 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/02/24/搭建frp服务-阿里云服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/Linux下开机启动Python脚本/">Linux下开机启动Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:48:46.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:48:46.000Z">2021-10-22</time></div><div class="recent-post-content"> /etc/rc.local
+wget https://github.com/fatedier/frp/releases/download/v0.20.0 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/02/24/搭建frp服务-阿里云服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/15/Linux命令手册/">Linux命令手册</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-15T14:33:26.000Z">2019-03-15</time><i class="fa fa-edit"></i><time datetime="2019-03-15T14:33:26.000Z">2021-11-08</time></div><div class="recent-post-content"> scp
+1、从服务器上下载文件
+1scp username@servername:/path/filename /var/www/local_dir（本地目录）
+例如scp root@192.168.0.101:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）
+2、上传本地文件到服务器
+1scp /path/filename username@servername:/path
+例如scp /var/www/test.php  root@192.168.0.101:/var/w ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/03/15/Linux命令手册/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/03/Linux下开机启动Python脚本/">Linux下开机启动Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-03T11:48:46.000Z">2019-03-03</time><i class="fa fa-edit"></i><time datetime="2019-03-03T11:48:46.000Z">2021-10-22</time></div><div class="recent-post-content"> /etc/rc.local
 将脚本写在/etc/rc.local文件
 输入命令：sudo vi /etc/rc.local
 在exit 0上一行输入：python /usr/bin/python /home/pi/test.py
@@ -183,7 +189,36 @@ Linux其他版本或者不是Ubuntu 16.04 见官网修改方式
 1POST /post?= HTTP/1.1
 ▲根据玩单片机的小伙伴说必须多出一行\r\n，所以这边是有一行空行的
  结果： 400 BAD_REQUEST
-搜索过后得知 : 如果使用http 1.1协议的话主机名HOST字段是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/03/01/构造一个能发数据的POST请求头/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/南京邮电大学java程序设计作业在线编程第二次作业/">南京邮电大学java程序设计作业在线编程第二次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T04:52:41.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T04:52:41.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
+搜索过后得知 : 如果使用http 1.1协议的话主机名HOST字段是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/03/01/构造一个能发数据的POST请求头/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/">南京邮电大学java程序设计作业在线编程第五次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-17T03:44:36.000Z">2019-03-17</time><i class="fa fa-edit"></i><time datetime="2019-03-17T03:44:36.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
+ 选择题得分：50
+
+
+
+以下哪一个工具是Java的编译器？( )
+
+
+
+A.javac.exe
+B.java.exe
+C.javap.exe
+D.javadoc.exe
+正确答案是: A
+
+
+
+以下哪一个数据类型不属于Java的基本数据类型？( )
+
+
+
+A.boolean
+B.char
+C.int
+D.String
+正确答案是: D
+
+
+
+假设有如下类的定义： public class test{ public static void main(String[] args){ int a= 3, b = 4; swap(a,b); System.out.println(“a ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/03/17/南京邮电大学java程序设计作业在线编程第五次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/26/南京邮电大学java程序设计作业在线编程第二次作业/">南京邮电大学java程序设计作业在线编程第二次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-26T04:52:41.000Z">2019-02-26</time><i class="fa fa-edit"></i><time datetime="2019-02-26T04:52:41.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
  选择题得分：60
 \1. 表达式9==8&amp;&amp;3&lt;7的运算结果是（ ）
 A.1
@@ -273,14 +308,7 @@ triggers（触发器）中包含调度逻辑，每个作业都由自己的触发
 
 job stores： 任务商店组件，提供任务保存方式
 
-job stores（作业存储器）存储被调度的作业，默认的作业存储器只是简单地把作业保存在内存中，其他的作业存储器则是将作业保存在数据库中。当作业被保存到一个持久化的作业存储器中的时 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/02/24/Python任务调度模块APScheduler/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/06/Python-adb操作手机/">Python+adb操作手机</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-06T05:00:09.000Z">2019-02-06</time><i class="fa fa-edit"></i><time datetime="2019-02-06T05:00:09.000Z">2019-09-15</time></div><div class="recent-post-content"> Adb
- wifi连接调试 adb connect {ip}
-如果你不想用usb连接调试，可以选择使用adb 连接调试，命令是 adb connect {ip} ，需要在同一个局域网内。这个功能也比较实用，但首次连接时，需要另外一些配置，建议可以网上搜索下adb wifi连接手机等关键字看看。
- 屏幕截屏 screencap -p {图片存储地址}
-这个其实直接通过手机截屏再发送到电脑就可以了，但我开发的是TV应用，在盒子上没法截屏，所以这个命令对我来说还是较实用的。
- 获取或推送文件 adb pull/push
-这个也挺实用的，获取手机指定位置的文件到电脑上，或者从电脑发送文件到手机上
-  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="模拟操作"> 模拟操作</a></div><div class="read-more"><a class="more" href="/2019/02/06/Python-adb操作手机/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/28/Flask-本地局域网连接/">Flask 本地局域网连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-28T10:43:55.000Z">2019-02-28</time><i class="fa fa-edit"></i><time datetime="2019-02-28T10:43:55.000Z">2019-09-15</time></div><div class="recent-post-content"> Flask 本地局域网连接
+job stores（作业存储器）存储被调度的作业，默认的作业存储器只是简单地把作业保存在内存中，其他的作业存储器则是将作业保存在数据库中。当作业被保存到一个持久化的作业存储器中的时 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/02/24/Python任务调度模块APScheduler/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/28/Flask-本地局域网连接/">Flask 本地局域网连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-28T10:43:55.000Z">2019-02-28</time><i class="fa fa-edit"></i><time datetime="2019-02-28T10:43:55.000Z">2019-09-15</time></div><div class="recent-post-content"> Flask 本地局域网连接
 之前都是在活动室的电脑上配好web环境，但其实发现很多比赛只要截图就够了。所以这次看了下能不能用局域网访问。一查果然flask可以通过局域网进行访问
  使用pycharm的朋友要这样设定
  1.run-&gt;Edit Configurations
@@ -311,19 +339,7 @@ cmd-&gt;ipconfig-&gt;IPv4
 5.命令执行bjam.exe
 4-5是没必要的，要是不想看输出的东西的话，其实双击bjam.exe即可
 
-▲.编译的时间略久（你可以干一会其 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/03/03/codeblocks中boost库安装/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/02/18/Cmake-入门/">Cmake 入门</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-02-18T08:42:36.000Z">2019-02-18</time><i class="fa fa-edit"></i><time datetime="2019-02-18T08:42:36.000Z">2019-09-15</time></div><div class="recent-post-content"> Cmake 入门
- 入门案例：单个源文件
-例如，假设现在我们的项目中只有一个源文件 main.cc ，该程序的用途是计算一个数的指数幂。
- 1.首先编写 CMakeLists.txt 文件，并保存在与 main.cc 源文件同个目录下
-123456# CMake 最低版本号要求cmake_minimum_required (VERSION 2.8)# 项目信息project (Demo1)# 指定生成目标add_executable(Demo main.cc)
-语法:
-由命令、注释和空格组成，其中命令是不区分大小写的。
-
-
-符号 # 后面的内容被认为是注释
-
-
-命令由命令名称、小括号和参数组 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/02/18/Cmake-入门/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-快速幂/">ACM-快速幂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:54:05.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:54:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 简单位运算快速幂
+▲.编译的时间略久（你可以干一会其 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/03/03/codeblocks中boost库安装/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/07/ACM-快速幂/">ACM-快速幂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-07T11:54:05.000Z">2019-03-07</time><i class="fa fa-edit"></i><time datetime="2019-03-07T11:54:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 简单位运算快速幂
 
 假设我们要求ab，那么其实b是可以拆成二进制的，该二进制数第i位的权为2(i-1)，例如当b==11时，a11=a(20+21+2^3)
 

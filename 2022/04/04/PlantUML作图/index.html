@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>PlantUML作图 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">PlantUML作图</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/04/04</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础"> 计算机基础</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1,070</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><blockquote>
+<p>最近在看开源代码，有些项目的架构和执行逻辑都非常有学习、借鉴意义，因此想作图可视化记录下来。</p>
+<p>在写文档的过程中，经常需要进行画图。虽然说现在有很多类似viso之类的可视化画图工具，但是还是要花费大量时间在拖拉组件上，效率十分低下。而<a href="http://plantuml.com/" target="_blank" rel="noopener">Plantuml</a>与markdown类似，本质上是也算一门可以快速画图的<strong>设计语言</strong>，学习起来也很方便，学完后直接书写、不需要拖拽就能做出规整的图，能大大节约在布局上细枝末节的时间。</p>
+<p>此外，PlantUML在vscode, webstorm都有相关的插件可以使用。</p>
+</blockquote>
+<p>在线体验网站有很多使用的样例介绍，在此我就不过多介绍了。本文会以我使用到的功能图来提醒说明一下一些语法规范和注意点。</p>
+<h2 id="时序图"><a class="markdownIt-Anchor" href="#时序图"></a> 时序图</h2>
+<ul>
+<li>
+<p>注释</p>
+<ul>
+<li>
+<p>图上不显示的注释：<code>/' 注释内容 '/</code></p>
+</li>
+<li>
+<p>图中显示的注释：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 左侧注释</span></span><br><span class="line">Alice-&gt;Bob : hello</span><br><span class="line">note left: this is a first note</span><br><span class="line"></span><br><span class="line"><span class="comment"># 右侧注释</span></span><br><span class="line">Bob--&gt;Alice : ok</span><br><span class="line">note right: this is another note</span><br><span class="line"></span><br><span class="line"><span class="comment"># 跨越两个的注释</span></span><br><span class="line">note over Alice, Bob <span class="comment">#FFAAAA: This is displayed\n over Bob and Alice.</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>返回信息</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Alice -&gt; Bob: Another authentication Request</span><br><span class="line"><span class="comment"># 同样可以写成Bob --&gt; Alice, 只不过下面的更直观能看出是返回</span></span><br><span class="line">Alice &lt;-- Bob: Another authentication Response</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>生命线的激活与撤销</strong></p>
+<ul>
+<li>关键字<code>activate</code>和<code>deactivate</code>用来表示参与者的生命活动。一旦参与者被激活，它的生命线（柱子）就会显示出来。
+<ul>
+<li><code>activate</code>和<code>deactivate</code>适用于以上情形。</li>
+<li><code>destroy</code>表示一个参与者的生命线的终结。</li>
+</ul>
+</li>
+<li>给生命线上色语法：<code>activate Holder [#color]</code></li>
+</ul>
+<p>▲.一个参与者在最外层只用于有一个生命线，但在大生命线中可以通过activate创建多个嵌套的小生命线，用deactivate跳出当前生命线</p>
+<p>★因此，最好生命线的创建和退出同时写出，即写了一个<code>activate ?</code>就写一个<code>deactivate ?</code>， 需要完成的内容在其中编写</p>
+<p>此外，需要注意的是，当前结果的返回应该在deactivate之前。比如<code>A &lt;-- C: return</code>后才是<code>deactivate C</code>，当然如果遵循了成对书写activate的习惯的话，就不存在这个问题了。</p>
+</li>
+<li>
+<p><strong>return关键字</strong>：以用于生成一个带有可选文本标签的返回信息。返回的点是导致最近一次激活生命线的点。但<strong>不建议使用</strong>，因为在维护修改的时候无法直观的看出到底是从哪返回哪。而是采取<code>A &lt;-- B: return</code>来声明从B到A的虚线返回</p>
+</li>
+<li>
+<p><strong>分隔符</strong>： 通过使用<code>==</code>关键词来将你的图表分割成多个逻辑步骤。</p>
+</li>
+<li>
+<p><strong>声明参与者</strong>： 声明的顺序将是（默认的）<strong>显示顺序</strong>。</p>
+<p>格式为: <code>类型 参与者名称 [as AliasName] [order orderVaalue] [#color]</code></p>
+<p>可以选择的类型有：</p>
+<ul>
+<li><code>actor</code>（角色）</li>
+<li><code>participant</code>(默认参与者)</li>
+<li><code>boundary</code>（边界）</li>
+<li><code>control</code>（控制）</li>
+<li><code>entity</code>（实体）</li>
+<li><code>database</code>（数据库）</li>
+<li><code>collections</code>（集合）</li>
+<li><code>queue</code>（队列）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">/&apos; 声明参与者 &apos;/</span><br><span class="line">Actor       actor       as A</span><br><span class="line">Participant scheduler as S</span><br><span class="line">Participant Fetcher as F</span><br><span class="line">Participant check as C</span><br><span class="line">Participant DoValidator as D</span><br><span class="line">Participant Queue as Q</span><br><span class="line">Participant ProxyHandler as P</span><br><span class="line">Participant ProxyFetcher as PF</span><br><span class="line">A -&gt; S: runScheduler()</span><br><span class="line"></span><br><span class="line">/&apos;scheduler主要逻辑&apos;/</span><br><span class="line">activate S</span><br><span class="line">S -&gt; S: __runProxyFetch()</span><br><span class="line">== 定时器设置 ==</span><br><span class="line">S -&gt; S: scheduler.add_job(__runProxyFetch)</span><br><span class="line">S -&gt; S: scheduler.add_job(__runProxyCheck)</span><br><span class="line">S -&gt; S: scheduler.configure()</span><br><span class="line">S -&gt; S: scheduler.start()</span><br><span class="line"></span><br><span class="line">== 定时器执行 ==</span><br><span class="line">S -&gt; S: __runProxyFetch()</span><br><span class="line">/&apos; --__runProxyFetch-- &apos;/</span><br><span class="line">activate S #orange</span><br><span class="line">S -&gt; F: __runProxyFetch()</span><br><span class="line">activate F  #pink</span><br><span class="line">F-&gt;F: run()</span><br><span class="line">F-&gt;PF: freeProxyXX()</span><br><span class="line">activate PF</span><br><span class="line">PF--&gt;F: proxy</span><br><span class="line">deactivate PF</span><br><span class="line">F-&gt;Q: proxy_queue.put(proxy)</span><br><span class="line">Q--&gt;F</span><br><span class="line">F--&gt;S</span><br><span class="line">deactivate F</span><br><span class="line"></span><br><span class="line">S -&gt; C: Checker(&quot;raw&quot;, proxy_queue)</span><br><span class="line">activate C</span><br><span class="line">C -&gt; C: _ThreadChecker.run()</span><br><span class="line">C -&gt; D: DoValidator.validator(proxy)</span><br><span class="line"></span><br><span class="line">activate D</span><br><span class="line">D -&gt; D: cls.httpValidator(proxy)</span><br><span class="line">D -&gt; D: cls.httpsValidator(proxy)</span><br><span class="line">D -&gt; C</span><br><span class="line">deactivate D</span><br><span class="line"></span><br><span class="line">alt work_type </span><br><span class="line">C-&gt;C: __ifRaw()</span><br><span class="line">else</span><br><span class="line">C-&gt;C: __ifUse()</span><br><span class="line">end</span><br><span class="line">C--&gt;S</span><br><span class="line"></span><br><span class="line">deactivate C</span><br><span class="line">deactivate S</span><br><span class="line">/&apos; --__runProxyFetch-- &apos;/</span><br><span class="line"></span><br><span class="line">/&apos; --__runProxyCheck-- &apos;/</span><br><span class="line">S -&gt; S: __runProxyCheck()</span><br><span class="line">activate S #orange</span><br><span class="line">S-&gt;P: &lt;&lt;create proxy_handler&gt;&gt;</span><br><span class="line">P--&gt;S</span><br><span class="line">S-&gt;Q: &lt;&lt;create proxy_queue&gt;&gt;</span><br><span class="line">Q--&gt;S</span><br><span class="line"></span><br><span class="line">alt proxy_handler.db.getCount() &lt; 0</span><br><span class="line">S-&gt;S: __runProxyFetch()</span><br><span class="line">else</span><br><span class="line">S-&gt;P: proxy_handler.getAll()</span><br><span class="line">P--&gt;S</span><br><span class="line">end</span><br><span class="line">S-&gt;C: Checker(&quot;use&quot;, proxy_queue)</span><br><span class="line">C--&gt;S</span><br><span class="line">deactivate S</span><br><span class="line">/&apos; --__runProxyCheck-- &apos;/</span><br><span class="line">S --&gt; A</span><br><span class="line">deactivate S</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/04/04/PlantUML作图/">https://nymrli.top/2022/04/04/PlantUML作图/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/04/05/理了一天彻底弄懂元类——分享给你一起弄懂/" title="理了一天彻底弄懂元类——分享给你一起弄懂"><span>< PreviousPost</span><br><span class="prevTitle">理了一天彻底弄懂元类——分享给你一起弄懂</span></a><a class="nextSlogan" href="/2022/03/29/开源项目代码阅读记录/" title="开源项目代码阅读记录"><span>NextPost ></span><br><span class="nextTitle">开源项目代码阅读记录</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'PlantUML作图',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#时序图"><span class="toc-number">1.</span> <span class="toc-text"> 时序图</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>selenium不行的工作,pyppeteer上 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">selenium不行的工作,pyppeteer上</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/05/07</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,036</span> | Reading time: <span class="post-count">9</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="验证码问题"><a class="markdownIt-Anchor" href="#验证码问题"></a> 验证码问题</h2>
+<p>该网站对频率检测十分敏感，很快就会出现&quot;按住&quot;验证码，模拟按住倒不难，但是按完以后有时并不能解决验证…</p>
+<p>但是意外发现，在“无痕模式”下进行重新登录后，就可以解决验证…但是通过requests进行模拟登录后cookies还是无效。</p>
+<p><strong>解决方案</strong>：</p>
+<blockquote>
+<p>既然模拟不行，那么就手动，因此想用selenium来模拟点击登陆。但是因为俄罗斯的问题，无法登陆。</p>
+</blockquote>
+<p><img src="/2022/05/05/selenium不行的工作-pyppeteer上/selenium%E4%B8%8D%E8%A1%8C%E7%9A%84%E5%B7%A5%E4%BD%9C-pyppeteer%E4%B8%8A%5C%E8%A2%AB%E5%B0%81.jpg" alt="被封"></p>
+<p>于是只好更换selenium为pyppeteer。之前就听说了pyppeteer是可以代替selenium的模拟神器，相比Selenium 不太方便的地方：比如速度太慢、对版本配置要求严苛，最麻烦是经常要更新对应的驱动，还有些网页是可以检测到是否使用了Selenium ，pyppeteer都有提升，这次也借机会学习一下。</p>
+<blockquote>
+<p>安装：<code>pip install pyppeteer</code>, 需要Python3.6以上（因为用了async）</p>
+</blockquote>
+<h3 id="pyppeteer"><a class="markdownIt-Anchor" href="#pyppeteer"></a> pyppeteer</h3>
+<p>最简单demo：打开网页，并截图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">from</span> pyppeteer <span class="keyword">import</span> launch</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 启动浏览器</span></span><br><span class="line">    browser = <span class="keyword">await</span> launch(headless=<span class="keyword">True</span>)</span><br><span class="line">    <span class="comment"># 打开并跳转页面</span></span><br><span class="line">    page = <span class="keyword">await</span> browser.newPage()</span><br><span class="line">    <span class="keyword">await</span> page.goto(<span class="string">'https://example.com'</span>)</span><br><span class="line">    <span class="comment"># 截图</span></span><br><span class="line">    <span class="keyword">await</span> page.screenshot(&#123;<span class="string">'path'</span>: <span class="string">'example.png'</span>&#125;)</span><br><span class="line">    <span class="keyword">await</span> browser.close()</span><br><span class="line"></span><br><span class="line">asyncio.get_event_loop().run_until_complete(main())</span><br></pre></td></tr></table></figure>
+<p>执行JS，相当于requests-html中的render</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dimensions = <span class="keyword">await</span> page.evaluate(<span class="string">'''() =&gt; &#123;</span></span><br><span class="line"><span class="string">    return &#123;</span></span><br><span class="line"><span class="string">        width: document.documentElement.clientWidth,</span></span><br><span class="line"><span class="string">        height: document.documentElement.clientHeight,</span></span><br><span class="line"><span class="string">        deviceScaleFactor: window.devicePixelRatio,</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;'''</span>)</span><br><span class="line"></span><br><span class="line">print(dimensions)</span><br><span class="line"><span class="comment"># &gt;&gt;&gt; &#123;'width': 800, 'height': 600, 'deviceScaleFactor': 1&#125;</span></span><br><span class="line"><span class="keyword">await</span> browser.close()</span><br></pre></td></tr></table></figure>
+<p><strong>元素选择器</strong>：</p>
+<p><code>Page.querySelector()</code>/<code>Page.querySelectorAll()</code>/<code>Page.xpath()</code>缩写为<code>Page.J()</code>, <code>Page.JJ()</code>, and <code>Page.Jx()</code>.</p>
+<p>xpath进阶：</p>
+<ul>
+<li>starts-with 顾名思义，匹配一个属性开始位置的关键字</li>
+<li>contains 匹配一个属性值中包含的<a href="https://so.csdn.net/so/search?q=%E5%AD%97%E7%AC%A6%E4%B8%B2&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener">字符串</a></li>
+<li><code>text()</code> 匹配的是显示文本信息： <code>//a[contains(text(), &quot;百度搜索&quot;)]</code></li>
+</ul>
+<p><a href="https://blog.csdn.net/weixin_48615832/article/details/107319268" target="_blank" rel="noopener">xpath的contains用法</a></p>
+<p><strong>元素操作：点击、输入</strong></p>
+<ul>
+<li><code>pyppeteer.input.Mouse</code>
+<ul>
+<li><code>click(x: float*, y: float, options: dict = None*, ***kwargs)</code>
+<ul>
+<li><code>button</code> (str): <code>left</code>, <code>right</code>, or <code>middle</code>, defaults to <code>left</code>：
+<ul>
+<li>右键点击：<code>await page.click('a#cccccc',{&quot;button&quot;: &quot;right&quot;})</code></li>
+</ul>
+</li>
+<li><code>clickCount</code> (int): defaults to 1.</li>
+<li><code>delay</code> (int|float): Time to wait between <code>mousedown</code> and <code>mouseup</code> in milliseconds. Defaults to 0.</li>
+</ul>
+</li>
+<li><code>down</code>(options: dict = None, *<em>kwargs</em>) `
+<ul>
+<li><code>button</code> (str): <code>left</code>, <code>right</code>, or <code>middle</code>, defaults to <code>left</code>.</li>
+<li><code>clickCount</code> (int): defaults to 1.</li>
+</ul>
+</li>
+<li><code>move(x: float, y: float, options: dict = None, **kwargs*)</code></li>
+<li><code>p(options: dict = None, **kwargs*)</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用xpath</span></span><br><span class="line"><span class="keyword">await</span> page.waitForXPath(<span class="string">'//input[contains(@id, "mat-input")]'</span>)</span><br><span class="line"><span class="keyword">await</span> asyncio.sleep(<span class="number">10</span>)</span><br><span class="line">inputs = <span class="keyword">await</span> page.xpath(<span class="string">'//input[contains(@id, "mat-input")]'</span>)</span><br><span class="line">print(len(inputs))</span><br><span class="line"><span class="keyword">await</span> inputs[<span class="number">1</span>].type(<span class="string">'janetgao@indiana.edu'</span>)</span><br><span class="line"><span class="keyword">await</span> inputs[<span class="number">2</span>].type(<span class="string">'KAProject2021'</span>)</span><br><span class="line"><span class="comment"># 使用selector</span></span><br><span class="line"><span class="keyword">await</span> page.waitForSelector(<span class="string">'#mat-input-1'</span>)</span><br><span class="line"><span class="keyword">await</span> page.type(<span class="string">'#mat-input-1'</span>, <span class="string">'janetgao@indiana.edu'</span>)</span><br><span class="line"><span class="keyword">await</span> page.type(<span class="string">'#mat-input-2'</span>, <span class="string">'KAProject2021'</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>launch</strong></p>
+<ul>
+<li>
+<p><code>headless</code>：无界面模式</p>
+</li>
+<li>
+<p><code>devtools</code> ：启用开发者助手</p>
+</li>
+<li>
+<p><code>userDataDir='./userdata'</code>： 记录些用户信息，比如cookies</p>
+</li>
+<li>
+<p><code>dumpio=True</code> 防止浏览器开多个页面而卡死</p>
+</li>
+<li>
+<p><code>executablePath</code>: 指定自定义的chrome路径</p>
+</li>
+<li>
+<p>参数args设置，可以类比selenium</p>
+<ul>
+<li>
+<p><code>--start-maximized</code>: 页面全屏</p>
+</li>
+<li>
+<p><code>--window-size={width},{height}</code>：设置窗口大小，区别于页面的<code>page.setViewport({'width': 1366, 'height': 768})</code></p>
+</li>
+<li>
+<p><code>--disable-infobars</code>:不显示信息栏  比如 chrome正在受到自动测试软件的控制</p>
+</li>
+<li>
+<p><code>--incognito</code>：百度搜到的chrome.exe无痕命令(selenium是如此，pyppeteer不推荐)</p>
+</li>
+<li>
+<p><code>--user-agent</code>： 比如<code>'--user-agent=Mozilla/5.0'</code></p>
+</li>
+<li>
+<p><code>--proxy-server={proxy}</code>: 浏览器代理 配合某些中间人代理使用</p>
+</li>
+<li>
+<p><code>--no-sandbox</code>,  # 取消沙盒模式 沙盒模式下权限太小</p>
+</li>
+<li>
+<p><code>'--log-level=3'</code></p>
+</li>
+<li>
+<p><code>'--load-extension={}'.format(chrome_extension)</code>、<code>'--disable-extensions-except={}'.format(chrome_extension)</code> # 加载插件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chrome_extension_path = <span class="string">"插件所在目录"</span></span><br><span class="line">args = [</span><br><span class="line">    <span class="string">"--load-extension=&#123;&#125;"</span>.format(chrome_extension_path),</span><br><span class="line">    <span class="string">"--disable-extensions-except=&#123;&#125;"</span>.format(chrome_extension_path),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.cnblogs.com/dyfblog/p/12225796.html" target="_blank" rel="noopener">pyppeteer控制Chromium在隐身模式下启用插件 </a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>more: <a href="https://blog.csdn.net/Coding_CLearLove/article/details/110265509" target="_blank" rel="noopener">launch参数说明</a></p>
+</li>
+</ul>
+<p>执行JS：</p>
+<ul>
+<li>
+<p><code>page.evaluate('window.scrollBy(100, document.body.scrollHeight)')</code></p>
+</li>
+<li>
+<p><code>await page.evaluate('alert(&quot;在浏览器执行js脚本!&quot;)')</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 相当于拿到了dom对象</span></span><br><span class="line">element = <span class="keyword">await</span> page.J(<span class="string">'#ul&gt;a[name="tj_trtieba"]'</span>)</span><br><span class="line">print(<span class="keyword">await</span> page.evaluate(<span class="string">'el =&gt; el.innerHTML'</span>, element))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>page.evaluateOnNewDocument(pageFunction[, …args]), 指定的函数在所属的页面被创建并且所属页面的任意script执行之前被调用。常用于修改页面JS环境。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">page = <span class="keyword">await</span> browser.newPage()</span><br><span class="line"><span class="keyword">await</span> page.setViewPort(&#123;<span class="string">'width'</span>: <span class="number">1366</span>, <span class="string">'height'</span>: <span class="number">768</span>&#125;)</span><br><span class="line"><span class="keyword">await</span> page.evaluateOnNewDocument(<span class="string">'''() =&gt; &#123;</span></span><br><span class="line"><span class="string">        Object.defineProperty(navigator, 'webdriver', &#123;get: () =&gt; false &#125;);</span></span><br></pre></td></tr></table></figure>
+<p>附—ElementHandle元素操作：</p>
+<ol>
+<li>获取元素边界框坐标：boundingBox()，返回元素的边界框（相对于主框架）=&gt; x 坐标、 y 坐标、width、height</li>
+<li>元素是否可见：isIntersectingViewport()</li>
+<li>上传文件：uploadFile(*filpaths)</li>
+<li>ElementHandle 类 转 Frame类：contentFrame()，如果句柄未引用iframe，则返回None。</li>
+<li>聚焦该元素：focus()</li>
+<li>与鼠标相关：hover () ，将鼠标悬停到元素上面</li>
+<li>与键盘相关：press (key[, options])，按键，key 表示按键的名称，option可配置:
+<ul>
+<li>text (string) - 如果指定，则使用此文本生成输入事件</li>
+<li>delay (number) - keydown 和 keyup 之间等待的时间。默认是 0</li>
+<li><code>page.keyboard.down('Shift')</code>：按下shift</li>
+</ul>
+</li>
+</ol>
+<p>more: <a href="https://blog.csdn.net/weizhen11/article/details/102509230" target="_blank" rel="noopener">页面元素操作</a></p>
+</li>
+</ul>
+<p><strong>安全性：</strong></p>
+<ol>
+<li>在使用 Pyppeteer 仍然会遇到无头浏览器检测，这里安利一个第三方库「pyppeteer-stealth」，「puppeteer-extra-plugin-stealth」引用Github上的说明「Applies various evasion techniques to make detection of headless puppeteer harder.」「A plugin for puppeteer-extra to prevent detection.」（Github地址：<a href="https://github.com/berstend/puppeteer-extra/tree/master/packages/puppeteer-extra-plugin-stealth" target="_blank" rel="noopener">https://github.com/berstend/puppeteer-extra/tree/master/packages/puppeteer-extra-plugin-stealth</a> ）。可见，「pyppeteer-stealth」也是用于防止机器人检测的。用法也很简单，给page加上stealth</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">from</span> pyppeteer <span class="keyword">import</span> launch</span><br><span class="line"><span class="keyword">from</span> pyppeteer_stealth <span class="keyword">import</span> stealth</span><br><span class="line"> </span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    browser = <span class="keyword">await</span> launch(headless=<span class="keyword">True</span>)</span><br><span class="line">    page = <span class="keyword">await</span> browser.newPage()</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">await</span> stealth(page)  <span class="comment"># &lt;-- Here</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">await</span> page.goto(<span class="string">"https://bot.sannysoft.com/"</span>)</span><br><span class="line">    <span class="keyword">await</span> browser.close()</span><br><span class="line">asyncio.get_event_loop().run_until_complete(main())</span><br></pre></td></tr></table></figure>
+<p>这样就可以省去隐藏WebDriver等操作，可谓省时省力省心。</p>
+<ol start="2">
+<li><code>await page.evaluateOnNewDocument('Object.defineProperty(navigator,&quot;webdriver&quot;,{get:()=&gt;undefined})')</code></li>
+<li><code>stealth.min.js</code><a href="https://cloud.tencent.com/developer/article/1755513" target="_blank" rel="noopener">最完美方案！模拟浏览器如何正确隐藏特征</a></li>
+</ol>
+<p><strong>无痕隐身模式访问</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">start_browser</span><span class="params">()</span>:</span></span><br><span class="line">    browser = <span class="keyword">await</span> launch(**&#123;<span class="string">"headless"</span>: <span class="keyword">False</span>&#125;)</span><br><span class="line">    <span class="comment"># 创建隐身上下文</span></span><br><span class="line">    browser_context = <span class="keyword">await</span> browser.createIncognitoBrowserContext()</span><br><span class="line">    page = <span class="keyword">await</span> browser_context.newPage()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> page.goto(<span class="string">"http://www.baidu.com"</span>)</span><br><span class="line">    <span class="keyword">await</span> browser.close()</span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+<p>较全的API说明：<a href="https://blog.csdn.net/Qwertyuiop2016/article/details/92667875" target="_blank" rel="noopener">pyppeteer的基本使用</a>、<a href="https://blog.csdn.net/weizhen11/article/details/102497647" target="_blank" rel="noopener">页面信息、设置</a></p>
+<h3 id="问题按钮不生效"><a class="markdownIt-Anchor" href="#问题按钮不生效"></a> 问题：按钮不生效</h3>
+<p>网页输入账号和密码之前，按钮状态为<code>disable=true</code>，两个都输入后才能按下，而使用pyppeteer时，发现无论怎么尝试都不能使得其disable变化（用开发者助手修改后，无法生成正确的提交请求）。突然巧合之中，想到了是不是元素没加载成功，于是确实在开发者助手的<code>console</code>中看到有很多不支持的，比如angular、bootstrap……</p>
+<p>于是百度问题，看看是不是什么设置没开，但都没找到。后来想到升级下pyppeteer版本会不会好一点，发现自己的版本为1.0.2，已经是最新的了(<a href="https://github.com/miyakogi/pyppeteer/issues/306" target="_blank" rel="noopener">https://github.com/miyakogi/pyppeteer/issues/306</a>)。由于不通过程序直接通过浏览器进入程序也出现了无法点击的问题。再加上下面有人提出chromium有点难下载，并通过源码找道了默认的配置和设置，于是经过一阵的折腾过后，我发现**“按钮无法点击”的问题就在于chromium版本过低**。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pyppeteer.chromium_downloader</span><br><span class="line">print(<span class="string">'默认版本是：&#123;&#125;'</span>.format(pyppeteer.__chromium_revision__))</span><br><span class="line">print(<span class="string">'可执行文件默认路径：&#123;&#125;'</span>.format(pyppeteer.chromium_downloader.chromiumExecutable.get(<span class="string">'win64'</span>)))</span><br><span class="line">print(<span class="string">'win64平台下载链接为：&#123;&#125;'</span>.format(pyppeteer.chromium_downloader.downloadURLs.get(<span class="string">'win64'</span>)))</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">默认版本是：588429</span></span><br><span class="line"><span class="string">可执行文件默认路径：C:\Users\mrli\AppData\Local\pyppeteer\pyppeteer\local-chromium\588429\chrome-win32\chrome.exe</span></span><br><span class="line"><span class="string">win64平台下载链接为：https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/588429/chrome-win32.zip</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>登录这个storage的网站可以看到，上面所记录的chromium全都是2013年的版本，必然版本落后了。于是下载最新的chromium覆盖<code>C:\Users\mrli\AppData\Local\pyppeteer\pyppeteer\local-chromium\588429\chrome-win32</code>目录后再运行，按钮不能点击的问题就消失了!~😄</p>
+<p>chromium下载地址：<a href="https://registry.npmmirror.com/binary.html?path=chromium-browser-snapshots/Win_x64/%EF%BC%8C%E6%B3%A8%EF%BC%9Achromium%E8%B7%9Fchromedriver%E4%B8%8D%E4%B8%80%E6%A0%B7%EF%BC%8C%E4%BB%96%E8%B7%9F%E8%87%AA%E5%B7%B1%E5%B7%B2%E7%BB%8F%E5%AE%89%E8%A3%85%E7%9A%84chrome%E5%B9%B6%E6%B2%A1%E6%9C%89%E5%85%B3%E8%81%94%E3%80%82chromium%E8%87%AA%E5%B8%A6%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83%EF%BC%8C%E6%89%80%E4%BB%A5%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%9A%84%E7%89%88%E6%9C%AC%E5%8D%B3%E5%8F%AF%EF%BC%8C%E6%AF%94%E5%A6%82%E6%88%91%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E7%9A%84%E5%B0%B1%E6%98%AF999303%E3%80%82" target="_blank" rel="noopener">https://registry.npmmirror.com/binary.html?path=chromium-browser-snapshots/Win_x64/，注：chromium跟chromedriver不一样，他跟自己已经安装的chrome并没有关联。chromium自带浏览器引擎核心，所以直接下载最新的版本即可，比如我直接下载的就是999303。</a></p>
+<p>启发于：<a href="https://cloud.tencent.com/developer/article/1731720" target="_blank" rel="noopener">使用pyppeteer 下载chromium 报错 或速度慢</a>、<a href="https://www.cnblogs.com/Summer-skr--blog/p/12020207.html" target="_blank" rel="noopener">pyppeteer使用时常见的bug及解决办法【转载】 </a></p>
+<ul>
+<li>📖pyppeteer实战案例：<a href="https://blog.csdn.net/weixin_44826986/article/details/124114130" target="_blank" rel="noopener">Pyppeteer的使用——爬取京东</a>——消除指纹、页面滑动事件、获取数据，获取到的是Json数据：<code>(await a[0].getProperty(&quot;textContent&quot;)).jsonValue()</code></li>
+<li>📖官方API： <a href="https://pyppeteer.github.io/pyppeteer/reference.html#pyppeteer.page.Page.xpath%E3%80%81" target="_blank" rel="noopener">https://pyppeteer.github.io/pyppeteer/reference.html#pyppeteer.page.Page.xpath、</a><a href="https://learnku.com/docs/puppeteer/3.1.0/class-mouse/8549" target="_blank" rel="noopener">puppeteer中文手册</a></li>
+<li><a href="https://www.pythonheidong.com/blog/article/1133668/afc4477523a740d64a23/" target="_blank" rel="noopener">setViewport全屏</a></li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/05/05/selenium不行的工作-pyppeteer上/">https://nymrli.top/2022/05/05/selenium不行的工作-pyppeteer上/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/05/08/toy-reimplementation-of-an-event-loop-in-Python-翻译/" title="toy reimplementation of an event loop in Python[翻译]"><span>< PreviousPost</span><br><span class="prevTitle">toy reimplementation of an event loop in Python[翻译]</span></a><a class="nextSlogan" href="/2022/05/02/2022年5月劳动节爬虫项目记录/" title="2022年5月劳动节爬虫项目记录"><span>NextPost ></span><br><span class="nextTitle">2022年5月劳动节爬虫项目记录</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'selenium不行的工作,pyppeteer上',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#验证码问题"><span class="toc-number">1.</span> <span class="toc-text"> 验证码问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pyppeteer"><span class="toc-number">1.1.</span> <span class="toc-text"> pyppeteer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题按钮不生效"><span class="toc-number">1.2.</span> <span class="toc-text"> 问题：按钮不生效</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

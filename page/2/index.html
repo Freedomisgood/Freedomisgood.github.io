@@ -97,47 +97,108 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2021/10/26/k8s之kube-proxy源码分析/">k8s之kube-proxy源码分析</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-26T12:15:52.000Z">2021-10-26</time><i class="fa fa-edit"></i><time datetime="2021-10-26T12:15:52.000Z">2022-03-29</time></div><div class="recent-post-content"> kubernetes 简单介绍
- 背景介绍
-Kubernetes最初源于谷歌内部的Borg，提供了面向应用的容器集群部署和管理系统，目前为主流的微服务应用编排管理工具。
-Kubernetes的目标旨在消除编排物理/虚拟计算、网络和存储基础设施的负担，并使应用程序运营商和开发人员完全将重点放在以容器为中心的原理上进行自助运营。
-Kubernetes具备完善的集群管理能力，包括多层次的安全防护和准入机制、多租户应用支撑能力、透明的服务注册和服务发现机制、内建负载均衡器、故障发现和自我修复能力、服务滚动升级和在线扩容、可扩展的资源自动调度机制、多粒度的资源配额管理能力。
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2021/12/27/Kotlin集合、流式操作/">Kotlin集合、流式操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-27T03:14:40.000Z">2021-12-27</time><i class="fa fa-edit"></i><time datetime="2021-12-27T03:14:40.000Z">2022-01-03</time></div><div class="recent-post-content">除了最通用的Array以外，kotlin中还有一类容器统称为Colletion(集合)，他们有
 
-Borg是谷歌内部的大规 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="源码解析"> 源码解析</a></div><div class="read-more"><a class="more" href="/2021/10/26/k8s之kube-proxy源码分析/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/28/Vue3初体验/">Vue3初体验</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-28T09:44:53.000Z">2021-11-28</time><i class="fa fa-edit"></i><time datetime="2021-11-28T09:44:53.000Z">2022-03-29</time></div><div class="recent-post-content">Vue3于2020年09月18日正式发布，映入我视野的新东西除了Vue3以外，还有yarn和vite。他们两个本身的功能并不是新东西，yarn对标的是npm包管理工具，vite对标的webpack包打包工具。
-与vue2不同的是，vue3工程中没有 build 文件， 相应的build/index.js的配置改由了项目根目录下vue.config.js承担
- Vue3新特性
+List
+
+List：继承Collection。一个范性有序的只读集合。因为有序，所以，我们可以使用get(position)等查询的方法
+MutableList：继承List，MutableCollection。一个有序集合。并额外提供了add/remove元素的方法
 
 
-template标签下面可以有多个节点了，终于不用先写一个DIV了
+Set
+
+Set：继承Collection。一个无序并不支持重复元素的集合
+MutableSet：继承Set，MutableCollection，一个无序的集合并且不支持重复元素。但是，支持add/remove元素
 
 
-setup函数可以代替之前的data，methods，computed，watch，Mounted等对象，但是props声明还是在外面。
+Map ...</div><div class="read-more"><a class="more" href="/2021/12/27/Kotlin集合、流式操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/SpringCloud笔记/">SpringCloud笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T15:14:51.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T15:14:51.000Z">2021-12-30</time></div><div class="recent-post-content">
+笔记内容大多来自：尚硅谷SpringCloud框架开发教程
+跟做笔记：https://blog.csdn.net/MOKEXFDGH/article/details/107209899
+跟做工程代码： https://github.com/liusCoding/springcloud-2020、https://gitee.com/exclusiver/springcloud2020
+
+ MVN配置
 
 
-
-相 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/11/28/Vue3初体验/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/25/CICD-Jenkins与Travis/">CICD-Jenkins与Travis</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-25T05:39:46.000Z">2021-10-25</time><i class="fa fa-edit"></i><time datetime="2021-10-25T05:39:46.000Z">2022-01-13</time></div><div class="recent-post-content"> Jenkins与travis使用
-Jenkins与Travis为CI、CD工具，其为Devops模式下的平台组件，能够让我们更好地进行开发测试与交付。由于最近云原生的课上在介绍DevOps和云监控，所以正好趁这个机会体验下Devops的交付流程，之前也有使用过Github Action作为CICD工具，但除了开源项目以外，Github使用比较少。这次呢就可以再熟悉下业内常用的CICD组件了：Jenkins or Travis
- DevOps发展背景
-
-传统交付模式的串行及隔离化形成了部门壁垒，降低了工作效率
-通过“在云上创建资源”-&gt;实现“云服务器自动化管理”-&gt;“应用无状态上云 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2021/10/25/CICD-Jenkins与Travis/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/02/浙江大学期末考试——Go语言/">浙江大学期末考试——Go语言</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-02T13:52:53.000Z">2021-11-02</time><i class="fa fa-edit"></i><time datetime="2021-11-02T13:52:53.000Z">2021-12-30</time></div><div class="recent-post-content"> 浙江大学期末考试——Go语言
-
-期末复习对学习知识的帮助是巨大的，相比于看视频，本篇点到为止的知识点形的期末复习笔记，我相信更能让人学会。我相信，只要把本笔记全部看完了必然就会Go了。如果你做到了但还没有学会Go，那你大可来找我/doge。
-
- 概论
-
-指令：计算机的一个最基本的功能，如实现一次加法运算或实现一次大小的判别
-计算机的指令系统：计算机所能实现的指令的集合
-程序：一系列计算机指令的有序组合
-
- 算法：
-
-求解特定问题的一组有限的操作序列
+每个module的pom配置文件中最重要的三个：GAV即 groupId、artifactId、version
 
 
-目的性：算法有运算结果，程序强调过程性
-抽象性：算法独立于编程语言和指令系统
-研究性：算法是理论研究，载体可以是伪码，文字，图片等，载体为某 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="考试"> 考试</a></div><div class="read-more"><a class="more" href="/2021/11/02/浙江大学期末考试——Go语言/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/16/Unity游戏开发学习/">Unity游戏开发学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-16T08:23:47.000Z">2021-12-16</time><i class="fa fa-edit"></i><time datetime="2021-12-16T08:23:47.000Z">2021-12-25</time></div><div class="recent-post-content"> 组件
+dependencyManagement声明依赖的版本，可以起到作用：
+
+
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2021/12/29/SpringCloud笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/30/理解SpringBoot注解s/">理解SpringBoot注解s</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-30T12:30:45.000Z">2021-12-30</time><i class="fa fa-edit"></i><time datetime="2021-12-30T12:30:45.000Z">2021-12-30</time></div><div class="recent-post-content"> @ReuqestBody和@RequestParam
+这两个注解都是在Controller某个Mapping函数的形参前加上的，但两个具体有什么区别呢？在使用的时候我们该如何选择呢? 这跟我们希望用户以什么形式来请求接口有关。
+众所周知，请求头的Content-type有多个，如
+常见的媒体格式类型如下：
+
+text/html ： HTML格式
+text/plain ：纯文本格式
+text/xml ： XML格式
+image/gif ：gif图片格式
+image/jpeg ：jpg图片格式
+image/png：png图片格式
+
+以application开头的媒体格式类型：
+
+applicat ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2021/12/30/理解SpringBoot注解s/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/30/Spring中的Bean/">Spring中的Bean</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-30T02:46:34.000Z">2021-12-30</time><i class="fa fa-edit"></i><time datetime="2021-12-30T02:46:34.000Z">2021-12-30</time></div><div class="recent-post-content"></div><div class="read-more"><a class="more" href="/2021/12/30/Spring中的Bean/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/Go的进阶学习/">Go的进阶学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T08:15:07.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T08:15:07.000Z">2021-12-29</time></div><div class="recent-post-content"> GO中通过组合方式实现的伪继承
+
+说到继承我们都知道，也可以了解到在Go中是没有extends关键字的，也就意味着Go并没有原生级别的继承支持。这也是为什么用了伪继承这个词。本质上，Go使用interface实现的功能叫组合，Go是通过组合(+匿名字段的技术)来实现的继承，说的更精确一点，是使用组合来代替继承
+
+我们用很容易理解的动物-猫来举例子，废话不多说，直接看代码。
+12345678910111213141516171819type Animal struct &#123;    Name string&#125;func (a *Animal) Eat() &#123;    fmt ...</div><div class="read-more"><a class="more" href="/2021/12/29/Go的进阶学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/使用七牛云作图床-PicGo/">使用七牛云作图床+PicGo</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T13:48:37.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T13:48:37.000Z">2021-12-29</time></div><div class="recent-post-content">
+自己在写博客的时候，通过图片来表达自己的思路无疑是种非常有效的方法，平常我的笔记都是通过hexo生成的，因此保存在本地路径即可。但是如果想把文章发表在第三方的平台上，那么这些相对路径的图片在上传过程中就无法被检索，因此如果能在一个大家都能访问到的地方存放这些图片，再给出这些地方的链接时那就解决了这个问题。要达到这个需求，则就需要使用OSS对象存储服务。
+这边我推荐的是七牛云。七牛云在注册认证后有10G永久免费空间，每月10G国内和10G国外流量，速度相当快，七牛云是国内专业CDN服务商，插件支持比较多，有免费SSL证书，但https流量收费。同时七牛云还会提供30天的测试域名，不过要注意的一 ...</div><div class="read-more"><a class="more" href="/2021/12/29/使用七牛云作图床-PicGo/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/28/开发方向-技术栈/">开发方向-技术栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-28T13:02:43.000Z">2021-12-28</time><i class="fa fa-edit"></i><time datetime="2021-12-28T13:02:43.000Z">2021-12-29</time></div><div class="recent-post-content"> Cloud 微服务全家桶
+
+微服务开发的主流技术栈
+
+
+服务注册中心
+
+:error:eureka 停止更新
+❌consul
+zookeeper
+⭐️nacos
+
+
+服务负载与调用
+
+❌ netflix oss ribbon ==&gt; spring cloud loadbalance
+netflix feign ==&gt; Spring cloud OpenFeign
+
+
+容量限流(熔断)
+
+❌hystrix: 最先的老大哥
+resilience4j：国外使用较多
+⭐️spring cloud alibaba sentinel
+
+
+配置中心
+
+❌spring cloud config
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发"> 开发</a></div><div class="read-more"><a class="more" href="/2021/12/28/开发方向-技术栈/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/26/Python科学计算常用API记录/">Python科学计算常用API记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-26T09:44:24.000Z">2021-12-26</time><i class="fa fa-edit"></i><time datetime="2021-12-26T09:44:24.000Z">2021-12-28</time></div><div class="recent-post-content"> pandas
+ to_numeric：类别离散化
+参数	描述
+arg	scalar, list, tuple, 1-d array, or Series
+errors	{‘ignore’, ‘raise’, ‘coerce’}, default ‘raise’
+downcast	{‘integer’, ‘signed’, ‘unsigned’, ‘float’} , default None,指定转换的类型,默认返回float64或int64
+1234567891011121314151617181920212223242526272829&gt;&gt;&gt; s = pd.Series ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2021/12/26/Python科学计算常用API记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/26/开发过程中Mysql-API记录/">开发过程中Mysql API记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-26T12:52:57.000Z">2021-12-26</time><i class="fa fa-edit"></i><time datetime="2021-12-26T12:52:57.000Z">2021-12-26</time></div><div class="recent-post-content"> 时间操作
+ TIME_TO_SEC
+
+MySQL TIME_TO_SEC(time) 函数返回将参数 time 转换为秒数的时间值，转换公式为“小时 ×3600+ 分钟 ×60+ 秒”。
+
+12345678910111213mysql&gt; SELECT TIME_TO_SEC(&apos;15:15:15&apos;);+-------------------------+| TIME_TO_SEC(&apos;15:15:15&apos;) |+-------------------------+|                   54915 |+----------------- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Mysql"> Mysql</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发记录"> 开发记录</a></div><div class="read-more"><a class="more" href="/2021/12/26/开发过程中Mysql-API记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/26/Python中关于图片的读取/">Python中关于图片的操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-26T08:16:29.000Z">2021-12-26</time><i class="fa fa-edit"></i><time datetime="2021-12-26T08:16:29.000Z">2021-12-26</time></div><div class="recent-post-content">
+写代码的时候一直记错库下对应的图片操作函数名以及他们的返回值类型，干脆写个笔记记录下。
+
+图片读取相关的包：
+
+matplotlib
+PIL/
+cv2
+numpy
+
+ 读取
+ matplotlib.pyplot / pylab
+12345678import pylab as plt# from matplotlib import pyplot as pltimport numpy as npimg = plt.imread('examples.png')print(type(img), img.dtype, np.min(img), np.max(img))[out](&lt;type 'n ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2021/12/26/Python中关于图片的读取/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/16/Unity游戏开发学习/">Unity游戏开发学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-16T08:23:47.000Z">2021-12-16</time><i class="fa fa-edit"></i><time datetime="2021-12-16T08:23:47.000Z">2021-12-25</time></div><div class="recent-post-content"> 组件
  RigidBody
 
 刚体，会给物体增加重力
@@ -206,15 +267,7 @@ cap ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="j
 设计模式有不同的分类，如下
 
 创建型设计模式，如工厂方法（Factory Method）模式、抽象工厂（Abstract Factory）模式、原型（Prototype）模式、单例（Singleton）模式，建造（Builder）模式等
-结构型设计模式，如合成（Com ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Zju"> Zju</a></div><div class="read-more"><a class="more" href="/2021/12/12/软件架构课程学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/26/前端-跨域/">前端-跨域</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-26T09:17:15.000Z">2021-11-26</time><i class="fa fa-edit"></i><time datetime="2021-11-26T09:17:15.000Z">2021-12-09</time></div><div class="recent-post-content"> 什么是跨域问题
-
-跨域问题的出现是因为浏览器的同源策略问题，所谓同源:就是两个页面具有相同的协议（protocol），主机（host）和端口号（port），即指协议，端口，域名。只要这个3个中有一个不同就是跨域。它是浏览器最核心也是最基本的功能，如果没有同源策略我们的浏览器将会十分的不安全，随时都可能受到攻击。
-当我们请求一个接口的时候，出现如：Access-Control-Allow-Origin 字眼的时候说明请求跨域了
-
-
- 展示跨域问题
-前端请求后端8889端口开放的端口
-12345678this.$axios(&#123;    method:'get',    url:'http ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/11/26/前端-跨域/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/">创建Vue工程（包含Vue2和Vue3）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time><i class="fa fa-edit"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time></div><div class="recent-post-content"> @vue/cli-init
+结构型设计模式，如合成（Com ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Zju"> Zju</a></div><div class="read-more"><a class="more" href="/2021/12/12/软件架构课程学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/">创建Vue工程（包含Vue2和Vue3）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time><i class="fa fa-edit"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time></div><div class="recent-post-content"> @vue/cli-init
 
 vue init 是vue-cli2.x的初始化方式
 
@@ -231,22 +284,7 @@ init创建工程时，交互信息中有一个比较有意思的是选择包管�
 会让选择Vue2还是Vue3
 
 
-vue create router_project: ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/30/Vue中使用axios/">Vue中使用axios</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-30T02:31:27.000Z">2021-11-30</time><i class="fa fa-edit"></i><time datetime="2021-11-30T02:31:27.000Z">2021-12-08</time></div><div class="recent-post-content"> axios请求
-
-官网网址
-
-
-从浏览器中创建 XMLHttpRequest
-从 node.js 发出 http 请求
-支持promise API
-拦截请求和响应
-转换请求数据和响应数据
-取消请求
-自动转换 JSON 数据
-客户端支持防御 XSRF
-
- 直接每次从axios库中调用axios函数
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950&lt;template&gt;  &lt;div&gt;    &lt;div&gt;mmmm&lt;/div&gt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/11/30/Vue中使用axios/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/08/NodeJS包管理工具/">NodeJS包管理工具</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-08T08:25:47.000Z">2021-12-08</time><i class="fa fa-edit"></i><time datetime="2021-12-08T08:25:47.000Z">2021-12-08</time></div><div class="recent-post-content"> 包管理工具
+vue create router_project: ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/08/NodeJS包管理工具/">NodeJS包管理工具</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-08T08:25:47.000Z">2021-12-08</time><i class="fa fa-edit"></i><time datetime="2021-12-08T08:25:47.000Z">2021-12-08</time></div><div class="recent-post-content"> 包管理工具
 
 npm
 
@@ -282,24 +320,7 @@ yarn run dev执行package.json中定义的scripts.dev指令
 
 表单
 
-123456&lt;form action="http://127.0.0.1:5000/" enctype="multipart/form-data"&gt;    &lt;input type="file" name="toupdate"/&gt;		# file的input不允许设置value    &lt;input type="submit" value="上传咯" /&gt;	      # 按钮显示的文字&lt;/form&gt;# action为表单要提交到的路径, 必须 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/05/前后端-实现上传和下载/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/29/GoodCSS记录/">GoodCSS记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-29T07:03:44.000Z">2021-11-29</time><i class="fa fa-edit"></i><time datetime="2021-11-29T07:03:44.000Z">2021-12-04</time></div><div class="recent-post-content"> GoodCss记录
- 图标四角反转：
-
-通过 @keyframes 规则，您能够创建动画。
-创建动画的原理是，将一套 CSS 样式逐渐变化为另一套样式。
-12&gt; @keyframes animationname &#123;keyframes-selector &#123;css-styles;&#125;&#125;&gt;
-
-
-
-animationname	必需。定义动画的名称。
-keyframes-selector	必需。动画时长的百分比。合法的值：
-
-0-100%
-from（与 0% 相同）
-to（与 100% 相同）
-
-
-css-styles: 必需。一个或多个合法的 CSS ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/11/29/GoodCSS记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/04/VBA学习——正则提取单元格指定内容并加粗/">VBA学习——正则提取单元格指定内容并加粗</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-04T03:15:12.000Z">2021-12-04</time><i class="fa fa-edit"></i><time datetime="2021-12-04T03:15:12.000Z">2021-12-04</time></div><div class="recent-post-content">
+123456&lt;form action="http://127.0.0.1:5000/" enctype="multipart/form-data"&gt;    &lt;input type="file" name="toupdate"/&gt;		# file的input不允许设置value    &lt;input type="submit" value="上传咯" /&gt;	      # 按钮显示的文字&lt;/form&gt;# action为表单要提交到的路径, 必须 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/05/前后端-实现上传和下载/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/04/VBA学习——正则提取单元格指定内容并加粗/">VBA学习——正则提取单元格指定内容并加粗</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-04T03:15:12.000Z">2021-12-04</time><i class="fa fa-edit"></i><time datetime="2021-12-04T03:15:12.000Z">2021-12-04</time></div><div class="recent-post-content">
 今天又是女朋友打工人的一天，女朋友有需求，打excel打印出来。由于导出后行距太小，以及答案不明显，因此做了两个处理
 
 每两行之间插入一行
@@ -315,15 +336,4 @@ VBA 过程以 Sub 语句开始，以 End Sub 语句结束，包含一个或多�
  plugins和apply plugin:
 
 由于文档写到了， 由于不清楚这些在哪些位置加入， 因此查看了plugins和apply plugin:的区别：
-1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2021/12/02/Gradle学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/01/Vue-Router细节记录/">Vue-Router细节记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-30T16:05:59.000Z">2021-12-01</time><i class="fa fa-edit"></i><time datetime="2021-11-30T16:05:59.000Z">2021-12-01</time></div><div class="recent-post-content"> vue-router使用
-yarn add vue-router@next --dev, 参数说明packageName@tagorpackageName@version
-创建router/index.js
-12345678910111213141516171819202122232425262728293031323334353637383940414243import &#123; createRouter, createWebHistory &#125; from "vue-router";import ShowList from "../components/ShowList.vue ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/01/Vue-Router细节记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/25/党员在线培训课程-免除暂停烦恼/">党员在线培训课程~免除暂停烦恼</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-25T02:48:17.000Z">2021-11-25</time><i class="fa fa-edit"></i><time datetime="2021-11-25T02:48:17.000Z">2021-11-25</time></div><div class="recent-post-content"> 党员在线培训课程~免除暂停烦恼
-
-女朋友反馈：刷党员在线培训课程得一直手动的解决暂停问题，无法单纯的挂机刷视频。作为一个程序猿，当然是帮她解决啦~
-
-首先分析页面中JS执行逻辑，如下所示
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041 ...</div><div class="read-more"><a class="more" href="/2021/11/25/党员在线培训课程-免除暂停烦恼/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/04/Linux-iptables学习/">Linux iptables学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-04T14:22:24.000Z">2021-11-04</time><i class="fa fa-edit"></i><time datetime="2021-11-04T14:22:24.000Z">2021-11-08</time></div><div class="recent-post-content"> iptables简介
-​    netfilter/iptables（简称为iptables）组成Linux平台下的包过滤防火墙，与大多数的Linux软件一样，这个包过滤防火墙是免费的，它可以代替昂贵的商业防火墙解决方案，完成封包过滤、封包重定向和网络地址转换（NAT）等功能。
-注：Iptables和netfilter的关系是一个很容易让人搞不清的问题。很多的知道iptables却不知道 netfilter。其实iptables只是Linux防火墙的管理工具而已，位于/sbin/iptables。真正实现防火墙功能的是 netfilter，它是Linux内核中实现包过滤的内部结构。
- ipt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2021/11/04/Linux-iptables学习/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2021/12/02/Gradle学习/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>[翻译]设计Pastebin.com(or Bit.ly)系统 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">[翻译]设计Pastebin.com(or Bit.ly)系统</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/04/05</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="翻译"> 翻译</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="系统设计"> 系统设计</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,656</span> | Reading time: <span class="post-count">10</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="设计pastebincom"><a class="markdownIt-Anchor" href="#设计pastebincom"></a> <a href="http://xn--Pastebin-xx5xji.com" target="_blank" rel="noopener">设计Pastebin.com</a> (or <a href="http://Bit.ly" target="_blank" rel="noopener">Bit.ly</a>)系统</h1>
+<p>注：本文档直接链接到系统设计主题中的相关领域，以避免重复。请参考链接内容来了解总体的讨论要点、利弊权衡以及替代方案。</p>
+<p>**设计<a href="https://www.baidu.com/s?wd=bit.ly&amp;rsv_spt=1&amp;rsv_iqid=0x97c01cce002338c1&amp;issp=1&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=2&amp;ie=utf-8&amp;rqlang=cn&amp;tn=baiduhome_pg&amp;rsv_enter=0&amp;rsv_dl=tb&amp;oq=bit.ly&amp;rsv_btype=t&amp;rsv_t=e8762eu5%2B6DVVq%2BNlFhLqorUp3QSNtSJ5UjqS%2FLmbVRjAw3gHUzdZ5VW%2F%2BJORNxD3z1%2F&amp;rsv_sug3=7&amp;rsv_sug1=7&amp;rsv_sug7=100&amp;rsv_pq=ce550397001e64ee&amp;prefixsug=bit.ly&amp;rsp=1&amp;rsv_sug4=5598" target="_blank" rel="noopener">Bit.ly</a>**是一个类似的问题。只是Pastebin还具有一个额外的功能，即存储粘贴的内容，而不是原始的未缩短过的url。</p>
+<h2 id="第一步列出用例和约束的大纲"><a class="markdownIt-Anchor" href="#第一步列出用例和约束的大纲"></a> 第一步：列出用例和约束的大纲</h2>
+<blockquote>
+<p>确定应用场景：收集需求和范围问题；提问来弄清阐明用例和约束，讨论来作出假设。</p>
+</blockquote>
+<p>在没有面试官来阐明清这些问题的情况下，我们将定义一些用例和约束。</p>
+<h3 id="用例"><a class="markdownIt-Anchor" href="#用例"></a> 用例</h3>
+<h4 id="我们将确定问题的范围只处理以下使用情况"><a class="markdownIt-Anchor" href="#我们将确定问题的范围只处理以下使用情况"></a> 我们将确定问题的范围，只处理以下使用情况</h4>
+<ul>
+<li><strong>用户</strong>：输入一段文本后，获得一个随机生成的链接
+<ul>
+<li>过期
+<ul>
+<li>默认设置是不会过期的</li>
+<li>可以选择一个时间过期</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>用户</strong>：输入一个paste的url链接，便可以看到内容</li>
+<li><strong>用户</strong>：是匿名的</li>
+<li><strong>服务</strong>：可以追踪得到页面分析结果
+<ul>
+<li>每月的访问数据</li>
+</ul>
+</li>
+<li><strong>服务</strong>：删除过期的pasten内容</li>
+<li><strong>服务</strong>：具有高可用性</li>
+</ul>
+<h4 id="范围之外"><a class="markdownIt-Anchor" href="#范围之外"></a> 范围之外</h4>
+<ul>
+<li><strong>用户</strong>：注册一个帐户
+<ul>
+<li><strong>用户</strong>：认证邮箱</li>
+</ul>
+</li>
+<li><strong>用户</strong>：登录注册账户
+<ul>
+<li><strong>用户</strong>：编辑文档</li>
+</ul>
+</li>
+<li><strong>用户</strong>：可以设置可见性</li>
+<li><strong>用户</strong>：可以设置短链接</li>
+</ul>
+<h3 id="约束和假设"><a class="markdownIt-Anchor" href="#约束和假设"></a> 约束和假设</h3>
+<h4 id="情况假设"><a class="markdownIt-Anchor" href="#情况假设"></a> 情况假设</h4>
+<ul>
+<li>流量不是均匀分布的</li>
+<li>产生一个短链接应该是快速的</li>
+<li>粘贴paste内容只能是文本</li>
+<li>页面浏览分析不需要是实时的</li>
+<li>1000万用户</li>
+<li>每月1000万次的粘贴paste写入量</li>
+<li>每月1亿次的粘贴paste阅读</li>
+<li>10:1的读与写比例</li>
+</ul>
+<h3 id="计算用量"><a class="markdownIt-Anchor" href="#计算用量"></a> 计算用量</h3>
+<p><strong>向你的面试官说明你是否应该对用量进行粗略估计。</strong></p>
+<ul>
+<li>每次粘贴paste的大小
+<ul>
+<li>每次粘贴的内容为1KB</li>
+<li><code>shortlink</code>- 7 bytes</li>
+<li><code>expiration_length_in_minutes</code> - 4 bytes</li>
+<li><code>created_at</code> - 5 bytes</li>
+<li><code>paste_path</code> - 255 bytes</li>
+<li><code>total</code> = ~1.27 KB</li>
+</ul>
+</li>
+<li>每月12.7GB的新粘贴内容
+<ul>
+<li>每个1.27 KB 的粘贴paste * 每月1000万个paste</li>
+<li>3年内约有450GB的新粘贴内容</li>
+<li>3年内有3.6亿个短链接</li>
+<li>假设大多数是新的粘贴内容，而不是对现有内容的更新</li>
+</ul>
+</li>
+<li>平均每秒钟写4次粘贴内容</li>
+<li>平均每秒40次读取请求</li>
+</ul>
+<p>方便的转换指南：</p>
+<ul>
+<li>每月250万秒</li>
+<li>每秒1个请求=每月250万个请求</li>
+<li>每秒40个请求=每月1亿个请求</li>
+<li>每秒400个请求=每月10亿个请求</li>
+</ul>
+<h2 id="第二步-创建一个高水平的设计"><a class="markdownIt-Anchor" href="#第二步-创建一个高水平的设计"></a> 第二步: 创建一个高水平的设计</h2>
+<blockquote>
+<p>勾勒出一个包含所有重要组成部分的高层次设计。</p>
+</blockquote>
+<p><img src="http://i.imgur.com/BKsBnmG.png" alt="Imgur"></p>
+<h2 id="第三步设计核心组件"><a class="markdownIt-Anchor" href="#第三步设计核心组件"></a> 第三步：设计核心组件</h2>
+<p><strong>用例: 用户输入一段文本后，获得一个随机生成的链接</strong></p>
+<p>我们可以使用一个<a href="https://github.com/donnemartin/system-design-primer#relational-database-management-system-rdbms" target="_blank" rel="noopener">关系数据库</a>作为一个大的哈希表，将生成的url映射到文件服务器和包含粘贴paste文件的路径。</p>
+<p>我们不采用管理文件服务器的方式，而是使用一个可管理的<strong>对象存储</strong>，如Amazon S3或<a href="https://github.com/donnemartin/system-design-primer#document-store" target="_blank" rel="noopener">NoSQL文档存储</a>。</p>
+<p>作为一个大型哈希表的关系数据库的替代品，我们可以使用<a href="https://github.com/donnemartin/system-design-primer#key-value-store" target="_blank" rel="noopener">NoSQL键值存储</a>。我们应该讨论<a href="https://github.com/donnemartin/system-design-primer#sql-or-nosql" target="_blank" rel="noopener">选择SQL或NoSQL之间的利弊权衡</a>。下面的讨论使用了关系型数据库的方法。</p>
+<ul>
+<li><strong>客户端</strong>向作为反向代理的<strong>web服务器</strong>发送一个创建粘贴paste请求</li>
+<li><strong>web服务器</strong>将该请求转发给 <strong>Write API 服务器</strong></li>
+<li><strong>Write API 服务器</strong>做以下工作。
+<ul>
+<li>生成一个唯一的url
+<ul>
+<li>通过查看<strong>SQL数据库</strong>是否有重复的网址，来检查该网址是否是唯一的。</li>
+<li>如果url不是唯一的，它将生成另一个网址</li>
+<li>如果我们支持自定义url，我们可以使用用户提供的url（也检查是否有重复的）。</li>
+</ul>
+</li>
+<li>保存到<strong>SQL数据库</strong>中的<code>粘贴paste</code>表</li>
+<li>将粘贴的数据保存到<strong>对象存储</strong>中</li>
+<li>返回url</li>
+</ul>
+</li>
+</ul>
+<p><strong>与你的面试官明确说明你要写多少代码</strong></p>
+<p><code>pastes</code>表的结构可以设计成下面的样子。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">shortlink char(7) NOT NULL</span><br><span class="line">expiration_length_in_minutes int NOT NULL</span><br><span class="line">created_at datetime NOT NULL</span><br><span class="line">paste_path varchar(255) NOT NULL</span><br><span class="line">PRIMARY KEY(shortlink)</span><br></pre></td></tr></table></figure>
+<p>将主键设置为基于<code>shortlink</code>列的<a href="https://github.com/donnemartin/system-design-primer#use-good-indices" target="_blank" rel="noopener">索引</a>，数据库会使用这个索引来强制执行唯一性。我们将在<code>creative_at</code>上创建一个额外的索引，以加快查询速度（用日志时间代替扫描整个表），并将数据保存在内存中。从内存中连续读取1MB的数据需要250微秒，而从SSD中读取需要4倍，从磁盘中读取需要80倍的时间。<sup><a href="https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know" target="_blank" rel="noopener">1</a></sup></p>
+<p>为了生成唯一的url，我们可以:</p>
+<ul>
+<li>对用户的<code>ip_address</code> + 时间戳进行<a href="https://en.wikipedia.org/wiki/MD5" target="_blank" rel="noopener"><strong>MD5</strong></a> 哈希
+<ul>
+<li>MD5是一个广泛使用的散列函数，产生一个128位的哈希值</li>
+<li>MD5是均匀分布的</li>
+<li>另外，我们也可以取随机生成的数据的MD5哈希值</li>
+</ul>
+</li>
+<li>使用<a href="https://www.kerstner.at/2012/07/shortening-strings-using-base-62-encoding/" target="_blank" rel="noopener"><strong>Base62</strong></a>对MD5哈希结果值进行编码
+<ul>
+<li>Base 62 编码字符为<code>[a-zA-Z0-9]</code>，不需要转义特殊字符，这对Urls来说很有效。</li>
+<li>原始输入只有一个哈希结果，而且Base 62是确定性的（不涉及随机性）。</li>
+<li>Base 64 是另一种流行的编码，但由于有额外的<code>+</code>和<code>/</code>字符，所以对urls有问题。</li>
+<li>下面的<a href="http://stackoverflow.com/questions/742013/how-to-code-a-url-shortener" target="_blank" rel="noopener">Base 62伪代码</a>在O(k)时间内运行，其中k=7。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">base_encode</span><span class="params">(num, base=<span class="number">62</span>)</span>:</span></span><br><span class="line">    digits = []</span><br><span class="line">    <span class="keyword">while</span> num &gt; <span class="number">0</span></span><br><span class="line">      remainder = modulo(num, base)</span><br><span class="line">      digits.push(remainder)</span><br><span class="line">      num = divide(num, base)</span><br><span class="line">    digits = digits.reverse</span><br></pre></td></tr></table></figure>
+<ul>
+<li>取输出的前7个字符，结果是62^7个可能的值，应该足以处理我们3年内3.6亿个短链接的约束。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url = base_encode(md5(ip_address+timestamp))[:URL_LENGTH]</span><br></pre></td></tr></table></figure>
+<p>我们将使用一个公共<a href="https://github.com/donnemartin/system-design-primer#representational-state-transfer-rest" target="_blank" rel="noopener"><strong>REST API</strong></a>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl -X POST --data <span class="string">'&#123; "expiration_length_in_minutes": "60", \</span></span><br><span class="line"><span class="string">    "paste_contents": "Hello World!" &#125;'</span> https://pastebin.com/api/v1/paste</span><br></pre></td></tr></table></figure>
+<p>Response:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"shortlink"</span>: <span class="string">"foobar"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于内部通信，我们可以使用<a href="https://github.com/donnemartin/system-design-primer#remote-procedure-call-rpc" target="_blank" rel="noopener">远程过程调用</a>。</p>
+<h3 id="用例用户输入一个paste-url并查看其内容"><a class="markdownIt-Anchor" href="#用例用户输入一个paste-url并查看其内容"></a> 用例：用户输入一个paste url并查看其内容</h3>
+<ul>
+<li><strong>客户端</strong>向<strong>web服务器</strong>发送一个获取粘贴paste的请求</li>
+<li><strong>Web服务器</strong>将该请求转发给 <strong>Read API 服务器</strong></li>
+<li><strong>Read API服务器</strong>做以下工作。
+<ul>
+<li>检查<strong>SQL数据库</strong>中生成的url
+<ul>
+<li>如果url在<strong>SQL数据库</strong>中，则从<strong>对象存储</strong>中获取粘贴内容</li>
+<li>否则，给用户返回一个错误信息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>REST API:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl https://pastebin.com/api/v1/paste?shortlink=foobar</span><br></pre></td></tr></table></figure>
+<p>Response:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"paste_contents"</span>: <span class="string">"Hello World"</span></span><br><span class="line">    <span class="string">"created_at"</span>: <span class="string">"YYYY-MM-DD HH:MM:SS"</span></span><br><span class="line">    <span class="string">"expiration_length_in_minutes"</span>: <span class="string">"60"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="用例网页跟踪分析服务"><a class="markdownIt-Anchor" href="#用例网页跟踪分析服务"></a> 用例：网页跟踪分析服务</h3>
+<p>由于实时分析不是一个要求，我们可以简单地对<strong>Web服务器</strong>的日志进行 <strong>MapReduce</strong> 以生成点击数。</p>
+<p><strong>与你的面试官明确说明你要写多少代码</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HitCounts</span><span class="params">(MRJob)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">extract_url</span><span class="params">(self, line)</span>:</span></span><br><span class="line">        <span class="string">"""Extract the generated url from the log line."""</span></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">extract_year_month</span><span class="params">(self, line)</span>:</span></span><br><span class="line">        <span class="string">"""Return the year and month portions of the timestamp."""</span></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mapper</span><span class="params">(self, _, line)</span>:</span></span><br><span class="line">        <span class="string">"""Parse each log line, extract and transform relevant lines.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Emit key value pairs of the form:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        (2016-01, url0), 1</span></span><br><span class="line"><span class="string">        (2016-01, url0), 1</span></span><br><span class="line"><span class="string">        (2016-01, url1), 1</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        url = self.extract_url(line)</span><br><span class="line">        period = self.extract_year_month(line)</span><br><span class="line">        <span class="keyword">yield</span> (period, url), <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reducer</span><span class="params">(self, key, values)</span>:</span></span><br><span class="line">        <span class="string">"""Sum values for each key.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        (2016-01, url0), 2</span></span><br><span class="line"><span class="string">        (2016-01, url1), 1</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">yield</span> key, sum(values)</span><br></pre></td></tr></table></figure>
+<h3 id="用例删除过期paste的服务"><a class="markdownIt-Anchor" href="#用例删除过期paste的服务"></a> 用例：删除过期paste的服务</h3>
+<p>要删除过期的粘贴，我们可以直接扫描<strong>SQL数据库</strong>中所有过期时间戳大于当前时间戳的条目。然后，所有过期的条目将被从表中删除（或标记为过期）。</p>
+<h2 id="第四步扩展设计"><a class="markdownIt-Anchor" href="#第四步扩展设计"></a> 第四步：扩展设计</h2>
+<blockquote>
+<p>鉴于约束条件，识别并解决瓶颈问题。</p>
+</blockquote>
+<p><img src="http://i.imgur.com/4edXG0T.png" alt="Imgur"></p>
+<p><strong>重要：不要简单地从最初的设计直接跳到最终的设计中去!</strong></p>
+<p>说明你会迭代地做这件事。1) <strong>基准测试/负载测试</strong>；2) <strong>剖析</strong>瓶颈；3) 解决瓶颈问题，同时评估替代方案和利弊权衡；4) 重复。参看<a href="../scaling_aws/README.md">设计一个可以在AWS上扩展到数百万用户的系统</a>，作为一个如何对初始设计进行迭代扩展的样例。</p>
+<p>讨论初始设计可能遇到的瓶颈以及如何解决每个瓶颈是很重要的。例如，通过添加一个带有多个<strong>Web服务器</strong>的<strong>负载平衡器</strong>、<strong>CDN</strong>、<strong>主从复制</strong>，可以解决哪些问题？各自的替代方案和<strong>利弊权衡</strong>是什么？</p>
+<p>我们将介绍一些组件来完成设计并解决可扩展性问题。内部负载均衡器没有显示，以减少混乱。</p>
+<p><em>为了避免重复讨论</em>，请参考下面的<a href="https://github.com/donnemartin/system-design-primer#index-of-system-design-topics" target="_blank" rel="noopener">系统设计主题</a>来了解主要的论文要点、利弊权衡和替代方案。</p>
+<ul>
+<li><a href="https://github.com/donnemartin/system-design-primer#domain-name-system" target="_blank" rel="noopener">DNS</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#content-delivery-network" target="_blank" rel="noopener">CDN</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#load-balancer" target="_blank" rel="noopener">Load balancer</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#horizontal-scaling" target="_blank" rel="noopener">Horizontal scaling</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#reverse-proxy-web-server" target="_blank" rel="noopener">Web server (reverse proxy)</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#application-layer" target="_blank" rel="noopener">API server (application layer)</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#cache" target="_blank" rel="noopener">Cache</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#relational-database-management-system-rdbms" target="_blank" rel="noopener">Relational database management system (RDBMS)</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#fail-over" target="_blank" rel="noopener">SQL write master-slave failover</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#master-slave-replication" target="_blank" rel="noopener">Master-slave replication</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#consistency-patterns" target="_blank" rel="noopener">Consistency patterns</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#availability-patterns" target="_blank" rel="noopener">Availability patterns</a></li>
+</ul>
+<p><strong>数据库分析</strong>可以使用数据仓库解决方案，如亚马逊 Redshift 或谷歌 BigQuery。</p>
+<p>像亚马逊S3这样的<strong>对象存储</strong>可以从容地处理每月12.7 GB 的新内容的约束。</p>
+<p>为了解决每秒40次的平均读取请求（高峰时更高），热门内容的流量应该由<strong>内存缓存</strong>而不是数据库来处理。<strong>内存缓存</strong>对于处理分布不均的流量和流量高峰也很有用。<strong>SQL Read 多副本</strong>应该能够处理缓存的缺失，只要副本没有被副本写入所拖累。</p>
+<p>对于单个<strong>SQL Write 主从</strong>来说，每秒<em>平均</em>4次粘贴写（高峰时更多）应该是可以做到的。否则，我们就需要采用额外的SQL扩展模式。</p>
+<ul>
+<li><a href="https://github.com/donnemartin/system-design-primer#federation" target="_blank" rel="noopener">Federation</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#sharding" target="_blank" rel="noopener">Sharding</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#denormalization" target="_blank" rel="noopener">Denormalization</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#sql-tuning" target="_blank" rel="noopener">SQL Tuning</a></li>
+</ul>
+<p>我们还应该考虑将一些数据转移到<strong>NoSQL数据库</strong>。</p>
+<h2 id="额外的讨论要点"><a class="markdownIt-Anchor" href="#额外的讨论要点"></a> 额外的讨论要点</h2>
+<blockquote>
+<p>根据问题的范围和剩余时间，可以深入研究其他的话题。</p>
+</blockquote>
+<h4 id="nosql"><a class="markdownIt-Anchor" href="#nosql"></a> NoSQL</h4>
+<ul>
+<li><a href="https://github.com/donnemartin/system-design-primer#key-value-store" target="_blank" rel="noopener">Key-value store</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#document-store" target="_blank" rel="noopener">Document store</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#wide-column-store" target="_blank" rel="noopener">Wide column store</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#graph-database" target="_blank" rel="noopener">Graph database</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#sql-or-nosql" target="_blank" rel="noopener">SQL vs NoSQL</a></li>
+</ul>
+<h3 id="缓存"><a class="markdownIt-Anchor" href="#缓存"></a> 缓存</h3>
+<ul>
+<li>缓存到哪里？
+<ul>
+<li><a href="https://github.com/donnemartin/system-design-primer#client-caching" target="_blank" rel="noopener">Client caching</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#cdn-caching" target="_blank" rel="noopener">CDN caching</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#web-server-caching" target="_blank" rel="noopener">Web server caching</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#database-caching" target="_blank" rel="noopener">Database caching</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#application-caching" target="_blank" rel="noopener">Application caching</a></li>
+</ul>
+</li>
+<li>缓存什么？
+<ul>
+<li><a href="https://github.com/donnemartin/system-design-primer#caching-at-the-database-query-level" target="_blank" rel="noopener">Caching at the database query level</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#caching-at-the-object-level" target="_blank" rel="noopener">Caching at the object level</a></li>
+</ul>
+</li>
+<li>何时更新缓存？
+<ul>
+<li><a href="https://github.com/donnemartin/system-design-primer#cache-aside" target="_blank" rel="noopener">Cache-aside</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#write-through" target="_blank" rel="noopener">Write-through</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#write-behind-write-back" target="_blank" rel="noopener">Write-behind (write-back)</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#refresh-ahead" target="_blank" rel="noopener">Refresh ahead</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="异步性和微服务"><a class="markdownIt-Anchor" href="#异步性和微服务"></a> 异步性和微服务</h3>
+<ul>
+<li><a href="https://github.com/donnemartin/system-design-primer#message-queues" target="_blank" rel="noopener">Message queues</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#task-queues" target="_blank" rel="noopener">Task queues</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#back-pressure" target="_blank" rel="noopener">Back pressure</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer#microservices" target="_blank" rel="noopener">Microservices</a></li>
+</ul>
+<h3 id="通信"><a class="markdownIt-Anchor" href="#通信"></a> 通信</h3>
+<ul>
+<li>对利弊权衡进行讨论：
+<ul>
+<li>与客户的外部通信 - <a href="https://github.com/donnemartin/system-design-primer#representational-state-transfer-rest" target="_blank" rel="noopener">HTTP APIs following REST</a>
+<ul>
+<li>内部通信 - <a href="https://github.com/donnemartin/system-design-primer#remote-procedure-call-rpc" target="_blank" rel="noopener">RPC</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://github.com/donnemartin/system-design-primer#service-discovery" target="_blank" rel="noopener">服务发现</a></li>
+</ul>
+<h3 id="安全"><a class="markdownIt-Anchor" href="#安全"></a> 安全</h3>
+<p>见 <a href="https://github.com/donnemartin/system-design-primer#security" target="_blank" rel="noopener">security section</a>.</p>
+<h3 id="延迟数"><a class="markdownIt-Anchor" href="#延迟数"></a> 延迟数</h3>
+<p>见 <a href="https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know" target="_blank" rel="noopener">每个程序员应该知道的延迟数字</a>。</p>
+<h3 id="持续推进"><a class="markdownIt-Anchor" href="#持续推进"></a> 持续推进</h3>
+<ul>
+<li>继续对你的系统进行基准测试和监测，以解决出现的瓶颈问题</li>
+<li>扩展是一个反复的过程</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/04/05/翻译-设计Pastebin-com-or-Bit-ly-系统/">https://nymrli.top/2022/04/05/翻译-设计Pastebin-com-or-Bit-ly-系统/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/04/10/算法与数据结构——滑动窗口/" title="算法与数据结构——滑动窗口、尺取法"><span>< PreviousPost</span><br><span class="prevTitle">算法与数据结构——滑动窗口、尺取法</span></a><a class="nextSlogan" href="/2022/04/05/理了一天彻底弄懂元类——分享给你一起弄懂/" title="理了一天彻底弄懂元类——分享给你一起弄懂"><span>NextPost ></span><br><span class="nextTitle">理了一天彻底弄懂元类——分享给你一起弄懂</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '[翻译]设计Pastebin.com(or Bit.ly)系统',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#设计pastebincom"><span class="toc-number">1.</span> <span class="toc-text"> 设计Pastebin.com (or Bit.ly)系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步列出用例和约束的大纲"><span class="toc-number">1.1.</span> <span class="toc-text"> 第一步：列出用例和约束的大纲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用例"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 用例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#我们将确定问题的范围只处理以下使用情况"><span class="toc-number">1.1.1.1.</span> <span class="toc-text"> 我们将确定问题的范围，只处理以下使用情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#范围之外"><span class="toc-number">1.1.1.2.</span> <span class="toc-text"> 范围之外</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#约束和假设"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 约束和假设</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#情况假设"><span class="toc-number">1.1.2.1.</span> <span class="toc-text"> 情况假设</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算用量"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 计算用量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步-创建一个高水平的设计"><span class="toc-number">1.2.</span> <span class="toc-text"> 第二步: 创建一个高水平的设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步设计核心组件"><span class="toc-number">1.3.</span> <span class="toc-text"> 第三步：设计核心组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用例用户输入一个paste-url并查看其内容"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 用例：用户输入一个paste url并查看其内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用例网页跟踪分析服务"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 用例：网页跟踪分析服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用例删除过期paste的服务"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 用例：删除过期paste的服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步扩展设计"><span class="toc-number">1.4.</span> <span class="toc-text"> 第四步：扩展设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#额外的讨论要点"><span class="toc-number">1.5.</span> <span class="toc-text"> 额外的讨论要点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#nosql"><span class="toc-number">1.5.0.1.</span> <span class="toc-text"> NoSQL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步性和微服务"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 异步性和微服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通信"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安全"><span class="toc-number">1.5.4.</span> <span class="toc-text"> 安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#延迟数"><span class="toc-number">1.5.5.</span> <span class="toc-text"> 延迟数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#持续推进"><span class="toc-number">1.5.6.</span> <span class="toc-text"> 持续推进</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>总得学点Elasticsearch吧 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">总得学点Elasticsearch吧</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/04/12</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,569</span> | Reading time: <span class="post-count">11</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="倒排索引"><a class="markdownIt-Anchor" href="#倒排索引"></a> 倒排索引</h2>
+<p>反向索引（inverted index）更熟悉的名字是倒排索引。</p>
+<p>什么是倒排索引: 倒排索引也叫反向索引，通俗来讲正向索引是通过key找value，反向索引则是通过value找key。</p>
+<p>举个具体的例子：我们一般是通过<strong>标题</strong>来找<strong>文章内容</strong>，即通过目录（正向索引）；而反向索引的运用场景就是通过<strong>内容</strong>来找到是<strong>哪一篇文章</strong>（标题，作者……），而怎么建立反向索引呢？怎么更快更好地找到结果呢？这个就是<strong>搜索引擎</strong>做的事了、</p>
+<p>正向索引：例如一个“文档1”经过分词，提取了20个关键词，每个关键词都会记录它在文档中的出现次数和出现位置。那我们就可以直接通过对&quot;文档1&quot;Document这个结构进行解析，从而得到每个关键词的信息。</p>
+<p>反向索引：那么我们希望通过关键词来找到它在哪几篇“文档”中出现怎么办呢？那么其实在遍历文章的时候，如果当前文章出现了keyword，则对Keyword的结构（简单点可以想成是一个hashmap）添加上这篇文章的信息</p>
+<p>再举个生活例子： 当用户在主页上搜索关键词“<u>华为手机</u>”时，假设只存在正向索引（forward index），那么就需要<strong>实时扫描完索引库中的所有文档</strong>，找出所有包含关键词“华为手机”的文档，再根据打分模型进行打分，排出名次后呈现给用户。因为互联网上收录在搜索引擎中的文档的数目是个天文数字，这样的索引结构根本无法满足<strong>实时</strong>返回排名结果的要求。</p>
+<p>所以，<strong>搜索引擎</strong>会将正向索引<strong>重新构建</strong>为倒排索引，即把<strong>文件ID</strong>对应到<strong>关键词</strong>的映射转换为<strong>关键词到文件ID的映射</strong>，每个关键词都对应着一系列的文件，这些文件中都出现这个关键词。从而大大减少了遍历的大小，加快了检索的速度。</p>
+<p><strong>本质上是通过设计数据结构，并花了额外的空间去换检索时的时间。</strong></p>
+<p>论文查重就是这种的典型应用：<a href="https://www.bilibili.com/video/BV1iK4y1M7XR?spm_id_from=444.41.0.0" target="_blank" rel="noopener">B站视频——论文查重是如何实现的</a>——将段落通过标点符号分隔成一个个句子，再将句子每每7个分隔成一个个section，比如长度为9的句子则可以分成3个section，预处理创建<code>preDict={&quot;section1&quot;: [doc1, ], &quot;section2&quot;: [doc1, ], &quot;section&quot;3: [doc1, ]}</code>的倒排索引，当进行查重时，也是分隔成句子后每每7个字进行检查是否在preDict中，如果在则是知道了在哪些文章中出现（最简单版）。视频后又提出了增加LCS最长公共子串的增强，有效地检验出了添加“的”字or调整字位置的偷鸡方法——建立4字倒排，如果4个字已经出现在了别的文章A里，则把当前句子S1与文章A中的句子S2进行LCS，如果公共子串长度大于7则判定为重复。</p>
+<h2 id="搜索引擎elasticsearch"><a class="markdownIt-Anchor" href="#搜索引擎elasticsearch"></a> 搜索引擎——Elasticsearch</h2>
+<p>Elastic Stack 如果你没有听过，那么 ELK 一定听过。ELK 是三款软件的简称，分别是 <code>Elasticsearch</code>、<code>Logstash</code>、<code>Kibana</code> 组成。那什么是 Elasticsearch呢？——全文搜索是很多网站常见功能，比如 GitHub 站内搜索、JD 商品搜索、B 站视频搜索。<code>Elasticsearch</code> 是当今最火的<strong>搜索引擎</strong>之一，它的底层基于另外一个 <code>java</code> 开源搜索引擎 <code>Lucene</code>，是一款开源分布式搜索引擎，并且提供了一系列 <code>REST API</code> 操作接口。</p>
+<h2 id="es的核心概念"><a class="markdownIt-Anchor" href="#es的核心概念"></a> ES的核心概念</h2>
+<ol>
+<li>索引（Index）：ES将数据存储于一个或多个索引中。类比传统的关系型数据库领域来说，索引相当于SQL中的一个数据库，或者一个数据存储方案（schema）。索引由其名称（必须为全小写字符）进行标识。一个ES集群中可以按需创建任意数目的索引。</li>
+<li>类型（type）：类型是索引内部的逻辑分区（category/partition），一个索引内部可定义一个或多个类型（type）。类比传统的关系型数据库领域来说，类型相当于“表”。</li>
+<li>文档（Document）：文档是索引和搜索的原子单位，它是包含了一个或多个域（Fild）的容器，每个域拥有一个名字及一个或多个值，有多个值的域通常称为“多值域”，文档基于JSON格式进行表示。每个文档可以存储不同的域集，但同一类型下的文档至应该有某种程度上的相似之处。</li>
+<li>集群（Cluster）：一个或者多个拥有相同cluster…name配置的节点组成，它们共同承担数据和负载的压力。</li>
+<li>节点（Node）：一个运行中的Elasticsearch实例称为一个节点。<br>
+ES集群中的节点有三种不同的类型：
+<ul>
+<li>主节点：负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。主节点并不需要涉及到文档级别的变更和搜索等操作。可以通过属性node.masteri进行设置。</li>
+<li>数据节点：存储数据和其对应的倒排索引。默认每一个节点都是数据节点（包括主节点），可以通过ode.data属性进行设置。</li>
+<li>协调节点：如果node.master和node.data属性均为false，则此节点称为协调节点，用来响应客户请求，均衡每个节点的负载。</li>
+</ul>
+</li>
+</ol>
+<h2 id="python操作elasticsearch"><a class="markdownIt-Anchor" href="#python操作elasticsearch"></a> Python操作Elasticsearch</h2>
+<p>安装es库<code>pip install Elasticsearch</code></p>
+<p>参考：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1CJ411L7uV?from=search&amp;seid=16833887069453710612&amp;spm_id_from=333.337.0.0" target="_blank" rel="noopener"><em>python</em>操作<em>ElasticSearch</em>-创建、插入、检索</a></li>
+<li><a href="https://www.bilibili.com/video/BV1Nk4y1R7Hf?p=5&amp;spm_id_from=pageDriver" target="_blank" rel="noopener">【狂神说Java】ElasticSearch搜索实战仿京东搜索</a>——Java操作ES+仿京东搜索+vue与thymeleft单页面实现前端</li>
+</ul>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<h2 id="docker-运行-elasticsearch"><a class="markdownIt-Anchor" href="#docker-运行-elasticsearch"></a> docker 运行 Elasticsearch</h2>
+<blockquote>
+<p>根据官网推荐，ES配套 Kibana 只能安装 <a href="https://link.juejin.cn/?target=https%3A%2F%2Fwww.elastic.co%2Fguide%2Fen%2Fkibana%2F6.8%2Fdocker.html" target="_blank" rel="noopener">6.8.19</a>， 所以安装</p>
+</blockquote>
+<ol>
+<li>
+<p>拉取镜像:<code>docker pull docker.io/elasticsearch:7.17.2</code>，拉取其他版本可见<a href="#%E6%9F%A5%E7%9C%8B%E9%95%9C%E5%83%8F%E7%89%88%E6%9C%AC%EF%BC%9Adocker-search-tag">查看镜像版本：docker-search-tag</a></p>
+</li>
+<li>
+<p>es配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /home/apollo3d/cl/dockerdata/elasticsearch/config </span><br><span class="line">mkdir -p /home/apollo3d/cl/dockerdata/elasticsearch/data</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"http.host: 0.0.0.0"</span> &gt;&gt; /home/apollo3d/cl/dockerdata/elasticsearch/config/elasticsearch.yml</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>启动容器:<code>docker run --name es -p 9200:9200 -p 9300:9300 \ -e &quot;discovery.type=single-node&quot; \ -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; \ -v /home/apollo3d/dockerdata/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \ -v /home/apollo3d/dockerdata/elasticsearch/data:/usr/share/elasticsearch/data \ -v /home/apollo3d/dockerdata/elasticsearch/plugins:/usr/share/elasticsearch/plugins \ -d docker.io/elasticsearch:7.17.2</code>，注：<code>&lt;image_id&gt;</code>可以通过<code>docker images</code>查看刚刚pull下来的镜像；需要去ESC上打开防火墙的指定端口；</p>
+</li>
+<li>
+<p>测试：浏览器访问 Elasticsearch 地址：<code>ECS_IP:9200</code>， 如果返回JSON数据则<strong>启动正确</strong></p>
+</li>
+<li>
+<p>安装 ik 分词器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入es容器</span></span><br><span class="line">$ docker <span class="built_in">exec</span> -it es bash</span><br><span class="line"><span class="comment"># 下载ik分词器</span></span><br><span class="line">$ ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.1.1/elasticsearch-analysis-ik-7.1.1.zip</span><br><span class="line"><span class="comment"># 退出容器</span></span><br><span class="line">$ <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>安装 ik 分词器后重启 Elasticsearch：<code>docker restart es</code></p>
+</li>
+<li>
+<p>postman 测试 ik 分词器（注意：把 Content-Type 设置为 application/json ）</p>
+</li>
+</ol>
+<h2 id="启动-es-head-可视化界面"><a class="markdownIt-Anchor" href="#启动-es-head-可视化界面"></a> 启动 es-head (可视化界面):</h2>
+<blockquote>
+<p>Elasticsearch 5.x后不支持插件，head作为单独服务独立运行。</p>
+</blockquote>
+<ol>
+<li>
+<p>拉取镜像：<code>docker pull mobz/elasticsearch-head:5</code></p>
+</li>
+<li>
+<p>启动容器：<code>docker run -d -p 9100:9100 --name esh elasticsearch-head</code></p>
+</li>
+<li>
+<p>访问 es-head：<code>ECS_IP:9100</code></p>
+<p>当你输入 <a href="https://link.zhihu.com/?target=http%3A//192.168.232.128%3A9200/" target="_blank" rel="noopener">http://192.168.232.128:9200/</a> 点击连接时，会发现无法连接。是因为前后端分离开发，存在跨域问题，需要在服务端做 CORS 的配置。我们再次进入 Elasticsearch 容器内部，修改 <code>elasticsearch.yml</code> 配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入容器</span></span><br><span class="line">$ docker <span class="built_in">exec</span> -it es /bin/bash</span><br><span class="line">[root@7f213e9fb6bb elasticsearch]<span class="comment"># vi config/elasticsearch.yml</span></span><br><span class="line"><span class="comment"># 添加如下两条配置，注意冒号后面有空格，保存并退出。</span></span><br><span class="line">http.cors.enabled: <span class="literal">true</span> </span><br><span class="line">http.cors.allow-origin: <span class="string">"*"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>最后退出容器，并重启 Elasticsearch: <code>docker restart esh</code></p>
+</li>
+<li>
+<p>再次访问 es-head，就能看到可视化的界面了。</p>
+</li>
+</ol>
+<h2 id="启动-kibana可视化界面"><a class="markdownIt-Anchor" href="#启动-kibana可视化界面"></a> ★启动 kibana（可视化界面）</h2>
+<blockquote>
+<p>Kibana 是为 <a href="https://so.csdn.net/so/search?q=Elasticsearch&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener">Elasticsearch</a>设计的开源分析和可视化平台。可以使用 Kibana 来搜索，查看存储在 Elasticsearch 索引中的数据并与之交互。你可以很容易实现高级的数据分析和可视化，并且以<u>图表的形式</u>展现出来。</p>
+<p>是ELK技术栈中的K，也是ES比较主流的可视化界面，也是官方推荐的</p>
+<p>Elasticsearch 5.x后不支持插件，跟Elasticsearch  head一样，kibana需要作为单独服务独立运行。</p>
+</blockquote>
+<ol>
+<li>
+<p>拉取镜像：<code>docker pull docker.io/kibana:7.17.2</code></p>
+</li>
+<li>
+<p>配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/dockerdata/elk7/kibana/config/</span><br><span class="line">vi ~/dockerdata/elk7/kibana/config/kibana.yml</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># ** THIS IS AN AUTO-GENERATED FILE **</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Default Kibana configuration for docker target</span></span><br><span class="line"></span><br><span class="line">server.name: kibana</span><br><span class="line">server.host: <span class="string">"0"</span>								 <span class="comment"># 对外访问kibana的地址</span></span><br><span class="line">elasticsearch.hosts: [ <span class="string">"http://127.0.0.1:9200"</span> ]	<span class="comment"># elasticsearch的地址</span></span><br><span class="line">xpack.monitoring.ui.container.elasticsearch.enabled: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>启动容器: <code>docker run -d --name=kibana --restart=always -p 5601:5601 -v ~/dockerdata/elk7/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml kibana:7.17.2</code></p>
+</li>
+<li>
+<p>查看日志: <code>docker logs -f kibana</code></p>
+</li>
+<li>
+<p>等待30秒，如果出现以下信息，说明启动成功了：<code>{&quot;type&quot;:&quot;log&quot;,&quot;@timestamp&quot;:&quot;2020-08-27T03:00:28Z&quot;,&quot;tags&quot;:[&quot;listening&quot;,&quot;info&quot;],&quot;pid&quot;:6,&quot;message&quot;:&quot;Server running at http://0:5601&quot;}</code></p>
+</li>
+<li>
+<p>访问页面：<code>ECS_IP:5601</code>就可以看到Welcome to Kibana啦~</p>
+</li>
+</ol>
+<p>Kibana server is not ready yet问题：</p>
+<ul>
+<li><a href="https://blog.csdn.net/fbvukn/article/details/107289027?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_antiscanv2&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_antiscanv2&amp;utm_relevant_index=2" target="_blank" rel="noopener">kibana解决Kibana server is not ready yet问题</a></li>
+<li><a href="https://blog.csdn.net/whatday/article/details/107879989" target="_blank" rel="noopener">kibana 报错 server is not ready yet 可能的原因</a></li>
+</ul>
+<h2 id="docker-compose"><a class="markdownIt-Anchor" href="#docker-compose"></a> docker-compose:</h2>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line">  </span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">    elasticsearch:</span></span><br><span class="line"><span class="attr">        image:</span> <span class="string">docker.io/elasticsearch:7.17.2</span></span><br><span class="line"><span class="attr">        container_name:</span> <span class="string">es2</span></span><br><span class="line"><span class="attr">        environment:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">discovery.type=single-node</span></span><br><span class="line"><span class="attr">        ports:</span></span><br><span class="line"><span class="bullet">           -</span> <span class="string">"9200:9200"</span></span><br><span class="line"><span class="bullet">           -</span> <span class="string">"9300:9300"</span></span><br><span class="line"><span class="attr">    kinaba:</span></span><br><span class="line"><span class="attr">        image:</span> <span class="string">docker.io/kibana:7.17.2</span></span><br><span class="line"><span class="attr">        container_name:</span> <span class="string">kibana2</span></span><br><span class="line"><span class="attr">        ports:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">"5601:5601"</span></span><br><span class="line"><span class="attr">        volumes:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">/home/apollo3d/cl/dockerdata/elk7/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml</span></span><br><span class="line"><span class="attr">        depends_on:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">elasticsearch</span></span><br></pre></td></tr></table></figure>
+<h2 id="查看镜像版本docker-search-tag"><a class="markdownIt-Anchor" href="#查看镜像版本docker-search-tag"></a> 查看镜像版本：docker-search-tag</h2>
+<p><a href="http://xn--docker-show-repo-tag-2x06a431biq1j2e4clo2cqoe.sh" target="_blank" rel="noopener">使用自制脚本docker-show-repo-tag.sh</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Simple script that will display docker repository tags.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Usage:</span></span><br><span class="line"><span class="comment">#   $ docker-show-repo-tags.sh ubuntu centos</span></span><br><span class="line"><span class="keyword">for</span> Repo <span class="keyword">in</span> $* ; <span class="keyword">do</span></span><br><span class="line">  curl -s -S <span class="string">"https://registry.hub.docker.com/v2/repositories/library/<span class="variable">$Repo</span>/tags/"</span> | \</span><br><span class="line">    sed -e <span class="string">'s/,/,\n/g'</span> -e <span class="string">'s/\[/\[\n/g'</span> | \</span><br><span class="line">    grep <span class="string">'"name"'</span> | \</span><br><span class="line">    awk -F\<span class="string">" '&#123;print <span class="variable">$4</span>;&#125;' | \</span></span><br><span class="line"><span class="string">    sort -fu | \</span></span><br><span class="line"><span class="string">    sed -e "</span>s/^/<span class="variable">$&#123;Repo&#125;</span>:/<span class="string">"</span></span><br><span class="line"><span class="string">done</span></span><br></pre></td></tr></table></figure>
+<p>然后在终端运行<code>$ ./docker-show-repo-tags.sh elasticsearch</code>即可获得结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">elasticsearch:8.0.1</span><br><span class="line">elasticsearch:8.1.0</span><br><span class="line">elasticsearch:8.1.1</span><br><span class="line">elasticsearch:8.1.2</span><br></pre></td></tr></table></figure>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/04/11/总得学点Elasticsearch吧/">https://nymrli.top/2022/04/11/总得学点Elasticsearch吧/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/04/27/V-P-N与Charles无法共用问题解决/" title="V-P-N(Vmess)与Charles无法共用问题解决"><span>< PreviousPost</span><br><span class="prevTitle">V-P-N(Vmess)与Charles无法共用问题解决</span></a><a class="nextSlogan" href="/2022/04/10/算法与数据结构——滑动窗口/" title="算法与数据结构——滑动窗口、尺取法"><span>NextPost ></span><br><span class="nextTitle">算法与数据结构——滑动窗口、尺取法</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: '总得学点Elasticsearch吧',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#倒排索引"><span class="toc-number">1.</span> <span class="toc-text"> 倒排索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搜索引擎elasticsearch"><span class="toc-number">2.</span> <span class="toc-text"> 搜索引擎——Elasticsearch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#es的核心概念"><span class="toc-number">3.</span> <span class="toc-text"> ES的核心概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python操作elasticsearch"><span class="toc-number">4.</span> <span class="toc-text"> Python操作Elasticsearch</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number"></span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-运行-elasticsearch"><span class="toc-number">1.</span> <span class="toc-text"> docker 运行 Elasticsearch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动-es-head-可视化界面"><span class="toc-number">2.</span> <span class="toc-text"> 启动 es-head (可视化界面):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动-kibana可视化界面"><span class="toc-number">3.</span> <span class="toc-text"> ★启动 kibana（可视化界面）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-compose"><span class="toc-number">4.</span> <span class="toc-text"> docker-compose:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看镜像版本docker-search-tag"><span class="toc-number">5.</span> <span class="toc-text"> 查看镜像版本：docker-search-tag</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

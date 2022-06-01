@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>mitmproxy拦截代理——PC版HttpCanary · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">mitmproxy拦截代理——PC版HttpCanary</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/05/23</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">2,358</span> | Reading time: <span class="post-count">9</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="httpcanary"><a class="markdownIt-Anchor" href="#httpcanary"></a> HttpCanary</h2>
+<p>HttpCanary是Android系统下功能最强大的网络分析工具(IOS的是Thro)，支持TCP/UDP/HTTP/HTTPS/<u>WebSocket</u>等多种协议，可以视为Android平台下的Fiddler和Charles。</p>
+<p><strong>★强大的调试功能</strong></p>
+<ul>
+<li>断点指定请求，支持修改数据再提交。</li>
+<li>注入器支持，创建自定义规则修改返回数据包（★静态注入）。</li>
+<li>支持对网络请求重发、编辑重发、批量重发等操作。</li>
+<li>配置黑名单或者白名单，自由指定目标抓包。</li>
+<li>支持数据包屏蔽，比如屏蔽客户端发向服务器的指定数据包。</li>
+</ul>
+<h2 id="mitmproxy"><a class="markdownIt-Anchor" href="#mitmproxy"></a> mitmproxy</h2>
+<p>顾名思义，mitmproxy 就是用于 MITM 的 proxy，MITM 即<a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB" target="_blank" rel="noopener">中间人攻击</a>（Man-in-the-middle attack）。用于中间人攻击的<strong>代理</strong>首先会像正常的代理一样转发请求，保障<strong>服务端</strong>与<strong>客户端</strong>的通信，其次，会适时的查、记录其截获的数据，或篡改数据，引发服务端或客户端特定的行为。不同于 fiddler 或 wireshark 等抓包工具，mitmproxy 不仅可以<strong>截获请求</strong>帮助开发者查看、分析，更可以通过自定义脚本进行二次开发。</p>
+<p>注：mitmproxy最大的特点跟httpCanary一样，其拥有修改响应的能力，实现如下功能：：“截获对浏览器对该 url 的请求，将返回内容置空，并将真实的返回内容存到某个数据库，出现异常时发出邮件通知”，这些都</p>
+<p>但 mitmproxy 并不会真的对无辜的人发起中间人攻击，由于 mitmproxy 工作在 HTTP 层，而当前 HTTPS 的普及让客户端拥有了检测并规避中间人攻击的能力，所以要让 mitmproxy 能够正常工作，必须要让<strong>客户端（APP 或浏览器）主动信任 mitmproxy 的 SSL 证书</strong>，或忽略证书异常，★<strong>这也就意味着 APP 或浏览器是属于开发者本人的</strong>★——显而易见，这不是在做黑产，而是在做开发或测试。</p>
+<p><strong>特性</strong></p>
+<ul>
+<li>拦截HTTP和HTTPS请求和响应并即时修改它们</li>
+<li>保存完整的HTTP对话以供以之后重发和分析</li>
+<li>重发HTTP对话的客户端</li>
+<li>重发先前记录的服务的HTTP响应</li>
+<li>反向代理模式将流量转发到指定的服务器</li>
+<li>在macOS和Linux上实现透明代理模式</li>
+<li>使用Python对HTTP流量进行脚本化修改</li>
+<li>实时生成用于拦截的SSL / TLS证书</li>
+</ul>
+<h3 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h3>
+<p>“安装 mitmproxy”这句话是有歧义的，既可以指①“安装 mitmproxy 工具”，也可以指②“安装 python 的 mitmproxy 包”，注意后者是包含前者的。即安装 python 的 mitmproxy 包除了会得到 mitmproxy 工具外，还会得到开发定制脚本所需要的包依赖，其安装过程并不复杂。</p>
+<p>如果只是拿 mitmproxy 做一个替代 fiddler 的工具，没有什么定制化的需求（修改响应等功能），那完全只需要“安装 mitmproxy 工具”即可，去 <a href="https://mitmproxy.org/" target="_blank" rel="noopener">mitmproxy 官网</a> 上下载一个 installer 便可开箱即用，不需要提前准备好 python 开发环境。但显然，这不是这里要讨论的，我们需要的是“安装 python 的 mitmproxy 包”。</p>
+<p>安装命令：<code>pip install mitmproxy</code></p>
+<p>完成后，系统将拥有 <code>mitmproxy</code>（windows中不支持）、<code>mitmdump</code>、<code>mitmweb</code> 三个命令，可以拿 <code>mitmdump</code> 测试一下安装是否成功，执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mitmdump --version</span><br></pre></td></tr></table></figure>
+<p>应当可以看到类似于这样的输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mitmproxy: 4.0.1</span><br><span class="line">Python:    3.6.5</span><br><span class="line">OpenSSL:   OpenSSL 1.1.0h  27 Mar 2018</span><br><span class="line">Platform:  Windows-10-10.0.16299-SP0</span><br></pre></td></tr></table></figure>
+<h3 id="运行"><a class="markdownIt-Anchor" href="#运行"></a> 运行</h3>
+<p>要启动 mitmproxy 用 <code>mitmproxy</code>、<code>mitmdump</code>、<code>mitmweb</code> 这三个命令中的任意一个即可，这三个命令功能一致，且都可以加载自定义脚本，唯一的区别是交互界面的不同。</p>
+<ul>
+<li><code>mitmproxy</code> 命令启动后，会提供一个命令行界面，用户可以实时看到发生的请求，并通过命令过滤请求，查看请求数据。</li>
+<li><code>mitmweb</code> 命令启动后，会提供一个 web 界面，用户可以实时看到发生的请求，并通过 GUI 交互来过滤请求，查看请求数据。</li>
+<li><code>mitmdump</code> 命令启动后——没有界面，程序默默运行，所以 mitmdump 无法提供过滤请求、查看数据的功能，只能结合自定义脚本，默默工作。</li>
+</ul>
+<p>由于 <code>mitmproxy</code> 命令的交互操作稍显繁杂且不支持 windows 系统，而我们主要的使用方式又是载入自定义脚本，并不需要交互，所以原则上说只需要 <code>mitmdump</code> 即可，但考虑到有交互界面可以更方便排查错误，所以这里以 <code>mitmweb</code> 命令为例。实际使用中可以根据情况选择任何一个命令。</p>
+<h4 id="mitmweb"><a class="markdownIt-Anchor" href="#mitmweb"></a> mitmweb</h4>
+<p>mitmproxy 绑定了 <code>*:8080</code> 作为代理端口，并提供了一个 web 交互界面在 <code>127.0.0.1:8081</code>。</p>
+<p>现在可以测试一下代理，让 Chrome 以 mitmproxy 为代理并忽略证书错误。为了不影响平时正常使用，我们不去改 Chrome 的配置，而是通过命令行带参数起一个 Chrome。如果你不使用 Chrome 而是其他浏览器，也可以搜一下对应的启动参数是什么，应该不会有什么坑。此外示例仅以 windows 系统为例，因为使用 linux 或 mac 开发的同学应该更熟悉命令行的使用才对，应当能自行推导出在各自环境中对应的操作。</p>
+<p>接下来关闭所有 Chrome 窗口，否则命令行启动时的附加参数将失效。打开 cmd，执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前面那一长串是 Chrome 的的安装路径，应当根据系统实际情况修改，后面两参数设置了代理地址并强制忽略掉证书错误。</span></span><br><span class="line">$ <span class="string">"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"</span> --proxy-server=127.0.0.1:8080 --ignore-certificate-errors</span><br></pre></td></tr></table></figure>
+<p>▲推荐先使用<code>mitmdump</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mitmdump </span><br><span class="line">Proxy server listening at http://*:8080</span><br><span class="line"><span class="comment"># 然后windows设置 -&gt; 代理 -&gt; 127.0.0.1 8080 -&gt; 保存</span></span><br></pre></td></tr></table></figure>
+<p>但是如果没安装https证书的话，是抓取不了https数据的，因此需要安装证书。</p>
+<h3 id="证书安装"><a class="markdownIt-Anchor" href="#证书安装"></a> 证书安装</h3>
+<h4 id="pc"><a class="markdownIt-Anchor" href="#pc"></a> PC</h4>
+<p>官网介绍<a href="https://docs.mitmproxy.org/stable/concepts-certificates/" target="_blank" rel="noopener">About Certificates</a></p>
+<p>使用<code>mitmdump</code>之后下面的文件就会被创建，位于<code>C:\Users\mrli\.mitmproxy</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Filename</th>
+<th style="text-align:left">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">mitmproxy-ca.pem</td>
+<td style="text-align:left">The certificate <strong>and the private key</strong> in PEM format.</td>
+</tr>
+<tr>
+<td style="text-align:left">mitmproxy-ca-cert.pem</td>
+<td style="text-align:left">The certificate in PEM format. Use this to distribute on most non-Windows platforms.</td>
+</tr>
+<tr>
+<td style="text-align:left">mitmproxy-ca-cert.p12</td>
+<td style="text-align:left">The certificate in PKCS12 format. <strong>For use on Windows.</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">mitmproxy-ca-cert.cer</td>
+<td style="text-align:left">Same file as .pem, but with an extension expected by some Android devices.</td>
+</tr>
+</tbody>
+</table>
+<p>双击<code>mitmproxy-ca-cert.p12</code>安装，“本地计算机”-&gt;<code>下一页</code>-&gt;<code>下一页</code>-&gt;<code>将所有的证书都放入下列存储</code>(受信任的根证书颁布机构)然后下一页，即可完整证书安装</p>
+<h4 id="手机"><a class="markdownIt-Anchor" href="#手机"></a> 手机</h4>
+<p>WIFI中设置代理，ip需要在电脑上通过<code>ipconfig</code>查看，而port参数跟上面一样，通过<code>mitmdump</code>可以看到侦听的端口具体为多少，默认为8080。</p>
+<p>证书安装：进入网址<code>mitm.it</code>，根据OS选择安装证书</p>
+<p>详情见: <a href="https://www.bilibili.com/video/BV1UC4y1t7EL?p=1" target="_blank" rel="noopener">mitmproxy抓包工具！！！ 从安装到简单使用</a></p>
+<h3 id="脚本"><a class="markdownIt-Anchor" href="#脚本"></a> ★脚本</h3>
+<p>接下来开始开发自定义脚本，这才是 mitmproxy 真正强大的地方（可以在python代码中直接处理数据包）。</p>
+<p>总共有两种写法：</p>
+<ol>
+<li>定义一些接受指定参数的函数</li>
+</ol>
+<blockquote>
+<p>编写一个 py 文件供 mitmproxy 加载，文件中定义了若干函数，这些函数实现了某些 mitmproxy 提供的事件，mitmproxy 会在某个事件发生时调用对应的函数，形如：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mitmproxy.http</span><br><span class="line"><span class="keyword">from</span> mitmproxy <span class="keyword">import</span> ctx</span><br><span class="line"></span><br><span class="line">num = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request</span><span class="params">(flow: mitmproxy.http.HTTPFlow)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> num</span><br><span class="line">    num = num + <span class="number">1</span></span><br><span class="line">    ctx.log.info(<span class="string">"We've seen %d flows"</span> % num)</span><br></pre></td></tr></table></figure>
+<p>第二个是，编写一个 py 文件供 mitmproxy 加载，文件定义了变量 addons，addons 是个数组，每个元素是一个类实例，这些类有若干方法，这些方法实现了某些 mitmproxy 提供的事件，mitmproxy 会在某个事件发生时调用对应的方法。这些类，称为一个个 <code>addon</code>，比如一个叫 Counter 的 addon(插件)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mitmproxy.http</span><br><span class="line"><span class="keyword">from</span> mitmproxy <span class="keyword">import</span> ctx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.num = <span class="number">0</span></span><br><span class="line">	<span class="comment"># 重写指定方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">request</span><span class="params">(self, flow: mitmproxy.http.HTTPFlow)</span>:</span></span><br><span class="line">        self.num = self.num + <span class="number">1</span></span><br><span class="line">        ctx.log.info(<span class="string">"We've seen %d flows"</span> % self.num)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">addons = [</span><br><span class="line">    Counter()</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>⭐️这里强烈建议使用第二种套路，直觉上就会感觉第二种套路更为先进，使用会更方便也更容易管理和拓展。况且这也是<a href="https://github.com/mitmproxy/mitmproxy/tree/master/mitmproxy/addons" target="_blank" rel="noopener">官方内置的一些 addon</a> 的实现方式。</p>
+<p>我们将上面第二种套路的示例代码存为 <a href="http://addons.py" target="_blank" rel="noopener">addons.py</a>，再重新启动 mitmproxy：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mitmweb -s addons.py</span><br></pre></td></tr></table></figure>
+<p>当浏览器使用代理进行访问时，就应该能看到控制台里有类似这样的日志：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Web server listening at http://127.0.0.1:8081/</span><br><span class="line">Loading script addons.py</span><br><span class="line">Proxy server listening at http://*:8080</span><br><span class="line">We&apos;ve seen 1 flows</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<p>这就说明自定义脚本生效了。</p>
+<p>总结：自定义脚本可以实现拦截请求，从而对请求头、请求、响应头、响应头进行修改的效果——当人操作时，就能在拦截请求进行处理的时候进行数据处理。所以可以mitmproxy+appnium或者selenium实现模拟点击+抓数据包的方式。</p>
+<h3 id="事件"><a class="markdownIt-Anchor" href="#事件"></a> 事件</h3>
+<p>上述当 request 时间发生时，计数器加一，并打印日志。这里对应的是 request 事件，那么mitmproxy中一共有哪些事件呢？</p>
+<p>参考：<a href="https://www.cnblogs.com/grandlulu/p/9525417.html" target="_blank" rel="noopener">使用 mitmproxy + python 做拦截代理</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/04/29/mitmproxy拦截代理——PC版HttpCanary/">https://nymrli.top/2022/04/29/mitmproxy拦截代理——PC版HttpCanary/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/05/02/2022年5月劳动节爬虫项目记录/" title="2022年5月劳动节爬虫项目记录"><span>< PreviousPost</span><br><span class="prevTitle">2022年5月劳动节爬虫项目记录</span></a><a class="nextSlogan" href="/2022/04/29/使用Python转义实现前端加密算法-记录笔记/" title="使用Python转义实现前端加密算法-记录笔记"><span>NextPost ></span><br><span class="nextTitle">使用Python转义实现前端加密算法-记录笔记</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'mitmproxy拦截代理——PC版HttpCanary',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#httpcanary"><span class="toc-number">1.</span> <span class="toc-text"> HttpCanary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mitmproxy"><span class="toc-number">2.</span> <span class="toc-text"> mitmproxy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">2.1.</span> <span class="toc-text"> 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行"><span class="toc-number">2.2.</span> <span class="toc-text"> 运行</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mitmweb"><span class="toc-number">2.2.1.</span> <span class="toc-text"> mitmweb</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#证书安装"><span class="toc-number">2.3.</span> <span class="toc-text"> 证书安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pc"><span class="toc-number">2.3.1.</span> <span class="toc-text"> PC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#手机"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 手机</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#脚本"><span class="toc-number">2.4.</span> <span class="toc-text"> ★脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件"><span class="toc-number">2.5.</span> <span class="toc-text"> 事件</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

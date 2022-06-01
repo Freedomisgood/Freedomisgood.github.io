@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Mrli"><meta name="renderer" content="webkit"><meta name="copyright" content="Mrli"><meta name="keywords" content="Mrli's Blog"><meta name="description" content="想和你讲，说了会心动 ，缄默会心安。"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>V-P-N(Vmess)与Charles无法共用问题解决 · Mr.li's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">V-P-N(Vmess)与Charles无法共用问题解决</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/05/07</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">833</span> | Reading time: <span class="post-count">4</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><p>最近需要抓一个需要翻墙才能访问的网页的包，发现VPN直连时会导致 Fiddler 和 Charles 抓包工具无法正常进行抓包，网上找了以后发现了一些解决方案：<a href="https://github.com/mopduan/team/issues/13" target="_blank" rel="noopener">Github:VPN直连，导致 Fiddler 和 Charles 抓包工具无法正常进行抓包解决方案 </a>——试了貌似没用、<a href="https://www.jianshu.com/p/651ee335f97f?from=singlemessage" target="_blank" rel="noopener">windows下，实现vpn访问下的charles抓包设置中无网络问题的解决</a>——收此启发指导了在charles的<code>Proxy-&gt;external proxy</code>允许其他端口代理</p>
+<h2 id="1找到vpn软件的代理端口proxy-port"><a class="markdownIt-Anchor" href="#1找到vpn软件的代理端口proxy-port"></a> 1.找到VPN软件的代理端口proxy port</h2>
+<p>我这边使用的是vmess，可以在<code>选项-&gt;参数设置</code>中查看，需要明确的参数是端口和协议，我这边是10808和socks协议</p>
+<p><img src="/2022/04/27/V-P-N与Charles无法共用问题解决/.%5CV-P-N%E4%B8%8ECharles%E6%97%A0%E6%B3%95%E5%85%B1%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%5Cvmess%E5%8F%82%E6%95%B0.jpg" alt="vmess参数"></p>
+<h2 id="2设置charles"><a class="markdownIt-Anchor" href="#2设置charles"></a> 2.设置charles：</h2>
+<p><code>Proxy-&gt;external proxy</code>, 首先允许其他proxy，然后根据刚刚查看到的vmess端口和协议进行填写</p>
+<p><img src="/2022/04/27/V-P-N与Charles无法共用问题解决/.%5CV-P-N%E4%B8%8ECharles%E6%97%A0%E6%B3%95%E5%85%B1%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%5Ccharles.jpg" alt="charles"></p>
+<h2 id="3设置完成开始抓包"><a class="markdownIt-Anchor" href="#3设置完成开始抓包"></a> 3.设置完成，开始抓包</h2>
+<p>完结撒花~</p>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录：</h1>
+<h2 id="requests使用代理"><a class="markdownIt-Anchor" href="#requests使用代理"></a> requests使用代理</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">cookies = &#123;</span><br><span class="line">    <span class="string">'PB3_SESSION'</span>: <span class="string">'"2|1:0|10:1650810241|11:PB3_SESSION|40:djJleDo1Mi4xNDAuMjAxLjIxMTo1OTQ4NjM0Mg==|f661892137fd704b91fa09d8c58fd641a15ab9e83f94c69981dbeed7980fc9e4"'</span>,</span><br><span class="line">    <span class="string">'V2EX_LANG'</span>: <span class="string">'zhcn'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'authority'</span>: <span class="string">'cn.v2ex.com'</span>,</span><br><span class="line">    <span class="string">'accept'</span>: <span class="string">'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'</span>,</span><br><span class="line">    <span class="string">'accept-language'</span>: <span class="string">'zh-CN,zh;q=0.9,en;q=0.8'</span>,</span><br><span class="line">    <span class="string">'cache-control'</span>: <span class="string">'no-cache'</span>,</span><br><span class="line">    <span class="string">'pragma'</span>: <span class="string">'no-cache'</span>,</span><br><span class="line">    <span class="string">'sec-ch-ua'</span>: <span class="string">'" Not A;Brand";v="99", "Chromium";v="100", "Google Chrome";v="100"'</span>,</span><br><span class="line">    <span class="string">'sec-ch-ua-mobile'</span>: <span class="string">'?0'</span>,</span><br><span class="line">    <span class="string">'sec-ch-ua-platform'</span>: <span class="string">'"Windows"'</span>,</span><br><span class="line">    <span class="string">'sec-fetch-dest'</span>: <span class="string">'document'</span>,</span><br><span class="line">    <span class="string">'sec-fetch-mode'</span>: <span class="string">'navigate'</span>,</span><br><span class="line">    <span class="string">'sec-fetch-site'</span>: <span class="string">'none'</span>,</span><br><span class="line">    <span class="string">'sec-fetch-user'</span>: <span class="string">'?1'</span>,</span><br><span class="line">    <span class="string">'upgrade-insecure-requests'</span>: <span class="string">'1'</span>,</span><br><span class="line">    <span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http_proxy = <span class="string">"socks5h://127.0.0.1:10808"</span></span><br><span class="line">https_proxy = <span class="string">"socks5h://127.0.0.1:10808"</span></span><br><span class="line">proxies = &#123;</span><br><span class="line">    <span class="string">"https"</span>: https_proxy,</span><br><span class="line">    <span class="string">"http"</span>: http_proxy</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(<span class="string">'https://cn.v2ex.com/about'</span>, cookies=cookies, headers=headers, proxies=proxies)</span><br></pre></td></tr></table></figure>
+<p>注：一开始在Sublime里运行的，结果一直在<code>response.text</code>时报编码错误，但是通过网页的content-type和meta charset进行确认过没问题，后来经过一个启发想到会不会是控制台有编码显示不了，于是在Pycharm中运行，成功!</p>
+<h2 id="aiohttp使用socks代理"><a class="markdownIt-Anchor" href="#aiohttp使用socks代理"></a> aiohttp使用socks代理</h2>
+<blockquote>
+<p>from: <a href="https://pypi.org/project/aiohttp-socks/%E3%80%81https://www.cnblogs.com/john-xiong/p/13812567.html" target="_blank" rel="noopener">https://pypi.org/project/aiohttp-socks/、https://www.cnblogs.com/john-xiong/p/13812567.html</a></p>
+</blockquote>
+<ol>
+<li>
+<p><code>pip install aiohttp_socks</code></p>
+</li>
+<li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">connector = ProxyConnector.from_url(<span class="string">'socks5://127.0.0.1:10808'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">getDataByChromeDriver</span><span class="params">(url)</span>:</span></span><br><span class="line">	<span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession(connector=connector) <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(url) <span class="keyword">as</span> response:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">await</span> response.text()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">        loop.run_until_complete(asyncio.wait([getDataByChromeDriver(index) <span class="keyword">for</span> title, index <span class="keyword">in</span> title_list.items()]))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>运行即可</p>
+</li>
+</ol>
+<h2 id="request-html使用代理"><a class="markdownIt-Anchor" href="#request-html使用代理"></a> request-html使用代理</h2>
+<blockquote>
+<p><a href="https://baijiahao.baidu.com/s?id=1701142223076604985&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">Python爬虫一个requests_html模块足矣！（支持JS加载&amp;异步请求）</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> requests_html <span class="keyword">import</span> AsyncHTMLSession</span><br><span class="line"></span><br><span class="line">http_proxy = <span class="string">"socks5h://127.0.0.1:10808"</span></span><br><span class="line">https_proxy = <span class="string">"socks5h://127.0.0.1:10808"</span></span><br><span class="line">proxies = &#123;</span><br><span class="line">    <span class="string">"https"</span>: https_proxy,</span><br><span class="line">    <span class="string">"http"</span>: http_proxy</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">session = AsyncHTMLSession()</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">getDataByChromeDriver</span><span class="params">(index: Union[int, str])</span>:</span></span><br><span class="line">	response = <span class="keyword">await</span> session.get(<span class="string">'https://www.qkl123.com/sector/&#123;&#125;'</span>.format(index), headers=headers, proxies=proxies)</span><br><span class="line">    <span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
+<h2 id="request-html异步"><a class="markdownIt-Anchor" href="#request-html异步"></a> request-html异步</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> requests_html <span class="keyword">import</span> AsyncHTMLSession</span><br><span class="line">asession = AsyncHTMLSession()</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">get_pyclock</span><span class="params">(index)</span>:</span></span><br><span class="line">    r = <span class="keyword">await</span> asession.get(<span class="string">'http://httpbin.org/get'</span>)</span><br><span class="line">    <span class="keyword">await</span> r.html.arender()</span><br><span class="line">    <span class="keyword">return</span> r</span><br><span class="line"></span><br><span class="line">results = asession.run(get_pyclock, get_pyclock,</span><br><span class="line">                       get_pyclock)  <span class="comment"># 这里作者将同一个页面使用异步方式进行了3次渲染，但是实际上使用的时间并不是平时的3倍！可能只是比平时渲染一个页面多花了一点时间而已！这就是异步的好处！</span></span><br><span class="line">print(results)</span><br></pre></td></tr></table></figure>
+<p>and:<a href="https://cloud.tencent.com/developer/article/1575104" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1575104</a></p>
+<h3 id="asessionrun无法传参的问题"><a class="markdownIt-Anchor" href="#asessionrun无法传参的问题"></a> asession.run无法传参的问题</h3>
+<p><a href="https://www.cnblogs.com/angelyan/p/13913926.html" target="_blank" rel="noopener">修改requests_html.AsyncHTMLSessions使得支持url参数</a></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/04/27/V-P-N与Charles无法共用问题解决/">https://nymrli.top/2022/04/27/V-P-N与Charles无法共用问题解决/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/04/29/使用Python转义实现前端加密算法-记录笔记/" title="使用Python转义实现前端加密算法-记录笔记"><span>< PreviousPost</span><br><span class="prevTitle">使用Python转义实现前端加密算法-记录笔记</span></a><a class="nextSlogan" href="/2022/04/11/总得学点Elasticsearch吧/" title="总得学点Elasticsearch吧"><span>NextPost ></span><br><span class="nextTitle">总得学点Elasticsearch吧</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+  id: 'V-P-N(Vmess)与Charles无法共用问题解决',
+  owner: 'Freedomisgood',
+  repo: 'Freedomisgood.github.io',
+  oauth: {
+    client_id: 'bc5a81fe36017dcd8b63',
+    client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
+  },
+})
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1找到vpn软件的代理端口proxy-port"><span class="toc-number">1.</span> <span class="toc-text"> 1.找到VPN软件的代理端口proxy port</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2设置charles"><span class="toc-number">2.</span> <span class="toc-text"> 2.设置charles：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3设置完成开始抓包"><span class="toc-number">3.</span> <span class="toc-text"> 3.设置完成，开始抓包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number"></span> <span class="toc-text"> 附录：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#requests使用代理"><span class="toc-number">1.</span> <span class="toc-text"> requests使用代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aiohttp使用socks代理"><span class="toc-number">2.</span> <span class="toc-text"> aiohttp使用socks代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#request-html使用代理"><span class="toc-number">3.</span> <span class="toc-text"> request-html使用代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#request-html异步"><span class="toc-number">4.</span> <span class="toc-text"> request-html异步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#asessionrun无法传参的问题"><span class="toc-number">4.1.</span> <span class="toc-text"> asession.run无法传参的问题</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

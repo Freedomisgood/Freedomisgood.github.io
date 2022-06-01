@@ -97,7 +97,25 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2021/10/12/ZJU开学摸底考试——数据库概论复习/">ZJU开学摸底考试——数据库概论复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-12T08:16:24.000Z">2021-10-12</time><i class="fa fa-edit"></i><time datetime="2021-10-12T08:16:24.000Z">2022-03-19</time></div><div class="recent-post-content"> 数据库概论
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2021/10/26/k8s之kube-proxy源码分析/">k8s之kube-proxy源码分析</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-26T12:15:52.000Z">2021-10-26</time><i class="fa fa-edit"></i><time datetime="2021-10-26T12:15:52.000Z">2022-03-29</time></div><div class="recent-post-content"> kubernetes 简单介绍
+ 背景介绍
+Kubernetes最初源于谷歌内部的Borg，提供了面向应用的容器集群部署和管理系统，目前为主流的微服务应用编排管理工具。
+Kubernetes的目标旨在消除编排物理/虚拟计算、网络和存储基础设施的负担，并使应用程序运营商和开发人员完全将重点放在以容器为中心的原理上进行自助运营。
+Kubernetes具备完善的集群管理能力，包括多层次的安全防护和准入机制、多租户应用支撑能力、透明的服务注册和服务发现机制、内建负载均衡器、故障发现和自我修复能力、服务滚动升级和在线扩容、可扩展的资源自动调度机制、多粒度的资源配额管理能力。
+
+Borg是谷歌内部的大规 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="源码解析"> 源码解析</a></div><div class="read-more"><a class="more" href="/2021/10/26/k8s之kube-proxy源码分析/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/28/Vue3初体验/">Vue3初体验</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-28T09:44:53.000Z">2021-11-28</time><i class="fa fa-edit"></i><time datetime="2021-11-28T09:44:53.000Z">2022-03-29</time></div><div class="recent-post-content">Vue3于2020年09月18日正式发布，映入我视野的新东西除了Vue3以外，还有yarn和vite。他们两个本身的功能并不是新东西，yarn对标的是npm包管理工具，vite对标的webpack包打包工具。
+与vue2不同的是，vue3工程中没有 build 文件， 相应的build/index.js的配置改由了项目根目录下vue.config.js承担
+ Vue3新特性
+
+
+template标签下面可以有多个节点了，终于不用先写一个DIV了
+
+
+setup函数可以代替之前的data，methods，computed，watch，Mounted等对象，但是props声明还是在外面。
+
+
+
+相 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/11/28/Vue3初体验/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/12/ZJU开学摸底考试——数据库概论复习/">ZJU开学摸底考试——数据库概论复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-12T08:16:24.000Z">2021-10-12</time><i class="fa fa-edit"></i><time datetime="2021-10-12T08:16:24.000Z">2022-03-19</time></div><div class="recent-post-content"> 数据库概论
  数据库的4个基本概念
 
 
@@ -150,115 +168,80 @@ IBM讲座-混合云架构（4课时）
 分析Kubernetes或者KubeEdge等云原生项目相关源代码，撰写代 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU课程"> ZJU课程</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="云原生"> 云原生</a></div><div class="read-more"><a class="more" href="/2021/09/25/ZJU云原生技术及应用-课程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/17/javadoc——让大家更好写java项目/">javadoc——让大家更好写java项目</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-17T13:57:14.000Z">2021-10-17</time><i class="fa fa-edit"></i><time datetime="2021-10-17T13:57:14.000Z">2022-03-09</time></div><div class="recent-post-content">近期在Github上看到一个有趣的项目，是各个技能树的挑战，并且起了个冒险岛的故事——字节传说:勇士将无惧挑战。其中除了提交Pr的教程（挑战）外，还有个比较有意思的是Javadoc，想想之前没专门写过，于是本勇士本次就毅然接收了Javadoc的挑战。
  Javadoc
 
-很多程序对Javadoc都不重视，认识不到Javadoc的作用，很多人都是这样认为的：“我只要写好功能就够了，写Javadoc太浪费时间，也没啥作用，还不如用写Javadoc的时间再多些个功能呢！”，我们知道注释是为了解释代码的作用的，是为了将来给自己或者别人快速了解代码的，在方法内一般用行注释//的比较多，是针对一小块代码做 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="技能糖"> 技能糖</a></div><div class="read-more"><a class="more" href="/2021/10/17/javadoc——让大家更好写java项目/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/09/ZJU开学摸底考试——操作系统复习/">ZJU开学摸底考试——操作系统复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-09T06:21:21.000Z">2021-09-09</time><i class="fa fa-edit"></i><time datetime="2021-09-09T06:21:21.000Z">2022-02-27</time></div><div class="recent-post-content"> 操作系统
- 特性：
+很多程序对Javadoc都不重视，认识不到Javadoc的作用，很多人都是这样认为的：“我只要写好功能就够了，写Javadoc太浪费时间，也没啥作用，还不如用写Javadoc的时间再多些个功能呢！”，我们知道注释是为了解释代码的作用的，是为了将来给自己或者别人快速了解代码的，在方法内一般用行注释//的比较多，是针对一小块代码做 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="技能糖"> 技能糖</a></div><div class="read-more"><a class="more" href="/2021/10/17/javadoc——让大家更好写java项目/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/25/CICD-Jenkins与Travis/">CICD-Jenkins与Travis</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-25T05:39:46.000Z">2021-10-25</time><i class="fa fa-edit"></i><time datetime="2021-10-25T05:39:46.000Z">2022-01-13</time></div><div class="recent-post-content"> Jenkins与travis使用
+Jenkins与Travis为CI、CD工具，其为Devops模式下的平台组件，能够让我们更好地进行开发测试与交付。由于最近云原生的课上在介绍DevOps和云监控，所以正好趁这个机会体验下Devops的交付流程，之前也有使用过Github Action作为CICD工具，但除了开源项目以外，Github使用比较少。这次呢就可以再熟悉下业内常用的CICD组件了：Jenkins or Travis
+ DevOps发展背景
 
-并发：
+传统交付模式的串行及隔离化形成了部门壁垒，降低了工作效率
+通过“在云上创建资源”-&gt;实现“云服务器自动化管理”-&gt;“应用无状态上云 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2021/10/25/CICD-Jenkins与Travis/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/02/浙江大学期末考试——Go语言/">浙江大学期末考试——Go语言</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-02T13:52:53.000Z">2021-11-02</time><i class="fa fa-edit"></i><time datetime="2021-11-02T13:52:53.000Z">2021-12-30</time></div><div class="recent-post-content"> 浙江大学期末考试——Go语言
 
-▲理解并发和并行的区别
+期末复习对学习知识的帮助是巨大的，相比于看视频，本篇点到为止的知识点形的期末复习笔记，我相信更能让人学会。我相信，只要把本笔记全部看完了必然就会Go了。如果你做到了但还没有学会Go，那你大可来找我/doge。
 
+ 概论
 
-共享
+指令：计算机的一个最基本的功能，如实现一次加法运算或实现一次大小的判别
+计算机的指令系统：计算机所能实现的指令的集合
+程序：一系列计算机指令的有序组合
 
-互斥共享方式（摄像头设备的共享使用）
-同时共享方式（硬盘访问）——宏观的同时，微观上进程还是交替访问的（分时共享）
+ 算法：
 
-
-虚拟：
-
-虚拟存储器：
-
-空分复用
-
-
-虚拟处理器：
-
-时分复用
+求解特定问题的一组有限的操作序列
 
 
+目的性：算法有运算结果，程序强调过程性
+抽象性：算法独立于编程语言和指令系统
+研究性：算法是理论研究，载体可以是伪码，文字，图片等，载体为某 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="考试"> 考试</a></div><div class="read-more"><a class="more" href="/2021/11/02/浙江大学期末考试——Go语言/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/26/前端-跨域/">前端-跨域</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-26T09:17:15.000Z">2021-11-26</time><i class="fa fa-edit"></i><time datetime="2021-11-26T09:17:15.000Z">2021-12-09</time></div><div class="recent-post-content"> 什么是跨域问题
+
+跨域问题的出现是因为浏览器的同源策略问题，所谓同源:就是两个页面具有相同的协议（protocol），主机（host）和端口号（port），即指协议，端口，域名。只要这个3个中有一个不同就是跨域。它是浏览器最核心也是最基本的功能，如果没有同源策略我们的浏览器将会十分的不安全，随时都可能受到攻击。
+当我们请求一个接口的时候，出现如：Access-Control-Allow-Origin 字眼的时候说明请求跨域了
 
 
-异步
+ 展示跨域问题
+前端请求后端8889端口开放的端口
+12345678this.$axios(&#123;    method:'get',    url:'http ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/11/26/前端-跨域/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/30/Vue中使用axios/">Vue中使用axios</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-30T02:31:27.000Z">2021-11-30</time><i class="fa fa-edit"></i><time datetime="2021-11-30T02:31:27.000Z">2021-12-08</time></div><div class="recent-post-content"> axios请求
 
-只有系统具有并发性，才可能导致异步性
-
-
-
-注： 并发与共享互为存在条件
- 操作系统发展
-单道批处理系统
-
-主要优点：缓解了一定程度的人机速度矛盾，资源利用率有所提升。
-主要缺点：内存中仅能有一道程序运行，只有该程序运行结束之后才能调入下一道程序。CPU有大量的时间是在空闲等待/0完成。资源利用率依然很低。
-
-多道批处理系统： ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/09/09/ZJU开学摸底考试——操作系统复习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/24/学习画好架构图/">学习画好架构图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-24T06:57:11.000Z">2021-08-24</time><i class="fa fa-edit"></i><time datetime="2021-08-24T06:57:11.000Z">2022-02-27</time></div><div class="recent-post-content">
-一图胜万语，做好一张架构图能让别人一眼就清晰地弄懂程序的功能与依赖，大大降低大家的理解成本和提升沟通效率。但作为新人而言，如何画出要点，提炼出核心概念是个有难度的事。
-
- 什么是架构？
-架构是结构和愿景，是对系统中的实体以及实体之间的关系所进行的抽象描述，是一系列的决策。
-系统架构是概念的体现，是对物/信息的功能与形式元素之间的对应情况所做的分配，是对元素之间的关系以及元素同周边环境之间的关系所做的定义。
- 什么是架构图？
-系统架构图是为了抽象地表示软件系统的整体轮廓和各个组件之间的相互关系和约束边界，以及软件系统的物理部署和软件系统的演进方向的整体视图。
- 架构图的作用
-要让干系人理解、遵 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="福利"> 福利</a></div><div class="read-more"><a class="more" href="/2021/08/24/学习画好架构图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/UML简单记录/">UML简单记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T05:59:15.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T05:59:15.000Z">2022-02-23</time></div><div class="recent-post-content">
-要学习设计模式，首先绕不开的就是UML图，同时对于一名开发而言，开发文档中也必然会出现UML的身影。之前在实习的时候，其实已经学过不少了，但不用后又很容易忘记，(在阿里实习的时候就以为记得很熟了，结果现在又忘了)——因此这也是一个防忘系列
-
- UML
-
-UML(Unified Modeling Language)是一种标准的图形化建模语言，是一种为面对对象系统的产品进行说明、可视化、编制文档的标准语言，它是面向对象分析与设计的一种标准表示。
-
-（1）UML是一种语言。
-从上面的定义可以看出，就其本质，UML是一种语言，既然是语言，那就是用来交流的，UML用来在哪些人员之间进行交流呢？很明显， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/12/11/UML简单记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/11/JWT使用学习/">JWT使用学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-11T08:44:17.000Z">2021-08-11</time><i class="fa fa-edit"></i><time datetime="2021-08-11T08:44:17.000Z">2021-12-05</time></div><div class="recent-post-content"> JWT: Json Web Token
+官网网址
 
 
-与普通Token一样都是访问资源的令牌，都可以记录用户信息，都是只有验证成功后才可以获取信息。
-不同的是普通Token，服务端验证token信息时要进行数据库查询操作；JWT验证token信息就不用，在服务端使用密钥校验就可以，不用经过数据库查询。==》它是一个数字签名
+从浏览器中创建 XMLHttpRequest
+从 node.js 发出 http 请求
+支持promise API
+拦截请求和响应
+转换请求数据和响应数据
+取消请求
+自动转换 JSON 数据
+客户端支持防御 XSRF
 
+ 直接每次从axios库中调用axios函数
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950&lt;template&gt;  &lt;div&gt;    &lt;div&gt;mmmm&lt;/div&gt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/11/30/Vue中使用axios/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/29/GoodCSS记录/">GoodCSS记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-29T07:03:44.000Z">2021-11-29</time><i class="fa fa-edit"></i><time datetime="2021-11-29T07:03:44.000Z">2021-12-04</time></div><div class="recent-post-content"> GoodCss记录
+ 图标四角反转：
 
- JWT信息组成
-JSON Web Token由三部分组成，它们之间用圆点(.)连接。这三部分分别是：
-
-
-Header
-
-Header header典型的由两部分组成：token的类型（“JWT”）和算法名称（比如：HMAC SHA256或者RSA等等）。
+通过 @keyframes 规则，您能够创建动画。
+创建动画的原理是，将一套 CSS 样式逐渐变化为另一套样式。
+12&gt; @keyframes animationname &#123;keyframes-selector &#123;css-styles;&#125;&#125;&gt;
 
 
 
-Payloa ...</div><div class="read-more"><a class="more" href="/2021/08/11/JWT使用学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/03/03/天猫秒杀插件-Chrome插件编写/">Chrome插件编写-天猫秒杀插件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-03-03T13:37:15.000Z">2021-03-03</time><i class="fa fa-edit"></i><time datetime="2021-03-03T13:37:15.000Z">2021-12-04</time></div><div class="recent-post-content"> chrome插件开发
+animationname	必需。定义动画的名称。
+keyframes-selector	必需。动画时长的百分比。合法的值：
 
-借鉴TODO-List：Chrome插件开发简要指南
+0-100%
+from（与 0% 相同）
+to（与 100% 相同）
 
- 文件结构
-在应用商店中下载下来的插件基本上都是以.crx为文件后缀，该文件其实就是一个压缩包（文件夹压缩而来），包括插件所需要的html、css、javascript、图片资源等等文件。
-其中，
 
-manifest.json是整个插件的功能及文件配置清单，非常重要。
-static目录是放置整个插件的静态资源文件的，包括css、js、图片等等资源
-template目录是放置整个插件的功能页面模板的。
-_locales目录是放置整个插件的国际化语言脚本的。
+css-styles: 必需。一个或多个合法的 CSS ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/11/29/GoodCSS记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/01/Vue-Router细节记录/">Vue-Router细节记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-30T16:05:59.000Z">2021-12-01</time><i class="fa fa-edit"></i><time datetime="2021-11-30T16:05:59.000Z">2021-12-01</time></div><div class="recent-post-content"> vue-router使用
+yarn add vue-router@next --dev, 参数说明packageName@tagorpackageName@version
+创建router/index.js
+12345678910111213141516171819202122232425262728293031323334353637383940414243import &#123; createRouter, createWebHistory &#125; from "vue-router";import ShowList from "../components/ShowList.vue ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/01/Vue-Router细节记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/25/党员在线培训课程-免除暂停烦恼/">党员在线培训课程~免除暂停烦恼</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-25T02:48:17.000Z">2021-11-25</time><i class="fa fa-edit"></i><time datetime="2021-11-25T02:48:17.000Z">2021-11-25</time></div><div class="recent-post-content"> 党员在线培训课程~免除暂停烦恼
 
-一般来说，清单文件manifest.json文件是必须的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="脚本"> 脚本</a></div><div class="read-more"><a class="more" href="/2021/03/03/天猫秒杀插件-Chrome插件编写/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/13/学点Kotlin/">学点Kotlin</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-13T09:18:17.000Z">2021-09-13</time><i class="fa fa-edit"></i><time datetime="2021-09-13T09:18:17.000Z">2021-12-02</time></div><div class="recent-post-content"> Kotlin 基础语法
-Kotlin 文件以 .kt 为后缀。
- 函数定义
-函数定义使用关键字 fun，参数格式为：参数 : 类型
-123fun sum(a: Int, b: Int): Int &#123;   // Int 参数，返回值 Int    return a + b&#125;
-表达式作为函数体，返回类型自动推断：
-123fun sum(a: Int, b: Int) = a + bpublic fun sum(a: Int, b: Int): Int = a + b   // public 方法则必须明确写出返回类型
-无返回值的函数(类似Java中的void)：
-123456 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Kotlin"> Kotlin</a></div><div class="read-more"><a class="more" href="/2021/09/13/学点Kotlin/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/07/27/Go的配置和使用/">Go的配置和使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-07-27T03:10:11.000Z">2021-07-27</time><i class="fa fa-edit"></i><time datetime="2021-07-27T03:10:11.000Z">2021-11-10</time></div><div class="recent-post-content"> Go语法学习
+女朋友反馈：刷党员在线培训课程得一直手动的解决暂停问题，无法单纯的挂机刷视频。作为一个程序猿，当然是帮她解决啦~
 
-Go 语言被设计成一门应用于搭载 Web 服务器，存储集群或类似用途的巨型中央服务器的系统编程语言。
-对于高性能分布式系统领域而言，Go 语言无疑比大多数其它语言有着更高的开发效率。它提供了海量并行的支持，这对于游戏服务端的开发而言是再好不过了。
-
- 变量声明
-
-变量来源于数学，是计算机语言中能储存计算结果或能表示值抽象概念。变量可以通过变量名访问。
-
-声明变量的一般形式是使用 var 关键字：
-
-第一种，指定变量类型，如果没有初始化，则变量默认为零值: var identifier1, identifier2 type==&gt;bool零值为false，int为0
-第二种 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a></div><div class="read-more"><a class="more" href="/2021/07/27/Go的配置和使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/30/makefile使用记录/">Makefile使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-30T04:16:04.000Z">2021-09-30</time><i class="fa fa-edit"></i><time datetime="2021-09-30T04:16:04.000Z">2021-10-26</time></div><div class="recent-post-content"> Makefile使用记录
+首先分析页面中JS执行逻辑，如下所示
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041 ...</div><div class="read-more"><a class="more" href="/2021/11/25/党员在线培训课程-免除暂停烦恼/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/04/Linux-iptables学习/">Linux iptables学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-04T14:22:24.000Z">2021-11-04</time><i class="fa fa-edit"></i><time datetime="2021-11-04T14:22:24.000Z">2021-11-08</time></div><div class="recent-post-content"> iptables简介
+​    netfilter/iptables（简称为iptables）组成Linux平台下的包过滤防火墙，与大多数的Linux软件一样，这个包过滤防火墙是免费的，它可以代替昂贵的商业防火墙解决方案，完成封包过滤、封包重定向和网络地址转换（NAT）等功能。
+注：Iptables和netfilter的关系是一个很容易让人搞不清的问题。很多的知道iptables却不知道 netfilter。其实iptables只是Linux防火墙的管理工具而已，位于/sbin/iptables。真正实现防火墙功能的是 netfilter，它是Linux内核中实现包过滤的内部结构。
+ ipt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2021/11/04/Linux-iptables学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/30/makefile使用记录/">Makefile使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-30T04:16:04.000Z">2021-09-30</time><i class="fa fa-edit"></i><time datetime="2021-09-30T04:16:04.000Z">2021-10-26</time></div><div class="recent-post-content"> Makefile使用记录
 
 Makefile 文件描述了 Linux 系统下 C/C++ 工程的编译规则，它用来自动化编译 C/C++ 项目。一旦写编写好 Makefile 文件，只需要一个 make 命令，整个工程就开始自动编译，不再需要手动执行 GCC 命令。===&gt;此外拓展功能不至于C++，其相当于组合一系列Linux命令，因此也可以用来编译其他工程。
 
@@ -335,38 +318,4 @@ XML 的属性值须加引号，双引号、单引号都可以
  plugins和apply plugin:
 
 由于文档写到了， 由于不清楚这些在哪些位置加入， 因此查看了plugins和apply plugin:的区别：
-1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="read-more"><a class="more" href="/2021/09/26/学点Gradle/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/19/AOP学习/">AOP学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-19T08:35:08.000Z">2021-08-19</time><i class="fa fa-edit"></i><time datetime="2021-08-19T08:35:08.000Z">2021-09-09</time></div><div class="recent-post-content"> AOP学习
- AOP
- 要素
-
-
-Aspect切面：是切入点和通知的抽象——切面则是横切关注点的抽象，与类相似，类是对物体特征的抽象，切面则是横切关注点抽象。
-切入点PointCut：定义要拦截哪些类的哪些方法
-
-切入点表达式@Pointcut(&quot;execution(* com.service.*.*(..))&quot;)
-执行exectution后的第一个参数代表的是方法的修饰范围（public、private、protected）,第二个表示拦截的方法，第一个*表示所有类，第二个*表示所有的方法，括号中的…表示任意参数
-常用的切入点表达式有：
-
-execution(publi ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Spring"> Spring</a></div><div class="read-more"><a class="more" href="/2021/08/19/AOP学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/11/Shiro使用学习/">Shiro使用学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-11T07:39:08.000Z">2021-08-11</time><i class="fa fa-edit"></i><time datetime="2021-08-11T07:39:08.000Z">2021-09-07</time></div><div class="recent-post-content">Apache Shiro 是一个强大易用的 Java 安全框架，提供了认证、授权、加密和会话管理等功能（如下图），对于任何一个应用程序，Shiro 都可以提供全面的安全管理服务。并且相对于其他安全框架，Shiro 要简单的多。
-
- Shiro 的架构
-
-从外部来看应该具有非常简单易于使用的 API，且 API 契约明确；从内部来看的话，其应该有一个可扩展的架构，即非常容易插入用户自定义实现，
-
-交互流程如下：
-
-应用代码直接交互的对象是 Subject，也就是说 Shiro 的对外 API 核心就是 Subject。
-Subject：主体，代表了当前 “用户”，这个用户不一定是一个具体的人，与 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="应用框架学习"> 应用框架学习</a></div><div class="read-more"><a class="more" href="/2021/08/11/Shiro使用学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/01/24/认真学次DP——动态规划/">认真学次DP——动态规划</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time><i class="fa fa-edit"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time></div><div class="recent-post-content"> 动态规划DP
-
-一般算法面试题解决最优化问题，有两种解决途径：暴力枚举、或者DP，由于其灵活和高效，无数程序员为它着迷，大厂面试也是必考。
-但是，动态规划形式上非常多变，本质上没有套路，问题不同，动态规划的迭代方程就不同。而有些问题，对于计算机科学家，都难以找到迭代方程。因此，对于平平常常的我们，刷算法题时想不出动态规划的解法，也大可不必气馁。
-
- DP组成——三个条件
-某个问题是否能应用动态规划，通常需要满足 3 个条件：
-
-具有最优子结构
-具有无后续性
-具有重复子问题
-
-最优子结构性质：只需求得子问题的最优解后，原问题的最优解最能推导出来，这表明此问题具备最优子结构性质！
-**后续状态无 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="算法"> 算法</a></div><div class="read-more"><a class="more" href="/2021/01/24/认真学次DP——动态规划/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="read-more"><a class="more" href="/2021/09/26/学点Gradle/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

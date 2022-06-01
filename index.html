@@ -97,12 +97,97 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2022/03/23/JS逆向-webpack打包网站实战/">JS逆向-webpack打包网站实战</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-23T08:21:50.000Z">2022-03-23</time><i class="fa fa-edit"></i><time datetime="2022-03-23T08:21:50.000Z">2022-04-03</time></div><div class="recent-post-content"> Webpack逆向
-webpack打包是前端js模块化压缩打包常用的手段，特征明显，比如下方的形式的代码就是webpack分发器
-123456// 分发器!function(x)&#123;    function xx(n)&#123;        return ..call(**.exports, ***, ***.exports, xx)    &#125;&#125;()
-又或者更直观的表现n[“xxx”]这种，你可以大概知道了这是调用了webpack打包的js模块代码。
-webpack打包后JS依赖模块代码的固定结构：
-12345678(this["webpackJsonpzsg ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/03/23/JS逆向-webpack打包网站实战/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/03/19/2022年3月19日-20日爬虫项目记录/">2022年3月19~20日-爬虫项目记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-19T11:06:06.000Z">2022-03-19</time><i class="fa fa-edit"></i><time datetime="2022-03-19T11:06:06.000Z">2022-04-03</time></div><div class="recent-post-content"> 2022年3月20日——公告存网站页面到数据库
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2022/03/29/开源项目代码阅读记录/">开源项目代码阅读记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-29T09:54:46.000Z">2022-03-29</time><i class="fa fa-edit"></i><time datetime="2022-03-29T09:54:46.000Z">2022-05-29</time></div><div class="recent-post-content"> 爬虫系列
+ 抢购、秒杀
+  taobao_seckill
+
+淘宝秒杀物品：分为selenium版和request网络请求版，微小的区别在于，api先请求的是购物车的物品信息，selenium则是勾选选择框。
+流程大致都相同：①keep_wait等待临近抢购时间-----&gt;②将需要的信息缓存住，不再刷新（比如要抢购的物品信息、cookies…）-----&gt;③进行结算(/点击按钮)-----&gt;④提交订单(/点击按钮)-----&gt;⑤支付订单(/点击按钮)；
+
+
+
+使用browsercookie来管理浏览器cookies——从浏览器提取保存的cookies的工具。它是一个很有 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="代码阅读"> 代码阅读</a></div><div class="read-more"><a class="more" href="/2022/03/29/开源项目代码阅读记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/29/mitmproxy拦截代理——PC版HttpCanary/">mitmproxy拦截代理——PC版HttpCanary</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-29T12:52:09.000Z">2022-04-29</time><i class="fa fa-edit"></i><time datetime="2022-04-29T12:52:09.000Z">2022-05-23</time></div><div class="recent-post-content"> HttpCanary
+HttpCanary是Android系统下功能最强大的网络分析工具(IOS的是Thro)，支持TCP/UDP/HTTP/HTTPS/WebSocket等多种协议，可以视为Android平台下的Fiddler和Charles。
+★强大的调试功能
+
+断点指定请求，支持修改数据再提交。
+注入器支持，创建自定义规则修改返回数据包（★静态注入）。
+支持对网络请求重发、编辑重发、批量重发等操作。
+配置黑名单或者白名单，自由指定目标抓包。
+支持数据包屏蔽，比如屏蔽客户端发向服务器的指定数据包。
+
+ mitmproxy
+顾名思义，mitmproxy 就是用于 MITM 的 proxy， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/04/29/mitmproxy拦截代理——PC版HttpCanary/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/05/09/《代码整洁之道》——阅读笔记/">《代码整洁之道》——阅读笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-09T15:47:02.000Z">2022-05-09</time><i class="fa fa-edit"></i><time datetime="2022-05-09T15:47:02.000Z">2022-05-09</time></div><div class="recent-post-content"> 代码整洁之道——阅读
+ 第二章：有意义的命名
+
+名副其实，在他们在的地方表达出他们含义的名称
+避免误导：避免专有名词；类型符合；
+做有意义的区分：变量不用再加Var来说明，即加上a和the对意思并没没有帮助
+使用读得出来的名称
+使用可搜索的名称：名称长短应该与作用域大小对应。单字母名称仅用于段方法中的本地变量
+避免使用编码：匈牙利语标记：PhoneNumber phoneString、成员前缀:private String m_dsc;；接口和实现: IShapeFactory前导字母I被滥用了，其实一种废话，用了IXxxx后就没必要XxxxImpl了。
+类名和对象名应该是名词或名词短语，不 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2022/05/09/《代码整洁之道》——阅读笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/05/08/toy-reimplementation-of-an-event-loop-in-Python-翻译/">toy reimplementation of an event loop in Python[翻译]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-08T07:34:46.000Z">2022-05-08</time><i class="fa fa-edit"></i><time datetime="2022-05-08T07:34:46.000Z">2022-05-09</time></div><div class="recent-post-content"> 事件循环的一个小故事
+
+Translated from: https://github.com/AndreLouisCaron/a-tale-of-event-loops
+
+我最近被伯克利大学的研究员Nathaniel J. Smith关于 asyncio 的惊人见解所困。他的文章《关于后async/await世界中异步API设计的一些想法》( Some thoughts on asynchronous API design in a post-async/await world) 使得我 在最近大量使用asyncio后，对它有了一些（略）复杂的感受。
+虽然这或多或少是他文章的重点，但他认为 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="翻译"> 翻译</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="并发"> 并发</a></div><div class="read-more"><a class="more" href="/2022/05/08/toy-reimplementation-of-an-event-loop-in-Python-翻译/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/05/02/2022年5月劳动节爬虫项目记录/">2022年5月劳动节爬虫项目记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-02T05:23:11.000Z">2022-05-02</time><i class="fa fa-edit"></i><time datetime="2022-05-02T05:23:11.000Z">2022-05-07</time></div><div class="recent-post-content"> 鱼
+ retry模块
+retry是一个用于错误处理的模块，功能类似try-except，但可以更加快捷方便的设置重试的次数，以及每次重试之间相隔的时间。
+1234@retry()def make_trouble():    '''Retry until succeed'''    print ('retrying...')
+
+
+exceptions：传入指定的错误类型，默认为Exception，即捕获所有类型的错误，也可传入元组形式的多种指定错误类型。
+
+
+tries：定义捕获错误之后重复运行次数，默认为-1，即为无数次。
+
+
+delay：定义每次重复运行之间的停顿时长，单位秒，默认为0，即 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2022/05/02/2022年5月劳动节爬虫项目记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/05/05/selenium不行的工作-pyppeteer上/">selenium不行的工作,pyppeteer上</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-05T12:31:39.000Z">2022-05-05</time><i class="fa fa-edit"></i><time datetime="2022-05-05T12:31:39.000Z">2022-05-07</time></div><div class="recent-post-content"> 验证码问题
+该网站对频率检测十分敏感，很快就会出现&quot;按住&quot;验证码，模拟按住倒不难，但是按完以后有时并不能解决验证…
+但是意外发现，在“无痕模式”下进行重新登录后，就可以解决验证…但是通过requests进行模拟登录后cookies还是无效。
+解决方案：
+
+既然模拟不行，那么就手动，因此想用selenium来模拟点击登陆。但是因为俄罗斯的问题，无法登陆。
+
+
+于是只好更换selenium为pyppeteer。之前就听说了pyppeteer是可以代替selenium的模拟神器，相比Selenium 不太方便的地方：比如速度太慢、对版本配置要求严苛，最麻烦是经常要更新对应的驱动 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2022/05/05/selenium不行的工作-pyppeteer上/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/27/V-P-N与Charles无法共用问题解决/">V-P-N(Vmess)与Charles无法共用问题解决</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-27T13:30:51.000Z">2022-04-27</time><i class="fa fa-edit"></i><time datetime="2022-04-27T13:30:51.000Z">2022-05-07</time></div><div class="recent-post-content">最近需要抓一个需要翻墙才能访问的网页的包，发现VPN直连时会导致 Fiddler 和 Charles 抓包工具无法正常进行抓包，网上找了以后发现了一些解决方案：Github:VPN直连，导致 Fiddler 和 Charles 抓包工具无法正常进行抓包解决方案 ——试了貌似没用、windows下，实现vpn访问下的charles抓包设置中无网络问题的解决——收此启发指导了在charles的Proxy-&gt;external proxy允许其他端口代理
+ 1.找到VPN软件的代理端口proxy port
+我这边使用的是vmess，可以在选项-&gt;参数设置中查看，需要明确的参数是端口和协议， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/04/27/V-P-N与Charles无法共用问题解决/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/29/使用Python转义实现前端加密算法-记录笔记/">使用Python转义实现前端加密算法-记录笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-29T01:22:28.000Z">2022-04-29</time><i class="fa fa-edit"></i><time datetime="2022-04-29T01:22:28.000Z">2022-04-29</time></div><div class="recent-post-content"> 环境安装
+123pip uninstall cryptopip uninstall pycryptodomepip install pycryptodome
+前面两个卸载命令是为了防止一些安装环境问题，具体请看文章
+ pycryptodome
+ AES加密
+加密模式
+AES 加密最常用的模式就是 ECB模式 和 CBC 模式，当然还有很多其它模式，他们都属于AES加密。ECB模式和CBC 模式俩者区别就是 ECB 不需要 iv偏移量，而CBC需要。
+AES加密使用参数
+以下参数都是在python中使用的。
+参数	作用及数据类型
+秘钥	加密的时候用秘钥，解密的时候需要同样的秘钥才能解出来; 数 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2022/04/29/使用Python转义实现前端加密算法-记录笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/11/总得学点Elasticsearch吧/">总得学点Elasticsearch吧</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-11T14:18:04.000Z">2022-04-11</time><i class="fa fa-edit"></i><time datetime="2022-04-11T14:18:04.000Z">2022-04-12</time></div><div class="recent-post-content"> 倒排索引
+反向索引（inverted index）更熟悉的名字是倒排索引。
+什么是倒排索引: 倒排索引也叫反向索引，通俗来讲正向索引是通过key找value，反向索引则是通过value找key。
+举个具体的例子：我们一般是通过标题来找文章内容，即通过目录（正向索引）；而反向索引的运用场景就是通过内容来找到是哪一篇文章（标题，作者……），而怎么建立反向索引呢？怎么更快更好地找到结果呢？这个就是搜索引擎做的事了、
+正向索引：例如一个“文档1”经过分词，提取了20个关键词，每个关键词都会记录它在文档中的出现次数和出现位置。那我们就可以直接通过对&quot;文档1&quot;Document这个结构 ...</div><div class="read-more"><a class="more" href="/2022/04/11/总得学点Elasticsearch吧/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/10/算法与数据结构——滑动窗口/">算法与数据结构——滑动窗口、尺取法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-10T03:14:53.000Z">2022-04-10</time><i class="fa fa-edit"></i><time datetime="2022-04-10T03:14:53.000Z">2022-04-11</time></div><div class="recent-post-content">
+Sliding window algorithm is used to perform required operation on specific window size of given large buffer or array.滑动窗口算法是在给定特定窗口大小的数组或字符串上执行要求的操作。
+This technique shows how a nested for loop in few problems can be converted to single for loop and hence reducing the time complexity.该技术可以将一部分问题中的嵌 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2022/04/10/算法与数据结构——滑动窗口/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/05/翻译-设计Pastebin-com-or-Bit-ly-系统/">[翻译]设计Pastebin.com(or Bit.ly)系统</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-05T09:34:50.000Z">2022-04-05</time><i class="fa fa-edit"></i><time datetime="2022-04-05T09:34:50.000Z">2022-04-05</time></div><div class="recent-post-content"> 设计Pastebin.com (or Bit.ly)系统
+注：本文档直接链接到系统设计主题中的相关领域，以避免重复。请参考链接内容来了解总体的讨论要点、利弊权衡以及替代方案。
+**设计Bit.ly**是一个类似的问题。只是Pastebin还具有一个额外的功能，即存储粘贴的内容，而不是原始的未缩短过的url。
+ 第一步：列出用例和约束的大纲
+
+确定应用场景：收集需求和范围问题；提问来弄清阐明用例和约束，讨论来作出假设。
+
+在没有面试官来阐明清这些问题的情况下，我们将定义一些用例和约束。
+ 用例
+ 我们将确定问题的范围，只处理以下使用情况
+
+用户：输入一段文本后，获得一个随机生成的链接
+
+过期
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="翻译"> 翻译</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="系统设计"> 系统设计</a></div><div class="read-more"><a class="more" href="/2022/04/05/翻译-设计Pastebin-com-or-Bit-ly-系统/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/05/理了一天彻底弄懂元类——分享给你一起弄懂/">理了一天彻底弄懂元类——分享给你一起弄懂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-05T05:26:39.000Z">2022-04-05</time><i class="fa fa-edit"></i><time datetime="2022-04-05T05:26:39.000Z">2022-04-05</time></div><div class="recent-post-content">
+这是一个在看开源代码时配到了单例元类写法后的一个原理贴，可以帮你彻底弄清元类、以及__new__和__call__，相信我，看完你绝对会有收获。
+首先，关于元类的结论说在前头，先有个印象——小总结：
+
+现在我们能知道为什么元类必须继承type了：因为我们实例化对象Foo(xxx)时调用了type.__call__,而type.__call__又会调用type.__new__因此如果type子类重写实现了__new__（返回的类实例对象的类型作控制）、__call__（对实例化的流程做控制），则可以对类对象的类型和类属性起到自定义的功能，而重写就必须继承type=&gt;需要元类必须继承typ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2022/04/05/理了一天彻底弄懂元类——分享给你一起弄懂/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/03/19/2022年3月19日-20日爬虫项目记录/">2022年3月19~20日-爬虫项目记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-19T11:06:06.000Z">2022-03-19</time><i class="fa fa-edit"></i><time datetime="2022-03-19T11:06:06.000Z">2022-04-04</time></div><div class="recent-post-content"> 2022年3月20日——公告存网站页面到数据库
  文件存储
 
 文件夹不允许出现/\:*?|&lt;&gt;&quot;
@@ -110,32 +195,12 @@ a标签中href不能有, 因为通过etree.tostring会被转义成%5C===&gt;进�
 windows下路径分隔符是\\, 所以save_path中会有\\, 因此使用save_path.replace(&quot;\\&quot;, &quot;/&quot;)可以解决
 多级创建文件夹os.makedirs()、单层创建os.mkdir()
 5文件名称问题: 乱码太长报错, 将其取a标签中内容解决
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/03/19/2022年3月19日-20日爬虫项目记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/03/29/开源项目代码阅读记录/">开源项目代码阅读记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-29T09:54:46.000Z">2022-03-29</time><i class="fa fa-edit"></i><time datetime="2022-03-29T09:54:46.000Z">2022-04-02</time></div><div class="recent-post-content">  taobao_seckill
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/03/19/2022年3月19日-20日爬虫项目记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/04/PlantUML作图/">PlantUML作图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-04T03:30:28.000Z">2022-04-04</time><i class="fa fa-edit"></i><time datetime="2022-04-04T03:30:28.000Z">2022-04-04</time></div><div class="recent-post-content">
+最近在看开源代码，有些项目的架构和执行逻辑都非常有学习、借鉴意义，因此想作图可视化记录下来。
+在写文档的过程中，经常需要进行画图。虽然说现在有很多类似viso之类的可视化画图工具，但是还是要花费大量时间在拖拉组件上，效率十分低下。而Plantuml与markdown类似，本质上是也算一门可以快速画图的设计语言，学习起来也很方便，学完后直接书写、不需要拖拽就能做出规整的图，能大大节约在布局上细枝末节的时间。
+此外，PlantUML在vscode, webstorm都有相关的插件可以使用。
 
-淘宝秒杀物品：分为selenium版和request网络请求版，微小的区别在于，api先请求的是购物车的物品信息，selenium则是勾选选择框。
-流程大致都相同：①keep_wait等待临近抢购时间-----&gt;②将需要的信息缓存住，不再刷新（比如要抢购的物品信息、cookies…）-----&gt;③进行结算(/点击按钮)-----&gt;④提交订单(/点击按钮)-----&gt;⑤支付订单(/点击按钮)；
-
-
-
-使用browsercookie来管理浏览器cookies——从浏览器提取保存的cookies的工具。它是一个很有用的爬虫工具，通过加载你浏 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="代码阅读"> 代码阅读</a></div><div class="read-more"><a class="more" href="/2022/03/29/开源项目代码阅读记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/03/27/Python进阶/">Python进阶</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-27T14:30:39.000Z">2022-03-27</time><i class="fa fa-edit"></i><time datetime="2022-03-27T14:30:39.000Z">2022-04-02</time></div><div class="recent-post-content"> xxxatrr家族
- hasattr()
-
-用于判断对象是否包含对应的属性。
-
-hasattr 语法：hasattr(object, name)
- setattr()
-
-setattr() 函数对应函数 getattr()，用于设置属性值，该属性不一定是存在的。如果属性不存在会创建一个新的对象属性，并对属性进行赋值。
-
-setattr() 语法：setattr(object, name, value)
- getattr()
-
-getattr() 函数用于返回一个对象属性值。
-
-getattr(object, name[, default])
-
-object – 对象。
-name – 字符串， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2022/03/27/Python进阶/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/02/26/研究生work——地图匹配/">研究生work——地图匹配</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-02-26T07:24:46.000Z">2022-02-26</time><i class="fa fa-edit"></i><time datetime="2022-02-26T07:24:46.000Z">2022-03-09</time></div><div class="recent-post-content"> 地图匹配
+在线体验网站有很多使用的样例介绍，在此我就不过多介绍了。本文会以我使用到的功能图来提醒说明一下一些语法规 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础"> 计算机基础</a></div><div class="read-more"><a class="more" href="/2022/04/04/PlantUML作图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/02/26/研究生work——地图匹配/">研究生work——地图匹配</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-02-26T07:24:46.000Z">2022-02-26</time><i class="fa fa-edit"></i><time datetime="2022-02-26T07:24:46.000Z">2022-03-09</time></div><div class="recent-post-content"> 地图匹配
 概念：
 
 
@@ -181,112 +246,11 @@ SSH连接并不是像http连接一样，输入用户名和密码就可以了。S
 
 作为一位负责任的开发者，你理当确保每次包升级的运作与版本号的表述一致。现实世界是复杂的，我们除了提高警觉外能做的不多。你所能做的就是让语义化的版本控制为你提供一个健全的方式来发行以及升级包，而无需推出新的依赖包，节省你的时间及烦恼。
 如果没有某个正式的规范可循，版本号对于依赖的管理并无实质意义。将上述的想法命名并给予清楚的定义，让你对软件使用者传达意向变得容易。一旦这些意向变得清楚，弹性（但又不会太弹性）的依赖规范就能达成。
-如果你对此认同，希望立即开始使用语义化版本控制，你只需声明你的函数库正在使用它并遵循这些规则就可以了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2022/01/26/语义化的版本控制/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/27/Kotlin集合、流式操作/">Kotlin集合、流式操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-27T03:14:40.000Z">2021-12-27</time><i class="fa fa-edit"></i><time datetime="2021-12-27T03:14:40.000Z">2022-01-03</time></div><div class="recent-post-content">除了最通用的Array以外，kotlin中还有一类容器统称为Colletion(集合)，他们有
-
-List
-
-List：继承Collection。一个范性有序的只读集合。因为有序，所以，我们可以使用get(position)等查询的方法
-MutableList：继承List，MutableCollection。一个有序集合。并额外提供了add/remove元素的方法
-
-
-Set
-
-Set：继承Collection。一个无序并不支持重复元素的集合
-MutableSet：继承Set，MutableCollection，一个无序的集合并且不支持重复元素。但是，支持add/remove元素
-
-
-Map ...</div><div class="read-more"><a class="more" href="/2021/12/27/Kotlin集合、流式操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/01/03/Springboot-Kotlin-Mockito/">Springboot-Kotlin-Mockito</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-01-03T09:19:10.000Z">2022-01-03</time><i class="fa fa-edit"></i><time datetime="2022-01-03T09:19:10.000Z">2022-01-03</time></div><div class="recent-post-content">初识 Mockito 这个测试框架后，我们要使用 Mock 的属性创建一个被测试类实例时，大概会下面这么纯手工来打造。
+如果你对此认同，希望立即开始使用语义化版本控制，你只需声明你的函数库正在使用它并遵循这些规则就可以了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2022/01/26/语义化的版本控制/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/01/03/Springboot-Kotlin-Mockito/">Springboot-Kotlin-Mockito</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-01-03T09:19:10.000Z">2022-01-03</time><i class="fa fa-edit"></i><time datetime="2022-01-03T09:19:10.000Z">2022-01-03</time></div><div class="recent-post-content">初识 Mockito 这个测试框架后，我们要使用 Mock 的属性创建一个被测试类实例时，大概会下面这么纯手工来打造。
 手工过程见: https://www.jianshu.com/p/bb705a56f620
 如果所有的 Mock 对象全部通过手工来创建，那就不容易体现出 Mockito 的优越性出来。因此对于被测试对象的创建，Mock 属性的注入应该让 @Mock 和 @InjectMocks这两个注解大显身手了。
  Mockito能力
 
 @Mock：对函数的调用均执行mock（即虚假函数），不执行真正部分。
 @Spy：对函数的调用均执行真正部分。
-@InjectMocks：创建一个实例， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2022/01/03/Springboot-Kotlin-Mockito/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/SpringCloud笔记/">SpringCloud笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T15:14:51.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T15:14:51.000Z">2021-12-30</time></div><div class="recent-post-content">
-笔记内容大多来自：尚硅谷SpringCloud框架开发教程
-跟做笔记：https://blog.csdn.net/MOKEXFDGH/article/details/107209899
-跟做工程代码： https://github.com/liusCoding/springcloud-2020、https://gitee.com/exclusiver/springcloud2020
-
- MVN配置
-
-
-每个module的pom配置文件中最重要的三个：GAV即 groupId、artifactId、version
-
-
-dependencyManagement声明依赖的版本，可以起到作用：
-
-
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2021/12/29/SpringCloud笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/30/理解SpringBoot注解s/">理解SpringBoot注解s</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-30T12:30:45.000Z">2021-12-30</time><i class="fa fa-edit"></i><time datetime="2021-12-30T12:30:45.000Z">2021-12-30</time></div><div class="recent-post-content"> @ReuqestBody和@RequestParam
-这两个注解都是在Controller某个Mapping函数的形参前加上的，但两个具体有什么区别呢？在使用的时候我们该如何选择呢? 这跟我们希望用户以什么形式来请求接口有关。
-众所周知，请求头的Content-type有多个，如
-常见的媒体格式类型如下：
-
-text/html ： HTML格式
-text/plain ：纯文本格式
-text/xml ： XML格式
-image/gif ：gif图片格式
-image/jpeg ：jpg图片格式
-image/png：png图片格式
-
-以application开头的媒体格式类型：
-
-applicat ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2021/12/30/理解SpringBoot注解s/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/30/Spring中的Bean/">Spring中的Bean</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-30T02:46:34.000Z">2021-12-30</time><i class="fa fa-edit"></i><time datetime="2021-12-30T02:46:34.000Z">2021-12-30</time></div><div class="recent-post-content"></div><div class="read-more"><a class="more" href="/2021/12/30/Spring中的Bean/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/Go的进阶学习/">Go的进阶学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T08:15:07.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T08:15:07.000Z">2021-12-29</time></div><div class="recent-post-content"> GO中通过组合方式实现的伪继承
-
-说到继承我们都知道，也可以了解到在Go中是没有extends关键字的，也就意味着Go并没有原生级别的继承支持。这也是为什么用了伪继承这个词。本质上，Go使用interface实现的功能叫组合，Go是通过组合(+匿名字段的技术)来实现的继承，说的更精确一点，是使用组合来代替继承
-
-我们用很容易理解的动物-猫来举例子，废话不多说，直接看代码。
-12345678910111213141516171819type Animal struct &#123;    Name string&#125;func (a *Animal) Eat() &#123;    fmt ...</div><div class="read-more"><a class="more" href="/2021/12/29/Go的进阶学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/使用七牛云作图床-PicGo/">使用七牛云作图床+PicGo</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T13:48:37.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T13:48:37.000Z">2021-12-29</time></div><div class="recent-post-content">
-自己在写博客的时候，通过图片来表达自己的思路无疑是种非常有效的方法，平常我的笔记都是通过hexo生成的，因此保存在本地路径即可。但是如果想把文章发表在第三方的平台上，那么这些相对路径的图片在上传过程中就无法被检索，因此如果能在一个大家都能访问到的地方存放这些图片，再给出这些地方的链接时那就解决了这个问题。要达到这个需求，则就需要使用OSS对象存储服务。
-这边我推荐的是七牛云。七牛云在注册认证后有10G永久免费空间，每月10G国内和10G国外流量，速度相当快，七牛云是国内专业CDN服务商，插件支持比较多，有免费SSL证书，但https流量收费。同时七牛云还会提供30天的测试域名，不过要注意的一 ...</div><div class="read-more"><a class="more" href="/2021/12/29/使用七牛云作图床-PicGo/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/28/开发方向-技术栈/">开发方向-技术栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-28T13:02:43.000Z">2021-12-28</time><i class="fa fa-edit"></i><time datetime="2021-12-28T13:02:43.000Z">2021-12-29</time></div><div class="recent-post-content"> Cloud 微服务全家桶
-
-微服务开发的主流技术栈
-
-
-服务注册中心
-
-:error:eureka 停止更新
-❌consul
-zookeeper
-⭐️nacos
-
-
-服务负载与调用
-
-❌ netflix oss ribbon ==&gt; spring cloud loadbalance
-netflix feign ==&gt; Spring cloud OpenFeign
-
-
-容量限流(熔断)
-
-❌hystrix: 最先的老大哥
-resilience4j：国外使用较多
-⭐️spring cloud alibaba sentinel
-
-
-配置中心
-
-❌spring cloud config
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发"> 开发</a></div><div class="read-more"><a class="more" href="/2021/12/28/开发方向-技术栈/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/26/Python科学计算常用API记录/">Python科学计算常用API记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-26T09:44:24.000Z">2021-12-26</time><i class="fa fa-edit"></i><time datetime="2021-12-26T09:44:24.000Z">2021-12-28</time></div><div class="recent-post-content"> pandas
- to_numeric：类别离散化
-参数	描述
-arg	scalar, list, tuple, 1-d array, or Series
-errors	{‘ignore’, ‘raise’, ‘coerce’}, default ‘raise’
-downcast	{‘integer’, ‘signed’, ‘unsigned’, ‘float’} , default None,指定转换的类型,默认返回float64或int64
-1234567891011121314151617181920212223242526272829&gt;&gt;&gt; s = pd.Series ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2021/12/26/Python科学计算常用API记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/26/开发过程中Mysql-API记录/">开发过程中Mysql API记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-26T12:52:57.000Z">2021-12-26</time><i class="fa fa-edit"></i><time datetime="2021-12-26T12:52:57.000Z">2021-12-26</time></div><div class="recent-post-content"> 时间操作
- TIME_TO_SEC
-
-MySQL TIME_TO_SEC(time) 函数返回将参数 time 转换为秒数的时间值，转换公式为“小时 ×3600+ 分钟 ×60+ 秒”。
-
-12345678910111213mysql&gt; SELECT TIME_TO_SEC(&apos;15:15:15&apos;);+-------------------------+| TIME_TO_SEC(&apos;15:15:15&apos;) |+-------------------------+|                   54915 |+----------------- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Mysql"> Mysql</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发记录"> 开发记录</a></div><div class="read-more"><a class="more" href="/2021/12/26/开发过程中Mysql-API记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/26/Python中关于图片的读取/">Python中关于图片的操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-26T08:16:29.000Z">2021-12-26</time><i class="fa fa-edit"></i><time datetime="2021-12-26T08:16:29.000Z">2021-12-26</time></div><div class="recent-post-content">
-写代码的时候一直记错库下对应的图片操作函数名以及他们的返回值类型，干脆写个笔记记录下。
-
-图片读取相关的包：
-
-matplotlib
-PIL/
-cv2
-numpy
-
- 读取
- matplotlib.pyplot / pylab
-12345678import pylab as plt# from matplotlib import pyplot as pltimport numpy as npimg = plt.imread('examples.png')print(type(img), img.dtype, np.min(img), np.max(img))[out](&lt;type 'n ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2021/12/26/Python中关于图片的读取/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+@InjectMocks：创建一个实例， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2022/01/03/Springboot-Kotlin-Mockito/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -97,7 +97,7 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">2022年3月19~20日-爬虫项目记录</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/04/03</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">4,881</span> | Reading time: <span class="post-count">22</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="2022年3月20日公告存网站页面到数据库"><a class="markdownIt-Anchor" href="#2022年3月20日公告存网站页面到数据库"></a> 2022年3月20日——公告存网站页面到数据库</h1>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">2022年3月19~20日-爬虫项目记录</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-edit"></i><span>2022/04/04</span></span><span class="busuanzi-pv" id="busuanzi_container_page_pv"><i class="post-intro-calendar fa fa-user-o"></i><span id="busuanzi_value_page_pv"></span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">8,179</span> | Reading time: <span class="post-count">36</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="2022年3月20日公告存网站页面到数据库"><a class="markdownIt-Anchor" href="#2022年3月20日公告存网站页面到数据库"></a> 2022年3月20日——公告存网站页面到数据库</h1>
 <h2 id="文件存储"><a class="markdownIt-Anchor" href="#文件存储"></a> 文件存储</h2>
 <ol>
 <li>文件夹不允许出现<code>/\:*?|&lt;&gt;&quot;</code></li>
@@ -409,7 +409,329 @@
 </ul>
 <h3 id="其他sql文件"><a class="markdownIt-Anchor" href="#其他sql文件"></a> 其他SQL文件</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`auto_bilibili`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`userid`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`name`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'创建的任务名'</span>,</span><br><span class="line">  <span class="string">`sessdata`</span> longtext <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`bili_jct`</span> longtext <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`dedeuserid`</span> longtext <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`taskIntervalTime`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'10'</span> <span class="keyword">COMMENT</span> <span class="string">'任务之间的执行间隔'</span>,</span><br><span class="line">  <span class="string">`numberOfCoins`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'5'</span> <span class="keyword">COMMENT</span> <span class="string">'每日投币数量'</span>,</span><br><span class="line">  <span class="string">`reserveCoins`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'50'</span> <span class="keyword">COMMENT</span> <span class="string">'预留的硬币数'</span>,</span><br><span class="line">  <span class="string">`selectLike`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'投币时是否点赞，默认 0, 0：否 1：是'</span>,</span><br><span class="line">  <span class="string">`monthEndAutoCharge`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'true'</span> <span class="keyword">COMMENT</span> <span class="string">'年度大会员月底是否用 B 币券给自己充电，默认 true，即充电对象是你本人。'</span>,</span><br><span class="line">  <span class="string">`giveGift`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'true'</span> <span class="keyword">COMMENT</span> <span class="string">'直播送出即将过期的礼物，默认开启'</span>,</span><br><span class="line">  <span class="string">`upLive`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'直播送出即将过期的礼物，指定 up 主，为 0 时则随随机选取一个 up 主'</span>,</span><br><span class="line">  <span class="string">`chargeForLove`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'给指定 up 主充电，值为 0 或者充电对象的 uid，默认为 0，即给自己充电'</span>,</span><br><span class="line">  <span class="string">`devicePlatform`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'ios'</span> <span class="keyword">COMMENT</span> <span class="string">'手机端漫画签到时的平台，建议选择你设备的平台 ，默认 ios'</span>,</span><br><span class="line">  <span class="string">`coinAddPriority`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'1'</span> <span class="keyword">COMMENT</span> <span class="string">'0：优先给热榜视频投币，1：优先给关注的 up 投币'</span>,</span><br><span class="line">  <span class="string">`userAgent`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36 Edg/86.0.622.69'</span> <span class="keyword">COMMENT</span> <span class="string">'浏览器 UA'</span>,</span><br><span class="line">  <span class="string">`skipDailyTask`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'false'</span> <span class="keyword">COMMENT</span> <span class="string">'是否跳过每日任务'</span>,</span><br><span class="line">  <span class="string">`webhook`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'推送地址'</span>,</span><br><span class="line">  <span class="string">`enddate`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`match_enable`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'false'</span> <span class="keyword">COMMENT</span> <span class="string">'预测是否开启'</span>,</span><br><span class="line">  <span class="string">`match_predictNumberOfCoins`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'10'</span> <span class="keyword">COMMENT</span> <span class="string">'单次预测投注硬币'</span>,</span><br><span class="line">  <span class="string">`match_minimumNumberOfCoins`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'200'</span> <span class="keyword">COMMENT</span> <span class="string">'预测保留硬币'</span>,</span><br><span class="line">  <span class="string">`match_showHandModel`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'false'</span> <span class="keyword">COMMENT</span> <span class="string">'押注形式'</span>,</span><br><span class="line">  <span class="string">`other`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>) <span class="keyword">USING</span> BTREE,</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`userid`</span> (<span class="string">`userid`</span>) <span class="keyword">USING</span> BTREE</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> AUTO_INCREMENT=<span class="number">7</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8mb4 ROW_FORMAT=DYNAMIC</span><br></pre></td></tr></table></figure>
-</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/03/19/2022年3月19日-20日爬虫项目记录/">https://nymrli.top/2022/03/19/2022年3月19日-20日爬虫项目记录/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/03/23/JS逆向-webpack打包网站实战/" title="JS逆向-webpack打包网站实战"><span>< PreviousPost</span><br><span class="prevTitle">JS逆向-webpack打包网站实战</span></a><a class="nextSlogan" href="/2022/02/27/深入学习使用Spring/" title="深入学习使用Spring"><span>NextPost ></span><br><span class="nextTitle">深入学习使用Spring</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+<h1 id="2022年3月26日小鸡词典"><a class="markdownIt-Anchor" href="#2022年3月26日小鸡词典"></a> 2022年3月26日——小鸡词典</h1>
+<h1 id="抓取指定词条信息"><a class="markdownIt-Anchor" href="#抓取指定词条信息"></a> 抓取指定词条信息</h1>
+<blockquote>
+<p><a href="https://jikipedia.com/search?phrase=a&amp;category=definition" target="_blank" rel="noopener">https://jikipedia.com/search?phrase=a&amp;category=definition</a></p>
+</blockquote>
+<p>需求：将包含英文的词条信息保存到excel文件中</p>
+<p>难点：</p>
+<ul>
+<li>由于不断下滑都会产生数据， 因此难以评估数据量</li>
+</ul>
+<p>思路：通过搜索a-z英文字母，从而找出所有包含英文字母的单词，由于搜索结果的数量是有限的，因此可以确定是否完成。 随着而来的问题是，如果词条为apple，那么搜a/p/l/e都会重复抓取==&gt;防重思路: 通过词条id来判断是否已经爬取过</p>
+<h1 id="lookup"><a class="markdownIt-Anchor" href="#lookup"></a> Lookup:</h1>
+<ul>
+<li>
+<p><a href="https://blog.csdn.net/weixin_37577134/article/details/89048798" target="_blank" rel="noopener">【python】xlwings如何设置字体、颜色等属性</a></p>
+</li>
+<li>
+<p><a href="https://zhuanlan.zhihu.com/p/120415076" target="_blank" rel="noopener">全网最详细的xlwings库解析(3) – Python操作工作簿&amp;表</a></p>
+</li>
+<li>
+<p><a href="https://blog.csdn.net/chang1976272446/article/details/84140117" target="_blank" rel="noopener">xlwings获取excel sheet多少行多少列</a></p>
+</li>
+<li>
+<p><a href="https://blog.csdn.net/weixin_44015669/article/details/117637954" target="_blank" rel="noopener">Python：利用xlwings库实现excel进行插入、删除行操作实例</a></p>
+</li>
+<li>
+<p>数据库中create_time既可以指定为DATETIME也可以设置为TIMESTAMP，而对应的在SQL中位db.DateTime、TIMESTAMP</p>
+</li>
+</ul>
+<p>▲. 由于不需要对excel中样式进行修改，所以为了省事，最终直接采用了入库导出Excel的方式，而没用使用xlwings库</p>
+<h2 id="日志输出两次"><a class="markdownIt-Anchor" href="#日志输出两次"></a> 日志输出两次</h2>
+<p>原因是多个Py文件中引入了<code>LOG</code>, 但引入方式不一样，如main.py中是<code>from logger import LOG</code>, 而spider.py中是<code>from logger import LOG</code>,<br>
+saver.oy中是<code>from jikipedia.logger import LOG</code></p>
+<p>▲ <a href="http://xn--mainspider-yt2pm7a86yp5bky8aghsszaw517eiuka.py" target="_blank" rel="noopener">问题就出在main中导入了spider.py</a>, <a href="http://xn--spidersaver-ox9qz06chk1b4gzejotb.py" target="_blank" rel="noopener">而spider又引用了saver.py</a>，但是saver中引用的LOG由于导入方式不同，使得跟前两个的使用的LOG不是同一个，但LOG配置都是一样的，所以导致了输出多次。</p>
+<h2 id="pytest库使用"><a class="markdownIt-Anchor" href="#pytest库使用"></a> pytest库使用</h2>
+<blockquote>
+<p><code>pip install pytest</code></p>
+</blockquote>
+<ul>
+<li>测试文件以test_开头（以_test结尾也可以）</li>
+<li>测试类以Test开头，并且不能带有 init 方法</li>
+<li>测试函数以test_开头</li>
+<li>断言使用基本的assert即可</li>
+</ul>
+<p><strong>pytest 夹具</strong>(fixture)</p>
+<blockquote>
+<p>测试需要在一组已知对象的背景下进行。 这组对象称为测试夹具(fixture)。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> algo</span><br><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.fixture</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">-3</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">-2</span>, <span class="number">11</span>, <span class="number">9</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_sel_sort</span><span class="params">(data)</span>:</span></span><br><span class="line">    sorted_vals = algo.sel_sort(data)</span><br><span class="line">    <span class="keyword">assert</span> sorted_vals == sorted(data)</span><br></pre></td></tr></table></figure>
+<h3 id="综合测试"><a class="markdownIt-Anchor" href="#综合测试"></a> 综合测试</h3>
+<p>接下来，我们展示如何在 Python 包中运行测试。</p>
+<ol>
+<li>首先把将所有的测试文件全部放在<code>./tests/</code>文件夹下</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">setup.py</span><br><span class="line">utils</span><br><span class="line">│   algo.py</span><br><span class="line">│   srel.py</span><br><span class="line">│   __init__.py</span><br><span class="line">│</span><br><span class="line">└───tests</span><br><span class="line">        algo_test.py</span><br><span class="line">        srel_test.py</span><br><span class="line">        __init__.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># !/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># tests/algo_test.py</span></span><br><span class="line"><span class="keyword">import</span> utils.algo</span><br><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.fixture</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">-3</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">-2</span>, <span class="number">11</span>, <span class="number">9</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_sel_sort</span><span class="params">(data)</span>:</span></span><br><span class="line">    sorted_vals = utils.algo.sel_sort(data)</span><br><span class="line">    <span class="keyword">assert</span> sorted_vals == sorted(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_min</span><span class="params">()</span>:</span></span><br><span class="line">    values = (<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">    val = utils.algo.min(values)</span><br><span class="line">    <span class="keyword">assert</span> val == <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_max</span><span class="params">()</span>:</span></span><br><span class="line">    values = (<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">    val = utils.algo.max(values)</span><br><span class="line">    <span class="keyword">assert</span> val == <span class="number">6</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>pytest tests/</code></li>
+</ol>
+<p>执行文件、文件夹</p>
+<ul>
+<li>pytest test_mod.py 执行该模块下的测试类测试方法</li>
+<li>pytest testing 执行该文件夹下的所有模块</li>
+<li>pytest test_cgi.py::test_answer，执行test_answer方法</li>
+<li>pytest test_cgi.py::TestMyClass::test_one，执行TestMyClass类下的test_one方法</li>
+</ul>
+<p>more: <a href="https://www.imooc.com/wiki/pycharmlesson/pytest.html" target="_blank" rel="noopener">在 PyCharm 里使用 Pytest 测试框架</a></p>
+<h2 id="requests异常"><a class="markdownIt-Anchor" href="#requests异常"></a> requests异常</h2>
+<p>ReadTimeout: 意思是已经建立连接，并开始读取服务端资源。如果到了指定的时间，没有可能的数据被客户端读取，则报异常。<br>
+出现的情况是在设置了timeout设置为3秒，服务器在3秒内未给出响应，出现报错<code>requests.exceptions.ReadTimeout</code>。 ConnectTimeout:<br>
+意思是用来建立连接的时间。如果到了指定的时间，还没建立连接，则报异常。</p>
+<h2 id="附录-2"><a class="markdownIt-Anchor" href="#附录-2"></a> 附录</h2>
+<h3 id="导入问题"><a class="markdownIt-Anchor" href="#导入问题"></a> 导入问题：</h3>
+<p>在tests/中如果要引工程根目录的文件比较麻烦，得通过相对路径<code>from ..utils import xxx</code>的方式, 但是这样必须把再加上<code>sys.path.append(&quot;..&quot;)</code><br>
+，针对这种情况，一个解决方案是所有模块都从根工程为绝对路径开始引，比如main.py中引settings为<code>from jikipedia.settings import xxx</code>,<br>
+而tests中引也是同样<code>from jikipedia.settings import xxx</code>==&gt;pycharm中使用alt+enter提示后使用的import也是从根目录导入<code>from jikipedia.xxx import yyy</code></p>
+<p>注： 这样需要把工程根目录作为包，所以得在根目录加上<code>__init__.py</code>文件</p>
+<h3 id="脚本中相对路径问题"><a class="markdownIt-Anchor" href="#脚本中相对路径问题"></a> 脚本中相对路径问题</h3>
+<p>由于settings.py会直接在同级的根目录下创建attaches文件夹，但是如果直接是<code>mkdir(&quot;./attaches&quot;)</code>的话，tests/中只要间接导入了settings.py都会在tests/下创建attaches，因为此时的脚本路径是在tests/下，所以settings中的可执行<code>mkdir(.)</code>就变成了在<code>tests/.</code>所以这边应该指定绝对路径, 下面是一个通过<code>__file__</code>获得脚本绝对路径，然后再获得其所在文件夹的做法：</p>
+<p><code>DOWNLOAD_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), &quot;attaches&quot;)</code></p>
+<p>DOWNLOAD_PATH的值被赋值成了<code>F:\aDevelopment\Python\ShowYourCode\jikipedia</code>从而解决了这个问题</p>
+<h3 id="redis使用"><a class="markdownIt-Anchor" href="#redis使用"></a> redis使用</h3>
+<blockquote>
+<p>特点：</p>
+<p>1.基于内存的key-value数据库<br>
+2.基于c语言编写的，可以支持多种语言的api //set每秒11万次，取get 81000次<br>
+3.支持数据持久化<br>
+4.value可以是string，hash， list， set, sorted set</p>
+</blockquote>
+<h4 id="连接redis服务器"><a class="markdownIt-Anchor" href="#连接redis服务器"></a> <strong>连接redis服务器</strong></h4>
+<ul>
+<li>本地命令行进入redis： <code>redis-cli</code></li>
+<li>远程连接：<code>redis-cli -h host -p port -a password</code></li>
+</ul>
+<h4 id="命令参数"><a class="markdownIt-Anchor" href="#命令参数"></a> 命令参数：</h4>
+<p>key</p>
+<ul>
+<li>keys * 获取所有的key</li>
+<li>select 0 选择第一个库</li>
+<li>move myString 1 将当前的数据库key移动到某个数据库,目标库有，则不能移动</li>
+<li>flush db      清除指定库</li>
+<li>randomkey     随机key</li>
+<li>type key      类型</li>
+<li>set key1 value1 设置key</li>
+<li>get key1    获取key</li>
+<li>mset key1 value1 key2 value2 key3 value3</li>
+<li>mget key1 key2 key3</li>
+<li>del key1   删除key</li>
+<li>exists key      判断是否存在key</li>
+<li>expire key 10   10过期</li>
+<li>pexpire key 1000 毫秒</li>
+<li>persist key     删除过期时间</li>
+</ul>
+<p>string</p>
+<ul>
+<li>set name cxx</li>
+<li>get name</li>
+<li>getrange name 0 -1        字符串分段</li>
+<li>getset name new_cxx       设置值，返回旧值</li>
+<li>mset key1 key2            批量设置</li>
+<li>mget key1 key2            批量获取</li>
+<li>setnx key value           不存在就插入（not exists）</li>
+<li>setex key time value      过期时间（expire）</li>
+<li>setrange key index value  从index开始替换value</li>
+<li>incr age        递增</li>
+<li>incrby age 10   递增</li>
+<li>decr age        递减</li>
+<li>decrby age 10   递减</li>
+<li>incrbyfloat     增减浮点数</li>
+<li>append          追加</li>
+<li>strlen          长度</li>
+<li>getbit/setbit/bitcount/bitop    位操作</li>
+</ul>
+<p>hash</p>
+<ul>
+<li>hset myhash name cxx</li>
+<li>hget myhash name</li>
+<li>hmset myhash name cxx age 25 note “i am notes”</li>
+<li>hmget myhash name age note</li>
+<li>hgetall myhash               获取所有的</li>
+<li>hexists myhash name          是否存在</li>
+<li>hsetnx myhash score 100      设置不存在的</li>
+<li>hincrby myhash id 1          递增</li>
+<li>hdel myhash name             删除</li>
+<li>hkeys myhash                 只取key</li>
+<li>hvals myhash                 只取value</li>
+<li>hlen myhash                  长度</li>
+</ul>
+<p>list</p>
+<ul>
+<li>lpush mylist a b c  左插入</li>
+<li>rpush mylist x y z  右插入</li>
+<li>lrange mylist 0 -1  数据集合</li>
+<li>lpop mylist  弹出元素</li>
+<li>rpop mylist  弹出元素</li>
+<li>llen mylist  长度</li>
+<li>lrem mylist count value  删除</li>
+<li>lindex mylist 2          指定索引的值</li>
+<li>lset mylist 2 n          索引设值</li>
+<li>ltrim mylist 0 4         删除key</li>
+<li>linsert mylist before a  插入</li>
+<li>linsert mylist after a   插入</li>
+<li>rpoplpush list list2     转移列表的数据</li>
+</ul>
+<p>set</p>
+<ul>
+<li>sadd myset redis</li>
+<li>smembers myset       数据集合</li>
+<li>srem myset set1         删除</li>
+<li>sismember myset set1 判断元素是否在集合中</li>
+<li>scard key_name       个数</li>
+<li>sdiff | sinter | sunion 操作：集合间运算：差集 | 交集 | 并集</li>
+<li>srandmember          随机获取集合中的元素</li>
+<li>spop                 从集合中弹出一个元素</li>
+<li></li>
+</ul>
+<p>zset</p>
+<ul>
+<li>zadd zset 1 one</li>
+<li>zadd zset 2 two</li>
+<li>zadd zset 3 three</li>
+<li>zincrby zset 1 one              增长分数</li>
+<li>zscore zset two                 获取分数</li>
+<li>zrange zset 0 -1 withscores     范围值</li>
+<li>zrangebyscore zset 10 25 withscores 指定范围的值</li>
+<li>zrangebyscore zset 10 25 withscores limit 1 2 分页</li>
+<li>Zrevrangebyscore zset 10 25 withscores  指定范围的值</li>
+<li>zcard zset  元素数量</li>
+<li>Zcount zset 获得指定分数范围内的元素个数</li>
+<li>Zrem zset one two        删除一个或多个元素</li>
+<li>Zremrangebyrank zset 0 1  按照排名范围删除元素</li>
+<li>Zremrangebyscore zset 0 1 按照分数范围删除元素</li>
+<li>Zrank zset 0 -1    分数最小的元素排名为0</li>
+<li>Zrevrank zset 0 -1  分数最大的元素排名为0</li>
+<li>Zinterstore</li>
+<li>zunionstore rank:last_week 7 rank:20150323 rank:20150324 rank:20150325  weights 1 1 1 1 1 1 1</li>
+</ul>
+<p>排序：</p>
+<ul>
+<li>sort mylist  排序</li>
+<li>sort mylist alpha desc limit 0 2 字母排序</li>
+<li>sort list by it:* desc           by命令</li>
+<li>sort list by it:* desc get it:*  get参数</li>
+<li>sort list by it:* desc get it:* store sorc:result  sort命令之store参数：表示把sort查询的结果集保存起来</li>
+</ul>
+<p>订阅与发布：</p>
+<ul>
+<li>订阅频道：subscribe chat1</li>
+<li>发布消息：publish chat1 “hell0 ni hao”</li>
+<li>查看频道：pubsub channels</li>
+<li>查看某个频道的订阅者数量: pubsub numsub chat1</li>
+<li>退订指定频道： unsubscrible chat1   , punsubscribe java.*</li>
+<li>订阅一组频道： psubscribe java.*</li>
+<li></li>
+</ul>
+<p>redis事物：</p>
+<ul>
+<li>隔离性，原子性，</li>
+<li>步骤：  开始事务，执行命令，提交事务</li>
+<li>
+<pre><code>     multi  //开启事务
+</code></pre>
+</li>
+<li>
+<pre><code>     sadd myset a b c
+</code></pre>
+</li>
+<li>
+<pre><code>     sadd myset e f g
+</code></pre>
+</li>
+<li>
+<pre><code>     lpush mylist aa bb cc
+</code></pre>
+</li>
+<li>
+<pre><code>     lpush mylist dd ff gg
+</code></pre>
+</li>
+</ul>
+<p>服务器管理</p>
+<ul>
+<li>dump.rdb</li>
+<li>appendonly.aof</li>
+<li>//BgRewriteAof 异步执行一个aop(appendOnly file)文件重写, 会创建当前一个AOF文件体积的优化版本</li>
+<li>//BgSave 后台异步保存数据到磁盘，会在当前目录下创建文件dump.rdb</li>
+<li>//save同步保存数据到磁盘，会阻塞主进程，别的客户端无法连接</li>
+<li>//client kill 关闭客户端连接</li>
+<li>//client list 列出所有的客户端</li>
+<li>client setname myclient1 //给客户端设置一个名称</li>
+<li>client getname</li>
+<li>config get port</li>
+<li>//configRewrite 对redis的配置文件进行改写</li>
+</ul>
+<p>rdb</p>
+<ul>
+<li>save 900 1</li>
+<li>save 300 10</li>
+<li>save 60 10000</li>
+</ul>
+<p>aop备份处理</p>
+<ul>
+<li>appendonly yes 开启持久化</li>
+<li>appendfsync everysec 每秒备份一次</li>
+</ul>
+<p>命令：</p>
+<ul>
+<li>bgsave异步保存数据到磁盘（快照保存）</li>
+<li>lastsave返回上次成功保存到磁盘的unix的时间戳</li>
+<li>shutdown同步保存到服务器并关闭redis服务器</li>
+<li>bgrewriteaof文件压缩处理（命令）</li>
+</ul>
+<h4 id="使用场景"><a class="markdownIt-Anchor" href="#使用场景"></a> 使用场景</h4>
+<ol>
+<li>去最新n个数据的操作</li>
+<li>排行榜，取top n个数据 //最佳人气前10条</li>
+<li>精确的设置过期时间</li>
+<li>计数器</li>
+<li>实时系统， 反垃圾系统</li>
+<li>pub， sub发布订阅构建实时消息系统</li>
+<li>构建消息队列</li>
+<li>缓存</li>
+</ol>
+<p>Redis在互联网公司一般有以下应用：</p>
+<ul>
+<li>String：缓存、限流、计数器、分布式锁、分布式Session</li>
+<li>Hash：存储用户信息、用户主页访问量、组合查询</li>
+<li>List：微博关注人时间轴列表、简单队列</li>
+<li>Set：赞、踩、标签、好友关系</li>
+<li>Zset：排行榜</li>
+</ul>
+<h2 id="mysql中时间类型设置"><a class="markdownIt-Anchor" href="#mysql中时间类型设置"></a> MYSQL中时间类型设置</h2>
+<ul>
+<li>create_time：设置数据类型为：TIMESTAMP，默认值为：<code>CURRENT_TIMESTAMP()</code></li>
+<li>modify_time：设置数据类型为：TIMESTAMP，默认值为：<code>CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP()</code></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`base_name`</span>.<span class="string">`table_name`</span> (</span><br><span class="line">  <span class="string">`create_time`</span> <span class="keyword">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(),</span><br><span class="line">  <span class="string">`modify_time`</span> <span class="keyword">TIMESTAMP</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>() <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CURRENT_TIMESTAMP</span>());</span><br></pre></td></tr></table></figure>
+<p>除了TIMESTAMP以外，也可以设置为DATETIME(0)，对于在SQLAlchemy中为TIMESTAMP和DateTime类型</p>
+<h2 id="ip代理池"><a class="markdownIt-Anchor" href="#ip代理池"></a> IP代理池</h2>
+<p>爬虫和反爬虫是一对矛和盾，反爬虫很常见的一个方法就是封IP，一个IP短时间内频繁访问，可以做限流或者是加入黑名单。针对这种情况，我们可以采用IP代理池+随机UA的方式来规避。</p>
+<p>此外爬虫是一种IO密集型程序，如果全程单线程执行那会很慢，因此可以用多线程来提高数据采集效率，不过自己管理多线程太麻烦，所以可以选择线程池。</p>
+<h3 id="代理池"><a class="markdownIt-Anchor" href="#代理池"></a> 代理池</h3>
+<p>一个完善的代理池，应该可以实现以下功能</p>
+<ul>
+<li>批量<strong>采集</strong>代理（或者通过接口导入我们购买的代理，不过偶尔用一用还是免费的就好）</li>
+<li>采集到之后自动<strong>验证</strong>代理有效性</li>
+<li>将有效代理<strong>存储</strong>起来</li>
+<li>提供<u>获取</u>随机代理的<strong>接口</strong>、提供<u>管理</u>（删除、增加）代理的<strong>接口</strong></li>
+</ul>
+<h3 id="使用代理池"><a class="markdownIt-Anchor" href="#使用代理池"></a> 使用代理池</h3>
+<p>之前在就看到过<a href="https://cn.bing.com/search?q=%E7%88%AC%E8%99%AB+%E5%B4%94%E5%BA%86%E6%89%8D&amp;FORM=QSRE1" target="_blank" rel="noopener">崔庆才</a>书中介绍的开源代理池，但没仔细研究，本次搜索过后又发现了一个在GitHub上有14k+ Stars的代理池来用，名字叫<a href="https://github.com/jhao104/proxy_pool" target="_blank" rel="noopener"><code>ProxyPool</code></a>。</p>
+<p>官方文档提供了两种部署方式，包括下载代码运行和docker，既然有docker那肯定选最方便的docker啦！</p>
+<p>不过官方的docker命令还不够方便，因为这个代理池还需要依赖Redis服务，因此可以用docker-compose配置来用：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  redis:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    expose:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">6379</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  web:</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">jhao104/proxy_pool</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">DB_CONN=redis://redis:6379/0</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"5010:5010"</span></span><br><span class="line"><span class="attr">    depends_on:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">redis</span></span><br></pre></td></tr></table></figure>
+<p>接口信息：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"url"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"desc"</span>: <span class="string">"get a proxy"</span>,</span><br><span class="line">      <span class="attr">"params"</span>: <span class="string">"type: ''https'|''"</span>,</span><br><span class="line">      <span class="attr">"url"</span>: <span class="string">"/get"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"desc"</span>: <span class="string">"get and delete a proxy"</span>,</span><br><span class="line">      <span class="attr">"params"</span>: <span class="string">""</span>,</span><br><span class="line">      <span class="attr">"url"</span>: <span class="string">"/pop"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"desc"</span>: <span class="string">"delete an unable proxy"</span>,</span><br><span class="line">      <span class="attr">"params"</span>: <span class="string">"proxy: 'e.g. 127.0.0.1:8080'"</span>,</span><br><span class="line">      <span class="attr">"url"</span>: <span class="string">"/delete"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"desc"</span>: <span class="string">"get all proxy from proxy pool"</span>,</span><br><span class="line">      <span class="attr">"params"</span>: <span class="string">"type: ''https'|''"</span>,</span><br><span class="line">      <span class="attr">"url"</span>: <span class="string">"/all"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"desc"</span>: <span class="string">"return proxy count"</span>,</span><br><span class="line">      <span class="attr">"params"</span>: <span class="string">""</span>,</span><br><span class="line">      <span class="attr">"url"</span>: <span class="string">"/count"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="获取随机代理"><a class="markdownIt-Anchor" href="#获取随机代理"></a> 获取随机代理</h4>
+<p>封装获取随机代理和删除代理的操作后就可以使用了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="comment"># IP换成自己服务器的IP</span></span><br><span class="line">PROXY_POOL_URL = <span class="string">'http://127.0.0.1:5010'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_proxy</span><span class="params">()</span>:</span></span><br><span class="line">    proxy = requests.get(<span class="string">f"<span class="subst">&#123;PROXY_POOL_URL&#125;</span>/get/"</span>).json().get(<span class="string">"proxy"</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'http'</span>: proxy, <span class="string">'https'</span>: proxy&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete_proxy</span><span class="params">(proxy)</span>:</span></span><br><span class="line">    requests.get(<span class="string">f"<span class="subst">&#123;PROXY_POOL_URL&#125;</span>/delete/?proxy=<span class="subst">&#123;proxy&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
+<p>from： <a href="https://www.cnblogs.com/deali/p/15890678.html" target="_blank" rel="noopener">https://www.cnblogs.com/deali/p/15890678.html</a></p>
+<h2 id="添加代理装饰器"><a class="markdownIt-Anchor" href="#添加代理装饰器"></a> 添加代理装饰器</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># @author: Mrli</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reqCheck</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    目前只支持http代理，https大多无效</span></span><br><span class="line"><span class="string">    :param func:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"><span class="meta">    @wraps(func)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        rand_proxy = get_proxy()</span><br><span class="line">        <span class="comment"># 给请求加上proxy参数</span></span><br><span class="line">        kwargs[<span class="string">"proxy"</span>] = rand_proxy</span><br><span class="line">        tryTimes = <span class="number">0</span></span><br><span class="line">        resp = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">while</span> tryTimes &lt; MAX_RETRY_COUNT:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                resp = func(*args, **kwargs)</span><br><span class="line">                print(resp.status_code)</span><br><span class="line">                <span class="keyword">if</span> <span class="number">100</span> &lt; resp.status_code &lt; <span class="number">400</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">except</span> RequestException <span class="keyword">as</span> e:</span><br><span class="line">                tryTimes += <span class="number">1</span></span><br><span class="line">                LOG.warn(<span class="string">"&#123;&#125;请求失败: e~&#123;&#125;"</span>.format(rand_proxy, e))</span><br><span class="line">                rand_proxy = get_proxy()</span><br><span class="line">                delete_proxy(rand_proxy)</span><br><span class="line">        <span class="keyword">return</span> resp</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br></pre></td></tr></table></figure>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://nymrli.top">Mrli</a></p><p> <span>Link:  </span><a href="https://nymrli.top/2022/03/19/2022年3月19日-20日爬虫项目记录/">https://nymrli.top/2022/03/19/2022年3月19日-20日爬虫项目记录/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/03/29/开源项目代码阅读记录/" title="开源项目代码阅读记录"><span>< PreviousPost</span><br><span class="prevTitle">开源项目代码阅读记录</span></a><a class="nextSlogan" href="/2022/02/27/深入学习使用Spring/" title="深入学习使用Spring"><span>NextPost ></span><br><span class="nextTitle">深入学习使用Spring</span></a><div class="clear"></div></div><div id="comment"><div id="container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
   id: '2022年3月19~20日-爬虫项目记录',
   owner: 'Freedomisgood',
   repo: 'Freedomisgood.github.io',
@@ -418,4 +740,4 @@
     client_secret: '949cec3a1b91742c6249c47259791e4b80a6fa69',
   },
 })
-gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2022年3月20日公告存网站页面到数据库"><span class="toc-number">1.</span> <span class="toc-text"> 2022年3月20日——公告存网站页面到数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件存储"><span class="toc-number">1.1.</span> <span class="toc-text"> 文件存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库表"><span class="toc-number">1.2.</span> <span class="toc-text"> 数据库表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql字段类型存储需要多少字节"><span class="toc-number">1.2.1.</span> <span class="toc-text"> mysql字段类型存储需要多少字节？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql中类型后面的数字含义"><span class="toc-number">1.2.2.</span> <span class="toc-text"> MySQL中类型后面的数字含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql默认字符集"><span class="toc-number">1.2.3.</span> <span class="toc-text"> mySQL默认字符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最终createsql文件"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 最终create.sql文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2022年3月20日-护士题目下载存word"><span class="toc-number">2.</span> <span class="toc-text"> 2022年3月20日-护士题目下载存Word</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引报错"><span class="toc-number">2.0.1.</span> <span class="toc-text"> 索引报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库插入数据"><span class="toc-number">2.0.2.</span> <span class="toc-text"> 数据库插入数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作word"><span class="toc-number">2.1.</span> <span class="toc-text"> 操作word</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#提取文字"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 提取文字</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#共同点处理"><span class="toc-number">3.</span> <span class="toc-text"> 共同点处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件保存"><span class="toc-number">3.1.</span> <span class="toc-text"> 文件保存</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number">4.</span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lxml库的使用"><span class="toc-number">4.0.1.</span> <span class="toc-text"> lxml库的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timeit模块使用"><span class="toc-number">4.0.2.</span> <span class="toc-text"> timeit模块使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python中操作sqlalchemysqlalchemy中文技术文档"><span class="toc-number">4.0.3.</span> <span class="toc-text"> Python中操作SQLAlchemy,SQLAlchemy中文技术文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#argumentparser使用"><span class="toc-number">4.0.4.</span> <span class="toc-text"> ArgumentParser使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他sql文件"><span class="toc-number">4.0.5.</span> <span class="toc-text"> 其他SQL文件</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+gitment.render('container')</script></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 60vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2022年3月20日公告存网站页面到数据库"><span class="toc-number">1.</span> <span class="toc-text"> 2022年3月20日——公告存网站页面到数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件存储"><span class="toc-number">1.1.</span> <span class="toc-text"> 文件存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库表"><span class="toc-number">1.2.</span> <span class="toc-text"> 数据库表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql字段类型存储需要多少字节"><span class="toc-number">1.2.1.</span> <span class="toc-text"> mysql字段类型存储需要多少字节？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql中类型后面的数字含义"><span class="toc-number">1.2.2.</span> <span class="toc-text"> MySQL中类型后面的数字含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql默认字符集"><span class="toc-number">1.2.3.</span> <span class="toc-text"> mySQL默认字符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最终createsql文件"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 最终create.sql文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2022年3月20日-护士题目下载存word"><span class="toc-number">2.</span> <span class="toc-text"> 2022年3月20日-护士题目下载存Word</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引报错"><span class="toc-number">2.0.1.</span> <span class="toc-text"> 索引报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库插入数据"><span class="toc-number">2.0.2.</span> <span class="toc-text"> 数据库插入数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作word"><span class="toc-number">2.1.</span> <span class="toc-text"> 操作word</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#提取文字"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 提取文字</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#共同点处理"><span class="toc-number">3.</span> <span class="toc-text"> 共同点处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件保存"><span class="toc-number">3.1.</span> <span class="toc-text"> 文件保存</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附录"><span class="toc-number">4.</span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lxml库的使用"><span class="toc-number">4.0.1.</span> <span class="toc-text"> lxml库的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timeit模块使用"><span class="toc-number">4.0.2.</span> <span class="toc-text"> timeit模块使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python中操作sqlalchemysqlalchemy中文技术文档"><span class="toc-number">4.0.3.</span> <span class="toc-text"> Python中操作SQLAlchemy,SQLAlchemy中文技术文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#argumentparser使用"><span class="toc-number">4.0.4.</span> <span class="toc-text"> ArgumentParser使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他sql文件"><span class="toc-number">4.0.5.</span> <span class="toc-text"> 其他SQL文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2022年3月26日小鸡词典"><span class="toc-number">5.</span> <span class="toc-text"> 2022年3月26日——小鸡词典</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#抓取指定词条信息"><span class="toc-number">6.</span> <span class="toc-text"> 抓取指定词条信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lookup"><span class="toc-number">7.</span> <span class="toc-text"> Lookup:</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#日志输出两次"><span class="toc-number">7.1.</span> <span class="toc-text"> 日志输出两次</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pytest库使用"><span class="toc-number">7.2.</span> <span class="toc-text"> pytest库使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#综合测试"><span class="toc-number">7.2.1.</span> <span class="toc-text"> 综合测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#requests异常"><span class="toc-number">7.3.</span> <span class="toc-text"> requests异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录-2"><span class="toc-number">7.4.</span> <span class="toc-text"> 附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#导入问题"><span class="toc-number">7.4.1.</span> <span class="toc-text"> 导入问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#脚本中相对路径问题"><span class="toc-number">7.4.2.</span> <span class="toc-text"> 脚本中相对路径问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis使用"><span class="toc-number">7.4.3.</span> <span class="toc-text"> redis使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#连接redis服务器"><span class="toc-number">7.4.3.1.</span> <span class="toc-text"> 连接redis服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#命令参数"><span class="toc-number">7.4.3.2.</span> <span class="toc-text"> 命令参数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用场景"><span class="toc-number">7.4.3.3.</span> <span class="toc-text"> 使用场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql中时间类型设置"><span class="toc-number">7.5.</span> <span class="toc-text"> MYSQL中时间类型设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip代理池"><span class="toc-number">7.6.</span> <span class="toc-text"> IP代理池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代理池"><span class="toc-number">7.6.1.</span> <span class="toc-text"> 代理池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用代理池"><span class="toc-number">7.6.2.</span> <span class="toc-text"> 使用代理池</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#获取随机代理"><span class="toc-number">7.6.2.1.</span> <span class="toc-text"> 获取随机代理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加代理装饰器"><span class="toc-number">7.7.</span> <span class="toc-text"> 添加代理装饰器</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -136,7 +136,14 @@ ddddocr：识别验证码，这边 ...</div><div class="recent-post-tags"><a cla
  安装
  xposed框架
 在不少地方都下载了xposed框架，但都不太使用，后来了解到模拟器的xposed是专用的，根据夜神模拟器官网介绍的夜神模拟器如何安装xposed框架后，决定还是在模拟器的应用商店进行安装xposed，下载安装后的名称为&quot;xposed 派大星&quot;。
-下载安装后立马打开还是会显示没安装，需要点击&quot; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/05/10/爬虫App——xposed-inspeckage/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/29/使用Python转义实现前端加密算法-记录笔记/">使用Python转义实现前端加密算法-记录笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-29T01:22:28.000Z">2022-04-29</time><i class="fa fa-edit"></i><time datetime="2022-04-29T01:22:28.000Z">2022-04-29</time></div><div class="recent-post-content"> 环境安装
+下载安装后立马打开还是会显示没安装，需要点击&quot; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/05/10/爬虫App——xposed-inspeckage/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/05/08/toy-reimplementation-of-an-event-loop-in-Python-翻译/">toy reimplementation of an event loop in Python[翻译]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-08T07:34:46.000Z">2022-05-08</time><i class="fa fa-edit"></i><time datetime="2022-05-08T07:34:46.000Z">2022-05-09</time></div><div class="recent-post-content"> 事件循环的一个小故事
+
+Translated from: https://github.com/AndreLouisCaron/a-tale-of-event-loops
+
+我最近被伯克利大学的研究员Nathaniel J. Smith关于 asyncio 的惊人见解所困。他的文章《关于后async/await世界中异步API设计的一些想法》( Some thoughts on asynchronous API design in a post-async/await world) 使得我 在最近大量使用asyncio后，对它有了一些（略）复杂的感受。
+虽然这或多或少是他文章的重点，但他认为 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="翻译"> 翻译</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="并发"> 并发</a></div><div class="read-more"><a class="more" href="/2022/05/08/toy-reimplementation-of-an-event-loop-in-Python-翻译/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/27/V-P-N与Charles无法共用问题解决/">V-P-N(Vmess)与Charles无法共用问题解决</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-27T13:30:51.000Z">2022-04-27</time><i class="fa fa-edit"></i><time datetime="2022-04-27T13:30:51.000Z">2022-05-07</time></div><div class="recent-post-content">最近需要抓一个需要翻墙才能访问的网页的包，发现VPN直连时会导致 Fiddler 和 Charles 抓包工具无法正常进行抓包，网上找了以后发现了一些解决方案：Github:VPN直连，导致 Fiddler 和 Charles 抓包工具无法正常进行抓包解决方案 ——试了貌似没用、windows下，实现vpn访问下的charles抓包设置中无网络问题的解决——收此启发指导了在charles的Proxy-&gt;external proxy允许其他端口代理
+ 1.找到VPN软件的代理端口proxy port
+我这边使用的是vmess，可以在选项-&gt;参数设置中查看，需要明确的参数是端口和协议， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/04/27/V-P-N与Charles无法共用问题解决/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/29/使用Python转义实现前端加密算法-记录笔记/">使用Python转义实现前端加密算法-记录笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-29T01:22:28.000Z">2022-04-29</time><i class="fa fa-edit"></i><time datetime="2022-04-29T01:22:28.000Z">2022-04-29</time></div><div class="recent-post-content"> 环境安装
 123pip uninstall cryptopip uninstall pycryptodomepip install pycryptodome
 前面两个卸载命令是为了防止一些安装环境问题，具体请看文章
  pycryptodome
@@ -207,7 +214,28 @@ SSH连接并不是像http连接一样，输入用户名和密码就可以了。S
 
 作为一位负责任的开发者，你理当确保每次包升级的运作与版本号的表述一致。现实世界是复杂的，我们除了提高警觉外能做的不多。你所能做的就是让语义化的版本控制为你提供一个健全的方式来发行以及升级包，而无需推出新的依赖包，节省你的时间及烦恼。
 如果没有某个正式的规范可循，版本号对于依赖的管理并无实质意义。将上述的想法命名并给予清楚的定义，让你对软件使用者传达意向变得容易。一旦这些意向变得清楚，弹性（但又不会太弹性）的依赖规范就能达成。
-如果你对此认同，希望立即开始使用语义化版本控制，你只需声明你的函数库正在使用它并遵循这些规则就可以了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2022/01/26/语义化的版本控制/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/30/理解SpringBoot注解s/">理解SpringBoot注解s</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-30T12:30:45.000Z">2021-12-30</time><i class="fa fa-edit"></i><time datetime="2021-12-30T12:30:45.000Z">2021-12-30</time></div><div class="recent-post-content"> @ReuqestBody和@RequestParam
+如果你对此认同，希望立即开始使用语义化版本控制，你只需声明你的函数库正在使用它并遵循这些规则就可以了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2022/01/26/语义化的版本控制/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/01/03/Springboot-Kotlin-Mockito/">Springboot-Kotlin-Mockito</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-01-03T09:19:10.000Z">2022-01-03</time><i class="fa fa-edit"></i><time datetime="2022-01-03T09:19:10.000Z">2022-01-03</time></div><div class="recent-post-content">初识 Mockito 这个测试框架后，我们要使用 Mock 的属性创建一个被测试类实例时，大概会下面这么纯手工来打造。
+手工过程见: https://www.jianshu.com/p/bb705a56f620
+如果所有的 Mock 对象全部通过手工来创建，那就不容易体现出 Mockito 的优越性出来。因此对于被测试对象的创建，Mock 属性的注入应该让 @Mock 和 @InjectMocks这两个注解大显身手了。
+ Mockito能力
+
+@Mock：对函数的调用均执行mock（即虚假函数），不执行真正部分。
+@Spy：对函数的调用均执行真正部分。
+@InjectMocks：创建一个实例， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2022/01/03/Springboot-Kotlin-Mockito/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/SpringCloud笔记/">SpringCloud笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T15:14:51.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T15:14:51.000Z">2021-12-30</time></div><div class="recent-post-content">
+笔记内容大多来自：尚硅谷SpringCloud框架开发教程
+跟做笔记：https://blog.csdn.net/MOKEXFDGH/article/details/107209899
+跟做工程代码： https://github.com/liusCoding/springcloud-2020、https://gitee.com/exclusiver/springcloud2020
+
+ MVN配置
+
+
+每个module的pom配置文件中最重要的三个：GAV即 groupId、artifactId、version
+
+
+dependencyManagement声明依赖的版本，可以起到作用：
+
+
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2021/12/29/SpringCloud笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/30/理解SpringBoot注解s/">理解SpringBoot注解s</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-30T12:30:45.000Z">2021-12-30</time><i class="fa fa-edit"></i><time datetime="2021-12-30T12:30:45.000Z">2021-12-30</time></div><div class="recent-post-content"> @ReuqestBody和@RequestParam
 这两个注解都是在Controller某个Mapping函数的形参前加上的，但两个具体有什么区别呢？在使用的时候我们该如何选择呢? 这跟我们希望用户以什么形式来请求接口有关。
 众所周知，请求头的Content-type有多个，如
 常见的媒体格式类型如下：
@@ -221,82 +249,6 @@ image/png：png图片格式
 
 以application开头的媒体格式类型：
 
-applicat ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2021/12/30/理解SpringBoot注解s/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/使用七牛云作图床-PicGo/">使用七牛云作图床+PicGo</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T13:48:37.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T13:48:37.000Z">2021-12-29</time></div><div class="recent-post-content">
+applicat ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2021/12/30/理解SpringBoot注解s/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/30/Spring中的Bean/">Spring中的Bean</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-30T02:46:34.000Z">2021-12-30</time><i class="fa fa-edit"></i><time datetime="2021-12-30T02:46:34.000Z">2021-12-30</time></div><div class="recent-post-content"></div><div class="read-more"><a class="more" href="/2021/12/30/Spring中的Bean/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/使用七牛云作图床-PicGo/">使用七牛云作图床+PicGo</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T13:48:37.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T13:48:37.000Z">2021-12-29</time></div><div class="recent-post-content">
 自己在写博客的时候，通过图片来表达自己的思路无疑是种非常有效的方法，平常我的笔记都是通过hexo生成的，因此保存在本地路径即可。但是如果想把文章发表在第三方的平台上，那么这些相对路径的图片在上传过程中就无法被检索，因此如果能在一个大家都能访问到的地方存放这些图片，再给出这些地方的链接时那就解决了这个问题。要达到这个需求，则就需要使用OSS对象存储服务。
-这边我推荐的是七牛云。七牛云在注册认证后有10G永久免费空间，每月10G国内和10G国外流量，速度相当快，七牛云是国内专业CDN服务商，插件支持比较多，有免费SSL证书，但https流量收费。同时七牛云还会提供30天的测试域名，不过要注意的一 ...</div><div class="read-more"><a class="more" href="/2021/12/29/使用七牛云作图床-PicGo/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/28/开发方向-技术栈/">开发方向-技术栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-28T13:02:43.000Z">2021-12-28</time><i class="fa fa-edit"></i><time datetime="2021-12-28T13:02:43.000Z">2021-12-29</time></div><div class="recent-post-content"> Cloud 微服务全家桶
-
-微服务开发的主流技术栈
-
-
-服务注册中心
-
-:error:eureka 停止更新
-❌consul
-zookeeper
-⭐️nacos
-
-
-服务负载与调用
-
-❌ netflix oss ribbon ==&gt; spring cloud loadbalance
-netflix feign ==&gt; Spring cloud OpenFeign
-
-
-容量限流(熔断)
-
-❌hystrix: 最先的老大哥
-resilience4j：国外使用较多
-⭐️spring cloud alibaba sentinel
-
-
-配置中心
-
-❌spring cloud config
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发"> 开发</a></div><div class="read-more"><a class="more" href="/2021/12/28/开发方向-技术栈/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/26/开发过程中Mysql-API记录/">开发过程中Mysql API记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-26T12:52:57.000Z">2021-12-26</time><i class="fa fa-edit"></i><time datetime="2021-12-26T12:52:57.000Z">2021-12-26</time></div><div class="recent-post-content"> 时间操作
- TIME_TO_SEC
-
-MySQL TIME_TO_SEC(time) 函数返回将参数 time 转换为秒数的时间值，转换公式为“小时 ×3600+ 分钟 ×60+ 秒”。
-
-12345678910111213mysql&gt; SELECT TIME_TO_SEC(&apos;15:15:15&apos;);+-------------------------+| TIME_TO_SEC(&apos;15:15:15&apos;) |+-------------------------+|                   54915 |+----------------- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Mysql"> Mysql</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发记录"> 开发记录</a></div><div class="read-more"><a class="more" href="/2021/12/26/开发过程中Mysql-API记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/12/软件架构课程学习笔记/">软件架构课程学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-12</time><i class="fa fa-edit"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-13</time></div><div class="recent-post-content"> 术语
-–微服务
-–云化
-–分布式
-–高并发
-–高可用
- 架构角色
-
-探索者
-设计师
-倡导人
-
- 到底如何区分什么是架构、框架、模式和平台 ？
-设计模式&lt;框架&lt;架构&lt;平台，从复用角度讲，设计模式是代码级复用、框架是模块级复用、架构是系统级复用、平台是企业应用级复用。
-模式:分为代码模式、设计模式、框架模式这些
-
-设计模式有不同的分类，如下
-
-创建型设计模式，如工厂方法（Factory Method）模式、抽象工厂（Abstract Factory）模式、原型（Prototype）模式、单例（Singleton）模式，建造（Builder）模式等
-结构型设计模式，如合成（Com ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Zju"> Zju</a></div><div class="read-more"><a class="more" href="/2021/12/12/软件架构课程学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/">创建Vue工程（包含Vue2和Vue3）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time><i class="fa fa-edit"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time></div><div class="recent-post-content"> @vue/cli-init
-
-vue init 是vue-cli2.x的初始化方式
-
-
-vue init ： 需要npm i -g @vue/cli-init
-
-vue init webpack [project-name], webpack为模板&lt;generate a project from a remote template&gt;，然后按照交互信息提示输入即可完成工程创建
-init创建工程时，交互信息中有一个比较有意思的是选择包管理工具： npm、yarn，两者见
-
-
-
- @vue/cli
-
-会让选择Vue2还是Vue3
-
-
-vue create router_project: ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/05/前后端-实现上传和下载/">前后端-实现上传和下载</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-05T02:56:46.000Z">2021-12-05</time><i class="fa fa-edit"></i><time datetime="2021-12-05T02:56:46.000Z">2021-12-05</time></div><div class="recent-post-content"> 前端
- 上传
-前端上传主要是把文件发送过去，一般采用表单的形式，或者也可以针对上传接口发送请求
-
-表单
-
-123456&lt;form action="http://127.0.0.1:5000/" enctype="multipart/form-data"&gt;    &lt;input type="file" name="toupdate"/&gt;		# file的input不允许设置value    &lt;input type="submit" value="上传咯" /&gt;	      # 按钮显示的文字&lt;/form&gt;# action为表单要提交到的路径, 必须 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/05/前后端-实现上传和下载/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+这边我推荐的是七牛云。七牛云在注册认证后有10G永久免费空间，每月10G国内和10G国外流量，速度相当快，七牛云是国内专业CDN服务商，插件支持比较多，有免费SSL证书，但https流量收费。同时七牛云还会提供30天的测试域名，不过要注意的一 ...</div><div class="read-more"><a class="more" href="/2021/12/29/使用七牛云作图床-PicGo/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

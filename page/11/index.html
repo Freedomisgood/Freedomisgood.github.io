@@ -97,29 +97,63 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2018/12/12/Python中邮件的发送/">Python中邮件的发送</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-12T14:17:38.000Z">2018-12-12</time><i class="fa fa-edit"></i><time datetime="2018-12-12T14:17:38.000Z">2020-11-12</time></div><div class="recent-post-content"> Python普通的邮件发送
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/01/17/前端Vue框架学习/">前端Vue框架学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-17T12:47:22.000Z">2019-01-17</time><i class="fa fa-edit"></i><time datetime="2019-01-17T12:47:22.000Z">2022-02-24</time></div><div class="recent-post-content"> 前端Vue框架学习(未完)
+ MVVM模型
+ vueify介绍
+所谓vueify，就是使用.vue格式的文件定义组件，一个.vue文件就是一个组件。
+在.vue文件定义的组件内容包括3部分：
+
+&lt;style&gt;&lt;/style&gt;标签：定义组件样式
+&lt;template&gt;&lt;/template&gt;标签：定义组件模板
+&lt;script&gt;&lt;/script&gt;标签：定义组件的各种选项，比如data, methods等。
+
+ Vue生命周期
+
+ 使用Vue的初次操作
+ 创建一个Vue实例
+123456var c = new Vue(&#123; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2019/01/17/前端Vue框架学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/">Ubuntu下Sublime配置python编译环境及新手使用指导</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-26T00:41:18.000Z">2018-12-26</time><i class="fa fa-edit"></i><time datetime="2018-12-26T00:41:18.000Z">2021-12-27</time></div><div class="recent-post-content">
+ Sublime下配置python编译环境及搭建虚拟环境:(windows下大致相同)
+ 1.编译环境配置
+
+2019-3-6更新教程，发现好像 官方网址打不开了，要改一下源才行。
+解决办法：
+
+点击 Preferences -&gt; Settings -&gt; Preferences.sublime-Settings—— User(一个新窗口)
+添加配置**(在原有大括号{}里面添加**)：&quot;channels&quot;: [&quot;https://raw.githubusercontent.com/HBLong/channel_v3_daily/master/chann ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a></div><div class="read-more"><a class="more" href="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/28/数据结构实验4——各种内排序算法的实现及性能比较/">数据结构实验4——各种内排序算法的实现及性能比较</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-28T11:20:19.000Z">2018-12-28</time><i class="fa fa-edit"></i><time datetime="2018-12-28T11:20:19.000Z">2021-02-20</time></div><div class="recent-post-content"> 部分代码
+ 辅助函数
+1234567891011121314/**生成随机数**/void RandCreate(int *a)&#123;    int i;    for ( i = 0; i &lt; N; ++i)        a[i] = 1 + (rand()%1000);&#125;/***交换数组中,两个下标的值***/void Swap(int *a,int i,int j)&#123;    int tmp;    tmp = a[i];    a[i] = a[j];    a[j] = tmp;&#125;
+简单选择排序
+123456789/**简单选择排序**/v ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/12/28/数据结构实验4——各种内排序算法的实现及性能比较/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/21/Pandas速成/">Pandas速成</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-21T13:57:29.000Z">2018-12-21</time><i class="fa fa-edit"></i><time datetime="2018-12-21T13:57:29.000Z">2020-12-02</time></div><div class="recent-post-content"> Pandas速成
+
+Series : 一位数组, 只允许存储相同的数据类型
+Time-Series : 以时间为索引的Series
+DataFrame : 二维的表格型数据结构  , 可以理解为是Series 的容器
+Panel : 三维数组,可以理解为DataFrame 的容器
+
+ Series
+1234567891011121314151617import matplotlib.pyplot as pltimport pandas as pdimport numpy as nparr = np.array([1,2,3])index = ['a','b','c']myseries = p ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/21/Pandas速成/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/12/Python中邮件的发送/">Python中邮件的发送</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-12T14:17:38.000Z">2018-12-12</time><i class="fa fa-edit"></i><time datetime="2018-12-12T14:17:38.000Z">2020-11-12</time></div><div class="recent-post-content"> Python普通的邮件发送
 需要一个安全的连接，例如SSL，因此接下来我们会使用SSL的方式去登录，但是在那之前，我们需要做一些准备，打开qq邮箱，点击设置-&gt;账户，找到POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务，开启IMAP/SMTP服务，然后根据要求使用手机发送到指定号码，获取授权码，这个授权码就是你接下来登录要使用的密码.
-123456789101112131415161718from email.mime.text import MIMETextimport smtplib_user = '1063052964@qq.com'_pwd =  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/12/Python中邮件的发送/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/08/Shell脚本基础/">Shell脚本基础</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-08T04:19:49.000Z">2018-11-08</time><i class="fa fa-edit"></i><time datetime="2018-11-08T04:19:49.000Z">2020-09-04</time></div><div class="recent-post-content"> Shell
- 编写
-打开文本编辑器，新建一个文件，扩展名为sh（sh代表shell），扩展名并不影响脚本执行，见名知意就好，如果你用php写shell 脚本，扩展名就用php好了。
-12#!/bin/bash#!/usr/bin/php
-“#!”是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行。
- 作为可执行程序
-12chmod +x test.sh./test.sh
-注意，一定要写成./test.sh，而不是test.sh，运行其它二进制的程序也一样，直接写test.sh，linux系统会去PATH里寻找有没有叫test.sh的，而只有/bin, /sbin, /usr/bin，/ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Shell"> Shell</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/08/Shell脚本基础/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/07/定时执行Python脚本/">定时执行Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-07T09:51:16.000Z">2018-11-07</time><i class="fa fa-edit"></i><time datetime="2018-11-07T09:51:16.000Z">2020-03-29</time></div><div class="recent-post-content"> 定时任务执行python脚本
- 使用linux的crontab
- 1.开启crontab日志。
-crontab默认不开启日志，所以先开启定时任务的日志来查看
+123456789101112131415161718from email.mime.text import MIMETextimport smtplib_user = '1063052964@qq.com'_pwd =  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/12/Python中邮件的发送/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/21/PythonWeb-flask部署内网电脑/">PythonWeb--flask部署内网电脑</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-21T14:08:04.000Z">2018-12-21</time><i class="fa fa-edit"></i><time datetime="2018-12-21T14:08:04.000Z">2020-05-15</time></div><div class="recent-post-content"> PythonWeb–flask部署问题
+以前在云服务器上都是用root权限部署的,很流畅…这次用了活动室电脑是管理员权限apollo3d…于是出现了很大的问题…
+ 内网穿透
+活动室电脑的IP是通过路由器分配的IP,如192.168.1.145,这是一个局域网,别人是不可能通过这个IP访问到你的服务器的.（访问都是通过公网的。除非两台电脑在同一个局域网内）。
+于是想到直接连活动室的网不就行了吗（如果活动室的是公网IP，只要对路由器设置个端口映射就行了），但发现，活动室的IP也是校园网分配的，已经经过了多次的NAT，于是这个方法也没用。
+搜了下网上关于“内网中的电脑当做服务器”，找到了方案就是“ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a></div><div class="read-more"><a class="more" href="/2018/12/21/PythonWeb-flask部署内网电脑/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/17/git使用/">git基础知识</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-17T12:43:43.000Z">2019-01-17</time><i class="fa fa-edit"></i><time datetime="2019-01-17T12:43:43.000Z">2019-12-23</time></div><div class="recent-post-content"> 概念
+ 工作区:
+工作空间分为三个状态区:
 
-修改rsyslog服务，将/etc/rsyslog.d/50-default.conf 文件中的#cron.*前的 #删掉；用service rsyslog restart重启rsyslog服务：
+工作区
+暂存区
+历史记录区
 
- 2.写定时任务
-开启本用户的定时任务,即创建以本用户名为文件名的定时任务文件，位置在/var/spool/cron/crontabs/。crontab -e
-定时任务语句格式为：执行周期+命令，周期有5个域，分别是
+三个区域关系：工作区是我们能看到的区域，我们在工作区修改增加代码；完成编辑后，我们用git add 将工作区文件添加到暂存区；然后利用git commit 提交文件到我们自己的分支。
+ HEAD头指针:
+Head指向的是当前版本(最新的提交)
 
-M: 分（0-59 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/07/定时执行Python脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/matplotlib-pyplot使用/">matplotlib.pyplot使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:58:51.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:58:51.000Z">2019-12-11</time></div><div class="recent-post-content"> matplotlib.pyplot使用
- 注释
-1234567891011121314151617181920212223242526272829303132333435## 方法一####################for x_value,y_value in zip(x,y):    plt.text(x_value,y_value,y_value,fontsize= 15)	#文字标注(x,y,值)###################### 方法二####################for xy in zip(x, y):    plt.annotate("(%s,%s)"  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/10/matplotlib-pyplot使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/08/使用Cerbot申请免费证书升级-http到https/">使用Cerbot申请免费证书升级 http到https</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-08T08:10:03.000Z">2018-12-08</time><i class="fa fa-edit"></i><time datetime="2018-12-08T08:10:03.000Z">2019-10-07</time></div><div class="recent-post-content"> 使用 Cerbot 免费证书 简单 升级 http 到 https
+ 基础命令
+123456$ git add 文件名# 将文件添加到暂存区中  (其中git add.可以将当前目录的子目录文件都添加到暂存区中)$ git status # 显示工作目录和暂存区的状态$ git diff ID1/ID2# 查看版本差异:
+ 分支操作
+1234 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/01/17/git使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/08/使用Cerbot申请免费证书升级-http到https/">使用Cerbot申请免费证书升级 http到https</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-08T08:10:03.000Z">2018-12-08</time><i class="fa fa-edit"></i><time datetime="2018-12-08T08:10:03.000Z">2019-10-07</time></div><div class="recent-post-content"> 使用 Cerbot 免费证书 简单 升级 http 到 https
 1、安装 cerbot:
 12git clone https://github.com/letsencrypt/letsencryptcd letsencrypt
 要求：
@@ -131,134 +165,108 @@ Git环境
 2、运行:
 12// 根据自己的需求调整代码./certbot-auto certonly --standalone --email admin@example.com -d example.com -d www.example.com -d other.example.net
 成功提示:
-123456789 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2018/12/08/使用Cerbot申请免费证书升级-http到https/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/26/pyqt与QT5/">pyqt5与QT5</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-26T04:11:52.000Z">2018-11-26</time><i class="fa fa-edit"></i><time datetime="2018-11-26T04:11:52.000Z">2019-09-17</time></div><div class="recent-post-content">Pyqt5和QT5
- 拖拽式布局
-添加QT Designer、PyUIc、Pyrcc
- 1.添加外部工具(Extenal Tools)
- QT Designer
+123456789 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2018/12/08/使用Cerbot申请免费证书升级-http到https/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/16/数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题/">数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-16T09:50:05.000Z">2018-12-16</time><i class="fa fa-edit"></i><time datetime="2018-12-16T09:50:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 实验3.图的基本运算及职能交通中的最佳路径选择问题
+ 3.2-邻接矩阵的DFS和BFS
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图论"> 图论</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="实验作业"> 实验作业</a></div><div class="read-more"><a class="more" href="/2018/12/16/数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/28/数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现/">数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-28T11:35:38.000Z">2018-12-28</time><i class="fa fa-edit"></i><time datetime="2018-12-28T11:35:38.000Z">2019-09-15</time></div><div class="recent-post-content"> 二叉树的遍历及计算
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041051061071081091101111121131141151161171181191201211221231241251261271281291301311321 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/12/28/数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/28/数据结构实验1——线性表及多项式的运算/">数据结构实验1——线性表及多项式的运算</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-28T11:42:11.000Z">2018-12-28</time><i class="fa fa-edit"></i><time datetime="2018-12-28T11:42:11.000Z">2019-09-15</time></div><div class="recent-post-content"> 链表操作
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126#include &lt;stdio.h&gt; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/12/28/数据结构实验1——线性表及多项式的运算/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/16/数据结构——图/">数据结构——图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-16T03:41:46.000Z">2018-12-16</time><i class="fa fa-edit"></i><time datetime="2018-12-16T03:41:46.000Z">2019-09-15</time></div><div class="recent-post-content"> 数据结构——图
+ 连通图
 
-File–&gt;Settings–&gt;Tools–&gt;Extenal Tools --&gt; ‘’+’’ &gt; 添加具体细节,如图一图二
+无向图
 
+连通图 : 图中任意两点都连通
+连通:如果从v到w存在一条(无向)路径,则称v和w是连通的
+**路径:**V到w的路径是一系列顶点{V,v1,V2，vn,w}的集合,其中任一对相邻的顶点间都有图中的边。路径的长度是路径中的边数(如果带权,则是所有边的权重和)。如果v到w之间的所有顶点都不同,则称简单路径
 
-​												图一
-
-​													图二
-修改Name为QT Designer,Program为QT目录下designer.exe文件,不需要参数,Work directory为D:\QT\{QT version}\msvc2015_64\bin
-
-添 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/26/pyqt与QT5/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/24/机器学习——数学概念/">机器学习——数学概念</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-24T05:00:34.000Z">2018-11-24</time><i class="fa fa-edit"></i><time datetime="2018-11-24T05:00:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 箱线图
-箱线图（Box plot）也称箱须图（Box-whisker Plot）、箱线图、盒图，可以用来反映一组或多组连续型定量数据分布的中心位置和散布范围，因形状如箱子而得名。
-- 连续型数据：在一定区间内可以任意取值的变量叫连续变量，其数值是连续不断的。例如，生产零件的规格尺寸，人体测量的身高、体重等，其数值只能用测量或计量的方法取得。可视化这类数据的图表主要有箱形图和直方图。
-- 离散型数据：数值只能用自然数或整数单位计算的则为离散变量。例如，企业个数，职工人数，设备台数等，只能按计量单位数计数，数值一般用计数方法取得。大多数图表可视化的都是这类数据，比如柱状图、折线图等。
- 
- 优点 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数学知识"> 数学知识</a></div><div class="read-more"><a class="more" href="/2018/11/24/机器学习——数学概念/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/23/机器学习——Python实践-笔记/">机器学习——python实践.笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-23T13:20:18.000Z">2018-11-23</time><i class="fa fa-edit"></i><time datetime="2018-11-23T13:20:18.000Z">2019-09-15</time></div><div class="recent-post-content"> 机器学习——Python实践
-
-Numpy:
-
-python开源数值计算拓展,用来存储和处理大型矩阵,提供了许多高级的数值编程工具,如 矩阵数据类型、矢量处理、精密的运算库
-
-利用Numpy数组来准备机器学习算法的数据
+▲路径是边的超集,一条路径中可以有多条边
 
 
+回路:起点等于终点的路径 ==&gt; 有回路的路径为非简单路径
 
 
-matplotlib:
+有向图:
 
-python中最著名的2D绘图库,适合交互式的进行制图;也可作为绘图空间,嵌入GUI应用程序中
-
-创建图表,展示数据
-
-
-
-
-Pandas:
-
-基于Numpy的工具,为了解决数据分析任务而创建的.~纳入了大量库和标准的数据模型,提供了操作大型数据集的工具,和快速便捷处理数据的函数和方法
-
-导入、展示数据，以便挣钱对数据的理解和数据清洗、转换等 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/23/机器学习——Python实践-笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/06/小程序——高德地图API调用/">小程序——高德地图API调用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-06T09:11:14.000Z">2018-12-06</time><i class="fa fa-edit"></i><time datetime="2018-12-06T09:11:14.000Z">2019-09-15</time></div><div class="recent-post-content"> 小程序——高德地图API调用
- 配置
-将压缩包解压至使用的小程序目录下，创建libs文件夹，包含amap-wx.js
-
- 导入使用
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950var amapFile = require('..­/../../../libs/amap-wx.js');Page(&#123;  data: &#123;    src: ''  &#125;,  onLoad: function () &#123;    var that = ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="微信小程序"> 微信小程序</a></div><div class="read-more"><a class="more" href="/2018/12/06/小程序——高德地图API调用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/08/多媒体Au使用/">多媒体Au使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-08T04:18:47.000Z">2018-11-08</time><i class="fa fa-edit"></i><time datetime="2018-11-08T04:18:47.000Z">2019-09-15</time></div><div class="recent-post-content"> AU使用。
-
-留人声、去伴奏
-
- First.
-
-▲侧边声道电平控制微弱，中置声道电平控制效果强。
-
-▲交叉渗透，越大伴奏声音越不明显
- Second.
-
-前面几排调低到满意。（童声高音频率范围为260-880Hz,低音频率范围为196-700Hz,女声高音频率范围为220-1.1KHz,低音频率范围为200-700KHz,男声高音频率范围为160-523KHz低音频率范围为80-358Hz. 国际通信标准制定为300Hz-3400Hz! ）
+强连通 : 有向图中顶点v和W之间存在双向路径,则称v和w是强连通的强连通图
+强连通图 : 有向图中任意两顶点均强连通强连通 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图论"> 图论</a></div><div class="read-more"><a class="more" href="/2018/12/16/数据结构——图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/26/南邮《信号与系统B》复习知识点大纲/">南邮《信号与系统B》复习知识点大纲</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-26T14:15:36.000Z">2018-12-26</time><i class="fa fa-edit"></i><time datetime="2018-12-26T14:15:36.000Z">2019-09-15</time></div><div class="recent-post-content"> 友情提示
+请将图片右键另存为，保存到本地放大查看。
+ 第一章
 
 
-留伴奏、去人声
+ 第二章
 
-···选中所有，菜单栏-收藏夹-移除人声
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2018/12/26/南邮《信号与系统B》复习知识点大纲/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/26/不蒜子统计阅读次数失效/">不蒜子统计阅读次数失效——Cxo主题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-26T00:57:37.000Z">2018-12-26</time><i class="fa fa-edit"></i><time datetime="2018-12-26T00:57:37.000Z">2019-09-15</time></div><div class="recent-post-content"> 官方通知
 
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Au"> Au</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="多媒体"> 多媒体</a></div><div class="read-more"><a class="more" href="/2018/11/08/多媒体Au使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/08/写爬虫过程中碰到的编码问题/">写爬虫过程中碰到的编码问题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-08T04:23:19.000Z">2018-11-08</time><i class="fa fa-edit"></i><time datetime="2018-11-08T04:23:19.000Z">2019-09-15</time></div><div class="recent-post-content"> 写爬虫过程中碰到的编码问题
- 遇到 ’ \uxxxx ’ 的16进制字符串编解码问题，使用unicode-escape解决之。
-实际上，在将unicode存储到文本的过程中，还有一种存储方式，不需要将unicode转换为实际的文本存储字符集，而是将unicode的内存编码值进行存储，读取文件的时候再反向转换回来，是采用：unicode-escape的转换方式。
+12&gt; ！！！！2018年9月 - 重要提示 ！！！！大家好，因七牛强制过期原有的『dn-lbstatics.qbox.me』域名（预计2018年10月初），与客服沟通数次无果，即使我提出为此付费也不行，只能更换域名到『busuanzi.ibruce.info』！因我是最早的一批七牛用户，为七牛至少带来了数百个邀请用户，很痛心，很无奈！各位继续使用不蒜子提供的服务，只需把原有的：&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/ ...</div><div class="read-more"><a class="more" href="/2018/12/26/不蒜子统计阅读次数失效/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/16/win自带邮件使用/">win自带邮件使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-16T02:48:27.000Z">2018-12-16</time><i class="fa fa-edit"></i><time datetime="2018-12-16T02:48:27.000Z">2019-09-15</time></div><div class="recent-post-content"> Windows10 自带邮箱
 
-将unicode的内存编码值进行存储，读取文件时在反向转换回来。这里就采用了unicode-escape的方式
+创意大赛忘记提交附件的经历，让我决定这几天把邮箱的问题彻底解决了。
 
-12345678print(u&apos;中文测试&apos;.encode(&apos;utf-8&apos;))p ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/08/写爬虫过程中碰到的编码问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/二分搜索降低时间复杂度/">二分搜索降低时间复杂度</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T13:36:01.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T13:36:01.000Z">2019-09-15</time></div><div class="recent-post-content"> 二分搜索降低时间复杂度
-123456int main()&#123;    cin &gt;&gt; n &gt;&gt; m;    for(int i=0;i&lt;n;i++) cin &gt;&gt; s[i];    canFit();    return 0;&#125;
+ 一.打开Windows自带的邮件
+ 1.附件栏里
 
-1234567891011121314151617#include &lt;iostream&gt;#include &lt;algorithm&gt;#define MAXN 150using namespace std;int n,m,s[MAXN];int ss[MAXN];bool canFit()& ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2018/11/10/二分搜索降低时间复杂度/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/Ubuntu更改nginx默认端口/">Ubuntu更改nginx默认端口</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:55:13.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:55:13.000Z">2019-09-15</time></div><div class="recent-post-content"> Ubuntu更改nginx默认端口
+ 2.直接搜索&quot;邮件&quot;
 
-nginx 默认使用80端口，有时候我们希望nginx运行在其他端口，就需要更改nginx配置
+ 二.添加账号
+ 打开后界面是这样的,左边是我已经添加好的账号
 
-nginx配置文件在/etc/nginx目录下的nginx.conf。(可以修改处理器数量、日志路径、pid文件路径等，默认的日志。)
+ 1.点击下面的&quot;齿轮&quot;
 
-错误日志 /var/log/nginx/error.log
-访问日志 /var/log/nginx/access.log
+ 2.点击&quot;管理账号&quot;
 
-在nginx.conf-&gt;http选项末尾有引入两个目录下的文件分别为：
-123456[/etc/nginx/nginx.conf]http &#123;        #   省略部分内容   ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2018/11/10/Ubuntu更改nginx默认端口/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/Pythonanywhere解决链接Mysql问题-部署flask/">Pythonanywhere解决链接Mysql问题(部署flask)</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:54:14.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:54:14.000Z">2019-09-15</time></div><div class="recent-post-content"> Pythonanywhere解决链接Mysql问题(部署flask)
+ 3.点击&quot;添加账户&quot;
 
-由于在bash控制台里通过命令mysql -p(这其实是因为错误的连接方式,由于不是默认的端口3306,自然连接不到,官方文档中有正确的连接方式)链接不到Mysql时,再加上进虚拟环境用python manage db migrate也失败后,我是异常慌张的…然后立马发现关于pythonanywhere链接Mysql的解决不是很多,要么就是说免费账号是无法用的…心顿时拔凉,但最后还是找到了pythonanywhere官方的文档,解决了这个问题,发现都是配置的问题
+ 将信息按规则填好后.需要注意的是▲.在按登录之前需要翻墙,否则会出现如图&quot;我们无法找到你的设置&quot;.
+ 其次要注意的是,密码为IMAP或者POP、SMTP的密码，授权码查 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="邮件"> 邮件</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Window10"> Window10</a></div><div class="read-more"><a class="more" href="/2018/12/16/win自带邮件使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/20/Postman模拟上传文件/">Postman模拟上传文件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-20T10:57:35.000Z">2018-12-20</time><i class="fa fa-edit"></i><time datetime="2018-12-20T10:57:35.000Z">2019-09-15</time></div><div class="recent-post-content"> Postman模拟
+ 1.首先得知道前端的样子:
 
-一开始的我本地及阿里云链接mysql数据库配置文件是这样 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="MySQL"> MySQL</a></div><div class="read-more"><a class="more" href="/2018/11/10/Pythonanywhere解决链接Mysql问题-部署flask/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/23/Pycharm里无法查看Sqlite数据表/">Pycharm里无法查看Sqlite数据表</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-23T07:27:38.000Z">2018-11-23</time><i class="fa fa-edit"></i><time datetime="2018-11-23T07:27:38.000Z">2019-09-15</time></div><div class="recent-post-content"> Pycharm里无法查看Sqlite数据表
-听说Pycharm可以直接看数据库,于是试了试,发现无法读取sqlite数据库的内容…于是发现下载相应的驱动.如图
+ 2.针对前端字段进行模拟POST
 
- 解决方法:
- 一.打开右侧的Database选项卡,选择Data Source的Sqlite
-
- 二.点击黄色三角Download下载相应的驱动软件
-
- 三.安装完成,正常使用
-
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据库"> 数据库</a></div><div class="read-more"><a class="more" href="/2018/11/23/Pycharm里无法查看Sqlite数据表/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/08/pipenv-新款Python虚拟环境工具详解-转/">pipenv 新款Python虚拟环境工具详解[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-08T08:08:23.000Z">2018-12-08</time><i class="fa fa-edit"></i><time datetime="2018-12-08T08:08:23.000Z">2019-09-15</time></div><div class="recent-post-content"> pipenv 新款Python虚拟环境工具详解[转]
+▲这边key为&lt;input&gt;中的name属性
+ ▲▲URL最后的’/’:
+ POST请求URL要对应
+12345@app.route(&apos;/photo/&apos;,methods = [&apos;GET&apos;,&apos;POST&apos;] )http://127.0.0.1:5000/photo/@app.route(&apos;/photo&apos;,methods = [&apos;GET&apos;,&apos;POST&apos;] )http://127. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Postman"> Postman</a></div><div class="read-more"><a class="more" href="/2018/12/20/Postman模拟上传文件/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/08/pipenv-新款Python虚拟环境工具详解-转/">pipenv 新款Python虚拟环境工具详解[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-08T08:08:23.000Z">2018-12-08</time><i class="fa fa-edit"></i><time datetime="2018-12-08T08:08:23.000Z">2019-09-15</time></div><div class="recent-post-content"> pipenv 新款Python虚拟环境工具详解[转]
 pipenv是requests库作者Kenneth Reitz编写的一个用于创建和管理Python虚拟环境的工具。
 Pipenv是Python官方机构推荐的Python包工具。
 我们知道，为了管理Python虚拟环境，通常用得比较多的是virtualenv和pyenv。但是有人觉得它们还不够好用，不够偷懒。这个人是谁，就是上面的那位。于是他开发了一个pipenv，结合了pip及virtualenv的功能和优点，集成出了pipenv这个工具。其目的是替代virtualenv和pyenv，将pip及virtualenv的功能集于一身。
- 一、 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/08/pipenv-新款Python虚拟环境工具详解-转/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/08/ifdef、-ifndef、-endif/">#ifdef、#ifndef、#endif</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-08T08:07:37.000Z">2018-12-08</time><i class="fa fa-edit"></i><time datetime="2018-12-08T08:07:37.000Z">2019-09-15</time></div><div class="recent-post-content"> #ifdef、#ifndef、#endif使用说明
- 目的:防止头文件重复include
- 示例说明:
- a.h
-12#include &lt;stdio.h&gt;#include &quot;b.h&quot;
- b.h
-1#include &quot;a.h&quot;
- c.c
-12345#include &quot;a.h&quot;#include &quot;b.h&quot;int main()&#123;    printf(&quot;Hello!&quot;);&#125;
-如果你程序是这样写的话，编译器就会出现Error #include nested too dee ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2018/12/08/ifdef、-ifndef、-endif/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/21/Flask系列–将应用部署在Heroku上/">Flask系列–将应用部署在Heroku上</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-21T07:54:01.000Z">2018-11-21</time><i class="fa fa-edit"></i><time datetime="2018-11-21T07:54:01.000Z">2019-09-15</time></div><div class="recent-post-content"> Flask补充系列–将应用部署在Heroku上
-之前曾经介绍过如何将Flask应用部署在自己的服务器上，对于手头并不宽裕的程序员来说，购置一台托管服务器还是一笔不小的开销。即便现在有公有云服务器可以买，不过如果你只是以学习为目的，这笔开销还是能省则省了。另外，如果你的应用中需要访问国外被河蟹掉的资源，在服务器上翻墙也是件麻烦事，所以这里我们补充一篇如何将Flask应用部署在Heroku上。
- 环境准备
-Heroku是一个PaaS服务提供商，使用前，你需要先注册一个Heroku帐号，注册帐号是免费的。
-此外你本地必须要有Python 2.7的开发环境，并且装好了Pip, Setuptools, ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2018/11/21/Flask系列–将应用部署在Heroku上/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/apt代理的设置/">apt代理的设置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:56:53.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:56:53.000Z">2019-09-15</time></div><div class="recent-post-content">
-原因是在apt-get update时遇到了Unable to connect to 代理，（由于apt-get update一直显示无法连接172.17.18.141百度后发现并不是个特殊的IP,）于是想到是否使用了代理。
+ 一、 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/12/08/pipenv-新款Python虚拟环境工具详解-转/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/19/flask-sqlalchemy踩坑/">flask-sqlalchemy踩坑——外键</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-19T11:47:54.000Z">2018-12-19</time><i class="fa fa-edit"></i><time datetime="2018-12-19T11:47:54.000Z">2019-09-15</time></div><div class="recent-post-content"> 12.19：外键使用
+今天要设计一个如图关系的表关系时,踩了好几个坑…记录下
 
- apt代理的设置：
- 临时方法
-export http_proxy=http://10.3.0.1:80
- 长久方法
-(1) 需要在/etc/apt/apt.conf中添加以下代码： (如果您希望apt-get(而不是其他应用程序)一直使用http代理,您可以使用这种方式。)
-Acquire::http::proxy &quot;http://用户名:密码@地址:端 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2018/11/10/apt代理的设置/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/15/2018-12-15小记/">2018-12-15小记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-15T14:22:25.000Z">2018-12-15</time><i class="fa fa-edit"></i><time datetime="2018-12-15T14:22:25.000Z">2019-09-15</time></div><div class="recent-post-content">
+代码:
+123456789101112131415161718192021222324from exts import dbclass Account(db.Model):    __tablename__ = 'account'    id = db.Column(db.Integer,primary_key=True,autoincrement=True)    Username = db.Column(db.String(30),nullable=True,unique=True)    PWD = db. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据库"> 数据库</a></div><div class="read-more"><a class="more" href="/2018/12/19/flask-sqlalchemy踩坑/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/21/BaiduMap-API/">BaiduMap_API</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-21T13:55:50.000Z">2018-12-21</time><i class="fa fa-edit"></i><time datetime="2018-12-21T13:55:50.000Z">2019-09-15</time></div><div class="recent-post-content"> Baidu Map API
+ 核心类Map
+
+
+
+构造函数
+描述
+
+
+
+
+Map(container: String | HTMLElement, opts: MapOptions)
+在指定的容器内创建地图实例，之后需要调用Map.centerAndZoom()方法对地图进行初始化。未进行初始化的地图将不能进行任何操作
+
+
+
+12var map = new BMap.Map("MAP");map.centerAndZoom(points[0], 15);
+
+
+
+方法
+返回值
+描述
+
+
+
+
+enableDragging()
+none
+启用地图拖拽，默认启用
+
+
+enableScrollWhee ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="API"> API</a></div><div class="read-more"><a class="more" href="/2018/12/21/BaiduMap-API/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/15/2018-12-15小记/">2018-12-15小记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-15T14:22:25.000Z">2018-12-15</time><i class="fa fa-edit"></i><time datetime="2018-12-15T14:22:25.000Z">2019-09-15</time></div><div class="recent-post-content">
 数据结构上机,由于最近烦心事也比较多,没有任何准备,在机房想要自己把代码敲出来也是不现实的。于是，就搜吧。无意中搜到了学长的博客,大二转计科，看了他努力的点滴，也颇有感触，于是下笔，略述己见。
 
 
 之前一直在博客里都是发的技术性的文章，有时想说点话，也找不到合适的人。发条说说，不懂的人不知所措，懂的人也无从安慰，于是也只好作罢。也曾想过在博客里写，太又感觉未免太过矫情，今日所感，还是决定记录些情感、回忆。
 
-大一上报了院科协与校科协，入大学前已经略有琢磨过C语言学习的我自然没有再接着学C，于是趁着Python的大热，也正是听说了Python的简洁、可以做爬虫、网站、人工智能等有趣的时就决定学 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活小记"> 生活小记</a></div><div class="read-more"><a class="more" href="/2018/12/15/2018-12-15小记/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/10/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/12/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+大一上报了院科协与校科协，入大学前已经略有琢磨过C语言学习的我自然没有再接着学C，于是趁着Python的大热，也正是听说了Python的简洁、可以做爬虫、网站、人工智能等有趣的时就决定学 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活小记"> 生活小记</a></div><div class="read-more"><a class="more" href="/2018/12/15/2018-12-15小记/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/10/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/12/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

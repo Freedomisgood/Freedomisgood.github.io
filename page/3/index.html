@@ -97,20 +97,94 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/09/08/数据结构——单调栈/">数据结构——单调栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-08T11:25:38.000Z">2020-09-08</time><i class="fa fa-edit"></i><time datetime="2020-09-08T11:25:38.000Z">2022-03-08</time></div><div class="recent-post-content">
-秋季PAT的第一题就是单调栈，之前没怎么学过， 因此这次专门学习做下笔记。
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/12/05/枚举类的优雅写法Java-Python/">枚举类的优雅写法Java-&gt;Python</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-05T08:19:27.000Z">2020-12-05</time><i class="fa fa-edit"></i><time datetime="2020-12-05T08:19:27.000Z">2022-04-27</time></div><div class="recent-post-content">
+枚举类型作为与接口、类同一级别的存在，自然有它独特的用途。至于它性能上的优势暂且不谈，我们在这篇文章中只是考虑怎么把Enum写得更优雅
 
- 单调栈Monotone Stack
- 概念:
-从行为上看，它不仅仅是用存储与访问受限的栈，而是一种辅助工具，用于检测数据的单调性变化并作出反应（表现: 当入栈元素会影响栈总体单调性时，要出栈一些元素以维持单调性）
- 场景：
+ Java
+ Enum的写法
 
-向左or向右找到第一个稍大（小）的元素、其索引下标；
-确定某条件（单调）下的最长区间；
-确定区间构成的极值，如max f（la，b]）；
+在阿里实习的时候印象最深的就是学到了枚举的写法， 大致如下所示
 
- Point：
-单调递增栈: 指栈内元素的出栈序列递增（或递减），而栈内元素是递减（或递增），即当元素比栈顶小的时候入栈。因此需要输出下一个最大的元素。 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2020/09/08/数据结构——单调栈/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/深度学习-Pytorch读书笔记/">深度学习+Pytorch学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T03:24:12.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T03:24:12.000Z">2021-11-28</time></div><div class="recent-post-content">
+123456789101112131415161718192021222324252627282930313233343536373839404142public enum EnumOperationPermission implements IEnumBehaviour &#123;    // ----------------------- 实际的枚举对象 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/05/枚举类的优雅写法Java-Python/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/09/ZJU开学摸底考试——操作系统复习/">ZJU开学摸底考试——操作系统复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-09T06:21:21.000Z">2021-09-09</time><i class="fa fa-edit"></i><time datetime="2021-09-09T06:21:21.000Z">2022-02-27</time></div><div class="recent-post-content"> 操作系统
+ 特性：
+
+并发：
+
+▲理解并发和并行的区别
+
+
+共享
+
+互斥共享方式（摄像头设备的共享使用）
+同时共享方式（硬盘访问）——宏观的同时，微观上进程还是交替访问的（分时共享）
+
+
+虚拟：
+
+虚拟存储器：
+
+空分复用
+
+
+虚拟处理器：
+
+时分复用
+
+
+
+
+异步
+
+只有系统具有并发性，才可能导致异步性
+
+
+
+注： 并发与共享互为存在条件
+ 操作系统发展
+单道批处理系统
+
+主要优点：缓解了一定程度的人机速度矛盾，资源利用率有所提升。
+主要缺点：内存中仅能有一道程序运行，只有该程序运行结束之后才能调入下一道程序。CPU有大量的时间是在空闲等待/0完成。资源利用率依然很低。
+
+多道批处理系统： ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/09/09/ZJU开学摸底考试——操作系统复习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/24/学习画好架构图/">学习画好架构图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-24T06:57:11.000Z">2021-08-24</time><i class="fa fa-edit"></i><time datetime="2021-08-24T06:57:11.000Z">2022-02-27</time></div><div class="recent-post-content">
+一图胜万语，做好一张架构图能让别人一眼就清晰地弄懂程序的功能与依赖，大大降低大家的理解成本和提升沟通效率。但作为新人而言，如何画出要点，提炼出核心概念是个有难度的事。
+
+ 什么是架构？
+架构是结构和愿景，是对系统中的实体以及实体之间的关系所进行的抽象描述，是一系列的决策。
+系统架构是概念的体现，是对物/信息的功能与形式元素之间的对应情况所做的分配，是对元素之间的关系以及元素同周边环境之间的关系所做的定义。
+ 什么是架构图？
+系统架构图是为了抽象地表示软件系统的整体轮廓和各个组件之间的相互关系和约束边界，以及软件系统的物理部署和软件系统的演进方向的整体视图。
+ 架构图的作用
+要让干系人理解、遵 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="福利"> 福利</a></div><div class="read-more"><a class="more" href="/2021/08/24/学习画好架构图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/UML简单记录/">UML简单记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T05:59:15.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T05:59:15.000Z">2022-02-23</time></div><div class="recent-post-content">
+要学习设计模式，首先绕不开的就是UML图，同时对于一名开发而言，开发文档中也必然会出现UML的身影。之前在实习的时候，其实已经学过不少了，但不用后又很容易忘记，(在阿里实习的时候就以为记得很熟了，结果现在又忘了)——因此这也是一个防忘系列
+
+ UML
+
+UML(Unified Modeling Language)是一种标准的图形化建模语言，是一种为面对对象系统的产品进行说明、可视化、编制文档的标准语言，它是面向对象分析与设计的一种标准表示。
+
+（1）UML是一种语言。
+从上面的定义可以看出，就其本质，UML是一种语言，既然是语言，那就是用来交流的，UML用来在哪些人员之间进行交流呢？很明显， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/12/11/UML简单记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/03/03/天猫秒杀插件-Chrome插件编写/">Chrome插件编写-天猫秒杀插件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-03-03T13:37:15.000Z">2021-03-03</time><i class="fa fa-edit"></i><time datetime="2021-03-03T13:37:15.000Z">2021-12-04</time></div><div class="recent-post-content"> chrome插件开发
+
+借鉴TODO-List：Chrome插件开发简要指南
+
+ 文件结构
+在应用商店中下载下来的插件基本上都是以.crx为文件后缀，该文件其实就是一个压缩包（文件夹压缩而来），包括插件所需要的html、css、javascript、图片资源等等文件。
+其中，
+
+manifest.json是整个插件的功能及文件配置清单，非常重要。
+static目录是放置整个插件的静态资源文件的，包括css、js、图片等等资源
+template目录是放置整个插件的功能页面模板的。
+_locales目录是放置整个插件的国际化语言脚本的。
+
+一般来说，清单文件manifest.json文件是必须的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="脚本"> 脚本</a></div><div class="read-more"><a class="more" href="/2021/03/03/天猫秒杀插件-Chrome插件编写/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/13/学点Kotlin/">学点Kotlin</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-13T09:18:17.000Z">2021-09-13</time><i class="fa fa-edit"></i><time datetime="2021-09-13T09:18:17.000Z">2021-12-02</time></div><div class="recent-post-content"> Kotlin 基础语法
+Kotlin 文件以 .kt 为后缀。
+ 函数定义
+函数定义使用关键字 fun，参数格式为：参数 : 类型
+123fun sum(a: Int, b: Int): Int &#123;   // Int 参数，返回值 Int    return a + b&#125;
+表达式作为函数体，返回类型自动推断：
+123fun sum(a: Int, b: Int) = a + bpublic fun sum(a: Int, b: Int): Int = a + b   // public 方法则必须明确写出返回类型
+无返回值的函数(类似Java中的void)：
+123456 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Kotlin"> Kotlin</a></div><div class="read-more"><a class="more" href="/2021/09/13/学点Kotlin/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/深度学习-Pytorch读书笔记/">深度学习+Pytorch学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T03:24:12.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T03:24:12.000Z">2021-11-28</time></div><div class="recent-post-content">
 在课程设计实验周里总共读了3本书， 《深度学习算法实践》、《深度学习框架PyTorch快速开发与实战》、《PyTorch深度学习入门》。 其中《深度学习算法实践》、《深度学习框架PyTorch快速开发与实战》比较失望，质量比较差；《PyTorch深度学习入门》的代码质量高一点，但需要理论辅助，由于事先看了李宏毅老师的深度学习，因此还算容易入手。
 
  《深度学习框架PyTorch快速开发与实战》
@@ -118,31 +192,54 @@
 
  关于作者
 
-作者一共三个，在封面内侧有简单的介绍, 三个作者的简绍里没有“深度学习”相关的内容（请注意书名）.单从这本书的作者介绍来说 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2020/11/28/深度学习-Pytorch读书笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/熟悉Latex写作/">学会Latex写作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T11:55:06.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T11:55:06.000Z">2021-06-15</time></div><div class="recent-post-content">首先开始的便是文档定义:
+作者一共三个，在封面内侧有简单的介绍, 三个作者的简绍里没有“深度学习”相关的内容（请注意书名）.单从这本书的作者介绍来说 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2020/11/28/深度学习-Pytorch读书笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/11/Shiro使用学习/">Shiro使用学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-11T07:39:08.000Z">2021-08-11</time><i class="fa fa-edit"></i><time datetime="2021-08-11T07:39:08.000Z">2021-09-07</time></div><div class="recent-post-content">Apache Shiro 是一个强大易用的 Java 安全框架，提供了认证、授权、加密和会话管理等功能（如下图），对于任何一个应用程序，Shiro 都可以提供全面的安全管理服务。并且相对于其他安全框架，Shiro 要简单的多。
+
+ Shiro 的架构
+
+从外部来看应该具有非常简单易于使用的 API，且 API 契约明确；从内部来看的话，其应该有一个可扩展的架构，即非常容易插入用户自定义实现，
+
+交互流程如下：
+
+应用代码直接交互的对象是 Subject，也就是说 Shiro 的对外 API 核心就是 Subject。
+Subject：主体，代表了当前 “用户”，这个用户不一定是一个具体的人，与 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="应用框架学习"> 应用框架学习</a></div><div class="read-more"><a class="more" href="/2021/08/11/Shiro使用学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/熟悉Latex写作/">学会Latex写作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T11:55:06.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T11:55:06.000Z">2021-06-15</time></div><div class="recent-post-content">首先开始的便是文档定义:
 12345\documentclass[bachelor]&#123;njupthesis&#125;% \documentclass[option]&#123;class&#125;% class有article, proc, minimal, book, slides% option: a4paper(纸张大小)、10pt(字体大小)、fleqn(行间公式对齐方式)、leqno(行间公式的编号对齐方式)、onecolumn(单栏)、titlepage(文档标题后另起一页)\end&#123;document&#125;
-查看： https://blog.csdn. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/11/28/熟悉Latex写作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/21/手撕操作系统中的页面置换算法/">手撕操作系统中的页面置换算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-21T11:14:25.000Z">2020-09-21</time><i class="fa fa-edit"></i><time datetime="2020-09-21T11:14:25.000Z">2020-12-21</time></div><div class="recent-post-content"> 操作系统基础 内存换页算法
-公平算法：
+查看： https://blog.csdn. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/11/28/熟悉Latex写作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/01/24/认真学次DP——动态规划/">认真学次DP——动态规划</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time><i class="fa fa-edit"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time></div><div class="recent-post-content"> 动态规划DP
 
-随机算法、先来先出（FIFO）算法、第二次机会算法、时钟算法
+一般算法面试题解决最优化问题，有两种解决途径：暴力枚举、或者DP，由于其灵活和高效，无数程序员为它着迷，大厂面试也是必考。
+但是，动态规划形式上非常多变，本质上没有套路，问题不同，动态规划的迭代方程就不同。而有些问题，对于计算机科学家，都难以找到迭代方程。因此，对于平平常常的我们，刷算法题时想不出动态规划的解法，也大可不必气馁。
 
-非公平算法：
+ DP组成——三个条件
+某个问题是否能应用动态规划，通常需要满足 3 个条件：
 
-最优OPT算法、NRU算法、LRU算法、工作集算法、工作集时钟算法
+具有最优子结构
+具有无后续性
+具有重复子问题
 
-其中LRU算法会被面试的时候要求手撕， 因此本篇就稍微介绍一下LRU和LFU两个算法， 这两个算法除了在内存换页上会被使用到，
- 简单介绍一些算法：
- 随机更换算法
-需要替换页面的时候，产生一个随机页面号，替换与该页面对应的物理页面。
- 先来先出（FIFO）算法
-更换最早进入内存的页面。其中有Belady异常现象: 缺页率随内存块数增加而增加
- 最优OPT算法：
-最佳置换算法是由Belady于1966年 ...</div><div class="read-more"><a class="more" href="/2020/09/21/手撕操作系统中的页面置换算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/17/李宏毅机器学习-摘要/">李宏毅机器学习_摘要</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-17T12:36:05.000Z">2020-11-17</time><i class="fa fa-edit"></i><time datetime="2020-11-17T12:36:05.000Z">2020-12-20</time></div><div class="recent-post-content"> P3Regression - Case Study
- regularization解决overfitting(L2正则化解决过拟合问题)
+最优子结构性质：只需求得子问题的最优解后，原问题的最优解最能推导出来，这表明此问题具备最优子结构性质！
+**后续状态无 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="算法"> 算法</a></div><div class="read-more"><a class="more" href="/2021/01/24/认真学次DP——动态规划/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/">浙大2020春夏-人工智能习题2——垃圾分类</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:45.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:45.000Z">2020-12-19</time></div><div class="recent-post-content">
+homework for ZJU: https://mo.zju.edu.cn/homework/zju_ai_2020_ss
 
+ 1. 实验介绍
+ 1.1 实验背景
+自今年 7 月 1 日起，上海市将正式实施 《上海市生活垃圾管理条例》。
+垃圾分类，看似是微不足道的“小事”，实则关系到13亿多人生活环境的改善，理应大力提倡。
+垃圾识别分类数据集中包括玻璃 (glass) 、硬纸板 (cardboard) 、金属 (metal) 、纸 (paper) 、塑料 (plastic) 、一般垃圾 (trash) ，共6个类别。
+生活垃圾由于种类繁多，具体分类缺乏统一标准，大多人在实际操作时会“选择 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/">浙大2020春夏-人工智能习题3——图像恢复</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-09T05:20:46.000Z">2020-12-09</time><i class="fa fa-edit"></i><time datetime="2020-12-09T05:20:46.000Z">2020-12-17</time></div><div class="recent-post-content"> 习题3 - 图像恢复
+ 3.1 实验内容
+图像是一种非常常见的信息载体，但是在图像的获取、传输、存储的过程中可能由于各种原因使得图像受到噪声的影响——称为图像退化。图像复原就是重建退化的图像，使其最大限度恢复景物原貌的处理。如何去除噪声的影响，恢复图像原本的信息是计算机视觉中的重要研究问题。
+常见的图像恢复算法有基于空间域的中值滤波、基于小波域的小波去噪、基于偏微分方程的非线性扩散滤波等，在本次实验中，📌我们要对图像添加噪声，并对添加噪声的图像进行基于模型的去噪。
+ 3.2 实验要求
+A. 生成受损图像。
 
-regularization可以使曲线变得更加smooth，training data上的error变大，但是 testing data上的error变小。有关regularization的具体原理说明详见下一部分
+a) 受损图像是由原始图像添加了不同噪声遮罩（noise masks）得到的。
+b ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/细品单例模式/">细品单例模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time></div><div class="recent-post-content">虽然还没正式踏入开发就业浪潮中，但为了保证自己的代码质量，最近还是在学设计模式相关内容。以下为读《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记。
 
-原来的loss function只考虑了prediction的error，即$$\sum_{i}{n}\left(\hat{y}{i}-\left(b+\sum_{j} w_{j} x_{j}\right)\right)^{2}$$；而r ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2020/11/17/李宏毅机器学习-摘要/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/03/Lets-learn-设计模式/">Lets learn 设计模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-03</time><i class="fa fa-edit"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-11</time></div><div class="recent-post-content">
+GoF的《设计模式》就是设计模式的始祖、经典教科书。其描述严谨，举例恰当，分类组织，是应该反复细读的经典，两本书皆提及了GoF这本书，引用了GoF中的部分例子。
+
+ 单例模式
+ 虚拟场景：
+读取配置文件的内容（假设系统采用的是properties格式的配置文件）
+1234567891011121314151617181920212223242526272829303132333435363738394041424 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/11/细品单例模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/03/Lets-learn-设计模式/">Lets learn 设计模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-03</time><i class="fa fa-edit"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-11</time></div><div class="recent-post-content">
 《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记
 
  设计模式是什么？
@@ -161,14 +258,13 @@ regularization可以使曲线变得更加smooth，training data上的error变大
  黑白棋基本策略
  占角子及固定子
 
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/01/浙大2020春夏-人工智能习题1——AIforOthello/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/23/Python中import的细节/">Python中import的细节</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-23T13:01:21.000Z">2020-10-23</time><i class="fa fa-edit"></i><time datetime="2020-10-23T13:01:21.000Z">2020-12-08</time></div><div class="recent-post-content">
-防忘系列…
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/01/浙大2020春夏-人工智能习题1——AIforOthello/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/05/理解科学计算中的dim参数/">理解科学计算(numpy,pytorch)中的dim参数</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-05</time><i class="fa fa-edit"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-10</time></div><div class="recent-post-content">
+😄理解numpy中array和pytorch中tensor的操作是开始科学运算的第一步!
 
-Pycharm并没有IDEA一样可以设置对import进行排序以及自动消除没用到的库（要用快捷键Ctrl + Alt + O）， 并且如果导入方式不正确会 1.找不到自定义包 2.Pycharm对指定内容报错（下划线或红线）
- Python中模块，包，库概念
-模块：就是.py文件，里面定义了一些函数和变量，需要的时候就可以导入这些模块。
-包：在模块之上的概念，为了方便管理而将文件进行打包。包目录下第一个文件便是__init__.py，然后是一些模块文件和子目录，假如子目录中也有__init__.py，那么它就是这个包的子包了。
-库：具有相关功能模块、包的集合。这也是Python ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/10/23/Python中import的细节/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/玩玩油猴脚本/">玩玩油猴脚本Tampermonkey</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time></div><div class="recent-post-content">
+首先明白维度的感念：
+ 维度
+我们通常能听到的都是2D, 3D，其实这边的D就是dimension的含义即维度。2D，我们通常理解为是平面，如我们最熟悉的直角坐标系就是平面坐标系，还有极坐标系。而3D呢，就是在平面的基础上增加了一维——高度，从而使平面的物体立起来了，同样3D也有耳熟能详的坐标系——3维坐标系。
+更官方的解释呢：维度（Dimension），又称为维数，是数学中独立参数的数目。在物理学和哲学的领域内，指独立的时空坐标的数目。0维是一个无限小的点，没有长度。1维是一条无限长的线，只有长度 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/05/理解科学计算中的dim参数/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/玩玩油猴脚本/">玩玩油猴脚本Tampermonkey</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time></div><div class="recent-post-content">
 由于在研究如何优化网盘直链下载助手**baidupan，如何将直链的结果提取出来供IDM批量下载。由于baidupan**是用油猴脚本写的，因此借机学习一下。
 
 
@@ -221,79 +317,4 @@ Linux硬件时间的设置
 
 同步系统时间和硬件时间，可以使用hwclock命令。
 4. 不同机器之间的时间同步
-为了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2020/11/22/Linux服务器同步时钟/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/15/JupyterHub搭建/">JupyterHub搭建</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-15T14:08:52.000Z">2020-11-15</time><i class="fa fa-edit"></i><time datetime="2020-11-15T14:08:52.000Z">2020-11-20</time></div><div class="recent-post-content">
-之前搭建的JupyterLab逐渐被使用起来了, 单用户的模式还是不太方便, 因此准备用JupyterHub来做下用户隔离
-
- 1. 安装nodejs和npm
-按照JupyterLab官方教程, 先是安装最新的nodejs和npm, 但是由于16.04的apt源安装的nodejs版本比较久, 因此在后面的安装中会有坑, 这边根据网上的教程手动安装最新的nodejs
-12$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -$ sudo apt-get install -y nodejs
-安装成功后输入node --v ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2020/11/15/JupyterHub搭建/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/09/scrcpy-AutoJS/">scrcpy+AutoJS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-09T03:26:19.000Z">2020-11-09</time><i class="fa fa-edit"></i><time datetime="2020-11-09T03:26:19.000Z">2020-11-14</time></div><div class="recent-post-content"> scrcpy简介
-
-特点:
-利用电脑的键盘和鼠标可以控制手机。把 APK 文件拖拽到电脑窗口即可安装应用到手机，把普通文件拖拽到窗口即可复制到手机。
-不需要在手机上安装任何应用。
-
-简单地来说，scrcpy就是通过adb调试的方式来将手机屏幕投到电脑上，并可以通过电脑控制您的Android设备。它可以通过USB连接，也可以通过Wifi连接（类似于隔空投屏），而且不需要任何root权限，不需要在手机里安装任何程序。scrcpy同时适用于GNU / Linux，Windows和macOS。
-它的一些特性：
-
-亮度（原生，仅显示设备屏幕）
-性能（30~60fps）
-质量（1920×1080或以上） ...</div><div class="read-more"><a class="more" href="/2020/11/09/scrcpy-AutoJS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/">南邮校园网CSDN等部分网站图片无法加载解决方案</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-10T10:14:56.000Z">2020-11-10</time><i class="fa fa-edit"></i><time datetime="2020-11-10T10:14:56.000Z">2020-11-10</time></div><div class="recent-post-content"> 问题定位
-转自： https://blog.csdn.net/pamzerbhu/article/details/108549279
-
-用语言描述如下：
-打开页面后页面加载正常，但是图片完全没有加载。但是挂全局代理是可以看到图片的。挂代理后如下所示：
-
-
-
-开始定位问题：
-点击审查元素，接着找到我这张图的链接，直接用浏览器打开，报错**NET::ERR_CERT_COMMON_NAME_INVALID**
-
-
-
-然后点击 高级–继续访问 img-blog.csdn.net (不安全)
-图片成功加载：
-
-
-好了，找到了问题。接下来就是面向搜索引擎的找方法时间。
-经过查询发现是DNS的问题（或者 ...</div><div class="read-more"><a class="more" href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/27/粒子滤波Matlab代码解读/">粒子滤波Matlab代码解读</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-27T09:39:23.000Z">2020-10-27</time><i class="fa fa-edit"></i><time datetime="2020-10-27T09:39:23.000Z">2020-10-31</time></div><div class="recent-post-content"> 粒子滤波概念
-理解粒子滤波(particle filter)
-粒子滤波的Matlab仿真算法实现
- 1.1 机器人定位问题
-关于机器人定位，有三大问题，它们分别是：
-(1)“全局定位”：指初始位置未知，机器人靠自身运动确定自己在地图中的位姿。
-(2)“位姿跟踪”：指已知自身位姿或者已经通过“全局定位”得到了一个较好的位姿估计，在后续运动时补偿精度较差的运动控制误差；
-(3)“绑架劫持”：指机器人在已知自身位姿的情况下，得到了一个错误的位姿信息或者外界将其放到另外一个位姿，而里程计信息给出了错误的信息甚至没有给出控制信息。
- 1.2 粒子滤波步骤(可结合2中例题)
-(1)初始状态：用大量粒子模 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Matlab"> Matlab</a></div><div class="read-more"><a class="more" href="/2020/10/27/粒子滤波Matlab代码解读/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/27/范数的概念-MATLAB使用/">范数的概念_MATLAB使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-27T08:13:30.000Z">2020-10-27</time><i class="fa fa-edit"></i><time datetime="2020-10-27T08:13:30.000Z">2020-10-27</time></div><div class="recent-post-content"> 范数
-
-之前大二在看机器学习的时候一直看到&quot;范数&quot;这个名词, 但是一直没有去详细了解过, 就只知道2-范数相当于两个点在二维平面的距离。这次在看粒子滤波matlab实现代码的时候看到了norm函数, 正好补一下关于范数的概念。
-
- 向量的范数
- 定义
-
-注: 简言之: ①向量的范数是定义在线性空间上的非负实数.②实内积空间和酉空间中向量的长度∣x∣=(x,x)|x|=\sqrt{(x,x)}∣x∣=(x,x)​都是向量的范数③酉空间向量范数∣∣x∣∣||x||∣∣x∣∣用向量长度|x|来定义时,记作∣∣x∣∣2=∣x∣=xxH=sumi=1nξξˉ||x||_2 = |x ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Math"> Math</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="MATLAB"> MATLAB</a></div><div class="read-more"><a class="more" href="/2020/10/27/范数的概念-MATLAB使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/18/emplace-back与push-back/">emplace_back与push_back</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-18T15:14:49.000Z">2020-10-18</time><i class="fa fa-edit"></i><time datetime="2020-10-18T15:14:49.000Z">2020-10-25</time></div><div class="recent-post-content">
-之前看1002. 查找常用字符题解的时候，发现有人用了emplace_back，将char转型成了string塞进了vector&lt;string&gt;，感觉是个骚操作。
-之前也看过emplace_back和push_back的区别， 只不过又忘记了， 因此本次也算个防忘系列把…
-
-1234567vector&lt;string&gt; ans;for (int i = 0; i &lt; M; i++) &#123;   for (int j = 0; j &lt; minFreq[i]; j++) &#123;       // emplace_back 骚操作      ans.e ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/10/18/emplace-back与push-back/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/13/AutoLianliankan笔记/">AutoLianliankan笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-13T10:58:47.000Z">2020-10-13</time><i class="fa fa-edit"></i><time datetime="2020-10-13T10:58:47.000Z">2020-10-14</time></div><div class="recent-post-content">
-近来无事，又研究其了之前看到过的自动连连看的代码，碰到了一些问题， 因此做下笔记
-
-pywin32
-
-win32gui：定位窗体，操作窗体
-win32api：提供API，操作鼠标、键盘
-win32con：具体API事件
-
-==&gt;对于窗体的操作使用win32gui；而对键盘、鼠标操作可以用更高级封装的库pymouse、pykeyboard；剪切板使用win32clipboard
- 程序的设计：
-
-getWindowPosition=&gt;先确定游戏窗口位置pos，并置顶
-getScreenImage()==&gt;在窗口置顶后再截图
-getAllSquare()=&gt;找到游戏边界， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></div><div class="read-more"><a class="more" href="/2020/10/13/AutoLianliankan笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/15/docsify使用记录/">docsify使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-15T02:30:43.000Z">2020-09-15</time><i class="fa fa-edit"></i><time datetime="2020-09-15T02:30:43.000Z">2020-09-15</time></div><div class="recent-post-content"> Docsify 是什么？
-Docsify 一个神奇的动态生成文档网站的工具。
-不同于 GitBook、Hexo 的地方是它不会生成将 .md 转成 .html 文件，所有转换工作都是在运行时进行。
-较多使用的场景是GitHub中对某一开源程序的文档介绍，由于docsify的主题较为好看， 且轻量、易使用，因此使用也较为广泛。同时它也支持很多插件来丰富功能。但跟Hexo相比，个人感官上Hexo更适合做个人博客， 而docsify更适合专门来写程序的介绍文档
-
-
-春招的时候背了很多的面经， 只不过秋招回头来看基本上又都记不太清了，于是想自己整理些面经笔记啥的。 之前也试过在个人博客上发表， 只不 ...</div><div class="read-more"><a class="more" href="/2020/09/15/docsify使用记录/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+为了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2020/11/22/Linux服务器同步时钟/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

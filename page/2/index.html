@@ -97,190 +97,272 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/09/08/数据结构——单调栈/">数据结构——单调栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-08T11:25:38.000Z">2020-09-08</time><i class="fa fa-edit"></i><time datetime="2020-09-08T11:25:38.000Z">2022-03-08</time></div><div class="recent-post-content">
-秋季PAT的第一题就是单调栈，之前没怎么学过， 因此这次专门学习做下笔记。
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/12/05/枚举类的优雅写法Java-Python/">枚举类的优雅写法Java-&gt;Python</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-05T08:19:27.000Z">2020-12-05</time><i class="fa fa-edit"></i><time datetime="2020-12-05T08:19:27.000Z">2022-04-27</time></div><div class="recent-post-content">
+枚举类型作为与接口、类同一级别的存在，自然有它独特的用途。至于它性能上的优势暂且不谈，我们在这篇文章中只是考虑怎么把Enum写得更优雅
 
- 单调栈Monotone Stack
- 概念:
-从行为上看，它不仅仅是用存储与访问受限的栈，而是一种辅助工具，用于检测数据的单调性变化并作出反应（表现: 当入栈元素会影响栈总体单调性时，要出栈一些元素以维持单调性）
- 场景：
+ Java
+ Enum的写法
 
-向左or向右找到第一个稍大（小）的元素、其索引下标；
-确定某条件（单调）下的最长区间；
-确定区间构成的极值，如max f（la，b]）；
+在阿里实习的时候印象最深的就是学到了枚举的写法， 大致如下所示
 
- Point：
-单调递增栈: 指栈内元素的出栈序列递增（或递减），而栈内元素是递减（或递增），即当元素比栈顶小的时候入栈。因此需要输出下一个最大的元素。 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2020/09/08/数据结构——单调栈/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/15/重拾Java笔记/">重拾Java笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-15T02:22:04.000Z">2020-05-15</time><i class="fa fa-edit"></i><time datetime="2020-05-15T02:22:04.000Z">2021-12-01</time></div><div class="recent-post-content"> 重拾Java笔记
+123456789101112131415161718192021222324252627282930313233343536373839404142public enum EnumOperationPermission implements IEnumBehaviour &#123;    // ----------------------- 实际的枚举对象 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/05/枚举类的优雅写法Java-Python/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/12/ZJU开学摸底考试——数据库概论复习/">ZJU开学摸底考试——数据库概论复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-12T08:16:24.000Z">2021-10-12</time><i class="fa fa-edit"></i><time datetime="2021-10-12T08:16:24.000Z">2022-03-19</time></div><div class="recent-post-content"> 数据库概论
+ 数据库的4个基本概念
 
-工作主要用Java, 因此开始准备Java基础再补补。根据小猴子1024-JAVA基础整理笔记
 
- 命名规范:
+数据（Data）
 
-没怎么写， 所以一直忘， 这次写在最前面， 便于翻阅。
-
-大驼峰命名（UpperCamelCase）：每个单词的第一个字母大写，其他字母小写。e.g.MyException
-小驼峰命名（lowerCamelCase）：如果仅有一个单词，那么所有字母全部小写，如果是两个及以上的单词组成的名称，那么除了第一个单词是全部小写外，其他都是的首字母大写，其他字母小写。e.g.getMyName
-
-1.1 包的命名
-包的命名由全部小写的单词组成。一般使用公司的域名的作为自 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a></div><div class="read-more"><a class="more" href="/2020/05/15/重拾Java笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/23/Python中import的细节/">Python中import的细节</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-23T13:01:21.000Z">2020-10-23</time><i class="fa fa-edit"></i><time datetime="2020-10-23T13:01:21.000Z">2020-12-08</time></div><div class="recent-post-content">
-防忘系列…
-
-Pycharm并没有IDEA一样可以设置对import进行排序以及自动消除没用到的库（要用快捷键Ctrl + Alt + O）， 并且如果导入方式不正确会 1.找不到自定义包 2.Pycharm对指定内容报错（下划线或红线）
- Python中模块，包，库概念
-模块：就是.py文件，里面定义了一些函数和变量，需要的时候就可以导入这些模块。
-包：在模块之上的概念，为了方便管理而将文件进行打包。包目录下第一个文件便是__init__.py，然后是一些模块文件和子目录，假如子目录中也有__init__.py，那么它就是这个包的子包了。
-库：具有相关功能模块、包的集合。这也是Python ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/10/23/Python中import的细节/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/22/Linux服务器同步时钟/">Linux服务器同步时钟</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-22T04:49:35.000Z">2020-11-22</time><i class="fa fa-edit"></i><time datetime="2020-11-22T04:49:35.000Z">2020-11-22</time></div><div class="recent-post-content"> 
-
-因为今天在集群193跑程序的时候发现时间不同步, 因此想想把集群的时间全部同步一下
+定义：描述事物的符号记录。
+数据的含义称为数据的语义，数据的语义是指对具体数值进行的解释说明。数据与其语义是不可分的。
+数据是数据库中存储的基本对象。
 
 
 
-在Linux中设置系统时间，可以用date命令：
-1234# 查看时间$ date# 修改时间$ date -s "20140225 20:16:00"  #yyyymmdd hh:mm:ss
+数据库（Database，DB）
 
+定义：数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合。
 
-Linux硬件时间的设置
+数据厍的基本特征
 
-
-硬件时间的设置，可以用hwclock或者clock命令。两者基本相同，只用一个就行，只不过clock命令除了支持x86硬件体系外，还支持Alpha硬件体系。
-
-系统时间和硬件时间的同步
-
-同步系统时间和硬件时间，可以使用hwclock命令。
-4. 不同机器之间的时间同步
-为了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2020/11/22/Linux服务器同步时钟/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/15/JupyterHub搭建/">JupyterHub搭建</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-15T14:08:52.000Z">2020-11-15</time><i class="fa fa-edit"></i><time datetime="2020-11-15T14:08:52.000Z">2020-11-20</time></div><div class="recent-post-content">
-之前搭建的JupyterLab逐渐被使用起来了, 单用户的模式还是不太方便, 因此准备用JupyterHub来做下用户隔离
-
- 1. 安装nodejs和npm
-按照JupyterLab官方教程, 先是安装最新的nodejs和npm, 但是由于16.04的apt源安装的nodejs版本比较久, 因此在后面的安装中会有坑, 这边根据网上的教程手动安装最新的nodejs
-12$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -$ sudo apt-get install -y nodejs
-安装成功后输入node --v ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2020/11/15/JupyterHub搭建/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/09/scrcpy-AutoJS/">scrcpy+AutoJS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-09T03:26:19.000Z">2020-11-09</time><i class="fa fa-edit"></i><time datetime="2020-11-09T03:26:19.000Z">2020-11-14</time></div><div class="recent-post-content"> scrcpy简介
-
-特点:
-利用电脑的键盘和鼠标可以控制手机。把 APK 文件拖拽到电脑窗口即可安装应用到手机，把普通文件拖拽到窗口即可复制到手机。
-不需要在手机上安装任何应用。
-
-简单地来说，scrcpy就是通过adb调试的方式来将手机屏幕投到电脑上，并可以通过电脑控制您的Android设备。它可以通过USB连接，也可以通过Wifi连接（类似于隔空投屏），而且不需要任何root权限，不需要在手机里安装任何程序。scrcpy同时适用于GNU / Linux，Windows和macOS。
-它的一些特性：
-
-亮度（原生，仅显示设备屏幕）
-性能（30~60fps）
-质量（1920×1080或以上） ...</div><div class="read-more"><a class="more" href="/2020/11/09/scrcpy-AutoJS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/">南邮校园网CSDN等部分网站图片无法加载解决方案</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-10T10:14:56.000Z">2020-11-10</time><i class="fa fa-edit"></i><time datetime="2020-11-10T10:14:56.000Z">2020-11-10</time></div><div class="recent-post-content"> 问题定位
-转自： https://blog.csdn.net/pamzerbhu/article/details/108549279
-
-用语言描述如下：
-打开页面后页面加载正常，但是图片完全没有加载。但是挂全局代理是可以看到图片的。挂代理后如下所示：
+数据按一定的数据模型组织、描述和储存
+可为各种用户共享、冗余度较小、易扩展
+数据独立性较高
 
 
 
-开始定位问题：
-点击审查元素，接着找到我这张图的链接，直接用浏览器打开，报错**NET::ERR_CERT_COMMON_NAME_INVALID**
+数据库管理系统（DataBase Management System，DBMS)
+
+位于用户应用与操作系统之间的一层数据管理软件；
+跟操作系统一样是计算机 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/10/12/ZJU开学摸底考试——数据库概论复习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/25/ZJU云原生技术及应用-课程笔记/">ZJU云原生技术及应用-课程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-25T14:48:36.000Z">2021-09-25</time><i class="fa fa-edit"></i><time datetime="2021-09-25T14:48:36.000Z">2022-03-15</time></div><div class="recent-post-content"> ZJU要求
+ 课程内容
+
+云计算基本概念和Docker容器原理（4课时）
+Kubernetes核心原理与关键组件 （8课时）
+微服务技术原理与治理 （4课时）
+容器监控与分析 （4课时）
+云原生边缘计算技术（4课时）
+IBM讲座-混合云架构（4课时）
+云原生应用实践与案例分析（4课时）
+
+ 考核方式
+
+平时（20%）+ 课程设计（80%，含报告）
+
+课程设计（三选一）
+
+
+云原生技术研究报告或综述
+围绕云原生关键技术点，如容器安全、多集群管理、云边协同和边缘智能等，综述当前技术现状并进行必要的分析
+
+
+源代码分析报告
+分析Kubernetes或者KubeEdge等云原生项目相关源代码，撰写代 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU课程"> ZJU课程</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="云原生"> 云原生</a></div><div class="read-more"><a class="more" href="/2021/09/25/ZJU云原生技术及应用-课程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/09/ZJU开学摸底考试——操作系统复习/">ZJU开学摸底考试——操作系统复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-09T06:21:21.000Z">2021-09-09</time><i class="fa fa-edit"></i><time datetime="2021-09-09T06:21:21.000Z">2022-02-27</time></div><div class="recent-post-content"> 操作系统
+ 特性：
+
+并发：
+
+▲理解并发和并行的区别
+
+
+共享
+
+互斥共享方式（摄像头设备的共享使用）
+同时共享方式（硬盘访问）——宏观的同时，微观上进程还是交替访问的（分时共享）
+
+
+虚拟：
+
+虚拟存储器：
+
+空分复用
+
+
+虚拟处理器：
+
+时分复用
 
 
 
-然后点击 高级–继续访问 img-blog.csdn.net (不安全)
-图片成功加载：
+
+异步
+
+只有系统具有并发性，才可能导致异步性
 
 
-好了，找到了问题。接下来就是面向搜索引擎的找方法时间。
-经过查询发现是DNS的问题（或者 ...</div><div class="read-more"><a class="more" href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/04/SQL练习/">SQL练习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-04T07:54:57.000Z">2020-09-04</time><i class="fa fa-edit"></i><time datetime="2020-09-04T07:54:57.000Z">2020-11-08</time></div><div class="recent-post-content"> SQL练习
 
-鉴于同学被字节狂问SQL题，因此也激发了我的危机感。 作为非科班的， 写SQL还是比较慌的， 因此做下专题训练。
+注： 并发与共享互为存在条件
+ 操作系统发展
+单道批处理系统
 
- 理论知识:
-SQL语句执行顺序
- 1.sql执行顺序 
-12345678910(1) from (3) join (2) on (4) where (5) group by(开始使用select中的别名，后面的语句中都可以使用)(6) avg,sum.... (7) having (8) select (9) distinct (10) order by
-2.sql语句执行顺序
-12345678910(8) SELECT (9)DISTINCT&lt;selec ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="SQL"> SQL</a></div><div class="read-more"><a class="more" href="/2020/09/04/SQL练习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/27/粒子滤波Matlab代码解读/">粒子滤波Matlab代码解读</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-27T09:39:23.000Z">2020-10-27</time><i class="fa fa-edit"></i><time datetime="2020-10-27T09:39:23.000Z">2020-10-31</time></div><div class="recent-post-content"> 粒子滤波概念
-理解粒子滤波(particle filter)
-粒子滤波的Matlab仿真算法实现
- 1.1 机器人定位问题
-关于机器人定位，有三大问题，它们分别是：
-(1)“全局定位”：指初始位置未知，机器人靠自身运动确定自己在地图中的位姿。
-(2)“位姿跟踪”：指已知自身位姿或者已经通过“全局定位”得到了一个较好的位姿估计，在后续运动时补偿精度较差的运动控制误差；
-(3)“绑架劫持”：指机器人在已知自身位姿的情况下，得到了一个错误的位姿信息或者外界将其放到另外一个位姿，而里程计信息给出了错误的信息甚至没有给出控制信息。
- 1.2 粒子滤波步骤(可结合2中例题)
-(1)初始状态：用大量粒子模 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Matlab"> Matlab</a></div><div class="read-more"><a class="more" href="/2020/10/27/粒子滤波Matlab代码解读/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/27/范数的概念-MATLAB使用/">范数的概念_MATLAB使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-27T08:13:30.000Z">2020-10-27</time><i class="fa fa-edit"></i><time datetime="2020-10-27T08:13:30.000Z">2020-10-27</time></div><div class="recent-post-content"> 范数
+主要优点：缓解了一定程度的人机速度矛盾，资源利用率有所提升。
+主要缺点：内存中仅能有一道程序运行，只有该程序运行结束之后才能调入下一道程序。CPU有大量的时间是在空闲等待/0完成。资源利用率依然很低。
 
-之前大二在看机器学习的时候一直看到&quot;范数&quot;这个名词, 但是一直没有去详细了解过, 就只知道2-范数相当于两个点在二维平面的距离。这次在看粒子滤波matlab实现代码的时候看到了norm函数, 正好补一下关于范数的概念。
+多道批处理系统： ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/09/09/ZJU开学摸底考试——操作系统复习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/24/学习画好架构图/">学习画好架构图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-24T06:57:11.000Z">2021-08-24</time><i class="fa fa-edit"></i><time datetime="2021-08-24T06:57:11.000Z">2022-02-27</time></div><div class="recent-post-content">
+一图胜万语，做好一张架构图能让别人一眼就清晰地弄懂程序的功能与依赖，大大降低大家的理解成本和提升沟通效率。但作为新人而言，如何画出要点，提炼出核心概念是个有难度的事。
 
- 向量的范数
- 定义
+ 什么是架构？
+架构是结构和愿景，是对系统中的实体以及实体之间的关系所进行的抽象描述，是一系列的决策。
+系统架构是概念的体现，是对物/信息的功能与形式元素之间的对应情况所做的分配，是对元素之间的关系以及元素同周边环境之间的关系所做的定义。
+ 什么是架构图？
+系统架构图是为了抽象地表示软件系统的整体轮廓和各个组件之间的相互关系和约束边界，以及软件系统的物理部署和软件系统的演进方向的整体视图。
+ 架构图的作用
+要让干系人理解、遵 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="福利"> 福利</a></div><div class="read-more"><a class="more" href="/2021/08/24/学习画好架构图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/02/浙江大学期末考试——Go语言/">浙江大学期末考试——Go语言</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-02T13:52:53.000Z">2021-11-02</time><i class="fa fa-edit"></i><time datetime="2021-11-02T13:52:53.000Z">2021-12-30</time></div><div class="recent-post-content"> 浙江大学期末考试——Go语言
 
-注: 简言之: ①向量的范数是定义在线性空间上的非负实数.②实内积空间和酉空间中向量的长度∣x∣=(x,x)|x|=\sqrt{(x,x)}∣x∣=(x,x)​都是向量的范数③酉空间向量范数∣∣x∣∣||x||∣∣x∣∣用向量长度|x|来定义时,记作∣∣x∣∣2=∣x∣=xxH=sumi=1nξξˉ||x||_2 = |x ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Math"> Math</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="MATLAB"> MATLAB</a></div><div class="read-more"><a class="more" href="/2020/10/27/范数的概念-MATLAB使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/18/emplace-back与push-back/">emplace_back与push_back</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-18T15:14:49.000Z">2020-10-18</time><i class="fa fa-edit"></i><time datetime="2020-10-18T15:14:49.000Z">2020-10-25</time></div><div class="recent-post-content">
-之前看1002. 查找常用字符题解的时候，发现有人用了emplace_back，将char转型成了string塞进了vector&lt;string&gt;，感觉是个骚操作。
-之前也看过emplace_back和push_back的区别， 只不过又忘记了， 因此本次也算个防忘系列把…
+期末复习对学习知识的帮助是巨大的，相比于看视频，本篇点到为止的知识点形的期末复习笔记，我相信更能让人学会。我相信，只要把本笔记全部看完了必然就会Go了。如果你做到了但还没有学会Go，那你大可来找我/doge。
 
-1234567vector&lt;string&gt; ans;for (int i = 0; i &lt; M; i++) &#123;   for (int j = 0; j &lt; minFreq[i]; j++) &#123;       // emplace_back 骚操作      ans.e ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/10/18/emplace-back与push-back/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/13/AutoLianliankan笔记/">AutoLianliankan笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-13T10:58:47.000Z">2020-10-13</time><i class="fa fa-edit"></i><time datetime="2020-10-13T10:58:47.000Z">2020-10-14</time></div><div class="recent-post-content">
-近来无事，又研究其了之前看到过的自动连连看的代码，碰到了一些问题， 因此做下笔记
+ 概论
 
-pywin32
+指令：计算机的一个最基本的功能，如实现一次加法运算或实现一次大小的判别
+计算机的指令系统：计算机所能实现的指令的集合
+程序：一系列计算机指令的有序组合
 
-win32gui：定位窗体，操作窗体
-win32api：提供API，操作鼠标、键盘
-win32con：具体API事件
+ 算法：
 
-==&gt;对于窗体的操作使用win32gui；而对键盘、鼠标操作可以用更高级封装的库pymouse、pykeyboard；剪切板使用win32clipboard
- 程序的设计：
-
-getWindowPosition=&gt;先确定游戏窗口位置pos，并置顶
-getScreenImage()==&gt;在窗口置顶后再截图
-getAllSquare()=&gt;找到游戏边界， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></div><div class="read-more"><a class="more" href="/2020/10/13/AutoLianliankan笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/03/23/VsCode配置Latex(texLive)环境/">VsCode环境、配置Latex(texLive)</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-03-23T07:04:53.000Z">2020-03-23</time><i class="fa fa-edit"></i><time datetime="2020-03-23T07:04:53.000Z">2020-09-17</time></div><div class="recent-post-content">
-写在前面: 除了配置VsCode以外， 我还配置了Sublime，一开始是不想用SumatraPDF，以为能省的。事实上，Vscode也确实提供了三种方法：在web browser、编辑器tab、外部PDF阅读器，共三种办法。个人感觉tab界面太小、浏览器查看毕竟还是没有PDF舒服，最后都体验下来还是选择了外部阅读器，而且SumatraPDF支持正向、反向搜索，挺香的。当然，还有种做法是把PDF编译出来以后，再用日常使用的阅读器打开PDF阅读也是可以的，我个人平时用福昕PDF阅读器会多一点
-SumatraPDF阅读器是个非常轻量级的PDF阅读器，开源轻巧，免安装，共14.6MB。要想配套使用 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2020/03/23/VsCode配置Latex(texLive)环境/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/15/docsify使用记录/">docsify使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-15T02:30:43.000Z">2020-09-15</time><i class="fa fa-edit"></i><time datetime="2020-09-15T02:30:43.000Z">2020-09-15</time></div><div class="recent-post-content"> Docsify 是什么？
-Docsify 一个神奇的动态生成文档网站的工具。
-不同于 GitBook、Hexo 的地方是它不会生成将 .md 转成 .html 文件，所有转换工作都是在运行时进行。
-较多使用的场景是GitHub中对某一开源程序的文档介绍，由于docsify的主题较为好看， 且轻量、易使用，因此使用也较为广泛。同时它也支持很多插件来丰富功能。但跟Hexo相比，个人感官上Hexo更适合做个人博客， 而docsify更适合专门来写程序的介绍文档
+求解特定问题的一组有限的操作序列
 
 
-春招的时候背了很多的面经， 只不过秋招回头来看基本上又都记不太清了，于是想自己整理些面经笔记啥的。 之前也试过在个人博客上发表， 只不 ...</div><div class="read-more"><a class="more" href="/2020/09/15/docsify使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/06/扇区、块-簇/">扇区、块/簇</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-06T06:29:31.000Z">2020-09-06</time><i class="fa fa-edit"></i><time datetime="2020-09-06T06:29:31.000Z">2020-09-06</time></div><div class="recent-post-content"> 扇区
-概念： 扇区，顾名思义，每个磁盘有多条同心圆似的磁道，磁道被分割成多个部分。每部分的弧长加上到圆心的两个半径，恰好形成一个扇形，所以叫做扇区。扇区是磁盘中最小的物理存储单位。
- 扇区大小: 512B -&gt; 4KB
-扇区(Sector)大小是固定的，默认情况下，每个扇区（Sector）为512字节，2009年后，硬盘厂商开始发布4KB字节扇区的硬盘了，4KB扇区硬盘已经在消费级市场广泛应用。但是同一块硬盘上的扇区大小一定是一致的。不可能存在多种不同大小的扇区。
- 逻辑扇区、物理扇区
-物理扇区是磁盘上真实存在对应的扇区；
-逻辑扇区是由于扇区大小由512B变成4KB后， 为了与老系统兼 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/09/06/扇区、块-簇/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/02/02/PAT冲冲冲——乙级/">PAT冲冲冲——乙级</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-02-02T08:26:41.000Z">2020-02-02</time><i class="fa fa-edit"></i><time datetime="2020-02-02T08:26:41.000Z">2020-09-05</time></div><div class="recent-post-content"> PAT冲冲冲——乙级
+目的性：算法有运算结果，程序强调过程性
+抽象性：算法独立于编程语言和指令系统
+研究性：算法是理论研究，载体可以是伪码，文字，图片等，载体为某 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="考试"> 考试</a></div><div class="read-more"><a class="more" href="/2021/11/02/浙江大学期末考试——Go语言/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/26/前端-跨域/">前端-跨域</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-26T09:17:15.000Z">2021-11-26</time><i class="fa fa-edit"></i><time datetime="2021-11-26T09:17:15.000Z">2021-12-09</time></div><div class="recent-post-content"> 什么是跨域问题
 
-PAT甲级练习题 ——PAT (Advanced Level) Practice 
-PAT甲级(Advanced Level)真题
-柳婼 の blog经验
-saquarius’s blog
-PAT甲级题目及分类总结
-pat甲级题解目录
-
-▲报名费256，可以刷牛客网的题来获得-50的优惠券，该练习场下的所有题目只要通过都算
- 乙级练习题
- NowCoder数列
-
-没想到第二题就是考了个数据范围，由于0≤n≤1000000，所以F(n)必然比long long大，而判断3的倍数可表示为===&gt; F(n) % 3 —&gt; (F(n-1)%3 + F(n-2)%3 ...</div><div class="read-more"><a class="more" href="/2020/02/02/PAT冲冲冲——乙级/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/24/getBargains的record和Solution/">getBargains的record和Solution</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-24T08:44:25.000Z">2020-05-24</time><i class="fa fa-edit"></i><time datetime="2020-05-24T08:44:25.000Z">2020-05-31</time></div><div class="recent-post-content">
-该篇为**getBargains**仓库README.md直接搬运，记录一些appnium和andriod 10碰到的问题
-
- 自动拿券
-
-通过别人发的口令, 打开淘宝APP进行抢券
-
- 1.itchat接收群消息
- 2.将口令复制到剪贴板
- 3.打开淘宝APP点击抢券
- 碰到的问题:
+跨域问题的出现是因为浏览器的同源策略问题，所谓同源:就是两个页面具有相同的协议（protocol），主机（host）和端口号（port），即指协议，端口，域名。只要这个3个中有一个不同就是跨域。它是浏览器最核心也是最基本的功能，如果没有同源策略我们的浏览器将会十分的不安全，随时都可能受到攻击。
+当我们请求一个接口的时候，出现如：Access-Control-Allow-Origin 字眼的时候说明请求跨域了
 
 
-出现如下警告:Warning: Activity not started, its current task has been brought to the front or Warning: Activity not started, intent has been delivered to curre ...</div><div class="read-more"><a class="more" href="/2020/05/24/getBargains的record和Solution/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/04/29/华为春招4-29笔试题/">华为春招4.29笔试题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-04-29T14:43:54.000Z">2020-04-29</time><i class="fa fa-edit"></i><time datetime="2020-04-29T14:43:54.000Z">2020-04-29</time></div><div class="recent-post-content"> 4.29三道笔试题：
+ 展示跨域问题
+前端请求后端8889端口开放的端口
+12345678this.$axios(&#123;    method:'get',    url:'http ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/11/26/前端-跨域/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/02/前端进行网络请求的三种方式/">前端进行网络请求的三种方式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-02T13:28:06.000Z">2021-12-02</time><i class="fa fa-edit"></i><time datetime="2021-12-02T13:28:06.000Z">2021-12-05</time></div><div class="recent-post-content"> 前端进行网络请求的三种方式
+ XHR技术
+基于XMLHTTPRequest技术实现的，通过调用原生的XML对象实现的，非常的冗余==&gt;ajax技术
+ ajax
+ Jquery.$ajax
+123456789101112131415161718192021222324// 有参数，则增加data字段，有请求头则增加headers字段，有错误处理增加error字段// 默认是按照表单提交post方法，data中虽然是json但是提交时转成表单$.ajax(&#123;    url:"demo_test.txt",    data:&#123;a:10&#125;,    success: ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/02/前端进行网络请求的三种方式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/03/03/天猫秒杀插件-Chrome插件编写/">Chrome插件编写-天猫秒杀插件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-03-03T13:37:15.000Z">2021-03-03</time><i class="fa fa-edit"></i><time datetime="2021-03-03T13:37:15.000Z">2021-12-04</time></div><div class="recent-post-content"> chrome插件开发
 
-做了其他大厂的笔试题后，好像确实华为的稍微简单点。只不过其他的笔试题是有模拟题的，华为的这三道题基本上都是DFS
+借鉴TODO-List：Chrome插件开发简要指南
 
- A：
+ 文件结构
+在应用商店中下载下来的插件基本上都是以.crx为文件后缀，该文件其实就是一个压缩包（文件夹压缩而来），包括插件所需要的html、css、javascript、图片资源等等文件。
+其中，
 
-带有重复元素的全排列问题，求不重复的排列数。以下做法50%, TLE了。正确做法是直接用公式计算
+manifest.json是整个插件的功能及文件配置清单，非常重要。
+static目录是放置整个插件的静态资源文件的，包括css、js、图片等等资源
+template目录是放置整个插件的功能页面模板的。
+_locales目录是放置整个插件的国际化语言脚本的。
 
-123456789101112131415161718192021222324252627282930'''@Author: Mrli@Date: 2020-04-29 20:23:34@LastEditTime: 2020-04-29 21:24:40@Description: '''s = input().strip()ans = list( ...</div><div class="read-more"><a class="more" href="/2020/04/29/华为春招4-29笔试题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/03/04/算法笔记Codeup题解/">算法笔记Codeup题解</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-03-04T06:21:49.000Z">2020-03-04</time><i class="fa fa-edit"></i><time datetime="2020-03-04T06:21:49.000Z">2020-03-04</time></div><div class="recent-post-content"> 100000612 - 《算法笔记》9.3小节——数据结构专题(2)-&gt;树的遍历
- 问题 A: 树查找
-1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;bits/stdc++.h&gt;using namespace std;const int MAXN = 1e3 + 5;int arr[MAXN];typedef long long ll;ll fast_pow(int d, int base)&#123;    int n = d;    ll res =  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2020/03/04/算法笔记Codeup题解/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/25/sshpass——shell脚本实现SSH连接其他主机并执行终端命令/">sshpass——shell脚本实现SSH连接其他主机并执行终端命令</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-25T09:29:08.000Z">2019-12-25</time><i class="fa fa-edit"></i><time datetime="2019-12-25T09:29:08.000Z">2019-12-25</time></div><div class="recent-post-content"> sshpass
+一般来说，清单文件manifest.json文件是必须的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="脚本"> 脚本</a></div><div class="read-more"><a class="more" href="/2021/03/03/天猫秒杀插件-Chrome插件编写/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/13/学点Kotlin/">学点Kotlin</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-13T09:18:17.000Z">2021-09-13</time><i class="fa fa-edit"></i><time datetime="2021-09-13T09:18:17.000Z">2021-12-02</time></div><div class="recent-post-content"> Kotlin 基础语法
+Kotlin 文件以 .kt 为后缀。
+ 函数定义
+函数定义使用关键字 fun，参数格式为：参数 : 类型
+123fun sum(a: Int, b: Int): Int &#123;   // Int 参数，返回值 Int    return a + b&#125;
+表达式作为函数体，返回类型自动推断：
+123fun sum(a: Int, b: Int) = a + bpublic fun sum(a: Int, b: Int): Int = a + b   // public 方法则必须明确写出返回类型
+无返回值的函数(类似Java中的void)：
+123456 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Kotlin"> Kotlin</a></div><div class="read-more"><a class="more" href="/2021/09/13/学点Kotlin/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/25/党员在线培训课程-免除暂停烦恼/">党员在线培训课程~免除暂停烦恼</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-25T02:48:17.000Z">2021-11-25</time><i class="fa fa-edit"></i><time datetime="2021-11-25T02:48:17.000Z">2021-11-25</time></div><div class="recent-post-content"> 党员在线培训课程~免除暂停烦恼
 
-ssh登陆不能在命令行中指定密码。sshpass的出现，解决了这一问题。即sshpass可以用于非交互SSH的密码验证，一般用在sh脚本中，无须再次输入密码。
+女朋友反馈：刷党员在线培训课程得一直手动的解决暂停问题，无法单纯的挂机刷视频。作为一个程序猿，当然是帮她解决啦~
 
-sshpass允许用-p参数指定明文密码，然后直接登录远程服务器。(支持密码从命令行、文件、环境变量中读取)
-1.安装sudo apt install sshpass
-2.使用说明
-12345678910111213141516171819# -p 直接指定密码sshpass -p '123456' ssh user_name@host_ip# -f: -f filename #后跟保存密码的文件名，密码是文件内容 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/12/25/sshpass——shell脚本实现SSH连接其他主机并执行终端命令/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+首先分析页面中JS执行逻辑，如下所示
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041 ...</div><div class="read-more"><a class="more" href="/2021/11/25/党员在线培训课程-免除暂停烦恼/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/15/ZJU开学摸底考试——计算机网络复习/">ZJU开学摸底考试——计算机网络复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-15T12:06:53.000Z">2021-10-15</time><i class="fa fa-edit"></i><time datetime="2021-10-15T12:06:53.000Z">2021-10-25</time></div><div class="recent-post-content">计算机网络核心：
+
+主机
+通信链路
+交换网络
+协议
+
+多路复用
+
+频分多路复用
+时分多路复用
+码分多路复用
+波分多路复用
+
+数据交换
+
+电路交换（FDM,WDM,TDM,CDM）
+报文交换（被废弃了）
+分组交换（统计多路复用）
+
+分组：报文分拆出来的一系列相对较小的数据包
+分组交换需要报文的拆分与重组
+统计多路复用
+工作方式：存储与转发：
+
+报文交换与分组交换均采用存储-转发交换方式
+区别：
+报文交换以完整报文进行“存储-转发”
+分组交换以较小的分组进行“存储-转发”
+
+
+报文：M bts
+链路带宽（数据传输
+速率）：R bps
+分组长度（大小）：Lbits
+跳步数：h
+路由器数：n
+分组交换 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/10/15/ZJU开学摸底考试——计算机网络复习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/27/物联网基础与应用-课程笔记/">物联网基础与应用-课程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-27T15:44:21.000Z">2021-09-27</time><i class="fa fa-edit"></i><time datetime="2021-09-27T15:44:21.000Z">2021-10-11</time></div><div class="recent-post-content"> IOT课上实验
+ 交叉编译环境
+ 什么是交叉编译环境？
+交叉编译其实是相对于本地编译(native build)来说的，大家最开始学习 C/C++ 这些语言的时候，都是在自己的笔记本上写程序，然后在直接在电脑上编译生成可执行文件，最后在电脑上运行。整个流程为：程序的编辑-&gt;编译-&gt;运行，整个过程都是在一台 X86 电脑上。
+当我们开始接触嵌入式开发后，事情变的不一样了。你在电脑上写程序，在电脑上编译出可执行文件，最后这个可执行文件需要下载到你的开发板上运行。程序最后运行的环境变了，比如你的开发板是基于 Arm 的——程序在 X86 上编辑，编译，最终运行在另一个和 X86 完全不 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式开发"> 嵌入式开发</a></div><div class="read-more"><a class="more" href="/2021/09/27/物联网基础与应用-课程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/09/XML语法规则笔记/">XML语法规则笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-09T11:37:54.000Z">2021-10-09</time><i class="fa fa-edit"></i><time datetime="2021-10-09T11:37:54.000Z">2021-10-09</time></div><div class="recent-post-content"> 简介：
+
+XML 指可扩展标记语言（EXtensible Markup Language）。
+XML 是一种很像HTML的标记语言。
+XML 的设计宗旨是传输数据，而不是显示数据。
+XML 标签没有被预定义。您需要自行定义标签。
+XML 被设计为具有自我描述性。
+XML 是 W3C 的推荐标准。
+
+ 特点：
+
+所有 XML 元素都须有关闭标签
+XML 标签对大小写敏感
+XML 文档必须有根元素
+XML 的属性值须加引号，双引号、单引号都可以
+实体引用：&amp;lt;, &amp;gt;, &amp;amp, &amp;apos, &amp;quot
+在 XML 中，空格会被保留， 但多余的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学习笔记"> 学习笔记</a></div><div class="read-more"><a class="more" href="/2021/10/09/XML语法规则笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/26/学点Gradle/">学点Gradle</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-26</time><i class="fa fa-edit"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-27</time></div><div class="recent-post-content"> Gradle学习
+在kotlin中使用mapstruct出现了些问题， 网上搜寻后得到结论：需要使用kapt(Kotlin annotation processing tool 即kotlin注解处理工具)， 但给出的大多都是通过Gradle来进行配置的。因此借此机会学习了下Gradle：
+ plugins和apply plugin:
+
+由于文档写到了， 由于不清楚这些在哪些位置加入， 因此查看了plugins和apply plugin:的区别：
+1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="read-more"><a class="more" href="/2021/09/26/学点Gradle/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/01/24/认真学次DP——动态规划/">认真学次DP——动态规划</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time><i class="fa fa-edit"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time></div><div class="recent-post-content"> 动态规划DP
+
+一般算法面试题解决最优化问题，有两种解决途径：暴力枚举、或者DP，由于其灵活和高效，无数程序员为它着迷，大厂面试也是必考。
+但是，动态规划形式上非常多变，本质上没有套路，问题不同，动态规划的迭代方程就不同。而有些问题，对于计算机科学家，都难以找到迭代方程。因此，对于平平常常的我们，刷算法题时想不出动态规划的解法，也大可不必气馁。
+
+ DP组成——三个条件
+某个问题是否能应用动态规划，通常需要满足 3 个条件：
+
+具有最优子结构
+具有无后续性
+具有重复子问题
+
+最优子结构性质：只需求得子问题的最优解后，原问题的最优解最能推导出来，这表明此问题具备最优子结构性质！
+**后续状态无 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="算法"> 算法</a></div><div class="read-more"><a class="more" href="/2021/01/24/认真学次DP——动态规划/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/">浙大2020春夏-人工智能习题2——垃圾分类</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:45.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:45.000Z">2020-12-19</time></div><div class="recent-post-content">
+homework for ZJU: https://mo.zju.edu.cn/homework/zju_ai_2020_ss
+
+ 1. 实验介绍
+ 1.1 实验背景
+自今年 7 月 1 日起，上海市将正式实施 《上海市生活垃圾管理条例》。
+垃圾分类，看似是微不足道的“小事”，实则关系到13亿多人生活环境的改善，理应大力提倡。
+垃圾识别分类数据集中包括玻璃 (glass) 、硬纸板 (cardboard) 、金属 (metal) 、纸 (paper) 、塑料 (plastic) 、一般垃圾 (trash) ，共6个类别。
+生活垃圾由于种类繁多，具体分类缺乏统一标准，大多人在实际操作时会“选择 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/">浙大2020春夏-人工智能习题3——图像恢复</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-09T05:20:46.000Z">2020-12-09</time><i class="fa fa-edit"></i><time datetime="2020-12-09T05:20:46.000Z">2020-12-17</time></div><div class="recent-post-content"> 习题3 - 图像恢复
+ 3.1 实验内容
+图像是一种非常常见的信息载体，但是在图像的获取、传输、存储的过程中可能由于各种原因使得图像受到噪声的影响——称为图像退化。图像复原就是重建退化的图像，使其最大限度恢复景物原貌的处理。如何去除噪声的影响，恢复图像原本的信息是计算机视觉中的重要研究问题。
+常见的图像恢复算法有基于空间域的中值滤波、基于小波域的小波去噪、基于偏微分方程的非线性扩散滤波等，在本次实验中，📌我们要对图像添加噪声，并对添加噪声的图像进行基于模型的去噪。
+ 3.2 实验要求
+A. 生成受损图像。
+
+a) 受损图像是由原始图像添加了不同噪声遮罩（noise masks）得到的。
+b ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/细品单例模式/">细品单例模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time></div><div class="recent-post-content">虽然还没正式踏入开发就业浪潮中，但为了保证自己的代码质量，最近还是在学设计模式相关内容。以下为读《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记。
+
+GoF的《设计模式》就是设计模式的始祖、经典教科书。其描述严谨，举例恰当，分类组织，是应该反复细读的经典，两本书皆提及了GoF这本书，引用了GoF中的部分例子。
+
+ 单例模式
+ 虚拟场景：
+读取配置文件的内容（假设系统采用的是properties格式的配置文件）
+1234567891011121314151617181920212223242526272829303132333435363738394041424 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/11/细品单例模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/05/理解科学计算中的dim参数/">理解科学计算(numpy,pytorch)中的dim参数</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-05</time><i class="fa fa-edit"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-10</time></div><div class="recent-post-content">
+😄理解numpy中array和pytorch中tensor的操作是开始科学运算的第一步!
+
+首先明白维度的感念：
+ 维度
+我们通常能听到的都是2D, 3D，其实这边的D就是dimension的含义即维度。2D，我们通常理解为是平面，如我们最熟悉的直角坐标系就是平面坐标系，还有极坐标系。而3D呢，就是在平面的基础上增加了一维——高度，从而使平面的物体立起来了，同样3D也有耳熟能详的坐标系——3维坐标系。
+更官方的解释呢：维度（Dimension），又称为维数，是数学中独立参数的数目。在物理学和哲学的领域内，指独立的时空坐标的数目。0维是一个无限小的点，没有长度。1维是一条无限长的线，只有长度 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/05/理解科学计算中的dim参数/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

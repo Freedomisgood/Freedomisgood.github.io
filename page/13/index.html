@@ -97,179 +97,135 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/01/17/前端Vue框架学习/">前端Vue框架学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-17T12:47:22.000Z">2019-01-17</time><i class="fa fa-edit"></i><time datetime="2019-01-17T12:47:22.000Z">2022-02-24</time></div><div class="recent-post-content"> 前端Vue框架学习(未完)
- MVVM模型
- vueify介绍
-所谓vueify，就是使用.vue格式的文件定义组件，一个.vue文件就是一个组件。
-在.vue文件定义的组件内容包括3部分：
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/">python pywin32 PyUserInput实现自动化脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-08-31T11:43:00.000Z">2018-08-31</time><i class="fa fa-edit"></i><time datetime="2018-08-31T11:43:00.000Z">2020-11-07</time></div><div class="recent-post-content"> python pywin32 PyUserInput实现自动化脚本
+pywin32用spy++工具查找到句柄，再结合PyUserInput就能很好地实现自动化脚本。
 
-&lt;style&gt;&lt;/style&gt;标签：定义组件样式
-&lt;template&gt;&lt;/template&gt;标签：定义组件模板
-&lt;script&gt;&lt;/script&gt;标签：定义组件的各种选项，比如data, methods等。
+句柄是一个32位整数，在windows中标记对象用，类似一个dict中的key，详情参看这篇文章。
 
- Vue生命周期
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/15/素数判别/">素数判别</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-15T14:30:55.000Z">2018-10-15</time><i class="fa fa-edit"></i><time datetime="2018-10-15T14:30:55.000Z">2019-12-04</time></div><div class="recent-post-content"> 素数判别
 
- 使用Vue的初次操作
- 创建一个Vue实例
-123456var c = new Vue(&#123; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2019/01/17/前端Vue框架学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/">Ubuntu下Sublime配置python编译环境及新手使用指导</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-26T00:41:18.000Z">2018-12-26</time><i class="fa fa-edit"></i><time datetime="2018-12-26T00:41:18.000Z">2021-12-27</time></div><div class="recent-post-content">
- Sublime下配置python编译环境及搭建虚拟环境:(windows下大致相同)
- 1.编译环境配置
+由于1既不是素数也不是合数，所以下面暂未判断。如果需要则需特判如if (num == 1) return false;
 
-2019-3-6更新教程，发现好像 官方网址打不开了，要改一下源才行。
-解决办法：
+ 方法一
+123456789bool isPrime_2( int num )&#123;     int tmp =sqrt( num);     for(int i= 2;i &lt;=tmp; i++)        if(num %i== 0)          return 0 ;     return 1 ;&#125;//一个数若可以进行因数分解，那么分解时得到的两个数一定是一个小于等于sqrt(n)，一个大于等于sqrt(n)。若sqrt(n) ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM竞赛入门"> ACM竞赛入门</a></div><div class="read-more"><a class="more" href="/2018/10/15/素数判别/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/">解决安装PyUserInput、pyHook遇到的问题——AttributeError: 'HookManager' object has no attribute 'keyboard_hook</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-02T11:33:32.000Z">2018-09-02</time><i class="fa fa-edit"></i><time datetime="2018-09-02T11:33:32.000Z">2019-09-15</time></div><div class="recent-post-content">安装PyUserInput失败。
 
-点击 Preferences -&gt; Settings -&gt; Preferences.sublime-Settings—— User(一个新窗口)
-添加配置**(在原有大括号{}里面添加**)：&quot;channels&quot;: [&quot;https://raw.githubusercontent.com/HBLong/channel_v3_daily/master/chann ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a></div><div class="read-more"><a class="more" href="/2018/12/26/Ubuntu下Sublime配置python编译环境及新手使用指导/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/28/数据结构实验4——各种内排序算法的实现及性能比较/">数据结构实验4——各种内排序算法的实现及性能比较</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-28T11:20:19.000Z">2018-12-28</time><i class="fa fa-edit"></i><time datetime="2018-12-28T11:20:19.000Z">2021-02-20</time></div><div class="recent-post-content"> 部分代码
- 辅助函数
-1234567891011121314/**生成随机数**/void RandCreate(int *a)&#123;    int i;    for ( i = 0; i &lt; N; ++i)        a[i] = 1 + (rand()%1000);&#125;/***交换数组中,两个下标的值***/void Swap(int *a,int i,int j)&#123;    int tmp;    tmp = a[i];    a[i] = a[j];    a[j] = tmp;&#125;
-简单选择排序
-123456789/**简单选择排序**/v ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/12/28/数据结构实验4——各种内排序算法的实现及性能比较/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/21/Pandas速成/">Pandas速成</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-21T13:57:29.000Z">2018-12-21</time><i class="fa fa-edit"></i><time datetime="2018-12-21T13:57:29.000Z">2020-12-02</time></div><div class="recent-post-content"> Pandas速成
+经查看发现是pyHook（pyHook是一个用来进行键盘、鼠标等层面事件监控的库。这个库的正常工作需要pythoncom等操作系统的API的支持。）无法安装，不知道是不是因为这个库可以被用于一些比较邪恶的目的。经搜索发现直接pip install pyHook是找不到相关包的，但可以下源码编译安装，可以在 https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyhook 这里可以直接下载到.whl文件，这个文件可以作为pip install 的参数来进行安装。
 
-Series : 一位数组, 只允许存储相同的数据类型
-Time-Series : 以时间为索引的Series
-DataFrame : 二维的表格型数据结构  , 可以理解为是Series 的容器
-Panel : 三维数组,可以理解为DataFrame 的容器
+直接输入pip install pyHook-1.5.1-c ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/20/电信路由器上网/">电信路由器上网</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-20T02:01:16.000Z">2018-09-20</time><i class="fa fa-edit"></i><time datetime="2018-09-20T02:01:16.000Z">2019-09-15</time></div><div class="recent-post-content">
+链接: https://pan.baidu.com/s/1QaW7DMhjb2YHd0ZVWterSw
+密码：联系QQ1063052964,或是在下方评论处留言QQ
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2018/09/20/电信路由器上网/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/02/开学小蓝车180天免费卡/">开学小蓝车180天免费卡</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-02T08:44:54.000Z">2018-09-02</time><i class="fa fa-edit"></i><time datetime="2018-09-02T08:44:54.000Z">2019-09-15</time></div><div class="recent-post-content"><p>各位看客老爷,可以加下我的公众号哦!虽然没啥东东…微信搜索公众号&quot;我只要瓶果粒橙就好&quot;</p>
+<p>原来是180天的,现在好像只有30还是60天了…</p></div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2018/09/02/开学小蓝车180天免费卡/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/27/带表头的单链表的基本操作/">带表头的单链表的基本操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-27T14:12:17.000Z">2018-09-27</time><i class="fa fa-edit"></i><time datetime="2018-09-27T14:12:17.000Z">2019-09-15</time></div><div class="recent-post-content">123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/09/27/带表头的单链表的基本操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/27/带表头的单链表应用——多项式/">带表头的单链表应用——多项式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-27T14:04:31.000Z">2018-09-27</time><i class="fa fa-edit"></i><time datetime="2018-09-27T14:04:31.000Z">2019-09-15</time></div><div class="recent-post-content">123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/09/27/带表头的单链表应用——多项式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/20/小程序蓝牙API/">小程序蓝牙</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-20T02:57:01.000Z">2018-09-20</time><i class="fa fa-edit"></i><time datetime="2018-09-20T02:57:01.000Z">2019-09-15</time></div><div class="recent-post-content"> 提供蓝牙模块API
+ wx.openBluetoothAdapter(OBJECT)
+​	初始化小程序蓝牙模块
+ wx.closeBluetoothAdapter(OBJECT)
+​	关闭蓝牙模块，使其进入未初始化状态。
+ wx.getBluetoothAdapterState(OBJECT)
+​	获取本机蓝牙适配器状态
+ wx.onBluetoothAdapterStateChange(CALLBACK)
+​	监听蓝牙适配器状态变化事件
+ wx.startBluetoothDevicesDiscovery(OBJECT)
+​	开始搜寻附近的蓝牙外围设备。注意，该操作比较耗费系统资源，请在搜 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="微信小程序"> 微信小程序</a></div><div class="read-more"><a class="more" href="/2018/09/20/小程序蓝牙API/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/04/小程序开发遇到的坑/">小程序开发遇到的坑</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-04T12:26:58.000Z">2018-10-04</time><i class="fa fa-edit"></i><time datetime="2018-10-04T12:26:58.000Z">2019-09-15</time></div><div class="recent-post-content">
+ 小程序开发遇到的坑
+ function 与 =&gt; 的区别
 
- Series
-1234567891011121314151617import matplotlib.pyplot as pltimport pandas as pdimport numpy as nparr = np.array([1,2,3])index = ['a','b','c']myseries = p ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2018/12/21/Pandas速成/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/12/Python中邮件的发送/">Python中邮件的发送</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-12T14:17:38.000Z">2018-12-12</time><i class="fa fa-edit"></i><time datetime="2018-12-12T14:17:38.000Z">2020-11-12</time></div><div class="recent-post-content"> Python普通的邮件发送
-需要一个安全的连接，例如SSL，因此接下来我们会使用SSL的方式去登录，但是在那之前，我们需要做一些准备，打开qq邮箱，点击设置-&gt;账户，找到POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务，开启IMAP/SMTP服务，然后根据要求使用手机发送到指定号码，获取授权码，这个授权码就是你接下来登录要使用的密码.
-123456789101112131415161718from email.mime.text import MIMETextimport smtplib_user = '1063052964@qq.com'_pwd =  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a></div><div class="read-more"><a class="more" href="/2018/12/12/Python中邮件的发送/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/21/PythonWeb-flask部署内网电脑/">PythonWeb--flask部署内网电脑</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-21T14:08:04.000Z">2018-12-21</time><i class="fa fa-edit"></i><time datetime="2018-12-21T14:08:04.000Z">2020-05-15</time></div><div class="recent-post-content"> PythonWeb–flask部署问题
-以前在云服务器上都是用root权限部署的,很流畅…这次用了活动室电脑是管理员权限apollo3d…于是出现了很大的问题…
- 内网穿透
-活动室电脑的IP是通过路由器分配的IP,如192.168.1.145,这是一个局域网,别人是不可能通过这个IP访问到你的服务器的.（访问都是通过公网的。除非两台电脑在同一个局域网内）。
-于是想到直接连活动室的网不就行了吗（如果活动室的是公网IP，只要对路由器设置个端口映射就行了），但发现，活动室的IP也是校园网分配的，已经经过了多次的NAT，于是这个方法也没用。
-搜了下网上关于“内网中的电脑当做服务器”，找到了方案就是“ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a></div><div class="read-more"><a class="more" href="/2018/12/21/PythonWeb-flask部署内网电脑/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/17/git使用/">git基础知识</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-17T12:43:43.000Z">2019-01-17</time><i class="fa fa-edit"></i><time datetime="2019-01-17T12:43:43.000Z">2019-12-23</time></div><div class="recent-post-content"> 概念
- 工作区:
-工作空间分为三个状态区:
+在JS中，箭头函数并不是简单的function(){}匿名函数的简写语法糖，实际上，箭头函数和匿名函数有个明显的区别：**箭头函数内部的this是词法作用域，在编写函数时就已经确定了。**而匿名函数的this指向运行时实际调用该方法的对象，无法在编写函数时确定。
 
-工作区
-暂存区
-历史记录区
+ 箭头函数和普通函数的区别
 
-三个区域关系：工作区是我们能看到的区域，我们在工作区修改增加代码；完成编辑后，我们用git add 将工作区文件添加到暂存区；然后利用git commit 提交文件到我们自己的分支。
- HEAD头指针:
-Head指向的是当前版本(最新的提交)
-
- 基础命令
-123456$ git add 文件名# 将文件添加到暂存区中  (其中git add.可以将当前目录的子目录文件都添加到暂存区中)$ git status # 显示工作目录和暂存区的状态$ git diff ID1/ID2# 查看版本差异:
- 分支操作
-1234 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/01/17/git使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/01/17/阿里云nginx-wsgi部署flask/">阿里云nginx+wsgi部署flask</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-01-17T13:33:14.000Z">2019-01-17</time><i class="fa fa-edit"></i><time datetime="2019-01-17T13:33:14.000Z">2019-10-23</time></div><div class="recent-post-content"> 云服务器nginx+wsgi部署flask
- 更新源
-12sudo apt-get update -ysudo apt-get upgrade -y
- 安装nginx
-123sudo apt-get install nginx -ysudo /etc/init.d/nginx start #(start可以改成restart/stop)#或是sudo service nginx start
-然后浏览器输入服务器IP或是127.0.0.1,观察是否有welcom to nginx!
- 安装py3和virtualenv
-12sudo apt-get install git python3 pyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a></div><div class="read-more"><a class="more" href="/2019/01/17/阿里云nginx-wsgi部署flask/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/08/使用Cerbot申请免费证书升级-http到https/">使用Cerbot申请免费证书升级 http到https</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-08T08:10:03.000Z">2018-12-08</time><i class="fa fa-edit"></i><time datetime="2018-12-08T08:10:03.000Z">2019-10-07</time></div><div class="recent-post-content"> 使用 Cerbot 免费证书 简单 升级 http 到 https
-1、安装 cerbot:
-12git clone https://github.com/letsencrypt/letsencryptcd letsencrypt
-要求：
-
-Python 2.7
-Git环境
-连接外网
-
-2、运行:
-12// 根据自己的需求调整代码./certbot-auto certonly --standalone --email admin@example.com -d example.com -d www.example.com -d other.example.net
-成功提示:
-123456789 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a></div><div class="read-more"><a class="more" href="/2018/12/08/使用Cerbot申请免费证书升级-http到https/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/16/数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题/">数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-16T09:50:05.000Z">2018-12-16</time><i class="fa fa-edit"></i><time datetime="2018-12-16T09:50:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 实验3.图的基本运算及职能交通中的最佳路径选择问题
- 3.2-邻接矩阵的DFS和BFS
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图论"> 图论</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="实验作业"> 实验作业</a></div><div class="read-more"><a class="more" href="/2018/12/16/数据结构实验3——图的基本运算及职能交通中的最佳路径选择问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/28/数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现/">数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-28T11:35:38.000Z">2018-12-28</time><i class="fa fa-edit"></i><time datetime="2018-12-28T11:35:38.000Z">2019-09-15</time></div><div class="recent-post-content"> 二叉树的遍历及计算
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041051061071081091101111121131141151161171181191201211221231241251261271281291301311321 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/12/28/数据结构实验2——二叉树的基本操作及哈夫曼编码译码系统的实现/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/28/数据结构实验1——线性表及多项式的运算/">数据结构实验1——线性表及多项式的运算</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-28T11:42:11.000Z">2018-12-28</time><i class="fa fa-edit"></i><time datetime="2018-12-28T11:42:11.000Z">2019-09-15</time></div><div class="recent-post-content"> 链表操作
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126#include &lt;stdio.h&gt; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2018/12/28/数据结构实验1——线性表及多项式的运算/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/16/数据结构——图/">数据结构——图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-16T03:41:46.000Z">2018-12-16</time><i class="fa fa-edit"></i><time datetime="2018-12-16T03:41:46.000Z">2019-09-15</time></div><div class="recent-post-content"> 数据结构——图
- 连通图
-
-无向图
-
-连通图 : 图中任意两点都连通
-连通:如果从v到w存在一条(无向)路径,则称v和w是连通的
-**路径:**V到w的路径是一系列顶点{V,v1,V2，vn,w}的集合,其中任一对相邻的顶点间都有图中的边。路径的长度是路径中的边数(如果带权,则是所有边的权重和)。如果v到w之间的所有顶点都不同,则称简单路径
-
-▲路径是边的超集,一条路径中可以有多条边
+不可以当做构造函数，也就是说，不可以使用 new 命令，否则会抛出错误。
+this、arguments、caller等对象在函数体内都不存在。
+不可以使用 yield 命令，因此箭头函数不能用作 Generator 函数。
 
 
-回路:起点等于终点的路径 ==&gt; 有回路的路径为非简单路径
+==& ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="微信小程序"> 微信小程序</a></div><div class="read-more"><a class="more" href="/2018/10/04/小程序开发遇到的坑/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/20/小程序入门学习/">小程序入门学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-20T01:57:01.000Z">2018-09-20</time><i class="fa fa-edit"></i><time datetime="2018-09-20T01:57:01.000Z">2019-09-15</time></div><div class="recent-post-content"> IDE搭建:
+下载:微信公众平台官网
+ 预备知识:
+
+个人认为入门小程序相对比较简单,需要了解HTML+CSS 大概知道是干啥的就行,JavaScrip还是要看看的，推荐教程 廖雪峰的博客以及W3Cschool的JS教程
+
+ 项目目录结构介绍:
 
 
-有向图:
+小程序中一共有四种类型的文件:
 
-强连通 : 有向图中顶点v和W之间存在双向路径,则称v和w是强连通的强连通图
-强连通图 : 有向图中任意两顶点均强连通强连通 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图论"> 图论</a></div><div class="read-more"><a class="more" href="/2018/12/16/数据结构——图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/26/南邮《信号与系统B》复习知识点大纲/">南邮《信号与系统B》复习知识点大纲</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-26T14:15:36.000Z">2018-12-26</time><i class="fa fa-edit"></i><time datetime="2018-12-26T14:15:36.000Z">2019-09-15</time></div><div class="recent-post-content"> 友情提示
-请将图片右键另存为，保存到本地放大查看。
- 第一章
-
-
- 第二章
-
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2018/12/26/南邮《信号与系统B》复习知识点大纲/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/26/不蒜子统计阅读次数失效/">不蒜子统计阅读次数失效——Cxo主题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-26T00:57:37.000Z">2018-12-26</time><i class="fa fa-edit"></i><time datetime="2018-12-26T00:57:37.000Z">2019-09-15</time></div><div class="recent-post-content"> 官方通知
-
-12&gt; ！！！！2018年9月 - 重要提示 ！！！！大家好，因七牛强制过期原有的『dn-lbstatics.qbox.me』域名（预计2018年10月初），与客服沟通数次无果，即使我提出为此付费也不行，只能更换域名到『busuanzi.ibruce.info』！因我是最早的一批七牛用户，为七牛至少带来了数百个邀请用户，很痛心，很无奈！各位继续使用不蒜子提供的服务，只需把原有的：&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/ ...</div><div class="read-more"><a class="more" href="/2018/12/26/不蒜子统计阅读次数失效/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/16/win自带邮件使用/">win自带邮件使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-16T02:48:27.000Z">2018-12-16</time><i class="fa fa-edit"></i><time datetime="2018-12-16T02:48:27.000Z">2019-09-15</time></div><div class="recent-post-content"> Windows10 自带邮箱
-
-创意大赛忘记提交附件的经历，让我决定这几天把邮箱的问题彻底解决了。
-
- 一.打开Windows自带的邮件
- 1.附件栏里
-
- 2.直接搜索&quot;邮件&quot;
-
- 二.添加账号
- 打开后界面是这样的,左边是我已经添加好的账号
-
- 1.点击下面的&quot;齿轮&quot;
-
- 2.点击&quot;管理账号&quot;
-
- 3.点击&quot;添加账户&quot;
-
- 将信息按规则填好后.需要注意的是▲.在按登录之前需要翻墙,否则会出现如图&quot;我们无法找到你的设置&quot;.
- 其次要注意的是,密码为IMAP或者POP、SMTP的密码，授权码查 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="邮件"> 邮件</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Window10"> Window10</a></div><div class="read-more"><a class="more" href="/2018/12/16/win自带邮件使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/20/Postman模拟上传文件/">Postman模拟上传文件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-20T10:57:35.000Z">2018-12-20</time><i class="fa fa-edit"></i><time datetime="2018-12-20T10:57:35.000Z">2019-09-15</time></div><div class="recent-post-content"> Postman模拟
- 1.首先得知道前端的样子:
-
- 2.针对前端字段进行模拟POST
-
-▲这边key为&lt;input&gt;中的name属性
- ▲▲URL最后的’/’:
- POST请求URL要对应
-12345@app.route(&apos;/photo/&apos;,methods = [&apos;GET&apos;,&apos;POST&apos;] )http://127.0.0.1:5000/photo/@app.route(&apos;/photo&apos;,methods = [&apos;GET&apos;,&apos;POST&apos;] )http://127. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Postman"> Postman</a></div><div class="read-more"><a class="more" href="/2018/12/20/Postman模拟上传文件/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/19/flask-sqlalchemy踩坑/">flask-sqlalchemy踩坑——外键</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-19T11:47:54.000Z">2018-12-19</time><i class="fa fa-edit"></i><time datetime="2018-12-19T11:47:54.000Z">2019-09-15</time></div><div class="recent-post-content"> 12.19：外键使用
-今天要设计一个如图关系的表关系时,踩了好几个坑…记录下
-
-代码:
-123456789101112131415161718192021222324from exts import dbclass Account(db.Model):    __tablename__ = 'account'    id = db.Column(db.Integer,primary_key=True,autoincrement=True)    Username = db.Column(db.String(30),nullable=True,unique=True)    PWD = db. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据库"> 数据库</a></div><div class="read-more"><a class="more" href="/2018/12/19/flask-sqlalchemy踩坑/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/21/BaiduMap-API/">BaiduMap_API</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-21T13:55:50.000Z">2018-12-21</time><i class="fa fa-edit"></i><time datetime="2018-12-21T13:55:50.000Z">2019-09-15</time></div><div class="recent-post-content"> Baidu Map API
- 核心类Map
+js ---------- JavaScrip文件
+json -------- 项目配置文件，负责窗口颜色等等
+wxml ------- 类似HTML文件
+wxss ------- 类似CSS文件
 
 
-
-构造函数
-描述
+ 重要文件-APP讲解:
 
 
+app.json(必需) :监听并处理小程序的生命周期函数、声明全局变量。
 
 
-Map(container: String | HTMLElement, opts: MapOptions)
-在指定的容器内创建地图实例，之后需要调用Map.centerAndZoom()方法对地图进行初始化。未进行初始化的地图将不能进行任何操作
+a ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="微信小程序"> 微信小程序</a></div><div class="read-more"><a class="more" href="/2018/09/20/小程序入门学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/13/回车和换行区别/">\r - \n - \r\n的区别</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-13T12:33:33.000Z">2018-10-13</time><i class="fa fa-edit"></i><time datetime="2018-10-13T12:33:33.000Z">2019-09-15</time></div><div class="recent-post-content"> \r  -  \n - \r\n  的区别
+ 代码演示:
+123456781:              string s1 = "已经习惯了回车和换行一次搞定\n，敲一个回车键，即是回";2:   3:              Console.WriteLine(s1);4:              s1 = "已经习惯了回车和换行一次搞定\r，敲一个回车键，即是回";5:              Console.WriteLine(s1);6:              s1 = "已经习惯了回车和换行一次搞定\r\n，敲一个回车键，即是回";7:              Con ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2018/10/13/回车和换行区别/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏，救济金发放/">例题4:1-3 古老的密码、刽子手的游戏，救济金发放</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-01T10:46:59.000Z">2018-09-01</time><i class="fa fa-edit"></i><time datetime="2018-09-01T10:46:59.000Z">2019-09-15</time></div><div class="recent-post-content"> 例题4-1 古老的密码
 
 
-
-12var map = new BMap.Map("MAP");map.centerAndZoom(points[0], 15);
-
-
-
-方法
-返回值
-描述
+因为字母可以重排,所以顺序不重要,而又同时因为可以映射,所以字母具体是什么不重要==&gt;只要统计排序后的结果相同就行了
+RE(Runtime error)错法加一: 题号提交错误
 
 
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include &lt;stdio.h&gt;#include &lt;string.h&gt;void Bubblesort(int *cnt)//冒泡排序,从大到小顺序&#123;    ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM竞赛入门"> ACM竞赛入门</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a></div><div class="read-more"><a class="more" href="/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏，救济金发放/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/12/云服务器Ubuntu更改默认python版本/">云服务器Ubuntu更改默认python版本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-12T05:07:48.000Z">2018-10-12</time><i class="fa fa-edit"></i><time datetime="2018-10-12T05:07:48.000Z">2019-09-15</time></div><div class="recent-post-content"> 云服务器Ubuntu更改默认python版本
+ 1、基于用户修改 Python 版本：
+想要为某个特定用户修改 Python 版本，只需要在其 home 目录下创建一个 alias(别名) 即可。打开该用户的 ~/.bashrc文件，添加新的别名信息来修改默认使用的 Python 版本。
+
+vim ~/.bashrc
+增加一行alias python=python3和修改pip版本alias pip=pip3
+source ~/.bashrc
+再输入python --version,就能发现显示的是Python 3.x啦
+
+ 2、 在系统级修改 Python 版本(建议)
+12# updat ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="服务器"> 服务器</a></div><div class="read-more"><a class="more" href="/2018/10/12/云服务器Ubuntu更改默认python版本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/">WampSever配置本地环境，解决打开打开本地网站问题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-01T06:19:39.000Z">2018-09-01</time><i class="fa fa-edit"></i><time datetime="2018-09-01T06:19:39.000Z">2019-09-15</time></div><div class="recent-post-content"><p><img src="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/v2-1d83ff5569ea18de71d329033fb91131_r.jpg" alt="What's WAMP"></p></div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="WAMP"> WAMP</a></div><div class="read-more"><a class="more" href="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/">Ubuntu下Sublime配置Python环境使用指导:</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-01T06:04:47.000Z">2018-09-01</time><i class="fa fa-edit"></i><time datetime="2018-09-01T06:04:47.000Z">2019-09-15</time></div><div class="recent-post-content"><p><img src="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/v2-e120837a2c6bb4df19299c085c8c7cf1_r.jpg" alt="Sublime Text"></p></div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a></div><div class="read-more"><a class="more" href="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/02/Spy-使用介绍/">Spy++使用介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-02T11:39:45.000Z">2018-09-02</time><i class="fa fa-edit"></i><time datetime="2018-09-02T11:39:45.000Z">2019-09-15</time></div><div class="recent-post-content">
+Spy++ (SPYXX.EXE) 是一个基于 Win32 的实用工具，它提供系统的进程、线程、窗口和窗口消息的图形视图。使用 Spy++ 可以执行下列操作： 显示系统对象（包括进程、线程和窗口）之间关系的图形树。 搜索指定的窗口、线程、进程或消息。 查看选定的窗口、线程、进程或消息的属性。
+
+我们可以使用微软的Spy++来查看窗口类名等信息，然后再结合pywin32实现。
+ 加载初始界面:
+
+ 然后点击工具栏的望远镜。如图所示:
+
+ 出现搜索窗口，然后通过移动靶心到想要查找句柄的窗口后单击就行了。==&gt;它的句柄、标题、类都会显示
+
+再点击确定。
+此时会有两种情况。
+
+成功搜索到
+搜索 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2018/09/02/Spy-使用介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/08/30/Python字典基本操作介绍/">Python字典基本操作介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-08-30T13:14:27.000Z">2018-08-30</time><i class="fa fa-edit"></i><time datetime="2018-08-30T13:14:27.000Z">2019-09-15</time></div><div class="recent-post-content"> 创建字典
+
+info={}
+info=dict()
 
 
-enableDragging()
-none
-启用地图拖拽，默认启用
+ 初始化字典
+ 法一
+123key = &apos;name&apos;info = &#123; key :&apos;cold&apos;&#125;==&#123;&apos;name&apos;:&apos;cold&apos;&#125;
+ 法二
+12info = dict(key = &apos;cold&apos;)==&#123;&apos;key&apos;:&apos;cold&apos;&#125;
+ 法三
+1#还有可以使用dict(zip(a,b))其中a,b都是列表,会生成以A中元素为键,B中元素为值的字典
 
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/08/30/Python字典基本操作介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/18/python中关于round函数的注意事项/">python中关于round函数的注意事项</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-18T03:37:00.000Z">2018-10-18</time><i class="fa fa-edit"></i><time datetime="2018-10-18T03:37:00.000Z">2019-09-15</time></div><div class="recent-post-content"> python中关于round函数的注意事项
 
-enableScrollWhee ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="API"> API</a></div><div class="read-more"><a class="more" href="/2018/12/21/BaiduMap-API/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/12/15/2018-12-15小记/">2018-12-15小记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-12-15T14:22:25.000Z">2018-12-15</time><i class="fa fa-edit"></i><time datetime="2018-12-15T14:22:25.000Z">2019-09-15</time></div><div class="recent-post-content">
-数据结构上机,由于最近烦心事也比较多,没有任何准备,在机房想要自己把代码敲出来也是不现实的。于是，就搜吧。无意中搜到了学长的博客,大二转计科，看了他努力的点滴，也颇有感触，于是下笔，略述己见。
+round函数很简单，对浮点数进行近似取值，保留几位小数。
 
+比如:
+12345&gt;&gt;&gt; round(10.0/3, 2)3.33&gt;&gt;&gt; round(20/7)3#第一个参数是一个浮点数，第二个参数是保留的小数位数，可选，如果不写的话默认保留到整数。
+12345678910#[round]函数文档-py3def round(number, ndigits=None): # real signature unknown; restored from __doc__    """    round(number[,  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/18/python中关于round函数的注意事项/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/18/LeetCode-26-删除排序数组中的重复项/">LeetCode 26. 删除排序数组中的重复项</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-18T03:35:36.000Z">2018-10-18</time><i class="fa fa-edit"></i><time datetime="2018-10-18T03:35:36.000Z">2019-09-15</time></div><div class="recent-post-content"> LeetCode 26. 删除排序数组中的重复项
+给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
+示例 1:
+12345给定数组 nums = [1,1,2], 函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 你不需要考虑数组中超出新长度后面的元素。
+示例 2:
+12345给定 nums = [0,0,1,1,1,2,2,3,3,4],函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM竞赛入门"> ACM竞赛入门</a></div><div class="read-more"><a class="more" href="/2018/10/18/LeetCode-26-删除排序数组中的重复项/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/18/HDOJ-Problem-1002-A-B-Problem-II/">HDOJ Problem 1002 - A + B Problem II</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-18T03:36:23.000Z">2018-10-18</time><i class="fa fa-edit"></i><time datetime="2018-10-18T03:36:23.000Z">2019-09-15</time></div><div class="recent-post-content"> HDOJ Problem 1002 - A + B Problem II:
+大数定理
+ Problem Description
 
-之前一直在博客里都是发的技术性的文章，有时想说点话，也找不到合适的人。发条说说，不懂的人不知所措，懂的人也无从安慰，于是也只好作罢。也曾想过在博客里写，太又感觉未免太过矫情，今日所感，还是决定记录些情感、回忆。
+I have a very simple problem for you. Given two integers A and B, your job is to calculate the Sum of A + B.
 
-大一上报了院科协与校科协，入大学前已经略有琢磨过C语言学习的我自然没有再接着学C，于是趁着Python的大热，也正是听说了Python的简洁、可以做爬虫、网站、人工智能等有趣的时就决定学 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活小记"> 生活小记</a></div><div class="read-more"><a class="more" href="/2018/12/15/2018-12-15小记/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/12/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/14/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+ Input
+
+The first line of the input contains an integer T(1&lt;=T&lt;=20) which means the number of test cases. Then T lines ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM竞赛入门"> ACM竞赛入门</a></div><div class="read-more"><a class="more" href="/2018/10/18/HDOJ-Problem-1002-A-B-Problem-II/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/12/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

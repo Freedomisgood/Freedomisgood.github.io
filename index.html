@@ -97,13 +97,80 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2022/04/11/总得学点Elasticsearch吧/">总得学点Elasticsearch吧</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-11T14:18:04.000Z">2022-04-11</time><i class="fa fa-edit"></i><time datetime="2022-04-11T14:18:04.000Z">2022-04-12</time></div><div class="recent-post-content"> 倒排索引
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2022/06/01/爬虫——请求参数逆向/">爬虫——请求参数逆向</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-06-01T15:13:46.000Z">2022-06-01</time><i class="fa fa-edit"></i><time datetime="2022-06-01T15:13:46.000Z">2022-06-03</time></div><div class="recent-post-content"> 登陆参数类
+ 新浪博客登陆
+Input输入:
+
+Username账号
+password密码
+
+params请求参数：
+
+https://login.sina.com.cn/sso/prelogin.php?entry=boke&amp;callback=sinaSSOController.preloginCallBack&amp;su=MTUyMzIxMzEy&amp;rsakt=mod&amp;checkpin=1&amp;client=ssologin.js(v1.4.19)&amp;_=1654090585990
+
+entry: boke——固定值
+callback: sinaSSOC ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="JS"> JS</a></div><div class="read-more"><a class="more" href="/2022/06/01/爬虫——请求参数逆向/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/05/29/每周一个开源项目——ddt-sharp-shoote/">每周一个开源项目——ddt-sharp-shooter</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-29T10:04:15.000Z">2022-05-29</time><i class="fa fa-edit"></i><time datetime="2022-05-29T10:04:15.000Z">2022-05-30</time></div><div class="recent-post-content"> ddt-sharp-shooter
+
+这是一个基于 Pynput 的 DDT 工具。基本原理在于，得知风力、角度、距离的情况下，参考力度表得出发射力度，而后发射。
+其中，风力、角度通过 ddddocr（An awesome captcha recognition library）识别，屏距通过标记屏距测量框、敌我位置来推算，力度通过按压时长来体现，具体见这里。
+
+ 使用到的库:
+screeninfo、pillow、ddddocr、pynput、py2app
+
+pynput: 控制和监视输入设备；类似的有PyHook3（监视键鼠）、pywin32 （模拟键鼠）
+ddddocr：识别验证码，这边 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开源项目"> 开源项目</a></div><div class="read-more"><a class="more" href="/2022/05/29/每周一个开源项目——ddt-sharp-shoote/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/03/29/开源项目代码阅读记录/">开源项目代码阅读记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-29T09:54:46.000Z">2022-03-29</time><i class="fa fa-edit"></i><time datetime="2022-03-29T09:54:46.000Z">2022-05-29</time></div><div class="recent-post-content"> 爬虫系列
+ 抢购、秒杀
+  taobao_seckill
+
+淘宝秒杀物品：分为selenium版和request网络请求版，微小的区别在于，api先请求的是购物车的物品信息，selenium则是勾选选择框。
+流程大致都相同：①keep_wait等待临近抢购时间-----&gt;②将需要的信息缓存住，不再刷新（比如要抢购的物品信息、cookies…）-----&gt;③进行结算(/点击按钮)-----&gt;④提交订单(/点击按钮)-----&gt;⑤支付订单(/点击按钮)；
+
+
+
+使用browsercookie来管理浏览器cookies——从浏览器提取保存的cookies的工具。它是一个很有 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="代码阅读"> 代码阅读</a></div><div class="read-more"><a class="more" href="/2022/03/29/开源项目代码阅读记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/05/10/爬虫App——xposed-inspeckage/">爬虫App——夜神模拟器xposed+inspeckage</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-10T06:34:49.000Z">2022-05-10</time><i class="fa fa-edit"></i><time datetime="2022-05-10T06:34:49.000Z">2022-05-10</time></div><div class="recent-post-content">头一次接触到App参数加密的，因此需要对加密参数进行反编译，了解到有工具inspeckage可以方便的来找寻加密参数。而其使用的条件为
+
+手机已ROOT
+在Xposed框架下运行
+
+于是开始在夜神模拟器上捣鼓安装xposed、inspeckage。
+ 安装
+ xposed框架
+在不少地方都下载了xposed框架，但都不太使用，后来了解到模拟器的xposed是专用的，根据夜神模拟器官网介绍的夜神模拟器如何安装xposed框架后，决定还是在模拟器的应用商店进行安装xposed，下载安装后的名称为&quot;xposed 派大星&quot;。
+下载安装后立马打开还是会显示没安装，需要点击&quot; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/05/10/爬虫App——xposed-inspeckage/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/29/使用Python转义实现前端加密算法-记录笔记/">使用Python转义实现前端加密算法-记录笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-29T01:22:28.000Z">2022-04-29</time><i class="fa fa-edit"></i><time datetime="2022-04-29T01:22:28.000Z">2022-04-29</time></div><div class="recent-post-content"> 环境安装
+123pip uninstall cryptopip uninstall pycryptodomepip install pycryptodome
+前面两个卸载命令是为了防止一些安装环境问题，具体请看文章
+ pycryptodome
+ AES加密
+加密模式
+AES 加密最常用的模式就是 ECB模式 和 CBC 模式，当然还有很多其它模式，他们都属于AES加密。ECB模式和CBC 模式俩者区别就是 ECB 不需要 iv偏移量，而CBC需要。
+AES加密使用参数
+以下参数都是在python中使用的。
+参数	作用及数据类型
+秘钥	加密的时候用秘钥，解密的时候需要同样的秘钥才能解出来; 数 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2022/04/29/使用Python转义实现前端加密算法-记录笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/11/总得学点Elasticsearch吧/">总得学点Elasticsearch吧</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-11T14:18:04.000Z">2022-04-11</time><i class="fa fa-edit"></i><time datetime="2022-04-11T14:18:04.000Z">2022-04-12</time></div><div class="recent-post-content"> 倒排索引
 反向索引（inverted index）更熟悉的名字是倒排索引。
 什么是倒排索引: 倒排索引也叫反向索引，通俗来讲正向索引是通过key找value，反向索引则是通过value找key。
 举个具体的例子：我们一般是通过标题来找文章内容，即通过目录（正向索引）；而反向索引的运用场景就是通过内容来找到是哪一篇文章（标题，作者……），而怎么建立反向索引呢？怎么更快更好地找到结果呢？这个就是搜索引擎做的事了、
 正向索引：例如一个“文档1”经过分词，提取了20个关键词，每个关键词都会记录它在文档中的出现次数和出现位置。那我们就可以直接通过对&quot;文档1&quot;Document这个结构 ...</div><div class="read-more"><a class="more" href="/2022/04/11/总得学点Elasticsearch吧/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/10/算法与数据结构——滑动窗口/">算法与数据结构——滑动窗口、尺取法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-10T03:14:53.000Z">2022-04-10</time><i class="fa fa-edit"></i><time datetime="2022-04-10T03:14:53.000Z">2022-04-11</time></div><div class="recent-post-content">
 Sliding window algorithm is used to perform required operation on specific window size of given large buffer or array.滑动窗口算法是在给定特定窗口大小的数组或字符串上执行要求的操作。
-This technique shows how a nested for loop in few problems can be converted to single for loop and hence reducing the time complexity.该技术可以将一部分问题中的嵌 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2022/04/10/算法与数据结构——滑动窗口/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/02/26/研究生work——地图匹配/">研究生work——地图匹配</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-02-26T07:24:46.000Z">2022-02-26</time><i class="fa fa-edit"></i><time datetime="2022-02-26T07:24:46.000Z">2022-03-09</time></div><div class="recent-post-content"> 地图匹配
+This technique shows how a nested for loop in few problems can be converted to single for loop and hence reducing the time complexity.该技术可以将一部分问题中的嵌 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2022/04/10/算法与数据结构——滑动窗口/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/05/翻译-设计Pastebin-com-or-Bit-ly-系统/">[翻译]设计Pastebin.com(or Bit.ly)系统</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-05T09:34:50.000Z">2022-04-05</time><i class="fa fa-edit"></i><time datetime="2022-04-05T09:34:50.000Z">2022-04-05</time></div><div class="recent-post-content"> 设计Pastebin.com (or Bit.ly)系统
+注：本文档直接链接到系统设计主题中的相关领域，以避免重复。请参考链接内容来了解总体的讨论要点、利弊权衡以及替代方案。
+**设计Bit.ly**是一个类似的问题。只是Pastebin还具有一个额外的功能，即存储粘贴的内容，而不是原始的未缩短过的url。
+ 第一步：列出用例和约束的大纲
+
+确定应用场景：收集需求和范围问题；提问来弄清阐明用例和约束，讨论来作出假设。
+
+在没有面试官来阐明清这些问题的情况下，我们将定义一些用例和约束。
+ 用例
+ 我们将确定问题的范围，只处理以下使用情况
+
+用户：输入一段文本后，获得一个随机生成的链接
+
+过期
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="翻译"> 翻译</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="系统设计"> 系统设计</a></div><div class="read-more"><a class="more" href="/2022/04/05/翻译-设计Pastebin-com-or-Bit-ly-系统/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/05/理了一天彻底弄懂元类——分享给你一起弄懂/">理了一天彻底弄懂元类——分享给你一起弄懂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-05T05:26:39.000Z">2022-04-05</time><i class="fa fa-edit"></i><time datetime="2022-04-05T05:26:39.000Z">2022-04-05</time></div><div class="recent-post-content">
+这是一个在看开源代码时配到了单例元类写法后的一个原理贴，可以帮你彻底弄清元类、以及__new__和__call__，相信我，看完你绝对会有收获。
+首先，关于元类的结论说在前头，先有个印象——小总结：
+
+现在我们能知道为什么元类必须继承type了：因为我们实例化对象Foo(xxx)时调用了type.__call__,而type.__call__又会调用type.__new__因此如果type子类重写实现了__new__（返回的类实例对象的类型作控制）、__call__（对实例化的流程做控制），则可以对类对象的类型和类属性起到自定义的功能，而重写就必须继承type=&gt;需要元类必须继承typ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2022/04/05/理了一天彻底弄懂元类——分享给你一起弄懂/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/02/26/研究生work——地图匹配/">研究生work——地图匹配</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-02-26T07:24:46.000Z">2022-02-26</time><i class="fa fa-edit"></i><time datetime="2022-02-26T07:24:46.000Z">2022-03-09</time></div><div class="recent-post-content"> 地图匹配
 概念：
 
 
@@ -116,16 +183,16 @@ This technique shows how a nested for loop in few problems can be converted to s
 乘车结束时，计算驾驶员行进的距离，以计算票价。——路线图匹配(EORMM)
 实时 ，为ETA团队提供准确的位置并做出调度决策，并在rider应用程序上显示驾驶员的汽车。——实时地图匹配(RTMM)
 
-不同点在于，实时地图匹配的要求比较高，必须低延时，因此相比 ...</div><div class="read-more"><a class="more" href="/2022/02/26/研究生work——地图匹配/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/24/学习画好架构图/">学习画好架构图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-24T06:57:11.000Z">2021-08-24</time><i class="fa fa-edit"></i><time datetime="2021-08-24T06:57:11.000Z">2022-02-27</time></div><div class="recent-post-content">
-一图胜万语，做好一张架构图能让别人一眼就清晰地弄懂程序的功能与依赖，大大降低大家的理解成本和提升沟通效率。但作为新人而言，如何画出要点，提炼出核心概念是个有难度的事。
+不同点在于，实时地图匹配的要求比较高，必须低延时，因此相比 ...</div><div class="read-more"><a class="more" href="/2022/02/26/研究生work——地图匹配/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/02/27/深入学习使用Spring/">深入学习使用Spring</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-02-27T05:52:08.000Z">2022-02-27</time><i class="fa fa-edit"></i><time datetime="2022-02-27T05:52:08.000Z">2022-02-27</time></div><div class="recent-post-content">
+From : https://www.bilibili.com/video/BV1fr4y1Y7UH?p=6
 
- 什么是架构？
-架构是结构和愿景，是对系统中的实体以及实体之间的关系所进行的抽象描述，是一系列的决策。
-系统架构是概念的体现，是对物/信息的功能与形式元素之间的对应情况所做的分配，是对元素之间的关系以及元素同周边环境之间的关系所做的定义。
- 什么是架构图？
-系统架构图是为了抽象地表示软件系统的整体轮廓和各个组件之间的相互关系和约束边界，以及软件系统的物理部署和软件系统的演进方向的整体视图。
- 架构图的作用
-要让干系人理解、遵 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="福利"> 福利</a></div><div class="read-more"><a class="more" href="/2021/08/24/学习画好架构图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/02/25/私有Gitlab配置SSH连接/">私有Gitlab配置SSH连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-02-25T05:38:19.000Z">2022-02-25</time><i class="fa fa-edit"></i><time datetime="2022-02-25T05:38:19.000Z">2022-02-25</time></div><div class="recent-post-content">
+ 创建bean的方式：
+ 声明式
+ &lt;bean&gt;&lt;/bean&gt;
+
+
+&lt;bean&gt;&lt;/bean&gt;： 通过xml来配置bean
+123456789101112131415161718192021222324252627282930&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;beans xmlns="http://www.springframework.org/schema/beans"  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Spring"> Spring</a></div><div class="read-more"><a class="more" href="/2022/02/27/深入学习使用Spring/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/02/25/私有Gitlab配置SSH连接/">私有Gitlab配置SSH连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-02-25T05:38:19.000Z">2022-02-25</time><i class="fa fa-edit"></i><time datetime="2022-02-25T05:38:19.000Z">2022-02-25</time></div><div class="recent-post-content">
 SSH连接并不是像http连接一样，输入用户名和密码就可以了。SSH连接需要一些额外的配置
 
  生成SSH秘钥和公钥
@@ -140,133 +207,96 @@ SSH连接并不是像http连接一样，输入用户名和密码就可以了。S
 
 作为一位负责任的开发者，你理当确保每次包升级的运作与版本号的表述一致。现实世界是复杂的，我们除了提高警觉外能做的不多。你所能做的就是让语义化的版本控制为你提供一个健全的方式来发行以及升级包，而无需推出新的依赖包，节省你的时间及烦恼。
 如果没有某个正式的规范可循，版本号对于依赖的管理并无实质意义。将上述的想法命名并给予清楚的定义，让你对软件使用者传达意向变得容易。一旦这些意向变得清楚，弹性（但又不会太弹性）的依赖规范就能达成。
-如果你对此认同，希望立即开始使用语义化版本控制，你只需声明你的函数库正在使用它并遵循这些规则就可以了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2022/01/26/语义化的版本控制/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/02/浙江大学期末考试——Go语言/">浙江大学期末考试——Go语言</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-02T13:52:53.000Z">2021-11-02</time><i class="fa fa-edit"></i><time datetime="2021-11-02T13:52:53.000Z">2021-12-30</time></div><div class="recent-post-content"> 浙江大学期末考试——Go语言
+如果你对此认同，希望立即开始使用语义化版本控制，你只需声明你的函数库正在使用它并遵循这些规则就可以了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2022/01/26/语义化的版本控制/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/30/理解SpringBoot注解s/">理解SpringBoot注解s</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-30T12:30:45.000Z">2021-12-30</time><i class="fa fa-edit"></i><time datetime="2021-12-30T12:30:45.000Z">2021-12-30</time></div><div class="recent-post-content"> @ReuqestBody和@RequestParam
+这两个注解都是在Controller某个Mapping函数的形参前加上的，但两个具体有什么区别呢？在使用的时候我们该如何选择呢? 这跟我们希望用户以什么形式来请求接口有关。
+众所周知，请求头的Content-type有多个，如
+常见的媒体格式类型如下：
 
-期末复习对学习知识的帮助是巨大的，相比于看视频，本篇点到为止的知识点形的期末复习笔记，我相信更能让人学会。我相信，只要把本笔记全部看完了必然就会Go了。如果你做到了但还没有学会Go，那你大可来找我/doge。
+text/html ： HTML格式
+text/plain ：纯文本格式
+text/xml ： XML格式
+image/gif ：gif图片格式
+image/jpeg ：jpg图片格式
+image/png：png图片格式
 
- 概论
+以application开头的媒体格式类型：
 
-指令：计算机的一个最基本的功能，如实现一次加法运算或实现一次大小的判别
-计算机的指令系统：计算机所能实现的指令的集合
-程序：一系列计算机指令的有序组合
+applicat ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2021/12/30/理解SpringBoot注解s/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/使用七牛云作图床-PicGo/">使用七牛云作图床+PicGo</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T13:48:37.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T13:48:37.000Z">2021-12-29</time></div><div class="recent-post-content">
+自己在写博客的时候，通过图片来表达自己的思路无疑是种非常有效的方法，平常我的笔记都是通过hexo生成的，因此保存在本地路径即可。但是如果想把文章发表在第三方的平台上，那么这些相对路径的图片在上传过程中就无法被检索，因此如果能在一个大家都能访问到的地方存放这些图片，再给出这些地方的链接时那就解决了这个问题。要达到这个需求，则就需要使用OSS对象存储服务。
+这边我推荐的是七牛云。七牛云在注册认证后有10G永久免费空间，每月10G国内和10G国外流量，速度相当快，七牛云是国内专业CDN服务商，插件支持比较多，有免费SSL证书，但https流量收费。同时七牛云还会提供30天的测试域名，不过要注意的一 ...</div><div class="read-more"><a class="more" href="/2021/12/29/使用七牛云作图床-PicGo/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/28/开发方向-技术栈/">开发方向-技术栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-28T13:02:43.000Z">2021-12-28</time><i class="fa fa-edit"></i><time datetime="2021-12-28T13:02:43.000Z">2021-12-29</time></div><div class="recent-post-content"> Cloud 微服务全家桶
 
- 算法：
-
-求解特定问题的一组有限的操作序列
-
-
-目的性：算法有运算结果，程序强调过程性
-抽象性：算法独立于编程语言和指令系统
-研究性：算法是理论研究，载体可以是伪码，文字，图片等，载体为某 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="考试"> 考试</a></div><div class="read-more"><a class="more" href="/2021/11/02/浙江大学期末考试——Go语言/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/03/03/天猫秒杀插件-Chrome插件编写/">Chrome插件编写-天猫秒杀插件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-03-03T13:37:15.000Z">2021-03-03</time><i class="fa fa-edit"></i><time datetime="2021-03-03T13:37:15.000Z">2021-12-04</time></div><div class="recent-post-content"> chrome插件开发
-
-借鉴TODO-List：Chrome插件开发简要指南
-
- 文件结构
-在应用商店中下载下来的插件基本上都是以.crx为文件后缀，该文件其实就是一个压缩包（文件夹压缩而来），包括插件所需要的html、css、javascript、图片资源等等文件。
-其中，
-
-manifest.json是整个插件的功能及文件配置清单，非常重要。
-static目录是放置整个插件的静态资源文件的，包括css、js、图片等等资源
-template目录是放置整个插件的功能页面模板的。
-_locales目录是放置整个插件的国际化语言脚本的。
-
-一般来说，清单文件manifest.json文件是必须的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="脚本"> 脚本</a></div><div class="read-more"><a class="more" href="/2021/03/03/天猫秒杀插件-Chrome插件编写/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/13/学点Kotlin/">学点Kotlin</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-13T09:18:17.000Z">2021-09-13</time><i class="fa fa-edit"></i><time datetime="2021-09-13T09:18:17.000Z">2021-12-02</time></div><div class="recent-post-content"> Kotlin 基础语法
-Kotlin 文件以 .kt 为后缀。
- 函数定义
-函数定义使用关键字 fun，参数格式为：参数 : 类型
-123fun sum(a: Int, b: Int): Int &#123;   // Int 参数，返回值 Int    return a + b&#125;
-表达式作为函数体，返回类型自动推断：
-123fun sum(a: Int, b: Int) = a + bpublic fun sum(a: Int, b: Int): Int = a + b   // public 方法则必须明确写出返回类型
-无返回值的函数(类似Java中的void)：
-123456 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Kotlin"> Kotlin</a></div><div class="read-more"><a class="more" href="/2021/09/13/学点Kotlin/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/27/物联网基础与应用-课程笔记/">物联网基础与应用-课程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-27T15:44:21.000Z">2021-09-27</time><i class="fa fa-edit"></i><time datetime="2021-09-27T15:44:21.000Z">2021-10-11</time></div><div class="recent-post-content"> IOT课上实验
- 交叉编译环境
- 什么是交叉编译环境？
-交叉编译其实是相对于本地编译(native build)来说的，大家最开始学习 C/C++ 这些语言的时候，都是在自己的笔记本上写程序，然后在直接在电脑上编译生成可执行文件，最后在电脑上运行。整个流程为：程序的编辑-&gt;编译-&gt;运行，整个过程都是在一台 X86 电脑上。
-当我们开始接触嵌入式开发后，事情变的不一样了。你在电脑上写程序，在电脑上编译出可执行文件，最后这个可执行文件需要下载到你的开发板上运行。程序最后运行的环境变了，比如你的开发板是基于 Arm 的——程序在 X86 上编辑，编译，最终运行在另一个和 X86 完全不 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式开发"> 嵌入式开发</a></div><div class="read-more"><a class="more" href="/2021/09/27/物联网基础与应用-课程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/26/学点Gradle/">学点Gradle</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-26</time><i class="fa fa-edit"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-27</time></div><div class="recent-post-content"> Gradle学习
-在kotlin中使用mapstruct出现了些问题， 网上搜寻后得到结论：需要使用kapt(Kotlin annotation processing tool 即kotlin注解处理工具)， 但给出的大多都是通过Gradle来进行配置的。因此借此机会学习了下Gradle：
- plugins和apply plugin:
-
-由于文档写到了， 由于不清楚这些在哪些位置加入， 因此查看了plugins和apply plugin:的区别：
-1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="read-more"><a class="more" href="/2021/09/26/学点Gradle/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/">浙大2020春夏-人工智能习题2——垃圾分类</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:45.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:45.000Z">2020-12-19</time></div><div class="recent-post-content">
-homework for ZJU: https://mo.zju.edu.cn/homework/zju_ai_2020_ss
-
- 1. 实验介绍
- 1.1 实验背景
-自今年 7 月 1 日起，上海市将正式实施 《上海市生活垃圾管理条例》。
-垃圾分类，看似是微不足道的“小事”，实则关系到13亿多人生活环境的改善，理应大力提倡。
-垃圾识别分类数据集中包括玻璃 (glass) 、硬纸板 (cardboard) 、金属 (metal) 、纸 (paper) 、塑料 (plastic) 、一般垃圾 (trash) ，共6个类别。
-生活垃圾由于种类繁多，具体分类缺乏统一标准，大多人在实际操作时会“选择 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/">浙大2020春夏-人工智能习题3——图像恢复</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-09T05:20:46.000Z">2020-12-09</time><i class="fa fa-edit"></i><time datetime="2020-12-09T05:20:46.000Z">2020-12-17</time></div><div class="recent-post-content"> 习题3 - 图像恢复
- 3.1 实验内容
-图像是一种非常常见的信息载体，但是在图像的获取、传输、存储的过程中可能由于各种原因使得图像受到噪声的影响——称为图像退化。图像复原就是重建退化的图像，使其最大限度恢复景物原貌的处理。如何去除噪声的影响，恢复图像原本的信息是计算机视觉中的重要研究问题。
-常见的图像恢复算法有基于空间域的中值滤波、基于小波域的小波去噪、基于偏微分方程的非线性扩散滤波等，在本次实验中，📌我们要对图像添加噪声，并对添加噪声的图像进行基于模型的去噪。
- 3.2 实验要求
-A. 生成受损图像。
-
-a) 受损图像是由原始图像添加了不同噪声遮罩（noise masks）得到的。
-b ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/细品单例模式/">细品单例模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time></div><div class="recent-post-content">虽然还没正式踏入开发就业浪潮中，但为了保证自己的代码质量，最近还是在学设计模式相关内容。以下为读《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记。
-
-GoF的《设计模式》就是设计模式的始祖、经典教科书。其描述严谨，举例恰当，分类组织，是应该反复细读的经典，两本书皆提及了GoF这本书，引用了GoF中的部分例子。
-
- 单例模式
- 虚拟场景：
-读取配置文件的内容（假设系统采用的是properties格式的配置文件）
-1234567891011121314151617181920212223242526272829303132333435363738394041424 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/11/细品单例模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/03/Lets-learn-设计模式/">Lets learn 设计模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-03</time><i class="fa fa-edit"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-11</time></div><div class="recent-post-content">
-《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记
-
- 设计模式是什么？
-模式：从字面上理解，模，就是模型、模板的意思；式，就是方式、方法的意思。综合起来，所谓模式就是：可以作为模型或模板的方式或方法。再简单点说就是可以用来作为样板的方式或方法，类似于大家所熟悉的范例。
-所以设计模式就是设计方面的模板，具体定义为：是指在软件开发中，经过验证的，用于解决在特定环境下、重复出现的、特定问题的解决方案。
- 每个设计模式的构成如下：
-1、模式名称：模式的一个好记的名字
-2、环境和问题：描述在什么环境下，出现什么特定的问题
-3、解决方案：描述如何解决问题
-4、效果：描述 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/03/Lets-learn-设计模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/浙大2020春夏-人工智能习题1——AIforOthello/">浙大2020春夏-人工智能习题3——AIforOthello</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T04:02:33.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T04:02:33.000Z">2020-12-11</time></div><div class="recent-post-content"> something about Othello
- 黑白棋规则
-传统的黑白棋棋盘由 8 x 8 方格组成。开局时，棋盘中央的4格先置黑白相间的4颗棋子 (详见下图)，并由黑子先行。
-首步由黑子先下；下子时；新子必须与棋盘上任一己方棋子形成一条或多条 (横、竖、斜) 直线，并夹着对方棋子；由新子及旧子连成的直线之间，必须存有一颗或以上对方的棋子。如图，黑子开局时之可行棋步有以下4格:
-双方交替下子；倘若任何一方没有棋步可行，则其必须将下子权利相认予对手；另在双方均无子可下的情况下，游戏自动结束。
-游戏结束后，拥子较多一方为胜；倘若双方棋数相同的，则为和局。
- 黑白棋基本策略
- 占角子及固定子
-
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/01/浙大2020春夏-人工智能习题1——AIforOthello/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/05/理解科学计算中的dim参数/">理解科学计算(numpy,pytorch)中的dim参数</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-05</time><i class="fa fa-edit"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-10</time></div><div class="recent-post-content">
-😄理解numpy中array和pytorch中tensor的操作是开始科学运算的第一步!
-
-首先明白维度的感念：
- 维度
-我们通常能听到的都是2D, 3D，其实这边的D就是dimension的含义即维度。2D，我们通常理解为是平面，如我们最熟悉的直角坐标系就是平面坐标系，还有极坐标系。而3D呢，就是在平面的基础上增加了一维——高度，从而使平面的物体立起来了，同样3D也有耳熟能详的坐标系——3维坐标系。
-更官方的解释呢：维度（Dimension），又称为维数，是数学中独立参数的数目。在物理学和哲学的领域内，指独立的时空坐标的数目。0维是一个无限小的点，没有长度。1维是一条无限长的线，只有长度 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/05/理解科学计算中的dim参数/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/玩玩油猴脚本/">玩玩油猴脚本Tampermonkey</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time></div><div class="recent-post-content">
-由于在研究如何优化网盘直链下载助手**baidupan，如何将直链的结果提取出来供IDM批量下载。由于baidupan**是用油猴脚本写的，因此借机学习一下。
+微服务开发的主流技术栈
 
 
- Greasy Fork
+服务注册中心
 
-这里是一个提供用户脚本的网站。
-
- Tampermonkey
-
-其为浏览器插件，目前主流浏览器皆支持，油猴叫法来源：「油猴」是从「Greasemonkey」来的。「Greasemonkey」最初是运行在Firefox浏览器中的脚本，「Tampermonkey」在Google Chrome浏览器上实现了几乎相同的功能，所以也被中文用户称之为「油猴」。
-
- 新建：
-
-12345678910111213141 ...</div><div class="read-more"><a class="more" href="/2020/12/01/玩玩油猴脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/fork-curlconverter-for-Better/">fork curlconverter for Better</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T02:43:34.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T02:43:34.000Z">2020-12-01</time></div><div class="recent-post-content">
-终于12月了，又是一个月初，定个flag，pr一个Gitcode
-由于之前写Python爬虫的时候，从curlconverter受惠很多，并且看到issue #22: Add generator for Java中有Java版本的需求还未完成，所以目标就是完成JAVA for curl
-
-curlconverter提供了一个网页版： https://curl.trillworks.com/， 其实其本质上也是用js完成的，功能如README中所写：
- README
- Install
-1$ npm install --save curlconverter
- Usage
-123var curlc ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></div><div class="read-more"><a class="more" href="/2020/12/01/fork-curlconverter-for-Better/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/">《漫画机器学习入门》大关真之——读书笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T13:39:01.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T13:39:01.000Z">2020-11-28</time></div><div class="recent-post-content"> 《漫画机器学习入门》总结
-机器学习是指计算机通过不断地处理数据并修正算法和参数来学习各种规则， 从而不断改进模型而得到更优化的算法。书中主要讲解了玻尔兹曼机的机器学习
- 谁是世界上最美丽的人？
+:error:eureka 停止更新
+❌consul
+zookeeper
+⭐️nacos
 
 
-****特征量****就是如每一个人的年龄，眼睛大小； 特征向量就是每个人的特征量放到一起，特征向量是表达特征的一个数组
+服务负载与调用
+
+❌ netflix oss ribbon ==&gt; spring cloud loadbalance
+netflix feign ==&gt; Spring cloud OpenFeign
 
 
-误差函数： 在美丽程度这个问题上， 误差函数就是—— 计算“美丽程度”的实际输出与给定的理想输出之间的差值
+容量限流(熔断)
+
+❌hystrix: 最先的老大哥
+resilience4j：国外使用较多
+⭐️spring cloud alibaba sentinel
 
 
-最优化问题：  最小化误差函数，其实是一个求解最优化问题：我们的任务就是要找到没有误差或者误差小到满足要求的最适合的模型。这就要通过调节模型中的参数，使误差函数值 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+配置中心
+
+❌spring cloud config
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发"> 开发</a></div><div class="read-more"><a class="more" href="/2021/12/28/开发方向-技术栈/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/26/开发过程中Mysql-API记录/">开发过程中Mysql API记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-26T12:52:57.000Z">2021-12-26</time><i class="fa fa-edit"></i><time datetime="2021-12-26T12:52:57.000Z">2021-12-26</time></div><div class="recent-post-content"> 时间操作
+ TIME_TO_SEC
+
+MySQL TIME_TO_SEC(time) 函数返回将参数 time 转换为秒数的时间值，转换公式为“小时 ×3600+ 分钟 ×60+ 秒”。
+
+12345678910111213mysql&gt; SELECT TIME_TO_SEC(&apos;15:15:15&apos;);+-------------------------+| TIME_TO_SEC(&apos;15:15:15&apos;) |+-------------------------+|                   54915 |+----------------- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Mysql"> Mysql</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发记录"> 开发记录</a></div><div class="read-more"><a class="more" href="/2021/12/26/开发过程中Mysql-API记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/12/软件架构课程学习笔记/">软件架构课程学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-12</time><i class="fa fa-edit"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-13</time></div><div class="recent-post-content"> 术语
+–微服务
+–云化
+–分布式
+–高并发
+–高可用
+ 架构角色
+
+探索者
+设计师
+倡导人
+
+ 到底如何区分什么是架构、框架、模式和平台 ？
+设计模式&lt;框架&lt;架构&lt;平台，从复用角度讲，设计模式是代码级复用、框架是模块级复用、架构是系统级复用、平台是企业应用级复用。
+模式:分为代码模式、设计模式、框架模式这些
+
+设计模式有不同的分类，如下
+
+创建型设计模式，如工厂方法（Factory Method）模式、抽象工厂（Abstract Factory）模式、原型（Prototype）模式、单例（Singleton）模式，建造（Builder）模式等
+结构型设计模式，如合成（Com ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Zju"> Zju</a></div><div class="read-more"><a class="more" href="/2021/12/12/软件架构课程学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/">创建Vue工程（包含Vue2和Vue3）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time><i class="fa fa-edit"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time></div><div class="recent-post-content"> @vue/cli-init
+
+vue init 是vue-cli2.x的初始化方式
+
+
+vue init ： 需要npm i -g @vue/cli-init
+
+vue init webpack [project-name], webpack为模板&lt;generate a project from a remote template&gt;，然后按照交互信息提示输入即可完成工程创建
+init创建工程时，交互信息中有一个比较有意思的是选择包管理工具： npm、yarn，两者见
+
+
+
+ @vue/cli
+
+会让选择Vue2还是Vue3
+
+
+vue create router_project: ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/05/前后端-实现上传和下载/">前后端-实现上传和下载</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-05T02:56:46.000Z">2021-12-05</time><i class="fa fa-edit"></i><time datetime="2021-12-05T02:56:46.000Z">2021-12-05</time></div><div class="recent-post-content"> 前端
+ 上传
+前端上传主要是把文件发送过去，一般采用表单的形式，或者也可以针对上传接口发送请求
+
+表单
+
+123456&lt;form action="http://127.0.0.1:5000/" enctype="multipart/form-data"&gt;    &lt;input type="file" name="toupdate"/&gt;		# file的input不允许设置value    &lt;input type="submit" value="上传咯" /&gt;	      # 按钮显示的文字&lt;/form&gt;# action为表单要提交到的路径, 必须 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/05/前后端-实现上传和下载/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

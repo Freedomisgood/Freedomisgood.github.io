@@ -97,42 +97,67 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/10/07/蒙特卡洛树搜索MCTS/">蒙特卡洛树搜索MCTS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-07T09:18:02.000Z">2019-10-07</time><i class="fa fa-edit"></i><time datetime="2019-10-07T09:18:02.000Z">2020-12-06</time></div><div class="recent-post-content">
-                            .mjpage .MJX-monospace {
-                            font-family: monospace
-                            }
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/09/08/数据结构——单调栈/">数据结构——单调栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-08T11:25:38.000Z">2020-09-08</time><i class="fa fa-edit"></i><time datetime="2020-09-08T11:25:38.000Z">2022-03-08</time></div><div class="recent-post-content">
+秋季PAT的第一题就是单调栈，之前没怎么学过， 因此这次专门学习做下笔记。
 
-                            .mjpage .MJX-sans-serif {
-                            font-family: sans-serif
-                            }
+ 单调栈Monotone Stack
+ 概念:
+从行为上看，它不仅仅是用存储与访问受限的栈，而是一种辅助工具，用于检测数据的单调性变化并作出反应（表现: 当入栈元素会影响栈总体单调性时，要出栈一些元素以维持单调性）
+ 场景：
 
-                            ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/10/07/蒙特卡洛树搜索MCTS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/24/PAT冲冲冲——甲级/">PAT冲冲冲——甲级</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-24T10:30:45.000Z">2019-10-24</time><i class="fa fa-edit"></i><time datetime="2019-10-24T10:30:45.000Z">2020-10-08</time></div><div class="recent-post-content"> PAT冲冲冲——甲级
+向左or向右找到第一个稍大（小）的元素、其索引下标；
+确定某条件（单调）下的最长区间；
+确定区间构成的极值，如max f（la，b]）；
 
-PAT甲10级练习题 ——PAT (Advanced Level) Practice 
-PAT甲级(Advanced Level)真题
-柳婼 の blog经验
-saquarius’s blog
-PAT甲级题目及分类总结
-pat甲级题解目录
+ Point：
+单调递增栈: 指栈内元素的出栈序列递增（或递减），而栈内元素是递减（或递增），即当元素比栈顶小的时候入栈。因此需要输出下一个最大的元素。 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2020/09/08/数据结构——单调栈/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/15/重拾Java笔记/">重拾Java笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-15T02:22:04.000Z">2020-05-15</time><i class="fa fa-edit"></i><time datetime="2020-05-15T02:22:04.000Z">2021-12-01</time></div><div class="recent-post-content"> 重拾Java笔记
 
-PAT考试经验总结（甲乙级均适用）想满分的请看这里！——前人经验
+工作主要用Java, 因此开始准备Java基础再补补。根据小猴子1024-JAVA基础整理笔记
+
+ 命名规范:
+
+没怎么写， 所以一直忘， 这次写在最前面， 便于翻阅。
+
+大驼峰命名（UpperCamelCase）：每个单词的第一个字母大写，其他字母小写。e.g.MyException
+小驼峰命名（lowerCamelCase）：如果仅有一个单词，那么所有字母全部小写，如果是两个及以上的单词组成的名称，那么除了第一个单词是全部小写外，其他都是的首字母大写，其他字母小写。e.g.getMyName
+
+1.1 包的命名
+包的命名由全部小写的单词组成。一般使用公司的域名的作为自 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a></div><div class="read-more"><a class="more" href="/2020/05/15/重拾Java笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/04/20/剑指Offer-leetcode刷题记录/">剑指Offer_leetcode刷题记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-04-20T05:10:13.000Z">2020-04-20</time><i class="fa fa-edit"></i><time datetime="2020-04-20T05:10:13.000Z">2021-01-24</time></div><div class="recent-post-content">
+由于临近春招末期，时间比较紧，就不记录思考过程了，直接贴AC代码。以后有空补上
+代码大多用C++，仅是过而已，没有进行优化。
+
+ 面试题03. 数组中重复的数字
+12345678910111213141516class Solution &#123;public:    int findRepeatNumber(vector&lt;int&gt;&amp; nums) &#123;        std::ios::sync_with_stdio(false);        int size = nums.size();        if (size &lt;0 ) return 0;  ...</div><div class="read-more"><a class="more" href="/2020/04/20/剑指Offer-leetcode刷题记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/04/SQL练习/">SQL练习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-04T07:54:57.000Z">2020-09-04</time><i class="fa fa-edit"></i><time datetime="2020-09-04T07:54:57.000Z">2020-11-08</time></div><div class="recent-post-content"> SQL练习
+
+鉴于同学被字节狂问SQL题，因此也激发了我的危机感。 作为非科班的， 写SQL还是比较慌的， 因此做下专题训练。
+
+ 理论知识:
+SQL语句执行顺序
+ 1.sql执行顺序 
+12345678910(1) from (3) join (2) on (4) where (5) group by(开始使用select中的别名，后面的语句中都可以使用)(6) avg,sum.... (7) having (8) select (9) distinct (10) order by
+2.sql语句执行顺序
+12345678910(8) SELECT (9)DISTINCT&lt;selec ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="SQL"> SQL</a></div><div class="read-more"><a class="more" href="/2020/09/04/SQL练习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/03/23/VsCode配置Latex(texLive)环境/">VsCode环境、配置Latex(texLive)</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-03-23T07:04:53.000Z">2020-03-23</time><i class="fa fa-edit"></i><time datetime="2020-03-23T07:04:53.000Z">2020-09-17</time></div><div class="recent-post-content">
+写在前面: 除了配置VsCode以外， 我还配置了Sublime，一开始是不想用SumatraPDF，以为能省的。事实上，Vscode也确实提供了三种方法：在web browser、编辑器tab、外部PDF阅读器，共三种办法。个人感觉tab界面太小、浏览器查看毕竟还是没有PDF舒服，最后都体验下来还是选择了外部阅读器，而且SumatraPDF支持正向、反向搜索，挺香的。当然，还有种做法是把PDF编译出来以后，再用日常使用的阅读器打开PDF阅读也是可以的，我个人平时用福昕PDF阅读器会多一点
+SumatraPDF阅读器是个非常轻量级的PDF阅读器，开源轻巧，免安装，共14.6MB。要想配套使用 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2020/03/23/VsCode配置Latex(texLive)环境/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/15/docsify使用记录/">docsify使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-15T02:30:43.000Z">2020-09-15</time><i class="fa fa-edit"></i><time datetime="2020-09-15T02:30:43.000Z">2020-09-15</time></div><div class="recent-post-content"> Docsify 是什么？
+Docsify 一个神奇的动态生成文档网站的工具。
+不同于 GitBook、Hexo 的地方是它不会生成将 .md 转成 .html 文件，所有转换工作都是在运行时进行。
+较多使用的场景是GitHub中对某一开源程序的文档介绍，由于docsify的主题较为好看， 且轻量、易使用，因此使用也较为广泛。同时它也支持很多插件来丰富功能。但跟Hexo相比，个人感官上Hexo更适合做个人博客， 而docsify更适合专门来写程序的介绍文档
 
 
-▲报名费256，可以刷牛客网的题来获得-50的优惠券，该练习场下的所有题目只要通过都算
- 甲级练习题
-
-由于甲级题目较多，也较难，因此决定还是将两者分开写两篇文章了。
-
-    1001 A+B Format (20 分)
-
-看似很简单的一道题，但坑点确实不少， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/10/24/PAT冲冲冲——甲级/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/07/ACM-树状数组和线段树/">ACM-树状数组和线段树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-07T05:04:53.000Z">2019-12-07</time><i class="fa fa-edit"></i><time datetime="2019-12-07T05:04:53.000Z">2020-09-12</time></div><div class="recent-post-content">高性能问题：
+春招的时候背了很多的面经， 只不过秋招回头来看基本上又都记不太清了，于是想自己整理些面经笔记啥的。 之前也试过在个人博客上发表， 只不 ...</div><div class="read-more"><a class="more" href="/2020/09/15/docsify使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/07/ACM-树状数组和线段树/">ACM-树状数组和线段树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-07T05:04:53.000Z">2019-12-07</time><i class="fa fa-edit"></i><time datetime="2019-12-07T05:04:53.000Z">2020-09-12</time></div><div class="recent-post-content">高性能问题：
 Q：需求：（老板给你分了台2GHz单核，内存500M的服务器然后让你写程序）程序每秒会收到一组数据，每组数据包含10万条命令，总共会有100万个仓库，每个仓库库存没有上限且可为负，库存初始为0。你需要在一秒内完成全部的命令，然后将查询结果按顺序得出后传回，命令如下：
 
 Add i j，i和j为正整数，表示第i个仓库增加j个库存（j不超过220）
 Sub i j，i和j为正整数，表示第i个仓库减少个库存（j不超过220）
 Query i j，i和j为正整数，i&lt;=j，表示询问第i到第个仓库的总库存；End 表示结束，这条命令在每组数据最后出现；
 
-思路一：用array去存储每 ...</div><div class="read-more"><a class="more" href="/2019/12/07/ACM-树状数组和线段树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/02/02/PAT冲冲冲——乙级/">PAT冲冲冲——乙级</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-02-02T08:26:41.000Z">2020-02-02</time><i class="fa fa-edit"></i><time datetime="2020-02-02T08:26:41.000Z">2020-09-05</time></div><div class="recent-post-content"> PAT冲冲冲——乙级
+思路一：用array去存储每 ...</div><div class="read-more"><a class="more" href="/2019/12/07/ACM-树状数组和线段树/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/06/扇区、块-簇/">扇区、块/簇</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-06T06:29:31.000Z">2020-09-06</time><i class="fa fa-edit"></i><time datetime="2020-09-06T06:29:31.000Z">2020-09-06</time></div><div class="recent-post-content"> 扇区
+概念： 扇区，顾名思义，每个磁盘有多条同心圆似的磁道，磁道被分割成多个部分。每部分的弧长加上到圆心的两个半径，恰好形成一个扇形，所以叫做扇区。扇区是磁盘中最小的物理存储单位。
+ 扇区大小: 512B -&gt; 4KB
+扇区(Sector)大小是固定的，默认情况下，每个扇区（Sector）为512字节，2009年后，硬盘厂商开始发布4KB字节扇区的硬盘了，4KB扇区硬盘已经在消费级市场广泛应用。但是同一块硬盘上的扇区大小一定是一致的。不可能存在多种不同大小的扇区。
+ 逻辑扇区、物理扇区
+物理扇区是磁盘上真实存在对应的扇区；
+逻辑扇区是由于扇区大小由512B变成4KB后， 为了与老系统兼 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/09/06/扇区、块-簇/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/02/02/PAT冲冲冲——乙级/">PAT冲冲冲——乙级</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-02-02T08:26:41.000Z">2020-02-02</time><i class="fa fa-edit"></i><time datetime="2020-02-02T08:26:41.000Z">2020-09-05</time></div><div class="recent-post-content"> PAT冲冲冲——乙级
 
 PAT甲级练习题 ——PAT (Advanced Level) Practice 
 PAT甲级(Advanced Level)真题
@@ -145,15 +170,30 @@ pat甲级题解目录
  乙级练习题
  NowCoder数列
 
-没想到第二题就是考了个数据范围，由于0≤n≤1000000，所以F(n)必然比long long大，而判断3的倍数可表示为===&gt; F(n) % 3 —&gt; (F(n-1)%3 + F(n-2)%3 ...</div><div class="read-more"><a class="more" href="/2020/02/02/PAT冲冲冲——乙级/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax-极小极大算法——2048/">MinMax-极小极大算法——2048</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:46:41.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:46:41.000Z">2020-02-04</time></div><div class="recent-post-content"> MinMax-极小极大算法——2048
- 算法介绍
- MinMax
+没想到第二题就是考了个数据范围，由于0≤n≤1000000，所以F(n)必然比long long大，而判断3的倍数可表示为===&gt; F(n) % 3 —&gt; (F(n-1)%3 + F(n-2)%3 ...</div><div class="read-more"><a class="more" href="/2020/02/02/PAT冲冲冲——乙级/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/24/getBargains的record和Solution/">getBargains的record和Solution</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-24T08:44:25.000Z">2020-05-24</time><i class="fa fa-edit"></i><time datetime="2020-05-24T08:44:25.000Z">2020-05-31</time></div><div class="recent-post-content">
+该篇为**getBargains**仓库README.md直接搬运，记录一些appnium和andriod 10碰到的问题
 
-大家在编程的时候应该或多或少都接触到过这样的写法:min(max(xxx,yyy))，MinMax算法的表达形式就是如此，不过其中的Min和Max都是具有对应含义的。
+ 自动拿券
 
-一般解决博弈类问题的自然想法是将格局组织成一棵），树的每一个节点表示一种格局，而父子关系表示由父格局经过一步可以到达子格局。Minimax也不例外，它通过对以当前格局为根的格局树搜索来确定下一步的选择。而一切格局树搜索算法的核心都是对每个格局价值的评价。Minimax算法基于以下朴素思想确定格局价值：
+通过别人发的口令, 打开淘宝APP进行抢券
 
-Minimax是一种悲观算法，即假设对手每一步都会将 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/11/26/MinMax-极小极大算法——2048/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/25/sshpass——shell脚本实现SSH连接其他主机并执行终端命令/">sshpass——shell脚本实现SSH连接其他主机并执行终端命令</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-25T09:29:08.000Z">2019-12-25</time><i class="fa fa-edit"></i><time datetime="2019-12-25T09:29:08.000Z">2019-12-25</time></div><div class="recent-post-content"> sshpass
+ 1.itchat接收群消息
+ 2.将口令复制到剪贴板
+ 3.打开淘宝APP点击抢券
+ 碰到的问题:
+
+
+出现如下警告:Warning: Activity not started, its current task has been brought to the front or Warning: Activity not started, intent has been delivered to curre ...</div><div class="read-more"><a class="more" href="/2020/05/24/getBargains的record和Solution/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/04/29/华为春招4-29笔试题/">华为春招4.29笔试题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-04-29T14:43:54.000Z">2020-04-29</time><i class="fa fa-edit"></i><time datetime="2020-04-29T14:43:54.000Z">2020-04-29</time></div><div class="recent-post-content"> 4.29三道笔试题：
+
+做了其他大厂的笔试题后，好像确实华为的稍微简单点。只不过其他的笔试题是有模拟题的，华为的这三道题基本上都是DFS
+
+ A：
+
+带有重复元素的全排列问题，求不重复的排列数。以下做法50%, TLE了。正确做法是直接用公式计算
+
+123456789101112131415161718192021222324252627282930'''@Author: Mrli@Date: 2020-04-29 20:23:34@LastEditTime: 2020-04-29 21:24:40@Description: '''s = input().strip()ans = list( ...</div><div class="read-more"><a class="more" href="/2020/04/29/华为春招4-29笔试题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/03/04/算法笔记Codeup题解/">算法笔记Codeup题解</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-03-04T06:21:49.000Z">2020-03-04</time><i class="fa fa-edit"></i><time datetime="2020-03-04T06:21:49.000Z">2020-03-04</time></div><div class="recent-post-content"> 100000612 - 《算法笔记》9.3小节——数据结构专题(2)-&gt;树的遍历
+ 问题 A: 树查找
+1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;bits/stdc++.h&gt;using namespace std;const int MAXN = 1e3 + 5;int arr[MAXN];typedef long long ll;ll fast_pow(int d, int base)&#123;    int n = d;    ll res =  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2020/03/04/算法笔记Codeup题解/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/12/25/sshpass——shell脚本实现SSH连接其他主机并执行终端命令/">sshpass——shell脚本实现SSH连接其他主机并执行终端命令</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-12-25T09:29:08.000Z">2019-12-25</time><i class="fa fa-edit"></i><time datetime="2019-12-25T09:29:08.000Z">2019-12-25</time></div><div class="recent-post-content"> sshpass
 
 ssh登陆不能在命令行中指定密码。sshpass的出现，解决了这一问题。即sshpass可以用于非交互SSH的密码验证，一般用在sh脚本中，无须再次输入密码。
 
@@ -228,23 +268,7 @@ G的任一个最大权匹配M，边满足w（xy）≤l（x）+（y）→M边权�
 
 
 当前弧优化(作用不明显)
-12345678910111213141516171819202122232425262728// 最原始int dfs(int no ...</div><div class="read-more"><a class="more" href="/2019/12/08/ACM-网络流/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/24/Python网络编程Websocket/">Python网络编程Websocket</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-24T02:17:11.000Z">2019-11-24</time><i class="fa fa-edit"></i><time datetime="2019-11-24T02:17:11.000Z">2019-11-28</time></div><div class="recent-post-content"> 网络知识——Websocket
-
-
-TCP ：面向连接—&gt; 打电话(相互回复,一来一回)，客户端向服务器端 拨号 , 三次握手 ,
-
-
-UDP : 面向无连接 --&gt; 寄快递(寄出去就不管了) e.g.直播
-
-
-UDP四层结构
-
-网络访问层(链路层):  物理连接设备(网线)、MAC地址（物理地址）
-互联网层： IP地址（定位设备）
-传输层： port (端口号) : 表示通信进程,将数据交给哪个应用处理
-应用层： 自己定义的协议（处理字符串消息的方法）
-
-套接字(socket) ： 特殊的设备文件 ， 写网络应用程序的接口，写入后就是发送，接收就是读取。 类似于 esp8266 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/11/24/Python网络编程Websocket/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/PIL的Image笔记/">PIL的Image笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T10:06:58.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T10:06:58.000Z">2019-11-26</time></div><div class="recent-post-content"> PIL的Image学习
+12345678910111213141516171819202122232425262728// 最原始int dfs(int no ...</div><div class="read-more"><a class="more" href="/2019/12/08/ACM-网络流/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/PIL的Image笔记/">PIL的Image笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T10:06:58.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T10:06:58.000Z">2019-11-26</time></div><div class="recent-post-content"> PIL的Image学习
  transpose和rotate
 
 transpose
@@ -256,41 +280,4 @@ rotate
 123456from PIL import Imageimg = getCaptcha()# expand默认为False时,超出原有尺寸的部分将用黑色填充,不会拓展尺寸img = img.rotate(45)# expand为True时,会根据图片大小,拓展尺寸img = img.rotate(45,expand=Tru ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程笔记"> 编程笔记</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="科学计算"> 科学计算</a></div><div class="read-more"><a class="more" href="/2019/11/26/PIL的Image笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/2019年8月23号运维笔记/">2019年8月23号运维笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:50:55.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:50:55.000Z">2019-11-26</time></div><div class="recent-post-content"> 2019年8月23号运维笔记
  docker
  docker stop containerID，以后再重新启动时报错
-1Error response from daemon: driver failed programming external connectivity on endpoint app (3c0c01ac6b42b7a420644fc2b4debfbbcc0e1d2e74e6294155c28aca82f794c4):  (iptables failed: iptables --wait -t nat -A DOCKER -p tcp -d 0/0 --dport 12345 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程笔记"> 编程笔记</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a></div><div class="read-more"><a class="more" href="/2019/11/26/2019年8月23号运维笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/app测试/">app测试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:49:58.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:49:58.000Z">2019-11-26</time></div><div class="recent-post-content"> app测试
- 命令
-adb shell monkey 500随机执行500次
-adb shell pm list packages -3 查看第三方包
-adb shell monkey -p tv.danmaku.bili指定在某个软件中随机压力测试
-adb shell monkey -p tv.danmaku.bili -p com.umaman.laiyifen 500会先执行来伊份
-▲.在测试应用程序某些选项的同时，也会进行系统级功能的测试，如截图、调音量等
-adb shell monkey [-options] times
- 参数说明
-1234567-s seed种子值：种子相同时， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="测试"> 测试</a></div><div class="read-more"><a class="more" href="/2019/11/26/app测试/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/2019-9月7号C-编程笔记/">2019-9月7号C++编程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:47:55.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:47:55.000Z">2019-11-26</time></div><div class="recent-post-content"> 2019-9月7号C++编程笔记
- auto
-定义变量时放在变量前，无需知道具体变量类型，系统可自行推断类型，减少编程工作，特别是在模板使用时，使用更方便。
-123456789101112131415161718auto a=1;auto b='a';auto s="abdc";auto c;//这样使用时错误的，系统无法自动推断出变量类型//下面为迭代指针使用，很方便vector&lt;int&gt; vec;auto it=vec.begin();/**模板使用案例*/template&lt;typename InputIterator&gt;    TreeNode *creatTre ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程笔记"> 编程笔记</a></div><div class="read-more"><a class="more" href="/2019/11/26/2019-9月7号C-编程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/26/MinMax和Alpha-beta剪枝分析-转/">MinMax和Alpha-beta剪枝分析[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-26T07:45:45.000Z">2019-11-26</time><i class="fa fa-edit"></i><time datetime="2019-11-26T07:45:45.000Z">2019-11-26</time></div><div class="recent-post-content"> MinMax和Alpha-beta剪枝分析[转]
-
-一般解决博弈类问题的自然想法是将格局组织成一棵），树的每一个节点表示一种格局，而父子关系表示由父格局经过一步可以到达子格局。Minimax也不例外，它通过对以当前格局为根的格局树搜索来确定下一步的选择。而一切格局树搜索算法的核心都是对每个格局价值的评价。Minimax算法基于以下朴素思想确定格局价值：
-
-Minimax是一种悲观算法，即假设对手每一步都会将我方引入从当前看理论上价值最小的格局方向，即对手具有完美决策能力。因此我方的策略应该是选择那些对方所能达到的让我方最差情况中最好的，也就是让对方在完美决策下所对我造成的损失最小。
-Mini ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/11/26/MinMax和Alpha-beta剪枝分析-转/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/">第二十八届“和巨耀通杯”南京邮电大学在线测评系统程序设计邀请赛--</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-11-17T09:43:56.000Z">2019-11-17</time><i class="fa fa-edit"></i><time datetime="2019-11-17T09:43:56.000Z">2019-11-17</time></div><div class="recent-post-content"> 第二十八届“和巨耀通杯”NOJ邀请赛
-
-三人团队赛， 正好最近在刷PTA， 于是一个人报名尝试了一下。
-一共AC了三题， Rank28
-
- C. Battle game
-
-签到题
-
-Description:
-You are playing a game which you will battle with an enemy. As you don’t want to lose, your total power can’t be lower than your enemy’s. Your power is simply added by the power of your soldiers, ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Algorithm"> Algorithm</a></div><div class="read-more"><a class="more" href="/2019/11/17/第二十八届“和巨耀通杯”NOJ邀请赛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/18/软件测试笔记/">软件测试笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-18T13:03:29.000Z">2019-10-18</time><i class="fa fa-edit"></i><time datetime="2019-10-18T13:03:29.000Z">2019-11-02</time></div><div class="recent-post-content"> 软件测试笔记
- 移动应用测试
- appnium使用
-
-安装的是appnium-desktop,没有教程中所说的Appium/node_modules/.bin/路径，使用命令行输入appnium和appium-doctor也都没啥反应，后来索性没管，直接跑代码
-
- 真机测试
-使用的时候报错Build info: version: 'unknown', revision: 'unknown', time: 'unknown'，以为是appnium版本的问题，第一次安装的是1.13，后来换成了1.9，其实没多大区别，只不过据说要保证版本在1.6以上。
-更换版本后，发现还是Build info:  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></div><div class="read-more"><a class="more" href="/2019/10/18/软件测试笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/15/玩玩Stm32/">玩玩Stm32</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-15</time><i class="fa fa-edit"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-18</time></div><div class="recent-post-content"> 玩玩Stm32
- 文件结构
-12345678910111213141516G:.├───CORE	# startup_stm32f10x_hd.s汇编编写的启动文件|			# core_cm3.c底层函数├───HARDWARE	# 相关外设的初始化代码├───OBJ├───STM32F10x_FWLib	# 固件库包: GPIO/i2c/...│   ├───inc│   └───src├───SYSTEM			# 正点原子提供的常用、通用模块│   ├───delay│   ├───sys│   └───usart└───USER # stm32f10x_it.c 中断管理文件    | ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/15/玩玩Stm32/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/4/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/6/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+1Error response from daemon: driver failed programming external connectivity on endpoint app (3c0c01ac6b42b7a420644fc2b4debfbbcc0e1d2e74e6294155c28aca82f794c4):  (iptables failed: iptables --wait -t nat -A DOCKER -p tcp -d 0/0 --dport 12345 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程笔记"> 编程笔记</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a></div><div class="read-more"><a class="more" href="/2019/11/26/2019年8月23号运维笔记/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/4/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -97,232 +97,85 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Sublime-Text3-Python虚拟环境（补充）——解决控制台中文乱码情况/">Sublime Text3 Python虚拟环境（补充）——解决控制台中文乱码情况</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:52:35.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:52:35.000Z">2021-12-27</time></div><div class="recent-post-content">转自：edwardgui的博客
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/">python pywin32 PyUserInput实现自动化脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-08-31T11:43:00.000Z">2018-08-31</time><i class="fa fa-edit"></i><time datetime="2018-08-31T11:43:00.000Z">2020-11-07</time></div><div class="recent-post-content"> python pywin32 PyUserInput实现自动化脚本
+pywin32用spy++工具查找到句柄，再结合PyUserInput就能很好地实现自动化脚本。
 
-正常的用python编译控制台是不会出现乱码的，但是在使用虚拟环境的情况下中文总是乱码，一开始以为是windows控制台编码的问题。找了挺久后发现是python+virtualenv编译系统的问题，现在我就带领大家解决这个问题。
+句柄是一个32位整数，在windows中标记对象用，类似一个dict中的key，详情参看这篇文章。
 
- ▲注：Windows环境下
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2018/08/31/python-win32api-win32gui-win32con-PyUserInput实现自动化脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/">解决安装PyUserInput、pyHook遇到的问题——AttributeError: 'HookManager' object has no attribute 'keyboard_hook</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-02T11:33:32.000Z">2018-09-02</time><i class="fa fa-edit"></i><time datetime="2018-09-02T11:33:32.000Z">2019-09-15</time></div><div class="recent-post-content">安装PyUserInput失败。
 
-首先看下是否已经安装了Virtualenv package插件，如果没有，则Ctrl+Shift+P，install Package,输入Virtualenv安装。
-找到插件安装的地方：C:\Users{Username}\AppData\Roaming\Sublime Text 3\Installe ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a></div><div class="read-more"><a class="more" href="/2018/10/24/Sublime-Text3-Python虚拟环境（补充）——解决控制台中文乱码情况/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/网络宽带和网络延迟/">网络宽带和网络延迟</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T08:42:27.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T08:42:27.000Z">2020-11-28</time></div><div class="recent-post-content"> 网络宽带和网络延迟
-网络带宽，网络延迟是2个概念（网络延迟往往更容易被忽略！）
-国内大陆 建立在互联网基础上 很多对延迟性要求比较高的应用，体验效果都不如人意。比如高清晰度网络电视、在线视频语音实时业务（qq、skype） 某些在线游戏 等等。
-最简单的例子：如果ping某个网站，高于50ms的网站，打开就慢。10-30ms的网站，打开就比较快。
-如果都是同一个宽带服务商，即使升级到10M 20M 100M的宽带，这种网络延迟情况，短时间内应该也不会有改善
-1、“下载电影这种活儿就看带宽，不在乎服务器发出数据后晚几秒钟收到，传输层有“窗口协议”，不必等到上一段数据的应答再传下一段数据，可以看 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/网络宽带和网络延迟/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/04/高科GSWIFI江苏破解教程/">高科GSWIFI江苏破解教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-04T02:06:34.000Z">2018-11-04</time><i class="fa fa-edit"></i><time datetime="2018-11-04T02:06:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 1.重置路由器设置
+经查看发现是pyHook（pyHook是一个用来进行键盘、鼠标等层面事件监控的库。这个库的正常工作需要pythoncom等操作系统的API的支持。）无法安装，不知道是不是因为这个库可以被用于一些比较邪恶的目的。经搜索发现直接pip install pyHook是找不到相关包的，但可以下源码编译安装，可以在 https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyhook 这里可以直接下载到.whl文件，这个文件可以作为pip install 的参数来进行安装。
 
-为了以防之前其他人已经设置过某些东西,可能会影响到之后的使用，所以干脆直接重置。
+直接输入pip install pyHook-1.5.1-c ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2018/09/02/解决安装PyUserInput、pyHook遇到的问题——AttributeError-HookManager-object-has-no-attribute-keyboard-hook/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/20/电信路由器上网/">电信路由器上网</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-20T02:01:16.000Z">2018-09-20</time><i class="fa fa-edit"></i><time datetime="2018-09-20T02:01:16.000Z">2019-09-15</time></div><div class="recent-post-content">
+链接: https://pan.baidu.com/s/1QaW7DMhjb2YHd0ZVWterSw
+密码：联系QQ1063052964,或是在下方评论处留言QQ
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2018/09/20/电信路由器上网/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/02/开学小蓝车180天免费卡/">开学小蓝车180天免费卡</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-02T08:44:54.000Z">2018-09-02</time><i class="fa fa-edit"></i><time datetime="2018-09-02T08:44:54.000Z">2019-09-15</time></div><div class="recent-post-content"><p>各位看客老爷,可以加下我的公众号哦!虽然没啥东东…微信搜索公众号&quot;我只要瓶果粒橙就好&quot;</p>
+<p>原来是180天的,现在好像只有30还是60天了…</p></div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2018/09/02/开学小蓝车180天免费卡/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/20/小程序蓝牙API/">小程序蓝牙</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-20T02:57:01.000Z">2018-09-20</time><i class="fa fa-edit"></i><time datetime="2018-09-20T02:57:01.000Z">2019-09-15</time></div><div class="recent-post-content"> 提供蓝牙模块API
+ wx.openBluetoothAdapter(OBJECT)
+​	初始化小程序蓝牙模块
+ wx.closeBluetoothAdapter(OBJECT)
+​	关闭蓝牙模块，使其进入未初始化状态。
+ wx.getBluetoothAdapterState(OBJECT)
+​	获取本机蓝牙适配器状态
+ wx.onBluetoothAdapterStateChange(CALLBACK)
+​	监听蓝牙适配器状态变化事件
+ wx.startBluetoothDevicesDiscovery(OBJECT)
+​	开始搜寻附近的蓝牙外围设备。注意，该操作比较耗费系统资源，请在搜 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="微信小程序"> 微信小程序</a></div><div class="read-more"><a class="more" href="/2018/09/20/小程序蓝牙API/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/20/小程序入门学习/">小程序入门学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-20T01:57:01.000Z">2018-09-20</time><i class="fa fa-edit"></i><time datetime="2018-09-20T01:57:01.000Z">2019-09-15</time></div><div class="recent-post-content"> IDE搭建:
+下载:微信公众平台官网
+ 预备知识:
 
- 2.连接路由器电源,不用插任何的wan口或者lan口
+个人认为入门小程序相对比较简单,需要了解HTML+CSS 大概知道是干啥的就行,JavaScrip还是要看看的，推荐教程 廖雪峰的博客以及W3Cschool的JS教程
 
-P.S.如果第二步,手机和电脑无法直接通过IP地址进入管理界面的话,可以考虑将 网线一头插入2号口,一头插入电脑的插口 , 然后再通过IP地址进入管理界面
+ 项目目录结构介绍:
 
- 3.登录路由器管理界面
-▲注意： 大多数路由器的管理界面IP地址为 192.168.1.1或者192.168.100.1,虽然高科路由器后面贴纸上说明的IP地址是192.168.8.1,但是那个不是初始的IP,需要自己设置到192.168.8.1.
-如下是我已经修改好的IP ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2018/11/04/高科GSWIFI江苏破解教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/复制Django项目时需要注意、修改的地方/">复制Django项目时需要注意、修改的地方</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:25:37.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:25:37.000Z">2019-09-15</time></div><div class="recent-post-content"> 复制Django项目:
 
-manage.py中需要修改的地方
+小程序中一共有四种类型的文件:
 
-1os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;window.settings&quot;)
+js ---------- JavaScrip文件
+json -------- 项目配置文件，负责窗口颜色等等
+wxml ------- 类似HTML文件
+wxss ------- 类似CSS文件
 
-settings.py中需要修改的地方
 
-12345&quot;&quot;&quot;Django settings for window project.&quot;&quot;&quot;ROOT_URLCONF = &apos;window.urls&apos;WSGI_APPLICATION = &apos;window.wsgi.applic ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Django"> Django</a></div><div class="read-more"><a class="more" href="/2018/10/24/复制Django项目时需要注意、修改的地方/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/XShell通过SSH远程连接云服务器/">XShell通过SSH远程连接云服务器通过SSH远程连接云服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:32:05.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:32:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 1.账号密码登录
- 法一:
+ 重要文件-APP讲解:
 
 
+app.json(必需) :监听并处理小程序的生命周期函数、声明全局变量。
 
 
+a ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="微信小程序"> 微信小程序</a></div><div class="read-more"><a class="more" href="/2018/09/20/小程序入门学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏，救济金发放/">例题4:1-3 古老的密码、刽子手的游戏，救济金发放</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-01T10:46:59.000Z">2018-09-01</time><i class="fa fa-edit"></i><time datetime="2018-09-01T10:46:59.000Z">2019-09-15</time></div><div class="recent-post-content"> 例题4-1 古老的密码
 
- 法二:
 
+因为字母可以重排,所以顺序不重要,而又同时因为可以映射,所以字母具体是什么不重要==&gt;只要统计排序后的结果相同就行了
+RE(Runtime error)错法加一: 题号提交错误
 
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="服务器"> 服务器</a></div><div class="read-more"><a class="more" href="/2018/10/24/XShell通过SSH远程连接云服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/">WSGI uWSGI uwsgi及nginx说明</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T07:50:12.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T07:50:12.000Z">2019-09-15</time></div><div class="recent-post-content"> 客户端发出请求==&gt;服务器接受、处理请求与响应 的过程示意图
 
- 1. WSGI：
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include &lt;stdio.h&gt;#include &lt;string.h&gt;void Bubblesort(int *cnt)//冒泡排序,从大到小顺序&#123;    ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM竞赛入门"> ACM竞赛入门</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C"> C</a></div><div class="read-more"><a class="more" href="/2018/09/01/例题4-1-3-古老的密码、刽子手的游戏，救济金发放/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/">WampSever配置本地环境，解决打开打开本地网站问题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-01T06:19:39.000Z">2018-09-01</time><i class="fa fa-edit"></i><time datetime="2018-09-01T06:19:39.000Z">2019-09-15</time></div><div class="recent-post-content"><p><img src="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/v2-1d83ff5569ea18de71d329033fb91131_r.jpg" alt="What's WAMP"></p></div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="WAMP"> WAMP</a></div><div class="read-more"><a class="more" href="/2018/09/01/WampSever配置本地环境，解决打开打开本地网站问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/">Ubuntu下Sublime配置Python环境使用指导:</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-01T06:04:47.000Z">2018-09-01</time><i class="fa fa-edit"></i><time datetime="2018-09-01T06:04:47.000Z">2019-09-15</time></div><div class="recent-post-content"><p><img src="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/v2-e120837a2c6bb4df19299c085c8c7cf1_r.jpg" alt="Sublime Text"></p></div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Sublime Text"> Sublime Text</a></div><div class="read-more"><a class="more" href="/2018/09/01/Ubuntu下Sublime配置Python环境使用指导/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/09/02/Spy-使用介绍/">Spy++使用介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-09-02T11:39:45.000Z">2018-09-02</time><i class="fa fa-edit"></i><time datetime="2018-09-02T11:39:45.000Z">2019-09-15</time></div><div class="recent-post-content">
+Spy++ (SPYXX.EXE) 是一个基于 Win32 的实用工具，它提供系统的进程、线程、窗口和窗口消息的图形视图。使用 Spy++ 可以执行下列操作： 显示系统对象（包括进程、线程和窗口）之间关系的图形树。 搜索指定的窗口、线程、进程或消息。 查看选定的窗口、线程、进程或消息的属性。
 
-全称是Web Server Gateway Interface(服务器网关接口)。WSGI不是服务器，python模块，框架，API或者任何软件，只是一种规范( 是一个**Web服务器（如nginx）与应用服务器（如uWSGI）**通信的一种规范（协议）==&gt; 可以理解为服务器与应用程序通信的接口规范要求)，描述web server如何与web application通信的规范。server和application的规范在PEP 3333中有具体描述。因为WSGI没有官方的实现, 所以WSGI更 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/28/Windows-控制台Cmd乱码（及永久修改编码）解决方法/">Windows控制台Cmd乱码（及永久修改编码）解决方法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-28T08:42:20.000Z">2018-10-28</time><i class="fa fa-edit"></i><time datetime="2018-10-28T08:42:20.000Z">2019-09-15</time></div><div class="recent-post-content">我本机的系统环境：`OS Name: Microsoft Windows 10 家庭中文版
- Windows 控制台Cmd乱码的解决办法(一次性)
-在cmd中输入 CHCP 65001
+我们可以使用微软的Spy++来查看窗口类名等信息，然后再结合pywin32实现。
+ 加载初始界面:
 
-注：CHCP是一个计算机指令，能够显示或设置活动代码页编号。
-代码页  描述
+ 然后点击工具栏的望远镜。如图所示:
 
+ 出现搜索窗口，然后通过移动靶心到想要查找句柄的窗口后单击就行了。==&gt;它的句柄、标题、类都会显示
 
-65001   UTF-8代码页
+再点击确定。
+此时会有两种情况。
 
+成功搜索到
+搜索 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2018/09/02/Spy-使用介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/08/30/Python字典基本操作介绍/">Python字典基本操作介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-08-30T13:14:27.000Z">2018-08-30</time><i class="fa fa-edit"></i><time datetime="2018-08-30T13:14:27.000Z">2019-09-15</time></div><div class="recent-post-content"> 创建字典
 
-950 繁体中文
+info={}
+info=dict()
 
 
-936 简体中文默认的GBK
+ 初始化字典
+ 法一
+123key = &apos;name&apos;info = &#123; key :&apos;cold&apos;&#125;==&#123;&apos;name&apos;:&apos;cold&apos;&#125;
+ 法二
+12info = dict(key = &apos;cold&apos;)==&#123;&apos;key&apos;:&apos;cold&apos;&#125;
+ 法三
+1#还有可以使用dict(zip(a,b))其中a,b都是列表,会生成以A中元素为键,B中元素为值的字典
 
-
-437 MS-DOS 美国英语
-
-
-
-但是通过CHCP设置编码是治标不治本的,想永久的更改cmd编码值需要修改注册表
- Windows 控制台Cmd乱码的解决办法(永久性)
- 方法一：
-1.在cmd中输入regedit进入注册表
-2.找 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2018/10/28/Windows-控制台Cmd乱码（及永久修改编码）解决方法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/07/ServerChan-南邮教务处/">ServerChan+南邮教务处</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-07T09:32:10.000Z">2018-11-07</time><i class="fa fa-edit"></i><time datetime="2018-11-07T09:32:10.000Z">2019-09-15</time></div><div class="recent-post-content"> SeverChan_Nyedu
-Crawl the infomation about competitons, when new infos comes, remind people on Wechat by ServerChan:
-😍该程序通过爬取南邮教务处,将当前时间与最新时间进行匹配,如果是当日则通过ServerChan发送到本人的微信,提醒有新的竞赛.
- 完成笔记:
- 1.关于lxml中etree.xpath()对于tbody的处理
-
-该网页通过table对页面进行分布设置,其中table标签会自动生成tbody标签,如图…此时用xpath进行匹配的时候就不需要将tbody加上,否 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/07/ServerChan-南邮教务处/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——请求/">Python爬虫知识点——请求</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:21.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:21.000Z">2019-09-15</time></div><div class="recent-post-content"> 请求
-
-:请求方法、请求网址、请求头、请求体
-
- 请求方法：
-
-常见的为:GET、POST
-GET与POST主要区别：
-
-GET请求参数包含在URL，可从URL中看出。POST请求的URL不包含参数，都是通过表单的形式传输的，包含在请求体中
-GET请求提交的数据最多只有1024字节，POST无限制
-
-
-其他还有HEAD、PUT、DELETE、CONNECT、OPTIONS、TRACE
- 请求的网址：
-
-即URL，我们想要请求的资源
-
- 请求头：
-用来说明服务器要使用的附加信息，比较总要的有Cookie、Referer、User-Agent等。
-
-Accept:请求报头域，用于指定客户端可接受 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——请求/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/">Python爬虫知识点——将Cookie保存到本地的多种方法介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:43:34.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:43:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 方法一：urllib2
-
-结合cookielib及urllib2，Python2时期比较常用的方法，年代比较久远了。个人觉得太麻烦，改用requests.
-▲需要注意的是cookielib在python3中已经改成了http.cookiejar
-
-1234567891011121314151617181920212223242526272829303132333435#该方法本人未测试import urllib2import cookielib#将cookie保存在文件中def saveCookie():    #设置保存cookie的文件    filename = &apos;cooki ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/">Python爬虫知识点——爬虫的基本原理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:10.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:10.000Z">2019-09-15</time></div><div class="recent-post-content"> 爬虫的基本原理
-
-爬虫就是获取网页并提取和保存信息的自动化程序
-
- 获取网页：
-获取网页就是获取网页的源码，只要把源码获取下来，就可以从中提取想要的消息
-
-爬虫的流程：想网站的服务器发送一个请求，返回的响应体就是网页的源代码。
-​	&gt;1,构造请求发送给服务器=&gt;2.接受响应并解析
-
- 提取信息：
-通过分析网页结构，提取网页信息。通常使用的解析库有:BeautifulSoup、lxml、pyquery，也可以使用正则，但是构造正则表达式比较复杂且易错
- 保存数据：
-将提取的数据保存到某处以便后续利用。保存形式有：TXT、Json、数据库：MySQL、MongoDB、或远程服务器SF ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——响应/">Python爬虫知识点——响应</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:17.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:17.000Z">2019-09-15</time></div><div class="recent-post-content"> 响应：
-响应状态码、响应头、响应体
- 响应状态码：
-					表2-3常见的错误代码及错误原因
-
-
-
-
-状态码
-说明
-详情
-
-
-
-
-100
-继续
-请求者应当继续提出请求。服务器返回此代码表示已收到请求的第一部分，正在等待其余部分。
-
-
-101
-切换协议
-请求者已要求服务器切换协议，服务器已确认并准备切换。
-
-
-200
-成功
-服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。
-
-
-201
-已创建
-请求成功并且服务器创建了新的资源。
-
-
-202
-已接受
-服务器已接受请求，但尚未处理。
-
-
-203
-非授权信息
-服务器已成功处理了请求，但返回的信息可能来自另一来源。
-
-
-204
-无内容
-服 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——响应/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——代理/">Python爬虫知识点——代理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:28.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:28.000Z">2019-09-15</time></div><div class="recent-post-content"> 代理
- 基本原理
-代理实际上指代理服务器。功能是代理 网络用户去取得网络信息，是网络信息的中转站。
-正常的请求过程为：发送请求给服务器===&gt;web服务器吧响应传回
-设置代理服务器后：&gt;向代理服务器发送请求&gt;请求发送给代理服务器==&gt;再由代理服务器发送web服务器==&gt;由代理服务器把web服务器返回的响应转发给本机
- 作用
-突破自身IP访问限制，访问些平时不能访问的站点。
-访问一些单位或团体内部资源:比如使用教育网内地址段免费代理服务器，就可以用于对教育网开放的各类FTP下载上传，以及各类资料查询共享等服务。
-提高访问速度:通常代理服务器都设置-一个较大的硬盘缓 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——代理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——URL与URI/">Python爬虫知识点——URL与URI</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:35:53.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:35:53.000Z">2019-09-15</time></div><div class="recent-post-content"> URL与URI
-
-
-URL全称：Uniform Resource Locator(统一资源定位符)
-
-
-URI全称：Uniform Resource Identifier(统一资源标识符)
-如https://github.com/favicon.ico为例，它既是一个URL又是一个URI。我们通过URL/URI唯一指定了它的访问方式。其中包括访问协议https、访问路径、资源名称favicon.ico。通过这个链接提供的消息，我们就可以直接访问到此资源所在的位置。这便是URL、URI的作用。
-
-URL是URI的子集。===&gt;每个URL都是URI，但不是每个URI都是URL。
-URI包括 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——URL与URI/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——Session与Cookie/">Python爬虫知识点——Session与Cookie</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:56.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:56.000Z">2019-09-15</time></div><div class="recent-post-content"> Session和Cookie：
-
-Cookie：保持登录后的认证状态而保存在本地的数据
-session:用cookie来标记用户，cookie携带了会话ID消息，通过检查cookie就能找到会话(session)
-
-cookie与session相互配合，一个处于客户端，一个处于服务端，两者相互协作。
- 会话cookie和持久cookie
-
-会话Cookie：把cookie放在浏览器内存里，浏览器关闭后失效。
-持久Cookie：保存cookie到客户端的硬盘中，下次继续使用。
-
-由Cookie的Max Age和Expires决定了过期的时间。
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——Session与Cookie/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——Chrome开发者工具Network/">Python爬虫知识点——Chrome开发者工具Network</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:35:31.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:35:31.000Z">2019-09-15</time></div><div class="recent-post-content"> Chrome开发者工具中Network功能介绍
-
-第一列Name:请求的名称，一般会将URL的最后一 部分内容当作名称。
-第二列Status: 响应的状态码，这里显示为200，代表响应是正常的。通过状态码，我们可   以判断发送了请求之后是否得到了正常的响应。
-第三列Type: 请求的文档类型。这里为document, 代表我们这次请求的是一个HTML文档,内容就是一些HTML代码。
-第四列initiator: 请求源。用来标记请求是由哪个对象或进程发起的。
-第五列Size: 从服务器下载的文件和请求的资源大小。如果是从缓存中取得的资源，则该列会显示from cache。
-第六列Time:发 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——Chrome开发者工具Network/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python Web——Django笔记(二)/">Python Web——Django笔记(二)</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:23:40.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:23:40.000Z">2019-09-15</time></div><div class="recent-post-content"> Method= POST的操作
-
-在posting.html中的&lt;form&gt;中加入标识符
-1234&gt; &#123;% csrf_token %&#125;&gt; &lt;form name=&apos;my form&apos; action=&apos;.&apos; method=&apos;POST&apos;&gt;    &gt; &#123;% csrf_token %&#125;&gt;
-
-
-▲注意action='???'
-
-12345678910在views.posting处理函数中改用RequestContext作为网页显示的内容:	from djang ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Django"> Django</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python Web——Django笔记(二)/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python Web——Django笔记(一)/">Python Web——Django笔记(一)</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:23:40.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:23:40.000Z">2019-09-15</time></div><div class="recent-post-content"> Python Web——Django笔记
- 新建项目: django-admin startproject blog .
- 创建应用程序(APP):python manage.py startapp fsite
- 添加app:INSTALLED_APPS=['...']
-
-新建的 app 如果不加到 INSTALL_APPS 中的话, django 就不能自动找到app中的模板文件(app-name/templates/下的文件)和静态文件(app-name/static/中的文件) .小提示，DEBUG=True 的时候，Django 还可以自动找到 各 app 下 static 文件夹中 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Django"> Django</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python Web——Django笔记(一)/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/25/JS正则及常用方法函数总结/">JS正则及常用方法函数总结</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-25T03:55:20.000Z">2018-10-25</time><i class="fa fa-edit"></i><time datetime="2018-10-25T03:55:20.000Z">2019-09-15</time></div><div class="recent-post-content"> JS正则及常用方法函数总结
-
-正则表达式作为一种匹配处理字符串的利器在很多语言中都得到了广泛实现和应用，web开发本质上是处理字符串（服务端接受请求处理后拼接字符串作为响应，这在早期的CGI编程中最明显，然后客户端解析字符串进行渲染和执行），所以说，JS作为一门常用于web开发的语言，必然要具备正则这种强大的特性，本文将对JS中的正则用法及常用函数进行一番总结。
-
- 1.正则对象及其属性
-首先正则对象是JS中内置的一个对象，好比Array以及Math一样，不需要第三方库的支持，通常我们采取两种方式来定义一个正则对象.
- 1）构造函数方式
-12345var  reg=new RegExp('a ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="JavaScript"> JavaScript</a></div><div class="read-more"><a class="more" href="/2018/10/25/JS正则及常用方法函数总结/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/apt-get-update无法连接/">apt-get update无法连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T05:21:45.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T05:21:45.000Z">2019-09-15</time></div><div class="recent-post-content"> 出现的问题
-原因是在apt-get update时遇到了Unable to connect to 代理，（由于apt-get update一直显示无法连接172.17.18.141百度后发现这并不是个特殊的IP,而且也可以ping到百度）于是想到是否使用了代理。
-
-
-
- apt代理的设置：
- 临时方法
-export http_proxy=http://10.3.0.1:80
- 长久方法
-(1) 需要在/etc/apt/apt.conf中添加以下代码： (如果您希望apt-get(而不是其他应用程序)一直使用http代理,您可以使用这种方式。)
-Acquire::http::proxy &qu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/02/apt-get-update无法连接/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/14/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/16/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/08/30/Python字典基本操作介绍/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/14/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

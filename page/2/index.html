@@ -109,74 +109,44 @@ setup函数可以代替之前的data，methods，computed，watch，Mounted等�
 
 
 
-相 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/11/28/Vue3初体验/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/12/ZJU开学摸底考试——数据库概论复习/">ZJU开学摸底考试——数据库概论复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-12T08:16:24.000Z">2021-10-12</time><i class="fa fa-edit"></i><time datetime="2021-10-12T08:16:24.000Z">2022-03-19</time></div><div class="recent-post-content"> 数据库概论
- 数据库的4个基本概念
+相 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/11/28/Vue3初体验/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/01/03/Springboot-Kotlin-Mockito/">Springboot-Kotlin-Mockito</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-01-03T09:19:10.000Z">2022-01-03</time><i class="fa fa-edit"></i><time datetime="2022-01-03T09:19:10.000Z">2022-01-03</time></div><div class="recent-post-content">初识 Mockito 这个测试框架后，我们要使用 Mock 的属性创建一个被测试类实例时，大概会下面这么纯手工来打造。
+手工过程见: https://www.jianshu.com/p/bb705a56f620
+如果所有的 Mock 对象全部通过手工来创建，那就不容易体现出 Mockito 的优越性出来。因此对于被测试对象的创建，Mock 属性的注入应该让 @Mock 和 @InjectMocks这两个注解大显身手了。
+ Mockito能力
+
+@Mock：对函数的调用均执行mock（即虚假函数），不执行真正部分。
+@Spy：对函数的调用均执行真正部分。
+@InjectMocks：创建一个实例， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2022/01/03/Springboot-Kotlin-Mockito/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/SpringCloud笔记/">SpringCloud笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T15:14:51.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T15:14:51.000Z">2021-12-30</time></div><div class="recent-post-content">
+笔记内容大多来自：尚硅谷SpringCloud框架开发教程
+跟做笔记：https://blog.csdn.net/MOKEXFDGH/article/details/107209899
+跟做工程代码： https://github.com/liusCoding/springcloud-2020、https://gitee.com/exclusiver/springcloud2020
+
+ MVN配置
 
 
-数据（Data）
-
-定义：描述事物的符号记录。
-数据的含义称为数据的语义，数据的语义是指对具体数值进行的解释说明。数据与其语义是不可分的。
-数据是数据库中存储的基本对象。
+每个module的pom配置文件中最重要的三个：GAV即 groupId、artifactId、version
 
 
-
-数据库（Database，DB）
-
-定义：数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合。
-
-数据厍的基本特征
-
-数据按一定的数据模型组织、描述和储存
-可为各种用户共享、冗余度较小、易扩展
-数据独立性较高
+dependencyManagement声明依赖的版本，可以起到作用：
 
 
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2021/12/29/SpringCloud笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/30/理解SpringBoot注解s/">理解SpringBoot注解s</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-30T12:30:45.000Z">2021-12-30</time><i class="fa fa-edit"></i><time datetime="2021-12-30T12:30:45.000Z">2021-12-30</time></div><div class="recent-post-content"> @ReuqestBody和@RequestParam
+这两个注解都是在Controller某个Mapping函数的形参前加上的，但两个具体有什么区别呢？在使用的时候我们该如何选择呢? 这跟我们希望用户以什么形式来请求接口有关。
+众所周知，请求头的Content-type有多个，如
+常见的媒体格式类型如下：
 
-数据库管理系统（DataBase Management System，DBMS)
+text/html ： HTML格式
+text/plain ：纯文本格式
+text/xml ： XML格式
+image/gif ：gif图片格式
+image/jpeg ：jpg图片格式
+image/png：png图片格式
 
-位于用户应用与操作系统之间的一层数据管理软件；
-跟操作系统一样是计算机 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/10/12/ZJU开学摸底考试——数据库概论复习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/25/ZJU云原生技术及应用-课程笔记/">ZJU云原生技术及应用-课程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-25T14:48:36.000Z">2021-09-25</time><i class="fa fa-edit"></i><time datetime="2021-09-25T14:48:36.000Z">2022-03-15</time></div><div class="recent-post-content"> ZJU要求
- 课程内容
+以application开头的媒体格式类型：
 
-云计算基本概念和Docker容器原理（4课时）
-Kubernetes核心原理与关键组件 （8课时）
-微服务技术原理与治理 （4课时）
-容器监控与分析 （4课时）
-云原生边缘计算技术（4课时）
-IBM讲座-混合云架构（4课时）
-云原生应用实践与案例分析（4课时）
-
- 考核方式
-
-平时（20%）+ 课程设计（80%，含报告）
-
-课程设计（三选一）
-
-
-云原生技术研究报告或综述
-围绕云原生关键技术点，如容器安全、多集群管理、云边协同和边缘智能等，综述当前技术现状并进行必要的分析
-
-
-源代码分析报告
-分析Kubernetes或者KubeEdge等云原生项目相关源代码，撰写代 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU课程"> ZJU课程</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="云原生"> 云原生</a></div><div class="read-more"><a class="more" href="/2021/09/25/ZJU云原生技术及应用-课程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/02/浙江大学期末考试——Go语言/">浙江大学期末考试——Go语言</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-02T13:52:53.000Z">2021-11-02</time><i class="fa fa-edit"></i><time datetime="2021-11-02T13:52:53.000Z">2021-12-30</time></div><div class="recent-post-content"> 浙江大学期末考试——Go语言
-
-期末复习对学习知识的帮助是巨大的，相比于看视频，本篇点到为止的知识点形的期末复习笔记，我相信更能让人学会。我相信，只要把本笔记全部看完了必然就会Go了。如果你做到了但还没有学会Go，那你大可来找我/doge。
-
- 概论
-
-指令：计算机的一个最基本的功能，如实现一次加法运算或实现一次大小的判别
-计算机的指令系统：计算机所能实现的指令的集合
-程序：一系列计算机指令的有序组合
-
- 算法：
-
-求解特定问题的一组有限的操作序列
-
-
-目的性：算法有运算结果，程序强调过程性
-抽象性：算法独立于编程语言和指令系统
-研究性：算法是理论研究，载体可以是伪码，文字，图片等，载体为某 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="考试"> 考试</a></div><div class="read-more"><a class="more" href="/2021/11/02/浙江大学期末考试——Go语言/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/28/开发方向-技术栈/">开发方向-技术栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-28T13:02:43.000Z">2021-12-28</time><i class="fa fa-edit"></i><time datetime="2021-12-28T13:02:43.000Z">2021-12-29</time></div><div class="recent-post-content"> Cloud 微服务全家桶
+applicat ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发笔记"> 开发笔记</a></div><div class="read-more"><a class="more" href="/2021/12/30/理解SpringBoot注解s/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/30/Spring中的Bean/">Spring中的Bean</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-30T02:46:34.000Z">2021-12-30</time><i class="fa fa-edit"></i><time datetime="2021-12-30T02:46:34.000Z">2021-12-30</time></div><div class="recent-post-content"></div><div class="read-more"><a class="more" href="/2021/12/30/Spring中的Bean/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/29/使用七牛云作图床-PicGo/">使用七牛云作图床+PicGo</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-29T13:48:37.000Z">2021-12-29</time><i class="fa fa-edit"></i><time datetime="2021-12-29T13:48:37.000Z">2021-12-29</time></div><div class="recent-post-content">
+自己在写博客的时候，通过图片来表达自己的思路无疑是种非常有效的方法，平常我的笔记都是通过hexo生成的，因此保存在本地路径即可。但是如果想把文章发表在第三方的平台上，那么这些相对路径的图片在上传过程中就无法被检索，因此如果能在一个大家都能访问到的地方存放这些图片，再给出这些地方的链接时那就解决了这个问题。要达到这个需求，则就需要使用OSS对象存储服务。
+这边我推荐的是七牛云。七牛云在注册认证后有10G永久免费空间，每月10G国内和10G国外流量，速度相当快，七牛云是国内专业CDN服务商，插件支持比较多，有免费SSL证书，但https流量收费。同时七牛云还会提供30天的测试域名，不过要注意的一 ...</div><div class="read-more"><a class="more" href="/2021/12/29/使用七牛云作图床-PicGo/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/28/开发方向-技术栈/">开发方向-技术栈</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-28T13:02:43.000Z">2021-12-28</time><i class="fa fa-edit"></i><time datetime="2021-12-28T13:02:43.000Z">2021-12-29</time></div><div class="recent-post-content"> Cloud 微服务全家桶
 
 微服务开发的主流技术栈
 
@@ -205,12 +175,30 @@ resilience4j：国外使用较多
 配置中心
 
 ❌spring cloud config
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发"> 开发</a></div><div class="read-more"><a class="more" href="/2021/12/28/开发方向-技术栈/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/26/开发过程中Mysql-API记录/">开发过程中Mysql API记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-26T12:52:57.000Z">2021-12-26</time><i class="fa fa-edit"></i><time datetime="2021-12-26T12:52:57.000Z">2021-12-26</time></div><div class="recent-post-content"> 时间操作
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发"> 开发</a></div><div class="read-more"><a class="more" href="/2021/12/28/开发方向-技术栈/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/26/Python科学计算常用API记录/">Python科学计算常用API记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-26T09:44:24.000Z">2021-12-26</time><i class="fa fa-edit"></i><time datetime="2021-12-26T09:44:24.000Z">2021-12-28</time></div><div class="recent-post-content"> pandas
+ to_numeric：类别离散化
+参数	描述
+arg	scalar, list, tuple, 1-d array, or Series
+errors	{‘ignore’, ‘raise’, ‘coerce’}, default ‘raise’
+downcast	{‘integer’, ‘signed’, ‘unsigned’, ‘float’} , default None,指定转换的类型,默认返回float64或int64
+1234567891011121314151617181920212223242526272829&gt;&gt;&gt; s = pd.Series ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2021/12/26/Python科学计算常用API记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/26/开发过程中Mysql-API记录/">开发过程中Mysql API记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-26T12:52:57.000Z">2021-12-26</time><i class="fa fa-edit"></i><time datetime="2021-12-26T12:52:57.000Z">2021-12-26</time></div><div class="recent-post-content"> 时间操作
  TIME_TO_SEC
 
 MySQL TIME_TO_SEC(time) 函数返回将参数 time 转换为秒数的时间值，转换公式为“小时 ×3600+ 分钟 ×60+ 秒”。
 
-12345678910111213mysql&gt; SELECT TIME_TO_SEC(&apos;15:15:15&apos;);+-------------------------+| TIME_TO_SEC(&apos;15:15:15&apos;) |+-------------------------+|                   54915 |+----------------- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Mysql"> Mysql</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发记录"> 开发记录</a></div><div class="read-more"><a class="more" href="/2021/12/26/开发过程中Mysql-API记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/16/Unity游戏开发学习/">Unity游戏开发学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-16T08:23:47.000Z">2021-12-16</time><i class="fa fa-edit"></i><time datetime="2021-12-16T08:23:47.000Z">2021-12-25</time></div><div class="recent-post-content"> 组件
+12345678910111213mysql&gt; SELECT TIME_TO_SEC(&apos;15:15:15&apos;);+-------------------------+| TIME_TO_SEC(&apos;15:15:15&apos;) |+-------------------------+|                   54915 |+----------------- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Mysql"> Mysql</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开发记录"> 开发记录</a></div><div class="read-more"><a class="more" href="/2021/12/26/开发过程中Mysql-API记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/26/Python中关于图片的读取/">Python中关于图片的操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-26T08:16:29.000Z">2021-12-26</time><i class="fa fa-edit"></i><time datetime="2021-12-26T08:16:29.000Z">2021-12-26</time></div><div class="recent-post-content">
+写代码的时候一直记错库下对应的图片操作函数名以及他们的返回值类型，干脆写个笔记记录下。
+
+图片读取相关的包：
+
+matplotlib
+PIL/
+cv2
+numpy
+
+ 读取
+ matplotlib.pyplot / pylab
+12345678import pylab as plt# from matplotlib import pyplot as pltimport numpy as npimg = plt.imread('examples.png')print(type(img), img.dtype, np.min(img), np.max(img))[out](&lt;type 'n ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2021/12/26/Python中关于图片的读取/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/16/Unity游戏开发学习/">Unity游戏开发学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-16T08:23:47.000Z">2021-12-16</time><i class="fa fa-edit"></i><time datetime="2021-12-16T08:23:47.000Z">2021-12-25</time></div><div class="recent-post-content"> 组件
  RigidBody
 
 刚体，会给物体增加重力
@@ -230,7 +218,37 @@ Sprite精灵，游戏开发中指一张图片
 
 Sprite Render 图片渲染器，是用来渲染图片的组件
 
-1234567891011// 随机生成怪物头像void createMonster()&#123;    float x = Random.Range(-2, 2);    float y = 5;    GameObject monster = Instantiate( ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Unity"> Unity</a></div><div class="read-more"><a class="more" href="/2021/12/16/Unity游戏开发学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/12/软件架构课程学习笔记/">软件架构课程学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-12</time><i class="fa fa-edit"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-13</time></div><div class="recent-post-content"> 术语
+1234567891011// 随机生成怪物头像void createMonster()&#123;    float x = Random.Range(-2, 2);    float y = 5;    GameObject monster = Instantiate( ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Unity"> Unity</a></div><div class="read-more"><a class="more" href="/2021/12/16/Unity游戏开发学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/02/Mongodb学习/">Mongodb学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-02T03:17:52.000Z">2021-12-02</time><i class="fa fa-edit"></i><time datetime="2021-12-02T03:17:52.000Z">2021-12-22</time></div><div class="recent-post-content"> Mongodb学习
+ 创建数据库-集合（表）
+
+
+使用指定数据库（没有会创建）: use DATABASE_NAME, 如果数据库不存在，则创建数据库，否则切换到指定数据库。
+
+如: use douban， 此时db就变成了douban，之后db.xxxx()都默认在这个数据库下操作
+
+
+
+查看所有数据库，可以使用 show dbs
+
+
+创建集合：db.createCollection(name, options)
+
+
+随意创建集合， db.createCollection(&quot;top250&quot;);
+
+
+options 可以是如下参数：
+
+
+
+字段
+类型
+描述
+
+
+
+
+cap ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a></div><div class="read-more"><a class="more" href="/2021/12/02/Mongodb学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/12/软件架构课程学习笔记/">软件架构课程学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-12</time><i class="fa fa-edit"></i><time datetime="2021-12-12T06:44:53.000Z">2021-12-13</time></div><div class="recent-post-content"> 术语
 –微服务
 –云化
 –分布式
@@ -249,15 +267,7 @@ Sprite Render 图片渲染器，是用来渲染图片的组件
 设计模式有不同的分类，如下
 
 创建型设计模式，如工厂方法（Factory Method）模式、抽象工厂（Abstract Factory）模式、原型（Prototype）模式、单例（Singleton）模式，建造（Builder）模式等
-结构型设计模式，如合成（Com ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Zju"> Zju</a></div><div class="read-more"><a class="more" href="/2021/12/12/软件架构课程学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/26/前端-跨域/">前端-跨域</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-26T09:17:15.000Z">2021-11-26</time><i class="fa fa-edit"></i><time datetime="2021-11-26T09:17:15.000Z">2021-12-09</time></div><div class="recent-post-content"> 什么是跨域问题
-
-跨域问题的出现是因为浏览器的同源策略问题，所谓同源:就是两个页面具有相同的协议（protocol），主机（host）和端口号（port），即指协议，端口，域名。只要这个3个中有一个不同就是跨域。它是浏览器最核心也是最基本的功能，如果没有同源策略我们的浏览器将会十分的不安全，随时都可能受到攻击。
-当我们请求一个接口的时候，出现如：Access-Control-Allow-Origin 字眼的时候说明请求跨域了
-
-
- 展示跨域问题
-前端请求后端8889端口开放的端口
-12345678this.$axios(&#123;    method:'get',    url:'http ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/11/26/前端-跨域/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/">创建Vue工程（包含Vue2和Vue3）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time><i class="fa fa-edit"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time></div><div class="recent-post-content"> @vue/cli-init
+结构型设计模式，如合成（Com ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Zju"> Zju</a></div><div class="read-more"><a class="more" href="/2021/12/12/软件架构课程学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/08/创建Vue工程（包含Vue2和Vue3）/">创建Vue工程（包含Vue2和Vue3）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time><i class="fa fa-edit"></i><time datetime="2021-12-08T08:28:19.000Z">2021-12-08</time></div><div class="recent-post-content"> @vue/cli-init
 
 vue init 是vue-cli2.x的初始化方式
 
@@ -289,7 +299,28 @@ vue create router_project: ...</div><div class="recent-post-tags"><a class="post
 客户端支持防御 XSRF
 
  直接每次从axios库中调用axios函数
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950&lt;template&gt;  &lt;div&gt;    &lt;div&gt;mmmm&lt;/div&gt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/11/30/Vue中使用axios/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/02/前端进行网络请求的三种方式/">前端进行网络请求的三种方式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-02T13:28:06.000Z">2021-12-02</time><i class="fa fa-edit"></i><time datetime="2021-12-02T13:28:06.000Z">2021-12-05</time></div><div class="recent-post-content"> 前端进行网络请求的三种方式
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950&lt;template&gt;  &lt;div&gt;    &lt;div&gt;mmmm&lt;/div&gt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/11/30/Vue中使用axios/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/08/NodeJS包管理工具/">NodeJS包管理工具</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-08T08:25:47.000Z">2021-12-08</time><i class="fa fa-edit"></i><time datetime="2021-12-08T08:25:47.000Z">2021-12-08</time></div><div class="recent-post-content"> 包管理工具
+
+npm
+
+npm install &lt;package_name&gt; --dev
+npm init然后根据交互信息创建工程
+npm install 根据目录下package.json安装依赖
+npm run dev执行package.json中定义的scripts.dev指令
+
+
+yarn
+
+yarn add &lt;package_name&gt; --dev
+yarn init然后根据交互信息创建工程
+yarn 根据目录下package.json安装依赖
+yarn run dev执行package.json中定义的scripts.dev指令
+
+
+
+共同点：
+
+两个在i ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/08/NodeJS包管理工具/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/02/前端进行网络请求的三种方式/">前端进行网络请求的三种方式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-02T13:28:06.000Z">2021-12-02</time><i class="fa fa-edit"></i><time datetime="2021-12-02T13:28:06.000Z">2021-12-05</time></div><div class="recent-post-content"> 前端进行网络请求的三种方式
  XHR技术
 基于XMLHTTPRequest技术实现的，通过调用原生的XML对象实现的，非常的冗余==&gt;ajax技术
  ajax
@@ -314,71 +345,4 @@ VBA 过程以 Sub 语句开始，以 End Sub 语句结束，包含一个或多�
 123456Sub [过程名]([ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/12/04/VBA学习——正则提取单元格指定内容并加粗/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/01/Vue-Router细节记录/">Vue-Router细节记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-30T16:05:59.000Z">2021-12-01</time><i class="fa fa-edit"></i><time datetime="2021-11-30T16:05:59.000Z">2021-12-01</time></div><div class="recent-post-content"> vue-router使用
 yarn add vue-router@next --dev, 参数说明packageName@tagorpackageName@version
 创建router/index.js
-12345678910111213141516171819202122232425262728293031323334353637383940414243import &#123; createRouter, createWebHistory &#125; from "vue-router";import ShowList from "../components/ShowList.vue ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/01/Vue-Router细节记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/25/党员在线培训课程-免除暂停烦恼/">党员在线培训课程~免除暂停烦恼</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-25T02:48:17.000Z">2021-11-25</time><i class="fa fa-edit"></i><time datetime="2021-11-25T02:48:17.000Z">2021-11-25</time></div><div class="recent-post-content"> 党员在线培训课程~免除暂停烦恼
-
-女朋友反馈：刷党员在线培训课程得一直手动的解决暂停问题，无法单纯的挂机刷视频。作为一个程序猿，当然是帮她解决啦~
-
-首先分析页面中JS执行逻辑，如下所示
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041 ...</div><div class="read-more"><a class="more" href="/2021/11/25/党员在线培训课程-免除暂停烦恼/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/15/ZJU开学摸底考试——计算机网络复习/">ZJU开学摸底考试——计算机网络复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-15T12:06:53.000Z">2021-10-15</time><i class="fa fa-edit"></i><time datetime="2021-10-15T12:06:53.000Z">2021-10-25</time></div><div class="recent-post-content">计算机网络核心：
-
-主机
-通信链路
-交换网络
-协议
-
-多路复用
-
-频分多路复用
-时分多路复用
-码分多路复用
-波分多路复用
-
-数据交换
-
-电路交换（FDM,WDM,TDM,CDM）
-报文交换（被废弃了）
-分组交换（统计多路复用）
-
-分组：报文分拆出来的一系列相对较小的数据包
-分组交换需要报文的拆分与重组
-统计多路复用
-工作方式：存储与转发：
-
-报文交换与分组交换均采用存储-转发交换方式
-区别：
-报文交换以完整报文进行“存储-转发”
-分组交换以较小的分组进行“存储-转发”
-
-
-报文：M bts
-链路带宽（数据传输
-速率）：R bps
-分组长度（大小）：Lbits
-跳步数：h
-路由器数：n
-分组交换 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/10/15/ZJU开学摸底考试——计算机网络复习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/27/物联网基础与应用-课程笔记/">物联网基础与应用-课程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-27T15:44:21.000Z">2021-09-27</time><i class="fa fa-edit"></i><time datetime="2021-09-27T15:44:21.000Z">2021-10-11</time></div><div class="recent-post-content"> IOT课上实验
- 交叉编译环境
- 什么是交叉编译环境？
-交叉编译其实是相对于本地编译(native build)来说的，大家最开始学习 C/C++ 这些语言的时候，都是在自己的笔记本上写程序，然后在直接在电脑上编译生成可执行文件，最后在电脑上运行。整个流程为：程序的编辑-&gt;编译-&gt;运行，整个过程都是在一台 X86 电脑上。
-当我们开始接触嵌入式开发后，事情变的不一样了。你在电脑上写程序，在电脑上编译出可执行文件，最后这个可执行文件需要下载到你的开发板上运行。程序最后运行的环境变了，比如你的开发板是基于 Arm 的——程序在 X86 上编辑，编译，最终运行在另一个和 X86 完全不 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式开发"> 嵌入式开发</a></div><div class="read-more"><a class="more" href="/2021/09/27/物联网基础与应用-课程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/09/XML语法规则笔记/">XML语法规则笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-09T11:37:54.000Z">2021-10-09</time><i class="fa fa-edit"></i><time datetime="2021-10-09T11:37:54.000Z">2021-10-09</time></div><div class="recent-post-content"> 简介：
-
-XML 指可扩展标记语言（EXtensible Markup Language）。
-XML 是一种很像HTML的标记语言。
-XML 的设计宗旨是传输数据，而不是显示数据。
-XML 标签没有被预定义。您需要自行定义标签。
-XML 被设计为具有自我描述性。
-XML 是 W3C 的推荐标准。
-
- 特点：
-
-所有 XML 元素都须有关闭标签
-XML 标签对大小写敏感
-XML 文档必须有根元素
-XML 的属性值须加引号，双引号、单引号都可以
-实体引用：&amp;lt;, &amp;gt;, &amp;amp, &amp;apos, &amp;quot
-在 XML 中，空格会被保留， 但多余的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学习笔记"> 学习笔记</a></div><div class="read-more"><a class="more" href="/2021/10/09/XML语法规则笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/26/学点Gradle/">学点Gradle</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-26</time><i class="fa fa-edit"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-27</time></div><div class="recent-post-content"> Gradle学习
-在kotlin中使用mapstruct出现了些问题， 网上搜寻后得到结论：需要使用kapt(Kotlin annotation processing tool 即kotlin注解处理工具)， 但给出的大多都是通过Gradle来进行配置的。因此借此机会学习了下Gradle：
- plugins和apply plugin:
-
-由于文档写到了， 由于不清楚这些在哪些位置加入， 因此查看了plugins和apply plugin:的区别：
-1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="read-more"><a class="more" href="/2021/09/26/学点Gradle/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+12345678910111213141516171819202122232425262728293031323334353637383940414243import &#123; createRouter, createWebHistory &#125; from "vue-router";import ShowList from "../components/ShowList.vue ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/01/Vue-Router细节记录/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

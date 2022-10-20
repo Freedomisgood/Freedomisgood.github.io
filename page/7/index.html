@@ -97,17 +97,18 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/傅里叶变换-小波变化/">傅里叶变换-&gt;小波变化</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T01:51:32.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T01:51:32.000Z">2021-10-25</time></div><div class="recent-post-content"> 傅里叶变换-&gt;小波变化
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/09/17/SpringBoot学习笔记/">SpringBoot学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-17T09:01:40.000Z">2019-09-17</time><i class="fa fa-edit"></i><time datetime="2019-09-17T09:01:40.000Z">2021-11-27</time></div><div class="recent-post-content"> Spring Boot
+ SpringMVC流程图
 
-声明:文中大多数内容来自(知乎1335)[https://www.zhihu.com/people/zhi-yuan-ya-77],matlab源代码:1368069096/From_FT_to_WT_examples-,部分为个人理解阐明
-
- 一.傅里叶变换FT
- 基础知识
-
-（FOURIER TRANSFORM，简称FT）
-
- 为什么傅里叶变换可以把一个信号从时域变换到频域?
-先给出公式，傅里叶变换的形式为：X(w)=∫−∞+∞x(t)e−jwtdtX(w)=\int_{-\infty}^{+\infty} x(t) e^{-j w t} d tX(w)= ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/傅里叶变换-小波变化/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/机器学习——决策树/">机器学习——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:44:35.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:44:35.000Z">2021-05-30</time></div><div class="recent-post-content"> 机器学习——决策树
+ hello word
+第一个controller
+12345678910111213141516171819202122232425262728/**  * Project Name:demo  * File Name:HelloController.java  * Package Name:com.example.demo  * Date:2019年9月15日下午8:27:56  * Copyright (c) 2019, chenzhou1025@126.com All Rights Reserved.  * */  package ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/17/SpringBoot学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/19/深度学习/">深度学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-19T12:32:44.000Z">2019-09-19</time><i class="fa fa-edit"></i><time datetime="2019-09-19T12:32:44.000Z">2021-11-26</time></div><div class="recent-post-content"> 深度学习——神经网络
+ 构建网络的总原则
+一、增大网络容量，直到过拟命
+二、采取措施抑制过拟合
+三、继续增大网络容量，直到过拟合
+ 线性回归
+1234567891011121314151617181920212223242526272829303132333435363738# -*- coding: utf-8 -*-# Commented out IPython magic to ensure Python compatibility.import kerasimport numpy as npimport matplotlib.pyplot as plt# %matplotlib in ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/19/深度学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/机器学习——决策树/">机器学习——决策树</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:44:35.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:44:35.000Z">2021-05-30</time></div><div class="recent-post-content"> 机器学习——决策树
  决策树基础概念
 
 决策树分为分类树和回归树两种，分类树对离散变量做决策树，回归树对连续变量做决策树。
@@ -132,9 +133,16 @@
 
 这边的方法是我个人的操作过程，但是感觉应该不是这么搞得。
 
-安装好MathType后，打开word查看工具栏中是否有MathType工具，如果没有的话，则手动选择“插入-&gt;获得加载项-&gt;应用商店”搜索Mathtype。如果还是没有的话，然后在“选项-&gt;加载项-&gt;模板”然后指定MathType Commands 6 For Word2016 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/08/30/Word2016配置使用MathType/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/08/自动化运维工具Ansible/">自动化运维工具Ansible</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-08T06:45:45.000Z">2019-07-08</time><i class="fa fa-edit"></i><time datetime="2019-07-08T06:45:45.000Z">2019-12-16</time></div><div class="recent-post-content"> 简介
-​        ansible是新出现的自动化运维工具，基于Python开发，集合了众多运维工具（puppet、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。
-　　ansible是基于 paramiko 开发的,并且基于模块化工作，本身没有批量部署的能力。真正具有批量部署的是ansible所运行的模块，ansible只是提供一种框架。ansible不需要在远程主机上安装client/agents，因为它们是基于ssh来和远程主机通讯的。ansible目前已经已经被红帽官方收购，是自动化运维工具中大家认可度最高的，并且上手容易，学习简单 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/08/自动化运维工具Ansible/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/2019-6月编程笔记/">2019_6月编程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:26:03.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:26:03.000Z">2019-11-26</time></div><div class="recent-post-content"> 2019_6月编程笔记
+安装好MathType后，打开word查看工具栏中是否有MathType工具，如果没有的话，则手动选择“插入-&gt;获得加载项-&gt;应用商店”搜索Mathtype。如果还是没有的话，然后在“选项-&gt;加载项-&gt;模板”然后指定MathType Commands 6 For Word2016 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/08/30/Word2016配置使用MathType/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/21/搭建Jupyter服务器/">搭建Jupyter、JupyterLab服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-21T01:53:01.000Z">2019-09-21</time><i class="fa fa-edit"></i><time datetime="2019-09-21T01:53:01.000Z">2020-12-05</time></div><div class="recent-post-content"> 搭建Jupyter服务器
+1.配置好Python环境及安装pip
+2.安装jupyter:
+pip3 install jupyter (此处使用的是python3)
+3.生成配置文件
+jupyter notebook --generate-config
+4.生成密钥:
+终端输入$ ipython
+123456In [1]: from notebook.auth import passwdIn [2]: passwd()Enter password: Verify password: #此时会让你两次输入密码，然后就会生成秘钥#＊＊＊＊＊＊＊＊＊＊＊＊
+5.修改配置文件vim ~/.jupyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/21/搭建Jupyter服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/2019-6月编程笔记/">2019_6月编程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:26:03.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:26:03.000Z">2019-11-26</time></div><div class="recent-post-content"> 2019_6月编程笔记
 
 注，不少内容比较多，已单独分出去成为独立的文章，更详细的介绍可见这些文章
 
@@ -149,9 +157,44 @@ exfat 支持更大空间，引导识别不了，做不了系统盘
 __all__是一个字符串list；
 约束作用：用来定义模块中对于from XXX import *时要对外导出的符号，即要暴露的借口，但它只对import *起作用，对from XXX import XXX不起作用。
 
-from njupt.zhengfang import Zhengfang是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程日记"> 编程日记</a></div><div class="read-more"><a class="more" href="/2019/08/30/2019-6月编程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/">通过XDRP实现Windows远程访问ubuntu桌面</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T00:57:05.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T00:57:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 通过XDRP实现Windows远程访问
-1234567891011121314#安装xrdp $ sudo apt-get install xrdp #安装vnc4server $ sudo apt-get install vnc4server tightvncserver#安装xubuntu-desktop $ sudo apt-get install xubuntu-desktop #向xsession中写入xfce4-session $ echo “xfce4-session” &gt;~/.xsession #开启xrdp服务 $ sudo service xrdp restart
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/通信企业管理-线上考试/">通信企业管理_线上考试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:37:49.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:37:49.000Z">2019-09-15</time></div><div class="recent-post-content"> 通信企业管理
+from njupt.zhengfang import Zhengfang是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程日记"> 编程日记</a></div><div class="read-more"><a class="more" href="/2019/08/30/2019-6月编程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/软件测试大赛/">软件测试大赛</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:07:12.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:07:12.000Z">2019-11-02</time></div><div class="recent-post-content"> 软件测试大赛
+ 初学流程
+
+首先了解比赛,查看帮助文档平台帮助
+然后在工具下载中下载工具、eclipse插件
+最后根据教程中将插件安装好即可
+
+ 移动应用测试开发
+ 环境配置
+ 配置Java环境
+略,见Java 开发环境配置_菜鸟教程
+ 安装ADB
+1.菜单——&gt;Tools——&gt;Settings，将Server地址为 mirrors.neusoft.edu.cn， 端口 80 ，并且在Others里勾选 Force	https://…,最后一定要选择菜单——&gt;Packages菜单——&gt;Reload
+注:其他可用的镜像
+2.把 Android	SDK	路径下的tools ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></div><div class="read-more"><a class="more" href="/2019/09/14/软件测试大赛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/新加坡游玩经验/">新加坡游玩经验</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:35:49.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:35:49.000Z">2019-10-18</time></div><div class="recent-post-content"> 新加坡南洋理工大学访学
+此次访学长达14天，不少安排都是学校安排，在此仅列出个人安排、经验心得。
+
+ 门票购买：
+番薯游：这是老师推荐我们的，但下载以后感觉界面还是比较丑的，而且价格也不是非常便宜。这家是唯一一家促进扫码买门票的公司。
+KLOOK客路：界面比番薯游好多了，还是非常精致的。最大的优势在于可以找到经典的位置及景点介绍、门票时间等信息。
+淘宝：跟好几个平台对比之后，价格应该是最低的，并且时间限制比较小，其他的可能要预约，而TB当天购买就行（强调：动物园门票）
+▲特别说明下，动物园的门票水很深。当面购买$50,我当时去时没有预约，结果在KLOOK上看当天的票已经没有库存了，于是问了下 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/09/新加坡游玩经验/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/验证码识别程序设计流程/">验证码识别程序设计流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T13:31:35.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T13:31:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 验证码识别程序设计流程
+
+以南邮正方教务系统为例
+
+ 找到验证码图片的链接
+
+“http://jwxt.njupt.edu.cnCheckCode.aspx”
+
+1234567def getCaptcha():    CAPTCHA_URL = "http://jwxt.njupt.edu.cn/CheckCode.aspx"    r = requests.get(CAPTCHA_URL)    img = r.content    img = Image.open(BytesIO(img))    return img
+ 对图片去噪
+123456789101112131415161718 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/09/验证码识别程序设计流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/17/常用域名记录解释/">常用域名记录解释</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time><i class="fa fa-edit"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time></div><div class="recent-post-content"> 常用域名记录解释
+ A记录
+A记录是用来创建到IP地址的记录。
+A记录设置技巧
+1、如果想创建不带www的记录，即ezloo.com，在主机记录中填写@或者留空，不同的注册商可能不一样。
+2、创建多个域名到同一个IP，比如给博客建了二级域名，可以使用*.blog.ezloo.com来指向一个IP，这样的话，不管是访问a.blog.ezloo.com还是b.blog.ezloo.com都能到同一个IP。
+3、如果你给同一个二级域名设置了多个A记录，比如你建了两个blog的A记录，其中一个指向了111.111.111.111，另一个指向了111.111.111.112，那么在查询的时候，每次返回 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/09/17/常用域名记录解释/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/通信企业管理-线上考试/">通信企业管理_线上考试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:37:49.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:37:49.000Z">2019-09-15</time></div><div class="recent-post-content"> 通信企业管理
 
 看清题目和选项
 
@@ -190,60 +233,34 @@ D.计划职能
 利用该问题分解出的子问题的解可以合并为该问题的解；
 该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子问题。
 反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。
-由分 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2019/08/22/算法设计与分析C-概念点区分/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/时间序列概念及主要模型/">时间序列概念及主要模型</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T11:05:18.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T11:05:18.000Z">2019-09-15</time></div><div class="recent-post-content"> 时间序列概念及主要模型
-Q:什么是时间序列分析?
-A:时间序列是按照时间顺序，按照一定时间间隔取得的一系列观测值
-Q:怎样做时间序列分析?
-A:时间序列分析尝试找出序列值在过去呈现的特征模式，假定这种模式在未来能够持续，进而对未来进行预测
- 时间序列三大特征
+由分 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2019/08/22/算法设计与分析C-概念点区分/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/打jar包和使用jar包/">打jar包和使用jar包</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-15</time></div><div class="recent-post-content"> 打jar包和使用jar包
+ 一、为什么要打jar包
+给别人用的时候一般给别人的是class文件。如果有很多类这么办？把类变成一个压缩包！windows下的压缩包是.zip格式等，而eclipse压缩包是.jar格式。
+ 二、如何查看jar包
+用解压缩软件解压即可。可以看到里面有哪些class文件。
+ 三、如何开发jar包
+开发jar包的人员开发流程：
+ 步骤1:编写类
+12345678//GetSum.javapackage cn.itcast.sum;public class GetSum&#123;      public static getSum(int a,int b)&#123; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/打jar包和使用jar包/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/强化学习——QLearning/">强化学习——QLearning</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-15</time></div><div class="recent-post-content"> 强化学习——QLearning
+价值转移公式只有一条Q(s,a)&lt;=Q(s,a)+/alpha∗(reward−Q(s,a)+/gamma∗maxaQ(s′,a))=(1−/alpha)∗Q(s,a)+/alpha∗(reward+/gamma∗maxaQ(s′,a))Q(s,a) &lt;= Q(s,a) + /alpha*(reward - Q(s,a) + /gamma*max_aQ(s&#x27;,a)) = (1-/alpha)*Q(s,a) + /alpha*(reward + /gamma*max_aQ(s&#x27;,a))Q(s,a)&lt;=Q(s,a)+/alph ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/强化学习——QLearning/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/如何成为一位老司机——考驾照经历/">如何成为一位老司机——考驾照经历</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-15</time></div><div class="recent-post-content"> 如何成为一位老司机——考驾照经历
+大一下报的名，几经转折，终于在2019-9-12，中秋放假前一天拿到了本本。
+ 科一理论考试
+太久远了，已经忘记了…
+ 科二
+ 训练
+ 倒车入库：
+左边小镜子底座盖过黄线，向左打死。
+正手倒车时，靠近左边直角距离3个手指回正，然后看左边镜子出现直角，然后。
+左手是一到二指头。
+▲入库重在自己调整，记住准则：左右镜子，哪边空隙大，方向盘往哪边打
+ 小四项：
+ 直角转弯:
 
-序列相关性：当期的序列值和前期某个或某些序列值线性相关
-√  自相关系数（全相关系数）（ACF）：用来度量同一事件在不同时期之间的相关程度。ρh=r(h)r(0)\rho_{h}=\frac{r(h)}{r(0)}ρh​=r(0)r(h)​，其中r（h）为h期协方差函数，r（0）为方差
-√  偏自相关系数（PACF）：度量去除中间变量 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数学建模"> 数学建模</a></div><div class="read-more"><a class="more" href="/2019/07/29/时间序列概念及主要模型/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/强化学习——QLearning/">强化学习——QLearning</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-15</time></div><div class="recent-post-content"> 强化学习——QLearning
-价值转移公式只有一条Q(s,a)&lt;=Q(s,a)+/alpha∗(reward−Q(s,a)+/gamma∗maxaQ(s′,a))=(1−/alpha)∗Q(s,a)+/alpha∗(reward+/gamma∗maxaQ(s′,a))Q(s,a) &lt;= Q(s,a) + /alpha*(reward - Q(s,a) + /gamma*max_aQ(s&#x27;,a)) = (1-/alpha)*Q(s,a) + /alpha*(reward + /gamma*max_aQ(s&#x27;,a))Q(s,a)&lt;=Q(s,a)+/alph ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/强化学习——QLearning/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/">基础知识补充——白噪声、高斯白噪声</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T10:47:04.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T10:47:04.000Z">2019-09-15</time></div><div class="recent-post-content"> 白噪声、高斯白噪声
- 白噪声过程:
-对于一个随机变量X(t)（t=1，2，3……），如果是由一个不相关的随机变量的序列构成的，即对于所有s不等于t，随机变量X(t)和X(s)的协方差为零，则称其为纯随机过程。对于一个纯随机过程来说，若其期望为0，方差为常数，则称之为白噪声过程。
- 白噪声:
-白噪声序列，是指白噪声过程的样本实称，简称白噪声[1]。白噪声是**在较宽的频率范围内，各等带宽的频带所含的噪声能量相等的噪声**[2]，是一种功率频谱密度为常数的随机信号或随机过程，也就是说，此信号在各个频段上的功率是一样的。
-理想的白噪声具有无限的带宽，因而其能量无限大，但这是不可能实际存在的，所以， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/">利用wireshark抓取TCP的整个过程分析[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-24T07:51:29.000Z">2019-07-24</time><i class="fa fa-edit"></i><time datetime="2019-07-24T07:51:29.000Z">2019-09-15</time></div><div class="recent-post-content">原文地址：https://www.cnblogs.com/NickQ/p/9226579.html
-最近，已经很久都没有更新博客了。看看时间，想想自己做了哪些事情，突然发现自己真的是太贪心，到头来却一个都没搞好。手头的嵌入式都还没学出名堂，竟然还想着学FPGA,物联网，机器学习。然而，遇到新奇的事物，就会控制不住的去想，去找资料，实际上只是逃避遇到的问题，不想去解决而已。。最后的结果就是手头的活堆起来了，然后花大把整块的时间解决。真的是讨厌现在的自己。
-以后还是慢慢记录吧，不管做了什么，都慢慢尝试积累。。其他的东西，像FPGA，机器学习什么的，让他随风去吧，用到啥学啥。其他的当看客，了解了解就 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/26/Vim记忆/">Vim记忆</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-26T02:34:34.000Z">2019-07-26</time><i class="fa fa-edit"></i><time datetime="2019-07-26T02:34:34.000Z">2019-09-15</time></div><div class="recent-post-content"> VIM记忆技巧
- 增
+人在路中间，直角重合于车窗黑线后向左打死。
 
-i(insert)
-I最前面insert
-a(append)
-A最后面append
-o(open a line)往下开启一行
-O往上开启一行
+ S弯道：
 
- 删
-
-d（delete）
-dw（delet word）
-dd（删除一行）
-x（删除一个字符）
-
- 拓展
-
-diw(delete inner word)
-daw(delete around word)
-
- 改
-
-c（change）
-ciw（change inner word）
-ci&quot;(change inner &quot;)
-ct）修改到右括号
-
- 查
-
-fs(find s) 跳到本行第一个s字符
-/往后查找,如/x ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/07/26/Vim记忆/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/staticmethod和classmethod区别/">staticmethod和classmethod区别</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:06:00.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:06:00.000Z">2019-09-15</time></div><div class="recent-post-content"> staticmethod和classmethod
-
-类的实例化基本遵循创建实例对象、初始化实例对象、最后返回(产生)实例对象这么一个过程
-
-123456789101112131415161718class Test(object):    data = 'world' # 类对象的数据成员    def __init__(self, arg):        self.arg = arg    @staticmethod	# 静态方法，不能访问类数据成员    def func():        print("hello")    @classmethod	# 类方法,能访问类数据成员   ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/07/staticmethod和classmethod区别/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/RL强化学习概念/">RL强化学习概念</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-15</time></div><div class="recent-post-content"> RL强化学习概念
+确保人在路中间，可以略微偏左。左边小镜子底座压住右边黄线。方向盘一圈右手放在2点方向。如果黄线偏下，那么往1点方向调整，否则往3点 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/14/如何成为一位老司机——考驾照经历/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/RL强化学习概念/">RL强化学习概念</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-15</time></div><div class="recent-post-content"> RL强化学习概念
  方法汇总
  价值-直接-想象
 通过价值选择行为：
@@ -284,22 +301,49 @@ Policy Gradient
 web 端的有道翻译，在之前是直接可以爬的。也就是说只要获取到了他的接口，你就可以肆无忌惮的使用他的接口进行翻译而不需要支付任何费用。那么自从有道翻译推出他的API服务的时候，就对这个接口做一个反爬虫机制（如果大家都能免费使用到他的翻译接口，那他的APl服务怎么赚钱）。这个反爬虫机制在爬虫领域算是一个非常经典的技术手段。
 
 1.查看要爬取的内容是否是静态加载的。
-比如在翻译输入框中输入apple，翻译输出框中会出现苹果，然后在``页面中右键-&gt;查看网页源代码，直接Ctrl+F搜索是否存在apple或者苹果`，如果 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/08/30/Python爬虫常规流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/">Let's Encrypt安装配置nginx的SSL证书教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:34:04.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:34:04.000Z">2019-09-15</time></div><div class="recent-post-content"> Let’s Encrypt 安装配置nginx的SSL证书教程
- 使用cerbot生成证书
- 安装Let’s Encrypt
-安装非常简单直接克隆就可以了
-1git clone https://github.com/letsencrypt/letsencrypt
-如果网速较慢（国外服务器应该快点）
-1.可以登录https://github.com/letsencrypt/letsencrypt，下载后通过lrzsz传到云服务器上，再解压
-2.修改hosts
-查找域名对应的ip地址，并修改hosts文件
-123456789101112131415linuxidc@linuxidc:~/linu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/C-学习笔记/">C++学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T01:00:50.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T01:00:50.000Z">2019-09-15</time></div><div class="recent-post-content"> C++学习笔记
+比如在翻译输入框中输入apple，翻译输出框中会出现苹果，然后在``页面中右键-&gt;查看网页源代码，直接Ctrl+F搜索是否存在apple或者苹果`，如果 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/08/30/Python爬虫常规流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/CDN加速个人博客——又拍云/">CDN加速个人博客——又拍云</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-15</time></div><div class="recent-post-content"> CDN加速个人博客——又拍云
 
-system（）就是调用（DOS）系统命令（和shell命令）。
-pause ，即DOS命令集合中的暂停命令；
+CDN(Content Delivery Network)内容发布网络，基本思路就是将你网站放置在各地节点服务器，用户访问时找最近的节点服务器获取数据，达到加速的目的。
 
- sprintf
-123456789101112#include &lt;stdio.h&gt;int main( void )&#123;  char  buffer[200], s[] = &quot;computer&quot;, c = &apos;l&apos;;  int   i = 35, j;  float fp = 1.7320534f;  // 格式化并打印各种数据到buffer  j  = sprintf( buffer,    &quot ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/13/C-学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/ACM-博弈论/">ACM-博弈论</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:41:28.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:41:28.000Z">2019-09-15</time></div><div class="recent-post-content"> ACM-博弈论（gambling）
+ 几大厂商的CDN方案
+
+
+
+资费介绍页面
+免费额度
+是否支持HTTPS
+额外限制
+注册邀请链接
+
+
+
+
+七牛云
+10GB/月
+按量付费支持
+/
+&gt;&gt;&gt; 点击注册
+
+
+腾讯云
+10GB/月
+免费支持
+加了腾讯云CDN没有感觉多大加速
+/
+
+
+百度云
+10GB/天
+年费付费支持
+巨贵…
+/
+
+
+又拍云
+15GB/月
+免费支持
+加入又拍云联盟，并在网站底部放置logo
+&gt; ...</div><div class="read-more"><a class="more" href="/2019/09/09/CDN加速个人博客——又拍云/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/ACM-博弈论/">ACM-博弈论</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:41:28.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:41:28.000Z">2019-09-15</time></div><div class="recent-post-content"> ACM-博弈论（gambling）
 
 博弈论：是二人或多人在平等的对局中各自利用对方的策略变换自己的对抗策略，达到取胜目标的理论。假设，双方每步都是最优决策
 
@@ -308,4 +352,4 @@ pause ，即DOS命令集合中的暂停命令；
 
 只有一堆n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取m个。最后取光者得胜。
 
-显然，如果n=m+1，1那么由于一次最多只能取m个，所以，无论先取者拿走多少个，后取者都能够一次拿走剩余的物品，后者取胜。因此我们发现了先手如何取胜的法 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/08/30/ACM-博弈论/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/6/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/8/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+显然，如果n=m+1，1那么由于一次最多只能取m个，所以，无论先取者拿走多少个，后取者都能够一次拿走剩余的物品，后者取胜。因此我们发现了先手如何取胜的法 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/08/30/ACM-博弈论/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/6/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><a href="https://beian.miit.gov.cn/"> <span>备案号:苏ICP备18015439号</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

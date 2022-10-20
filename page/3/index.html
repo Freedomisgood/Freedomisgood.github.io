@@ -97,236 +97,194 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2021/10/26/k8s之kube-proxy源码分析/">k8s之kube-proxy源码分析</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-26T12:15:52.000Z">2021-10-26</time><i class="fa fa-edit"></i><time datetime="2021-10-26T12:15:52.000Z">2022-03-29</time></div><div class="recent-post-content"> kubernetes 简单介绍
- 背景介绍
-Kubernetes最初源于谷歌内部的Borg，提供了面向应用的容器集群部署和管理系统，目前为主流的微服务应用编排管理工具。
-Kubernetes的目标旨在消除编排物理/虚拟计算、网络和存储基础设施的负担，并使应用程序运营商和开发人员完全将重点放在以容器为中心的原理上进行自助运营。
-Kubernetes具备完善的集群管理能力，包括多层次的安全防护和准入机制、多租户应用支撑能力、透明的服务注册和服务发现机制、内建负载均衡器、故障发现和自我修复能力、服务滚动升级和在线扩容、可扩展的资源自动调度机制、多粒度的资源配额管理能力。
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/10/07/蒙特卡洛树搜索MCTS/">蒙特卡洛树搜索MCTS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-07T09:18:02.000Z">2019-10-07</time><i class="fa fa-edit"></i><time datetime="2019-10-07T09:18:02.000Z">2020-12-06</time></div><div class="recent-post-content">
+                            .mjpage .MJX-monospace {
+                            font-family: monospace
+                            }
 
-Borg是谷歌内部的大规 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="源码解析"> 源码解析</a></div><div class="read-more"><a class="more" href="/2021/10/26/k8s之kube-proxy源码分析/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/28/Vue3初体验/">Vue3初体验</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-28T09:44:53.000Z">2021-11-28</time><i class="fa fa-edit"></i><time datetime="2021-11-28T09:44:53.000Z">2022-03-29</time></div><div class="recent-post-content">Vue3于2020年09月18日正式发布，映入我视野的新东西除了Vue3以外，还有yarn和vite。他们两个本身的功能并不是新东西，yarn对标的是npm包管理工具，vite对标的webpack包打包工具。
-与vue2不同的是，vue3工程中没有 build 文件， 相应的build/index.js的配置改由了项目根目录下vue.config.js承担
- Vue3新特性
+                            .mjpage .MJX-sans-serif {
+                            font-family: sans-serif
+                            }
 
+                            ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/10/07/蒙特卡洛树搜索MCTS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/21/搭建Jupyter服务器/">搭建Jupyter、JupyterLab服务器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-21T01:53:01.000Z">2019-09-21</time><i class="fa fa-edit"></i><time datetime="2019-09-21T01:53:01.000Z">2020-12-05</time></div><div class="recent-post-content"> 搭建Jupyter服务器
+1.配置好Python环境及安装pip
+2.安装jupyter:
+pip3 install jupyter (此处使用的是python3)
+3.生成配置文件
+jupyter notebook --generate-config
+4.生成密钥:
+终端输入$ ipython
+123456In [1]: from notebook.auth import passwdIn [2]: passwd()Enter password: Verify password: #此时会让你两次输入密码，然后就会生成秘钥#＊＊＊＊＊＊＊＊＊＊＊＊
+5.修改配置文件vim ~/.jupyt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/21/搭建Jupyter服务器/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/">Ubuntu16.04+CUDA toolkit10.1+cudNN7.6+bazel0.26.1</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-23T08:38:55.000Z">2019-09-23</time><i class="fa fa-edit"></i><time datetime="2019-09-23T08:38:55.000Z">2020-12-02</time></div><div class="recent-post-content"> Ubuntu 16.04 + CUDA toolkit 10.1 + cudNN7.6 + bazel 0.26.1
 
-template标签下面可以有多个节点了，终于不用先写一个DIV了
+保证cuDNN跟CUDA SDK的版本一致即可.
+从源码编译的话需要查看显卡的计算能力,可在查看GPU计算能力，在配置的时候填入即可，跟CUDA SDK的版本无关
+▲必须注册账号后，才能选择下载
 
+▲记住上述几个要点， 以及最好先看下文章最后我的踩坑记录，确保自己知道可能会有这些坑
+▲.全程保持能连接外网（翻墙）
+ 安装NVIDIA驱动
+123$ ubuntu-drivers devices # 查看# 查看NVIDIA驱动版本$ sudo dpkg --list | gr ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/09/23/Ubuntu16-04-CUDA-toolkit10-1-cudNN7-6-bazel0-26-1/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/21/同性交友网站Github的骚操作/">同性交友网站Github的骚操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-21T03:56:19.000Z">2019-09-21</time><i class="fa fa-edit"></i><time datetime="2019-09-21T03:56:19.000Z">2020-09-15</time></div><div class="recent-post-content"> 做好看的REAMDE
 
-setup函数可以代替之前的data，methods，computed，watch，Mounted等对象，但是props声明还是在外面。
+123456789101112131415161718&lt;p align="center"&gt;  &lt;a href="https://travis-ci.com/xkcoding/spring-boot-demo"&gt;&lt;img alt="Travis-CI" src="https://travis-ci.com/xkcoding/spring-boot-demo.svg?branch=master"/&gt;&lt;/a&gt;  &lt;a href="https://www.codacy.com/app/xkcoding/spring-boo ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/21/同性交友网站Github的骚操作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/29/git命令详解/">git命令详解</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-29T09:39:07.000Z">2019-09-29</time><i class="fa fa-edit"></i><time datetime="2019-09-29T09:39:07.000Z">2019-12-12</time></div><div class="recent-post-content"> git命令详解
+ 自己的仓库管理：
+git add &lt;filename&gt;
 
+将文件添加到暂存区中  (其中git add.可以将当前目录的子目录文件都添加到暂存区中)
 
+git commit -m &quot;...&quot;:
 
-相 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/11/28/Vue3初体验/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/12/ZJU开学摸底考试——数据库概论复习/">ZJU开学摸底考试——数据库概论复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-12T08:16:24.000Z">2021-10-12</time><i class="fa fa-edit"></i><time datetime="2021-10-12T08:16:24.000Z">2022-03-19</time></div><div class="recent-post-content"> 数据库概论
- 数据库的4个基本概念
+保存仓库的历史记录,其中 -m &quot;…&quot;提交信息(概述)
 
+git config --global user.name &quot;...&quot;、git config --global user.email &quot;...&quot;:
 
-数据（Data）
+配置提交作者信息
 
-定义：描述事物的符号记录。
-数据的含义称为数据的语义，数据的语义是指对具体数值进行的解释说明。数据与其语义是不可分的。
-数据是数据库中存储的基本对象。
+git log:
 
+查看提交日志(当前状态为终点) 会产生版本库 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/29/git命令详解/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/28/numpy使用记录/">numpy使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-28T03:13:29.000Z">2019-09-28</time><i class="fa fa-edit"></i><time datetime="2019-09-28T03:13:29.000Z">2019-11-27</time></div><div class="recent-post-content"> Numpy使用记录
+ numpy中的random
+numpy.random.choice(a, size=None, replace=True, p=None)
 
+a : 如果是一维数组，就表示从这个一维数组中随机采样；如果是int型，就表示从0到a-1这个序列中随机采样。
+size : 采样结果的数量，默认为1.可以是整数，表示要采样的数量；也可以为tuple，如(m, n, k)，则要采样的数量为m * n * k，size为(m, n, k)
+replace : boolean型，采样的样本是否要更换？这个地方我不太理解，测了一下发现replace指定为True时，采样的元素会有重复； ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2019/09/28/numpy使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/06/Openmv使用/">Openmv使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-06T01:45:28.000Z">2019-10-06</time><i class="fa fa-edit"></i><time datetime="2019-10-06T01:45:28.000Z">2019-11-07</time></div><div class="recent-post-content"> Openmv使用
+ 下载Openmv IDE
 
-数据库（Database，DB）
+Openmv官网
+中国代理——星瞳
+Github_release
 
-定义：数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合。
+推荐下载星瞳的，这个是中文版的，并且其他两个下载非常慢。
+ 捕捉图片设置：
+设置彩色／黑白
 
-数据厍的基本特征
+sensor.set_pixformat() 设置像素模式。
 
-数据按一定的数据模型组织、描述和储存
-可为各种用户共享、冗余度较小、易扩展
-数据独立性较高
+sensor.GRAYSCALE: 灰度，每个像素8bit。
+sensor.RGB565: 彩色，每个像素16bit。
 
 
 
-数据库管理系统（DataBase Management System，DBMS)
+设置图像大小
 
-位于用户应用与操作系统之间的一层数据管理软件；
-跟操作系统一样是计算机 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/10/12/ZJU开学摸底考试——数据库概论复习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/17/javadoc——让大家更好写java项目/">javadoc——让大家更好写java项目</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-17T13:57:14.000Z">2021-10-17</time><i class="fa fa-edit"></i><time datetime="2021-10-17T13:57:14.000Z">2022-03-09</time></div><div class="recent-post-content">近期在Github上看到一个有趣的项目，是各个技能树的挑战，并且起了个冒险岛的故事——字节传说:勇士将无惧挑战。其中除了提交Pr的教程（挑战）外，还有个比较有意思的是Javadoc，想想之前没专门写过，于是本勇士本次就毅然接收了Javadoc的挑战。
- Javadoc
 
-很多程序对Javadoc都不重视，认识不到Javadoc的作用，很多人都是这样认为的：“我只要写好功能就够了，写Javadoc太浪费时间，也没啥作用，还不如用写Javadoc的时间再多些个功能呢！”，我们知道注释是为了解释代码的作用的，是为了将来给自己或者别人快速了解代码的，在方法内一般用行注释//的比较多，是针对一小块代码做 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="技能糖"> 技能糖</a></div><div class="read-more"><a class="more" href="/2021/10/17/javadoc——让大家更好写java项目/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/25/CICD-Jenkins与Travis/">CICD-Jenkins与Travis</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-25T05:39:46.000Z">2021-10-25</time><i class="fa fa-edit"></i><time datetime="2021-10-25T05:39:46.000Z">2022-01-13</time></div><div class="recent-post-content"> Jenkins与travis使用
-Jenkins与Travis为CI、CD工具，其为Devops模式下的平台组件，能够让我们更好地进行开发测试与交付。由于最近云原生的课上在介绍DevOps和云监控，所以正好趁这个机会体验下Devops的交付流程，之前也有使用过Github Action作为CICD工具，但除了开源项目以外，Github使用比较少。这次呢就可以再熟悉下业内常用的CICD组件了：Jenkins or Travis
- DevOps发展背景
-
-传统交付模式的串行及隔离化形成了部门壁垒，降低了工作效率
-通过“在云上创建资源”-&gt;实现“云服务器自动化管理”-&gt;“应用无状态上云 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2021/10/25/CICD-Jenkins与Travis/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/02/浙江大学期末考试——Go语言/">浙江大学期末考试——Go语言</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-02T13:52:53.000Z">2021-11-02</time><i class="fa fa-edit"></i><time datetime="2021-11-02T13:52:53.000Z">2021-12-30</time></div><div class="recent-post-content"> 浙江大学期末考试——Go语言
-
-期末复习对学习知识的帮助是巨大的，相比于看视频，本篇点到为止的知识点形的期末复习笔记，我相信更能让人学会。我相信，只要把本笔记全部看完了必然就会Go了。如果你做到了但还没有学会Go，那你大可来找我/doge。
-
- 概论
-
-指令：计算机的一个最基本的功能，如实现一次加法运算或实现一次大小的判别
-计算机的指令系统：计算机所能实现的指令的集合
-程序：一系列计算机指令的有序组合
-
- 算法：
-
-求解特定问题的一组有限的操作序列
-
-
-目的性：算法有运算结果，程序强调过程性
-抽象性：算法独立于编程语言和指令系统
-研究性：算法是理论研究，载体可以是伪码，文字，图片等，载体为某 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="考试"> 考试</a></div><div class="read-more"><a class="more" href="/2021/11/02/浙江大学期末考试——Go语言/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/02/Mongodb学习/">Mongodb学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-02T03:17:52.000Z">2021-12-02</time><i class="fa fa-edit"></i><time datetime="2021-12-02T03:17:52.000Z">2021-12-22</time></div><div class="recent-post-content"> Mongodb学习
- 创建数据库-集合（表）
-
-
-使用指定数据库（没有会创建）: use DATABASE_NAME, 如果数据库不存在，则创建数据库，否则切换到指定数据库。
-
-如: use douban， 此时db就变成了douban，之后db.xxxx()都默认在这个数据库下操作
-
-
-
-查看所有数据库，可以使用 show dbs
-
-
-创建集合：db.createCollection(name, options)
-
-
-随意创建集合， db.createCollection(&quot;top250&quot;);
-
-
-options 可以是如下参数：
-
-
-
-字段
-类型
-描述
-
-
-
-
-cap ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a></div><div class="read-more"><a class="more" href="/2021/12/02/Mongodb学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/26/前端-跨域/">前端-跨域</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-26T09:17:15.000Z">2021-11-26</time><i class="fa fa-edit"></i><time datetime="2021-11-26T09:17:15.000Z">2021-12-09</time></div><div class="recent-post-content"> 什么是跨域问题
-
-跨域问题的出现是因为浏览器的同源策略问题，所谓同源:就是两个页面具有相同的协议（protocol），主机（host）和端口号（port），即指协议，端口，域名。只要这个3个中有一个不同就是跨域。它是浏览器最核心也是最基本的功能，如果没有同源策略我们的浏览器将会十分的不安全，随时都可能受到攻击。
-当我们请求一个接口的时候，出现如：Access-Control-Allow-Origin 字眼的时候说明请求跨域了
-
-
- 展示跨域问题
-前端请求后端8889端口开放的端口
-12345678this.$axios(&#123;    method:'get',    url:'http ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/11/26/前端-跨域/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/30/Vue中使用axios/">Vue中使用axios</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-30T02:31:27.000Z">2021-11-30</time><i class="fa fa-edit"></i><time datetime="2021-11-30T02:31:27.000Z">2021-12-08</time></div><div class="recent-post-content"> axios请求
-
-官网网址
-
-
-从浏览器中创建 XMLHttpRequest
-从 node.js 发出 http 请求
-支持promise API
-拦截请求和响应
-转换请求数据和响应数据
-取消请求
-自动转换 JSON 数据
-客户端支持防御 XSRF
-
- 直接每次从axios库中调用axios函数
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950&lt;template&gt;  &lt;div&gt;    &lt;div&gt;mmmm&lt;/div&gt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Vue"> Vue</a></div><div class="read-more"><a class="more" href="/2021/11/30/Vue中使用axios/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/02/前端进行网络请求的三种方式/">前端进行网络请求的三种方式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-02T13:28:06.000Z">2021-12-02</time><i class="fa fa-edit"></i><time datetime="2021-12-02T13:28:06.000Z">2021-12-05</time></div><div class="recent-post-content"> 前端进行网络请求的三种方式
- XHR技术
-基于XMLHTTPRequest技术实现的，通过调用原生的XML对象实现的，非常的冗余==&gt;ajax技术
- ajax
- Jquery.$ajax
-123456789101112131415161718192021222324// 有参数，则增加data字段，有请求头则增加headers字段，有错误处理增加error字段// 默认是按照表单提交post方法，data中虽然是json但是提交时转成表单$.ajax(&#123;    url:"demo_test.txt",    data:&#123;a:10&#125;,    success: ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/02/前端进行网络请求的三种方式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/29/GoodCSS记录/">GoodCSS记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-29T07:03:44.000Z">2021-11-29</time><i class="fa fa-edit"></i><time datetime="2021-11-29T07:03:44.000Z">2021-12-04</time></div><div class="recent-post-content"> GoodCss记录
- 图标四角反转：
-
-通过 @keyframes 规则，您能够创建动画。
-创建动画的原理是，将一套 CSS 样式逐渐变化为另一套样式。
-12&gt; @keyframes animationname &#123;keyframes-selector &#123;css-styles;&#125;&#125;&gt;
-
-
-
-animationname	必需。定义动画的名称。
-keyframes-selector	必需。动画时长的百分比。合法的值：
-
-0-100%
-from（与 0% 相同）
-to（与 100% 相同）
-
-
-css-styles: 必需。一个或多个合法的 CSS ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/11/29/GoodCSS记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/04/VBA学习——正则提取单元格指定内容并加粗/">VBA学习——正则提取单元格指定内容并加粗</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-04T03:15:12.000Z">2021-12-04</time><i class="fa fa-edit"></i><time datetime="2021-12-04T03:15:12.000Z">2021-12-04</time></div><div class="recent-post-content">
-今天又是女朋友打工人的一天，女朋友有需求，打excel打印出来。由于导出后行距太小，以及答案不明显，因此做了两个处理
-
-每两行之间插入一行
-将单元格内（A、xxx）的答案进行加粗
-
-
-Excel中的宏指的是一段操作过程
-VBA 中，过程是一切的开始，几乎所有的代码，都会被写在一个或多个过程里。实际开发中，通常一个过程，建议只完成一个特定的小目标。因此，我们的程序往往会包含多个过程。这就是 VBA 中过程概念存在的一个原因。
-VBA 过程以 Sub 语句开始，以 End Sub 语句结束，包含一个或多个语句，完成一个特定的目标。
-接受参数的过程基本语法如下：
-123456Sub [过程名]([ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/12/04/VBA学习——正则提取单元格指定内容并加粗/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/02/Gradle学习/">Gradle学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-12-02T03:16:31.000Z">2021-12-02</time><i class="fa fa-edit"></i><time datetime="2021-12-02T03:16:31.000Z">2021-12-02</time></div><div class="recent-post-content"> Gradle学习
-在kotlin中使用mapstruct出现了些问题， 网上搜寻后得到结论：需要使用kapt(Kotlin annotation processing tool 即kotlin注解处理工具)， 但给出的大多都是通过Gradle来进行配置的。因此借此机会学习了下Gradle：
- plugins和apply plugin:
-
-由于文档写到了， 由于不清楚这些在哪些位置加入， 因此查看了plugins和apply plugin:的区别：
-1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2021/12/02/Gradle学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/12/01/Vue-Router细节记录/">Vue-Router细节记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-30T16:05:59.000Z">2021-12-01</time><i class="fa fa-edit"></i><time datetime="2021-11-30T16:05:59.000Z">2021-12-01</time></div><div class="recent-post-content"> vue-router使用
-yarn add vue-router@next --dev, 参数说明packageName@tagorpackageName@version
-创建router/index.js
-12345678910111213141516171819202122232425262728293031323334353637383940414243import &#123; createRouter, createWebHistory &#125; from "vue-router";import ShowList from "../components/ShowList.vue ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a></div><div class="read-more"><a class="more" href="/2021/12/01/Vue-Router细节记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/25/党员在线培训课程-免除暂停烦恼/">党员在线培训课程~免除暂停烦恼</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-25T02:48:17.000Z">2021-11-25</time><i class="fa fa-edit"></i><time datetime="2021-11-25T02:48:17.000Z">2021-11-25</time></div><div class="recent-post-content"> 党员在线培训课程~免除暂停烦恼
-
-女朋友反馈：刷党员在线培训课程得一直手动的解决暂停问题，无法单纯的挂机刷视频。作为一个程序猿，当然是帮她解决啦~
-
-首先分析页面中JS执行逻辑，如下所示
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041 ...</div><div class="read-more"><a class="more" href="/2021/11/25/党员在线培训课程-免除暂停烦恼/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/11/04/Linux-iptables学习/">Linux iptables学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-11-04T14:22:24.000Z">2021-11-04</time><i class="fa fa-edit"></i><time datetime="2021-11-04T14:22:24.000Z">2021-11-08</time></div><div class="recent-post-content"> iptables简介
-​    netfilter/iptables（简称为iptables）组成Linux平台下的包过滤防火墙，与大多数的Linux软件一样，这个包过滤防火墙是免费的，它可以代替昂贵的商业防火墙解决方案，完成封包过滤、封包重定向和网络地址转换（NAT）等功能。
-注：Iptables和netfilter的关系是一个很容易让人搞不清的问题。很多的知道iptables却不知道 netfilter。其实iptables只是Linux防火墙的管理工具而已，位于/sbin/iptables。真正实现防火墙功能的是 netfilter，它是Linux内核中实现包过滤的内部结构。
- ipt ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2021/11/04/Linux-iptables学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/30/makefile使用记录/">Makefile使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-30T04:16:04.000Z">2021-09-30</time><i class="fa fa-edit"></i><time datetime="2021-09-30T04:16:04.000Z">2021-10-26</time></div><div class="recent-post-content"> Makefile使用记录
-
-Makefile 文件描述了 Linux 系统下 C/C++ 工程的编译规则，它用来自动化编译 C/C++ 项目。一旦写编写好 Makefile 文件，只需要一个 make 命令，整个工程就开始自动编译，不再需要手动执行 GCC 命令。===&gt;此外拓展功能不至于C++，其相当于组合一系列Linux命令，因此也可以用来编译其他工程。
-
- 什么是Makefile？
-Windows 下的集成开发环境（IDE）已经内置了 Makefile，或者说会自动生成 Makefile，因此windows下不用去手动编写makefile。但是在 Linux 下的C语言开发会碰到 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="配置"> 配置</a></div><div class="read-more"><a class="more" href="/2021/09/30/makefile使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/15/ZJU开学摸底考试——计算机网络复习/">ZJU开学摸底考试——计算机网络复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-15T12:06:53.000Z">2021-10-15</time><i class="fa fa-edit"></i><time datetime="2021-10-15T12:06:53.000Z">2021-10-25</time></div><div class="recent-post-content">计算机网络核心：
-
-主机
-通信链路
-交换网络
-协议
-
-多路复用
-
-频分多路复用
-时分多路复用
-码分多路复用
-波分多路复用
-
-数据交换
-
-电路交换（FDM,WDM,TDM,CDM）
-报文交换（被废弃了）
-分组交换（统计多路复用）
-
-分组：报文分拆出来的一系列相对较小的数据包
-分组交换需要报文的拆分与重组
-统计多路复用
-工作方式：存储与转发：
-
-报文交换与分组交换均采用存储-转发交换方式
-区别：
-报文交换以完整报文进行“存储-转发”
-分组交换以较小的分组进行“存储-转发”
-
-
-报文：M bts
-链路带宽（数据传输
-速率）：R bps
-分组长度（大小）：Lbits
-跳步数：h
-路由器数：n
-分组交换 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/10/15/ZJU开学摸底考试——计算机网络复习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/20/Java-Logger/">Java Logger</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-20T09:15:14.000Z">2021-10-20</time><i class="fa fa-edit"></i><time datetime="2021-10-20T09:15:14.000Z">2021-10-25</time></div><div class="recent-post-content"> Java Logger——Java的日志体系
-在JDK 1.3及以前，Java打日志依赖System.out.println(), System.err.println()或者e.printStackTrace()，Debug日志被写到STDOUT流，错误日志被写到STDERR流。这样打日志有一个非常大的缺陷，即无法定制化，且日志粒度不够细。
-于是， Gülcü 于2001年发布了Log4j，后来成为Apache 基金会的顶级项目。Log4j 在设计上非常优秀，对后续的 Java Log 框架有长久而深远的影响，它定义的Logger、Appender、Level等概念如今已经被广泛使用。Lo ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2021/10/20/Java-Logger/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/10/09/XML语法规则笔记/">XML语法规则笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-10-09T11:37:54.000Z">2021-10-09</time><i class="fa fa-edit"></i><time datetime="2021-10-09T11:37:54.000Z">2021-10-09</time></div><div class="recent-post-content"> 简介：
-
-XML 指可扩展标记语言（EXtensible Markup Language）。
-XML 是一种很像HTML的标记语言。
-XML 的设计宗旨是传输数据，而不是显示数据。
-XML 标签没有被预定义。您需要自行定义标签。
-XML 被设计为具有自我描述性。
-XML 是 W3C 的推荐标准。
-
- 特点：
-
-所有 XML 元素都须有关闭标签
-XML 标签对大小写敏感
-XML 文档必须有根元素
-XML 的属性值须加引号，双引号、单引号都可以
-实体引用：&amp;lt;, &amp;gt;, &amp;amp, &amp;apos, &amp;quot
-在 XML 中，空格会被保留， 但多余的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学习笔记"> 学习笔记</a></div><div class="read-more"><a class="more" href="/2021/10/09/XML语法规则笔记/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+sensor.set_framesize() 设置图像的大小
+
+sensor.QQVGA: 160x120
+sensor.QQVGA2: 128x160 (用于 lcd 扩展板)
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/06/Openmv使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/软件测试大赛/">软件测试大赛</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:07:12.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:07:12.000Z">2019-11-02</time></div><div class="recent-post-content"> 软件测试大赛
+ 初学流程
+
+首先了解比赛,查看帮助文档平台帮助
+然后在工具下载中下载工具、eclipse插件
+最后根据教程中将插件安装好即可
+
+ 移动应用测试开发
+ 环境配置
+ 配置Java环境
+略,见Java 开发环境配置_菜鸟教程
+ 安装ADB
+1.菜单——&gt;Tools——&gt;Settings，将Server地址为 mirrors.neusoft.edu.cn， 端口 80 ，并且在Others里勾选 Force	https://…,最后一定要选择菜单——&gt;Packages菜单——&gt;Reload
+注:其他可用的镜像
+2.把 Android	SDK	路径下的tools ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></div><div class="read-more"><a class="more" href="/2019/09/14/软件测试大赛/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/18/软件测试笔记/">软件测试笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-18T13:03:29.000Z">2019-10-18</time><i class="fa fa-edit"></i><time datetime="2019-10-18T13:03:29.000Z">2019-11-02</time></div><div class="recent-post-content"> 软件测试笔记
+ 移动应用测试
+ appnium使用
+
+安装的是appnium-desktop,没有教程中所说的Appium/node_modules/.bin/路径，使用命令行输入appnium和appium-doctor也都没啥反应，后来索性没管，直接跑代码
+
+ 真机测试
+使用的时候报错Build info: version: 'unknown', revision: 'unknown', time: 'unknown'，以为是appnium版本的问题，第一次安装的是1.13，后来换成了1.9，其实没多大区别，只不过据说要保证版本在1.6以上。
+更换版本后，发现还是Build info:  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="软件测试"> 软件测试</a></div><div class="read-more"><a class="more" href="/2019/10/18/软件测试笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/15/玩玩Stm32/">玩玩Stm32</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-15</time><i class="fa fa-edit"></i><time datetime="2019-10-15T08:33:09.000Z">2019-10-18</time></div><div class="recent-post-content"> 玩玩Stm32
+ 文件结构
+12345678910111213141516G:.├───CORE	# startup_stm32f10x_hd.s汇编编写的启动文件|			# core_cm3.c底层函数├───HARDWARE	# 相关外设的初始化代码├───OBJ├───STM32F10x_FWLib	# 固件库包: GPIO/i2c/...│   ├───inc│   └───src├───SYSTEM			# 正点原子提供的常用、通用模块│   ├───delay│   ├───sys│   └───usart└───USER # stm32f10x_it.c 中断管理文件    | ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式"> 嵌入式</a></div><div class="read-more"><a class="more" href="/2019/10/15/玩玩Stm32/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/新加坡游玩经验/">新加坡游玩经验</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:35:49.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:35:49.000Z">2019-10-18</time></div><div class="recent-post-content"> 新加坡南洋理工大学访学
+此次访学长达14天，不少安排都是学校安排，在此仅列出个人安排、经验心得。
+
+ 门票购买：
+番薯游：这是老师推荐我们的，但下载以后感觉界面还是比较丑的，而且价格也不是非常便宜。这家是唯一一家促进扫码买门票的公司。
+KLOOK客路：界面比番薯游好多了，还是非常精致的。最大的优势在于可以找到经典的位置及景点介绍、门票时间等信息。
+淘宝：跟好几个平台对比之后，价格应该是最低的，并且时间限制比较小，其他的可能要预约，而TB当天购买就行（强调：动物园门票）
+▲特别说明下，动物园的门票水很深。当面购买$50,我当时去时没有预约，结果在KLOOK上看当天的票已经没有库存了，于是问了下 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/09/新加坡游玩经验/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/验证码识别程序设计流程/">验证码识别程序设计流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T13:31:35.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T13:31:35.000Z">2019-10-07</time></div><div class="recent-post-content"> 验证码识别程序设计流程
+
+以南邮正方教务系统为例
+
+ 找到验证码图片的链接
+
+“http://jwxt.njupt.edu.cnCheckCode.aspx”
+
+1234567def getCaptcha():    CAPTCHA_URL = "http://jwxt.njupt.edu.cn/CheckCode.aspx"    r = requests.get(CAPTCHA_URL)    img = r.content    img = Image.open(BytesIO(img))    return img
+ 对图片去噪
+123456789101112131415161718 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/09/验证码识别程序设计流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/26/OpenAI-Gym使用/">OpenAI Gym使用、rendering画图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-26T09:53:27.000Z">2019-09-26</time><i class="fa fa-edit"></i><time datetime="2019-09-26T09:53:27.000Z">2019-10-07</time></div><div class="recent-post-content"> OpenAI Gym使用、rendering画图
+
+gym开源库：包含一个测试问题集，每个问题成为环境（environment），可以用于自己的RL算法开发。这些环境有共享的接口，允许用户设计通用的算法。其包含了deep mind 使用的Atari游戏测试床。
+
+在强化学习中有2个基本概念，一个是环境（environment），称为外部世界，另一个为智能体agent（写的算法）。agent发送action至environment，environment返回观察和回报。
+Gym官方文档
+ Hello gym
+123456789import gym# 创建一个小车倒立摆模型env = gym.m ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/26/OpenAI-Gym使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/06/Python多进程/">Python多进程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-06T12:17:44.000Z">2019-10-06</time><i class="fa fa-edit"></i><time datetime="2019-10-06T12:17:44.000Z">2019-10-07</time></div><div class="recent-post-content"> Python多进程
+ 守护进程
+
+守护进程其实就是**“子进程“是否伴随主进程一起结束**:守护==&gt;伴随，即守护进程会伴随主进程的代码运行完毕后而死掉
+
+进程：当父进程需要将一个任务并发出去执行，需要将该任务放到以个子进程里
+守护：当该子进程内的代码在父进程代码运行完毕后就没有存在的意义了，就应该
+将该子进程设置为守护进程，会在父进程代码结束后死掉
+1234567891011121314151617181920212223from multiprocessing import Processimport timedef foo():    print(123)    time.sle ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/10/06/Python多进程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/10/03/TD-afterstate/">TD-afterstate</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-10-03T11:28:36.000Z">2019-10-03</time><i class="fa fa-edit"></i><time datetime="2019-10-03T11:28:36.000Z">2019-10-03</time></div><div class="recent-post-content"> TD-afterstate
+
+afterstae: 当前执行一个动作后的状态，可以理解为中间态
+是处理问题的一个改动,一种思想
+
+以俄罗斯方块为例:
+状态是由当前的局面和一个随机方块组成，执行一个下落动作之后会产生一个局面就称为afterstate，即动作结束后不能进行新的动作（没有新方块）的状态。
+中间态和下一个随机方块构成了下一个状态
+对于没有这种随机性的问题，afterstate就是next state
+td做预测，afterstate做控制
+
+ 更多:
+强化学习经典入门书的读书笔记系列–第六篇Temporal-Difference
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/10/03/TD-afterstate/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/23/Github下载、访问慢解决方法-转/">Github下载、访问慢解决方法[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-23T08:36:21.000Z">2019-09-23</time><i class="fa fa-edit"></i><time datetime="2019-09-23T08:36:21.000Z">2019-09-29</time></div><div class="recent-post-content"> Github下载、访问慢解决方法[转]
+
+下载tensorflow就16KiB/s,改完后能有900+KiB/s
+
+修改hosts
+1234567891011121314151617151.101.44.249 github.global.ssl.fastly.net192.30.253.113 github.com103.245.222.133 assets-cdn.github.com23.235.47.133 assets-cdn.github.com203.208.39.104 assets-cdn.github.com204.232.175.78 documentcloud.git ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/09/23/Github下载、访问慢解决方法-转/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/27/Python-random/">Python random</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-27T14:11:59.000Z">2019-09-27</time><i class="fa fa-edit"></i><time datetime="2019-09-27T14:11:59.000Z">2019-09-29</time></div><div class="recent-post-content"> Python random
+
+老是忘记random中每个函数之间的区别，而且常常跟numpy里的random也经常搞混，因此还是写篇文章记一下吧。
+
+ random模块
+ choice和sample
+python中random.choice()可以从给定的可迭代对象中随机挑选出一个。
+而python中random.sample()方法则可以随机地从给定的可迭代对象中提取出N个不同的元素，列表的维数没有限制。（即第二参数给出个数N）
+1234567891011import randomprint(random.sample([chr(97 + x) for x in range(int(9)) ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/09/27/Python-random/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/17/常用域名记录解释/">常用域名记录解释</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time><i class="fa fa-edit"></i><time datetime="2019-09-17T09:47:35.000Z">2019-09-17</time></div><div class="recent-post-content"> 常用域名记录解释
+ A记录
+A记录是用来创建到IP地址的记录。
+A记录设置技巧
+1、如果想创建不带www的记录，即ezloo.com，在主机记录中填写@或者留空，不同的注册商可能不一样。
+2、创建多个域名到同一个IP，比如给博客建了二级域名，可以使用*.blog.ezloo.com来指向一个IP，这样的话，不管是访问a.blog.ezloo.com还是b.blog.ezloo.com都能到同一个IP。
+3、如果你给同一个二级域名设置了多个A记录，比如你建了两个blog的A记录，其中一个指向了111.111.111.111，另一个指向了111.111.111.112，那么在查询的时候，每次返回 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="网络知识"> 网络知识</a></div><div class="read-more"><a class="more" href="/2019/09/17/常用域名记录解释/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/13/打jar包和使用jar包/">打jar包和使用jar包</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-13</time><i class="fa fa-edit"></i><time datetime="2019-09-13T03:45:11.000Z">2019-09-15</time></div><div class="recent-post-content"> 打jar包和使用jar包
+ 一、为什么要打jar包
+给别人用的时候一般给别人的是class文件。如果有很多类这么办？把类变成一个压缩包！windows下的压缩包是.zip格式等，而eclipse压缩包是.jar格式。
+ 二、如何查看jar包
+用解压缩软件解压即可。可以看到里面有哪些class文件。
+ 三、如何开发jar包
+开发jar包的人员开发流程：
+ 步骤1:编写类
+12345678//GetSum.javapackage cn.itcast.sum;public class GetSum&#123;      public static getSum(int a,int b)&#123; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a></div><div class="read-more"><a class="more" href="/2019/09/13/打jar包和使用jar包/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/14/如何成为一位老司机——考驾照经历/">如何成为一位老司机——考驾照经历</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-14</time><i class="fa fa-edit"></i><time datetime="2019-09-14T04:32:33.000Z">2019-09-15</time></div><div class="recent-post-content"> 如何成为一位老司机——考驾照经历
+大一下报的名，几经转折，终于在2019-9-12，中秋放假前一天拿到了本本。
+ 科一理论考试
+太久远了，已经忘记了…
+ 科二
+ 训练
+ 倒车入库：
+左边小镜子底座盖过黄线，向左打死。
+正手倒车时，靠近左边直角距离3个手指回正，然后看左边镜子出现直角，然后。
+左手是一到二指头。
+▲入库重在自己调整，记住准则：左右镜子，哪边空隙大，方向盘往哪边打
+ 小四项：
+ 直角转弯:
+
+人在路中间，直角重合于车窗黑线后向左打死。
+
+ S弯道：
+
+确保人在路中间，可以略微偏左。左边小镜子底座压住右边黄线。方向盘一圈右手放在2点方向。如果黄线偏下，那么往1点方向调整，否则往3点 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/09/14/如何成为一位老司机——考驾照经历/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span href="https://beian.miit.gov.cn/">备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

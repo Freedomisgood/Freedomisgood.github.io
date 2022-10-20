@@ -97,232 +97,253 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/12/05/枚举类的优雅写法Java-Python/">枚举类的优雅写法Java-&gt;Python</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-05T08:19:27.000Z">2020-12-05</time><i class="fa fa-edit"></i><time datetime="2020-12-05T08:19:27.000Z">2022-04-27</time></div><div class="recent-post-content">
-枚举类型作为与接口、类同一级别的存在，自然有它独特的用途。至于它性能上的优势暂且不谈，我们在这篇文章中只是考虑怎么把Enum写得更优雅
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/07/08/自动化运维工具Ansible/">自动化运维工具Ansible</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-08T06:45:45.000Z">2019-07-08</time><i class="fa fa-edit"></i><time datetime="2019-07-08T06:45:45.000Z">2019-12-16</time></div><div class="recent-post-content"> 简介
+​        ansible是新出现的自动化运维工具，基于Python开发，集合了众多运维工具（puppet、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。
+　　ansible是基于 paramiko 开发的,并且基于模块化工作，本身没有批量部署的能力。真正具有批量部署的是ansible所运行的模块，ansible只是提供一种框架。ansible不需要在远程主机上安装client/agents，因为它们是基于ssh来和远程主机通讯的。ansible目前已经已经被红帽官方收购，是自动化运维工具中大家认可度最高的，并且上手容易，学习简单 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/08/自动化运维工具Ansible/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/2019-6月编程笔记/">2019_6月编程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:26:03.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:26:03.000Z">2019-11-26</time></div><div class="recent-post-content"> 2019_6月编程笔记
+
+注，不少内容比较多，已单独分出去成为独立的文章，更详细的介绍可见这些文章
+
+ 硬盘格式
+fat32 单文件4G， 做引导分区
+系统引导程序能读fat32
+只能主引导记录，选择能找到efi程序
+exfat 支持更大空间，引导识别不了，做不了系统盘
+ Python
+ all
+
+__all__是一个字符串list；
+约束作用：用来定义模块中对于from XXX import *时要对外导出的符号，即要暴露的借口，但它只对import *起作用，对from XXX import XXX不起作用。
 
- Java
- Enum的写法
+from njupt.zhengfang import Zhengfang是 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="编程日记"> 编程日记</a></div><div class="read-more"><a class="more" href="/2019/08/30/2019-6月编程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/">通过XDRP实现Windows远程访问ubuntu桌面</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T00:57:05.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T00:57:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 通过XDRP实现Windows远程访问
+1234567891011121314#安装xrdp $ sudo apt-get install xrdp #安装vnc4server $ sudo apt-get install vnc4server tightvncserver#安装xubuntu-desktop $ sudo apt-get install xubuntu-desktop #向xsession中写入xfce4-session $ echo “xfce4-session” &gt;~/.xsession #开启xrdp服务 $ sudo service xrdp restart
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/通信企业管理-线上考试/">通信企业管理_线上考试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:37:49.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:37:49.000Z">2019-09-15</time></div><div class="recent-post-content"> 通信企业管理
 
-在阿里实习的时候印象最深的就是学到了枚举的写法， 大致如下所示
+看清题目和选项
 
-123456789101112131415161718192021222324252627282930313233343536373839404142public enum EnumOperationPermission implements IEnumBehaviour &#123;    // ----------------------- 实际的枚举对象 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/05/枚举类的优雅写法Java-Python/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/25/ZJU云原生技术及应用-课程笔记/">ZJU云原生技术及应用-课程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-25T14:48:36.000Z">2021-09-25</time><i class="fa fa-edit"></i><time datetime="2021-09-25T14:48:36.000Z">2022-03-15</time></div><div class="recent-post-content"> ZJU要求
- 课程内容
+ 单选题
+1单选(2分)
+在总公司领导下设立多个分支，各分支有各自独立的产品和市场，实行独立核算，经营管理上拥有自主性和独立性。这是（ A   ）组织结构。
 
-云计算基本概念和Docker容器原理（4课时）
-Kubernetes核心原理与关键组件 （8课时）
-微服务技术原理与治理 （4课时）
-容器监控与分析 （4课时）
-云原生边缘计算技术（4课时）
-IBM讲座-混合云架构（4课时）
-云原生应用实践与案例分析（4课时）
+A.事业部型
+B.矩阵型
+C.职能型
+D.直线型
 
- 考核方式
+2单选(2分)
+按照最新版《中华人民共和国公司法》规定，股份有限公司的发起人最多不超过（    C ）。
 
-平时（20%）+ 课程设计（80%，含报告）
+A.100人
+B.50人
+C.200人
+D.150人
 
-课程设计（三选一）
+3单选(2分)
+工作或行动之前预先拟定具体的工作内容和步骤是管理的（  D  ）职能。
 
+A.组织职能
+B.控制职能
+C.领导职能
+D.计划职能
 
-云原生技术研究报告或综述
-围绕云原生关键技术点，如容器安全、多集群管理、云边协同和边缘智能等，综述当前技术现状并进行必要的分析
+4单选(2分)
+提出“14项管理原则”的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2019/08/22/通信企业管理-线上考试/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/算法设计与分析C-概念点区分/">算法设计与分析C_概念点区分</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:39:29.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:39:29.000Z">2019-09-15</time></div><div class="recent-post-content"> 算法设计与分析C
+ 算法5_分治法
+分治法——将一个复杂的问题分解成若干个规模较小、相互独立，但类型相同的子问题求解；然后再将各子问题的解组合成原始问题的一个完整答案，这样的问题求解策略就叫分治法。
+分治法所能解决的问题一般具有以下几个特征：
+该问题的规模缩小到一定的程度就可以容易地解决；
+该问题可以分解为若干个规模较小的相同问题；
+利用该问题分解出的子问题的解可以合并为该问题的解；
+该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子问题。
+反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。
+由分 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2019/08/22/算法设计与分析C-概念点区分/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/时间序列概念及主要模型/">时间序列概念及主要模型</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T11:05:18.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T11:05:18.000Z">2019-09-15</time></div><div class="recent-post-content"> 时间序列概念及主要模型
+Q:什么是时间序列分析?
+A:时间序列是按照时间顺序，按照一定时间间隔取得的一系列观测值
+Q:怎样做时间序列分析?
+A:时间序列分析尝试找出序列值在过去呈现的特征模式，假定这种模式在未来能够持续，进而对未来进行预测
+ 时间序列三大特征
 
+序列相关性：当期的序列值和前期某个或某些序列值线性相关
+√  自相关系数（全相关系数）（ACF）：用来度量同一事件在不同时期之间的相关程度。ρh=r(h)r(0)\rho_{h}=\frac{r(h)}{r(0)}ρh​=r(0)r(h)​，其中r（h）为h期协方差函数，r（0）为方差
+√  偏自相关系数（PACF）：度量去除中间变量 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数学建模"> 数学建模</a></div><div class="read-more"><a class="more" href="/2019/07/29/时间序列概念及主要模型/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/强化学习——QLearning/">强化学习——QLearning</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:32:08.000Z">2019-09-15</time></div><div class="recent-post-content"> 强化学习——QLearning
+价值转移公式只有一条Q(s,a)&lt;=Q(s,a)+/alpha∗(reward−Q(s,a)+/gamma∗maxaQ(s′,a))=(1−/alpha)∗Q(s,a)+/alpha∗(reward+/gamma∗maxaQ(s′,a))Q(s,a) &lt;= Q(s,a) + /alpha*(reward - Q(s,a) + /gamma*max_aQ(s&#x27;,a)) = (1-/alpha)*Q(s,a) + /alpha*(reward + /gamma*max_aQ(s&#x27;,a))Q(s,a)&lt;=Q(s,a)+/alph ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/强化学习——QLearning/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/">基础知识补充——白噪声、高斯白噪声</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T10:47:04.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T10:47:04.000Z">2019-09-15</time></div><div class="recent-post-content"> 白噪声、高斯白噪声
+ 白噪声过程:
+对于一个随机变量X(t)（t=1，2，3……），如果是由一个不相关的随机变量的序列构成的，即对于所有s不等于t，随机变量X(t)和X(s)的协方差为零，则称其为纯随机过程。对于一个纯随机过程来说，若其期望为0，方差为常数，则称之为白噪声过程。
+ 白噪声:
+白噪声序列，是指白噪声过程的样本实称，简称白噪声[1]。白噪声是**在较宽的频率范围内，各等带宽的频带所含的噪声能量相等的噪声**[2]，是一种功率频谱密度为常数的随机信号或随机过程，也就是说，此信号在各个频段上的功率是一样的。
+理想的白噪声具有无限的带宽，因而其能量无限大，但这是不可能实际存在的，所以， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/">利用wireshark抓取TCP的整个过程分析[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-24T07:51:29.000Z">2019-07-24</time><i class="fa fa-edit"></i><time datetime="2019-07-24T07:51:29.000Z">2019-09-15</time></div><div class="recent-post-content">原文地址：https://www.cnblogs.com/NickQ/p/9226579.html
+最近，已经很久都没有更新博客了。看看时间，想想自己做了哪些事情，突然发现自己真的是太贪心，到头来却一个都没搞好。手头的嵌入式都还没学出名堂，竟然还想着学FPGA,物联网，机器学习。然而，遇到新奇的事物，就会控制不住的去想，去找资料，实际上只是逃避遇到的问题，不想去解决而已。。最后的结果就是手头的活堆起来了，然后花大把整块的时间解决。真的是讨厌现在的自己。
+以后还是慢慢记录吧，不管做了什么，都慢慢尝试积累。。其他的东西，像FPGA，机器学习什么的，让他随风去吧，用到啥学啥。其他的当看客，了解了解就 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/yaml基础语法-spring-boot/">yaml基础语法_spring_boot</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:04:35.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:04:35.000Z">2019-09-15</time></div><div class="recent-post-content"> yaml基础语法_spring_boot
 
-源代码分析报告
-分析Kubernetes或者KubeEdge等云原生项目相关源代码，撰写代 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU课程"> ZJU课程</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="云原生"> 云原生</a></div><div class="read-more"><a class="more" href="/2021/09/25/ZJU云原生技术及应用-课程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/09/ZJU开学摸底考试——操作系统复习/">ZJU开学摸底考试——操作系统复习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-09T06:21:21.000Z">2021-09-09</time><i class="fa fa-edit"></i><time datetime="2021-09-09T06:21:21.000Z">2022-02-27</time></div><div class="recent-post-content"> 操作系统
- 特性：
+yaml aren’t markup language 即yaml不是标语语言：
+xml（标记语言）:
+1234&gt; &lt;server&gt;&gt; 	&lt;port&gt;8888&lt;/port&gt;&gt; &lt;/server&gt;&gt;
 
-并发：
+java spring boot默认全局配置文件:
 
-▲理解并发和并行的区别
 
+application.properties 使用的时 key=value
 
-共享
 
-互斥共享方式（摄像头设备的共享使用）
-同时共享方式（硬盘访问）——宏观的同时，微观上进程还是交替访问的（分时共享）
+application.yaml:
 
 
-虚拟：
+k:v
 
-虚拟存储器：
 
-空分复用
+通过缩进，垂直对齐指定层次关系
 
+字符串可以默认不写引号，写引号中的转义符会被翻译：e.g.& ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/07/yaml基础语法-spring-boot/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/26/Vim记忆/">Vim记忆</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-26T02:34:34.000Z">2019-07-26</time><i class="fa fa-edit"></i><time datetime="2019-07-26T02:34:34.000Z">2019-09-15</time></div><div class="recent-post-content"> VIM记忆技巧
+ 增
 
-虚拟处理器：
+i(insert)
+I最前面insert
+a(append)
+A最后面append
+o(open a line)往下开启一行
+O往上开启一行
 
-时分复用
+ 删
 
+d（delete）
+dw（delet word）
+dd（删除一行）
+x（删除一个字符）
 
+ 拓展
 
+diw(delete inner word)
+daw(delete around word)
 
-异步
+ 改
 
-只有系统具有并发性，才可能导致异步性
+c（change）
+ciw（change inner word）
+ci&quot;(change inner &quot;)
+ct）修改到右括号
 
+ 查
 
+fs(find s) 跳到本行第一个s字符
+/往后查找,如/x ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/07/26/Vim记忆/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/staticmethod和classmethod区别/">staticmethod和classmethod区别</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:06:00.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:06:00.000Z">2019-09-15</time></div><div class="recent-post-content"> staticmethod和classmethod
 
-注： 并发与共享互为存在条件
- 操作系统发展
-单道批处理系统
+类的实例化基本遵循创建实例对象、初始化实例对象、最后返回(产生)实例对象这么一个过程
 
-主要优点：缓解了一定程度的人机速度矛盾，资源利用率有所提升。
-主要缺点：内存中仅能有一道程序运行，只有该程序运行结束之后才能调入下一道程序。CPU有大量的时间是在空闲等待/0完成。资源利用率依然很低。
+123456789101112131415161718class Test(object):    data = 'world' # 类对象的数据成员    def __init__(self, arg):        self.arg = arg    @staticmethod	# 静态方法，不能访问类数据成员    def func():        print("hello")    @classmethod	# 类方法,能访问类数据成员   ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/07/staticmethod和classmethod区别/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/RL强化学习概念/">RL强化学习概念</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:33:12.000Z">2019-09-15</time></div><div class="recent-post-content"> RL强化学习概念
+ 方法汇总
+ 价值-直接-想象
+通过价值选择行为：
 
-多道批处理系统： ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2021/09/09/ZJU开学摸底考试——操作系统复习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/24/学习画好架构图/">学习画好架构图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-24T06:57:11.000Z">2021-08-24</time><i class="fa fa-edit"></i><time datetime="2021-08-24T06:57:11.000Z">2022-02-27</time></div><div class="recent-post-content">
-一图胜万语，做好一张架构图能让别人一眼就清晰地弄懂程序的功能与依赖，大大降低大家的理解成本和提升沟通效率。但作为新人而言，如何画出要点，提炼出核心概念是个有难度的事。
+Q Learning
+Sarsa
+Deep Q Network
 
- 什么是架构？
-架构是结构和愿景，是对系统中的实体以及实体之间的关系所进行的抽象描述，是一系列的决策。
-系统架构是概念的体现，是对物/信息的功能与形式元素之间的对应情况所做的分配，是对元素之间的关系以及元素同周边环境之间的关系所做的定义。
- 什么是架构图？
-系统架构图是为了抽象地表示软件系统的整体轮廓和各个组件之间的相互关系和约束边界，以及软件系统的物理部署和软件系统的演进方向的整体视图。
- 架构图的作用
-要让干系人理解、遵 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="福利"> 福利</a></div><div class="read-more"><a class="more" href="/2021/08/24/学习画好架构图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/UML简单记录/">UML简单记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T05:59:15.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T05:59:15.000Z">2022-02-23</time></div><div class="recent-post-content">
-要学习设计模式，首先绕不开的就是UML图，同时对于一名开发而言，开发文档中也必然会出现UML的身影。之前在实习的时候，其实已经学过不少了，但不用后又很容易忘记，(在阿里实习的时候就以为记得很熟了，结果现在又忘了)——因此这也是一个防忘系列
+直接选择行为：
 
- UML
+Policy Gradients
 
-UML(Unified Modeling Language)是一种标准的图形化建模语言，是一种为面对对象系统的产品进行说明、可视化、编制文档的标准语言，它是面向对象分析与设计的一种标准表示。
+想象环境并从中学习
 
-（1）UML是一种语言。
-从上面的定义可以看出，就其本质，UML是一种语言，既然是语言，那就是用来交流的，UML用来在哪些人员之间进行交流呢？很明显， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/12/11/UML简单记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/11/JWT使用学习/">JWT使用学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-11T08:44:17.000Z">2021-08-11</time><i class="fa fa-edit"></i><time datetime="2021-08-11T08:44:17.000Z">2021-12-05</time></div><div class="recent-post-content"> JWT: Json Web Token
+Model Based RL
 
+ 基于模型
 
-与普通Token一样都是访问资源的令牌，都可以记录用户信息，都是只有验证成功后才可以获取信息。
-不同的是普通Token，服务端验证token信息时要进行数据库查询操作；JWT验证token信息就不用，在服务端使用密钥校验就可以，不用经过数据库查询。==》它是一个数字签名
 
+Model-Free RL（无模型）不需要去理解环境的含义
 
- JWT信息组成
-JSON Web Token由三部分组成，它们之间用圆点(.)连接。这三部分分别是：
+Q Learning
+Sarsa
+Policy Gradients
 
 
-Header
 
-Header header典型的由两部分组成：token的类型（“JWT”）和算法名称（比如：HMAC SHA256或者RSA等等）。
+Model-Based RL（有环境）需要去理解环境的含义，在&quot;脑子&quot;中模拟虚拟环境
 
+Q Learning
+Sarsa
+Policy Gradient
 
+前者需要一步一步得到环境 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="RL"> RL</a></div><div class="read-more"><a class="more" href="/2019/09/09/RL强化学习概念/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/Python类的继承-super-使用/">Python类的继承-super()使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:03:49.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:03:49.000Z">2019-09-15</time></div><div class="recent-post-content"> Python类的继承即super()使用
+ Super
 
-Payloa ...</div><div class="read-more"><a class="more" href="/2021/08/11/JWT使用学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/03/03/天猫秒杀插件-Chrome插件编写/">Chrome插件编写-天猫秒杀插件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-03-03T13:37:15.000Z">2021-03-03</time><i class="fa fa-edit"></i><time datetime="2021-03-03T13:37:15.000Z">2021-12-04</time></div><div class="recent-post-content"> chrome插件开发
+super() 函数是用于调用父类(超类)的一个方法，只有在新式类中可以使用
+super 是用来解决多重继承问题的，直接用类名调用父类方法在使用单继承的时候没问题，但是如果使用多继承，会涉及到查找顺序（MRO，Method Resolution Order，采用广度优先（区别于深度优先）的规则定义）、重复调用（钻石继承）等种种问题。
+MRO 就是类的方法解析顺序表, 其实也就是继承父类方法时的顺序表。
 
-借鉴TODO-List：Chrome插件开发简要指南
+语法
+以下是 super() 方法的语法:
+1234# 菜鸟教程super(type [, object-or-type])# 个人 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/07/Python类的继承-super-使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Python爬虫常规流程/">Python爬虫常规流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:07:05.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:07:05.000Z">2019-09-15</time></div><div class="recent-post-content"> Python爬虫常规流程
+以爬取有道翻译为例子。
+ 挖取可自用的API
 
- 文件结构
-在应用商店中下载下来的插件基本上都是以.crx为文件后缀，该文件其实就是一个压缩包（文件夹压缩而来），包括插件所需要的html、css、javascript、图片资源等等文件。
-其中，
+web 端的有道翻译，在之前是直接可以爬的。也就是说只要获取到了他的接口，你就可以肆无忌惮的使用他的接口进行翻译而不需要支付任何费用。那么自从有道翻译推出他的API服务的时候，就对这个接口做一个反爬虫机制（如果大家都能免费使用到他的翻译接口，那他的APl服务怎么赚钱）。这个反爬虫机制在爬虫领域算是一个非常经典的技术手段。
 
-manifest.json是整个插件的功能及文件配置清单，非常重要。
-static目录是放置整个插件的静态资源文件的，包括css、js、图片等等资源
-template目录是放置整个插件的功能页面模板的。
-_locales目录是放置整个插件的国际化语言脚本的。
+1.查看要爬取的内容是否是静态加载的。
+比如在翻译输入框中输入apple，翻译输出框中会出现苹果，然后在``页面中右键-&gt;查看网页源代码，直接Ctrl+F搜索是否存在apple或者苹果`，如果 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/08/30/Python爬虫常规流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/">Let's Encrypt安装配置nginx的SSL证书教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:34:04.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:34:04.000Z">2019-09-15</time></div><div class="recent-post-content"> Let’s Encrypt 安装配置nginx的SSL证书教程
+ 使用cerbot生成证书
+ 安装Let’s Encrypt
+安装非常简单直接克隆就可以了
+1git clone https://github.com/letsencrypt/letsencrypt
+如果网速较慢（国外服务器应该快点）
+1.可以登录https://github.com/letsencrypt/letsencrypt，下载后通过lrzsz传到云服务器上，再解压
+2.修改hosts
+查找域名对应的ip地址，并修改hosts文件
+123456789101112131415linuxidc@linuxidc:~/linu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/09/09/CDN加速个人博客——又拍云/">CDN加速个人博客——又拍云</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-09</time><i class="fa fa-edit"></i><time datetime="2019-09-09T11:34:27.000Z">2019-09-15</time></div><div class="recent-post-content"> CDN加速个人博客——又拍云
 
-一般来说，清单文件manifest.json文件是必须的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="脚本"> 脚本</a></div><div class="read-more"><a class="more" href="/2021/03/03/天猫秒杀插件-Chrome插件编写/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/13/学点Kotlin/">学点Kotlin</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-13T09:18:17.000Z">2021-09-13</time><i class="fa fa-edit"></i><time datetime="2021-09-13T09:18:17.000Z">2021-12-02</time></div><div class="recent-post-content"> Kotlin 基础语法
-Kotlin 文件以 .kt 为后缀。
- 函数定义
-函数定义使用关键字 fun，参数格式为：参数 : 类型
-123fun sum(a: Int, b: Int): Int &#123;   // Int 参数，返回值 Int    return a + b&#125;
-表达式作为函数体，返回类型自动推断：
-123fun sum(a: Int, b: Int) = a + bpublic fun sum(a: Int, b: Int): Int = a + b   // public 方法则必须明确写出返回类型
-无返回值的函数(类似Java中的void)：
-123456 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Kotlin"> Kotlin</a></div><div class="read-more"><a class="more" href="/2021/09/13/学点Kotlin/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/07/27/Go的配置和使用/">Go的配置和使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-07-27T03:10:11.000Z">2021-07-27</time><i class="fa fa-edit"></i><time datetime="2021-07-27T03:10:11.000Z">2021-11-10</time></div><div class="recent-post-content"> Go语法学习
+CDN(Content Delivery Network)内容发布网络，基本思路就是将你网站放置在各地节点服务器，用户访问时找最近的节点服务器获取数据，达到加速的目的。
 
-Go 语言被设计成一门应用于搭载 Web 服务器，存储集群或类似用途的巨型中央服务器的系统编程语言。
-对于高性能分布式系统领域而言，Go 语言无疑比大多数其它语言有着更高的开发效率。它提供了海量并行的支持，这对于游戏服务端的开发而言是再好不过了。
+ 几大厂商的CDN方案
 
- 变量声明
 
-变量来源于数学，是计算机语言中能储存计算结果或能表示值抽象概念。变量可以通过变量名访问。
 
-声明变量的一般形式是使用 var 关键字：
+资费介绍页面
+免费额度
+是否支持HTTPS
+额外限制
+注册邀请链接
 
-第一种，指定变量类型，如果没有初始化，则变量默认为零值: var identifier1, identifier2 type==&gt;bool零值为false，int为0
-第二种 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Go"> Go</a></div><div class="read-more"><a class="more" href="/2021/07/27/Go的配置和使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/21/docker部署springboot项目/">docker部署springboot项目</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-21T03:34:05.000Z">2021-09-21</time><i class="fa fa-edit"></i><time datetime="2021-09-21T03:34:05.000Z">2021-10-25</time></div><div class="recent-post-content">
-由于最近在学云原生的课会接触到docker和k8s，因此试验了如何通过docker来部署springboot。
-由于docker的实现依赖于linux内核提供的cgroups和namespace功能，而windows支持还没找到非常好的解决方案，因此在功能上windows docker还是有缺陷。我尝试过安装docker desktop for windows但是在WSL2的安装上失败了（2021年9月21日），试了二十分钟无果后放弃，决定还是在linux上构建。
 
- 服务器上搭建Java环境和docker环境
 
-由于将docker的构建放到了服务器上，因此这部分可以理解为是构建打包环境
 
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2021/09/21/docker部署springboot项目/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/27/物联网基础与应用-课程笔记/">物联网基础与应用-课程笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-27T15:44:21.000Z">2021-09-27</time><i class="fa fa-edit"></i><time datetime="2021-09-27T15:44:21.000Z">2021-10-11</time></div><div class="recent-post-content"> IOT课上实验
- 交叉编译环境
- 什么是交叉编译环境？
-交叉编译其实是相对于本地编译(native build)来说的，大家最开始学习 C/C++ 这些语言的时候，都是在自己的笔记本上写程序，然后在直接在电脑上编译生成可执行文件，最后在电脑上运行。整个流程为：程序的编辑-&gt;编译-&gt;运行，整个过程都是在一台 X86 电脑上。
-当我们开始接触嵌入式开发后，事情变的不一样了。你在电脑上写程序，在电脑上编译出可执行文件，最后这个可执行文件需要下载到你的开发板上运行。程序最后运行的环境变了，比如你的开发板是基于 Arm 的——程序在 X86 上编辑，编译，最终运行在另一个和 X86 完全不 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="嵌入式开发"> 嵌入式开发</a></div><div class="read-more"><a class="more" href="/2021/09/27/物联网基础与应用-课程笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/09/26/学点Gradle/">学点Gradle</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-26</time><i class="fa fa-edit"></i><time datetime="2021-09-26T05:37:07.000Z">2021-09-27</time></div><div class="recent-post-content"> Gradle学习
-在kotlin中使用mapstruct出现了些问题， 网上搜寻后得到结论：需要使用kapt(Kotlin annotation processing tool 即kotlin注解处理工具)， 但给出的大多都是通过Gradle来进行配置的。因此借此机会学习了下Gradle：
- plugins和apply plugin:
+七牛云
+10GB/月
+按量付费支持
+/
+&gt;&gt;&gt; 点击注册
 
-由于文档写到了， 由于不清楚这些在哪些位置加入， 因此查看了plugins和apply plugin:的区别：
-1234567891011&gt; 添加 kapt 插件&gt; apply plugin: &apos;kotlin-kapt&apos;&gt ...</div><div class="read-more"><a class="more" href="/2021/09/26/学点Gradle/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/08/《人工智能-模型与算法——浙江大学公开课》笔记/">《人工智能:模型与算法——浙江大学公开课》笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-08T07:06:21.000Z">2020-12-08</time><i class="fa fa-edit"></i><time datetime="2020-12-08T07:06:21.000Z">2021-09-12</time></div><div class="recent-post-content">
-                            .mjpage .MJX-monospace {
-                            font-family: monospace
-                            }
 
-                            .mjpage .MJX-sans-serif {
-                            font-family: sans-serif
-                            }
+腾讯云
+10GB/月
+免费支持
+加了腾讯云CDN没有感觉多大加速
+/
 
-                            ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/08/《人工智能-模型与算法——浙江大学公开课》笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/19/AOP学习/">AOP学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-19T08:35:08.000Z">2021-08-19</time><i class="fa fa-edit"></i><time datetime="2021-08-19T08:35:08.000Z">2021-09-09</time></div><div class="recent-post-content"> AOP学习
- AOP
- 要素
 
+百度云
+10GB/天
+年费付费支持
+巨贵…
+/
 
-Aspect切面：是切入点和通知的抽象——切面则是横切关注点的抽象，与类相似，类是对物体特征的抽象，切面则是横切关注点抽象。
-切入点PointCut：定义要拦截哪些类的哪些方法
 
-切入点表达式@Pointcut(&quot;execution(* com.service.*.*(..))&quot;)
-执行exectution后的第一个参数代表的是方法的修饰范围（public、private、protected）,第二个表示拦截的方法，第一个*表示所有类，第二个*表示所有的方法，括号中的…表示任意参数
-常用的切入点表达式有：
+又拍云
+15GB/月
+免费支持
+加入又拍云联盟，并在网站底部放置logo
+&gt; ...</div><div class="read-more"><a class="more" href="/2019/09/09/CDN加速个人博客——又拍云/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/C-学习笔记/">C++学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T01:00:50.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T01:00:50.000Z">2019-09-15</time></div><div class="recent-post-content"> C++学习笔记
 
-execution(publi ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Spring"> Spring</a></div><div class="read-more"><a class="more" href="/2021/08/19/AOP学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/08/11/Shiro使用学习/">Shiro使用学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-08-11T07:39:08.000Z">2021-08-11</time><i class="fa fa-edit"></i><time datetime="2021-08-11T07:39:08.000Z">2021-09-07</time></div><div class="recent-post-content">Apache Shiro 是一个强大易用的 Java 安全框架，提供了认证、授权、加密和会话管理等功能（如下图），对于任何一个应用程序，Shiro 都可以提供全面的安全管理服务。并且相对于其他安全框架，Shiro 要简单的多。
+system（）就是调用（DOS）系统命令（和shell命令）。
+pause ，即DOS命令集合中的暂停命令；
 
- Shiro 的架构
+ sprintf
+123456789101112#include &lt;stdio.h&gt;int main( void )&#123;  char  buffer[200], s[] = &quot;computer&quot;, c = &apos;l&apos;;  int   i = 35, j;  float fp = 1.7320534f;  // 格式化并打印各种数据到buffer  j  = sprintf( buffer,    &quot ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/13/C-学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/15/Base64编码原理与应用[转]/">Base64编码原理与应用[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-15T04:08:53.000Z">2019-06-15</time><i class="fa fa-edit"></i><time datetime="2019-06-15T04:08:53.000Z">2019-09-15</time></div><div class="recent-post-content"> Base64编码原理与应用[转]
+2015年，我们在青云平台上实现了“百度云观测”应用。青云应用本质上是一个iframe，在向iframe服务方发送的请求中会携带一些数据，青云平台会使用Base64 URL对这些数据进行编码，其提供的编码解码算法示例如下：
+12345678// php版本function base64_URL_encode($data) &#123;  return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');&#125;function base64_URL_decode($data) &#123;  retur ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2019/06/15/Base64编码原理与应用[转]/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/ACM-博弈论/">ACM-博弈论</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:41:28.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:41:28.000Z">2019-09-15</time></div><div class="recent-post-content"> ACM-博弈论（gambling）
 
-从外部来看应该具有非常简单易于使用的 API，且 API 契约明确；从内部来看的话，其应该有一个可扩展的架构，即非常容易插入用户自定义实现，
+博弈论：是二人或多人在平等的对局中各自利用对方的策略变换自己的对抗策略，达到取胜目标的理论。假设，双方每步都是最优决策
 
-交互流程如下：
+博弈论是研究互动决策的理论。博弈可以分析自己与对手的利弊关系，从而确立自己在博弈中的优势，因此有不少博弈理论，可以帮助对弈者分析局势，从而采取相应策略，最终达到取胜的目的。
+ 巴什博弈
 
-应用代码直接交互的对象是 Subject，也就是说 Shiro 的对外 API 核心就是 Subject。
-Subject：主体，代表了当前 “用户”，这个用户不一定是一个具体的人，与 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Java"> Java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="应用框架学习"> 应用框架学习</a></div><div class="read-more"><a class="more" href="/2021/08/11/Shiro使用学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2021/01/24/认真学次DP——动态规划/">认真学次DP——动态规划</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time><i class="fa fa-edit"></i><time datetime="2021-01-24T05:27:08.000Z">2021-01-24</time></div><div class="recent-post-content"> 动态规划DP
+只有一堆n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取m个。最后取光者得胜。
 
-一般算法面试题解决最优化问题，有两种解决途径：暴力枚举、或者DP，由于其灵活和高效，无数程序员为它着迷，大厂面试也是必考。
-但是，动态规划形式上非常多变，本质上没有套路，问题不同，动态规划的迭代方程就不同。而有些问题，对于计算机科学家，都难以找到迭代方程。因此，对于平平常常的我们，刷算法题时想不出动态规划的解法，也大可不必气馁。
-
- DP组成——三个条件
-某个问题是否能应用动态规划，通常需要满足 3 个条件：
-
-具有最优子结构
-具有无后续性
-具有重复子问题
-
-最优子结构性质：只需求得子问题的最优解后，原问题的最优解最能推导出来，这表明此问题具备最优子结构性质！
-**后续状态无 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="算法"> 算法</a></div><div class="read-more"><a class="more" href="/2021/01/24/认真学次DP——动态规划/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/">浙大2020春夏-人工智能习题2——垃圾分类</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:45.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:45.000Z">2020-12-19</time></div><div class="recent-post-content">
-homework for ZJU: https://mo.zju.edu.cn/homework/zju_ai_2020_ss
-
- 1. 实验介绍
- 1.1 实验背景
-自今年 7 月 1 日起，上海市将正式实施 《上海市生活垃圾管理条例》。
-垃圾分类，看似是微不足道的“小事”，实则关系到13亿多人生活环境的改善，理应大力提倡。
-垃圾识别分类数据集中包括玻璃 (glass) 、硬纸板 (cardboard) 、金属 (metal) 、纸 (paper) 、塑料 (plastic) 、一般垃圾 (trash) ，共6个类别。
-生活垃圾由于种类繁多，具体分类缺乏统一标准，大多人在实际操作时会“选择 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/11/浙大2020春夏-人工智能习题2——垃圾分类/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/">浙大2020春夏-人工智能习题3——图像恢复</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-09T05:20:46.000Z">2020-12-09</time><i class="fa fa-edit"></i><time datetime="2020-12-09T05:20:46.000Z">2020-12-17</time></div><div class="recent-post-content"> 习题3 - 图像恢复
- 3.1 实验内容
-图像是一种非常常见的信息载体，但是在图像的获取、传输、存储的过程中可能由于各种原因使得图像受到噪声的影响——称为图像退化。图像复原就是重建退化的图像，使其最大限度恢复景物原貌的处理。如何去除噪声的影响，恢复图像原本的信息是计算机视觉中的重要研究问题。
-常见的图像恢复算法有基于空间域的中值滤波、基于小波域的小波去噪、基于偏微分方程的非线性扩散滤波等，在本次实验中，📌我们要对图像添加噪声，并对添加噪声的图像进行基于模型的去噪。
- 3.2 实验要求
-A. 生成受损图像。
-
-a) 受损图像是由原始图像添加了不同噪声遮罩（noise masks）得到的。
-b ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/09/浙大2020春夏-人工智能习题3——图像恢复/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/细品单例模式/">细品单例模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time></div><div class="recent-post-content">虽然还没正式踏入开发就业浪潮中，但为了保证自己的代码质量，最近还是在学设计模式相关内容。以下为读《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记。
-
-GoF的《设计模式》就是设计模式的始祖、经典教科书。其描述严谨，举例恰当，分类组织，是应该反复细读的经典，两本书皆提及了GoF这本书，引用了GoF中的部分例子。
-
- 单例模式
- 虚拟场景：
-读取配置文件的内容（假设系统采用的是properties格式的配置文件）
-1234567891011121314151617181920212223242526272829303132333435363738394041424 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/11/细品单例模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/05/理解科学计算中的dim参数/">理解科学计算(numpy,pytorch)中的dim参数</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-05</time><i class="fa fa-edit"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-10</time></div><div class="recent-post-content">
-😄理解numpy中array和pytorch中tensor的操作是开始科学运算的第一步!
-
-首先明白维度的感念：
- 维度
-我们通常能听到的都是2D, 3D，其实这边的D就是dimension的含义即维度。2D，我们通常理解为是平面，如我们最熟悉的直角坐标系就是平面坐标系，还有极坐标系。而3D呢，就是在平面的基础上增加了一维——高度，从而使平面的物体立起来了，同样3D也有耳熟能详的坐标系——3维坐标系。
-更官方的解释呢：维度（Dimension），又称为维数，是数学中独立参数的数目。在物理学和哲学的领域内，指独立的时空坐标的数目。0维是一个无限小的点，没有长度。1维是一条无限长的线，只有长度 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/05/理解科学计算中的dim参数/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/3/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/5/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+显然，如果n=m+1，1那么由于一次最多只能取m个，所以，无论先取者拿走多少个，后取者都能够一次拿走剩余的物品，后者取胜。因此我们发现了先手如何取胜的法 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/08/30/ACM-博弈论/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/3/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span href="https://beian.miit.gov.cn/">备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

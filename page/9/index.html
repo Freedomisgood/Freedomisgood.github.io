@@ -97,216 +97,238 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/07/25/Python中的正则匹配/">Python中的正则匹配</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-25T01:50:19.000Z">2019-07-25</time><i class="fa fa-edit"></i><time datetime="2019-07-25T01:50:19.000Z">2022-05-11</time></div><div class="recent-post-content"> Python中的正则匹配
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2018/11/08/Shell脚本基础/">Shell脚本基础</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-08T04:19:49.000Z">2018-11-08</time><i class="fa fa-edit"></i><time datetime="2018-11-08T04:19:49.000Z">2020-09-04</time></div><div class="recent-post-content"> Shell
+ 编写
+打开文本编辑器，新建一个文件，扩展名为sh（sh代表shell），扩展名并不影响脚本执行，见名知意就好，如果你用php写shell 脚本，扩展名就用php好了。
+12#!/bin/bash#!/usr/bin/php
+“#!”是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行。
+ 作为可执行程序
+12chmod +x test.sh./test.sh
+注意，一定要写成./test.sh，而不是test.sh，运行其它二进制的程序也一样，直接写test.sh，linux系统会去PATH里寻找有没有叫test.sh的，而只有/bin, /sbin, /usr/bin，/ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Shell"> Shell</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/08/Shell脚本基础/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/07/定时执行Python脚本/">定时执行Python脚本</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-07T09:51:16.000Z">2018-11-07</time><i class="fa fa-edit"></i><time datetime="2018-11-07T09:51:16.000Z">2020-03-29</time></div><div class="recent-post-content"> 定时任务执行python脚本
+ 使用linux的crontab
+ 1.开启crontab日志。
+crontab默认不开启日志，所以先开启定时任务的日志来查看
 
-虽然正则早就会用了,但是有些使用方法老是忘记,因此还是写篇记录一下
+修改rsyslog服务，将/etc/rsyslog.d/50-default.conf 文件中的#cron.*前的 #删掉；用service rsyslog restart重启rsyslog服务：
 
- 特殊字符
+ 2.写定时任务
+开启本用户的定时任务,即创建以本用户名为文件名的定时任务文件，位置在/var/spool/cron/crontabs/。crontab -e
+定时任务语句格式为：执行周期+命令，周期有5个域，分别是
 
+M: 分（0-59 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/07/定时执行Python脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/matplotlib-pyplot使用/">matplotlib.pyplot使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:58:51.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:58:51.000Z">2019-12-11</time></div><div class="recent-post-content"> matplotlib.pyplot使用
+ 注释
+1234567891011121314151617181920212223242526272829303132333435## 方法一####################for x_value,y_value in zip(x,y):    plt.text(x_value,y_value,y_value,fontsize= 15)	#文字标注(x,y,值)###################### 方法二####################for xy in zip(x, y):    plt.annotate("(%s,%s)"  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/10/matplotlib-pyplot使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/04/高科GSWIFI江苏破解教程/">高科GSWIFI江苏破解教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-04T02:06:34.000Z">2018-11-04</time><i class="fa fa-edit"></i><time datetime="2018-11-04T02:06:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 1.重置路由器设置
 
+为了以防之前其他人已经设置过某些东西,可能会影响到之后的使用，所以干脆直接重置。
 
-特别字符
-描述
+ 2.连接路由器电源,不用插任何的wan口或者lan口
 
+P.S.如果第二步,手机和电脑无法直接通过IP地址进入管理界面的话,可以考虑将 网线一头插入2号口,一头插入电脑的插口 , 然后再通过IP地址进入管理界面
 
+ 3.登录路由器管理界面
+▲注意： 大多数路由器的管理界面IP地址为 192.168.1.1或者192.168.100.1,虽然高科路由器后面贴纸上说明的IP地址是192.168.8.1,但是那个不是初始的IP,需要自己设置到192.168.8.1.
+如下是我已经修改好的IP ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2018/11/04/高科GSWIFI江苏破解教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/08/多媒体Au使用/">多媒体Au使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-08T04:18:47.000Z">2018-11-08</time><i class="fa fa-edit"></i><time datetime="2018-11-08T04:18:47.000Z">2019-09-15</time></div><div class="recent-post-content"> AU使用。
 
+留人声、去伴奏
 
-$
-匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n’ 或 ‘\r’。要匹配 $ 字符本身，请使用 $。
+ First.
 
+▲侧边声道电平控制微弱，中置声道电平控制效果强。
 
-( )
-标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 ( 和 )。
+▲交叉渗透，越大伴奏声音越不明显
+ Second.
 
+前面几排调低到满意。（童声高音频率范围为260-880Hz,低音频率范围为196-700Hz,女声高音频率范围为220-1.1KHz,低音频率范围为200-700KHz,男声高音频率范围为160-523KHz低音频率范围为80-358Hz. 国际通信标准制定为300Hz-3400Hz! ）
 
-*
-匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 *。
 
+留伴奏、去人声
 
-+
-匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 +。
+···选中所有，菜单栏-收藏夹-移除人声
 
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Au"> Au</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="多媒体"> 多媒体</a></div><div class="read-more"><a class="more" href="/2018/11/08/多媒体Au使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/08/写爬虫过程中碰到的编码问题/">写爬虫过程中碰到的编码问题</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-08T04:23:19.000Z">2018-11-08</time><i class="fa fa-edit"></i><time datetime="2018-11-08T04:23:19.000Z">2019-09-15</time></div><div class="recent-post-content"> 写爬虫过程中碰到的编码问题
+ 遇到 ’ \uxxxx ’ 的16进制字符串编解码问题，使用unicode-escape解决之。
+实际上，在将unicode存储到文本的过程中，还有一种存储方式，不需要将unicode转换为实际的文本存储字符集，而是将unicode的内存编码值进行存储，读取文件的时候再反向转换回来，是采用：unicode-escape的转换方式。
 
-.
-匹配除换行符 \n 之外的任何单 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/25/Python中的正则匹配/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/25/Docker使用/">Docker使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-25T02:58:19.000Z">2019-07-25</time><i class="fa fa-edit"></i><time datetime="2019-07-25T02:58:19.000Z">2022-04-25</time></div><div class="recent-post-content"> Docker学习
+将unicode的内存编码值进行存储，读取文件时在反向转换回来。这里就采用了unicode-escape的方式
 
-轻部署,省成本,易迁移
+12345678print(u&apos;中文测试&apos;.encode(&apos;utf-8&apos;))p ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/08/写爬虫过程中碰到的编码问题/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/">WSGI uWSGI uwsgi及nginx说明</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T07:50:12.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T07:50:12.000Z">2019-09-15</time></div><div class="recent-post-content"> 客户端发出请求==&gt;服务器接受、处理请求与响应 的过程示意图
 
- docker和虚拟机VM的区别
- 一、本质上的区别：
+ 1. WSGI：
 
-VM(VMware)在宿主机器、宿主机器操作系统的基础上创建虚拟层、虚拟化的操作系统、虚拟化的仓库，然后再安装应用；
-Container(Docker容器)，在宿主机器、宿主机器操作系统上创建Docker引擎，在引擎的基础上再安装应用。
-那么问题来了，没有操作系统，怎么运行程序？
-可以在Docker中创建一个ubuntu的镜像文件，这样就能将ubuntu系统集成到Docker中，运行的应用就都是ubuntu的应用。
- 二、使用上的区别：
+全称是Web Server Gateway Interface(服务器网关接口)。WSGI不是服务器，python模块，框架，API或者任何软件，只是一种规范( 是一个**Web服务器（如nginx）与应用服务器（如uWSGI）**通信的一种规范（协议）==&gt; 可以理解为服务器与应用程序通信的接口规范要求)，描述web server如何与web application通信的规范。server和application的规范在PEP 3333中有具体描述。因为WSGI没有官方的实现, 所以WSGI更 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/11/02/WSGI-uWSGI-uwsgi及nginx说明/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/28/Windows-控制台Cmd乱码（及永久修改编码）解决方法/">Windows控制台Cmd乱码（及永久修改编码）解决方法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-28T08:42:20.000Z">2018-10-28</time><i class="fa fa-edit"></i><time datetime="2018-10-28T08:42:20.000Z">2019-09-15</time></div><div class="recent-post-content">我本机的系统环境：`OS Name: Microsoft Windows 10 家庭中文版
+ Windows 控制台Cmd乱码的解决办法(一次性)
+在cmd中输入 CHCP 65001
 
-Size:
+注：CHCP是一个计算机指令，能够显示或设置活动代码页编号。
+代码页  描述
 
-虚拟机ubuntu大小为:24.1G ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a></div><div class="read-more"><a class="more" href="/2019/07/25/Docker使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/傅里叶变换-小波变化/">傅里叶变换-&gt;小波变化</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T01:51:32.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T01:51:32.000Z">2021-10-25</time></div><div class="recent-post-content"> 傅里叶变换-&gt;小波变化
 
-声明:文中大多数内容来自(知乎1335)[https://www.zhihu.com/people/zhi-yuan-ya-77],matlab源代码:1368069096/From_FT_to_WT_examples-,部分为个人理解阐明
+65001   UTF-8代码页
 
- 一.傅里叶变换FT
- 基础知识
 
-（FOURIER TRANSFORM，简称FT）
+950 繁体中文
 
- 为什么傅里叶变换可以把一个信号从时域变换到频域?
-先给出公式，傅里叶变换的形式为：X(w)=∫−∞+∞x(t)e−jwtdtX(w)=\int_{-\infty}^{+\infty} x(t) e^{-j w t} d tX(w)= ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/傅里叶变换-小波变化/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Word2016配置使用MathType/">Word2016配置使用MathType</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T12:58:53.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T12:58:53.000Z">2021-01-03</time></div><div class="recent-post-content"> Word 2016 使用MathType
-据说MathType 6.9b后就能与Word 2016兼容了，所以不用特地去找7.0以上的版本，据说更新的功能差别也不是很大。只不过本人还是使用的7+版本，新一点功能会更全点嘛。
- 闲谈
 
-这边的方法是我个人的操作过程，但是感觉应该不是这么搞得。
+936 简体中文默认的GBK
 
-安装好MathType后，打开word查看工具栏中是否有MathType工具，如果没有的话，则手动选择“插入-&gt;获得加载项-&gt;应用商店”搜索Mathtype。如果还是没有的话，然后在“选项-&gt;加载项-&gt;模板”然后指定MathType Commands 6 For Word2016 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/08/30/Word2016配置使用MathType/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/08/自动化运维工具Ansible/">自动化运维工具Ansible</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-08T06:45:45.000Z">2019-07-08</time><i class="fa fa-edit"></i><time datetime="2019-07-08T06:45:45.000Z">2019-12-16</time></div><div class="recent-post-content"> 简介
-​        ansible是新出现的自动化运维工具，基于Python开发，集合了众多运维工具（puppet、chef、func、fabric）的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。
-　　ansible是基于 paramiko 开发的,并且基于模块化工作，本身没有批量部署的能力。真正具有批量部署的是ansible所运行的模块，ansible只是提供一种框架。ansible不需要在远程主机上安装client/agents，因为它们是基于ssh来和远程主机通讯的。ansible目前已经已经被红帽官方收购，是自动化运维工具中大家认可度最高的，并且上手容易，学习简单 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="运维"> 运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/08/自动化运维工具Ansible/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/">通过XDRP实现Windows远程访问ubuntu桌面</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T00:57:05.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T00:57:05.000Z">2019-09-15</time></div><div class="recent-post-content"> 通过XDRP实现Windows远程访问
-1234567891011121314#安装xrdp $ sudo apt-get install xrdp #安装vnc4server $ sudo apt-get install vnc4server tightvncserver#安装xubuntu-desktop $ sudo apt-get install xubuntu-desktop #向xsession中写入xfce4-session $ echo “xfce4-session” &gt;~/.xsession #开启xrdp服务 $ sudo service xrdp restart
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2019/07/13/通过XDRP实现Windows远程访问ubuntu桌面/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/通信企业管理-线上考试/">通信企业管理_线上考试</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:37:49.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:37:49.000Z">2019-09-15</time></div><div class="recent-post-content"> 通信企业管理
 
-看清题目和选项
+437 MS-DOS 美国英语
 
- 单选题
-1单选(2分)
-在总公司领导下设立多个分支，各分支有各自独立的产品和市场，实行独立核算，经营管理上拥有自主性和独立性。这是（ A   ）组织结构。
 
-A.事业部型
-B.矩阵型
-C.职能型
-D.直线型
 
-2单选(2分)
-按照最新版《中华人民共和国公司法》规定，股份有限公司的发起人最多不超过（    C ）。
+但是通过CHCP设置编码是治标不治本的,想永久的更改cmd编码值需要修改注册表
+ Windows 控制台Cmd乱码的解决办法(永久性)
+ 方法一：
+1.在cmd中输入regedit进入注册表
+2.找 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2018/10/28/Windows-控制台Cmd乱码（及永久修改编码）解决方法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/Ubuntu更改nginx默认端口/">Ubuntu更改nginx默认端口</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:55:13.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:55:13.000Z">2019-09-15</time></div><div class="recent-post-content"> Ubuntu更改nginx默认端口
 
-A.100人
-B.50人
-C.200人
-D.150人
+nginx 默认使用80端口，有时候我们希望nginx运行在其他端口，就需要更改nginx配置
 
-3单选(2分)
-工作或行动之前预先拟定具体的工作内容和步骤是管理的（  D  ）职能。
+nginx配置文件在/etc/nginx目录下的nginx.conf。(可以修改处理器数量、日志路径、pid文件路径等，默认的日志。)
 
-A.组织职能
-B.控制职能
-C.领导职能
-D.计划职能
+错误日志 /var/log/nginx/error.log
+访问日志 /var/log/nginx/access.log
 
-4单选(2分)
-提出“14项管理原则”的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2019/08/22/通信企业管理-线上考试/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/算法设计与分析C-概念点区分/">算法设计与分析C_概念点区分</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:39:29.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:39:29.000Z">2019-09-15</time></div><div class="recent-post-content"> 算法设计与分析C
- 算法5_分治法
-分治法——将一个复杂的问题分解成若干个规模较小、相互独立，但类型相同的子问题求解；然后再将各子问题的解组合成原始问题的一个完整答案，这样的问题求解策略就叫分治法。
-分治法所能解决的问题一般具有以下几个特征：
-该问题的规模缩小到一定的程度就可以容易地解决；
-该问题可以分解为若干个规模较小的相同问题；
-利用该问题分解出的子问题的解可以合并为该问题的解；
-该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子问题。
-反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。
-由分 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="学业"> 学业</a></div><div class="read-more"><a class="more" href="/2019/08/22/算法设计与分析C-概念点区分/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/时间序列概念及主要模型/">时间序列概念及主要模型</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T11:05:18.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T11:05:18.000Z">2019-09-15</time></div><div class="recent-post-content"> 时间序列概念及主要模型
-Q:什么是时间序列分析?
-A:时间序列是按照时间顺序，按照一定时间间隔取得的一系列观测值
-Q:怎样做时间序列分析?
-A:时间序列分析尝试找出序列值在过去呈现的特征模式，假定这种模式在未来能够持续，进而对未来进行预测
- 时间序列三大特征
+在nginx.conf-&gt;http选项末尾有引入两个目录下的文件分别为：
+123456[/etc/nginx/nginx.conf]http &#123;        #   省略部分内容   ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2018/11/10/Ubuntu更改nginx默认端口/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/07/ServerChan-南邮教务处/">ServerChan+南邮教务处</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-07T09:32:10.000Z">2018-11-07</time><i class="fa fa-edit"></i><time datetime="2018-11-07T09:32:10.000Z">2019-09-15</time></div><div class="recent-post-content"> SeverChan_Nyedu
+Crawl the infomation about competitons, when new infos comes, remind people on Wechat by ServerChan:
+😍该程序通过爬取南邮教务处,将当前时间与最新时间进行匹配,如果是当日则通过ServerChan发送到本人的微信,提醒有新的竞赛.
+ 完成笔记:
+ 1.关于lxml中etree.xpath()对于tbody的处理
 
-序列相关性：当期的序列值和前期某个或某些序列值线性相关
-√  自相关系数（全相关系数）（ACF）：用来度量同一事件在不同时期之间的相关程度。ρh=r(h)r(0)\rho_{h}=\frac{r(h)}{r(0)}ρh​=r(0)r(h)​，其中r（h）为h期协方差函数，r（0）为方差
-√  偏自相关系数（PACF）：度量去除中间变量 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数学建模"> 数学建模</a></div><div class="read-more"><a class="more" href="/2019/07/29/时间序列概念及主要模型/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/">基础知识补充——白噪声、高斯白噪声</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-29T10:47:04.000Z">2019-07-29</time><i class="fa fa-edit"></i><time datetime="2019-07-29T10:47:04.000Z">2019-09-15</time></div><div class="recent-post-content"> 白噪声、高斯白噪声
- 白噪声过程:
-对于一个随机变量X(t)（t=1，2，3……），如果是由一个不相关的随机变量的序列构成的，即对于所有s不等于t，随机变量X(t)和X(s)的协方差为零，则称其为纯随机过程。对于一个纯随机过程来说，若其期望为0，方差为常数，则称之为白噪声过程。
- 白噪声:
-白噪声序列，是指白噪声过程的样本实称，简称白噪声[1]。白噪声是**在较宽的频率范围内，各等带宽的频带所含的噪声能量相等的噪声**[2]，是一种功率频谱密度为常数的随机信号或随机过程，也就是说，此信号在各个频段上的功率是一样的。
-理想的白噪声具有无限的带宽，因而其能量无限大，但这是不可能实际存在的，所以， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="信号处理"> 信号处理</a></div><div class="read-more"><a class="more" href="/2019/07/29/基础知识补充——白噪声、高斯白噪声/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/">利用wireshark抓取TCP的整个过程分析[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-24T07:51:29.000Z">2019-07-24</time><i class="fa fa-edit"></i><time datetime="2019-07-24T07:51:29.000Z">2019-09-15</time></div><div class="recent-post-content">原文地址：https://www.cnblogs.com/NickQ/p/9226579.html
-最近，已经很久都没有更新博客了。看看时间，想想自己做了哪些事情，突然发现自己真的是太贪心，到头来却一个都没搞好。手头的嵌入式都还没学出名堂，竟然还想着学FPGA,物联网，机器学习。然而，遇到新奇的事物，就会控制不住的去想，去找资料，实际上只是逃避遇到的问题，不想去解决而已。。最后的结果就是手头的活堆起来了，然后花大把整块的时间解决。真的是讨厌现在的自己。
-以后还是慢慢记录吧，不管做了什么，都慢慢尝试积累。。其他的东西，像FPGA，机器学习什么的，让他随风去吧，用到啥学啥。其他的当看客，了解了解就 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2019/07/24/利用wireshark抓取TCP的整个过程分析/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/yaml基础语法-spring-boot/">yaml基础语法_spring_boot</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:04:35.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:04:35.000Z">2019-09-15</time></div><div class="recent-post-content"> yaml基础语法_spring_boot
+该网页通过table对页面进行分布设置,其中table标签会自动生成tbody标签,如图…此时用xpath进行匹配的时候就不需要将tbody加上,否 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/11/07/ServerChan-南邮教务处/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——请求/">Python爬虫知识点——请求</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:21.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:21.000Z">2019-09-15</time></div><div class="recent-post-content"> 请求
 
-yaml aren’t markup language 即yaml不是标语语言：
-xml（标记语言）:
-1234&gt; &lt;server&gt;&gt; 	&lt;port&gt;8888&lt;/port&gt;&gt; &lt;/server&gt;&gt;
+:请求方法、请求网址、请求头、请求体
 
-java spring boot默认全局配置文件:
+ 请求方法：
 
+常见的为:GET、POST
+GET与POST主要区别：
 
-application.properties 使用的时 key=value
+GET请求参数包含在URL，可从URL中看出。POST请求的URL不包含参数，都是通过表单的形式传输的，包含在请求体中
+GET请求提交的数据最多只有1024字节，POST无限制
 
 
-application.yaml:
+其他还有HEAD、PUT、DELETE、CONNECT、OPTIONS、TRACE
+ 请求的网址：
 
+即URL，我们想要请求的资源
 
-k:v
+ 请求头：
+用来说明服务器要使用的附加信息，比较总要的有Cookie、Referer、User-Agent等。
 
+Accept:请求报头域，用于指定客户端可接受 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——请求/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/">Python爬虫知识点——将Cookie保存到本地的多种方法介绍</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:43:34.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:43:34.000Z">2019-09-15</time></div><div class="recent-post-content"> 方法一：urllib2
 
-通过缩进，垂直对齐指定层次关系
+结合cookielib及urllib2，Python2时期比较常用的方法，年代比较久远了。个人觉得太麻烦，改用requests.
+▲需要注意的是cookielib在python3中已经改成了http.cookiejar
 
-字符串可以默认不写引号，写引号中的转义符会被翻译：e.g.& ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/07/yaml基础语法-spring-boot/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/26/Vim记忆/">Vim记忆</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-26T02:34:34.000Z">2019-07-26</time><i class="fa fa-edit"></i><time datetime="2019-07-26T02:34:34.000Z">2019-09-15</time></div><div class="recent-post-content"> VIM记忆技巧
- 增
+1234567891011121314151617181920212223242526272829303132333435#该方法本人未测试import urllib2import cookielib#将cookie保存在文件中def saveCookie():    #设置保存cookie的文件    filename = &apos;cooki ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——将Cookie保存到本地的多种方法介绍/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/">Python爬虫知识点——爬虫的基本原理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:10.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:10.000Z">2019-09-15</time></div><div class="recent-post-content"> 爬虫的基本原理
 
-i(insert)
-I最前面insert
-a(append)
-A最后面append
-o(open a line)往下开启一行
-O往上开启一行
+爬虫就是获取网页并提取和保存信息的自动化程序
 
- 删
+ 获取网页：
+获取网页就是获取网页的源码，只要把源码获取下来，就可以从中提取想要的消息
 
-d（delete）
-dw（delet word）
-dd（删除一行）
-x（删除一个字符）
+爬虫的流程：想网站的服务器发送一个请求，返回的响应体就是网页的源代码。
+​	&gt;1,构造请求发送给服务器=&gt;2.接受响应并解析
 
- 拓展
+ 提取信息：
+通过分析网页结构，提取网页信息。通常使用的解析库有:BeautifulSoup、lxml、pyquery，也可以使用正则，但是构造正则表达式比较复杂且易错
+ 保存数据：
+将提取的数据保存到某处以便后续利用。保存形式有：TXT、Json、数据库：MySQL、MongoDB、或远程服务器SF ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——爬虫的基本原理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——响应/">Python爬虫知识点——响应</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:17.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:17.000Z">2019-09-15</time></div><div class="recent-post-content"> 响应：
+响应状态码、响应头、响应体
+ 响应状态码：
+					表2-3常见的错误代码及错误原因
 
-diw(delete inner word)
-daw(delete around word)
 
- 改
 
-c（change）
-ciw（change inner word）
-ci&quot;(change inner &quot;)
-ct）修改到右括号
 
- 查
+状态码
+说明
+详情
 
-fs(find s) 跳到本行第一个s字符
-/往后查找,如/x ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2019/07/26/Vim记忆/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/staticmethod和classmethod区别/">staticmethod和classmethod区别</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:06:00.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:06:00.000Z">2019-09-15</time></div><div class="recent-post-content"> staticmethod和classmethod
 
-类的实例化基本遵循创建实例对象、初始化实例对象、最后返回(产生)实例对象这么一个过程
 
-123456789101112131415161718class Test(object):    data = 'world' # 类对象的数据成员    def __init__(self, arg):        self.arg = arg    @staticmethod	# 静态方法，不能访问类数据成员    def func():        print("hello")    @classmethod	# 类方法,能访问类数据成员   ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/07/staticmethod和classmethod区别/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/07/Python类的继承-super-使用/">Python类的继承-super()使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-07T02:03:49.000Z">2019-07-07</time><i class="fa fa-edit"></i><time datetime="2019-07-07T02:03:49.000Z">2019-09-15</time></div><div class="recent-post-content"> Python类的继承即super()使用
- Super
 
-super() 函数是用于调用父类(超类)的一个方法，只有在新式类中可以使用
-super 是用来解决多重继承问题的，直接用类名调用父类方法在使用单继承的时候没问题，但是如果使用多继承，会涉及到查找顺序（MRO，Method Resolution Order，采用广度优先（区别于深度优先）的规则定义）、重复调用（钻石继承）等种种问题。
-MRO 就是类的方法解析顺序表, 其实也就是继承父类方法时的顺序表。
+100
+继续
+请求者应当继续提出请求。服务器返回此代码表示已收到请求的第一部分，正在等待其余部分。
 
-语法
-以下是 super() 方法的语法:
-1234# 菜鸟教程super(type [, object-or-type])# 个人 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/07/07/Python类的继承-super-使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/15/Python的构建工具setup-py/">Python的构建工具setup.py</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-15T04:08:44.000Z">2019-06-15</time><i class="fa fa-edit"></i><time datetime="2019-06-15T04:08:44.000Z">2019-09-15</time></div><div class="recent-post-content"> Python的构建工具setup.py
- setup.py各参数介绍：
-12345678910111213141516171819202122232425--name 库名称，▲需要注意的是不要大写，不然会有坑--version (-V) 包版本--author 程序的作者--author_email 程序的作者的邮箱地址--maintainer 维护者--maintainer_email 维护者的邮箱地址--url 程序的官网地址--license 程序的授权信息--description 程序的简单描述--long_description 程序的详细描述--platforms 程序适用的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/06/15/Python的构建工具setup-py/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/30/Python爬虫常规流程/">Python爬虫常规流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T13:07:05.000Z">2019-08-30</time><i class="fa fa-edit"></i><time datetime="2019-08-30T13:07:05.000Z">2019-09-15</time></div><div class="recent-post-content"> Python爬虫常规流程
-以爬取有道翻译为例子。
- 挖取可自用的API
 
-web 端的有道翻译，在之前是直接可以爬的。也就是说只要获取到了他的接口，你就可以肆无忌惮的使用他的接口进行翻译而不需要支付任何费用。那么自从有道翻译推出他的API服务的时候，就对这个接口做一个反爬虫机制（如果大家都能免费使用到他的翻译接口，那他的APl服务怎么赚钱）。这个反爬虫机制在爬虫领域算是一个非常经典的技术手段。
+101
+切换协议
+请求者已要求服务器切换协议，服务器已确认并准备切换。
 
-1.查看要爬取的内容是否是静态加载的。
-比如在翻译输入框中输入apple，翻译输出框中会出现苹果，然后在``页面中右键-&gt;查看网页源代码，直接Ctrl+F搜索是否存在apple或者苹果`，如果 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/08/30/Python爬虫常规流程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/">Let's Encrypt安装配置nginx的SSL证书教程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-22T12:34:04.000Z">2019-08-22</time><i class="fa fa-edit"></i><time datetime="2019-08-22T12:34:04.000Z">2019-09-15</time></div><div class="recent-post-content"> Let’s Encrypt 安装配置nginx的SSL证书教程
- 使用cerbot生成证书
- 安装Let’s Encrypt
-安装非常简单直接克隆就可以了
-1git clone https://github.com/letsencrypt/letsencrypt
-如果网速较慢（国外服务器应该快点）
-1.可以登录https://github.com/letsencrypt/letsencrypt，下载后通过lrzsz传到云服务器上，再解压
-2.修改hosts
-查找域名对应的ip地址，并修改hosts文件
-123456789101112131415linuxidc@linuxidc:~/linu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a></div><div class="read-more"><a class="more" href="/2019/08/22/Let-s-Encrypt安装配置SSL证书教程/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/07/13/C-学习笔记/">C++学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-07-13T01:00:50.000Z">2019-07-13</time><i class="fa fa-edit"></i><time datetime="2019-07-13T01:00:50.000Z">2019-09-15</time></div><div class="recent-post-content"> C++学习笔记
 
-system（）就是调用（DOS）系统命令（和shell命令）。
-pause ，即DOS命令集合中的暂停命令；
+200
+成功
+服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。
 
- sprintf
-123456789101112#include &lt;stdio.h&gt;int main( void )&#123;  char  buffer[200], s[] = &quot;computer&quot;, c = &apos;l&apos;;  int   i = 35, j;  float fp = 1.7320534f;  // 格式化并打印各种数据到buffer  j  = sprintf( buffer,    &quot ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2019/07/13/C-学习笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/15/Base64编码原理与应用[转]/">Base64编码原理与应用[转]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-15T04:08:53.000Z">2019-06-15</time><i class="fa fa-edit"></i><time datetime="2019-06-15T04:08:53.000Z">2019-09-15</time></div><div class="recent-post-content"> Base64编码原理与应用[转]
-2015年，我们在青云平台上实现了“百度云观测”应用。青云应用本质上是一个iframe，在向iframe服务方发送的请求中会携带一些数据，青云平台会使用Base64 URL对这些数据进行编码，其提供的编码解码算法示例如下：
-12345678// php版本function base64_URL_encode($data) &#123;  return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');&#125;function base64_URL_decode($data) &#123;  retur ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2019/06/15/Base64编码原理与应用[转]/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/8/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/10/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+
+201
+已创建
+请求成功并且服务器创建了新的资源。
+
+
+202
+已接受
+服务器已接受请求，但尚未处理。
+
+
+203
+非授权信息
+服务器已成功处理了请求，但返回的信息可能来自另一来源。
+
+
+204
+无内容
+服 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——响应/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——代理/">Python爬虫知识点——代理</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:28.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:28.000Z">2019-09-15</time></div><div class="recent-post-content"> 代理
+ 基本原理
+代理实际上指代理服务器。功能是代理 网络用户去取得网络信息，是网络信息的中转站。
+正常的请求过程为：发送请求给服务器===&gt;web服务器吧响应传回
+设置代理服务器后：&gt;向代理服务器发送请求&gt;请求发送给代理服务器==&gt;再由代理服务器发送web服务器==&gt;由代理服务器把web服务器返回的响应转发给本机
+ 作用
+突破自身IP访问限制，访问些平时不能访问的站点。
+访问一些单位或团体内部资源:比如使用教育网内地址段免费代理服务器，就可以用于对教育网开放的各类FTP下载上传，以及各类资料查询共享等服务。
+提高访问速度:通常代理服务器都设置-一个较大的硬盘缓 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——代理/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/24/Python爬虫知识点——Session与Cookie/">Python爬虫知识点——Session与Cookie</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-24T10:36:56.000Z">2018-10-24</time><i class="fa fa-edit"></i><time datetime="2018-10-24T10:36:56.000Z">2019-09-15</time></div><div class="recent-post-content"> Session和Cookie：
+
+Cookie：保持登录后的认证状态而保存在本地的数据
+session:用cookie来标记用户，cookie携带了会话ID消息，通过检查cookie就能找到会话(session)
+
+cookie与session相互配合，一个处于客户端，一个处于服务端，两者相互协作。
+ 会话cookie和持久cookie
+
+会话Cookie：把cookie放在浏览器内存里，浏览器关闭后失效。
+持久Cookie：保存cookie到客户端的硬盘中，下次继续使用。
+
+由Cookie的Max Age和Expires决定了过期的时间。
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机网络知识"> 计算机网络知识</a></div><div class="read-more"><a class="more" href="/2018/10/24/Python爬虫知识点——Session与Cookie/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/Pythonanywhere解决链接Mysql问题-部署flask/">Pythonanywhere解决链接Mysql问题(部署flask)</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:54:14.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:54:14.000Z">2019-09-15</time></div><div class="recent-post-content"> Pythonanywhere解决链接Mysql问题(部署flask)
+
+由于在bash控制台里通过命令mysql -p(这其实是因为错误的连接方式,由于不是默认的端口3306,自然连接不到,官方文档中有正确的连接方式)链接不到Mysql时,再加上进虚拟环境用python manage db migrate也失败后,我是异常慌张的…然后立马发现关于pythonanywhere链接Mysql的解决不是很多,要么就是说免费账号是无法用的…心顿时拔凉,但最后还是找到了pythonanywhere官方的文档,解决了这个问题,发现都是配置的问题
+
+一开始的我本地及阿里云链接mysql数据库配置文件是这样 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="MySQL"> MySQL</a></div><div class="read-more"><a class="more" href="/2018/11/10/Pythonanywhere解决链接Mysql问题-部署flask/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/10/25/JS正则及常用方法函数总结/">JS正则及常用方法函数总结</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-10-25T03:55:20.000Z">2018-10-25</time><i class="fa fa-edit"></i><time datetime="2018-10-25T03:55:20.000Z">2019-09-15</time></div><div class="recent-post-content"> JS正则及常用方法函数总结
+
+正则表达式作为一种匹配处理字符串的利器在很多语言中都得到了广泛实现和应用，web开发本质上是处理字符串（服务端接受请求处理后拼接字符串作为响应，这在早期的CGI编程中最明显，然后客户端解析字符串进行渲染和执行），所以说，JS作为一门常用于web开发的语言，必然要具备正则这种强大的特性，本文将对JS中的正则用法及常用函数进行一番总结。
+
+ 1.正则对象及其属性
+首先正则对象是JS中内置的一个对象，好比Array以及Math一样，不需要第三方库的支持，通常我们采取两种方式来定义一个正则对象.
+ 1）构造函数方式
+12345var  reg=new RegExp('a ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="前端"> 前端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="JavaScript"> JavaScript</a></div><div class="read-more"><a class="more" href="/2018/10/25/JS正则及常用方法函数总结/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/10/apt代理的设置/">apt代理的设置</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-10T04:56:53.000Z">2018-11-10</time><i class="fa fa-edit"></i><time datetime="2018-11-10T04:56:53.000Z">2019-09-15</time></div><div class="recent-post-content">
+原因是在apt-get update时遇到了Unable to connect to 代理，（由于apt-get update一直显示无法连接172.17.18.141百度后发现并不是个特殊的IP,）于是想到是否使用了代理。
+
+ apt代理的设置：
+ 临时方法
+export http_proxy=http://10.3.0.1:80
+ 长久方法
+(1) 需要在/etc/apt/apt.conf中添加以下代码： (如果您希望apt-get(而不是其他应用程序)一直使用http代理,您可以使用这种方式。)
+Acquire::http::proxy &quot;http://用户名:密码@地址:端 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Ubuntu"> Ubuntu</a></div><div class="read-more"><a class="more" href="/2018/11/10/apt代理的设置/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2018/11/02/apt-get-update无法连接/">apt-get update无法连接</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2018-11-02T05:21:45.000Z">2018-11-02</time><i class="fa fa-edit"></i><time datetime="2018-11-02T05:21:45.000Z">2019-09-15</time></div><div class="recent-post-content"> 出现的问题
+原因是在apt-get update时遇到了Unable to connect to 代理，（由于apt-get update一直显示无法连接172.17.18.141百度后发现这并不是个特殊的IP,而且也可以ping到百度）于是想到是否使用了代理。
+
+
+
+ apt代理的设置：
+ 临时方法
+export http_proxy=http://10.3.0.1:80
+ 长久方法
+(1) 需要在/etc/apt/apt.conf中添加以下代码： (如果您希望apt-get(而不是其他应用程序)一直使用http代理,您可以使用这种方式。)
+Acquire::http::proxy &qu ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="linux"> linux</a></div><div class="read-more"><a class="more" href="/2018/11/02/apt-get-update无法连接/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/8/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span href="https://beian.miit.gov.cn/">备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

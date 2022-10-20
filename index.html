@@ -97,168 +97,199 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2022/05/29/每周一个开源项目——ddt-sharp-shoote/">每周一个开源项目——ddt-sharp-shooter</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-29T10:04:15.000Z">2022-05-29</time><i class="fa fa-edit"></i><time datetime="2022-05-29T10:04:15.000Z">2022-05-30</time></div><div class="recent-post-content">ddt-sharp-shooter
-这是一个基于 Pynput 的 DDT 工具。基本原理在于，得知风力、角度、距离的情况下，参考力度表得出发射力度，而后发射。其中，风力、角度通过 ddddocr（An awesome captcha recognition library）识别，屏距通过标记屏距测量框、敌我位置来推算，力度通过按压时长来体现，具体见这里。
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/12/11/细品单例模式/">细品单例模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time><i class="fa fa-edit"></i><time datetime="2020-12-11T02:25:26.000Z">2020-12-11</time></div><div class="recent-post-content">虽然还没正式踏入开发就业浪潮中，但为了保证自己的代码质量，最近还是在学设计模式相关内容。以下为读《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记。
 
-使用到的库:screeninfo、pillow、ddddocr、pynput、py2app
+GoF的《设计模式》就是设计模式的始祖、经典教科书。其描述严谨，举例恰当，分类组织，是应该反复细读的经典，两本书皆提及了GoF这本书，引用了GoF中的部分例子。
 
-pynput: 控制和监视输入设备；类似的有PyHook3（监视键鼠）、pywin32 （模拟键鼠）
-ddddocr：识别验证码，这边用来识别数 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="开源项目"> 开源项目</a></div><div class="read-more"><a class="more" href="/2022/05/29/每周一个开源项目——ddt-sharp-shoote/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/03/29/开源项目代码阅读记录/">开源项目代码阅读记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-29T09:54:46.000Z">2022-03-29</time><i class="fa fa-edit"></i><time datetime="2022-03-29T09:54:46.000Z">2022-05-29</time></div><div class="recent-post-content"> 爬虫系列
- 抢购、秒杀
-  taobao_seckill
+ 单例模式
+ 虚拟场景：
+读取配置文件的内容（假设系统采用的是properties格式的配置文件）
+1234567891011121314151617181920212223242526272829303132333435363738394041424 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/11/细品单例模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/03/Lets-learn-设计模式/">Lets learn 设计模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-03</time><i class="fa fa-edit"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-11</time></div><div class="recent-post-content">
+《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记
 
-淘宝秒杀物品：分为selenium版和request网络请求版，微小的区别在于，api先请求的是购物车的物品信息，selenium则是勾选选择框。
-流程大致都相同：①keep_wait等待临近抢购时间-----&gt;②将需要的信息缓存住，不再刷新（比如要抢购的物品信息、cookies…）-----&gt;③进行结算(/点击按钮)-----&gt;④提交订单(/点击按钮)-----&gt;⑤支付订单(/点击按钮)；
+ 设计模式是什么？
+模式：从字面上理解，模，就是模型、模板的意思；式，就是方式、方法的意思。综合起来，所谓模式就是：可以作为模型或模板的方式或方法。再简单点说就是可以用来作为样板的方式或方法，类似于大家所熟悉的范例。
+所以设计模式就是设计方面的模板，具体定义为：是指在软件开发中，经过验证的，用于解决在特定环境下、重复出现的、特定问题的解决方案。
+ 每个设计模式的构成如下：
+1、模式名称：模式的一个好记的名字
+2、环境和问题：描述在什么环境下，出现什么特定的问题
+3、解决方案：描述如何解决问题
+4、效果：描述 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/03/Lets-learn-设计模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/浙大2020春夏-人工智能习题1——AIforOthello/">浙大2020春夏-人工智能习题3——AIforOthello</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T04:02:33.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T04:02:33.000Z">2020-12-11</time></div><div class="recent-post-content"> something about Othello
+ 黑白棋规则
+传统的黑白棋棋盘由 8 x 8 方格组成。开局时，棋盘中央的4格先置黑白相间的4颗棋子 (详见下图)，并由黑子先行。
+首步由黑子先下；下子时；新子必须与棋盘上任一己方棋子形成一条或多条 (横、竖、斜) 直线，并夹着对方棋子；由新子及旧子连成的直线之间，必须存有一颗或以上对方的棋子。如图，黑子开局时之可行棋步有以下4格:
+双方交替下子；倘若任何一方没有棋步可行，则其必须将下子权利相认予对手；另在双方均无子可下的情况下，游戏自动结束。
+游戏结束后，拥子较多一方为胜；倘若双方棋数相同的，则为和局。
+ 黑白棋基本策略
+ 占角子及固定子
 
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/01/浙大2020春夏-人工智能习题1——AIforOthello/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/05/理解科学计算中的dim参数/">理解科学计算(numpy,pytorch)中的dim参数</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-05</time><i class="fa fa-edit"></i><time datetime="2020-12-05T03:53:10.000Z">2020-12-10</time></div><div class="recent-post-content">
+😄理解numpy中array和pytorch中tensor的操作是开始科学运算的第一步!
 
+首先明白维度的感念：
+ 维度
+我们通常能听到的都是2D, 3D，其实这边的D就是dimension的含义即维度。2D，我们通常理解为是平面，如我们最熟悉的直角坐标系就是平面坐标系，还有极坐标系。而3D呢，就是在平面的基础上增加了一维——高度，从而使平面的物体立起来了，同样3D也有耳熟能详的坐标系——3维坐标系。
+更官方的解释呢：维度（Dimension），又称为维数，是数学中独立参数的数目。在物理学和哲学的领域内，指独立的时空坐标的数目。0维是一个无限小的点，没有长度。1维是一条无限长的线，只有长度 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/05/理解科学计算中的dim参数/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/23/Python中import的细节/">Python中import的细节</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-23T13:01:21.000Z">2020-10-23</time><i class="fa fa-edit"></i><time datetime="2020-10-23T13:01:21.000Z">2020-12-08</time></div><div class="recent-post-content">
+防忘系列…
 
-使用browsercookie来管理浏览器cookies——从浏览器提取保存的cookies的工具。它是一个很有 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="代码阅读"> 代码阅读</a></div><div class="read-more"><a class="more" href="/2022/03/29/开源项目代码阅读记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/03/23/JS逆向-webpack打包网站实战/">JS逆向-webpack打包网站实战</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-23T08:21:50.000Z">2022-03-23</time><i class="fa fa-edit"></i><time datetime="2022-03-23T08:21:50.000Z">2022-05-29</time></div><div class="recent-post-content">[TOC]
- Webpack逆向
-webpack打包是前端js模块化压缩打包常用的手段，特征明显，比如下方的形式的代码就是webpack分发器
-123456// 分发器!function(x)&#123;    function xx(n)&#123;        return ..call(**.exports, ***, ***.exports, xx)    &#125;&#125;()
-又或者更直观的表现n[“xxx”]这种，你可以大概知道了这是调用了webpack打包的js模块代码。
-webpack打包后JS依赖模块代码的固定结构：
-12345678(this["webpackJs ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/03/23/JS逆向-webpack打包网站实战/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/03/27/Python进阶/">Python进阶</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-27T14:30:39.000Z">2022-03-27</time><i class="fa fa-edit"></i><time datetime="2022-03-27T14:30:39.000Z">2022-05-26</time></div><div class="recent-post-content"> xxxatrr家族
- hasattr()
-
-用于判断对象是否包含对应的属性。
-
-hasattr 语法：hasattr(object, name)
- setattr()
-
-setattr() 函数对应函数 getattr()，用于设置属性值，该属性不一定是存在的。如果属性不存在会创建一个新的对象属性，并对属性进行赋值。
-
-setattr() 语法：setattr(object, name, value)
- getattr()
-
-getattr() 函数用于返回一个对象属性值。
-
-getattr(object, name[, default])
-
-object – 对象。
-name – 字符串， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2022/03/27/Python进阶/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/29/mitmproxy拦截代理——PC版HttpCanary/">mitmproxy拦截代理——PC版HttpCanary</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-29T12:52:09.000Z">2022-04-29</time><i class="fa fa-edit"></i><time datetime="2022-04-29T12:52:09.000Z">2022-05-23</time></div><div class="recent-post-content"> HttpCanary
-HttpCanary是Android系统下功能最强大的网络分析工具(IOS的是Thro)，支持TCP/UDP/HTTP/HTTPS/WebSocket等多种协议，可以视为Android平台下的Fiddler和Charles。
-★强大的调试功能
-
-断点指定请求，支持修改数据再提交。
-注入器支持，创建自定义规则修改返回数据包（★静态注入）。
-支持对网络请求重发、编辑重发、批量重发等操作。
-配置黑名单或者白名单，自由指定目标抓包。
-支持数据包屏蔽，比如屏蔽客户端发向服务器的指定数据包。
-
- mitmproxy
-顾名思义，mitmproxy 就是用于 MITM 的 proxy， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/04/29/mitmproxy拦截代理——PC版HttpCanary/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/05/10/爬虫App——xposed-inspeckage/">爬虫App——夜神模拟器xposed+inspeckage</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-10T06:34:49.000Z">2022-05-10</time><i class="fa fa-edit"></i><time datetime="2022-05-10T06:34:49.000Z">2022-05-10</time></div><div class="recent-post-content">头一次接触到App参数加密的，因此需要对加密参数进行反编译，了解到有工具inspeckage可以方便的来找寻加密参数。而其使用的条件为
-
-手机已ROOT
-在Xposed框架下运行
-
-于是开始在夜神模拟器上捣鼓安装xposed、inspeckage。
- 安装
- xposed框架
-在不少地方都下载了xposed框架，但都不太使用，后来了解到模拟器的xposed是专用的，根据夜神模拟器官网介绍的夜神模拟器如何安装xposed框架后，决定还是在模拟器的应用商店进行安装xposed，下载安装后的名称为&quot;xposed 派大星&quot;。
-下载安装后立马打开还是会显示没安装，需要点击&quot; ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/05/10/爬虫App——xposed-inspeckage/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/05/09/《代码整洁之道》——阅读笔记/">《代码整洁之道》——阅读笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-09T15:47:02.000Z">2022-05-09</time><i class="fa fa-edit"></i><time datetime="2022-05-09T15:47:02.000Z">2022-05-09</time></div><div class="recent-post-content"> 代码整洁之道——阅读
- 第二章：有意义的命名
-
-名副其实，在他们在的地方表达出他们含义的名称
-避免误导：避免专有名词；类型符合；
-做有意义的区分：变量不用再加Var来说明，即加上a和the对意思并没没有帮助
-使用读得出来的名称
-使用可搜索的名称：名称长短应该与作用域大小对应。单字母名称仅用于段方法中的本地变量
-避免使用编码：匈牙利语标记：PhoneNumber phoneString、成员前缀:private String m_dsc;；接口和实现: IShapeFactory前导字母I被滥用了，其实一种废话，用了IXxxx后就没必要XxxxImpl了。
-类名和对象名应该是名词或名词短语，不 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2022/05/09/《代码整洁之道》——阅读笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/05/08/toy-reimplementation-of-an-event-loop-in-Python-翻译/">toy reimplementation of an event loop in Python[翻译]</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-08T07:34:46.000Z">2022-05-08</time><i class="fa fa-edit"></i><time datetime="2022-05-08T07:34:46.000Z">2022-05-09</time></div><div class="recent-post-content"> 事件循环的一个小故事
-
-Translated from: https://github.com/AndreLouisCaron/a-tale-of-event-loops
-
-我最近被伯克利大学的研究员Nathaniel J. Smith关于 asyncio 的惊人见解所困。他的文章《关于后async/await世界中异步API设计的一些想法》( Some thoughts on asynchronous API design in a post-async/await world) 使得我 在最近大量使用asyncio后，对它有了一些（略）复杂的感受。
-虽然这或多或少是他文章的重点，但他认为 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="翻译"> 翻译</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="并发"> 并发</a></div><div class="read-more"><a class="more" href="/2022/05/08/toy-reimplementation-of-an-event-loop-in-Python-翻译/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/05/02/2022年5月劳动节爬虫项目记录/">2022年5月劳动节爬虫项目记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-02T05:23:11.000Z">2022-05-02</time><i class="fa fa-edit"></i><time datetime="2022-05-02T05:23:11.000Z">2022-05-07</time></div><div class="recent-post-content"> 鱼
- retry模块
-retry是一个用于错误处理的模块，功能类似try-except，但可以更加快捷方便的设置重试的次数，以及每次重试之间相隔的时间。
-1234@retry()def make_trouble():    '''Retry until succeed'''    print ('retrying...')
+Pycharm并没有IDEA一样可以设置对import进行排序以及自动消除没用到的库（要用快捷键Ctrl + Alt + O）， 并且如果导入方式不正确会 1.找不到自定义包 2.Pycharm对指定内容报错（下划线或红线）
+ Python中模块，包，库概念
+模块：就是.py文件，里面定义了一些函数和变量，需要的时候就可以导入这些模块。
+包：在模块之上的概念，为了方便管理而将文件进行打包。包目录下第一个文件便是__init__.py，然后是一些模块文件和子目录，假如子目录中也有__init__.py，那么它就是这个包的子包了。
+库：具有相关功能模块、包的集合。这也是Python ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/10/23/Python中import的细节/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/玩玩油猴脚本/">玩玩油猴脚本Tampermonkey</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time></div><div class="recent-post-content">
+由于在研究如何优化网盘直链下载助手**baidupan，如何将直链的结果提取出来供IDM批量下载。由于baidupan**是用油猴脚本写的，因此借机学习一下。
 
 
-exceptions：传入指定的错误类型，默认为Exception，即捕获所有类型的错误，也可传入元组形式的多种指定错误类型。
+ Greasy Fork
+
+这里是一个提供用户脚本的网站。
+
+ Tampermonkey
+
+其为浏览器插件，目前主流浏览器皆支持，油猴叫法来源：「油猴」是从「Greasemonkey」来的。「Greasemonkey」最初是运行在Firefox浏览器中的脚本，「Tampermonkey」在Google Chrome浏览器上实现了几乎相同的功能，所以也被中文用户称之为「油猴」。
+
+ 新建：
+
+12345678910111213141 ...</div><div class="read-more"><a class="more" href="/2020/12/01/玩玩油猴脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/fork-curlconverter-for-Better/">fork curlconverter for Better</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T02:43:34.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T02:43:34.000Z">2020-12-01</time></div><div class="recent-post-content">
+终于12月了，又是一个月初，定个flag，pr一个Gitcode
+由于之前写Python爬虫的时候，从curlconverter受惠很多，并且看到issue #22: Add generator for Java中有Java版本的需求还未完成，所以目标就是完成JAVA for curl
+
+curlconverter提供了一个网页版： https://curl.trillworks.com/， 其实其本质上也是用js完成的，功能如README中所写：
+ README
+ Install
+1$ npm install --save curlconverter
+ Usage
+123var curlc ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></div><div class="read-more"><a class="more" href="/2020/12/01/fork-curlconverter-for-Better/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/">《漫画机器学习入门》大关真之——读书笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T13:39:01.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T13:39:01.000Z">2020-11-28</time></div><div class="recent-post-content"> 《漫画机器学习入门》总结
+机器学习是指计算机通过不断地处理数据并修正算法和参数来学习各种规则， 从而不断改进模型而得到更优化的算法。书中主要讲解了玻尔兹曼机的机器学习
+ 谁是世界上最美丽的人？
 
 
-tries：定义捕获错误之后重复运行次数，默认为-1，即为无数次。
+****特征量****就是如每一个人的年龄，眼睛大小； 特征向量就是每个人的特征量放到一起，特征向量是表达特征的一个数组
 
 
-delay：定义每次重复运行之间的停顿时长，单位秒，默认为0，即 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2022/05/02/2022年5月劳动节爬虫项目记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/05/05/selenium不行的工作-pyppeteer上/">selenium不行的工作,pyppeteer上</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-05-05T12:31:39.000Z">2022-05-05</time><i class="fa fa-edit"></i><time datetime="2022-05-05T12:31:39.000Z">2022-05-07</time></div><div class="recent-post-content"> 验证码问题
-该网站对频率检测十分敏感，很快就会出现&quot;按住&quot;验证码，模拟按住倒不难，但是按完以后有时并不能解决验证…
-但是意外发现，在“无痕模式”下进行重新登录后，就可以解决验证…但是通过requests进行模拟登录后cookies还是无效。
-解决方案：
-
-既然模拟不行，那么就手动，因此想用selenium来模拟点击登陆。但是因为俄罗斯的问题，无法登陆。
+误差函数： 在美丽程度这个问题上， 误差函数就是—— 计算“美丽程度”的实际输出与给定的理想输出之间的差值
 
 
-于是只好更换selenium为pyppeteer。之前就听说了pyppeteer是可以代替selenium的模拟神器，相比Selenium 不太方便的地方：比如速度太慢、对版本配置要求严苛，最麻烦是经常要更新对应的驱动 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2022/05/05/selenium不行的工作-pyppeteer上/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/27/V-P-N与Charles无法共用问题解决/">V-P-N(Vmess)与Charles无法共用问题解决</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-27T13:30:51.000Z">2022-04-27</time><i class="fa fa-edit"></i><time datetime="2022-04-27T13:30:51.000Z">2022-05-07</time></div><div class="recent-post-content">最近需要抓一个需要翻墙才能访问的网页的包，发现VPN直连时会导致 Fiddler 和 Charles 抓包工具无法正常进行抓包，网上找了以后发现了一些解决方案：Github:VPN直连，导致 Fiddler 和 Charles 抓包工具无法正常进行抓包解决方案 ——试了貌似没用、windows下，实现vpn访问下的charles抓包设置中无网络问题的解决——收此启发指导了在charles的Proxy-&gt;external proxy允许其他端口代理
- 1.找到VPN软件的代理端口proxy port
-我这边使用的是vmess，可以在选项-&gt;参数设置中查看，需要明确的参数是端口和协议， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/04/27/V-P-N与Charles无法共用问题解决/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/29/使用Python转义实现前端加密算法-记录笔记/">使用Python转义实现前端加密算法-记录笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-29T01:22:28.000Z">2022-04-29</time><i class="fa fa-edit"></i><time datetime="2022-04-29T01:22:28.000Z">2022-04-29</time></div><div class="recent-post-content"> 环境安装
-123pip uninstall cryptopip uninstall pycryptodomepip install pycryptodome
-前面两个卸载命令是为了防止一些安装环境问题，具体请看文章
- pycryptodome
- AES加密
-加密模式
-AES 加密最常用的模式就是 ECB模式 和 CBC 模式，当然还有很多其它模式，他们都属于AES加密。ECB模式和CBC 模式俩者区别就是 ECB 不需要 iv偏移量，而CBC需要。
-AES加密使用参数
-以下参数都是在python中使用的。
-参数	作用及数据类型
-秘钥	加密的时候用秘钥，解密的时候需要同样的秘钥才能解出来; 数 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2022/04/29/使用Python转义实现前端加密算法-记录笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/11/总得学点Elasticsearch吧/">总得学点Elasticsearch吧</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-11T14:18:04.000Z">2022-04-11</time><i class="fa fa-edit"></i><time datetime="2022-04-11T14:18:04.000Z">2022-04-12</time></div><div class="recent-post-content"> 倒排索引
-反向索引（inverted index）更熟悉的名字是倒排索引。
-什么是倒排索引: 倒排索引也叫反向索引，通俗来讲正向索引是通过key找value，反向索引则是通过value找key。
-举个具体的例子：我们一般是通过标题来找文章内容，即通过目录（正向索引）；而反向索引的运用场景就是通过内容来找到是哪一篇文章（标题，作者……），而怎么建立反向索引呢？怎么更快更好地找到结果呢？这个就是搜索引擎做的事了、
-正向索引：例如一个“文档1”经过分词，提取了20个关键词，每个关键词都会记录它在文档中的出现次数和出现位置。那我们就可以直接通过对&quot;文档1&quot;Document这个结构 ...</div><div class="read-more"><a class="more" href="/2022/04/11/总得学点Elasticsearch吧/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/10/算法与数据结构——滑动窗口/">算法与数据结构——滑动窗口、尺取法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-10T03:14:53.000Z">2022-04-10</time><i class="fa fa-edit"></i><time datetime="2022-04-10T03:14:53.000Z">2022-04-11</time></div><div class="recent-post-content">
-Sliding window algorithm is used to perform required operation on specific window size of given large buffer or array.滑动窗口算法是在给定特定窗口大小的数组或字符串上执行要求的操作。
-This technique shows how a nested for loop in few problems can be converted to single for loop and hence reducing the time complexity.该技术可以将一部分问题中的嵌 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构"> 数据结构</a></div><div class="read-more"><a class="more" href="/2022/04/10/算法与数据结构——滑动窗口/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/05/翻译-设计Pastebin-com-or-Bit-ly-系统/">[翻译]设计Pastebin.com(or Bit.ly)系统</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-05T09:34:50.000Z">2022-04-05</time><i class="fa fa-edit"></i><time datetime="2022-04-05T09:34:50.000Z">2022-04-05</time></div><div class="recent-post-content"> 设计Pastebin.com (or Bit.ly)系统
-注：本文档直接链接到系统设计主题中的相关领域，以避免重复。请参考链接内容来了解总体的讨论要点、利弊权衡以及替代方案。
-**设计Bit.ly**是一个类似的问题。只是Pastebin还具有一个额外的功能，即存储粘贴的内容，而不是原始的未缩短过的url。
- 第一步：列出用例和约束的大纲
+最优化问题：  最小化误差函数，其实是一个求解最优化问题：我们的任务就是要找到没有误差或者误差小到满足要求的最适合的模型。这就要通过调节模型中的参数，使误差函数值 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/22/Linux服务器同步时钟/">Linux服务器同步时钟</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-22T04:49:35.000Z">2020-11-22</time><i class="fa fa-edit"></i><time datetime="2020-11-22T04:49:35.000Z">2020-11-22</time></div><div class="recent-post-content"> 
 
-确定应用场景：收集需求和范围问题；提问来弄清阐明用例和约束，讨论来作出假设。
-
-在没有面试官来阐明清这些问题的情况下，我们将定义一些用例和约束。
- 用例
- 我们将确定问题的范围，只处理以下使用情况
-
-用户：输入一段文本后，获得一个随机生成的链接
-
-过期
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="翻译"> 翻译</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="系统设计"> 系统设计</a></div><div class="read-more"><a class="more" href="/2022/04/05/翻译-设计Pastebin-com-or-Bit-ly-系统/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/05/理了一天彻底弄懂元类——分享给你一起弄懂/">理了一天彻底弄懂元类——分享给你一起弄懂</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-05T05:26:39.000Z">2022-04-05</time><i class="fa fa-edit"></i><time datetime="2022-04-05T05:26:39.000Z">2022-04-05</time></div><div class="recent-post-content">
-这是一个在看开源代码时配到了单例元类写法后的一个原理贴，可以帮你彻底弄清元类、以及__new__和__call__，相信我，看完你绝对会有收获。
-首先，关于元类的结论说在前头，先有个印象——小总结：
-
-现在我们能知道为什么元类必须继承type了：因为我们实例化对象Foo(xxx)时调用了type.__call__,而type.__call__又会调用type.__new__因此如果type子类重写实现了__new__（返回的类实例对象的类型作控制）、__call__（对实例化的流程做控制），则可以对类对象的类型和类属性起到自定义的功能，而重写就必须继承type=&gt;需要元类必须继承typ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2022/04/05/理了一天彻底弄懂元类——分享给你一起弄懂/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/03/19/2022年3月19日-20日爬虫项目记录/">2022年3月19~20日-爬虫项目记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-03-19T11:06:06.000Z">2022-03-19</time><i class="fa fa-edit"></i><time datetime="2022-03-19T11:06:06.000Z">2022-04-04</time></div><div class="recent-post-content"> 2022年3月20日——公告存网站页面到数据库
- 文件存储
-
-文件夹不允许出现/\:*?|&lt;&gt;&quot;
-a标签中href不能有, 因为通过etree.tostring会被转义成%5C===&gt;进行了str.replace(&quot;\&quot;, “/”)
-windows下路径分隔符是\\, 所以save_path中会有\\, 因此使用save_path.replace(&quot;\\&quot;, &quot;/&quot;)可以解决
-多级创建文件夹os.makedirs()、单层创建os.mkdir()
-5文件名称问题: 乱码太长报错, 将其取a标签中内容解决
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="爬虫"> 爬虫</a></div><div class="read-more"><a class="more" href="/2022/03/19/2022年3月19日-20日爬虫项目记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/04/04/PlantUML作图/">PlantUML作图</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-04-04T03:30:28.000Z">2022-04-04</time><i class="fa fa-edit"></i><time datetime="2022-04-04T03:30:28.000Z">2022-04-04</time></div><div class="recent-post-content">
-最近在看开源代码，有些项目的架构和执行逻辑都非常有学习、借鉴意义，因此想作图可视化记录下来。
-在写文档的过程中，经常需要进行画图。虽然说现在有很多类似viso之类的可视化画图工具，但是还是要花费大量时间在拖拉组件上，效率十分低下。而Plantuml与markdown类似，本质上是也算一门可以快速画图的设计语言，学习起来也很方便，学完后直接书写、不需要拖拽就能做出规整的图，能大大节约在布局上细枝末节的时间。
-此外，PlantUML在vscode, webstorm都有相关的插件可以使用。
-
-在线体验网站有很多使用的样例介绍，在此我就不过多介绍了。本文会以我使用到的功能图来提醒说明一下一些语法规 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础"> 计算机基础</a></div><div class="read-more"><a class="more" href="/2022/04/04/PlantUML作图/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/02/26/研究生work——地图匹配/">研究生work——地图匹配</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-02-26T07:24:46.000Z">2022-02-26</time><i class="fa fa-edit"></i><time datetime="2022-02-26T07:24:46.000Z">2022-03-09</time></div><div class="recent-post-content"> 地图匹配
-概念：
+因为今天在集群193跑程序的时候发现时间不同步, 因此想想把集群的时间全部同步一下
 
 
-地图匹配（Map-Matching）是将运营车辆的有序的GPS位置关联到电子地图的路网上，将GPS坐标下采样序列转换为数字路网坐标序列的过程；本质上是平面线段序列的模式匹配问题（ Alt等，2003）
-地图匹配是一种将原始GPS位置映射到路网上的路段的过程，以创建对车辆所走路线的估算。
+
+在Linux中设置系统时间，可以用date命令：
+1234# 查看时间$ date# 修改时间$ date -s "20140225 20:16:00"  #yyyymmdd hh:mm:ss
 
 
-两个主要的地图匹配用例
-
-乘车结束时，计算驾驶员行进的距离，以计算票价。——路线图匹配(EORMM)
-实时 ，为ETA团队提供准确的位置并做出调度决策，并在rider应用程序上显示驾驶员的汽车。——实时地图匹配(RTMM)
-
-不同点在于，实时地图匹配的要求比较高，必须低延时，因此相比 ...</div><div class="read-more"><a class="more" href="/2022/02/26/研究生work——地图匹配/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/02/27/深入学习使用Spring/">深入学习使用Spring</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-02-27T05:52:08.000Z">2022-02-27</time><i class="fa fa-edit"></i><time datetime="2022-02-27T05:52:08.000Z">2022-02-27</time></div><div class="recent-post-content">
-From : https://www.bilibili.com/video/BV1fr4y1Y7UH?p=6
-
- 创建bean的方式：
- 声明式
- &lt;bean&gt;&lt;/bean&gt;
+Linux硬件时间的设置
 
 
-&lt;bean&gt;&lt;/bean&gt;： 通过xml来配置bean
-123456789101112131415161718192021222324252627282930&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;beans xmlns="http://www.springframework.org/schema/beans"  ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Spring"> Spring</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2022/02/27/深入学习使用Spring/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+硬件时间的设置，可以用hwclock或者clock命令。两者基本相同，只用一个就行，只不过clock命令除了支持x86硬件体系外，还支持Alpha硬件体系。
+
+系统时间和硬件时间的同步
+
+同步系统时间和硬件时间，可以使用hwclock命令。
+4. 不同机器之间的时间同步
+为了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2020/11/22/Linux服务器同步时钟/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/15/JupyterHub搭建/">JupyterHub搭建</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-15T14:08:52.000Z">2020-11-15</time><i class="fa fa-edit"></i><time datetime="2020-11-15T14:08:52.000Z">2020-11-20</time></div><div class="recent-post-content">
+之前搭建的JupyterLab逐渐被使用起来了, 单用户的模式还是不太方便, 因此准备用JupyterHub来做下用户隔离
+
+ 1. 安装nodejs和npm
+按照JupyterLab官方教程, 先是安装最新的nodejs和npm, 但是由于16.04的apt源安装的nodejs版本比较久, 因此在后面的安装中会有坑, 这边根据网上的教程手动安装最新的nodejs
+12$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -$ sudo apt-get install -y nodejs
+安装成功后输入node --v ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2020/11/15/JupyterHub搭建/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/09/scrcpy-AutoJS/">scrcpy+AutoJS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-09T03:26:19.000Z">2020-11-09</time><i class="fa fa-edit"></i><time datetime="2020-11-09T03:26:19.000Z">2020-11-14</time></div><div class="recent-post-content"> scrcpy简介
+
+特点:
+利用电脑的键盘和鼠标可以控制手机。把 APK 文件拖拽到电脑窗口即可安装应用到手机，把普通文件拖拽到窗口即可复制到手机。
+不需要在手机上安装任何应用。
+
+简单地来说，scrcpy就是通过adb调试的方式来将手机屏幕投到电脑上，并可以通过电脑控制您的Android设备。它可以通过USB连接，也可以通过Wifi连接（类似于隔空投屏），而且不需要任何root权限，不需要在手机里安装任何程序。scrcpy同时适用于GNU / Linux，Windows和macOS。
+它的一些特性：
+
+亮度（原生，仅显示设备屏幕）
+性能（30~60fps）
+质量（1920×1080或以上） ...</div><div class="read-more"><a class="more" href="/2020/11/09/scrcpy-AutoJS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/">南邮校园网CSDN等部分网站图片无法加载解决方案</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-10T10:14:56.000Z">2020-11-10</time><i class="fa fa-edit"></i><time datetime="2020-11-10T10:14:56.000Z">2020-11-10</time></div><div class="recent-post-content"> 问题定位
+转自： https://blog.csdn.net/pamzerbhu/article/details/108549279
+
+用语言描述如下：
+打开页面后页面加载正常，但是图片完全没有加载。但是挂全局代理是可以看到图片的。挂代理后如下所示：
+
+
+
+开始定位问题：
+点击审查元素，接着找到我这张图的链接，直接用浏览器打开，报错**NET::ERR_CERT_COMMON_NAME_INVALID**
+
+
+
+然后点击 高级–继续访问 img-blog.csdn.net (不安全)
+图片成功加载：
+
+
+好了，找到了问题。接下来就是面向搜索引擎的找方法时间。
+经过查询发现是DNS的问题（或者 ...</div><div class="read-more"><a class="more" href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/04/SQL练习/">SQL练习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-04T07:54:57.000Z">2020-09-04</time><i class="fa fa-edit"></i><time datetime="2020-09-04T07:54:57.000Z">2020-11-08</time></div><div class="recent-post-content"> SQL练习
+
+鉴于同学被字节狂问SQL题，因此也激发了我的危机感。 作为非科班的， 写SQL还是比较慌的， 因此做下专题训练。
+
+ 理论知识:
+SQL语句执行顺序
+ 1.sql执行顺序 
+12345678910(1) from (3) join (2) on (4) where (5) group by(开始使用select中的别名，后面的语句中都可以使用)(6) avg,sum.... (7) having (8) select (9) distinct (10) order by
+2.sql语句执行顺序
+12345678910(8) SELECT (9)DISTINCT&lt;selec ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="SQL"> SQL</a></div><div class="read-more"><a class="more" href="/2020/09/04/SQL练习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/27/粒子滤波Matlab代码解读/">粒子滤波Matlab代码解读</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-27T09:39:23.000Z">2020-10-27</time><i class="fa fa-edit"></i><time datetime="2020-10-27T09:39:23.000Z">2020-10-31</time></div><div class="recent-post-content"> 粒子滤波概念
+理解粒子滤波(particle filter)
+粒子滤波的Matlab仿真算法实现
+ 1.1 机器人定位问题
+关于机器人定位，有三大问题，它们分别是：
+(1)“全局定位”：指初始位置未知，机器人靠自身运动确定自己在地图中的位姿。
+(2)“位姿跟踪”：指已知自身位姿或者已经通过“全局定位”得到了一个较好的位姿估计，在后续运动时补偿精度较差的运动控制误差；
+(3)“绑架劫持”：指机器人在已知自身位姿的情况下，得到了一个错误的位姿信息或者外界将其放到另外一个位姿，而里程计信息给出了错误的信息甚至没有给出控制信息。
+ 1.2 粒子滤波步骤(可结合2中例题)
+(1)初始状态：用大量粒子模 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Matlab"> Matlab</a></div><div class="read-more"><a class="more" href="/2020/10/27/粒子滤波Matlab代码解读/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/27/范数的概念-MATLAB使用/">范数的概念_MATLAB使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-27T08:13:30.000Z">2020-10-27</time><i class="fa fa-edit"></i><time datetime="2020-10-27T08:13:30.000Z">2020-10-27</time></div><div class="recent-post-content"> 范数
+
+之前大二在看机器学习的时候一直看到&quot;范数&quot;这个名词, 但是一直没有去详细了解过, 就只知道2-范数相当于两个点在二维平面的距离。这次在看粒子滤波matlab实现代码的时候看到了norm函数, 正好补一下关于范数的概念。
+
+ 向量的范数
+ 定义
+
+注: 简言之: ①向量的范数是定义在线性空间上的非负实数.②实内积空间和酉空间中向量的长度∣x∣=(x,x)|x|=\sqrt{(x,x)}∣x∣=(x,x)​都是向量的范数③酉空间向量范数∣∣x∣∣||x||∣∣x∣∣用向量长度|x|来定义时,记作∣∣x∣∣2=∣x∣=xxH=sumi=1nξξˉ||x||_2 = |x ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Math"> Math</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="MATLAB"> MATLAB</a></div><div class="read-more"><a class="more" href="/2020/10/27/范数的概念-MATLAB使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/18/emplace-back与push-back/">emplace_back与push_back</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-18T15:14:49.000Z">2020-10-18</time><i class="fa fa-edit"></i><time datetime="2020-10-18T15:14:49.000Z">2020-10-25</time></div><div class="recent-post-content">
+之前看1002. 查找常用字符题解的时候，发现有人用了emplace_back，将char转型成了string塞进了vector&lt;string&gt;，感觉是个骚操作。
+之前也看过emplace_back和push_back的区别， 只不过又忘记了， 因此本次也算个防忘系列把…
+
+1234567vector&lt;string&gt; ans;for (int i = 0; i &lt; M; i++) &#123;   for (int j = 0; j &lt; minFreq[i]; j++) &#123;       // emplace_back 骚操作      ans.e ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/10/18/emplace-back与push-back/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/13/AutoLianliankan笔记/">AutoLianliankan笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-13T10:58:47.000Z">2020-10-13</time><i class="fa fa-edit"></i><time datetime="2020-10-13T10:58:47.000Z">2020-10-14</time></div><div class="recent-post-content">
+近来无事，又研究其了之前看到过的自动连连看的代码，碰到了一些问题， 因此做下笔记
+
+pywin32
+
+win32gui：定位窗体，操作窗体
+win32api：提供API，操作鼠标、键盘
+win32con：具体API事件
+
+==&gt;对于窗体的操作使用win32gui；而对键盘、鼠标操作可以用更高级封装的库pymouse、pykeyboard；剪切板使用win32clipboard
+ 程序的设计：
+
+getWindowPosition=&gt;先确定游戏窗口位置pos，并置顶
+getScreenImage()==&gt;在窗口置顶后再截图
+getAllSquare()=&gt;找到游戏边界， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></div><div class="read-more"><a class="more" href="/2020/10/13/AutoLianliankan笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/15/docsify使用记录/">docsify使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-15T02:30:43.000Z">2020-09-15</time><i class="fa fa-edit"></i><time datetime="2020-09-15T02:30:43.000Z">2020-09-15</time></div><div class="recent-post-content"> Docsify 是什么？
+Docsify 一个神奇的动态生成文档网站的工具。
+不同于 GitBook、Hexo 的地方是它不会生成将 .md 转成 .html 文件，所有转换工作都是在运行时进行。
+较多使用的场景是GitHub中对某一开源程序的文档介绍，由于docsify的主题较为好看， 且轻量、易使用，因此使用也较为广泛。同时它也支持很多插件来丰富功能。但跟Hexo相比，个人感官上Hexo更适合做个人博客， 而docsify更适合专门来写程序的介绍文档
+
+
+春招的时候背了很多的面经， 只不过秋招回头来看基本上又都记不太清了，于是想自己整理些面经笔记啥的。 之前也试过在个人博客上发表， 只不 ...</div><div class="read-more"><a class="more" href="/2020/09/15/docsify使用记录/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/06/扇区、块-簇/">扇区、块/簇</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-06T06:29:31.000Z">2020-09-06</time><i class="fa fa-edit"></i><time datetime="2020-09-06T06:29:31.000Z">2020-09-06</time></div><div class="recent-post-content"> 扇区
+概念： 扇区，顾名思义，每个磁盘有多条同心圆似的磁道，磁道被分割成多个部分。每部分的弧长加上到圆心的两个半径，恰好形成一个扇形，所以叫做扇区。扇区是磁盘中最小的物理存储单位。
+ 扇区大小: 512B -&gt; 4KB
+扇区(Sector)大小是固定的，默认情况下，每个扇区（Sector）为512字节，2009年后，硬盘厂商开始发布4KB字节扇区的硬盘了，4KB扇区硬盘已经在消费级市场广泛应用。但是同一块硬盘上的扇区大小一定是一致的。不可能存在多种不同大小的扇区。
+ 逻辑扇区、物理扇区
+物理扇区是磁盘上真实存在对应的扇区；
+逻辑扇区是由于扇区大小由512B变成4KB后， 为了与老系统兼 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/09/06/扇区、块-簇/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/05/24/getBargains的record和Solution/">getBargains的record和Solution</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-05-24T08:44:25.000Z">2020-05-24</time><i class="fa fa-edit"></i><time datetime="2020-05-24T08:44:25.000Z">2020-05-31</time></div><div class="recent-post-content">
+该篇为**getBargains**仓库README.md直接搬运，记录一些appnium和andriod 10碰到的问题
+
+ 自动拿券
+
+通过别人发的口令, 打开淘宝APP进行抢券
+
+ 1.itchat接收群消息
+ 2.将口令复制到剪贴板
+ 3.打开淘宝APP点击抢券
+ 碰到的问题:
+
+
+出现如下警告:Warning: Activity not started, its current task has been brought to the front or Warning: Activity not started, intent has been delivered to curre ...</div><div class="read-more"><a class="more" href="/2020/05/24/getBargains的record和Solution/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span href="https://beian.miit.gov.cn/">备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

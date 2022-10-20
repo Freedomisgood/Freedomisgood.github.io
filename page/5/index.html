@@ -97,196 +97,197 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="https://avatars1.githubusercontent.com/u/31088082?s=400&amp;u=7a99ff83916afb3f4c5312bd78a1be17fe0e34ed&amp;v=4"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/深度学习-Pytorch读书笔记/">深度学习+Pytorch学习笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T03:24:12.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T03:24:12.000Z">2021-11-28</time></div><div class="recent-post-content">
-在课程设计实验周里总共读了3本书， 《深度学习算法实践》、《深度学习框架PyTorch快速开发与实战》、《PyTorch深度学习入门》。 其中《深度学习算法实践》、《深度学习框架PyTorch快速开发与实战》比较失望，质量比较差；《PyTorch深度学习入门》的代码质量高一点，但需要理论辅助，由于事先看了李宏毅老师的深度学习，因此还算容易入手。
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Mrli</div><div class="profile-signature">别装作很努力,<br>因为结局不会陪你演戏。</div><div class="contacts"><div>Contacts:</div><span><a href="http://sighttp.qq.com/msgrd?v=1&amp;uin=1063052964" target="_black">QQ</a></span><span><a href="https://www.cnblogs.com/nymrli/" target="_black">博客园</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 60vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.li's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.li's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="https://github.com/Freedomisgood/" target="_blank" title="github"></a><a class="fa fa-weibo" href="https://weibo.com/6003563401/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo"></a><a class="fa fa-twitter" href="https://twitter.com/mrli70656405?lang=en" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/PyWinAuto使用/">PyWinAuto使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:54:45.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:54:45.000Z">2020-11-07</time></div><div class="recent-post-content"> PyWinAuto使用
+简单操作示例：
+12app = application.Application().start(r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')# app = application.Application().start('notepad.exe')
+ (一) 判断程序的backend
+注意，首先需要判断你要进行的程序是用什么语言写的，在实例化的时候会有区别，主要是判断backend是什么。
 
- 《深度学习框架PyTorch快速开发与实战》
-网上关于《深度学习框架PyTorch快速开发与实战》的评价：
+ (二)确定自动化入口点
+这里主要是限制自动化控制进程的范围。如一个程序有多个实例，自动化控制一 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="自动化运维"> 自动化运维</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/05/27/PyWinAuto使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/蓝桥杯突击训练/">蓝桥杯突击训练</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T02:35:12.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T02:35:12.000Z">2020-09-17</time></div><div class="recent-post-content"> ACM 3-20笔记
+ 3部排序
 
- 关于作者
+左指针，右指针， 探路指针–&gt;链表的pq
 
-作者一共三个，在封面内侧有简单的介绍, 三个作者的简绍里没有“深度学习”相关的内容（请注意书名）.单从这本书的作者介绍来说 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2020/11/28/深度学习-Pytorch读书笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/熟悉Latex写作/">学会Latex写作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T11:55:06.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T11:55:06.000Z">2021-06-15</time></div><div class="recent-post-content">首先开始的便是文档定义:
-12345\documentclass[bachelor]&#123;njupthesis&#125;% \documentclass[option]&#123;class&#125;% class有article, proc, minimal, book, slides% option: a4paper(纸张大小)、10pt(字体大小)、fleqn(行间公式对齐方式)、leqno(行间公式的编号对齐方式)、onecolumn(单栏)、titlepage(文档标题后另起一页)\end&#123;document&#125;
-查看： https://blog.csdn. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/11/28/熟悉Latex写作/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/21/手撕操作系统中的页面置换算法/">手撕操作系统中的页面置换算法</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-21T11:14:25.000Z">2020-09-21</time><i class="fa fa-edit"></i><time datetime="2020-09-21T11:14:25.000Z">2020-12-21</time></div><div class="recent-post-content"> 操作系统基础 内存换页算法
-公平算法：
+ 马虎的算式
 
-随机算法、先来先出（FIFO）算法、第二次机会算法、时钟算法
+枚举（五重循环，注意条件）
+内存1000ms大约运行10^8的指令
 
-非公平算法：
+ 大数除法
 
-最优OPT算法、NRU算法、LRU算法、工作集算法、工作集时钟算法
+减法
+除法
 
-其中LRU算法会被面试的时候要求手撕， 因此本篇就稍微介绍一下LRU和LFU两个算法， 这两个算法除了在内存换页上会被使用到，
- 简单介绍一些算法：
- 随机更换算法
-需要替换页面的时候，产生一个随机页面号，替换与该页面对应的物理页面。
- 先来先出（FIFO）算法
-更换最早进入内存的页面。其中有Belady异常现象: 缺页率随内存块数增加而增加
- 最优OPT算法：
-最佳置换算法是由Belady于1966年 ...</div><div class="read-more"><a class="more" href="/2020/09/21/手撕操作系统中的页面置换算法/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/17/李宏毅机器学习-摘要/">李宏毅机器学习_摘要</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-17T12:36:05.000Z">2020-11-17</time><i class="fa fa-edit"></i><time datetime="2020-11-17T12:36:05.000Z">2020-12-20</time></div><div class="recent-post-content"> P3Regression - Case Study
- regularization解决overfitting(L2正则化解决过拟合问题)
+ 39级阶梯
 
+斐波那契
+简化模型后再加上考虑条件
 
-regularization可以使曲线变得更加smooth，training data上的error变大，但是 testing data上的error变小。有关regularization的具体原理说明详见下一部分
-
-原来的loss function只考虑了prediction的error，即$$\sum_{i}{n}\left(\hat{y}{i}-\left(b+\sum_{j} w_{j} x_{j}\right)\right)^{2}$$；而r ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a></div><div class="read-more"><a class="more" href="/2020/11/17/李宏毅机器学习-摘要/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/29/github中各配置文件/">github中各配置文件</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-29T10:10:04.000Z">2020-11-29</time><i class="fa fa-edit"></i><time datetime="2020-11-29T10:10:04.000Z">2020-12-19</time></div><div class="recent-post-content"> .pre-commit-config.yaml
-
-来源：easyquotation，项目中有makefile和.pre-commit-config.yaml、.coveragerc、.pylintrc三个比较新奇的。
+ 错误票据
 
 
-makefile一般都在c工程中看到， 这边作者使用是代替了一些编译工作，类似sh脚本的作用。跟setup区别：makefile提供给开发者提交代码时使用；setup当做三方库直接调用
-123456&gt;   init:&gt;   	pip install pipenv&gt;   	pipenv install --dev&gt;   	pipenv run pre- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2020/11/29/github中各配置文件/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/03/Lets-learn-设计模式/">Lets learn 设计模式</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-03</time><i class="fa fa-edit"></i><time datetime="2020-12-03T03:36:53.000Z">2020-12-11</time></div><div class="recent-post-content">
-《研磨设计模式》和《设计模式就该这样学：基于经典框架源码和真实业务场景》的读书笔记
-
- 设计模式是什么？
-模式：从字面上理解，模，就是模型、模板的意思；式，就是方式、方法的意思。综合起来，所谓模式就是：可以作为模型或模板的方式或方法。再简单点说就是可以用来作为样板的方式或方法，类似于大家所熟悉的范例。
-所以设计模式就是设计方面的模板，具体定义为：是指在软件开发中，经过验证的，用于解决在特定环境下、重复出现的、特定问题的解决方案。
- 每个设计模式的构成如下：
-1、模式名称：模式的一个好记的名字
-2、环境和问题：描述在什么环境下，出现什么特定的问题
-3、解决方案：描述如何解决问题
-4、效果：描述 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="计算机基础知识"> 计算机基础知识</a></div><div class="read-more"><a class="more" href="/2020/12/03/Lets-learn-设计模式/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/浙大2020春夏-人工智能习题1——AIforOthello/">浙大2020春夏-人工智能习题3——AIforOthello</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T04:02:33.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T04:02:33.000Z">2020-12-11</time></div><div class="recent-post-content"> something about Othello
- 黑白棋规则
-传统的黑白棋棋盘由 8 x 8 方格组成。开局时，棋盘中央的4格先置黑白相间的4颗棋子 (详见下图)，并由黑子先行。
-首步由黑子先下；下子时；新子必须与棋盘上任一己方棋子形成一条或多条 (横、竖、斜) 直线，并夹着对方棋子；由新子及旧子连成的直线之间，必须存有一颗或以上对方的棋子。如图，黑子开局时之可行棋步有以下4格:
-双方交替下子；倘若任何一方没有棋步可行，则其必须将下子权利相认予对手；另在双方均无子可下的情况下，游戏自动结束。
-游戏结束后，拥子较多一方为胜；倘若双方棋数相同的，则为和局。
- 黑白棋基本策略
- 占角子及固定子
-
- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ZJU"> ZJU</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ML"> ML</a></div><div class="read-more"><a class="more" href="/2020/12/01/浙大2020春夏-人工智能习题1——AIforOthello/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/23/Python中import的细节/">Python中import的细节</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-23T13:01:21.000Z">2020-10-23</time><i class="fa fa-edit"></i><time datetime="2020-10-23T13:01:21.000Z">2020-12-08</time></div><div class="recent-post-content">
-防忘系列…
-
-Pycharm并没有IDEA一样可以设置对import进行排序以及自动消除没用到的库（要用快捷键Ctrl + Alt + O）， 并且如果导入方式不正确会 1.找不到自定义包 2.Pycharm对指定内容报错（下划线或红线）
- Python中模块，包，库概念
-模块：就是.py文件，里面定义了一些函数和变量，需要的时候就可以导入这些模块。
-包：在模块之上的概念，为了方便管理而将文件进行打包。包目录下第一个文件便是__init__.py，然后是一些模块文件和子目录，假如子目录中也有__init__.py，那么它就是这个包的子包了。
-库：具有相关功能模块、包的集合。这也是Python ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/10/23/Python中import的细节/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/玩玩油猴脚本/">玩玩油猴脚本Tampermonkey</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T07:32:53.000Z">2020-12-01</time></div><div class="recent-post-content">
-由于在研究如何优化网盘直链下载助手**baidupan，如何将直链的结果提取出来供IDM批量下载。由于baidupan**是用油猴脚本写的，因此借机学习一下。
+获得一行内容：getline()前要用getchar()吃掉换行符
 
 
- Greasy Fork
-
-这里是一个提供用户脚本的网站。
-
- Tampermonkey
-
-其为浏览器插件，目前主流浏览器皆支持，油猴叫法来源：「油猴」是从「Greasemonkey」来的。「Greasemonkey」最初是运行在Firefox浏览器中的脚本，「Tampermonkey」在Google Chrome浏览器上实现了几乎相同的功能，所以也被中文用户称之为「油猴」。
-
- 新建：
-
-12345678910111213141 ...</div><div class="read-more"><a class="more" href="/2020/12/01/玩玩油猴脚本/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/12/01/fork-curlconverter-for-Better/">fork curlconverter for Better</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-12-01T02:43:34.000Z">2020-12-01</time><i class="fa fa-edit"></i><time datetime="2020-12-01T02:43:34.000Z">2020-12-01</time></div><div class="recent-post-content">
-终于12月了，又是一个月初，定个flag，pr一个Gitcode
-由于之前写Python爬虫的时候，从curlconverter受惠很多，并且看到issue #22: Add generator for Java中有Java版本的需求还未完成，所以目标就是完成JAVA for curl
-
-curlconverter提供了一个网页版： https://curl.trillworks.com/， 其实其本质上也是用js完成的，功能如README中所写：
- README
- Install
-1$ npm install --save curlconverter
- Usage
-123var curlc ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></div><div class="read-more"><a class="more" href="/2020/12/01/fork-curlconverter-for-Better/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/">《漫画机器学习入门》大关真之——读书笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-28T13:39:01.000Z">2020-11-28</time><i class="fa fa-edit"></i><time datetime="2020-11-28T13:39:01.000Z">2020-11-28</time></div><div class="recent-post-content"> 《漫画机器学习入门》总结
-机器学习是指计算机通过不断地处理数据并修正算法和参数来学习各种规则， 从而不断改进模型而得到更优化的算法。书中主要讲解了玻尔兹曼机的机器学习
- 谁是世界上最美丽的人？
+分割一行以空格分隔的元素
 
 
-****特征量****就是如每一个人的年龄，眼睛大小； 特征向量就是每个人的特征量放到一起，特征向量是表达特征的一个数组
-
-
-误差函数： 在美丽程度这个问题上， 误差函数就是—— 计算“美丽程度”的实际输出与给定的理想输出之间的差值
-
-
-最优化问题：  最小化误差函数，其实是一个求解最优化问题：我们的任务就是要找到没有误差或者误差小到满足要求的最适合的模型。这就要通过调节模型中的参数，使误差函数值 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="读书笔记"> 读书笔记</a></div><div class="read-more"><a class="more" href="/2020/11/28/《漫画机器学习入门》大关真之——读书笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/22/Linux服务器同步时钟/">Linux服务器同步时钟</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-22T04:49:35.000Z">2020-11-22</time><i class="fa fa-edit"></i><time datetime="2020-11-22T04:49:35.000Z">2020-11-22</time></div><div class="recent-post-content"> 
-
-因为今天在集群193跑程序的时候发现时间不同步, 因此想想把集群的时间全部同步一下
+12345string s;getline(cin,s);stringstream ss(s);string tmp;while( getline(ss,tmp," ") )
 
 
 
-在Linux中设置系统时间，可以用date命令：
-1234# 查看时间$ date# 修改时间$ date -s "20140225 20:16:00"  #yyyymmdd hh:mm:ss
+
+ ▲翻硬币
+
+ ACM 3-21笔记 （2 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a></div><div class="read-more"><a class="more" href="/2019/03/28/蓝桥杯突击训练/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-并查集/">ACM-并查集</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T01:21:30.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T01:21:30.000Z">2020-06-03</time></div><div class="recent-post-content"> 并查集
+
+ACM竞赛中，并查集（DisjointSets）这个数据结构经常使用。顾名思义，并查集即表示集合，并且支持快速查找、合并操作。
+用于高效的查找某两个元素是否属于同一个集合；
+
+并查集如何表示一个集合？它借助树的思想，将一个集合看成一棵有根树。那又如何表示一棵树？初始状态下，一个元素即一棵树，根即是元素本身。
+ 合并
+并查集如何支持合并操作？不难发现，按照树的思想，在同一棵树中的所有元素，根都是相同的。也就是说，合并两个不同的集合，只需要将其中一个集合的根设置为另一个集合的根即可，而需要改变根的那个集合，其实只需要改变根节点的父节点即可。
+ 如何支持快速查找操作
+如果完全按照上面的合 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-并查集/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-大数定理（高精度）/">ACM-大数定理（高精度）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T00:53:27.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T00:53:27.000Z">2020-05-28</time></div><div class="recent-post-content"> ACM-大数定理（高精度）
+
+由于c/c++中数据类型的范围比较固定，因此有些题目的数据范围正好卡在这些正常范围之外，此时就需要自己实现大数加减乘除的运算。
+c/c++需要自己手写
+java中有BigInteger类
+
+ C++ 加法实现
+123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &lt;iostream&gt;#include &lt;string&gt;#include &lt;algorithm&gt;using namespace std;type ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-大数定理（高精度）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/DigitalOcean-VPS注册/">DigitalOcean VPS注册</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:57:56.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:57:56.000Z">2020-02-15</time></div><div class="recent-post-content"> DigitalOcean VPS搭梯子
+ DigitalOcean VPS注册
+首先通过 邀请链接(https://m.do.co/c/e89da76f57f2)点进去注册，双方都会获得$10奖励（注意是注册，我当时就没注意到，少了10$
+然后在Github Education申请学生优惠，注意这边的学生优惠邮箱是校园邮箱(xxxx@njupt.edu.cn)那个。我当时是将github账号与校园邮箱进行链接的。
+学生优惠申请到后，pack界面会变成这样
+
+进入DO的页面后，用学校邮箱注册后，选用Paypal支付（先注册好Paypal），然后支付即可。
+▲由于一开始我并没有使用学校邮箱注册， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="生活福利"> 生活福利</a></div><div class="read-more"><a class="more" href="/2019/05/27/DigitalOcean-VPS注册/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Google-Colab使用/">Google Colab使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:53:31.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:53:31.000Z">2019-09-15</time></div><div class="recent-post-content"> Google Colab使用
+
+Google colab(Colaboratory)在编辑时候和jupyter notebook类似，并且提供免费的GPU以供使用，这对于需要处理大量数据运算的机器项目来说再合适不过了。挺香的
+
+新建一个笔记本（.ipynb）后，选择&quot;修改-&gt;笔记本设置-&gt;硬件加速器-&gt;GPU&quot;就可以想要用英伟达Tesla K80 GPU啦(2599美元一块)
+ colab中文件交互
+文档里提供了四种方式，分别是：
+
+从本地直接上传
+连接Google Drive
+连接Google Sheet
+连接Google Cloud Storage
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图像处理"> 图像处理</a></div><div class="read-more"><a class="more" href="/2019/05/27/Google-Colab使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/微信公众号Pyhton/">微信公众号Pyhton</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T14:01:10.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T14:01:10.000Z">2019-09-15</time></div><div class="recent-post-content"> 微信公众号Pyhton开发
+ 编写上传代码到SAE
+1.申请SAE（sina application enginer），创建应用，SAE使用文档
+2.编写上传代码
+weixin.py
+12345678910111213141516171819202122232425262728#-*-coding:utf-8-*-import web import os import hashlib import time class WeixinInterface: 	def __init__(self):		self.app_root=os.path.dirname(__file__)		self.te ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境部署"> 环境部署</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/05/27/微信公众号Pyhton/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/学会Pull-request/">学会Pull request</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T11:18:14.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T11:18:14.000Z">2019-09-15</time></div><div class="recent-post-content"> GitHub中发起PR(pull Request)
+
+PR是为了贡献代码:
+​	贡献代码，通俗的说，就是自己修改了代码，希望合并到别人的Repository(仓库)中。将自己的智慧贡献给开源社区。
+
+ 一.贡献代码:
+ 1.第一步:Fork
+在GitHub社区闲逛时，看中了某个项目代码，如：spring-projects/spring-framework，点击页面Fork按钮，会生成一个自己的Repository(仓库：thinkingfioa/spring-framework),如下图：
+
+ 2.第二步：修改
+Fork成功后，通过git clone、修改、commit、push等操作后，将 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/03/28/学会Pull-request/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/南京邮电大学java程序设计作业在线编程第八次作业/">南京邮电大学java程序设计作业在线编程第八次作业</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:20:12.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:20:12.000Z">2019-09-15</time></div><div class="recent-post-content"> 总分：100
+ 选择题得分：70
 
 
-Linux硬件时间的设置
 
-
-硬件时间的设置，可以用hwclock或者clock命令。两者基本相同，只用一个就行，只不过clock命令除了支持x86硬件体系外，还支持Alpha硬件体系。
-
-系统时间和硬件时间的同步
-
-同步系统时间和硬件时间，可以使用hwclock命令。
-4. 不同机器之间的时间同步
-为了 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Linux"> Linux</a></div><div class="read-more"><a class="more" href="/2020/11/22/Linux服务器同步时钟/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/15/JupyterHub搭建/">JupyterHub搭建</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-15T14:08:52.000Z">2020-11-15</time><i class="fa fa-edit"></i><time datetime="2020-11-15T14:08:52.000Z">2020-11-20</time></div><div class="recent-post-content">
-之前搭建的JupyterLab逐渐被使用起来了, 单用户的模式还是不太方便, 因此准备用JupyterHub来做下用户隔离
-
- 1. 安装nodejs和npm
-按照JupyterLab官方教程, 先是安装最新的nodejs和npm, 但是由于16.04的apt源安装的nodejs版本比较久, 因此在后面的安装中会有坑, 这边根据网上的教程手动安装最新的nodejs
-12$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -$ sudo apt-get install -y nodejs
-安装成功后输入node --v ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2020/11/15/JupyterHub搭建/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/09/scrcpy-AutoJS/">scrcpy+AutoJS</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-09T03:26:19.000Z">2020-11-09</time><i class="fa fa-edit"></i><time datetime="2020-11-09T03:26:19.000Z">2020-11-14</time></div><div class="recent-post-content"> scrcpy简介
-
-特点:
-利用电脑的键盘和鼠标可以控制手机。把 APK 文件拖拽到电脑窗口即可安装应用到手机，把普通文件拖拽到窗口即可复制到手机。
-不需要在手机上安装任何应用。
-
-简单地来说，scrcpy就是通过adb调试的方式来将手机屏幕投到电脑上，并可以通过电脑控制您的Android设备。它可以通过USB连接，也可以通过Wifi连接（类似于隔空投屏），而且不需要任何root权限，不需要在手机里安装任何程序。scrcpy同时适用于GNU / Linux，Windows和macOS。
-它的一些特性：
-
-亮度（原生，仅显示设备屏幕）
-性能（30~60fps）
-质量（1920×1080或以上） ...</div><div class="read-more"><a class="more" href="/2020/11/09/scrcpy-AutoJS/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/">南邮校园网CSDN等部分网站图片无法加载解决方案</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-11-10T10:14:56.000Z">2020-11-10</time><i class="fa fa-edit"></i><time datetime="2020-11-10T10:14:56.000Z">2020-11-10</time></div><div class="recent-post-content"> 问题定位
-转自： https://blog.csdn.net/pamzerbhu/article/details/108549279
-
-用语言描述如下：
-打开页面后页面加载正常，但是图片完全没有加载。但是挂全局代理是可以看到图片的。挂代理后如下所示：
+int[][] a=new int[2][3]，则该数组包含（ ）个数组元素。
+A.2
+B.3
+C.6
+D.不确定
+正确答案是: C
 
 
 
-开始定位问题：
-点击审查元素，接着找到我这张图的链接，直接用浏览器打开，报错**NET::ERR_CERT_COMMON_NAME_INVALID**
+
+已知类person是类student的父类，以下数组定义和赋值正确的是( )。
+A.person p[]=new person[3]; p[1]=new student();
+B.student s[]=new person[3]; s[1]=new person();
+C.person p[]= new student[3];p[1]= new person();
+D.student s[]=new stude ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/06/03/南京邮电大学java程序设计作业在线编程第八次作业/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/28/使用git将项目上传到github（最简单方法）/">使用git将项目上传到github（最简单方法）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-28T11:39:36.000Z">2019-03-28</time><i class="fa fa-edit"></i><time datetime="2019-03-28T11:39:36.000Z">2019-09-15</time></div><div class="recent-post-content"> 使用git将项目上传到github（最简单方法）
+首先你需要一个github账号，所有还没有的话先去注册吧！ Github
+**我们使用git需要先安装git工具，这里给出下载地址，下载后一路直接安装即可：**https://git-for-windows.github.io/
+ 1.进入Github首页，点击New repository新建一个项目
+
+ 2.填写相应信息后点击create即可
+
+Repository name: 仓库名称
+Description(可选): 仓库描述介绍
+Public, Private : 仓库权限（公开共享，私有或指定合作者）
+Initialize this ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="git"> git</a></div><div class="read-more"><a class="more" href="/2019/03/28/使用git将项目上传到github（最简单方法）/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/Windows下命令行神奇cmder/">Windows下命令行神器cmder</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:17:28.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:17:28.000Z">2019-09-15</time></div><div class="recent-post-content"> Cmder
+ 安装
+http://cmder.net/ 有两个版本，分别是mini与full版
+
+mini 没有内建msysgit工具，这是Git for Windows的标准配备；
+全安装版 cmder 自带了 msysgit, 压缩包 108M
+除了 git 本身这个命令之外, 里面可以使用大量的 linux 命令；比如 grep, curl(没有 wget)； 像vim, grep, tar, unzip, ssh, ls, bash, perl
+可以交叉使用 cygwin 的部分增强命令
+
+ 把 cmder 加到环境变量
+将解压后的文件夹路径加入到系统环境变量的Path中
+ 添加 c ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="安利"> 安利</a></div><div class="read-more"><a class="more" href="/2019/06/03/Windows下命令行神奇cmder/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/15/Python的构建工具setup-py/">Python的构建工具setup.py</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-15T04:08:44.000Z">2019-06-15</time><i class="fa fa-edit"></i><time datetime="2019-06-15T04:08:44.000Z">2019-09-15</time></div><div class="recent-post-content"> Python的构建工具setup.py
+ setup.py各参数介绍：
+12345678910111213141516171819202122232425--name 库名称，▲需要注意的是不要大写，不然会有坑--version (-V) 包版本--author 程序的作者--author_email 程序的作者的邮箱地址--maintainer 维护者--maintainer_email 维护者的邮箱地址--url 程序的官网地址--license 程序的授权信息--description 程序的简单描述--long_description 程序的详细描述--platforms 程序适用的 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/06/15/Python的构建工具setup-py/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Python机器学习及实践——从零开始通往Kaggle竞赛之路/">Python机器学习及实践——从零开始通往Kaggle竞赛之路</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:50:34.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:50:34.000Z">2019-09-15</time></div><div class="recent-post-content"> Python机器学习及实践——从零开始通往Kaggle竞赛之路
+ 监督学习模型
+ 分类
+ 线性模型
+ Logistic
+逻辑回归函数 ： $g(z)=\frac {1}{1+_e^{-z}} $
+逻辑回归模型hw,b(x)=g(f(w,x,b))=11+e−z=11+e−(wTx+b)h_{w,b}(x)=g(f(w,x,b)) = \frac{1}{1+e^{-z}} = \frac {1}{1+e^{-(w^{T}x+b)}}hw,b​(x)=g(f(w,x,b))=1+e−z1​=1+e−(wTx+b)1​
+ 处理缺省值的方法：
+1.缺省值较少时直接删除数据
+12data = data ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Python"> Python</a></div><div class="read-more"><a class="more" href="/2019/05/27/Python机器学习及实践——从零开始通往Kaggle竞赛之路/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/Oauth2原理、使用/">Oauth2原理、使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:22:30.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:22:30.000Z">2019-09-15</time></div><div class="recent-post-content"> Oauth2原理、使用
+ 原理
+快递员–&gt;门禁–&gt;小区–&gt;我家    &lt;=====&gt; 第三方应用 --&gt; 微信墙 —&gt;账号–&gt;个人数据
+
+简单说，OAuth 就是一种授权机制。数据的所有者告诉系统，同意授权第三方应用进入系统，获取这些数据。系统从而产生一个短期的进入令牌（token），用来代替密码，供第三方应用使用。
+
+ OAuth 的核心就是向第三方应用颁发令牌
+ 令牌特点：
+（1）令牌是短期的，到期会自动失效，用户自己无法修改。密码一般长期有效，用户不修改，就不会发生变化。
+（2）令牌可以被数据所有者撤销，会立即失效。以上例而言，屋主可以随 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="flask"> flask</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="后端"> 后端</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Web"> Web</a></div><div class="read-more"><a class="more" href="/2019/06/03/Oauth2原理、使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/lua学习/">lua学习</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:22:03.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:22:03.000Z">2019-09-15</time></div><div class="recent-post-content"> lua学习
+
+动态脚本语言，可嵌入C和C++，Lua负责逻辑，C、C++负责功能
+C编译，跨平台性良好
+
+12345678910111213141516-- 循环结构 [1,10]for i=1,10 do	print(i)end-- 函数function function_name( ... )	-- bodyend-- 选择结构if	elseend
+ 表{} &lt;==&gt;字典
+12345678910Conftg=&#123; hello="Hello Lua", world="World"&#125;Config.words="Hello"Config.num=180Config ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="lua"> lua</a></div><div class="read-more"><a class="more" href="/2019/06/03/lua学习/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/05/27/Keras使用——图像增强/">Keras使用——图像增强</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-05-27T13:52:14.000Z">2019-05-27</time><i class="fa fa-edit"></i><time datetime="2019-05-27T13:52:14.000Z">2019-09-15</time></div><div class="recent-post-content"> Keras使用——图像增强
+ 使用Keras进行深度学习的图像增强（Image Augmentation）
+
+Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。
+Keras为支持快速实验而生，能够把你的idea迅速转换为结果，如果你有如下需求，请选择Keras：
+
+简易和快速的原型设计（keras具有高度模块化，极简，和可扩充特性）
+支持CNN和RNN，或二者的结合
+无缝CPU和GPU切换
 
 
+ ImageDataGenerator
+Keras提供了ImageDataGenerator类，定义关于图片准备和增强的配置 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="图像处理"> 图像处理</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="深度学习"> 深度学习</a></div><div class="read-more"><a class="more" href="/2019/05/27/Keras使用——图像增强/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/Java课程第二次实验报告/">Java课程第二次实验报告</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T00:58:21.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T00:58:21.000Z">2019-09-15</time></div><div class="recent-post-content"> Java课程第二次实验报告
+ 1.寻找并输出11~999之间的数m，它满足m、m2、m3均为回文数。回文数是各位数字左右对称的整数。判断是否为回文要求通过编写方法来完成。
+123456789101112131415161718public class HelloWorld &#123;	public static boolean isPalindrome(int s) &#123;		String str = Integer.toString(s);		if( str.charAt(0) == str.charAt(str.length() - 1) )			return true;		el ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/04/25/Java课程第二次实验报告/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/06/03/Java课程第三次实验报告/">Java课程第三次实验报告</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-06-03T13:21:19.000Z">2019-06-03</time><i class="fa fa-edit"></i><time datetime="2019-06-03T13:21:19.000Z">2019-09-15</time></div><div class="recent-post-content"> Java课程第三次实验报告
+\1. 在前面实验二已定义的学生类Student的基础上，以Student类为父类，为学生类派生出一个子类为大学生类（CollegeStudent）。
+CollegeStudent 类在学生类上增加一个专业（profession）数据属性；方法上增加获得专业和设置专业两个方法。并对超类中的toString( )方法进行重写，使得CollegeStudent类中的toString( )方法除了显示学生类的信息外，还要显示它的专业属性。
+编写测试程序的主类。在主类中创建一个Student对象和CollegeStudent对象，并显示或修改这两个对象的属性值。
+1234 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="java"> java</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="NJUPT"> NJUPT</a></div><div class="read-more"><a class="more" href="/2019/06/03/Java课程第三次实验报告/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/03/25/C++机器学习库MLPack/">C++机器学习库MLPack</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-03-25T09:44:11.000Z">2019-03-25</time><i class="fa fa-edit"></i><time datetime="2019-03-25T09:44:11.000Z">2019-09-15</time></div><div class="recent-post-content"> C++机器学习库MLPack
 
-然后点击 高级–继续访问 img-blog.csdn.net (不安全)
-图片成功加载：
+mlpack: a scalable C++ machine learning library
 
+由于在网上查了一下发现安装这个库碰到了不少问题，所以还是记录一下安装过程。
+ 安装
 
-好了，找到了问题。接下来就是面向搜索引擎的找方法时间。
-经过查询发现是DNS的问题（或者 ...</div><div class="read-more"><a class="more" href="/2020/11/10/南邮校园网CSDN等部分网站图片无法加载解决方案/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/27/粒子滤波Matlab代码解读/">粒子滤波Matlab代码解读</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-27T09:39:23.000Z">2020-10-27</time><i class="fa fa-edit"></i><time datetime="2020-10-27T09:39:23.000Z">2020-10-31</time></div><div class="recent-post-content"> 粒子滤波概念
-理解粒子滤波(particle filter)
-粒子滤波的Matlab仿真算法实现
- 1.1 机器人定位问题
-关于机器人定位，有三大问题，它们分别是：
-(1)“全局定位”：指初始位置未知，机器人靠自身运动确定自己在地图中的位姿。
-(2)“位姿跟踪”：指已知自身位姿或者已经通过“全局定位”得到了一个较好的位姿估计，在后续运动时补偿精度较差的运动控制误差；
-(3)“绑架劫持”：指机器人在已知自身位姿的情况下，得到了一个错误的位姿信息或者外界将其放到另外一个位姿，而里程计信息给出了错误的信息甚至没有给出控制信息。
- 1.2 粒子滤波步骤(可结合2中例题)
-(1)初始状态：用大量粒子模 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Matlab"> Matlab</a></div><div class="read-more"><a class="more" href="/2020/10/27/粒子滤波Matlab代码解读/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/27/范数的概念-MATLAB使用/">范数的概念_MATLAB使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-27T08:13:30.000Z">2020-10-27</time><i class="fa fa-edit"></i><time datetime="2020-10-27T08:13:30.000Z">2020-10-27</time></div><div class="recent-post-content"> 范数
+列出两种安装教程吧，第一种实测可以。第二种在测试Armadillo的时候没通过，还是缺库，有兴趣的人可以通过给的Armadillo官网链接下载安装Armadillo再试试
 
-之前大二在看机器学习的时候一直看到&quot;范数&quot;这个名词, 但是一直没有去详细了解过, 就只知道2-范数相当于两个点在二维平面的距离。这次在看粒子滤波matlab实现代码的时候看到了norm函数, 正好补一下关于范数的概念。
+ 安装方法一：
+Mlpack 官网 提供了下载的方法 ： sudo apt-get install libmlpack-dev ， 但貌似有博客指出目前国内源里是没有这个镜像的，所以采取的办法是直接从观望上下 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="机器学习"> 机器学习</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="环境配置"> 环境配置</a></div><div class="read-more"><a class="more" href="/2019/03/25/C++机器学习库MLPack/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2019/04/25/ACM-强连通分量/">ACM-强连通分量</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-04-25T01:27:03.000Z">2019-04-25</time><i class="fa fa-edit"></i><time datetime="2019-04-25T01:27:03.000Z">2019-09-15</time></div><div class="recent-post-content"> Tarjan 算法&amp;模板
 
- 向量的范数
- 定义
+Tarjan 算法一种由Robert Tarjan提出的求解有向图强连通分量的算法，它能做到线性时间的复杂度。
 
-注: 简言之: ①向量的范数是定义在线性空间上的非负实数.②实内积空间和酉空间中向量的长度∣x∣=(x,x)|x|=\sqrt{(x,x)}∣x∣=(x,x)​都是向量的范数③酉空间向量范数∣∣x∣∣||x||∣∣x∣∣用向量长度|x|来定义时,记作∣∣x∣∣2=∣x∣=xxH=sumi=1nξξˉ||x||_2 = |x ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Math"> Math</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="MATLAB"> MATLAB</a></div><div class="read-more"><a class="more" href="/2020/10/27/范数的概念-MATLAB使用/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/18/emplace-back与push-back/">emplace_back与push_back</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-18T15:14:49.000Z">2020-10-18</time><i class="fa fa-edit"></i><time datetime="2020-10-18T15:14:49.000Z">2020-10-25</time></div><div class="recent-post-content">
-之前看1002. 查找常用字符题解的时候，发现有人用了emplace_back，将char转型成了string塞进了vector&lt;string&gt;，感觉是个骚操作。
-之前也看过emplace_back和push_back的区别， 只不过又忘记了， 因此本次也算个防忘系列把…
-
-1234567vector&lt;string&gt; ans;for (int i = 0; i &lt; M; i++) &#123;   for (int j = 0; j &lt; minFreq[i]; j++) &#123;       // emplace_back 骚操作      ans.e ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="C++"> C++</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="防忘系列"> 防忘系列</a></div><div class="read-more"><a class="more" href="/2020/10/18/emplace-back与push-back/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/10/13/AutoLianliankan笔记/">AutoLianliankan笔记</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-10-13T10:58:47.000Z">2020-10-13</time><i class="fa fa-edit"></i><time datetime="2020-10-13T10:58:47.000Z">2020-10-14</time></div><div class="recent-post-content">
-近来无事，又研究其了之前看到过的自动连连看的代码，碰到了一些问题， 因此做下笔记
-
-pywin32
-
-win32gui：定位窗体，操作窗体
-win32api：提供API，操作鼠标、键盘
-win32con：具体API事件
-
-==&gt;对于窗体的操作使用win32gui；而对键盘、鼠标操作可以用更高级封装的库pymouse、pykeyboard；剪切板使用win32clipboard
- 程序的设计：
-
-getWindowPosition=&gt;先确定游戏窗口位置pos，并置顶
-getScreenImage()==&gt;在窗口置顶后再截图
-getAllSquare()=&gt;找到游戏边界， ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="GitCode"> GitCode</a></div><div class="read-more"><a class="more" href="/2020/10/13/AutoLianliankan笔记/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2020/09/15/docsify使用记录/">docsify使用记录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-09-15T02:30:43.000Z">2020-09-15</time><i class="fa fa-edit"></i><time datetime="2020-09-15T02:30:43.000Z">2020-09-15</time></div><div class="recent-post-content"> Docsify 是什么？
-Docsify 一个神奇的动态生成文档网站的工具。
-不同于 GitBook、Hexo 的地方是它不会生成将 .md 转成 .html 文件，所有转换工作都是在运行时进行。
-较多使用的场景是GitHub中对某一开源程序的文档介绍，由于docsify的主题较为好看， 且轻量、易使用，因此使用也较为广泛。同时它也支持很多插件来丰富功能。但跟Hexo相比，个人感官上Hexo更适合做个人博客， 而docsify更适合专门来写程序的介绍文档
-
-
-春招的时候背了很多的面经， 只不过秋招回头来看基本上又都记不太清了，于是想自己整理些面经笔记啥的。 之前也试过在个人博客上发表， 只不 ...</div><div class="read-more"><a class="more" href="/2020/09/15/docsify使用记录/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/4/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/6/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span>备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+如果两个顶点可以相互通达，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly connected components)。
+1234567891011121314151617181920212223void Tarjan ( int x ) &#123;         dfn[ x ] = ++dfs_num ;       ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="ACM"> ACM</a></div><div class="read-more"><a class="more" href="/2019/04/25/ACM-强连通分量/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/4/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/">NEXT &#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><p class="beian"><span href="https://beian.miit.gov.cn/">备案号:苏ICP备18015439号</span></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
